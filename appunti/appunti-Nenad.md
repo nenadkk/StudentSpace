@@ -1,20 +1,18 @@
 Sezioni che si potrebbero mettere:
-Sezione per sport
-Sezione per eventi 
-Sezione per consigli locali/bar
-Sezione per pubblicare ripetizioni
-Sezione esperimenti 
-Sezione consigli per appartamenti
-Sezione forum (simile a quella di steam)
-Sezione "segnalazioni" (le segnalazioni andrebbero pubblicate da utenti normali e in qualche modo verificata da un utente moderatore)
+- Sezione per sport
+- Sezione per eventi 
+- Sezione per consigli locali/bar
+- Sezione per pubblicare ripetizioni
+- Sezione esperimenti 
+- Sezione consigli per appartamenti
+- Sezione forum (simile a quella di steam)
 
-Gli eventi/luoghi possono avere dei tag per indicare di cosa si tratta (es, sport, concerti, eventi serali)
+- Gli eventi/luoghi possono avere dei tag(etichette) per indicare di cosa si tratta (es, sport, concerti, eventi serali)
 
 Utenti:
     - Utente classico (studente), non per forza serve accesso. Può pubblicare offerta di ripetizioni
     - Proponente di attività (locali o organizzatori di eventi)
     - Admin del sito
-    - Moderatore segnalazioni
 
 Una mappa con tutti i punti di interesse. Possono essere divisi per tipo in modo da filtrarli.
 Es. voglio vedere solo le sedi dell'uni oppure voglio vedere solo i centri sportivi
