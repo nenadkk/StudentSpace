@@ -1,2 +1,2 @@
 # StudentSpace
-![Logo di Student Space](./LogoStudentSpace.jpg)
+![Logo di Student Space](assets/LogoStudentSpace.jpg)
