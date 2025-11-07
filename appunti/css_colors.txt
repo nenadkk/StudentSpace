@@ -1,0 +1,91 @@
+test contrasti: https://webaim.org/resources/contrastchecker/
+
+NAVBAR:#7ca7eb (azzurro)
+TESTO: #0e141c (blu scuro)
+LINK VISITATI: #631C48 (borgogna)
+
+#7ca7eb (azzurro)
+#0e141c (blu scuro)
+--> 7.55 
+
+#7ca7eb (azzurro)
+#631C48 (borgogna)
+--> 4.79
+
+BK PRINCIPALE: #fffacd (crema)
+TESTO: #0e141c (blu scuro)
+BOTTONI: #16286e (blu notte)
+LINK VISITATI BOTTONI: #efc062 (ocra)
+
+#fffacd (crema)
+#0e141c (blu scuro)
+--> 17.44
+
+#fffacd (crema)
+#16286e (blu notte)
+--> 12.67
+
+#efc062 (ocra)
+#16286e (blu notte)
+--> 7.92
+
+
+BK SEZIONE CATEGORIE: #7ca7eb (azzurro)
+TESTO: #0e141c (blu scuro)
+BK CARDS: #fffacd (crema)
+VISITED: #631C48 (borgogna)
+
+#7ca7eb (azzurro)
+#0e141c (blu scuro)
+--> 7.55
+
+EVENTI: #0067b0 (petrolio)
+
+#0067b0 (petrolio)
+#fffacd (crema)
+--> 4.39
+
+#fffacd (crema)
+#631C48 (borgogna)
+--> 11.06
+
+ESPERIMENTI: #8a2be2 (viola)
+
+#8a2be2 (viola)
+#fffacd (crema)
+--> 5.62
+
+AFFITTI: #d90645 (rosso)
+
+#d90645 (rosso)
+#fffacd (crema)
+--> 5.62
+
+RIPETIZIONI: #0c795a (verde)
+
+#0c795a (verde)
+#fffacd (5.08)
+--> 5.62
+
+BK CARDS LATESTS: #cedcf2 (carta da zucchero)
+TESTO: #0e141c (blu scuro)
+
+#0e141c (blu scuro)
+#cedcf2 (carta da zucchero)
+--> 13.33
+
+FOOTER: #7ca7eb (azzurro)
+TESTO: #0e141c (blu scuro)
+
+#7ca7eb (azzurro)
+#0e141c (blu scuro)
+--> 7.55 
+
+
+
+
+
+
+
+
+
