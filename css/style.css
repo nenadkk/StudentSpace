@@ -1,0 +1,130 @@
+* {
+    padding: 0em; /*eliminare il default per garantire che sia simile su tutti i browser*/
+    margin: 0em;
+}
+
+:root { /* definizione variabili globali */
+  --azzurro: #7ca7eb;
+  --txtcolor: #0e141c;
+  --crema: #fffacd;
+  --bluNotte: #16286e;
+  --ocra: #efc062;
+  --borgogna: #631C48;
+  --cartaZucchero: #cedcf2;
+
+  --eventiColor: #0067b0;
+  --esperimentiColor: #8a2be2;
+  --affittiColor: #d90645;
+  --ripetizioniColor: #0c795a;
+}
+
+/* tipi di font */
+html, body{ /* => da applicare a tutto */
+    font-size: 100%; /* adotta le impostazioni dell'utente */
+    font-family:"Lexend", "Roboto", sans-serif; /*"Lexend" => font di google, "Roboto", => entrambi molto accessibili*/
+    line-height: 1.5em; /* da sapere a memoria */
+    margin: 0;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--txtcolor);
+}
+
+/*
+====================================================
+    SEZIONE HEADER
+==================================================== 
+*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 3em; 
+    background-color: var(--azzurro);
+}
+
+
+.logo {
+    display: block;
+    height: 3.5em; 
+    min-width: 8em;   
+    background-image: url("../assets/logo.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    text-indent: -9999em; 
+}
+
+#menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+#menu .links {
+    list-style: none;
+    display: flex;
+    gap: 4em; 
+    margin: 0 auto;
+    padding: 0;
+}
+
+#menu .autent {
+    list-style: none;
+    display: flex;
+    gap: 2em; 
+    margin: 0;
+    padding: 0;
+}
+
+#menu a {
+    text-decoration: none;
+}
+
+#currentLink {
+    text-decoration: underline;
+    text-underline-offset: 0.2em; 
+    font-weight: 600;
+}
+
+#menu li{
+    color: var(--txtcolor);
+    font-weight: 500;
+}
+
+#menu .btn {
+    background-color: var(--bluNotte);
+    color: var(--crema);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-weight: 600;
+}
+
+#menu a:visited {
+    color: var(--borgogna);
+}
+
+#menu .btn:visited {
+    color: var(--ocra);
+}
+
+#menu .btn:hover, .btn:focus {
+    background-color: var(--ocra);
+    color: var(--bluNotte);
+}
+
+/*
+====================================================
+    SEZIONE BREADCRUMB
+==================================================== 
+*/
+
+#breadcrumb {
+    justify-self: center;
+    text-align: center;
+    background-color: var(--neutral-100);
+    border-radius: 1em;
+    font-size: var(--font-sm);
+}
