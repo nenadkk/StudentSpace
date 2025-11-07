@@ -7,7 +7,12 @@
 
     <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
     <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede">
+
     <meta name="author" content="StudentSpaceTeam">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,20 +21,25 @@
 
 <body>
     <header>
-        <h1>Student Space</h1>
-        <nav id="menu">
-            <ul>
-                <li lang="en"><a href="">Home</a></li>
-                <li id="currentLink">Esplora</li>
-                <li><a href="#">Pubblica</a></li>
+        <h1 class="logo" lang="en" aria-label="Student Space"></h1>
+        <nav id="menu" aria-label="Menu principale">
+            <ul class="links">
+                <li lang="en"><a href="../StudentSpace/index.html">Home</a></li>
+                <li id="currentLink" aria-current="page">Esplora</li>
+                <li><a href="">Pubblica</a></li>
+            </ul>
+            <ul class="autent">
                 <li><a class="btn" href="#">Registrati</a></li>
                 <li><a class="btn" href="#">Accedi</a></li>
             </ul>
         </nav>
     </header>
 
-    <nav id="breadcrumb">
-        <p><a href="#" lang="en">Home</a> >> Esplora</p>
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li><a href="../StudentSpace/index.html"><span lang="en">Home</span></a></li>
+            <li aria-current="page" class="bold"> >> Esplora</li>
+        </ol>
     </nav>
 
     <aside id="filtri">

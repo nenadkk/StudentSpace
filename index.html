@@ -21,11 +21,11 @@
 
 <body>
     <header>
-        <h1 class="logo" lang="en">Student Space</h1>
-        <nav id="menu">
+        <h1 class="logo" lang="en" aria-label="Student Space"></h1>
+        <nav id="menu" aria-label="Menu principale">
             <ul class="links">
-                <li lang="en" id="currentLink">Home</li>
-                <li><a href="">Esplora</a></li>
+                <li lang="en" id="currentLink" aria-current="page">Home</li>
+                <li><a href="../StudentSpace/esplora.html">Esplora</a></li>
                 <li><a href="">Pubblica</a></li>
             </ul>
             <ul class="autent">
@@ -35,49 +35,64 @@
         </nav>
     </header>
 
-    <nav id="breadcrumb">
-        <p lang="en">Home</p>
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol><li><span lang="en" class="bold" aria-current="page">Home</span></li></ol>
     </nav>
 
     <main id="contenuto">
         <section id="presentazione">
-            <img src="../StudentSpace/assets/hero.png" alt=""> <!-- img decorativa, no alt -->
-            <h2>La bacheca universitaria online.</h2>
-            <p>Il luogo dove gli studenti condividono affitti, ripetizioni, eventi e opportunità.</p>
-            <p>Trova ciò che ti serve. Pubblica ciò che puoi offrire. Partecipa, scopri, connettiti alla vita universitaria.</p>
-            <a class="btn" href="#">Esplora le proposte</a>
-            <a class="btn" href="#">Pubblica un annuncio</a>
+            <img src="../StudentSpace/assets/hero.png" alt="" role="presentation"> <!-- img decorativa, no alt -->
+            <div class="testo">
+                <h2>La bacheca universitaria online.</h2>
+                <p>Il luogo dove gli studenti condividono affitti, ripetizioni, eventi e opportunità.</p>
+                <p>Trova ciò che ti serve. Pubblica ciò che puoi offrire. Partecipa, scopri, connettiti alla vita universitaria.</p>
+                
+                <div class="azioni">
+                    <a class="btn" href="../StudentSpace/esplora.html" role="button" aria-label="Esplora le proposte disponibili">Esplora le proposte</a>
+                    <a class="btn" href="#" role="button" aria-label="Pubblica un nuovo annuncio">Pubblica un annuncio</a>
+                </div>
+            </div>
         </section>
+
         <section id="categorie"> <!-- Domanda: qui vogliamo che siano sempre disposte 2 a 2 oppure se lo schermo è grande lo riempono? Nel caso ha senso una lista o una griglia? Dipende ovviamente anche se nel futuro ci potrebbero essere altre categorie e direi di sì-->
             <h2>Esplora le categorie</h2>
             <p>Trova ciò che cerchi o condividi le tue opportunità con la community</p>
-            <ul>
-                <li class="categoria">
-                    <img src="../StudentSpace/assets/icona_eventi.png" alt="">
-                    <h3>Eventi</h3>
-                    <p>Scopri cosa succede nella tua comunità universitaria.</p>
-                    <a href="#">Scopri di più -></a>
+            <ul role="list">
+                <li class="categoria"  role="listitem">
+                    <img src="../StudentSpace/assets/icona_eventi.png" alt="" role="presentation">
+                    <div class="contenuto">
+                        <h3>Eventi</h3>
+                        <p>Scopri cosa succede nella tua comunità universitaria.</p>
+                        <a href="#" aria-label="Scopri di più sugli eventi">Scopri di più ...</a>
+                    </div>
                 </li>
-                <li class="categoria">
-                    <img src="../StudentSpace/assets/icona_esperimenti.png" alt="">
-                    <h3>Esperimenti</h3>
-                    <p>Partecipa a studi accademici e progetti sperimentali.</p>
-                    <a href="#">Scopri di più -></a>
+                <li class="categoria"  role="listitem">
+                    <img src="../StudentSpace/assets/icona_esperimenti.png" alt="" role="presentation">
+                    <div class="contenuto">
+                        <h3>Esperimenti</h3>
+                        <p>Partecipa a studi accademici e progetti sperimentali.</p>
+                        <a href="#" aria-label="Scopri di più sugli esperimenti">Scopri di più ...</a>
+                    </div>
                 </li>
-                <li class="categoria">
-                    <img src="../StudentSpace/assets/icona_affitto.png" alt="">
-                    <h3>Affitti</h3>
-                    <p>Trova o offri stanze e appartamenti per studenti.</p>
-                    <a href="#">Scopri di più -></a>
+                <li class="categoria"  role="listitem">
+                    <img src="../StudentSpace/assets/icona_affitto.png" alt="" role="presentation">
+                    <div class="contenuto">
+                        <h3>Affitti</h3>
+                        <p>Trova o offri stanze e appartamenti per studenti.</p>
+                        <a href="#" aria-label="Scopri di più sugli affitti">Scopri di più ...</a>
+                    </div>
                 </li>
-                <li class="categoria">
-                    <img src="../StudentSpace/assets/icona_ripetizioni.png" alt="">
-                    <h3>Ripetizioni</h3>
-                    <p>Sostieni o ricevi aiuto nello studio.</p>
-                    <a href="#">Scopri di più -></a>
+                <li class="categoria"  role="listitem">
+                    <img src="../StudentSpace/assets/icona_ripetizioni.png" alt="" role="presentation">
+                    <div class="contenuto">
+                        <h3>Ripetizioni</h3>
+                        <p>Sostieni o ricevi aiuto nello studio.</p>
+                        <a href="#" aria-label="Scopri di più sulle ripetizioni">Scopri di più ...</a>
+                    </div>
                 </li>
             </ul>
         </section>
+
         <section id="ultimiInseriti">
             <h2>Ultimi inseriti</h2>
             <ul>
