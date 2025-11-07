@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede">
+    <meta name="author" content="StudentSpaceTeam">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Student Space</h1>
+        <nav id="menu">
+            <ul>
+                <li lang="en"><a href="">Home</a></li>
+                <li id="currentLink">Esplora</li>
+                <li><a href="#">Pubblica</a></li>
+                <li><a class="btn" href="#">Registrati</a></li>
+                <li><a class="btn" href="#">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav id="breadcrumb">
+        <p><span lang="en">Home</span> >> Esplora</p>
+    </nav>
+
+    <aside id="filtri">
+        <h2>filtri</h2>
+        <form action="esplora.html" method="get">
+            <fieldset>
+                <input type="text" name="titolo" maxlength=20 placeholder="Cerca">
+                <label for="categoria">Categoria</label>
+                <select name="categoria">
+                    <option>Eventi</option>
+                    <option>Esperimenti</option>
+                    <option>Affitti</option>
+                    <option>Ripetizioni</option>
+                </select>
+                <label for="citta">Città</label>
+                <select name="citta">
+                    <option>Padova</option>
+                    <option>Trento</option>
+                    <option>Roma</option>
+                    <option>Milano</option>
+                </select>
+                <label for="data">Data pubblicazione</label>
+                <input type="date" name="data">
+            </fieldset>
+            <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
+        </form>
+    </aside>
+
+    <main id="contenuto">
+        <h2>Esplora</h2>
+        <ul id="listaCarte">
+            <li class="carta">
+                <img src="" alt="">
+                <p>CATEGORIA</p>
+                <dl>
+                    <dt>Titolo</dt>
+                    <dd></dd>
+                    <dt>Data pubblicazione</dt>
+                    <dd></dd>
+                    <dt>Città</dt>
+                    <dd></dd>
+                    <dt>Specifici</dt>
+                    <dd></dd>
+                </dl>
+                <a></a> <!-- Mettere un bottone, non un a -->
+            </li>
+            <li class="carta"></li>
+            <li class="carta"></li>
+            <li class="carta"></li>
+            <li class="carta"></li>
+            <li class="carta"></li>
+            <li class="carta"></li>
+        </ul>
+    </main>
+    <footer>
+        <img src="" alt="">
+        <a href="#contenuto"><img src="" alt="Torna su"></a>
+        <img class="imgValidCode" src="" alt="">
+        <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+        <img class="imgValidCode" src="" alt="">
+    </footer>
+</body>
+</html>
