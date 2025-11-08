@@ -43,7 +43,7 @@
     </nav>
 
     <aside id="filtri">
-        <h2>filtri</h2>
+        <h2>Filtri</h2>
         <form action="esplora.html" method="get">
             <fieldset>
                 <input type="text" name="titolo" maxlength=20 placeholder="Cerca">
@@ -73,7 +73,7 @@
         <ul id="listaCarte">
             <li class="carta">
                 <img src="" alt="">
-                <p>CATEGORIA</p>
+                <h3 class="catAffitti">CATEGORIA</h3>
                 <dl>
                     <dt>Titolo</dt>
                     <dd></dd>
@@ -88,7 +88,7 @@
             </li>
             <li class="carta">
                 <img src="" alt="">
-                <p>CATEGORIA</p>
+                <h3 class="catEventi">CATEGORIA</h3>
                 <dl>
                     <dt>Titolo</dt>
                     <dd></dd>
@@ -103,7 +103,7 @@
             </li>
             <li class="carta">
                 <img src="" alt="">
-                <p>CATEGORIA</p>
+                <h3 class="catEsperimenti">CATEGORIA</h3>
                 <dl>
                     <dt>Titolo</dt>
                     <dd></dd>
@@ -118,7 +118,7 @@
             </li>
             <li class="carta">
                 <img src="" alt="">
-                <p>CATEGORIA</p>
+                <h3 class="catRipetizioni">CATEGORIA</h3>
                 <dl>
                     <dt>Titolo</dt>
                     <dd></dd>
@@ -133,7 +133,7 @@
             </li>
             <li class="carta">
                 <img src="" alt="">
-                <p>CATEGORIA</p>
+                <h3 class="catEventi">CATEGORIA</h3>
                 <dl>
                     <dt>Titolo</dt>
                     <dd></dd>
@@ -149,11 +149,18 @@
         </ul>
     </main>
     <footer>
-        <img src="" alt="">
-        <a href="#contenuto"><img src="" alt="Torna su"></a>
-        <img class="imgValidCode" src="" alt="">
-        <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-        <img class="imgValidCode" src="" alt="">
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="../StudentSpace/assets/freccia.png" alt="">
+            </a>
+            <img src="../StudentSpace/assets/logo_no_scritta.png" alt="" class="logo-footer">
+        </div>
+
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="../StudentSpace/assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="../StudentSpace/assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
     </footer>
 </body>
 </html>

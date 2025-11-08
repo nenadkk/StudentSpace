@@ -102,6 +102,13 @@ header {
 
 #menu a {
     text-decoration: none;
+    color: var(--txtcolor);
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu a:visited {
+    color: var(--borgogna);
 }
 
 #currentLink {
@@ -109,7 +116,6 @@ header {
     text-underline-offset: 0.2em; 
     font-weight: bold;
 }
-
 
 #menu .btn {
     background-color: var(--bluNotte);
@@ -120,15 +126,14 @@ header {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu a:hover, #menu a:focus {
-    color: var(--crema);
+#menu a:not(.btn):hover, #menu a:not(.btn):focus {
     border-radius: 1em;
     outline: 2px solid var(--bluNotte);
-    outline-offset: 2px;
+    outline-offset: 6px;
 } 
 
-#menu a:visited {
-    color: var(--borgogna);
+#menu .btn:visited {
+    color: var(--ocra);
 }
 
 #menu .btn:hover, #menu .btn:focus {
@@ -137,12 +142,6 @@ header {
     outline: 2px solid var(--bluNotte);
     outline-offset: 1px;
 }
-
-#menu .btn:visited {
-    color: var(--ocra);
-}
-
-
 
 /*
 ====================================================
@@ -333,22 +332,6 @@ header {
     transition: color 0.3s ease;
 }
 
-.categoria:nth-child(1) h3{
-    background-color: var(--eventiColor);
-}
-
-.categoria:nth-child(2) h3{
-    background-color: var(--esperimentiColor);
-}
-
-.categoria:nth-child(3) h3{
-    background-color: var(--affittiColor);
-}
-
-.categoria:nth-child(4) h3{
-    background-color: var(--ripetizioniColor);
-}
-
 .categoria:hover {
     transform: scale(1.02);
 }
@@ -386,7 +369,14 @@ header {
   margin-bottom: 1em;
 }
 
-#ultimiInseriti ul {
+
+/*
+====================================================
+    CARD ULTIMI INSERITI + LISTA CARTE
+==================================================== 
+*/
+
+#ultimiInseriti ul, #listaCarte {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2em;
@@ -396,7 +386,7 @@ header {
   max-width: 1200px;
 }
 
-.ultimoInserito {
+.ultimoInserito, .carta {
   background-color: var(--cartaZucchero);
   border-radius: 1em;
   padding: 2em;
@@ -407,11 +397,11 @@ header {
   transition: transform 0.3s ease;
 }
 
-.ultimoInserito:hover {
+.ultimoInserito:hover, .carta:hover {
   transform: scale(1.02);
 }
 
-.ultimoInserito h3 {
+.ultimoInserito h3 , .carta h3 {
   font-size: 1.2em;
   font-weight: bold;
   color: var(--crema);
@@ -420,34 +410,22 @@ header {
   text-align: center;
 }
 
-.ultimoInserito:nth-child(1) h3 {
-  background-color: var(--affittiColor);
-}
-
-.ultimoInserito:nth-child(2) h3 {
-  background-color: var(--esperimentiColor);
-}
-
-.ultimoInserito:nth-child(3) h3 {
-  background-color: var(--ripetizioniColor);
-}
-
-.ultimoInserito dl {
+.ultimoInserito dl, .carta dl {
   margin: 0;
 }
 
-.ultimoInserito dt {
+.ultimoInserito dt, .carta dt {
   font-weight: bold;
   font-size: 0.95em;
   margin-top: 0.5em;
 }
 
-.ultimoInserito dd {
+.ultimoInserito dd, .carta dd {
   margin: 0;
   font-size: 1em;
 }
 
-.ultimoInserito a {
+.ultimoInserito a, .carta a {
   align-self: flex-end;
   font-weight: bold;
   color: var(--bluNotte);
@@ -456,10 +434,32 @@ header {
   transition: color 0.3s ease;
 }
 
-.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited{
+.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
   color: var(--borgogna);
 }
 
+
+
+/*
+===========================================================================
+    SEZIONE ETICHETTE CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
+===========================================================================
+*/
+.catEventi {
+  background-color: var(--eventiColor);
+}
+
+.catAffitti {
+  background-color: var(--affittiColor);
+}
+
+.catEsperimenti {
+  background-color: var(--esperimentiColor);
+}
+
+.catRipetizioni {
+  background-color: var(--ripetizioniColor);
+}
 
 /*
 ====================================================
@@ -532,3 +532,5 @@ footer {
     height: 30px;
     width: auto;
 }
+
+
