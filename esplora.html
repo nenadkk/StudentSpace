@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Student Space</title>
+    <title>Esplora - Student Space</title>
 
     <meta charset="utf-8">
 
@@ -30,7 +30,7 @@
             </ul>
             <ul class="autent">
                 <li><a class="btn" href="#">Registrati</a></li>
-                <li><a class="btn" href="#">Accedi</a></li>
+                <li><a class="btn" href="../StudentSpace/accedi.html">Accedi</a></li>
             </ul>
         </nav>
     </header>
@@ -49,6 +49,7 @@
                 <input type="text" name="titolo" maxlength=20 placeholder="Cerca">
                 <label for="categoria">Categoria</label>
                 <select name="categoria">
+                    <option>Categoria</option>
                     <option>Eventi</option>
                     <option>Esperimenti</option>
                     <option>Affitti</option>
@@ -56,6 +57,7 @@
                 </select>
                 <label for="citta">Città</label>
                 <select name="citta">
+                    <option>Città</option>
                     <option>Padova</option>
                     <option>Trento</option>
                     <option>Roma</option>
@@ -63,6 +65,7 @@
                 </select>
                 <label for="data">Data pubblicazione</label>
                 <input type="date" name="data">
+                <button type="submit">Cerca</button>
             </fieldset>
             <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
         </form>

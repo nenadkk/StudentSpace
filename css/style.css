@@ -533,4 +533,33 @@ footer {
     width: auto;
 }
 
+/*
+====================================================
+    SEZIONE LOGIN
+==================================================== 
+*/
 
+#login-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 15em;
+    max-width: 25em;
+    padding: 2em;
+    margin: auto;
+    background-color: var(--azzurro);
+    border-radius: 1em;
+    gap: 1em;
+}
+
+#login-container h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-data >div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}

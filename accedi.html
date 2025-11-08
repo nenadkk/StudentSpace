@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Accedi - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede">
+
+    <meta name="author" content="StudentSpaceTeam">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo" lang="en" aria-label="Student Space"></h1>
+        <nav id="menu" aria-label="Menu principale">
+            <ul class="links">
+                <li lang="en"><a href="../StudentSpace/index.html">Home</a></li>
+                <li><a href="../StudentSpace/esplora.html">Esplora</a></li>
+                <li><a href="">Pubblica</a></li>
+            </ul>
+            <ul class="autent">
+                <li><a class="btn" href="#">Registrati</a></li>
+                <li id="currentLink" aria-current="page" class="btn">Accedi</li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li><a href="../StudentSpace/index.html"><span lang="en">Home</span></a></li>
+            <li aria-current="page" class="bold"> >> Accedi</li>
+        </ol>
+    </nav>
+
+    <main id="contenuto">
+        <div id="login-container">
+            <h2>Accedi</h2>
+            <form class="form-data" action="/login" method="post">
+                <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
+                <div>
+                    <label for="username">Nome Utente</label>
+                    <input type="text" id="username" name="username" required />
+                </div>
+
+                <div>
+                    <label for="password" lang="en">Password</label>
+                    <input type="password" id="password" name="password" required />
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Non hai un account? <a href="#">Registrati qui</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="../StudentSpace/assets/freccia.png" alt="">
+            </a>
+            <img src="../StudentSpace/assets/logo_no_scritta.png" alt="" class="logo-footer">
+        </div>
+
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="../StudentSpace/assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="../StudentSpace/assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+</body>
+</html>
