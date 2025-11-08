@@ -41,7 +41,7 @@
 
     <main id="contenuto">
         <section id="presentazione">
-            <img src="../StudentSpace/assets/hero.png" alt="" role="presentation"> <!-- img decorativa, no alt -->
+            <img src="../StudentSpace/assets/hero.png" alt="" role="presentation">
             <div class="testo">
                 <h2>La bacheca universitaria online.</h2>
                 <p>Il luogo dove gli studenti condividono affitti, ripetizioni, eventi e opportunità.</p>
@@ -54,7 +54,7 @@
             </div>
         </section>
 
-        <section id="categorie"> <!-- Domanda: qui vogliamo che siano sempre disposte 2 a 2 oppure se lo schermo è grande lo riempono? Nel caso ha senso una lista o una griglia? Dipende ovviamente anche se nel futuro ci potrebbero essere altre categorie e direi di sì-->
+        <section id="categorie">
             <h2>Esplora le categorie</h2>
             <p>Trova ciò che cerchi o condividi le tue opportunità con la community</p>
             <ul role="list">
@@ -136,14 +136,18 @@
         </section>
     </main>
     <footer>
-        <img src="../StudentSpace/assets/logo_no_scritta.png" alt="">
-        <a href="#contenuto">
-            <span class="sr-only">Torna all'inizio del contenuto</span>
-			<span aria-hidden="true"><img src="../StudentSpace/assets/freccia_su.png" alt=""></span>
-        </a>
-        <img class="imgValidCode" src="../StudentSpace/assets/valid-xhtml10.png" alt="">
-        <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-        <img class="imgValidCode" src="../StudentSpace/assets/vcss-blue.gif" alt="">
+        <div id="footer-top">
+            <img src="../StudentSpace/assets/logo_no_scritta.png" alt="">
+            <a href="#contenuto">
+                <span class="sr-only">Torna all'inizio del contenuto</span>
+                <span aria-hidden="true"><img src="../StudentSpace/assets/freccia_su.png" alt=""></span>
+            </a>
+        </div>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="../StudentSpace/assets/valid-xhtml10.png" alt="">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="../StudentSpace/assets/vcss-blue.gif" alt="">
+        </div>
     </footer>
 </body>
 </html>

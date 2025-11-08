@@ -352,3 +352,38 @@ header {
 .categoria:nth-child(4)  a:hover, .categoria:nth-child(4) a:focus {
     color: var(--ripetizioniColor);
 }
+
+/*
+====================================================
+    SEZIONE FOOTER
+==================================================== 
+*/
+
+footer {
+    background-color: var(--azzurro);
+    padding: 2em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#footer-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#footer-bootom p{
+    margin: 0;
+    flex: 1 1 300px;
+    min-width: 200px;
+    text-align: center;
+}
