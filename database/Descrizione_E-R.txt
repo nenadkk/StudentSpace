@@ -1,0 +1,10 @@
+per proporre o accettare delle attività devi avere un account, se non hai un account puoi solo visualizzare.
+per adesso abbiamo messo un solo tipo di account generico.
+ogni attività ha un id che le contraddistingue, un titolo, una descrizione, una data di pubblicazione e una città
+(ci potrebbe essere una data di scadenza [in alcune entità può servire]) si da per scontato che la descrizione sia sostanziosa ed esaustiva in modo da facilitare questa entità per non dover aggiungere altri attributi.
+
+un'attività si divide in affitto, che ha un indirizzo e un costo, ripetizioni, che ha un numero di telefono e un prezzo, esperimento che ha un indirizzo un compenso e una data con ora, e infine evento che ha anche lui indirizzo e data con ora.
+
+le ultime 3 entità hanno la possibilità di avere delle etichette che servono per contraddistinguerle e facilitano la ricerca agli utenti.
+il tipo di etichetta per ripetizioni ed eventi possono essere diverse, per questo si gestisce via back end la parte di esclusione di etichetta per attività.
+[per esempio l'etichetta #matematica può essere utile per le ripetizioni ma magari ad un evento non serve, per questo si gestisce tramite back end il fatto che quando un account propone un evento, tra la lista di etichette disponibili, non viene mostrata matematica, viceversa un account che proporrà delle ripetizioni non avrà la possibilità di scegliere l'etichetta calcio.]
