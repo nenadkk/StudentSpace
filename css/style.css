@@ -32,12 +32,15 @@ body {
     color: var(--txtcolor);
 }
 
-/*
-:focus {
-    outline: 2px solid var(--ocra);
-    outline-offset: 2px;
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-*/
+
+footer {
+  margin-top: auto;
+}
 
 /*
 ====================================================
@@ -66,6 +69,7 @@ header {
 
 #menu {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     flex: 1;
@@ -107,7 +111,6 @@ header {
 }
 
 
-
 #menu .btn {
     background-color: var(--bluNotte);
     color: var(--crema);
@@ -117,20 +120,29 @@ header {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+#menu a:hover, #menu a:focus {
+    color: var(--crema);
+    border-radius: 1em;
+    outline: 2px solid var(--bluNotte);
+    outline-offset: 2px;
+} 
+
 #menu a:visited {
     color: var(--borgogna);
-}
-
-#menu .btn:visited {
-    color: var(--ocra);
 }
 
 #menu .btn:hover, #menu .btn:focus {
     background-color: var(--ocra);
     color: var(--bluNotte);
     outline: 2px solid var(--bluNotte);
-    outline-offset: 2px;
+    outline-offset: 1px;
 }
+
+#menu .btn:visited {
+    color: var(--ocra);
+}
+
+
 
 /*
 ====================================================
@@ -144,14 +156,16 @@ header {
     background-color: var(--azzurro);
     border-radius: 1em;
     padding: 0.5em 1em;
-    margin: 1em;
+    margin: 1em auto;
     font-size: small;
+    width: fit-content; 
+    max-width: 100%;
 }
 
 #breadcrumb ol {
     list-style: none;
     display: flex;
-    gap: 0.5 em;
+    gap: 0.5em;
     padding: 0em;
     margin: 0;
 }
@@ -159,7 +173,7 @@ header {
 #breadcrumb li{
     white-space: nowrap; /*impedisce che vada a capo*/
     overflow: hidden;
-    text-overflow: ellipsis; /*... se viene tagliato */
+    text-overflow: ellipsis; /* inserisce ... se viene tagliato */
     max-width: 20em;
 }
 
@@ -180,6 +194,8 @@ header {
     align-items: center;
     gap: 2em;
     padding: 2em 6em; 
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 #presentazione > img {
@@ -352,6 +368,98 @@ header {
 .categoria:nth-child(4)  a:hover, .categoria:nth-child(4) a:focus {
     color: var(--ripetizioniColor);
 }
+
+/*
+====================================================
+    SEZIONE ULTIMI INSERITI
+==================================================== 
+*/
+
+#ultimiInseriti {
+  padding: 3em 2em;
+  background-color: var(--crema);
+  text-align: center;
+}
+
+#ultimiInseriti h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#ultimiInseriti ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2em;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.ultimoInserito {
+  background-color: var(--cartaZucchero);
+  border-radius: 1em;
+  padding: 2em;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  transition: transform 0.3s ease;
+}
+
+.ultimoInserito:hover {
+  transform: scale(1.02);
+}
+
+.ultimoInserito h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--crema);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.ultimoInserito:nth-child(1) h3 {
+  background-color: var(--affittiColor);
+}
+
+.ultimoInserito:nth-child(2) h3 {
+  background-color: var(--esperimentiColor);
+}
+
+.ultimoInserito:nth-child(3) h3 {
+  background-color: var(--ripetizioniColor);
+}
+
+.ultimoInserito dl {
+  margin: 0;
+}
+
+.ultimoInserito dt {
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-top: 0.5em;
+}
+
+.ultimoInserito dd {
+  margin: 0;
+  font-size: 1em;
+}
+
+.ultimoInserito a {
+  align-self: flex-end;
+  font-weight: bold;
+  color: var(--bluNotte);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.3s ease;
+}
+
+.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited{
+  color: var(--borgogna);
+}
+
 
 /*
 ====================================================
