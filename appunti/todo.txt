@@ -1,0 +1,6 @@
+Cose da decidere:
+- se mettere il logo cliccabile per tornare alla home.
+- se lasciare il tasto accedi o registrati quando si va nella medesima pagina.
+
+Da fare:
+- Riscrivere le descrizione delle pagine, anche keyword.

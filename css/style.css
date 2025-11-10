@@ -33,13 +33,13 @@ body {
 }
 
 main {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    /* min-height: 100vh; da controllare come bloccare il footer */
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
-  margin-top: auto;
+    margin-top: auto;
 }
 
 /*
@@ -550,7 +550,7 @@ footer {
     min-width: 15em;
     max-width: 25em;
     padding: 2em;
-    margin: 5em auto auto auto;
+    margin: 2em auto 2em auto;
     background-color: var(--azzurro);
     border-radius: 1em;
     gap: 1em;
