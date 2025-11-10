@@ -42,3 +42,23 @@ student-space/
 │   └── (loghi, icone, foto)
 │
 └── README.md
+
+
+
+
+
+
+
+mettere nel'header uno spazio fisso a dx per evitare che cambi direzione di pagina in pagina
+
+che caratteri speciali facciamo inserire nei form?
+
+come mettere nel logo il link alla home?
+
+Come indicare i campi obbligatori? C'è un tag?
+
+
+
+
+
+

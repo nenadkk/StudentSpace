@@ -13,10 +13,10 @@
   --borgogna: #631C48;
   --cartaZucchero: #cedcf2;
 
-  --eventiColor: #0067b0;
-  --esperimentiColor: #8a2be2;
-  --affittiColor: #d90645;
-  --ripetizioniColor: #0c795a;
+  --eventiColor: #005b9b;
+  --esperimentiColor: #7616cf;
+  --affittiColor: #af0336;
+  --ripetizioniColor: #07684c;
 }
 
 html, body{ /* => da applicare a tutto */
