@@ -122,7 +122,7 @@ header {
     font-weight: bold;
 }
 
-#menu .btn {
+#menu .btn, #presentazione .btn {
     background-color: var(--bluNotte);
     color: var(--crema);
     padding: 0.5em 1em;
@@ -137,11 +137,11 @@ header {
     outline-offset: 6px;
 } 
 
-#menu .btn:visited {
+#menu .btn:visited, #presentazione .btn:visited {
     color: var(--ocra);
 }
 
-#menu .btn:hover, #menu .btn:focus {
+#menu .btn:hover, #menu .btn:focus, #presentazione .btn:hover, #presentazione .btn:focus {
     background-color: var(--ocra);
     color: var(--bluNotte);
     outline: 2px solid var(--bluNotte);
@@ -236,13 +236,8 @@ header {
     gap: 1em;
 }
 
-#presentazione .btn {
-    background-color: var(--bluNotte);
-    color: var(--crema);
-    padding: 0.6em 1.2em;
-    border-radius: 1em;
-    font-weight: 600;
-    text-align: center;/*
+
+/*
 ====================================================
     SEZIONE LOGIN
 ==================================================== 
@@ -271,20 +266,8 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-}
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#presentazione .btn:visited {
-    color: var(--ocra);
-}
-
-#presentazione .btn:hover, #presentazione .btn:focus {
-    background-color: var(--ocra);
-    color: var(--bluNotte);
-    outline: 2px solid var(--bluNotte);
-    outline-offset: 2px;
 }
 
 /*
@@ -474,8 +457,6 @@ header {
   color: var(--borgogna);
 }
 
-
-
 /*
 ===========================================================================
     SEZIONE ETICHETTE CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
@@ -610,6 +591,7 @@ input {
     font-weight: 600;
 }
 
+
 button {
     width: 100%;
     margin-top: 2em;
@@ -622,77 +604,89 @@ button {
     border-color: var(--crema);
 }
 
+
 /*
 ====================================================
-    SEZIONE FILTRI
+    SEZIONE FILTRI + ESPLORA
 ==================================================== 
 */
 
 #filtri {
-    float: left;
-    width: 30%;
-    background-color: var(--azzurro);
-    padding: 0.5em;
-    align
-    border-radius: 1em;
-    margin: 2em auto;
-    font-size: 1em;
+  width: 25%;
+  min-width: 300px;
+  background-color: var(--azzurro);
+  padding: 2em;
+  border-radius: 1em;
+  box-sizing: border-box;
+  margin: 2em 2em 1em 2em; 
+  float: left;
+  min-height: calc(100vh - 12em); /* estensione verticale fino al footer */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
 #filtri h2 {
-  font-size: 1.4em;
-  margin-bottom: 1em;
   text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
 }
 
 #filtri form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1em;
-  align-items: left;
-  justify-content: center;
 }
 
 #filtri fieldset {
   border: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+#filtri label {
+  font-weight: bold;
+  margin-top: 1.5em;
 }
 
 #filtri input,
 #filtri select,
-#filtri button {
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
-  border: 1px solid var(--bluNotte);
-  font-family: inherit;
-  font-size: 1em;
+#filtri button, {
+    width: 100%; /* si adattano al contenitore */
+    padding: 0.6em 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-radius: 1em;
+    min-height: 3em;
+    border: 1px solid var(--bluNotte);
+    font-family: inherit;
+    font-size: 1em;
+    background-color: var(--crema);
 }
 
+#login-container button,
 #filtri button {
   background-color: var(--bluNotte);
   color: var(--crema);
   font-weight: bold;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-#filtri button:hover,
-#filtri button:focus {
+#login-container button:hover, #login-container button:focus,
+#filtri button:hover, #filtri button:focus {
   background-color: var(--ocra);
   color: var(--bluNotte);
   outline: 2px solid var(--bluNotte);
   outline-offset: 2px;
 }
 
+.esplora {
+  padding: 2em;
+}
 
-#esploraMain{
-    margin-left: 35%;
-    padding-top: 2.0em;
-    padding-left: 3.5em;
-    padding-right: 2.0em;
-    padding-bottom: 2.0em;
+.esplora h2 {
+    margin-bottom: 1em;
 }
