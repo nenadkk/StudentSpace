@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Accedi - Student Space</title>
+    <title>Registrati - Student Space</title>
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="description" content="Pagina dedicata alla registrazione al sito Student Space."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
     <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede">
 
     <meta name="author" content="StudentSpaceTeam">
@@ -29,8 +29,7 @@
                 <li><a href="">Pubblica</a></li>
             </ul>
             <ul class="autent">
-                <li><a class="btn" href="../StudentSpace/registrati.html">Registrati</a></li>
-                <li id="currentLink" aria-current="page" class="btn">Accedi</li>
+                <li><a class="btn" href="../StudentSpace/accedi.html">Accedi</a></li>
             </ul>
         </nav>
     </header>
@@ -38,28 +37,65 @@
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
             <li><a href="../StudentSpace/index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="bold"> >> Accedi</li>
+            <li aria-current="page" class="bold"> >> Registrati</li>
         </ol>
     </nav>
 
     <main id="contenuto">
         <div id="login-container">
-            <h2>Accedi</h2>
+            <h2>Registrati</h2>
             <form class="form-data" action="/login" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div>
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Mario"/>
+                </div>
+
+                <div>
+                    <label for="cognome">Cognome</label>
+                    <input type="text" id="cognome" name="cognome" required placeholder="Rossi"/>
+                </div>
+
+                <div>
+                    <label for="citta">Città</label>
+                    <input type="text" id="citta" name="citta" required placeholder="Roma"/>
+                </div>
+
+                <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" required />
+                    <input type="text" id="email" name="email" required placeholder="mario.rossi@gmail.com"/>
                 </div>
 
                 <div>
                     <label for="password" lang="en">Password</label>
                     <input type="password" id="password" name="password" required />
+                    <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                    <label for="mostra-passwd">Mostra password</label>
+                </div>
+
+                <div>
+                    <label for="confermaPassword" lang="en">Conferma la password</label>
+                    <input type="confermaPassword" id="confermaPassword" name="confermaPassword" required />
+                    <input id="mostraPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                    <label for="mostra-conferma-passwd">Mostra password</label>
+
+                </div>
+
+                <div id="criteriMinimiPassword">
+                        <p>Attenzione!</p>
+                        <p>La password deve contenere:</p>
+                        <ul>
+                            <li>Minimo 8 caratteri.</li>
+                            <li>Almeno un numero.</li>
+                            <li>Almeno una lettera minuscola.</li>
+                            <li>Almeno una lettera maiuscola.</li>
+                            <li>Almeno un carattere speciale.</li>
+                        </ul>
                 </div>
 
                 <button type="submit">Login</button>
             </form>
-            <p>Non hai un account? <a href="../StudentSpace/registrati.html">Registrati qui</a></p>
+            <p>Hai già un account? <a href="../StudentSpace/accedi.html">Accedi</a></p>
         </div>
     </main>
 
