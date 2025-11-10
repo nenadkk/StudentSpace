@@ -67,6 +67,7 @@ header {
     width: 2em;
     height: 1em;
     text-indent: -9999em; /* nasconde il testo visivamente */
+
 }
 
 
@@ -550,7 +551,7 @@ footer {
     min-width: 15em;
     max-width: 25em;
     padding: 2em;
-    margin: 5em auto auto auto;
+    margin: auto;
     background-color: var(--azzurro);
     border-radius: 1em;
     gap: 1em;
@@ -566,26 +567,4 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    margin-top: 2em;
-}
-
-input {
-    border-radius: 1em;
-    min-height: 3em;
-    text-indent: 1em;
-    background-color: var(--crema);
-    color: var(--bluNotte);
-    font-weight: 600;
-}
-
-button {
-    width: 100%;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    min-height: 3em;
-    background-color: var(--bluNotte);
-    color: var(--crema);
-    font-weight: 600;
-    border-color: var(--crema);
 }
