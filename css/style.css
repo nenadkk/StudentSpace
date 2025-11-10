@@ -621,3 +621,78 @@ button {
     font-weight: 600;
     border-color: var(--crema);
 }
+
+/*
+====================================================
+    SEZIONE FILTRI
+==================================================== 
+*/
+
+#filtri {
+    float: left;
+    width: 30%;
+    background-color: var(--azzurro);
+    padding: 0.5em;
+    align
+    border-radius: 1em;
+    margin: 2em auto;
+    font-size: 1em;
+}
+
+#filtri h2 {
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+#filtri form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: left;
+  justify-content: center;
+}
+
+#filtri fieldset {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+#filtri input,
+#filtri select,
+#filtri button {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  border: 1px solid var(--bluNotte);
+  font-family: inherit;
+  font-size: 1em;
+}
+
+#filtri button {
+  background-color: var(--bluNotte);
+  color: var(--crema);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#filtri button:hover,
+#filtri button:focus {
+  background-color: var(--ocra);
+  color: var(--bluNotte);
+  outline: 2px solid var(--bluNotte);
+  outline-offset: 2px;
+}
+
+
+#esploraMain{
+    margin-left: 35%;
+    padding-top: 2.0em;
+    padding-left: 3.5em;
+    padding-right: 2.0em;
+    padding-bottom: 2.0em;
+}
