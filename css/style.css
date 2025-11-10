@@ -59,13 +59,17 @@ header {
 
 .logo {
     display: block;
-    height: 3.5em; 
-    min-width: 8em;   
-    background-image: url("../assets/logo.png"); 
+    background-image: url("../assets/logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    font-size: 8em; 
+    width: 2em;
+    height: 1em;
+    text-indent: -9999em; /* nasconde il testo visivamente */
 }
+
+
 
 #menu {
     display: flex;
