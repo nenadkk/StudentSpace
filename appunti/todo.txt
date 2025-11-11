@@ -1,6 +1,11 @@
 Cose da decidere:
 - se mettere il logo cliccabile per tornare alla home.
 - se lasciare il tasto accedi o registrati quando si va nella medesima pagina.
-
+- come gestire pubblica e cancella
+- come gestire le pagine dei dettagli. Se fare una pagina unica o una per ogni tipo
+  attività  
 Da fare:
 - Riscrivere le descrizione delle pagine, anche keyword.
+- Togliere l'interagibilità dei pulsanti registrati e accedi quando
+  si è nelle rispettive pagine
+- Test per vedere se i contrasti sono troppo alti
