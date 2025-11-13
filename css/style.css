@@ -10,7 +10,7 @@
   --crema: #fffacd;
   --bluNotte: #16286e;
   --ocra: #efc062;
-  --borgogna: #631C48;
+  --borgogna: #b71077;
   --cartaZucchero: #cedcf2;
 
   --eventiColor: #005b9b;
@@ -42,6 +42,10 @@ footer {
     margin-top: auto;
 }
 
+.enfasi{
+    font-weight: 600;
+}
+
 /*
 ====================================================
     SEZIONE HEADER
@@ -69,8 +73,6 @@ header {
     text-indent: -9999em; /* nasconde il testo visivamente */
 
 }
-
-
 
 #menu {
     display: flex;
@@ -429,14 +431,26 @@ header {
   text-align: center;
 }
 
+.ultimoInserito h4, .carta h4 {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 0.5em;
+}
+
 .ultimoInserito dl, .carta dl {
-  margin: 0;
+    margin: 0;
+    line-height: 1.5em;
+    
 }
 
 .ultimoInserito dt, .carta dt {
-  font-weight: bold;
-  font-size: 0.95em;
-  margin-top: 0.5em;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 0.5em;
+}
+
+.ultimoInserito dt::after, .carta dt::after {
+    content: ":";
 }
 
 .ultimoInserito dd, .carta dd {
