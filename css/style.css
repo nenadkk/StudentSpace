@@ -5,18 +5,20 @@
 }
 
 :root { /* definizione variabili globali */
-  --azzurro: #7ca7eb;
-  --txtcolor: #0e141c;
-  --crema: #fffacd;
-  --bluNotte: #16286e;
-  --ocra: #efc062;
-  --borgogna: #b71077;
-  --cartaZucchero: #cedcf2;
-
-  --eventiColor: #005b9b;
-  --esperimentiColor: #7616cf;
-  --affittiColor: #af0336;
-  --ripetizioniColor: #07684c;
+  --BgColor: #83adf0;
+  --breadColor: #83adf0;
+  --hoverNav: #aec6ed;
+  --txtcolor: #293845;
+  --clearBgColor: #fffacd;
+  --clearTxtColor: #fffacd;
+  --btnColor: #16286e;
+  --btnAction: #efc062;
+  --visited: #720b25;
+  --card: #d9e0ec;
+  --eventiColor: #0565a8; 
+  --esperimentiColor: #8736d1;
+  --affittiColor: #c30d43;
+  --ripetizioniColor: #0a7053;
 }
 
 html, body{ /* => da applicare a tutto */
@@ -28,7 +30,7 @@ html, body{ /* => da applicare a tutto */
 
 
 body {
-    background-color: var(--crema);
+    background-color: var(--clearBgColor);
     color: var(--txtcolor);
 }
 
@@ -43,7 +45,7 @@ footer {
 }
 
 .enfasi{
-    font-weight: 600;
+    font-weight: bold;
 }
 
 /*
@@ -58,7 +60,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em 3em; 
-    background-color: var(--azzurro);
+    background-color: var(--BgColor);
 }
 
 .logo {
@@ -89,12 +91,14 @@ header {
     display: flex;
     margin: 0;
     padding: 0;
+    font-weight: 500;
 }
 
 #menu .links {
     flex: 1;
     gap: 4em;
     justify-content: center;
+    color: var(--link);
 }
 
 #menu .autent {
@@ -104,51 +108,88 @@ header {
 
 #menu li{
     color: var(--txtcolor);
-    font-weight: 500;
 }
 
 #menu a {
-    text-decoration: none;
     color: var(--txtcolor);
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0.3em 0.6em;
+}
+
+#menu .links a{
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 #menu a:visited {
-    color: var(--borgogna);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--visited);
 }
 
 #currentLink {
-    text-decoration: underline;
-    text-underline-offset: 0.2em; 
+    text-decoration: none;
     font-weight: bold;
+    background-image: url("../assets/stellina.png");
+    background-position: left center;
+    background-size: 1.2em;
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+}
+
+#menu a:not(.btn):hover, #menu a:not(.btn):focus {
+    border-radius: 1em;
+    background-color: var(--hoverNav);
+    padding: 0.3em 0.6em;   
+    /*outline: 2px solid var(--hoverNav);
+    outline-offset: 6px;*/
+}
+
+#currentLink .btn {
+    background-size: 1em;
+    padding-left: 2em;
+    background-position: left center;
 }
 
 #menu .btn, #presentazione .btn {
-    background-color: var(--bluNotte);
-    color: var(--crema);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--clearTxtColor); 
+    background-color: var(--btnColor);
+    border: 2px solid var(--btnColor);
     padding: 0.5em 1em;
     border-radius: 1em;
     font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu a:not(.btn):hover, #menu a:not(.btn):focus {
-    border-radius: 1em;
-    outline: 2px solid var(--bluNotte);
-    outline-offset: 6px;
-} 
-
 #menu .btn:visited, #presentazione .btn:visited {
-    color: var(--ocra);
+    color: var(--btnColor);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu .btn:visited{    
+    background-color: var(--BgColor);
+}
+
+#presentazione .btn:visited {
+    background-color: var(--clearBgColor);
 }
 
 #menu .btn:hover, #menu .btn:focus, #presentazione .btn:hover, #presentazione .btn:focus {
-    background-color: var(--ocra);
-    color: var(--bluNotte);
-    outline: 2px solid var(--bluNotte);
+    background-color: var(--btnAction);
+    color: var(--btnCor);
+    outline: 2px solid var(--btnColor);
     outline-offset: 1px;
 }
+
+/*#menu .btn:visited:hover, #menu .btn:visited:focus, #presentazione .btn:visited:hover, #presentazione .btn:visited:focus {
+    background-color: var(--btnColor);
+    color: var(--btnVisited);
+    outline: 2px solid var(--btnVisited);
+    outline-offset: 1px;
+}*/
 
 /*
 ====================================================
@@ -159,7 +200,7 @@ header {
 #breadcrumb {
     display: flex;
     justify-content: center;
-    background-color: var(--azzurro);
+    background-color: var(--breadColor);
     border-radius: 1em;
     padding: 0.5em 1em;
     margin: 1em auto;
@@ -253,7 +294,7 @@ header {
     max-width: 25em;
     padding: 2em;
     margin: 2em auto 2em auto;
-    background-color: var(--azzurro);
+    background-color: var(--BgColor);
     border-radius: 1em;
     gap: 1em;
 }
@@ -280,7 +321,7 @@ header {
 
 #categorie {
     padding: 3em 2em;
-    background-color: var(--azzurro);
+    background-color: var(--BgColor);
     text-align: center;
 }
 
@@ -307,7 +348,7 @@ header {
     gap: 2em;
     padding: 2em;
     border-radius: 1em;
-    background-color: var(--crema);
+    background-color: var(--clearBgColor);
     color: var(--txtcolor);
     text-align: left;
     transition: transform 0.3s ease;
@@ -330,7 +371,7 @@ header {
     font-size: 1.2em;
     text-align: center;
     margin: 0.5em 0;
-    color: var(--crema);
+    color: var(--clearTxtColor);
     padding: 0.5em 1em;
     border-radius: 1em;
     font-weight: 600;
@@ -350,27 +391,83 @@ header {
     font-weight: bold;
     text-decoration: underline;
     text-underline-offset: 0.1em; 
-    transition: color 0.3s ease;
+    /*transition: color 0.3s ease;*/
+    align-self: flex-end;
+    padding: 0.3em 0.6em;
 }
 
-.categoria:hover {
+/*.categoria:hover {
     transform: scale(1.02);
+}*/
+/*
+===========================================================================
+    SEZIONE ETICHETTE CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
+===========================================================================
+*/
+.catEventi {
+  background-color: var(--eventiColor);
 }
 
-.categoria:nth-child(1)  a:hover, .categoria:nth-child(1) a:focus {
+.catAffitti {
+  background-color: var(--affittiColor);
+}
+
+.catEsperimenti {
+  background-color: var(--esperimentiColor);
+}
+
+.catRipetizioni {
+  background-color: var(--ripetizioniColor);
+}
+
+/*
+===========================================================================
+    SEZIONE LINK CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
+===========================================================================
+*/
+
+.catEventiLink:visited {
     color: var(--eventiColor);
 }
 
-.categoria:nth-child(2)  a:hover, .categoria:nth-child(2) a:focus {
+.catEsperimentiLink:visited {
     color: var(--esperimentiColor);
 }
 
-.categoria:nth-child(3)  a:hover, .categoria:nth-child(3) a:focus {
+.catAffittiLink:visited {
     color: var(--affittiColor);
 }
 
-.categoria:nth-child(4)  a:hover, .categoria:nth-child(4) a:focus {
+.catRipetizioniLink:visited {
     color: var(--ripetizioniColor);
+}
+
+.catEventiLink:hover, .catEventiLink:focus {
+    /*color: var(--eventiColor);*/
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--eventiColor);
+}
+
+.catEsperimentiLink:hover, .catEsperimentiLink:focus {
+    /*color: var(--esperimentiColor);*/
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--esperimentiColor);
+}
+
+.catAffittiLink:hover, .catAffittiLink:focus {
+    /*color: var(--affittiColor);*/
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--affittiColor);
+}
+
+.catRipetizioniLink:hover, .catRipetizioniLink:focus {
+    /*color: var(--ripetizioniColor);*/
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--ripetizioniColor);
 }
 
 /*
@@ -381,7 +478,7 @@ header {
 
 #ultimiInseriti {
   padding: 3em 2em;
-  background-color: var(--crema);
+  background-color: var(--clearBgColor);
   text-align: center;
 }
 
@@ -408,7 +505,7 @@ header {
 }
 
 .ultimoInserito, .carta {
-  background-color: var(--cartaZucchero);
+  background-color: var(--card);
   border-radius: 1em;
   padding: 2em;
   text-align: left;
@@ -418,14 +515,14 @@ header {
   transition: transform 0.3s ease;
 }
 
-.ultimoInserito:hover, .carta:hover {
+/*.ultimoInserito:hover, .carta:hover {
   transform: scale(1.02);
-}
+}*/
 
 .ultimoInserito h3 , .carta h3 {
   font-size: 1.2em;
   font-weight: bold;
-  color: var(--crema);
+  color: var(--clearTxtColor);
   padding: 0.5em 1em;
   border-radius: 1em;
   text-align: center;
@@ -459,38 +556,18 @@ header {
 }
 
 .ultimoInserito a, .carta a {
-  align-self: flex-end;
-  font-weight: bold;
-  color: var(--bluNotte);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  transition: color 0.3s ease;
+    align-self: flex-end;
+    font-weight: bold;
+    color: var(--btnColor);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    padding: 0.3em 0.6em;
+    /*transition: color 0.3s ease;*/
 }
 
-.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
+/*.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
   color: var(--borgogna);
-}
-
-/*
-===========================================================================
-    SEZIONE ETICHETTE CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
-===========================================================================
-*/
-.catEventi {
-  background-color: var(--eventiColor);
-}
-
-.catAffitti {
-  background-color: var(--affittiColor);
-}
-
-.catEsperimenti {
-  background-color: var(--esperimentiColor);
-}
-
-.catRipetizioni {
-  background-color: var(--ripetizioniColor);
-}
+}*/
 
 /*
 ====================================================
@@ -499,7 +576,7 @@ header {
 */
 
 footer {
-    background-color: var(--azzurro);
+    background-color: var(--BgColor);
     padding: 2em 3em;
     display: flex;
     flex-direction: column;
@@ -515,7 +592,7 @@ footer {
 }
 
 .freccia-su {
-    background-color: var(--bluNotte);
+    background-color: var(--btnColor);
     padding: 1em;
     border-radius: 50%;
     display: inline-block;
@@ -530,7 +607,7 @@ footer {
 
 .freccia-su:hover, .freccia-su:focus {
     transform: scale(1.1);
-    outline: 2px solid var(--crema);
+    outline: 2px solid var(--clearBgColor);
 }
 
 .logo-footer {
@@ -578,7 +655,7 @@ footer {
     max-width: 25em;
     padding: 2em;
     margin: 2em auto 2em auto;
-    background-color: var(--azzurro);
+    background-color: var(--BgColor);
     border-radius: 1em;
     gap: 1em;
 }
@@ -600,8 +677,8 @@ input {
     border-radius: 1em;
     min-height: 3em;
     text-indent: 1em;
-    background-color: var(--crema);
-    color: var(--bluNotte);
+    background-color: var(--clearBgColor);
+    color: var(--btnColor);
     font-weight: 600;
 }
 
@@ -612,10 +689,10 @@ button {
     margin-bottom: 1em;
     border-radius: 1em;
     min-height: 3em;
-    background-color: var(--bluNotte);
-    color: var(--crema);
+    background-color: var(--btnColor);
+    color: var(--clearTxtColor);
     font-weight: 600;
-    /*border-color: var(--crema);*/
+    /*border-color: var(--clearBgColor);*/
 }
 
 
@@ -628,7 +705,7 @@ button {
 #filtri {
   width: 25%;
   min-width: 300px;
-  background-color: var(--azzurro);
+  background-color: var(--BgColor);
   padding: 2em;
   border-radius: 1em;
   box-sizing: border-box;
@@ -671,25 +748,25 @@ button {
     margin-bottom: 1em;
     border-radius: 1em;
     min-height: 3em;
-    border: 1px solid var(--bluNotte);
+    border: 1px solid var(--btnColor);
     font-family: inherit;
     font-size: 1em;
-    background-color: var(--crema);
+    background-color: var(--clearBgColor);
 }
 
 #login-container button,
 #filtri button {
-  background-color: var(--bluNotte);
-  color: var(--crema);
+  background-color: var(--btnColor);
+  color: var(--clearTxtColor);
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 #login-container button:hover, #login-container button:focus,
 #filtri button:hover, #filtri button:focus {
-  background-color: var(--ocra);
-  color: var(--bluNotte);
-  outline: 2px solid var(--bluNotte);
+  background-color: var(--btnVisited);
+  color: var(--btnColor);
+  outline: 2px solid var(--btnColor);
   outline-offset: 2px;
 }
 
