@@ -5,8 +5,8 @@
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
-    <meta name="keywords" content="università, affitti, eventi, ripetizioni, esperimenti, appartamenti, stanze, bacheca, progetti, studenti, fuorisede">
+    <meta name="description" content="Student Space è la bacheca universitaria dedicata agli studenti fuorisede: pubblica o cerca annunci di affitto, ripetizioni universitarie, lezioni private di supporto allo studio, eventi accademici e progetti sperimentali.">
+    <meta name="keywords" content="StudentSpace, bacheca universitaria, studenti fuorisede, affitti studenti, ripetizioni universitarie, lezioni private, eventi universitari, esperimenti accademici, progetti sperimentali, supporto allo studio">
 
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
@@ -29,10 +29,11 @@
                 <li><a href="../html/esplora.html">Esplora</a></li>
                 <li><a href="../html/pubblica.html">Pubblica</a></li>
             </ul>
-        <ul class="autent">
+            <ul class="autent">
                 <li><a class="btn" href="../html/registrati.html">Registrati</a></li>
                 <li><a class="btn" href="../html/accedi.html">Accedi</a></li>
             </ul>
+            <button id="hamburger" aria-label="Apri menu">&#9776;</button>
         </nav>
     </header>
 
@@ -42,11 +43,11 @@
 
     <main id="contenuto">
         <section id="presentazione">
-            <img src="../assets/hero.png" alt="" role="presentation">
+            <img src="../assets/hero.png" alt="">
             <div class="testo">
                 <h2>La bacheca universitaria online.</h2>
-                <p>Il luogo dove gli studenti condividono affitti, ripetizioni, eventi e opportunità.</p>
-                <p>Trova ciò che ti serve. Pubblica ciò che puoi offrire. Partecipa, scopri, connettiti alla alla comunità della tua <span class="enfasi">univarsità</span>.</p>
+                <p>Il luogo dove gli <strong>studenti</strong> condividono <strong>affitti</strong>, <strong>ripetizioni</strong>, <strong>eventi</strong>, <strong>progetti sperimentsli</strong> e molte altre opportunità.</p>
+                <p>Trova ciò che ti serve. Pubblica ciò che puoi offrire. Partecipa, scopri, connettiti alla alla comunità della tua <strong>univarsità</strong>.</p>
                 
                 <div class="azioni">
                     <a class="btn" href="../html/esplora.html" role="button" aria-label="Esplora le proposte disponibili">Esplora le proposte</a>
@@ -63,7 +64,7 @@
                     <img src="../assets/icona_eventi.png" alt="" role="presentation">
                     <div class="contenuto">
                         <h3 class="catEventi">Eventi</h3>
-                        <p>Scopri cosa succede nella tua comunità universitaria.</p>
+                        <p>Partecipa a <strong>eventi universitari</strong>, <strong>incontri</strong> e <strong>attività</strong> per studenti.</p>
                         <a class="catEventiLink" href="../html/esplora.html?categoria=Eventi" aria-label="Scopri di più sugli eventi">Scopri di più</a>
                     </div>
                 </li>
@@ -71,7 +72,7 @@
                     <img src="../assets/icona_esperimenti.png" alt="" role="presentation">
                     <div class="contenuto">
                         <h3 class="catEsperimenti">Esperimenti</h3>
-                        <p>Partecipa a studi accademici e progetti sperimentali.</p>
+                        <p>Contribuisci a <strong>ricerche universitarie</strong> e <strong>esperimenti accademici</strong>.</p>
                         <a class="catEsperimentiLink" href="../html/esplora.html?categoria=Esperimenti" aria-label="Scopri di più sugli esperimenti">Scopri di più</a>
                     </div>
                 </li>
@@ -79,7 +80,7 @@
                     <img src="../assets/icona_affitto.png" alt="" role="presentation">
                     <div class="contenuto">
                         <h3 class="catAffitti">Affitti</h3>
-                        <p>Trova o offri stanze e appartamenti per studenti.</p>
+                        <p>Cerca o pubblica <strong>annunci di affitto</strong> per <strong>studenti fuorisede</strong>.</p>
                         <a class="catAffittiLink" href="../html/esplora.html?categoria=Affitti" aria-label="Scopri di più sugli affitti">Scopri di più</a>
                     </div>
                 </li>
@@ -87,7 +88,7 @@
                     <img src="../assets/icona_ripetizioni.png" alt="" role="presentation">
                     <div class="contenuto">
                         <h3 class="catRipetizioni">Ripetizioni</h3>
-                        <p>Sostieni o ricevi aiuto nello studio.</p>
+                        <p>Offri o ricevi <strong>ripetizioni universitarie</strong>, <strong>lezioni private</strong> e <strong>supporto allo studio</strong>.</p>
                         <a class="catRipetizioniLink" href="../html/esplora.html?categoria=Ripetizioni" aria-label="Scopri di più sulle ripetizioni">Scopri di più</a>
                     </div>
                 </li>
@@ -106,7 +107,7 @@
                         <dt>Città</dt>
                         <dd>Padova</dd>
                     </dl>
-                    <a class="catAffittiLink" href="../html/annuncio.html">Dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="ultimoInserito">
                     <h3 class="catEsperimenti">ESPERIMENTI</h3>
@@ -117,7 +118,7 @@
                         <dt>Città</dt>
                         <dd>Padova</dd>
                     </dl>
-                    <a class="catEsperimentiLink" href="../html/annuncio.html">Dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="ultimoInserito">
                     <h3 class="catRipetizioni">RIPETIZIONI</h3>
@@ -128,7 +129,7 @@
                         <dt>Città</dt>
                         <dd>Trento</dd>
                     </dl>
-                    <a class="catRipetizioniLink" href="../html/annuncio.html">Dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
             </ul>
         </section>

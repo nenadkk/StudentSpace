@@ -82,7 +82,7 @@ header {
     justify-content: space-between;
     align-items: center;
     flex: 1;
-    gap: 2em;
+    gap: 1em;
     font-size: 1.1em;
 }
 
@@ -150,6 +150,20 @@ header {
     background-position: left center;
 }
 
+#hamburger {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: var(--btnColor);
+}
+
+/*
+====================================================
+    SEZIONE .BTN
+==================================================== 
+*/
+
 #menu .btn, #presentazione .btn {
     text-decoration: underline;
     text-underline-offset: 0.2em;
@@ -183,13 +197,6 @@ header {
     outline: 2px solid var(--btnColor);
     outline-offset: 1px;
 }
-
-/*#menu .btn:visited:hover, #menu .btn:visited:focus, #presentazione .btn:visited:hover, #presentazione .btn:visited:focus {
-    background-color: var(--btnColor);
-    color: var(--btnVisited);
-    outline: 2px solid var(--btnVisited);
-    outline-offset: 1px;
-}*/
 
 /*
 ====================================================
@@ -230,6 +237,83 @@ header {
     font-weight: bold;
 }
 
+
+/*
+====================================================
+    SEZIONE FOOTER
+==================================================== 
+*/
+
+footer {
+    background-color: var(--BgColor);
+    padding: 2em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5em;
+}
+
+.freccia-su {
+    background-color: var(--btnColor);
+    padding: 1em;
+    border-radius: 50%;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.freccia-su img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.freccia-su:hover, .freccia-su:focus {
+    transform: scale(1.1);
+    outline: 2px solid var(--clearBgColor);
+}
+
+.logo-footer {
+    height: 100px;
+    margin-top: -1em;
+    margin-bottom: 0.5em;
+    pointer-events: none;
+}
+
+#footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#footer-bottom p{
+    margin: 0;
+    flex: 1 1 300px;
+    min-width: 200px;
+    text-align: center;
+    font-style: italic;
+    font-size: small;
+    color: var(--txtcolor);
+}
+
+.imgValidCode {
+    height: 30px;
+    width: auto;
+}
+
+/*
+/*
+================= SPECIFICHE INDEX ============================================================= 
+*/
 /*
 ====================================================
     SEZIONE HERO
@@ -251,10 +335,9 @@ header {
     flex: 0 1 40%;
     width: 100%;
     max-width: 450px;
-    min-width: 300px;
+    min-width: 220px;
     height: auto;
 }
-
 
 #presentazione .testo {
     flex: 1 1 50%;
@@ -277,40 +360,6 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-}
-
-
-/*
-====================================================
-    SEZIONE LOGIN
-==================================================== 
-*/
-
-#login-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    min-width: 15em;
-    max-width: 25em;
-    padding: 2em;
-    margin: 2em auto 2em auto;
-    background-color: var(--BgColor);
-    border-radius: 1em;
-    gap: 1em;
-}
-
-#login-container h2 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.form-data >div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /*
@@ -386,7 +435,7 @@ header {
 
 .categoria a {
     margin-top: 0.3em;
-    font-size: 0.95em;
+    font-size: 1em;
     color: var(--txtcolor);
     font-weight: bold;
     text-decoration: underline;
@@ -399,76 +448,6 @@ header {
 /*.categoria:hover {
     transform: scale(1.02);
 }*/
-/*
-===========================================================================
-    SEZIONE ETICHETTE CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
-===========================================================================
-*/
-.catEventi {
-  background-color: var(--eventiColor);
-}
-
-.catAffitti {
-  background-color: var(--affittiColor);
-}
-
-.catEsperimenti {
-  background-color: var(--esperimentiColor);
-}
-
-.catRipetizioni {
-  background-color: var(--ripetizioniColor);
-}
-
-/*
-===========================================================================
-    SEZIONE LINK CATEGORIA (IN SEZIONE CAT, CARD ULTIMI, CARD LISTA)
-===========================================================================
-*/
-
-.catEventiLink:visited {
-    color: var(--eventiColor);
-}
-
-.catEsperimentiLink:visited {
-    color: var(--esperimentiColor);
-}
-
-.catAffittiLink:visited {
-    color: var(--affittiColor);
-}
-
-.catRipetizioniLink:visited {
-    color: var(--ripetizioniColor);
-}
-
-.catEventiLink:hover, .catEventiLink:focus {
-    /*color: var(--eventiColor);*/
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--eventiColor);
-}
-
-.catEsperimentiLink:hover, .catEsperimentiLink:focus {
-    /*color: var(--esperimentiColor);*/
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--esperimentiColor);
-}
-
-.catAffittiLink:hover, .catAffittiLink:focus {
-    /*color: var(--affittiColor);*/
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--affittiColor);
-}
-
-.catRipetizioniLink:hover, .catRipetizioniLink:focus {
-    /*color: var(--ripetizioniColor);*/
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--ripetizioniColor);
-}
 
 /*
 ====================================================
@@ -486,7 +465,6 @@ header {
   font-size: 1.5em;
   margin-bottom: 1em;
 }
-
 
 /*
 ====================================================
@@ -570,107 +548,137 @@ header {
 }*/
 
 /*
-====================================================
-    SEZIONE FOOTER
-==================================================== 
+================= MODULARI + PAGINE ============================================================= 
 */
-
-footer {
-    background-color: var(--BgColor);
-    padding: 2em 3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
+/*
+===========================================================================
+    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card UltimiInseriti, Card annuncio)
+===========================================================================
+*/
+.catEventi {
+  background-color: var(--eventiColor);
 }
 
-#footer-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5em;
+.catAffitti {
+  background-color: var(--affittiColor);
 }
 
-.freccia-su {
-    background-color: var(--btnColor);
-    padding: 1em;
-    border-radius: 50%;
-    display: inline-block;
-    transition: transform 0.3s ease;
+.catEsperimenti {
+  background-color: var(--esperimentiColor);
 }
 
-.freccia-su img {
-    height: 30px;
-    width: auto;
-    display: block;
-}
-
-.freccia-su:hover, .freccia-su:focus {
-    transform: scale(1.1);
-    outline: 2px solid var(--clearBgColor);
-}
-
-.logo-footer {
-    height: 100px;
-    margin-top: -1em;
-    margin-bottom: 0.5em;
-    pointer-events: none;
-}
-
-#footer-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1em;
-}
-
-#footer-bottom p{
-    margin: 0;
-    flex: 1 1 300px;
-    min-width: 200px;
-    text-align: center;
-    font-style: italic;
-    font-size: 0.9em;
-    color: var(--txtcolor);
-}
-
-.imgValidCode {
-    height: 30px;
-    width: auto;
+.catRipetizioni {
+  background-color: var(--ripetizioniColor);
 }
 
 /*
-====================================================
-    SEZIONE LOGIN
-==================================================== 
+===========================================================================
+    SEZIONE LINK CATEGORIA (link in Categorie e ulteriori dettagli in card)
+===========================================================================
 */
 
-#login-container {
+.catEventiLink:visited {
+    color: var(--eventiColor);
+}
+
+.catEventiLink:hover, .catEventiLink:focus {
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--eventiColor);
+}
+
+.catEsperimentiLink:visited {
+    color: var(--esperimentiColor);
+}
+
+.catEsperimentiLink:hover, .catEsperimentiLink:focus {
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--esperimentiColor);
+}
+
+.catAffittiLink:visited {
+    color: var(--affittiColor);
+}
+
+.catAffittiLink:hover, .catAffittiLink:focus {
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--affittiColor);
+}
+
+.catRipetizioniLink:visited {
+    color: var(--ripetizioniColor);
+}
+
+.catRipetizioniLink:hover, .catRipetizioniLink:focus {
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--ripetizioniColor);
+}
+
+
+.dettagli:visited{
+    color: var(--visited)
+}
+
+.dettagli:hover, .dettagli:focus {
+    border-radius: 1em;
+    color: var(--txtcolor);
+    background-color: var(--BgColor);
+}
+
+/*
+===========================================================
+    SEZIONE FORM (usata per accesso e registrazione)
+=========================================================== 
+*/
+
+#login-container, #register-container {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    min-width: 15em;
-    max-width: 25em;
-    padding: 2em;
+    flex-direction: column;  
+    width: 100%;              /* occupa tutta la larghezza disponibile */
+    max-width: 40em;       
+    padding: 2.5em;             
+    margin: 3em auto;
     margin: 2em auto 2em auto;
     background-color: var(--BgColor);
     border-radius: 1em;
-    gap: 1em;
+    gap: 0.5em;
 }
 
-#login-container h2 {
+#login-container{
+    min-width: 30em;            
+}
+
+#register-container {
+    max-width: 60em;
+}
+
+
+#login-container h2, #register-container h2 {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
 }
 
-.form-data >div {
+#login-container .form-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;                 
+}
+
+#register-container .form-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  gap: 2em 3em; 
+}
+
+.form-data > div {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    margin-top: 2em;
+    text-decoration: none;
 }
 
 input {
@@ -678,23 +686,74 @@ input {
     min-height: 3em;
     text-indent: 1em;
     background-color: var(--clearBgColor);
-    color: var(--btnColor);
-    font-weight: 600;
+    color: var(--txtcolor);
+    font-weight: 500;
+    border: 2px solid var(--btnColor);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+input:focus {
+    outline: none;
+    outline: 2px solid var(--card);
+    outline-offset: 2px;
+}
+
+.checkbox-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  gap: 0.5em;
+  margin-top: 0.5em;
+  font-weight: 500;
+  color: var(--txtcolor);
+}
+
+#criteriMinimiPassword {
+  text-align: left;
+  margin-top: 1.5em;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+#criteriMinimiPassword ul {
+  margin-left: 1.5em;
+}
 
 button {
+    align-self: center;
+    margin-top: 0.8em; 
     width: 100%;
-    margin-top: 2em;
-    margin-bottom: 1em;
+    /*padding: 0.7em 3em;*/
     border-radius: 1em;
     min-height: 3em;
     background-color: var(--btnColor);
     color: var(--clearTxtColor);
-    font-weight: 600;
-    /*border-color: var(--clearBgColor);*/
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid var(--btnColor);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+button:hover, button:focus {
+    background-color: var(--btnAction);
+    color: var(--btnCor);
+    outline: 2px solid var(--btnColor);
+    outline-offset: 1px;
+}
+
+#login-container p a, #register-container p a{
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-weight: 600;
+  color: var(--txtcolor);
+}
+
+#login-container p a:hover, #login-container p a:focus,
+#register-container p a:hover, #register-container p a:focus {
+  border-radius: 0.6em;
+  background-color: var(--hoverNav);
+  padding: 0.1em 0.3em;
+}
 
 /*
 ====================================================
@@ -754,6 +813,7 @@ button {
     background-color: var(--clearBgColor);
 }
 
+/*
 #login-container button,
 #filtri button {
   background-color: var(--btnColor);
@@ -769,7 +829,7 @@ button {
   outline: 2px solid var(--btnColor);
   outline-offset: 2px;
 }
-
+*/
 .esplora {
   padding: 2em;
 }

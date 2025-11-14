@@ -33,6 +33,7 @@
                 <li id="currentLink" aria-current="page">Registrati</li>
                 <li><a class="btn" href="../html/accedi.html">Accedi</a></li>
             </ul>
+            <button id="hamburger" aria-label="Apri menu">&#9776;</button>
         </nav>
     </header>
 
@@ -44,9 +45,9 @@
     </nav>
 
     <main id="contenuto">
-        <div id="login-container">
+        <div id="register-container">
             <h2>Registrati</h2>
-            <form class="form-data" action="/login" method="post">
+            <form class="form-data" action="/register" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div>
                     <label for="nome">Nome</label>
@@ -71,20 +72,25 @@
                 <div>
                     <label for="password" lang="en">Password</label>
                     <input type="password" id="password" name="password" required />
-                    <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                    <label for="mostra-passwd">Mostra password</label>
+                    
+                    <div class="checkbox-inline">
+                        <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" /> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                        <label for="mostraPassword">Mostra password</label>
+                    </div>
                 </div>
 
                 <div>
                     <label for="confermaPassword">Conferma la <span lang="en">password</span></label>
-                    <input type="confermaPassword" id="confermaPassword" name="confermaPassword" required />
-                    <input id="mostraPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                    <label for="mostra-conferma-passwd">Mostra <span lang="en">password</span></label>
-
+                    <input type="password" id="confermaPassword" name="confermaPassword" required />
+                    
+                    <div class="checkbox-inline">
+                        <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                        <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
+                    </div>
                 </div>
-
-                <div id="criteriMinimiPassword">
-                        <p>Attenzione!</p>
+            </form>
+            <div id="criteriMinimiPassword">
+                        <p class="enfasi">Attenzione!</p>
                         <p>La password deve contenere:</p>
                         <ul>
                             <li>Minimo 8 caratteri.</li>
@@ -93,10 +99,8 @@
                             <li>Almeno una lettera maiuscola.</li>
                             <li>Almeno un carattere speciale.</li>
                         </ul>
-                </div>
-
-                <button type="submit">Conferma</button>
-            </form>
+            </div>
+            <button type="submit">Conferma</button>
             <p>Hai già un account? <a href="../html/accedi.html">Accedi</a></p>
         </div>
     </main>
