@@ -40,68 +40,71 @@
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
             <li><a href="../html/index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="bold"> >> Registrati</li>
+            <li aria-current="page" class="bold"> <span aria-hidden="true">»</span> Registrati</li>
         </ol>
     </nav>
 
     <main id="contenuto">
         <div id="register-container">
             <h2>Registrati</h2>
-            <form class="form-data" action="/register" method="post">
+            <form action="/register" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
-                <div>
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Mario"/>
-                </div>
+                <div class="form-data">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Mario">
+                    </div>
 
-                <div>
-                    <label for="cognome">Cognome</label>
-                    <input type="text" id="cognome" name="cognome" required placeholder="Rossi"/>
-                </div>
+                    <div>
+                        <label for="cognome">Cognome</label>
+                        <input type="text" id="cognome" name="cognome" required placeholder="Rossi">
+                    </div>
 
-                <div>
-                    <label for="citta">Città</label>
-                    <input type="text" id="citta" name="citta" required placeholder="Roma"/>
-                </div>
+                    <div>
+                        <label for="citta">Città</label>
+                        <input type="text" id="citta" name="citta" required placeholder="Roma">
+                    </div>
 
-                <div>
-                    <label for="email" lang="en">Email</label>
-                    <input type="text" id="email" name="email" required placeholder="mario.rossi@gmail.com"/>
-                </div>
+                    <div>
+                        <label for="email" lang="en">Email</label>
+                        <input type="text" id="email" name="email" required placeholder="mario.rossi@gmail.com">
+                    </div>
 
-                <div>
-                    <label for="password" lang="en">Password</label>
-                    <input type="password" id="password" name="password" required />
+                    <div>
+                        <label for="password" lang="en">Password</label>
+                        <input type="password" id="password" name="password" required >
+                        
+                        <div class="checkbox-inline">
+                            <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <label for="mostraPassword">Mostra password</label>
+                        </div>
+                    </div>
                     
-                    <div class="checkbox-inline">
-                        <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" /> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                        <label for="mostraPassword">Mostra password</label>
+                    <div>
+                        <label for="confermaPassword">Conferma la <span lang="en">password</span></label>
+                        <input type="password" id="confermaPassword" name="confermaPassword" required >
+                        
+                        <div class="checkbox-inline">
+                            <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <label for="confermaPassword">Conferma la <span lang="en">password</span></label>
-                    <input type="password" id="confermaPassword" name="confermaPassword" required />
-                    
-                    <div class="checkbox-inline">
-                        <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"/> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                        <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
-                    </div>
+                <div id="criteriMinimiPassword">
+                    <p class="enfasi">Attenzione!</p>
+                    <p>La password deve contenere:</p>
+                    <ul>
+                        <li>Minimo 8 caratteri.</li>
+                        <li>Almeno un numero.</li>
+                        <li>Almeno una lettera minuscola.</li>
+                        <li>Almeno una lettera maiuscola.</li>
+                        <li>Almeno un carattere speciale.</li>
+                    </ul>
                 </div>
+                <button type="submit">Conferma</button>
+                <p>Hai già un account? <a href="../html/accedi.html">Accedi</a></p>
+
             </form>
-            <div id="criteriMinimiPassword">
-                        <p class="enfasi">Attenzione!</p>
-                        <p>La password deve contenere:</p>
-                        <ul>
-                            <li>Minimo 8 caratteri.</li>
-                            <li>Almeno un numero.</li>
-                            <li>Almeno una lettera minuscola.</li>
-                            <li>Almeno una lettera maiuscola.</li>
-                            <li>Almeno un carattere speciale.</li>
-                        </ul>
-            </div>
-            <button type="submit">Conferma</button>
-            <p>Hai già un account? <a href="../html/accedi.html">Accedi</a></p>
         </div>
     </main>
 

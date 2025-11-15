@@ -40,7 +40,7 @@
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
             <li><a href="../html/index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="bold"> >> Accedi</li>
+            <li aria-current="page" class="bold"> <span aria-hidden="true">»</span> Accedi</li>
         </ol>
     </nav>
 
@@ -49,18 +49,20 @@
             <h2>Accedi</h2>
             <form class="form-data" action="/login" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
-                <div>
-                    <label for="email" lang="en">Email</label>
-                    <input type="text" id="email" name="email" required />
-                </div>
+                <div class="form-data">
+                    <div>
+                        <label for="email" lang="en">Email</label>
+                        <input type="text" id="email" name="email" required >
+                    </div>
 
-                <div>
-                    <label for="password" lang="en">Password</label>
-                    <input type="password" id="password" name="password" required />
+                    <div>
+                        <label for="password" lang="en">Password</label>
+                        <input type="password" id="password" name="password" required >
+                    </div>
                 </div>
+                <button type="submit">Login</button>
+                <p>Non hai un account? <a href="../html/registrati.html">Registrati qui</a></p>
             </form>
-            <button type="submit">Login</button>
-            <p>Non hai un account? <a href="../html/registrati.html">Registrati qui</a></p>
         </div>
     </main>
 

@@ -39,59 +39,69 @@
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
             <li><a href="../html/index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="bold"> >> Esplora</li>
+            <li aria-current="page" class="bold"> <span aria-hidden="true">»</span> Esplora</li>
         </ol>
     </nav>
 
     <aside id="filtri">
         <h2>Filtri</h2>
-        <form action="esplora.html" method="get">
-            <fieldset>
-                <input type="text" name="titolo" maxlength=20 placeholder="Cerca titolo..">
+            <form class="form-data" action="esplora.html" method="get">
+                <fieldset>
+                    <!--<legend>Filtri di ricerca generici</legend>-->
+                    <div>
+                        <label for="titolo">Cerca per titolo</label>
+                        <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca..">
+                    </div>
 
-                <label for="categoria">Categoria</label>
-                <select name="categoria">
-                    <option>Categoria</option>
-                    <option>Eventi</option>
-                    <option>Esperimenti</option>
-                    <option>Affitti</option>
-                    <option>Ripetizioni</option>
-                </select>
+                    <div>
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria">
+                            <option>Categoria</option>
+                            <option>Eventi</option>
+                            <option>Esperimenti</option>
+                            <option>Affitti</option>
+                            <option>Ripetizioni</option>
+                        </select>
+                    </div>
 
-                <label for="citta">Città</label>
-                <input list="cities" name="citta" id="citta">
-                <datalist id="cities">
-                    <option value="Padova">
-                    <option value="Trento">
-                    <option value="Roma">
-                    <option value="Milano">
-                    <option value="Bologna">
-                    <option value="Torino">
-                    <option value="Pavia">
-                    <option value="Napoli">
-                    <option value="Firenze">
-                    <option value="Venezia">
-                    <option value="Perugia">
-                    <option value="Catania">
-                    <option value="Genova">
-                    <option value="Salerno">
-                    <option value="Siena">
-                </datalist>
-                <label for="data">Data pubblicazione</label>
-                <input type="date" name="data">
-                
+                    <div>
+                        <label for="citta">Città</label>
+                        <input list="cities" name="citta" id="citta">
+                        <datalist id="cities">
+                            <option value="Padova">
+                            <option value="Trento">
+                            <option value="Roma">
+                            <option value="Milano">
+                            <option value="Bologna">
+                            <option value="Torino">
+                            <option value="Pavia">
+                            <option value="Napoli">
+                            <option value="Firenze">
+                            <option value="Venezia">
+                            <option value="Perugia">
+                            <option value="Catania">
+                            <option value="Genova">
+                            <option value="Salerno">
+                            <option value="Siena">
+                        </datalist>
+                    </div>
+
+                    <div>
+                        <label for="data">Data pubblicazione</label>
+                        <input id="data" type="date" name="data">
+                    </div>
+                </fieldset>
+                <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
                 <button type="submit">Cerca</button>
-            </fieldset>
-            <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
-        </form>
-    </aside>
+            </form>
+        </aside>
 
     <main id="contenuto">
         <div class="esplora">
             <h2>Esplora</h2>
             <ul id="listaCarte">
                 <li class="carta">
-                    <img src="img/affitto1.jpg" alt="Appartamento in affitto">
+                    <img src="../assets/bilocaleCentro.jpg" alt=""  width="250" height="150">
                     <h3 class="catAffitti">Affitti</h3>
                     <h4>Bilocale in centro</h4>
                     <dl>
@@ -102,10 +112,10 @@
                         <dt>Specifici</dt>
                         <dd>Arredato, spese incluse</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/evento1.jpg" alt="Concerto jazz">
+                    <img src="../assets/concertoJazz.jpg" alt=""   width="250" height="150">
                     <h3 class="catEventi">Eventi</h3>
                     <h4>Concerto Jazz al Parco</h4>
                     <dl>
@@ -116,10 +126,10 @@
                         <dt>Specifici</dt>
                         <dd>Ingresso gratuito</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/esperimento1.jpg" alt="Esperimento scientifico">
+                    <img src="../assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
                     <h3 class="catEsperimenti">Esperimenti</h3>
                     <h4>Laboratorio di chimica</h4>
                     <dl>
@@ -130,10 +140,10 @@
                         <dt>Specifici</dt>
                         <dd>Per studenti delle superiori</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/ripetizioni1.jpg" alt="Lezione privata">
+                    <img src="../assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
                     <h3 class="catRipetizioni">Ripetizioni</h3>
                     <h4>Ripetizioni di matematica</h4>
                     <dl>
@@ -144,10 +154,10 @@
                         <dt>Specifici</dt>
                         <dd>Online o in presenza</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/evento2.jpg" alt="Fiera del libro">
+                    <img src="../assets/fieraLibro.jpg" alt=""  width="250" height="150">
                     <h3 class="catEventi">Eventi</h3>
                     <h4>Fiera del Libro</h4>
                     <dl>
@@ -158,10 +168,10 @@
                         <dt>Specifici</dt>
                         <dd>Stand universitari e workshop</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/affitto2.jpg" alt="Stanza singola">
+                    <img src="../assets/stanzaSingola.jpg" alt=""  width="250" height="150">
                     <h3 class="catAffitti">Affitti</h3>
                     <h4>Stanza singola per studenti</h4>
                     <dl>
@@ -172,10 +182,10 @@
                         <dt>Specifici</dt>
                         <dd>Vicino all’università</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/esperimento2.jpg" alt="Esperimento di fisica">
+                    <img src="../assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
                     <h3 class="catEsperimenti">Esperimenti</h3>
                     <h4>Esperimento su onde sonore</h4>
                     <dl>
@@ -186,10 +196,10 @@
                         <dt>Specifici</dt>
                         <dd>Materiale fornito in loco</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/ripetizioni2.jpg" alt="Tutor di inglese">
+                    <img src="../assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
                     <h3 class="catRipetizioni">Ripetizioni</h3>
                     <h4>Conversazione in inglese</h4>
                     <dl>
@@ -200,10 +210,10 @@
                         <dt>Specifici</dt>
                         <dd>Livello B1-B2</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/evento3.jpg" alt="Mostra d'arte">
+                    <img src="../assets/mostraArte.jpg" alt=""  width="250" height="150">
                     <h3 class="catEventi">Eventi</h3>
                     <h4>Mostra d’arte contemporanea</h4>
                     <dl>
@@ -214,10 +224,10 @@
                         <dt>Specifici</dt>
                         <dd>Ingresso ridotto per studenti</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
                 <li class="carta">
-                    <img src="img/affitto3.jpg" alt="Monolocale arredato">
+                    <img src="../assets/monolocale.jpg" alt=""  width="250" height="150">
                     <h3 class="catAffitti">Affitti</h3>
                     <h4>Monolocale arredato</h4>
                     <dl>
@@ -228,14 +238,14 @@
                         <dt>Specifici</dt>
                         <dd>Contratto annuale</dd>
                     </dl>
-                    <a class="dettagli" href="#">Più dettagli</a>
+                    <a class="dettagli" href="../html/annuncio.html">Più dettagli</a>
                 </li>
             </ul>
         </div>
     </main>
     <footer>
         <div id="footer-top">
-            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+            <a href="../html/annuncio.htmlcontenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
                 <img src="../assets/freccia.png" alt="">
             </a>
             <img src="../assets/logo_no_scritta.png" alt="" class="logo-footer">

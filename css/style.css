@@ -48,6 +48,11 @@ footer {
     font-weight: bold;
 }
 
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
 /*
 ====================================================
     SEZIONE HEADER
@@ -233,6 +238,10 @@ header {
     max-width: 20em;
 }
 
+#breadcrumb a{
+    color: var(--visited);
+}
+
 .bold {
     font-weight: bold;
 }
@@ -346,11 +355,6 @@ footer {
     gap: 1em;
 }
 
-#presentazione h2{
-    font-size: 1.5em;
-    margin-bottom: 0.3em;
-}
-
 #presentazione p {
     font-size: 1.1em;
     line-height: 1.6;
@@ -372,11 +376,6 @@ footer {
     padding: 3em 2em;
     background-color: var(--BgColor);
     text-align: center;
-}
-
-#categorie h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
 }
 
 #categorie ul {
@@ -456,14 +455,9 @@ footer {
 */
 
 #ultimiInseriti {
-  padding: 3em 2em;
-  background-color: var(--clearBgColor);
-  text-align: center;
-}
-
-#ultimiInseriti h2 {
-  font-size: 1.5em;
-  margin-bottom: 1em;
+    padding: 3em 2em;
+    background-color: var(--clearBgColor);
+    text-align: center;
 }
 
 /*
@@ -473,29 +467,32 @@ footer {
 */
 
 #ultimiInseriti ul, #listaCarte {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2em;
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 1200px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+    margin: 0 ;
 }
 
 .ultimoInserito, .carta {
-  background-color: var(--card);
-  border-radius: 1em;
-  padding: 2em;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  transition: transform 0.3s ease;
+    background-color: var(--card);
+    border-radius: 1em;
+    padding: 1.5em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
 }
 
-/*.ultimoInserito:hover, .carta:hover {
-  transform: scale(1.02);
-}*/
+.carta img {
+    max-width: 100%;
+    border-radius: 0.8em;
+    object-fit: cover;    
+    display: block;
+    align-self: center;
+}
 
 .ultimoInserito h3 , .carta h3 {
   font-size: 1.2em;
@@ -548,7 +545,21 @@ footer {
 }*/
 
 /*
-================= MODULARI + PAGINE ============================================================= 
+====================================================
+    SEZIONE ESPLORA + FILTRI
+==================================================== 
+*/
+
+
+.esplora {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+}
+
+/*
+================= MODULARI su più PAGINE ============================================================= 
 */
 /*
 ===========================================================================
@@ -630,11 +641,11 @@ footer {
 
 /*
 ===========================================================
-    SEZIONE FORM (usata per accesso e registrazione)
+    SEZIONE FORM (usata per accesso e registrazione e filtri)
 =========================================================== 
 */
 
-#login-container, #register-container {
+#login-container, #register-container, #filtri {
     display: flex;
     justify-content: center;
     flex-direction: column;  
@@ -656,16 +667,28 @@ footer {
     max-width: 60em;
 }
 
+#filtri {
+    flex: 0 0 300px;    
+    width: 20%;
+    min-width: 280px;
+    margin: 1em 0 1em 1.5em;
+    float: left;
+}
 
-#login-container h2, #register-container h2 {
+#filtri fieldset {
+    border: none; 
+
+}
+
+#login-container h2, #register-container h2, #filtri h2 {
     text-align: center;
     margin: 0;
 }
 
-#login-container .form-data {
+#login-container .form-data, #filtri .form-data fieldset {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;                 
+    gap: 1.2em;                 
 }
 
 #register-container .form-data {
@@ -674,14 +697,15 @@ footer {
   gap: 2em 3em; 
 }
 
-.form-data > div {
+.form-data > div, .form-data fieldset > div {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    text-decoration: none;
+    text-decoration: none; 
 }
 
-input {
+input, select {
+    font-size: 1em;
     border-radius: 1em;
     min-height: 3em;
     text-indent: 1em;
@@ -692,7 +716,7 @@ input {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input:focus {
+input:focus, select:focus {
     outline: none;
     outline: 2px solid var(--card);
     outline-offset: 2px;
@@ -734,11 +758,18 @@ button {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button:hover, button:focus {
+button:hover, button:focus{
     background-color: var(--btnAction);
     color: var(--btnCor);
     outline: 2px solid var(--btnColor);
     outline-offset: 1px;
+}
+
+
+
+form > p, form > p{
+    text-align: center;
+    margin-top: 1.5em;
 }
 
 #login-container p a, #register-container p a{
@@ -753,87 +784,4 @@ button:hover, button:focus {
   border-radius: 0.6em;
   background-color: var(--hoverNav);
   padding: 0.1em 0.3em;
-}
-
-/*
-====================================================
-    SEZIONE FILTRI + ESPLORA
-==================================================== 
-*/
-
-#filtri {
-  width: 25%;
-  min-width: 300px;
-  background-color: var(--BgColor);
-  padding: 2em;
-  border-radius: 1em;
-  box-sizing: border-box;
-  margin: 2em 2em 1em 2em; 
-  float: left;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-#filtri h2 {
-  text-align: center;
-  font-size: 1.4em;
-}
-
-#filtri form {
-  display: flex;
-  flex-direction: column;
-}
-
-#filtri fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-#filtri label {
-  font-weight: bold;
-  margin-top: 1.5em;
-}
-
-#filtri input,
-#filtri select,
-#filtri button {
-    width: 100%; /* si adattano al contenitore */
-    padding: 0.6em 1em;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    min-height: 3em;
-    border: 1px solid var(--btnColor);
-    font-family: inherit;
-    font-size: 1em;
-    background-color: var(--clearBgColor);
-}
-
-/*
-#login-container button,
-#filtri button {
-  background-color: var(--btnColor);
-  color: var(--clearTxtColor);
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-#login-container button:hover, #login-container button:focus,
-#filtri button:hover, #filtri button:focus {
-  background-color: var(--btnVisited);
-  color: var(--btnColor);
-  outline: 2px solid var(--btnColor);
-  outline-offset: 2px;
-}
-*/
-.esplora {
-  padding: 2em;
-}
-
-.esplora h2 {
-    margin-bottom: 1em;
 }

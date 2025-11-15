@@ -4,6 +4,9 @@ Cose da decidere:
 - come gestire pubblica e cancella
 - come gestire le pagine dei dettagli. Se fare una pagina unica o una per ogni tipo
   attività  
+- le immagini in index ha sneso che abbiano le dimensioni definite nel CSS mentre quando la pagina diventa 
+molto complessa perchè contiene molte immagini stile "galleria" è meglio definirle nell'HTML per rendre 
+l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 Da fare:
 - Riscrivere le descrizione delle pagine, anche keyword.
 - Togliere l'interagibilità dei pulsanti registrati e accedi quando
