@@ -156,11 +156,11 @@ header {
 }
 
 #hamburger {
-  display: none;
-  font-size: 2em;
-  background: none;
-  border: none;
-  color: var(--btnColor);
+    display: none;
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: var(--btnColor);
 }
 
 /*
@@ -495,12 +495,12 @@ footer {
 }
 
 .ultimoInserito h3 , .carta h3 {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--clearTxtColor);
-  padding: 0.5em 1em;
-  border-radius: 1em;
-  text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--clearTxtColor);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    text-align: center;
 }
 
 .ultimoInserito h4, .carta h4 {
@@ -526,8 +526,8 @@ footer {
 }
 
 .ultimoInserito dd, .carta dd {
-  margin: 0;
-  font-size: 1em;
+    margin: 0;
+    font-size: 1em;
 }
 
 .ultimoInserito a, .carta a {
@@ -541,7 +541,7 @@ footer {
 }
 
 /*.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
-  color: var(--borgogna);
+    color: var(--borgogna);
 }*/
 
 /*
@@ -567,19 +567,19 @@ footer {
 ===========================================================================
 */
 .catEventi {
-  background-color: var(--eventiColor);
+    background-color: var(--eventiColor);
 }
 
 .catAffitti {
-  background-color: var(--affittiColor);
+    background-color: var(--affittiColor);
 }
 
 .catEsperimenti {
-  background-color: var(--esperimentiColor);
+    background-color: var(--esperimentiColor);
 }
 
 .catRipetizioni {
-  background-color: var(--ripetizioniColor);
+    background-color: var(--ripetizioniColor);
 }
 
 /*
@@ -692,9 +692,9 @@ footer {
 }
 
 #register-container .form-data {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  gap: 2em 3em; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    gap: 2em 3em; 
 }
 
 .form-data > div, .form-data fieldset > div {
@@ -723,24 +723,24 @@ input:focus, select:focus {
 }
 
 .checkbox-inline {
-  display: flex;
-  align-items: center;
-  justify-content: center;   
-  gap: 0.5em;
-  margin-top: 0.5em;
-  font-weight: 500;
-  color: var(--txtcolor);
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    gap: 0.5em;
+    margin-top: 0.5em;
+    font-weight: 500;
+    color: var(--txtcolor);
 }
 
 #criteriMinimiPassword {
-  text-align: left;
-  margin-top: 1.5em;
-  font-size: 1em;
-  line-height: 1.4;
+    text-align: left;
+    margin-top: 1.5em;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
 #criteriMinimiPassword ul {
-  margin-left: 1.5em;
+    margin-left: 1.5em;
 }
 
 button {
@@ -773,15 +773,16 @@ form > p, form > p{
 }
 
 #login-container p a, #register-container p a{
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  font-weight: 600;
-  color: var(--txtcolor);
+    text-decoration: underline;
+    padding: 0.1em 0.3em;
+    text-underline-offset: 0.2em;
+    font-weight: 600;
+    color: var(--txtcolor);
 }
 
 #login-container p a:hover, #login-container p a:focus,
 #register-container p a:hover, #register-container p a:focus {
-  border-radius: 0.6em;
-  background-color: var(--hoverNav);
-  padding: 0.1em 0.3em;
+    border-radius: 0.6em;
+    background-color: var(--hoverNav);
+    padding: 0.1em 0.3em;
 }
