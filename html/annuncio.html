@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrati - Student Space</title>
+    <title>Annuncio - Student Space</title>
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
-    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede">
+    <meta name="description" content="Pagina dedicata al singolo prodotto del sito, come affitto, attività, ripetizioni ecc..."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede"><!--questo bisogna cambiarlo in base a quale annuncio stiamo visitando-->
 
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
@@ -48,8 +48,92 @@
     </nav>
 
     <main id="contenuto">
+        <!--/////////////////////////////////////////////
+        DA QUI IN POI BISOGNA GESTIRE IL FATTO SE L'ANNUNCIO SIA UN BILOCALE O ALTRI TIPI DI ANNUNCIO
+        PER IL BILOCALE C'è UNA STRUTTURA DIVERSA
+        //////////////////////////////////////////////-->
+        <!--
+        <div class="esplora">
+            <h2>Nome prodotto</h2>
+                <ul id="listaCarte">
+                    <li class="carta">
+                        <img src="../assets/bilocaleCentro.jpg" alt=""  width="500" height="300">
+                    </li>
+                    <li class="carta">
+                    <dl>
+                        <dt>Data pubblicazione</dt>
+                        <dd>05/11/2025</dd>
+                        <dt>Città</dt>
+                        <dd>Venezia</dd>
+                        <dt>Descrizione</dt>
+                        <dd>Ingresso gratuito</dd>
+                    </dl>
+                </li>
+                </ul>
+        </div>
+        -->
 
-</main>
+        <!--////////
+        SEZIONE AFFITTO CAMERE
+        /////////-->
+        <section class="annunci-affitto">
+            <h2>Nome stanza</h2><!--da fare con php perchè deve cambiare-->
+            <div class="immagine-locale">
+                <img src="../assets/bilocaleCentro.jpg" alt="">
+            </div>
+
+            <div class="generali-affitto">
+                <h3>Cosa offre l'affitto?</h3>
+                    <dl>
+                        <dt>Numero coinquilini:</dt>
+                        <dd>Venezia</dd>
+                        <dt>Numero stanze:</dt>
+                        <dd>3</dd>
+                        <dt>Numero bagni:</dt>
+                        <dd>1</dd>
+                    </dl> 
+            </div>
+            <div class = "essenziali-affitto">
+                <h3>Dettagli importanti</h3>
+                    <dl>
+                        <dt>Costo</dt>
+                        <dd>400 euro al mese</dd>
+                        <dt>Città:</dt>
+                        <dd>Venezia</dd>
+                        <dt>Contatto:</dt>
+                        <dd>nome.cognome@gmail.com</dd>
+                    </dl>
+            </div> 
+            <div class = "descrizione-affitto">
+                <h3>Breve descrizione dell'appartamento</h3>
+                <p>questo locale è ben fornito</p>
+            </div>
+        </section>
+
+        <!--////////
+        SEZIONE ANNUNCIO RESTO ATTIVITà
+        /////////-->
+
+        <section class="annunci-rimanente">
+            <h2>Nome annuncio/attività</h2><!--da fare con php perchè deve cambiare-->
+                <div class="immagine-laterale">
+                    <img src="../assets/concertoJazz.jpg" alt="">
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>Città:</dt>
+                        <dd>Padova</dd>
+                        <dt>Indirizzo:</dt>
+                        <dd>via vittoria</dd>
+                        <dt>Contatto:</dt>
+                        <dd>nome.cognome@gmail.com</dd>
+                        <dt>Data e Ora:</dt>
+                        <dd>Lunedì 12:15</dd>
+                    </dl>
+                </div>
+        </section>
+
+    </main>
 
     <footer>
         <div id="footer-top">

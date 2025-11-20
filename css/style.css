@@ -785,3 +785,40 @@ form > p, form > p{
   background-color: var(--hoverNav);
   padding: 0.1em 0.3em;
 }
+
+
+/*
+===========================================================
+    SEZIONE PRODOTTO
+=========================================================== 
+*/
+
+
+#ultimiInseriti ul, #listaCarte {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+    margin: 0 ;
+}
+
+.ultimoInserito, .carta {
+    background-color: var(--card);
+    border-radius: 1em;
+    padding: 1.5em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+.carta img {
+    max-width: 100%;
+    border-radius: 0.8em;
+    object-fit: cover;    
+    display: block;
+    align-self: center;
+}
+
