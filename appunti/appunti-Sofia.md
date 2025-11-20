@@ -57,8 +57,9 @@ Quindi:
 * https://www.alumniunipd.it/eventi/ --> idea carina pagina calendario per eventi
 * https://www.bakeca.it/ --> preferiti e home 
 
-
-
+**Link utili**
+https://validator.w3.org/nu/#textarea
+https://pagespeed.web.dev/?hl=it
 
 
 
