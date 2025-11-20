@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrati - Student Space</title>
+    <title>Pubblica - Student Space</title>
 
     <meta charset="utf-8">
 
@@ -46,7 +46,69 @@
 
     <main id="contenuto">
 
-</main>
+        <div id="register-container">
+            <h2>Pubblica annuncio</h2>
+            <form action="/public" method="post">
+                
+                <div class="form-data">
+                    <div>
+                        <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
+                        <input type="text" id="titolo" name="titolo" required placeholder="Partita di calcio">
+                    </div>
+
+                    <div>
+                        <label for="categoria">Categoria<span class="required"> (richiesto)</span></label>
+                        <select id="categoria" name="categoria">
+                            <option>Affitti</option>
+                            <option>Esperimenti</option>
+                            <option>Eventi</option>
+                            <option>Ripetizioni</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="citta">Città<span class="required"> (richiesto)</span></label>
+                        <input type="text" id="citta" name="citta" required placeholder="Roma">
+                    </div>
+
+                    <div>
+                        <label for="ncoinq">numero Coinquilini<span class="required"> (richiesto)</span></label>
+                        <input type="number" id="ncoinq" name="ncoinq" required placeholder="3">
+                    </div>
+                    
+                    <div>
+                        <label for="nStanze">Numero stanze<span class="required"> (richiesto)</span></label>
+                        <input type="number" id="nStanze" name="nStanze" required placeholder="2">
+                    </div>             
+                    
+                    <div>
+                        <label for="Nbagni">Numero bagni<span class="required"> (richiesto)</span></label>
+                        <input type="number" id="Nbagni" name="Nbagni" required placeholder="1">
+                    </div>
+                    
+                    <div>
+                        <label for="Prezzo">Prezzo<span class="required"> (richiesto)</span></label>
+                        <input type="number" id="Prezzo" name="Prezzo" required placeholder="400€">
+                    </div>                             
+
+                    <div>
+                        <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
+                        <input type="email" id="email" name="email" required placeholder="mario.rossi@gmail.com">
+                    </div>
+
+                    <div>
+                        <label for="foto">Immagine<span class="required"> (richiesto)</span></label>
+                        <input type="file" id="foto" name="foto" required accept="image/*">
+                    </div>
+
+                </div>
+
+                <button type="submit">Invia</button>
+
+            </form>
+        </div>
+
+    </main>
 
     <footer>
         <div id="footer-top">
