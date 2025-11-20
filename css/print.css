@@ -1,0 +1,235 @@
+/*questo parte da foglio bianco*/
+*{
+    padding: 0em;
+    margin: 0em;
+}
+
+
+/* essendo la stampa su formato fisso non servono dimensioni relative*/
+html, body{ 
+    font-size: 12pt; 
+    font-family:"Times New Roman", "Times", serif; 
+    margin: auto;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+h3 {
+    font-size:15pt;
+}
+
+h4 {
+    font-size: 14pt;
+    margin-bottom: 0.3cm;
+}
+
+
+.separatore {
+  border-top: 1px solid #9c9c9c;
+  height: 0;
+  margin: 1cm 0;
+}
+
+
+/*
+====================================================
+    HEADER
+====================================================
+*/
+header {
+    padding: 0em 1em;
+    text-align: center;
+    margin: 1em;
+}
+
+header h1 {
+    content: url("../assets/logo.png");
+    display: block;
+    margin: 0 auto;
+    height: 2cm;
+}
+
+#menu, #hamburger {
+    display: none !important;
+}
+
+/*
+====================================================
+    BREADCRUMB
+====================================================
+*/
+
+#breadcrumb {
+    display: block;
+    font-size: 12pt;
+    margin-bottom: 1em;
+}
+
+#breadcrumb::before {
+    content: "Ti trovi in:";
+}
+
+#breadcrumb ol {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#breadcrumb li {
+    display: inline;
+}
+
+
+/*
+====================================================
+    SEZIONE HERO / PRESENTAZIONE
+====================================================
+*/
+
+#presentazione {
+    margin-bottom:0.8cm;
+}
+
+#presentazione img {
+    display: none; 
+}
+
+#presentazione .testo h2 {
+    margin-bottom: 0.5em;
+}
+
+#presentazione p {
+    margin-bottom: 0.5em;
+}
+
+#presentazione .azioni {
+    display: none;
+}
+
+/*
+====================================================
+    CATEGORIE
+====================================================
+*/
+
+#categorie {
+    margin-bottom: 1cm;
+    background: none;
+}
+
+#categorie p{
+    margin-bottom: 0.3cm;
+}
+
+
+#categorie ul {
+    padding: 0;
+    list-style: disc; 
+    margin-left: 1.5em;
+}
+
+.categoria {
+    border: none;
+    background: none;
+}
+
+.categoria img {
+    display: none;
+}
+
+.categoria h3 {
+    margin-bottom: 0.3em;
+    color: black;
+    background: none;
+}
+
+.categoria p {
+    margin-bottom: 0.8em;
+}
+
+.categoria a {
+    display: none;
+}
+
+/*
+====================================================
+    ULTIMI INSERITI
+====================================================
+*/
+
+#ultimiInseriti, #listaCarte{
+    margin-bottom: 1cm;
+}
+
+#ultimiInseriti ul, #listaCarte ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.5cm; 
+    padding: 0;
+    list-style: none;
+    margin-top: 0.5cm;
+}
+
+.ultimoInserito, .carta {
+    border: 1px solid #9c9c9c;
+    border-radius: 1em;
+    padding: 0.5cm;
+    background: none;
+    break-inside: avoid;     
+}
+
+.ultimoInserito h3, .carta h3 {
+    border: 1px solid #9c9c9c;
+    align-self: center;
+    border-radius: 1em;  
+    display: inline-block;
+    padding: 0.2em 0.4em;
+    margin-bottom: 0.4cm;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.ultimoInserito dl , .carta dl{
+    margin: 0;
+}
+
+.ultimoInserito dt::after, .carta dt::after{
+    content: ": ";
+}
+
+.ultimoInserito a, .carta a {
+    display: none;
+}
+
+/*
+====================================================
+    FOOTER
+====================================================
+*/
+footer {
+    margin-top: 2cm;
+    text-align: center;
+    font-size: 10pt;
+    color: #000;
+    background: none !important;
+}
+
+#footer-top, .freccia-su, .logo-footer {
+    display: none;
+}
+
+#footer-bottom {
+    display: block;
+}
+
+#footer-bottom img {
+    display: none; /* badge validazione */
+}
+
+#footer-bottom p {
+    margin-top: 0.5cm;
+    font-style: italic;
+}
