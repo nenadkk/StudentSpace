@@ -19,6 +19,7 @@
   --esperimentiColor: #8736d1;
   --affittiColor: #c30d43;
   --ripetizioniColor: #0a7053;
+  --required: #c30d43;
 }
 
 html, body{ /* => da applicare a tutto */
@@ -145,8 +146,6 @@ header {
     border-radius: 1em;
     background-color: var(--hoverNav);
     padding: 0.3em 0.6em;   
-    /*outline: 2px solid var(--hoverNav);
-    outline-offset: 6px;*/
 }
 
 #currentLink .btn {
@@ -432,6 +431,7 @@ footer {
     line-height: 1.4;
 }
 
+/*
 .categoria a {
     margin-top: 0.3em;
     font-size: 1em;
@@ -439,10 +439,11 @@ footer {
     font-weight: bold;
     text-decoration: underline;
     text-underline-offset: 0.1em; 
-    /*transition: color 0.3s ease;*/
+    transition: color 0.3s ease;
     align-self: flex-end;
     padding: 0.3em 0.6em;
 }
+*/
 
 /*.categoria:hover {
     transform: scale(1.02);
@@ -530,7 +531,20 @@ footer {
     font-size: 1em;
 }
 
-.ultimoInserito a, .carta a {
+.categoria a, .ultimoInserito a, .carta a {
+    margin-top: 0.3em;
+    font-size: 1em;
+    color: var(--txtcolor);
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 0.1em; 
+    /*transition: color 0.3s ease;*/
+    align-self: flex-end;
+    padding: 0.3em 0.6em;
+}
+
+/*
+ {
     align-self: flex-end;
     font-weight: bold;
     color: var(--btnColor);
@@ -538,7 +552,7 @@ footer {
     text-underline-offset: 0.2em;
     padding: 0.3em 0.6em;
     /*transition: color 0.3s ease;*/
-}
+}*/
 
 /*.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
     color: var(--borgogna);
@@ -785,4 +799,8 @@ form > p, form > p{
     border-radius: 0.6em;
     background-color: var(--hoverNav);
     padding: 0.1em 0.3em;
+}
+
+.required {
+    color: var(--required)
 }
