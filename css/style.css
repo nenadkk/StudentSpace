@@ -811,18 +811,21 @@ form > p, form > p{
 =========================================================== 
 */
 
+.annunci-affitto h2 {
+    margin-left: 1em;
+}
 
 .info{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
-    gap: 1em;
+    gap: 2em;
     list-style: none;
     padding: 0;
     margin: 0 ;
 }
 
-.carosello, .generali-affitto, .essenziali-affitto, .descrizione-affitto{
+.generali-affitto, .essenziali-affitto, .descrizione-affitto{
     background-color: var(--card);
     border-radius: 1em;
     padding: 1.5em;
@@ -834,64 +837,22 @@ form > p, form > p{
 }
 
 .carosello{
+    background-color: var(--card);
+    border-radius: 1em;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
+    gap: 2em;
+    list-style: none;
+    margin: 2em;
+    padding: 1.5em;
+    overflow-x: auto;
+} 
+
+.carosello img{
     max-width: 100%;
     border-radius: 0.8em;
     object-fit: cover;    
     display: block;
     align-self: center;
-    margin-left: 2em;
-    margin-right: 2em;
 } 
-
-.annunci-affitto h2 {
-    margin-left: 1em;
-}
-
-
-/* 
-.immagine-locale {
-    background-color: var(--card);
-    border-radius: 1em;
-    padding: 1.5em;
-    margin: 0 2em 2em 2em; 
-}
-
-.immagine-locale img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.8em;
-    display: block;
-    object-fit: cover;
-}
-
-.prova {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
-    padding: 0 2em;
-}
-
-.generali-affitto,
-.essenziali-affitto,
-.descrizione-affitto {
-    background-color: var(--card);
-    border-radius: 1em;
-    padding: 1.5em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-}
-
-
-.carosello {
-    display: flex;
-    gap: 1em;
-    overflow-x: auto;
-    padding-bottom: 1em;
-}
-
-.carosello img {
-    height: 200px;
-    border-radius: 0.8em;
-    object-fit: cover;
-} */
