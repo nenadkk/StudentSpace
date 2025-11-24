@@ -433,24 +433,6 @@ footer {
 }
 
 /*
-.categoria a {
-    margin-top: 0.3em;
-    font-size: 1em;
-    color: var(--txtcolor);
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 0.1em; 
-    transition: color 0.3s ease;
-    align-self: flex-end;
-    padding: 0.3em 0.6em;
-}
-*/
-
-/*.categoria:hover {
-    transform: scale(1.02);
-}*/
-
-/*
 ====================================================
     SEZIONE ULTIMI INSERITI
 ==================================================== 
@@ -543,21 +525,6 @@ footer {
     align-self: flex-end;
     padding: 0.3em 0.6em;
 }
-
-/*
- {
-    align-self: flex-end;
-    font-weight: bold;
-    color: var(--btnColor);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    padding: 0.3em 0.6em;
-    /*transition: color 0.3s ease;
-}*/
-
-/*.ultimoInserito a:hover, .ultimoInserito a:focus, .ultimoInserito a:visited, .carta a:hover, .carta a:focus, .carta a:visited {
-    color: var(--borgogna);
-}*/
 
 /*
 ====================================================
@@ -664,7 +631,7 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;  
-    width: 100%;              /* occupa tutta la larghezza disponibile */
+    width: 100%;              
     max-width: 40em;       
     padding: 2.5em;             
     margin: 3em auto;
@@ -728,6 +695,7 @@ input, select {
     color: var(--txtcolor);
     font-weight: 500;
     border: 2px solid var(--btnColor);
+    align-items:center;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -736,6 +704,35 @@ input:focus, select:focus {
     outline: 2px solid var(--card);
     outline-offset: 2px;
 }
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%; 
+}
+
+.input-wrapper input {
+  width: 100%; 
+  padding-right: 5em; 
+}
+
+.input-wrapper::after {
+  content: "€ / mese";
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--txtcolor);
+  pointer-events: none; 
+}
+
+input[type="file"] {
+  display: inline-block;
+  vertical-align: middle;
+  height: 3em; 
+  line-height: 3em;
+}
+
 
 .checkbox-inline {
     display: flex;

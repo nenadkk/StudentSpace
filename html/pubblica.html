@@ -53,7 +53,7 @@
                 <div class="form-data">
                     <div>
                         <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
-                        <input type="text" id="titolo" name="titolo" required placeholder="Partita di calcio">
+                        <input type="text" id="titolo" name="titolo" required placeholder="Es. Partita di calcio">
                     </div>
 
                     <div>
@@ -68,32 +68,34 @@
 
                     <div>
                         <label for="citta">Città<span class="required"> (richiesto)</span></label>
-                        <input type="text" id="citta" name="citta" required placeholder="Roma">
+                        <input type="text" id="citta" name="citta" required placeholder="Es.  Roma">
                     </div>
 
                     <div>
                         <label for="ncoinq">Numero coinquilini<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="ncoinq" name="ncoinq" required placeholder="3">
+                        <input type="number" id="ncoinq" name="ncoinq" required placeholder="Es. 3" min="0">
                     </div>
                     
                     <div>
                         <label for="nStanze">Numero stanze<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="nStanze" name="nStanze" required placeholder="2">
+                        <input type="number" id="nStanze" name="nStanze" required placeholder="Es. 2" min="0">
                     </div>             
                     
                     <div>
                         <label for="Nbagni">Numero bagni<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="Nbagni" name="Nbagni" required placeholder="1">
+                        <input type="number" id="Nbagni" name="Nbagni" required placeholder="Es. 1" min="0">
                     </div>
                     
                     <div>
                         <label for="Prezzo">Prezzo<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="Prezzo" name="Prezzo" required placeholder="400€">
+                        <div class="input-wrapper">
+    			     <input type="number" id="Prezzo" name="Prezzo al mese" required placeholder="Es. 400" min="0">
+  			</div>
                     </div>                             
 
                     <div>
                         <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        <input type="email" id="email" name="email" required placeholder="mario.rossi@gmail.com">
+                        <input type="email" id="email" name="email" required placeholder="Es. mario.rossi@gmail.com">
                     </div>
 
                     <div>
