@@ -5,21 +5,22 @@
 }
 
 :root { /* definizione variabili globali */
-  --BgColor: #83adf0;
-  --breadColor: #83adf0;
-  --hoverNav: #aec6ed;
-  --txtcolor: #293845;
-  --clearBgColor: #fffacd;
-  --clearTxtColor: #fffacd;
-  --btnColor: #16286e;
-  --btnAction: #efc062;
-  --visited: #720b25;
-  --card: #d9e0ec;
-  --eventiColor: #0565a8; 
-  --esperimentiColor: #8736d1;
-  --affittiColor: #c30d43;
-  --ripetizioniColor: #0a7053;
-  --required: #c30d43;
+    --BgColor: #83adf0;
+    --breadColor: #83adf0;
+    --hoverNav: #aec6ed;
+    --txtcolor: #293845;
+    --clearBgColor: #fffacd;
+    --clearTxtColor: #fffacd;
+    --btnColor: #16286e;
+    --btnAction: #efc062;
+    --visited: #720b25;
+    --card: #d9e0ec;
+    --eventiColor: #0565a8; 
+    --esperimentiColor: #8736d1;
+    --affittiColor: #c30d43;
+    --ripetizioniColor: #0a7053;
+    --required: #c30d43;
+    --caratteristicheImp: #9bbdf3;
 }
 
 html, body{ /* => da applicare a tutto */
