@@ -453,7 +453,7 @@ footer {
 #ultimiInseriti ul, #listaCarte {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
     gap: 1em;
     list-style: none;
     padding: 0;
