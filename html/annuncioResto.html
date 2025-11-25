@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Annuncio - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata al singolo prodotto del sito, come affitto, attività, ripetizioni ecc..."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede"><!--questo bisogna cambiarlo in base a quale annuncio stiamo visitando-->
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="../css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
+        <nav id="menu" aria-label="Menu principale">
+            <ul class="links">
+                <li lang="en"><a href="../html/index.html">Home</a></li>
+                <li><a href="../html/esplora.html">Esplora</a></li>
+                <li><a href="../html/pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="autent">
+                <li><a class="btn" href="../html/registrati.html">Registrati</a></li>
+                <li><a class="btn" href="../html/accedi.html">Accedi</a></li>
+            </ul>
+            <button id="hamburger" aria-label="Apri menu">&#9776;</button>
+        </nav>
+    </header>
+
+
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li><a href="../html/index.html"><span lang="en">Home</span></a></li>
+            <li> <span aria-hidden="true">»</span></li>
+            <li><a href="../html/esplora.html"> Esplora</a></li>
+            <li aria-current="page" class="bold"> <span aria-hidden="true">»</span> Annuncio</li>
+        </ol>
+    </nav>
+
+    <main id="contenuto">
+        <!--/////////////////////////////////////////////
+        DA QUI IN POI BISOGNA GESTIRE IL FATTO SE L'ANNUNCIO SIA UN BILOCALE O ALTRI TIPI DI ANNUNCIO
+        PER IL BILOCALE C'è UNA STRUTTURA DIVERSA
+        //////////////////////////////////////////////-->
+        <!--
+        <div class="esplora">
+            <h2>Nome prodotto</h2>
+                <ul id="listaCarte">
+                    <li class="carta">
+                        <img src="../assets/bilocaleCentro.jpg" alt=""  width="500" height="300">
+                    </li>
+                    <li class="carta">
+                    <dl>
+                        <dt>Data pubblicazione</dt>
+                        <dd>05/11/2025</dd>
+                        <dt>Città</dt>
+                        <dd>Venezia</dd>
+                        <dt>Descrizione</dt>
+                        <dd>Ingresso gratuito</dd>
+                    </dl>
+                </li>
+                </ul>
+        </div>
+        -->
+
+        <!--////////
+        SEZIONE AFFITTO CAMERE
+        /////////-->
+        <section class="annunci-affitto">
+            
+            <h2>Nome stanza</h2><!--da fare con php perchè deve cambiare-->
+            
+            <!-- <div class="immagine-locale">
+                <img src="../assets/bilocaleCentro.jpg" alt="">
+            </div> -->
+
+            
+            <div class="carosello">
+                <img src="../assets/bilocaleCentro.jpg">
+                <img src="../assets/bilocaleCentro.jpg">
+                <img src="../assets/bilocaleCentro.jpg">
+            </div>    
+            
+
+            <section class="info">
+                
+                <div class="generali-affitto">
+
+                    <h3>Cosa offre l'affitto?</h3>
+
+                    <dl id="prova">
+                        <dt>Numero coinquilini:</dt>
+                        <dd>Venezia</dd>
+                        <dt>Numero stanze:</dt>
+                        <dd>3</dd>
+                        <dt>Numero bagni:</dt>
+                        <dd>1</dd>
+                    </dl> 
+
+                </div>
+                
+                <div class = "essenziali-affitto">
+
+                    <h3>Dettagli importanti</h3>
+
+                    <dl id="prova2">
+                        <dt>Costo:</dt>
+                        <dd>400 euro al mese</dd>
+                        <dt>Città:</dt>
+                        <dd>Venezia</dd>
+                        <dt>Contatto:</dt>
+                        <dd>nome.cognome@gmail.com</dd>
+                    </dl>
+
+                </div> 
+                
+            </section>
+            
+            <div class = "descrizione-affitto">
+                <h3>Breve descrizione dell'appartamento</h3>
+                <p>questo locale è ben fornito</p>
+            </div>
+
+        </section>
+
+        <!--////////
+        SEZIONE ANNUNCIO RESTO ATTIVITà
+        /////////-->
+
+        <!-- <section class="annunci-rimanente">
+            
+            <h2>Nome annuncio/attività</h2>
+           
+            <div class="immagine-laterale">
+                <img src="../assets/concertoJazz.jpg" alt="">
+            </div>
+            
+            <div class="info">
+                <dl>
+                    <dt>Città:</dt>
+                    <dd>Padova</dd>
+                    <dt>Indirizzo:</dt>
+                    <dd>via vittoria</dd>
+                    <dt>Contatto:</dt>
+                    <dd>nome.cognome@gmail.com</dd>
+                    <dt>Data e Ora:</dt>
+                    <dd>Lunedì 12:15</dd>
+                </dl>
+            </div>
+
+        </section> -->
+
+    </main>
+
+    <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="../assets/freccia.png" alt="">
+            </a>
+            <img src="../assets/logo_no_scritta.png" alt="" class="logo-footer">
+        </div>
+
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="../assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="../assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+</body>
+</html>
+
+

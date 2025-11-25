@@ -1,0 +1,357 @@
+/*questo parte da foglio bianco*/
+*{
+    padding: 0em;
+    margin: 0em;
+}
+
+
+/* essendo la stampa su formato fisso non servono dimensioni relative*/
+html, body{ 
+    font-size: 12pt; 
+    font-family:"Times New Roman", "Times", serif; 
+    margin: auto;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+h3 {
+    font-size:15pt;
+}
+
+h4 {
+    font-size: 14pt;
+    margin-bottom: 0.3cm;
+}
+
+
+.separatore {
+  border-top: 1px solid #9c9c9c;
+  height: 0;
+  margin: 1cm 0;
+}
+
+
+/*
+====================================================
+    HEADER
+====================================================
+*/
+header {
+    padding: 0em 1em;
+    text-align: center;
+    margin: 1em;
+}
+
+header h1 {
+    content: url("../assets/logo.png");
+    display: block;
+    margin: 0 auto;
+    height: 2cm;
+}
+
+#menu, #hamburger {
+    display: none;
+}
+
+/*
+====================================================
+    BREADCRUMB
+====================================================
+*/
+
+#breadcrumb {
+    display: block;
+    font-size: 12pt;
+    margin-bottom: 1em;
+}
+
+#breadcrumb::before {
+    content: "Ti trovi in:";
+}
+
+#breadcrumb ol {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#breadcrumb li {
+    display: inline;
+}
+
+#breadcrumb a {
+    text-decoration: none;
+}
+
+/*
+====================================================
+    SEZIONE HERO / PRESENTAZIONE
+====================================================
+*/
+
+#presentazione {
+    margin-bottom:0.8cm;
+}
+
+#presentazione img {
+    display: none; 
+}
+
+#presentazione .testo h2 {
+    margin-bottom: 0.5em;
+}
+
+#presentazione p {
+    margin-bottom: 0.5em;
+}
+
+#presentazione .azioni {
+    display: none;
+}
+
+/*
+====================================================
+    CATEGORIE
+====================================================
+*/
+
+#categorie {
+    margin-bottom: 1cm;
+    background: none;
+}
+
+#categorie p{
+    margin-bottom: 0.3cm;
+}
+
+
+#categorie ul {
+    padding: 0;
+    list-style: disc; 
+    margin-left: 1.5em;
+}
+
+.categoria {
+    border: none;
+    background: none;
+}
+
+.categoria img {
+    display: none;
+}
+
+.categoria h3 {
+    margin-bottom: 0.3em;
+    color: black;
+    background: none;
+}
+
+.categoria p {
+    margin-bottom: 0.8em;
+}
+
+.categoria a {
+    display: none;
+}
+
+/*
+====================================================
+    CARD ULTIMI INSERITI + LISTA CARTE
+====================================================
+*/
+
+#ultimiInseriti, #listaCarte{
+    margin-bottom: 1cm;
+}
+
+#ultimiInseriti ul, #listaCarte {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.3cm; 
+    padding: 0;
+    list-style: none;
+    margin-top: 0.5cm;
+}
+
+#listaCarte {
+    gap: 0.5cm;
+}
+
+.ultimoInserito, .carta {
+    border: 1px solid #9c9c9c;
+    border-radius: 1em;
+    padding: 0.5cm;
+    background: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    break-inside: avoid;     
+}
+
+.carta img {
+    max-width: 100%;
+    border-radius: 0.8em;
+    object-fit: cover;    
+    display: block;
+    align-self: center;
+}
+
+.ultimoInserito h3, .carta h3 {
+    border: 1px solid #9c9c9c;
+    padding: 0.2em 0.4em;
+    font-weight: bold;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.ultimoInserito dl , .carta dl{
+    margin: 0;
+}
+
+.ultimoInserito dt, .carta dt {
+    font-weight: bold;
+}	
+
+.ultimoInserito dt::after, .carta dt::after{
+    content: ": ";
+}
+
+.ultimoInserito a, .carta a {
+    display: none;
+}
+
+/*
+====================================================
+    SEZIONE ESPLORA + FILTRI
+==================================================== 
+*/
+
+#filtri {
+    display: none;
+}
+
+/*
+===========================================================
+    SEZIONE FORM (usata per accesso e registrazione e filtri)
+=========================================================== 
+*/
+
+#login-container, #register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    width: auto;        
+    padding: 2.5em;             
+    margin: 2em auto;     
+    border-radius: 1em;
+    gap: 0.5em;
+}
+
+
+#login-container{
+    min-width: 30em;            
+}
+
+#register-container {
+    max-width: 60em;
+}
+
+#login-container h2, #register-container h2 {
+    text-align: center;
+    margin: 0;
+}
+
+#login-container .form-data {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;                 
+}
+
+#register-container .form-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em 3em; 
+}
+
+.form-data > div, .form-data fieldset > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    text-decoration: none; 
+}
+
+input, select {
+    font-size: 1em;
+    border-radius: 1em;
+    min-height: 3em;
+    text-indent: 1em;
+    font-weight: 500;
+    border: 2px solid black;
+}
+
+.checkbox-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    gap: 0.5em;
+    margin-top: 0.5em;
+    font-weight: 500;
+}
+
+#criteriMinimiPassword {
+    text-align: left;
+    margin-top: 1.5em;
+    line-height: 1.4;
+}
+
+#criteriMinimiPassword ul {
+    margin-left: 1.5em;
+}
+
+form > p, form > p{
+    display: none;
+}
+
+button {
+    display: none;
+}
+
+#login-container p a, #register-container p a {
+    display: none;
+}
+
+/*
+====================================================
+    FOOTER
+====================================================
+*/
+footer {
+    margin-top: 2cm;
+    text-align: center;
+    font-size: 10pt;
+    color: #000;
+    background: none !important;
+}
+
+#footer-top, .freccia-su, .logo-footer {
+    display: none;
+}
+
+#footer-bottom {
+    display: block;
+}
+
+#footer-bottom img {
+    display: none; /* badge validazione */
+}
+
+#footer-bottom p {
+    margin-top: 0.5cm;
+    font-style: italic;
+}

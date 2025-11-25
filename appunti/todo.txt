@@ -1,0 +1,19 @@
+Cose da decidere:
+- se mettere il logo cliccabile per tornare alla home.
+- se lasciare il tasto accedi o registrati quando si va nella medesima pagina.
+- come gestire pubblica e cancella
+- come gestire le pagine dei dettagli. Se fare una pagina unica o una per ogni tipo
+  attività  
+- le immagini in index ha sneso che abbiano le dimensioni definite nel CSS mentre quando la pagina diventa 
+molto complessa perchè contiene molte immagini stile "galleria" è meglio definirle nell'HTML per rendre 
+l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
+
+Da fare:
+OK - Riscrivere le descrizione delle pagine, anche keyword.
+OK - Togliere l'interagibilità dei pulsanti registrati e accedi quando
+  si è nelle rispettive pagine
+- Test per vedere se i contrasti sono troppo alti
+- Mettere le keyword nei tag title. NB: TUTTI i title devono essere diversi
+- Cambiare le immagini sostituendo da png a jpeg/webp per il sito, per la stampa
+   va bene il png perché la stampa richiede una risoluzione maggiore.
+
