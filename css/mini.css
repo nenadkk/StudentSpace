@@ -1,0 +1,65 @@
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+header {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  margin: 0 auto;
+  background-position: center;
+}
+
+
+#menu {
+    float: none;
+    width: 90%;
+    padding-top: 0.5em;
+    font-size: 0.8em;
+}
+
+#presentazione {
+  display: block;
+  text-align: center;
+  padding: 3em;
+}
+
+#presentazione > img {
+  display: inline-block;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+}
+
+
+#filtri {
+    float: none;
+    width: auto;
+    margin: 0;
+}
+
+#footer-bottom {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  text-align: center;
+}
+
+#footer-bottom p {
+  margin: 0.5em 0 0 0; /* solo margine sopra */
+  font-size: 10pt;
+  font-style: italic;
+  text-align: center;
+  flex: none;
+  min-width: auto;
+}
+
+#categorie {
+    padding: 1em;
+}

@@ -633,8 +633,7 @@ footer {
     flex-direction: column;  
     width: 100%;              
     max-width: 40em;       
-    padding: 2.5em;             
-    margin: 3em auto;
+    padding: 2.5em;
     margin: 2em auto 2em auto;
     background-color: var(--BgColor);
     border-radius: 1em;
@@ -642,7 +641,7 @@ footer {
 }
 
 #login-container{
-    min-width: 30em;            
+    min-width: 20em;            
 }
 
 #register-container {
