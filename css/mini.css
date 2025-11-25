@@ -63,3 +63,13 @@ header {
 #categorie {
     padding: 1em;
 }
+
+.categoria {
+    display: flex;
+    flex-direction: column;
+}
+
+#categorie ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+}
