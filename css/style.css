@@ -394,11 +394,13 @@ footer {
     flex-direction: row;
     align-items: center;
     gap: 2em;
-    padding: 2em;
+    padding: 1.5em 1.5em 2.5em 1.5em;
     border-radius: 1em;
     background-color: var(--clearBgColor);
     color: var(--txtcolor);
     text-align: left;
+    position: relative;  
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
@@ -453,7 +455,7 @@ footer {
 #ultimiInseriti ul, #listaCarte {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 280px));
     gap: 1em;
     list-style: none;
     padding: 0;
@@ -463,11 +465,13 @@ footer {
 .ultimoInserito, .carta {
     background-color: var(--card);
     border-radius: 1em;
-    padding: 1.5em;
+    padding: 1.5em 1.5em 2.5em 1.5em;
     text-align: left;
     display: flex;
     flex-direction: column;
     gap: 0.8em;
+    position: relative;
+    cursor: pointer;
 }
 
 .carta img {
@@ -514,16 +518,25 @@ footer {
     font-size: 1em;
 }
 
-.categoria a, .ultimoInserito a, .carta a {
-    margin-top: 0.3em;
-    font-size: 1em;
-    color: var(--txtcolor);
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 0.1em; 
-    /*transition: color 0.3s ease;*/
-    align-self: flex-end;
-    padding: 0.3em 0.6em;
+.catEventiLink, .catEsperimentiLink,.catAffittiLink,.catRipetizioniLink {
+  position: absolute;
+  inset: 0;           
+  z-index: 1;
+}
+
+.categoria a span, .ultimoInserito a span, .carta a span {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 2;
+  font-size: 1em;
+  color: var(--txtcolor);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  padding: 0.3em 0.6em;
+  border-radius: 1em;
+  pointer-events: none;
 }
 
 /*
@@ -538,6 +551,7 @@ footer {
     flex-direction: column;
     gap: 1em;
     padding: 2em;
+    text-align: center;
 }
 
 /*
@@ -570,52 +584,52 @@ footer {
 ===========================================================================
 */
 
-.catEventiLink:visited {
+.catEventiLink:visited span {
     color: var(--eventiColor);
 }
 
-.catEventiLink:hover, .catEventiLink:focus {
+.catEventiLink:hover span, .catEventiLink:focus span {
     border-radius: 1em;
     color: var(--clearTxtColor);
     background-color: var(--eventiColor);
 }
 
-.catEsperimentiLink:visited {
+.catEsperimentiLink:visited span {
     color: var(--esperimentiColor);
 }
 
-.catEsperimentiLink:hover, .catEsperimentiLink:focus {
+.catEsperimentiLink:hover span, .catEsperimentiLink:focus span {
     border-radius: 1em;
     color: var(--clearTxtColor);
     background-color: var(--esperimentiColor);
 }
 
-.catAffittiLink:visited {
+.catAffittiLink:visited span {
     color: var(--affittiColor);
 }
 
-.catAffittiLink:hover, .catAffittiLink:focus {
+.catAffittiLink:hover span, .catAffittiLink:focus span {
     border-radius: 1em;
     color: var(--clearTxtColor);
     background-color: var(--affittiColor);
 }
 
-.catRipetizioniLink:visited {
+.catRipetizioniLink:visited span {
     color: var(--ripetizioniColor);
 }
 
-.catRipetizioniLink:hover, .catRipetizioniLink:focus {
+.catRipetizioniLink:hover span, .catRipetizioniLink:focus span {
     border-radius: 1em;
     color: var(--clearTxtColor);
     background-color: var(--ripetizioniColor);
 }
 
 
-.dettagli:visited{
+.dettagli:visited span {
     color: var(--visited)
 }
 
-.dettagli:hover, .dettagli:focus {
+.dettagli:hover span, .dettagli:focus span {
     border-radius: 1em;
     color: var(--txtcolor);
     background-color: var(--BgColor);
