@@ -401,7 +401,7 @@ footer {
     text-align: left;
     position: relative;  
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .categoria img {
@@ -455,7 +455,7 @@ footer {
 #ultimiInseriti ul, #listaCarte {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 280px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
     gap: 1em;
     list-style: none;
     padding: 0;
@@ -465,13 +465,14 @@ footer {
 .ultimoInserito, .carta {
     background-color: var(--card);
     border-radius: 1em;
-    padding: 1.5em 1.5em 2.5em 1.5em;
+    padding: 1.5em 1.5em 5em 1.5em;
     text-align: left;
     display: flex;
     flex-direction: column;
     gap: 0.8em;
-    position: relative;
+    position: relative;  
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carta img {
@@ -518,13 +519,33 @@ footer {
     font-size: 1em;
 }
 
-.catEventiLink, .catEsperimentiLink,.catAffittiLink,.catRipetizioniLink {
+.categoria,
+.ultimoInserito,
+.carta {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.categoria:hover,
+.categoria:focus,
+.ultimoInserito:hover,
+.ultimoInserito:focus,
+.carta:hover,
+.carta:focus {
+  transform: scale(1.01); /* ingrandisce del 5% */
+  box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2); /* aggiunge un’ombra per dare profondità */
+}
+
+.catEventiLink, .catEsperimentiLink, .catAffittiLink,.catRipetizioniLink,
+.ultimoInserito .dettagli,
+.carta .dettagli {
   position: absolute;
   inset: 0;           
   z-index: 1;
 }
 
-.categoria a span, .ultimoInserito a span, .carta a span {
+.categoria a span, 
+.ultimoInserito a span,
+.carta a span {
   position: absolute;
   bottom: 1em;
   right: 1em;
