@@ -866,7 +866,7 @@ form > p, form > p{
 .secondarie
 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 33%);
+    grid-template-columns: repeat(auto-fit, 32%);
     grid-gap: 0.5em;
 }
 
@@ -875,7 +875,7 @@ form > p, form > p{
 }
 
 .annunci-affitto h2 {
-    margin-left: 1em;
+    margin-left: 1.5em;
 }
 
 .info{
@@ -904,6 +904,10 @@ form > p, form > p{
     box-shadow: 8px 8px 10px rgb(160, 160, 160);
 }
 
+.generali-affitto dl{
+    text-align: left;
+}
+
 .caratteristiche-affitto{
     background-color: var(--card);
     border-radius: 1em;
@@ -911,10 +915,28 @@ form > p, form > p{
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1.5em;
     margin-bottom: 2em;
     width: 50%;
     box-shadow: 4px 4px 10px 5px rgb(160, 160, 160);
+}
+
+.caratteristiche-affitto h3{
+    text-align: center;
+}
+
+#caratteristiche {
+    list-style: none;   /*se non lo metto mi tiene anche quelli di default*/
+    padding-left: 2em;
+}
+
+#caratteristiche li {
+    background-image: url("../assets/stellina.png");
+    background-size: 0.9em; /* grandezza icona */
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    padding-left: 1.5em; /* sposta il testo a destra dell’icona */
+    margin-bottom: 0.5em; /*per dare un po di spazio però viene spostato in caso in basso anche il container e non è simmetrico*/
 }
 
 .descrizione-affitto{
@@ -931,6 +953,7 @@ form > p, form > p{
 .descrizione-affitto{
     margin-left: 2em; 
     margin-right: 2em;
+    margin-bottom: 5em;
     min-height: 300px;
 }
 
