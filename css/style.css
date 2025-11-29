@@ -808,24 +808,84 @@ form > p, form > p{
 =========================================================== 
 */
 
+.carosello{
+    background-color: var(--card);
+    border-radius: 1em;
+    padding: 1.5em;
+    margin: 2em;
+    display: flex;
+    flex-direction: row;
+    gap: 0.6em;
+} 
+
+.carosello img{ 
+    border-radius: 1em;
+    border: 4px solid #83adf0;
+    object-fit: cover;
+} 
+
+.focus img{
+    width: 100%;
+}
+
+.secondarie
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 33%);
+    grid-gap: 0.5em;
+}
+
+.secondarie img{
+    width: 100%;
+}
+
 .annunci-affitto h2 {
     margin-left: 1em;
 }
 
 .info{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
+    display: flex;
+    flex-direction: row;
+    margin: 2em;
     gap: 2em;
-    list-style: none;
-    padding: 0;
-    margin: 0 ;
+    /* display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 285px)); */
 }
 
-.generali-affitto, .essenziali-affitto, .descrizione-affitto{
+.generali-affitto{
+    width: 50%;
+}
+
+.prova1, .prova2, .prova3, .prova4{
+    background-color: #4e78e2ac;
+    /* background-color: var(--card); */
+    border-radius: 1em;
+    padding: 2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+    box-shadow: 8px 8px 10px rgb(160, 160, 160);
+}
+
+.caratteristiche-affitto{
     background-color: var(--card);
     border-radius: 1em;
-    padding: 1.5em;
+    padding: 2em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 2em;
+    width: 50%;
+    box-shadow: 4px 4px 10px 5px rgb(160, 160, 160);
+}
+
+.descrizione-affitto{
+    background-color: var(--card);
+    border-radius: 1em;
+    padding: 2em;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -833,23 +893,11 @@ form > p, form > p{
     margin-bottom: 2em;
 }
 
-.carosello{
-    background-color: var(--card);
-    border-radius: 1em;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(0px, 285px));
-    gap: 2em;
-    list-style: none;
-    margin: 2em;
-    padding: 1.5em;
-    overflow-x: auto;
-} 
+.descrizione-affitto{
+    margin-left: 2em; 
+    margin-right: 2em;
+    min-height: 300px;
+}
 
-.carosello img{
-    max-width: 100%;
-    border-radius: 0.8em;
-    object-fit: cover;    
-    display: block;
-    align-self: center;
-} 
+
+
