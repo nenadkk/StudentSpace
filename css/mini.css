@@ -1,17 +1,17 @@
 body, html {
-  width: 100%;
-  overflow-x: hidden;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 header {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .logo {
-  margin: 0 auto;
-  background-position: center;
+    margin: 0 auto;
+    background-position: center;
 }
 
 
@@ -23,20 +23,19 @@ header {
 }
 
 #presentazione {
-  display: block;
-  text-align: center;
-  padding: 3em;
+    display: block;
+    text-align: center;
+    padding: 3em;
 }
 
 #presentazione > img {
-  display: inline-block;
-  margin: 0 auto;
-  width: 90%;
-  max-width: 400px;
-  height: auto;
-  margin-bottom: 2em;
+    display: inline-block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 2em;
 }
-
 
 #filtri {
     float: none;
@@ -45,11 +44,11 @@ header {
 }
 
 #footer-bottom {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-align: center;
 }
 
 #footer-bottom p {
@@ -68,13 +67,13 @@ header {
 .categoria {
     display: flex;
     flex-direction: column;
+    padding: 1.5em 1.5em 4em 1.5em;
 }
 
 #categorie ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
 }
 
 .ultimoInserito, .carta {
-    padding: 1em;
+    padding: 1.5em 1.5em 4em 1.5em;
 }
