@@ -34,6 +34,7 @@ html, body{ /* => da applicare a tutto */
 body {
     background-color: var(--clearBgColor);
     color: var(--txtcolor);
+    
 }
 
 main {
@@ -66,8 +67,12 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 3em; 
+    padding: 0.3em 2em; 
     background-color: var(--BgColor);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .logo {
@@ -76,7 +81,7 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    font-size: 8em; 
+    font-size: 6em; 
     width: 2em;
     height: 1em;
     text-indent: -9999em; /* nasconde il testo visivamente */
@@ -373,7 +378,7 @@ footer {
 */
 
 #categorie {
-    padding: 3em 2em;
+    padding: 4em 3em;
     background-color: var(--BgColor);
     text-align: center;
 }
