@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage[italian]{babel}
 \usepackage{parskip}
+\usepackage{multicol}
 \setlength{\parskip}{1em}
 \graphicspath{ {./images/} }
 \hypersetup {
@@ -71,7 +72,7 @@
 \subsection{Com'è nata l'idea}
 L'idea di questo progetto nasce da una domanda che ci siamo posti più volte nella nostra quotidianità: \textit{"Cosa potremmo fare questo weekend?"}. 
 Nelle città universitarie vengono spesso organizzati eventi e attività dedicate agli studenti, è però seccante doverne andare ogni volta alla ricerca. 
-Bisogna sapere inanzi tutto cosa si sta cercando (il che non è una cosa scontata), e serve poi andarsi a sfogliare di volta in volta le pagine social degli organizzatori, che sono sempre diversi.\par
+Bisogna sapere innanzitutto cosa si sta cercando (il che non è una cosa scontata), e serve poi andarsi a sfogliare di volta in volta le pagine social degli organizzatori, che sono sempre diversi.\par
 Abbiamo quindi pensato a quanto sarebbe comodo e utile se fossero gli organizzatori stessi ad andare incontro agli studenti, e a quanto si semplificherebbe la ricerca se esistesse un'unica bacheca dove tutti gli organizzatori possano appendere i loro volantini.\par
 Nel mentre buttavamo giù le idee il discorso si è ampliato, e ci siamo resi conto che la fuori ci sono un sacco di servizi di cui gli studenti hanno bisogno ma non hanno un punto di riferimento sul dove andarli a cercare.
 
@@ -101,35 +102,243 @@ Il lavoro è stato infatti suddiviso in modo che ogni membro andasse a lavorare 
 A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{\nameref{strumenti:git}}} e \textbf{\underline{\nameref{strumenti:github}}}.
 
 \subsection{Divisione del lavoro}
-Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che ciascun membro del gruppo fosse coivolto (quantomeno in parte) in ogni ambito del progetto.
+Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
 Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del programma, e di mettere mano direttamente a ogni fase del suo sviluppo.
 
 
 \newpage
+\section{Analisi dei requisiti}
+\subsection{Analisi dei tipi di utente} 
+\subsection{Analisi dei Requisiti}
+
+\subsubsection{Tipologie di Utenti}
+
+\begin{itemize}
+    \item \textbf{Utente non registrato:} utente che esplora le categorie, legge annunci e capisce  come funziona la bacheca
+    \begin{itemize}
+        \item  \textbf{Azioni e permessi:}  vidualizzazione completa delle varie pagine, navigazione tra categorie e annunci, ricerca e filtraggio, apertura dettaglio annuncio, avvio del flusso di registrazione/login
+        \item \textbf{Limitazioni:} accesso negato alle funzioni di pubblicazione e gestione $\rightarrow$  inviti chiari a registrarsi quando tenta azioni riservate.
+    \end{itemize}
+
+    \item \textbf{Utente registrato (semplice):} utente che oltre alle funzionalotà che erdità dall'untente non registrato può pubblicare annunci e gestirli.
+    \begin{itemize}
+        \item
+        \textbf{Permessi:} creazione, modifica ed eliminazione dei propri annunci; gestione profilo; accesso a eventuali bozze.
+        \item \textbf{Azioni e permessi:}
+        creazione, modifica ed eliminazione dei propri annunci; gestione profilo; compilazione form con parte generica e specifica, revisione
+        \item \textbf{Limitazioni:} non può modificare annunci altrui; vincoli su campi obbligatori e formati (validazione client/server).
+    \end{itemize}
+
+    \item \textbf{Amministratore: utente che modera e garantisce il giusto funzionamento} % da decidere
+    
+    \begin{itemize}
+        \item \textbf{Azioni e permessi:}gestione completa degli annunci (anche altrui), categorie, utenti; strumenti di moderazione (blocco, archiviazione)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
+Il sito web si configura come una bacheca universitaria online, in cui gli utenti possono
+pubblicare e consultare annunci suddivisi in quattro categorie principali: \textbf{Affitti},
+\textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}. L’analisi dei contenuti si concentra sui tipi di annunci, sui campi comuni a tutte le categorie e sui campi specifici per ciascuna categoria.
+
+\subsubsection{Tipi di annunci}
+\begin{itemize}
+  \item \textbf{Affitti}: annunci relativi a stanze, appartamenti o posti letto disponibili per studenti.
+  \item \textbf{Esperimenti}: annunci riguardanti attività di laboratorio, progetti di ricerca o collaborazioni scientifiche.
+  \item \textbf{Eventi}: annunci di conferenze, seminari, feste universitarie, attività culturali o sportive.
+  \item \textbf{Ripetizioni}: annunci di studenti che offrono supporto didattico su materie specifiche.
+\end{itemize}
+
+\subsubsection{Campi generici}
+Ogni annuncio, indipendentemente dalla categoria, deve contenere i seguenti campi:
+\begin{itemize}
+  \item \textbf{Categoria}: selezionata dall’utente tra le quattro disponibili.
+  \item \textbf{Titolo}: breve descrizione sintetica dell’annuncio.
+  \item \textbf{Data di pubblicazione}: generata automaticamente dal sistema.
+  \item \textbf{Città}: riferimento all’utente registrato che ha pubblicato l’annuncio.
+  \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. % decidere
+  \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. % decidere
+\end{itemize}
+
+\subsection{Campi specifici per categoria}
+Oltre ai campi generici, ciascuna categoria prevede attributi specifici:
+\begin{itemize}
+ \item \textbf{Affitti}:
+    \begin{multicols}{2}
+   \begin{itemize}
+      \item Prezzo mensile
+      \item Indirizzo
+      \item Contatti
+      \item Numero inquilini
+      \item Tipologia
+      \item Piano
+      \item Piani edificio
+      \item Ascensore
+      \item Superficie
+      \item Locali
+      \item Camere da letto
+      \item Bagni
+      \item Arredato
+      \item Balcone
+      \item Terrazzo
+   \end{itemize}
+   \end{multicols}
+  \item \textbf{Esperimenti}:
+    \begin{itemize}
+      \item Laboratorio di riferimento
+      \item Durata prevista
+      \item Compenso
+    \end{itemize}
+  \item \textbf{Eventi}:
+    \begin{itemize}
+      \item Data evento
+      \item Luogo
+      \item Tipologia evento (seminario, festa, conferenza, ecc.)
+    \end{itemize}
+  \item \textbf{Ripetizioni}:
+    \begin{itemize}
+      \item Materia
+      \item Livello (scuola superiore, università, ecc.)
+      \item Prezzo orario
+    \end{itemize}
+\end{itemize}
+
+\subsection{Requisiti funzionalità} % registrazione/login, pubblicazione annunci, modifica/eliminazione, filtraggio annunci, validazione input (client/server), accessibilità e responsività
+Il sistema deve garantire una serie di funzionalità fondamentali per soddisfare i requisiti del progetto
+e le esigenze degli utenti.
+
+\subsubsection{Registrazione e login}
+\begin{itemize}
+  \item Form di registrazione con campi obbligatori (nome, email, password).
+  \item Validazione lato client (formato email, lunghezza password) e lato server.
+  \item Login con credenziali; gestione sessione sicura.
+  \item Utente amministratore con credenziali \texttt{admin/admin}, utente semplice con \texttt{user/user}.
+\end{itemize}
+
+\subsubsection{Pubblicazione annunci}
+\begin{itemize}
+  \item Form di inserimento con parte generica (titolo, descrizione, categoria).
+  \item Campi specifici mostrati dinamicamente in base alla categoria scelta.
+  \item Salvataggio dati nel database con associazione all’utente autore.
+  \item Possibilità di visualizzare un’anteprima prima della conferma. % da decidere
+\end{itemize}
+
+\subsection{Modifica ed eliminazione annunci}  % da decidere
+\begin{itemize}
+  \item Utente registrato può modificare o cancellare solo i propri annunci.
+  \item Amministratore può intervenire su qualsiasi annuncio.
+\end{itemize}
+
+\subsection{Filtraggio e ricerca annunci}
+\begin{itemize}
+  \item Filtri generici (categoria, data di pubblicazione).
+  \item Filtri specifici 
+  \item Ricerca testuale su titolo e descrizione.
+\end{itemize}
+
+\subsection{Validazione input}
+\begin{itemize}
+  \item \textbf{Lato client}: controlli immediati con JavaScript (campi obbligatori, formati corretti).
+  \item \textbf{Lato server}: verifica dati ricevuti prima dell’inserimento nel database.
+  \item Messaggi di errore chiari e accessibili.
+\end{itemize}
+
+\subsection{Accessibilità e responsività}
+\begin{itemize}
+  \item Layout realizzato con CSS3, Flexbox e Grid.\
+  \item Separazione netta tra contenuto (HTML5), presentazione (CSS) e comportamento (JS/PHP).
+  \item Compatibilità cross-browser e adattamento a diverse dimensioni di schermo.
+  \item Uso di etichette semantiche, contrasto cromatico adeguato e font leggibili.
+\end{itemize}
+
+
 \section{Progettazione}
-\subsection{Tipi di utente} 
-\subsection{Struttura del sito} 
-\subsection{Mockup} 
+\subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
+
+\subsection{Progettazione Database} 
+\subsubsection{Analisi dei requisiti del database}
+
+La base di dati deve supportare la gestione degli utenti e degli annunci pubblicati
+sulla bacheca universitaria. In particolare, deve garantire la memorizzazione dei
+campi generici comuni a tutte le categorie di annunci e dei campi specifici per ciascuna
+categoria. Inoltre, deve rispettare i vincoli di integrità e consentire operazioni di
+inserimento, modifica e cancellazione.
+
+\paragraph{Entità principali}
+\begin{itemize}
+  \item \textbf{Utente}: rappresenta gli utenti registrati al sistema.
+    \begin{itemize}
+      \item Attributi: \texttt{IdUtente}, \texttt{Nome}, \texttt{Cognome}, \texttt{Città} \texttt{Email}, \texttt{Password}, \texttt{Ruolo}.
+    \end{itemize}
+  \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.
+    \begin{itemize}
+      \item Attributi: \texttt{IdAnnuncio}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione}, \texttt{Città}, \texttt{Categoria}, \texttt{IdUtente}.
+    \end{itemize}
+  \item \textbf{Categorie di annunci}: specializzazioni dell’entità \texttt{Annuncio}.
+    \begin{itemize}
+      \item \textbf{Affitto}: \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{Contatti}, \texttt{NumeroInquilini}, \texttt{Tipologia}, \texttt{Piano}, \texttt{PianiEdificio}, \texttt{Ascensore}, \texttt{Superficie}, \texttt{Locali}, \texttt{CamereLetto}, \texttt{Bagni}, \texttt{Arredato}, \texttt{Balcone}, \texttt{Terrazzo}.
+      \item \textbf{Esperimento}: \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
+      \item \textbf{Evento}: \texttt{DataEvento}, \texttt{Luogo}, \texttt{TipologiaEvento}.
+      \item \textbf{Ripetizione}: \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Relazioni}
+\begin{itemize}
+  \item Un \textbf{Utente} può pubblicare da zero a molti \textbf{Annunci} (relazione 1:N).
+  \item Ogni \textbf{Annuncio} appartiene ad una sola \textbf{Categoria} (relazione 1:1 con la specializzazione).
+  \item Ogni categoria eredita i campi generici da \texttt{Annuncio} e aggiunge i propri campi specifici.
+\end{itemize}
+
+\paragraph{Generalizzazioni}
+L’entità \texttt{Annuncio} funge da \textbf{generalizzazione} per le quattro categorie (\texttt{Affitto}, \texttt{Esperimento}, \texttt{Evento}, \texttt{Ripetizione}).
+Questa scelta progettuale consente di mantenere un modello chiaro e normalizzato, evitando ridondanze e facilitando la gestione dei dati.
+
+\subsubsection{Schema ER}
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=1\textwidth]{ER.png}
+    \caption{Schema ER}
+    \label{fig:ER}
+\end{figure}
+
+
+\subsubsection{Generalizzazioni e sceltre progettuali}
+\subsubsection{Schema logico (relazionale)}
+\subsubsection{Normalizzazione}
+\subsubsection{Vincoli di integrità}
+
+
+\subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
+\subsection{Mockup}
 \subsection{Responsive Web Design e Mobile First} 
 
 
 \newpage
 \section{Sviluppo}
-\subsection{HTML}
+\subsection{HTML} % sementica
 \subsection{CSS}
-\subsection{JavaScript}
+\subsection{JavaScript} % validazione client + interazione
 \subsection{PHP}
 \subsection{Database}
 \subsection{Errori}
 \subsection{Validazione} 
-\subsection{Immagini} 
-\subsection{Colori} 
-\subsection{Font} 
-\subsection{.htaccess}
+\subsection{Gestione delle immagini} 
+\subsection{Palette colori e font} 
+
+\subsection{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
+
 
 \newpage
 \section{Test}
-\subsection{Color contrast}
+\subsection{Test funzionali}
+Descrizione dei test su login, registrazione, pubblicazione e filtraggio annunci.
+
+\subsection{Test di compatibilità}
+Test su diversi browser (Chrome, Firefox, Edge, Safari) e dispositivi (desktop, tablet, smartphone).
+
+\subsection{Test di accessibilità}
+Color contrast, navigazione da tastiera, screen reader.
 
 \newpage
 \section{Accessibilità}
@@ -140,7 +349,8 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
 \subsection{Ulteriori funzionalità di accessibilità}
 
 \newpage
-\section{SEO e prestazioni}
+\section{SEO e prestazioni} %meta tag, URL parlanti, sitemap, compressione immagini, lazy loading, minificazione
+\subsection{Analisi delle possibili ricerche su Google} % “affitto stanza Padova”, “eventi Padova weekend”, “ripetizioni informatica Padova”…)
 
 \newpage
 \section{Strumenti utilizzati}
