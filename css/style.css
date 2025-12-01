@@ -879,27 +879,25 @@ form > p, form > p{
 }
 
 .info{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    /* display: flex;
+    flex-direction: column; */
     margin: 2em;
     gap: 2em;
-    /* display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(0px, 285px)); */
 }
 
 .generali-affitto{
-    width: 50%;
+    width: 100%;
 }
 
-.prova1, .prova2, .prova3, .prova4{
+.prova{
     background-color: #4e78e2ac;
     /* background-color: var(--card); */
     border-radius: 1em;
     padding: 2em;
     text-align: center;
-    display: flex;
-    flex-direction: column;
     margin-bottom: 2em;
     box-shadow: 8px 8px 10px rgb(160, 160, 160);
 }
@@ -917,7 +915,7 @@ form > p, form > p{
     flex-direction: column;
     gap: 1.5em;
     margin-bottom: 2em;
-    width: 50%;
+    width: 100%;
     box-shadow: 4px 4px 10px 5px rgb(160, 160, 160);
 }
 
@@ -948,9 +946,6 @@ form > p, form > p{
     flex-direction: column;
     gap: 0.8em;
     margin-bottom: 2em;
-}
-
-.descrizione-affitto{
     margin-left: 2em; 
     margin-right: 2em;
     margin-bottom: 5em;
