@@ -252,7 +252,7 @@ header {
     color: var(--visited);
 }
 
-.bold {
+.currentPage {
     font-weight: bold;
 }
 
