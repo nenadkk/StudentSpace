@@ -48,130 +48,55 @@
     </nav>
 
     <main id="contenuto">
+        <section id="carosello" aria-label="Galleria immagini annuncio">
+            <div class="carosello-thumbnails">
+                <img src="assets/bilocaleCentro.jpg" alt="" class="miniatura attiva">
+                <img src="assets/monolocale.jpg" alt="" class="miniatura">
+                <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+                <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+            </div>
 
-        <!--////////
-        SEZIONE AFFITTO CAMERE
-        /////////-->
-        <section class="annunci-affitto">
+            <div class="carosello-principale">
+                <img src="assets/bilocaleCentro.jpg" alt="Vista principale" class="attiva">
+            </div>
 
-            <section class="carosello">
+            <!-- da implementare in Javascript: --><script>
+                const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
+                const mainImage = document.querySelector('.carosello-principale img');
 
-                <div class="focus">
-
-                    <img src="assets/bilocaleCentro.jpg">
-
-                </div>
-
-                <div class="secondarie">
-
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-                    <img src="assets/bilocaleCentro.jpg">
-
-                </div>
-
-            </section>
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                    mainImage.src = thumb.src;
+                    thumbnails.forEach(t => t.classList.remove('attiva'));
+                    thumb.classList.add('attiva');
+                    });
+                });
+                </script>
+                <!---->
+        </section>
 
             <h2>Titolo</h2><!--da fare con php perchè deve cambiare-->            
 
             <section class="info">
-                
-                <div class="generali-affitto">
-
-                    <div class = "prova">
-                        <dl>
-                            <dt>Città:</dt>
-                            <dd>Venezia</dd>
-                        </dl>
-                    </div>
-
-                    <div class = "prova">
-                        <dl>
-                            <dt>Indirizzo:</dt>
-                            <dd>Via Luigi Luzzati</dd>
-                        </dl>
-                    </div>
-
-                    <div class = "prova">
-                        <dl>
-                            <dt>Costo:</dt>
-                            <dd>500 Euro/mese</dd>
-                        </dl>
-                    </div>
-
-                    <div class = "prova">
-                        <dl>
-                            <dt>Contatti:</dt>
-                            <dd>nome.cognome@gmail.com</dd>
-                        </dl>
-                    </div>
-
-                </div>
-                
-                <div class = "caratteristiche-affitto">
-
-                    <h3>Caratteristiche</h3>
-
-                    <ul id="caratteristiche">
-                        <li>Numero inquilini:</li>
-                        <li>Tipologia: appartamento</li>
-                        <li>Piano: 1</li>
-                        <li>Piani edificio: 2</li>
-                        <li>Ascensore: No</li>
-                        <li>Superficie: 55m^2</li>
-                        <li>Locali: 2</li>
-                        <li>Camere da letto: 2</li>
-                        <li>Bagni: 1</li>
-                        <li>Arredato: Sì</li>
-                        <li>Balcone: No</li>
-                        <li>Terrazzo: No</li>
-                        <li>nome.cognome@gmail.com</li>
-                    </ul>
-
-                </div> 
+                <dl class="attrAnnuncio">
+                    <dt>Città:</dt>
+                    <dd>Venezia</dd>
+                </dl>
+                <dl class="attrAnnuncio">
+                    <dt>Indirizzo:</dt>
+                    <dd>Via Luigi Luzzati</dd>
+                </dl>
+                <dl class="attrAnnuncio">
+                    <dt>Costo:</dt>
+                    <dd>500 Euro/mese</dd>
+                </dl>
                 
             </section>
             
-            <div class = "descrizione-affitto">
+            <div class="descrizioneAnnuncio">
                 <h3>Descrizione</h3>
-                <p>questo locale è ben fornito</p>
+                <p>Informazioni aggiuntive</p>
             </div>
-
-        </section>
-
-        <!--////////
-        SEZIONE ANNUNCIO RESTO ATTIVITà
-        /////////-->
-
-        <!-- <section class="annunci-rimanente">
-            
-            <h2>Nome annuncio/attività</h2>
-           
-            <div class="immagine-laterale">
-                <img src="assets/concertoJazz.jpg" alt="">
-            </div>
-            
-            <div class="info">
-                <dl>
-                    <dt>Città:</dt>
-                    <dd>Padova</dd>
-                    <dt>Indirizzo:</dt>
-                    <dd>via vittoria</dd>
-                    <dt>Contatto:</dt>
-                    <dd>nome.cognome@gmail.com</dd>
-                    <dt>Data e Ora:</dt>
-                    <dd>Lunedì 12:15</dd>
-                </dl>
-            </div>
-
-        </section> -->
-
     </main>
 
     <footer>

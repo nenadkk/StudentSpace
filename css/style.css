@@ -26,7 +26,7 @@
 html, body{ /* => da applicare a tutto */
     font-size: 100%; /* adotta le impostazioni dell'utente */
     font-family:"Lexend", "Roboto", sans-serif; /*"Lexend" => font di google, "Roboto", => entrambi molto accessibili*/
-    line-height: 1.5em; /* da sapere a memoria */
+    line-height: 1.5em; 
     margin: 0;
 }
 
@@ -38,7 +38,6 @@ body {
 }
 
 main {
-    /* min-height: 100vh; da controllare come bloccare il footer */
     display: flex;
     flex-direction: column;
 }
@@ -229,8 +228,7 @@ header {
     font-size: small;
     width: fit-content; 
     max-width: 100%;
-    /* position: sticky;
-    top: 0; */
+    box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2);
 }
 
 #breadcrumb ol {
@@ -586,6 +584,64 @@ footer {
 }
 
 /*
+====================================================
+    SEZIONE CAROSELLO CON MINIATURE
+==================================================== 
+*/#carosello {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
+  margin: 2em auto;
+  flex-wrap: wrap;
+}
+
+.carosello-principale {
+  flex: 1 1 clamp(280px, 60vw, 450px);
+  height: clamp(200px, 50vw, 350px);
+  overflow: hidden;
+  border-radius: 1em;
+  position: relative;
+}
+
+.carosello-principale img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carosello-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.carosello-thumbnails img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5em;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carosello-thumbnails img.attiva {
+  opacity: 1;
+  transform: scale(1.05);
+  outline: 2px solid var(--btnColor);
+}
+
+/*
 ================= MODULARI su più PAGINE ============================================================= 
 */
 /*
@@ -902,8 +958,8 @@ form > p, form > p{
     width: 100%;
 }
 
-.prova{
-    background-color: #4e78e2ac;
+.attrAnnuncio > dl{
+    background-color: var(--caratteristicheImp);
     /* background-color: var(--card); */
     border-radius: 1em;
     padding: 2em;
