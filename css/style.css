@@ -496,16 +496,20 @@ footer {
 .ultimoInserito h3 , .carta h3 {
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--clearTxtColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
     text-align: center;
 }
 
-.ultimoInserito h4, .carta h4 {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-top: 0.5em;
+.etichettaCategoria {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 1em;
+  color: var(--clearTxtColor);
+  background-color: var(--esperimentiColor); /* oppure gestito via .catEsperimenti */
+  margin: 0.5em 0 1em;
+  text-align: center;
 }
 
 .ultimoInserito dl, .carta dl {
@@ -553,8 +557,8 @@ footer {
   z-index: 1;
 }
 
-.categoria a span, 
-.ultimoInserito a span,
+.categoria a>span, 
+.ultimoInserito a>span,
 .carta a span {
   position: absolute;
   bottom: 1em;
@@ -568,6 +572,7 @@ footer {
   padding: 0.3em 0.6em;
   border-radius: 1em;
   pointer-events: none;
+text-transform: none;
 }
 
 /*

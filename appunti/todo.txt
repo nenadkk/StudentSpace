@@ -29,6 +29,7 @@ Cose di cui discutere:
 - non mettere esempio solo come place holder
 -con aria live true lo screen reader rilegge il campo modificabile per gli errori
 - alt immagini + alt immagini inserite da utente
+- invece di specifici o niente o un attributo principale per categoria
 
 
 localhost
