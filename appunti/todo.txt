@@ -17,3 +17,10 @@ OK - Togliere l'interagibilità dei pulsanti registrati e accedi quando
 - Cambiare le immagini sostituendo da png a jpeg/webp per il sito, per la stampa
    va bene il png perché la stampa richiede una risoluzione maggiore.
 
+
+Cose di cui discutere:
+- decidere il tipo di carosello, (esempio https://prima-vera.it/products/primavera-case)
+- se si mette la naavbar sticky, in modo che sia accessibile ovunque, bisogna ricontrollare il contrasto che si viene a creare in certe sezioni (idea mia, o aggiungere dell'ombra di base e fare anche che tipo quando si va giù si nasconde e appena si sale di un poco invece ricompare)
+- poi sempre nella navbar mettere il logo cliccabile per tornare alla home, molto utile per telefono
+- cambiare il font base della prof, per impressionarla, e magari sceglierne più di uno per dare maggior contrasto tra le diverse sezioni
+- le citta inserite nella registrazione che non ci sono nella lista di filraggio vengono aggiornate inserendola (?)
