@@ -3,6 +3,11 @@ body, html {
     overflow-x: hidden;
 }
 
+body {
+    padding-top: 11em; /* da sistemare una volta fatto l'abmburger*/
+}
+
+
 header {
     flex-direction: column;
     align-items: center;
