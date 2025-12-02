@@ -26,4 +26,13 @@ Cose di cui discutere:
 - le citta inserite nella registrazione che non ci sono nella lista di filraggio vengono aggiornate inserendola (?)
 - impostare un massimo di immagini per il carosello, gestire se vengono inserite meno
 - capire quanti attributi tenere per affitto e  vedere se uniformare con gli altri in modo da avere lo stesso numero per tutti e semplificarci la vita --> tutto ciò che vogliono aggiungere lo mettono nella descrizione
+- non mettere esempio solo come place holder
+-con aria live true lo screen reader rilegge il campo modificabile per gli errori
+- alt immagini + alt immagini inserite da utente
 
+
+localhost
+login user
+login user
+psw da foglio
+--> parametri connessione db

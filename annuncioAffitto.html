@@ -48,36 +48,36 @@
     </nav>
 
     <main id="contenuto">
-        <section id="carosello" aria-label="Galleria immagini annuncio">
-            <div class="carosello-thumbnails">
-                <img src="assets/bilocaleCentro.jpg" alt="" class="miniatura attiva">
-                <img src="assets/monolocale.jpg" alt="" class="miniatura">
-                <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
-                <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
-            </div>
+        <div id="annuncioTop">
+            <section id="carosello" aria-label="Galleria immagini annuncio">
+                <div class="carosello-thumbnails">
+                    <img src="assets/bilocaleCentro.jpg" alt="" class="miniatura attiva">
+                    <img src="assets/monolocale.jpg" alt="" class="miniatura">
+                    <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+                    <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+                </div>
 
-            <div class="carosello-principale">
-                <img src="assets/bilocaleCentro.jpg" alt="Vista principale" class="attiva">
-            </div>
+                <div class="carosello-principale">
+                    <img src="assets/bilocaleCentro.jpg" alt="Vista principale" class="attiva">
+                </div>
 
-            <!-- da implementare in Javascript: --><script>
-                const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
-                const mainImage = document.querySelector('.carosello-principale img');
+                <!-- da implementare in Javascript: --><script>
+                    const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
+                    const mainImage = document.querySelector('.carosello-principale img');
 
-                thumbnails.forEach(thumb => {
-                    thumb.addEventListener('click', () => {
-                    mainImage.src = thumb.src;
-                    thumbnails.forEach(t => t.classList.remove('attiva'));
-                    thumb.classList.add('attiva');
+                    thumbnails.forEach(thumb => {
+                        thumb.addEventListener('click', () => {
+                        mainImage.src = thumb.src;
+                        thumbnails.forEach(t => t.classList.remove('attiva'));
+                        thumb.classList.add('attiva');
+                        });
                     });
-                });
-                </script>
-                <!---->
-        </section>
-
-            <h2>Titolo</h2><!--da fare con php perchè deve cambiare-->            
-
+                    </script>
+                    <!---->
+            </section>
             <section class="info">
+                <h2 class="titoloAnnuncio">Titolo</h2><!--da fare con php perchè deve cambiare-->  
+                <!--<h3 class="etichettaCategoria catAffitti" aria-label="Categoria: Affitti">Affitti</h3>-->        
                 <dl class="attrAnnuncio">
                     <dt>Città:</dt>
                     <dd>Venezia</dd>
@@ -90,13 +90,12 @@
                     <dt>Costo:</dt>
                     <dd>500 Euro/mese</dd>
                 </dl>
-                
             </section>
-            
-            <div class="descrizioneAnnuncio">
-                <h3>Descrizione</h3>
-                <p>Informazioni aggiuntive</p>
-            </div>
+        </div>
+        <div class="descrizioneAnnuncio">
+            <h3>Descrizione</h3>
+            <p>Informazioni aggiuntive</p>
+        </div>
     </main>
 
     <footer>
