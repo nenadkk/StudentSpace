@@ -31,10 +31,19 @@ header {
 #hamburger {
     display: inline-flex;
     padding: 0em;
-    justify-self: end;
-
+    align-self: center;
+    padding: 0.7em 3em;
+    border-radius: 1em;
+    min-height: 3em;
+    background-color: var(--btnColor);
+    color: var(--clearTxtColor);
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid var(--btnColor);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-#harburger-menu {
+
+#hamburger-menu {
     display: none;
 }
 #hamburger-menu.active{
