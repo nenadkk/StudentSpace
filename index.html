@@ -34,8 +34,57 @@
                 <li><a class="btn" href="registrati.html">Registrati</a></li>
                 <li><a class="btn" href="accedi.html">Accedi</a></li>
             </ul>
-            <button id="hamburger" aria-label="Apri menu">&#9776;</button>
         </nav>
+
+
+        <button id="hamburger" aria-label="Apri menu">&#9776;</button>
+        <nav id="hamburger-menu" aria-label="Menu principale">
+            <ul class="links">
+                <li lang="en" id="currentLink" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="autent">
+                <li><a class="btn" href="registrati.html">Registrati</a></li>
+                <li><a class="btn" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+        <script>
+            function hamburgerMenu() {
+                const hamburger = document.getElementById('hamburger');
+                // const hamburgerChiuso = document.querySelectorAll('#hamburger > span')[0];
+                // const hamburgerAperto = document.querySelectorAll('#hamburger > span')[1];
+
+
+                let menu = document.getElementById('hamburger-menu')
+                // let header = document.getElementsByClassName('header-container')[0]
+
+                hamburger.addEventListener('click', function () {
+                    // hamburgerChiuso.classList.toggle('active');
+                    // hamburgerAperto.classList.toggle('active');
+
+                    // hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
+
+                    menu.classList.toggle('active');
+
+                    /*
+                    if (menu.classList.contains('active')) {
+                        if (header.classList.contains('active') && window.scrollY < 30) {
+                            header.classList.remove('active')
+                        }
+                        menu.classList.remove('active')
+                        header.classList.remove('hamburger-active')
+                    } else {
+                        if (!header.classList.contains('active')) {
+                            header.classList.add('active')
+                        }
+                        menu.classList.add('active')
+                    }
+                    */
+                })
+            }
+            hamburgerMenu();
+        </script>
     </header>
 
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
