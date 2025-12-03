@@ -30,6 +30,7 @@ Cose di cui discutere:
 -con aria live true lo screen reader rilegge il campo modificabile per gli errori
 - alt immagini + alt immagini inserite da utente
 - invece di specifici o niente o un attributo principale per categoria
+- nella relazione dire che abbiamo chiesto ad utenti esterni target per testare anche le interazioni a primo acchito (es. solo link cliccabili sostituiti con intera card cliccabile)
 
 
 localhost
