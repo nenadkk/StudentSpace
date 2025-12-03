@@ -499,16 +499,20 @@ footer {
 .ultimoInserito h3 , .carta h3 {
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--clearTxtColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
     text-align: center;
 }
 
-.ultimoInserito h4, .carta h4 {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-top: 0.5em;
+.etichettaCategoria {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 1em;
+  color: var(--clearTxtColor);
+  background-color: var(--esperimentiColor); /* oppure gestito via .catEsperimenti */
+  margin: 0.5em 0 1em;
+  text-align: center;
 }
 
 .ultimoInserito dl, .carta dl {
@@ -556,8 +560,8 @@ footer {
   z-index: 1;
 }
 
-.categoria a span, 
-.ultimoInserito a span,
+.categoria a>span, 
+.ultimoInserito a>span,
 .carta a span {
   position: absolute;
   bottom: 1em;
@@ -571,6 +575,7 @@ footer {
   padding: 0.3em 0.6em;
   border-radius: 1em;
   pointer-events: none;
+text-transform: none;
 }
 
 /*
@@ -660,28 +665,17 @@ footer {
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 2.5em;   
-  margin: 2em;
+  padding: 2.5em; 
 }
 
 .info {
-  flex: 1 1 500px; 
+  flex: 0 1 400px; 
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 0.8em;       
   padding: 1.5em;
   align-self: center;
-}
-
-.etichettaCategoria {
-  display: inline-block;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.4em 1em;
-  border-radius: 1em;
-  color: var(--clearTxtColor);
-  text-align: center;
-  background-color: var(--card); /* fallback neutro */
 }
 
 .attrAnnuncio {
@@ -696,19 +690,19 @@ footer {
     font-weight: bold;
 }
 
-.descrizioneAnnuncio{
-    background-color: var(--card);
-    border-radius: 1em;
-    padding: 2em;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-    margin-bottom: 2em;
-    margin-left: 2em; 
-    margin-right: 2em;
-    margin-bottom: 5em;
-    min-height: 300px;
+.descrizioneAnnuncio {
+  background-color: var(--card);
+  border-radius: 1em;
+  padding: 1.5em 1.2em;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  margin: 2em auto 4em;
+  width: 100%;           /* ← occupa tutto lo spazio disponibile */
+  max-width: 1000px;      /* ← non supera questa larghezza */
+  min-height: 250px;
+  box-sizing: border-box; /* ← include padding nella larghezza */
 }
 
 /*
@@ -719,6 +713,18 @@ footer {
     SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card UltimiInseriti, Card annuncio)
 ===========================================================================
 */
+
+.etichettaCategoria {
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.4em 1em;
+  border-radius: 1em;
+  color: var(--clearTxtColor);
+  text-align: center;
+  background-color: var(--card); 
+} 
+
 .catEventi {
     background-color: var(--eventiColor);
 }
@@ -903,7 +909,6 @@ input[type="file"] {
   line-height: 3em;
 }
 
-
 .checkbox-inline {
     display: flex;
     align-items: center;
@@ -946,8 +951,6 @@ button:hover, button:focus{
     outline: 2px solid var(--btnColor);
     outline-offset: 1px;
 }
-
-
 
 form > p, form > p{
     text-align: center;
