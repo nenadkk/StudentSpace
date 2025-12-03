@@ -9,7 +9,7 @@ body {
 
 
 header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     text-align: center;
 }
@@ -21,10 +21,31 @@ header {
 
 
 #menu {
+    display: none;
     float: none;
     width: 90%;
     padding-top: 0.5em;
     font-size: 0.8em;
+}
+
+#hamburger {
+    display: inline-flex;
+    padding: 0em;
+    justify-self: end;
+
+}
+#harburger-menu {
+    display: none;
+}
+#hamburger-menu.active{
+    display: flex;
+    flex-direction: column;
+}
+#hamburger-aperto.active {
+    display: inline-flex;
+}
+#hamburger-chiuso.active {
+    display: inline-flex;
 }
 
 #presentazione {

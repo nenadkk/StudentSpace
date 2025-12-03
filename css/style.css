@@ -173,6 +173,15 @@ header {
     border: none;
     color: var(--btnColor);
 }
+#hamburger-menu {
+    display: none;
+}
+#hamburger-chiuso {
+    display: none;
+}
+#hamburger-aperto {
+    display: none;
+}
 
 /*
 ====================================================
