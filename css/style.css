@@ -176,6 +176,12 @@ header {
 #hamburger-menu {
     display: none;
 }
+#hamburger-chiuso {
+    display: none;
+}
+#hamburger-aperto {
+    display: none;
+}
 
 /*
 ====================================================

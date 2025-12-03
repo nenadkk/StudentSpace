@@ -30,8 +30,9 @@ header {
 
 #hamburger {
     display: inline-flex;
-    padding: 1em;
+    padding: 0em;
     justify-self: end;
+
 }
 #harburger-menu {
     display: none;
@@ -39,6 +40,12 @@ header {
 #hamburger-menu.active{
     display: flex;
     flex-direction: column;
+}
+#hamburger-aperto.active {
+    display: inline-flex;
+}
+#hamburger-chiuso.active {
+    display: inline-flex;
 }
 
 #presentazione {

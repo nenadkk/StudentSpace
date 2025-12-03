@@ -37,7 +37,10 @@
         </nav>
 
 
-        <button id="hamburger" aria-label="Apri menu">&#9776;</button>
+        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+            <span id="hamburger-chiuso" class="active">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
         <nav id="hamburger-menu" aria-label="Menu principale">
             <ul class="links">
                 <li lang="en" id="currentLink" aria-current="page">Home</li>
@@ -52,18 +55,18 @@
         <script>
             function hamburgerMenu() {
                 const hamburger = document.getElementById('hamburger');
-                // const hamburgerChiuso = document.querySelectorAll('#hamburger > span')[0];
-                // const hamburgerAperto = document.querySelectorAll('#hamburger > span')[1];
+                const hamburgerChiuso = document.querySelectorAll('#hamburger > span')[0];
+                const hamburgerAperto = document.querySelectorAll('#hamburger > span')[1];
 
 
                 let menu = document.getElementById('hamburger-menu')
                 // let header = document.getElementsByClassName('header-container')[0]
 
                 hamburger.addEventListener('click', function () {
-                    // hamburgerChiuso.classList.toggle('active');
-                    // hamburgerAperto.classList.toggle('active');
+                    hamburgerChiuso.classList.toggle('active');
+                    hamburgerAperto.classList.toggle('active');
 
-                    // hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
+                    hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
 
                     menu.classList.toggle('active');
 
