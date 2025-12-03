@@ -12,49 +12,51 @@ header {
     flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: space-between;
 }
 
 .logo {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     background-position: center;
+    font-size: 4em;
 }
 
 
 #menu {
     display: none;
     float: none;
-    width: 90%;
-    padding-top: 0.5em;
-    font-size: 0.8em;
+    flex: 0;
+    width: 0%;
+    padding: 0em;
+    margin: 0em;
+    font-size: 0em;
 }
 
 #hamburger {
-    display: inline-flex;
+    display: flex;
     padding: 0em;
-    align-self: center;
+    width: auto;
+    /* align-self: center;
     padding: 0.7em 3em;
     border-radius: 1em;
     min-height: 3em;
-    background-color: var(--btnColor);
-    color: var(--clearTxtColor);
     font-weight: bold;
-    font-size: 1em;
-    border: 2px solid var(--btnColor);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 2em;*/
 }
 
 #hamburger-menu {
     display: none;
+    width: 100%;
 }
 #hamburger-menu.active{
     display: flex;
     flex-direction: column;
 }
 #hamburger-aperto.active {
-    display: inline-flex;
+    display: flex;
 }
 #hamburger-chiuso.active {
-    display: inline-flex;
+    display: flex;
 }
 
 #presentazione {

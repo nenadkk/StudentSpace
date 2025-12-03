@@ -18,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -34,6 +36,22 @@
                 <li id="currentLink" aria-current="page">Accedi</li>
             </ul>
             <button id="hamburger" aria-label="Apri menu">&#9776;</button>
+        </nav>
+
+        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+            <span id="hamburger-chiuso" class="active">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menu principale">
+            <ul class="links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="autent">
+                <li><a class="btn" href="registrati.html">Registrati</a></li>
+                <li id="currentLink" aria-current="page">Accedi</li>
+            </ul>
         </nav>
     </header>
 
