@@ -4,15 +4,15 @@ body, html {
 }
 
 body {
-    padding-top: 11em; /* da sistemare una volta fatto l'abmburger*/
+    padding-top: 5em; /* da sistemare una volta fatto l'abmburger*/
 }
-
 
 header {
     flex-direction: row;
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    gap: 1em;
 }
 
 .logo {
@@ -21,43 +21,100 @@ header {
     font-size: 4em;
 }
 
-
 #menu {
     display: none;
-    float: none;
-    flex: 0;
-    width: 0%;
-    padding: 0em;
-    margin: 0em;
-    font-size: 0em;
 }
 
 #hamburger {
-    display: flex;
-    padding: 0em;
-    width: auto;
-    /* align-self: center;
-    padding: 0.7em 3em;
-    border-radius: 1em;
-    min-height: 3em;
-    font-weight: bold;
-    font-size: 2em;*/
+  all: unset;              /* resetta completamente lo stile nativo del button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;          /* grandezza icona */
+  color: var(--txtcolor);  /* colore icona */
+  cursor: pointer;         /* mostra la manina */
+}
+
+#hamburger span {
+  line-height: 1;
 }
 
 #hamburger-menu {
     display: none;
     width: 100%;
 }
+
 #hamburger-menu.active{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.8em;
+    font-size: 1.1em;
+    margin-bottom: 1.2em;
 }
+
+#hamburger-menu .links, #hamburger-menu .autent {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    flex-direction: column;
+}
+
+#hamburger-menu .links{
+    gap: 0.5em;
+}
+
+#hamburger-menu .autent {
+    gap: 1.6em;
+}
+
+#hamburger-currentLink {
+    text-decoration: none;
+    font-weight: bold;
+    background-image: url("../assets/stellina.png");
+    background-position: left center;
+    background-size: 1.2em;
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+    text-transform: uppercase;
+}
+
+#hamburger-currentLink .btn {
+    background-size: 1em;
+    padding-left: 2em;
+    background-position: left center;
+}
+
+#hamburger-menu .btn {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--clearTxtColor); 
+    background-color: var(--btnColor);
+    border: 2px solid var(--btnColor);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#hamburger-menu .btn:visited{    
+    color: var(--btnColor);
+    background-color: var(--BgColor);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #hamburger-aperto.active {
     display: flex;
 }
 #hamburger-chiuso.active {
     display: flex;
 }
+
 
 #presentazione {
     display: block;

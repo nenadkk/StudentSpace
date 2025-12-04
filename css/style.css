@@ -166,22 +166,13 @@ header {
     background-position: left center;
 }
 
-#hamburger {
-    display: none;
-    font-size: 2em;
-    background: none;
-    border: none;
-    color: var(--btnColor);
-}
-#hamburger-menu {
+#hamburger,
+#hamburger-menu, 
+#hamburger-chiuso,
+#hamburger-aperto{
     display: none;
 }
-#hamburger-chiuso {
-    display: none;
-}
-#hamburger-aperto {
-    display: none;
-}
+
 
 /*
 ====================================================
