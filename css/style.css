@@ -450,6 +450,9 @@ footer {
     text-align: center;
 }
 
+#ultimiInseriti h2 {
+    margin-bottom: 1.5em;
+}
 /*
 ====================================================
     CARD ULTIMI INSERITI + LISTA CARTE
@@ -460,7 +463,8 @@ footer {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
-    gap: 1em;
+    row-gap: 2em;
+    column-gap: 1em;
     list-style: none;
     padding: 0;
     margin: 0 ;
@@ -569,6 +573,21 @@ footer {
 text-transform: none;
 }
 
+.ultimoInserito::before, .carta::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-image: url("../assets/puntina.png"); /* ← percorso immagine */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+}
+
 /*
 ====================================================
     SEZIONE ESPLORA + FILTRI
@@ -579,7 +598,7 @@ text-transform: none;
 .esplora {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1.5em;
     padding: 2em;
     text-align: center;
 }
