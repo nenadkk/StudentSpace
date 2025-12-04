@@ -5,7 +5,7 @@ function hamburgerMenu() {
 
 
                 let menu = document.getElementById('hamburger-menu')
-                // let header = document.getElementsByClassName('header-container')[0]
+                let content = document.getElementsByClassName('container')[0]
 
                 hamburger.addEventListener('click', function () {
                     hamburgerChiuso.classList.toggle('active');
@@ -13,22 +13,20 @@ function hamburgerMenu() {
 
                     hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
 
-                    menu.classList.toggle('active');
+                    // menu.classList.toggle('active');
 
-                    /*
                     if (menu.classList.contains('active')) {
-                        if (header.classList.contains('active') && window.scrollY < 30) {
-                            header.classList.remove('active')
+                        if (content.classList.contains('active') && window.scrollY < 30) {
+                            content.classList.remove('active')
                         }
                         menu.classList.remove('active')
-                        header.classList.remove('hamburger-active')
+                        content.classList.remove('hamburger-active')
                     } else {
-                        if (!header.classList.contains('active')) {
-                            header.classList.add('active')
+                        if (!content.classList.contains('active')) {
+                            content.classList.add('active')
                         }
                         menu.classList.add('active')
                     }
-                    */
                 })
 }
 hamburgerMenu();

@@ -4,7 +4,7 @@ body, html {
 }
 
 body {
-    padding-top: 11em; /* da sistemare una volta fatto l'abmburger*/
+    padding-top: 5em; /* da sistemare una volta fatto l'abmburger*/
 }
 
 
@@ -13,6 +13,10 @@ header {
     align-items: center;
     text-align: center;
     justify-content: space-between;
+}
+
+.container.active {
+    margin-top: 15em;
 }
 
 .logo {
@@ -33,15 +37,13 @@ header {
 }
 
 #hamburger {
+    all: unset;
     display: flex;
-    padding: 0em;
-    width: auto;
-    /* align-self: center;
-    padding: 0.7em 3em;
-    border-radius: 1em;
-    min-height: 3em;
-    font-weight: bold;
-    font-size: 2em;*/
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: var(--txtcolor);
+    cursor: pointer;
 }
 
 #hamburger-menu {
