@@ -31,7 +31,8 @@ Cose di cui discutere:
 - alt immagini + alt immagini inserite da utente
 - invece di specifici o niente o un attributo principale per categoria
 - nella relazione dire che abbiamo chiesto ad utenti esterni target per testare anche le interazioni a primo acchito (es. solo link cliccabili sostituiti con intera card cliccabile)
-
+- sistemare containers, attributi e immagini con selezione decorativa o alt (+ suggestion per utente di mettere almeno due img con alt)
+- decidere se hamburger-currentlink order: -1
 
 localhost
 login user

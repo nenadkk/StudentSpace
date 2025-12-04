@@ -68,7 +68,7 @@ header {
 }
 
 #hamburger-menu .links{
-    gap: 0.5em;
+    gap: 0.7em;
 }
 
 #hamburger-menu .autent {
@@ -76,7 +76,7 @@ header {
 }
 
 #hamburger-currentLink {
-    order: -1;
+    /* order: -1; /* chiedere se è va bene o rompe lo schema mnemonico*/
     text-decoration: none;
     font-weight: bold;
     background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
