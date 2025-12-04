@@ -4,7 +4,7 @@ body, html {
 }
 
 body {
-    padding-top: 5em; /* da sistemare una volta fatto l'abmburger*/
+    padding-top: 5em;
 }
 
 header {
@@ -16,7 +16,7 @@ header {
 }
 
 .content-container.active {
-    margin-top: 15em;
+    margin-top: 16em;
 }
 
 .logo {
@@ -151,6 +151,10 @@ header {
     margin-bottom: 2em;
 }
 
+#presentazione .azioni {
+    justify-content: center;
+}
+
 #filtri {
     float: none;
     width: auto;
@@ -198,6 +202,10 @@ header {
     margin-top: 0.2em;
 }
 
+#annuncioTop {
+  padding: 0.5em; 
+}
+
 #carosello {
     flex-direction: column;
     align-items: center;
@@ -236,4 +244,8 @@ header {
 .carosello-thumbnails img {
     width: 40px;
     height: 40px;
+}
+
+.descrizioneAnnuncio {
+  margin: 2em 0.3em;
 }

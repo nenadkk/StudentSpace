@@ -689,11 +689,11 @@ text-transform: none;
   display: flex;
   flex-direction: column;
   gap: 0.6em;
-  margin: 2em auto 4em;
-  width: 100%;           /* ← occupa tutto lo spazio disponibile */
-  max-width: 1000px;      /* ← non supera questa larghezza */
-  min-height: 250px;
-  box-sizing: border-box; /* ← include padding nella larghezza */
+  margin: 2em auto 2em;
+  width: 100%;          
+  max-width: 1000px;      
+  min-height: 200px;
+  box-sizing: border-box; 
 }
 
 /*
