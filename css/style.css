@@ -19,7 +19,7 @@
     --esperimentiColor: #8736d1;
     --affittiColor: #c30d43;
     --ripetizioniColor: #0a7053;
-    --required: #c30d43;
+    --required: #7b1726;
     --caratteristicheImp: #9bbdf3;
 }
 
@@ -581,7 +581,7 @@ text-transform: none;
   transform: translateX(-50%);
   width: 40px;
   height: 40px;
-  background-image: url("../assets/puntina.png"); /* ← percorso immagine */
+  background-image: url("../assets/puntina2.png"); /* ← percorso immagine */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

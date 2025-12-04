@@ -204,15 +204,6 @@ header {
 
 .ultimoInserito::before, .carta::before {
   top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 40px;
-  background-image: url("../assets/puntina.png"); /* ← percorso immagine */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 3;
 }
 
 #annuncioTop {
