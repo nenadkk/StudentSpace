@@ -5,7 +5,7 @@ function hamburgerMenu() {
 
 
                 let menu = document.getElementById('hamburger-menu')
-                let content = document.getElementsByClassName('container')[0]
+                let content = document.getElementsByClassName('content-container')[0]
 
                 hamburger.addEventListener('click', function () {
                     hamburgerChiuso.classList.toggle('active');

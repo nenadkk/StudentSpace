@@ -90,7 +90,6 @@ header {
     width: 2em;
     height: 1em;
     text-indent: -9999em; /* nasconde il testo visivamente */
-
 }
 
 #menu {
@@ -146,11 +145,12 @@ header {
 #currentLink {
     text-decoration: none;
     font-weight: bold;
-    background-image: url("../assets/stellina.png");
-    background-position: left center;
-    background-size: 1.2em;
+    background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
+    background-position: left center, right center;
     background-repeat: no-repeat;
+    background-size: 1em, 1em;
     padding-left: 1.5em;
+    padding-right: 1.5em;
     text-transform: uppercase;
 }
 
@@ -158,12 +158,6 @@ header {
     border-radius: 1em;
     background-color: var(--hoverNav);
     padding: 0.3em 0.6em;   
-}
-
-#currentLink .btn {
-    background-size: 1em;
-    padding-left: 2em;
-    background-position: left center;
 }
 
 #hamburger,

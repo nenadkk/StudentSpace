@@ -15,7 +15,7 @@ header {
     gap: 1em;
 }
 
-.container.active {
+.content-container.active {
     margin-top: 15em;
 }
 
@@ -76,20 +76,36 @@ header {
 }
 
 #hamburger-currentLink {
+    order: -1;
     text-decoration: none;
     font-weight: bold;
-    background-image: url("../assets/stellina.png");
-    background-position: left center;
-    background-size: 1.2em;
+    background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
+    background-position: left center, right center;
     background-repeat: no-repeat;
+    background-size: 1em, 1em;
     padding-left: 1.5em;
+    padding-right: 1.5em;
     text-transform: uppercase;
 }
 
-#hamburger-currentLink .btn {
-    background-size: 1em;
-    padding-left: 2em;
-    background-position: left center;
+#hamburger-menu li{
+    color: var(--txtcolor);
+}
+
+#hamburger-menu a {
+    color: var(--txtcolor);
+    padding: 0.3em 0.6em;
+}
+
+#hamburger-menu .links a{
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+#hamburger-menu a:visited {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--visited);
 }
 
 #hamburger-menu .btn {
