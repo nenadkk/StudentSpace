@@ -1,0 +1,57 @@
+###### DA FARE ######
+
+HTML 
+(NICSIM) 1. Da mettere il placeholder sotto e tenerlo fisso sul form
+(SOFIA) 2. Dividere la ricerca dai filtri 
+(SPEGGIO)3. Da mettere arial label per il salta a filtraggio (per screen reader)
+(NICSIM) 4. Sitemap in fondo al footer
+5. (opzionale) Mettere una pagina "chi siamo"
+(NENAD) 6. Nel filtraggio della ricerca mettere i tre campi specifici.
+    Idem per pubblica annuncio 
+(SOFIA) 7. Mettere che quando si inserisce un'immagine si possa inserire anche 
+    l'alt 
+8. (opzionale) Dopo l'accesso cambia la navbar con "Esci"+"Profilo"(forse) e annunci
+(NENAD) 9. Togliere le width in esplora per le cardi siccome non le calcola 
+    ma le prende da CSS
+(SPEGGIO) 10. In filtri e in pubblica datalist con tutte le città universitarie italiane (fatto per non dover aggiornare dinamicamente la lista delle 
+    città disponibili). Mettere il suggerimento di mettere la città universitaria di appartenenza
+(NENAD) 11. Mettere aria live true per errori form (per screen reader)
+
+CSS 
+(SPEGGIO) 1. Togliere hover cambio colore link
+(NENAD) 2. Da aumentare altezza pulsanti/link 
+
+JAVASCRIPT
+(NICSIM) 1. mettere negli ultimi inseriti che slidino in automatico 
+(SPEGGIO) 2. In annuncio mettere sia le freccette per cambiare immagine
+    sia che si possano slidare con il dito
+(NENAD) 3. Nascondere i tre campi specifici della ricerca quando non 
+    è selezionata la categoria e quando è selezionata mostrare
+    i campi relativi a quella categoria. Idem per pubblica annuncio 
+(SOFIA) 4. Mettere l'inserimento dinamico dell'alt e dell'immagine sucessiva
+    fino a un massimo di 4
+
+
+PHP
+1. Reindirizzare l'utente non loggato quando prova ad entrare in pubblica
+    mandandolo a "accedi"
+
+DATABASE
+1. (SOFIA) Fare l'ER (vedi overleaf) 
+2. 
+
+RELAZIONE
+- Scrivere che da mobile la datalist compare sopra la tastiera del telefono come autocompletamento
+- Nei test: scrivere il target a cui abbiamo fatto provare 
+il sito e i loro riscontri
+
+
+FORSE - come gestire pubblica e cancella
+
+Fare i test con totalvalidator in laboratorio
+
+
+###### DA CHIEDERE ALLA PROF ######
+
+-Per la print dell'annuncio quali immagini mostrare, se mostrarle tutte e con che struttura
+-

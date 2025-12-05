@@ -121,10 +121,13 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
                     creazione, modifica ed eliminazione dei propri annunci; gestione profilo; compilazione form con parte generica e specifica, revisione
                     \item \textbf{Limitazioni:} non può modificare annunci altrui; vincoli su campi obbligatori e formati (validazione client/server).
                 \end{itemize}
+
+            \begin{comment}
             \item \textbf{Amministratore: utente che modera e garantisce il giusto funzionamento} % da decidere
                 \begin{itemize}
                     \item \textbf{Azioni e permessi:}gestione completa degli annunci (anche altrui), categorie, utenti; strumenti di moderazione (blocco, archiviazione)
                 \end{itemize}
+            \end{comment}
         \end{itemize}
 
     \subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
@@ -148,32 +151,23 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
           \item \textbf{Data di pubblicazione}: generata automaticamente dal sistema.
           \item \textbf{Città}: riferimento all’utente registrato che ha pubblicato l’annuncio.
           \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. % decidere
+          
+          \begin{comment}
           \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. % decidere
+          \end{comment}
+          
         \end{itemize}
 
         \subsubsection{Campi specifici per categoria}
-        Oltre ai campi generici, ciascuna categoria prevede attributi specifici:
+        Oltre ai campi generici, ciascuna categoria prevede attributi specifici (3 per categoria):
+        \begin{multicols}{2}
         \begin{itemize}
             \item \textbf{Affitti}:
-            \begin{multicols}{2}
                 \begin{itemize} % decidere se tenere tutti questi attrubuti
                     \item Prezzo mensile
                     \item Indirizzo
-                    \item Contatti
-                    \item Numero inquilini
-                    \item Tipologia
-                    \item Piano
-                    \item Piani edificio
-                    \item Ascensore
-                    \item Superficie
-                    \item Locali
-                    \item Camere da letto
-                    \item Bagni
-                    \item Arredato
-                    \item Balcone
-                    \item Terrazzo
+                    \item Numero coinquilini
                \end{itemize}
-           \end{multicols}
             \item \textbf{Esperimenti}:
             \begin{itemize}
               \item Laboratorio di riferimento
@@ -184,7 +178,7 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
             \begin{itemize}
               \item Data evento
               \item Luogo
-              \item Tipologia evento (seminario, festa, conferenza, ecc.)
+              \item Costo entrata
             \end{itemize}
           \item \textbf{Ripetizioni}:
             \begin{itemize}
@@ -193,7 +187,7 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
               \item Prezzo orario
             \end{itemize}
         \end{itemize}
-
+        \end{multicols}
 \subsection{Requisiti funzionalità} % registrazione/login, pubblicazione annunci, modifica/eliminazione, filtraggio annunci, validazione input (client/server), accessibilità e responsività
 Il sistema deve garantire una serie di funzionalità fondamentali per soddisfare i requisiti del progetto
 e le esigenze degli utenti.
@@ -246,7 +240,7 @@ e le esigenze degli utenti.
 \section{Progettazione}
     \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
-\subsection{Progettazione Database}
+\subsection{Progettazione Database} 
 \subsubsection{Analisi dei requisiti del database}
 
 La base di dati deve supportare la gestione degli utenti e degli annunci pubblicati
@@ -259,17 +253,18 @@ inserimento, modifica e cancellazione.
 \begin{itemize}
   \item \textbf{Utente}: rappresenta gli utenti registrati al sistema.
     \begin{itemize}
-      \item Attributi: \texttt{IdUtente}, \texttt{Nome}, \texttt{Cognome}, \texttt{Città} \texttt{Email}, \texttt{Password}, \texttt{Ruolo}.
+      \item Attributi: \texttt{IdUtente}, \texttt{Nome}, \texttt{Cognome}, \texttt{Città}, \texttt{Email}, \texttt{Password}.
     \end{itemize}
   \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.
+        \begin{itemize}
+          \item Attributi: \texttt{IdAnnuncio}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione}, \texttt{Città}, \texttt{Categoria}.
+        \end{itemize}
+    \item \textbf{Categoria}: elenco di categorie con unico attributo \texttt{Titolo}
+  \item \textbf{Tipi di annunci}: specializzazioni dell’entità \texttt{Annuncio}.
     \begin{itemize}
-      \item Attributi: \texttt{IdAnnuncio}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione}, \texttt{Città}, \texttt{Categoria}, \texttt{IdUtente}.
-    \end{itemize}
-  \item \textbf{Categorie di annunci}: specializzazioni dell’entità \texttt{Annuncio}.
-    \begin{itemize}
-      \item \textbf{Affitto}: \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{Contatti}, \texttt{NumeroInquilini}, \texttt{Tipologia}, \texttt{Piano}, \texttt{PianiEdificio}, \texttt{Ascensore}, \texttt{Superficie}, \texttt{Locali}, \texttt{CamereLetto}, \texttt{Bagni}, \texttt{Arredato}, \texttt{Balcone}, \texttt{Terrazzo}.
+      \item \textbf{Affitto}: \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{NumeroInquilini}.
       \item \textbf{Esperimento}: \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
-      \item \textbf{Evento}: \texttt{DataEvento}, \texttt{Luogo}, \texttt{TipologiaEvento}.
+      \item \textbf{Evento}: \texttt{DataEvento}, \texttt{Luogo}, \texttt{CostoEntrata}.
       \item \textbf{Ripetizione}: \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
     \end{itemize}
 \end{itemize}
