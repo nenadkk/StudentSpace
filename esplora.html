@@ -64,7 +64,21 @@
         </ol>
     </nav>
 
+    <div id="aside-style-layout">
+    <div id="aside-mini-layout">
+    <aside id="ricerca">
+        <form class="form-data" action="esplora.html" method="get">
+            <fieldset>
+                <div>
+                    <label for="titolo">Cerca</label>
+                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca parole chiave...">
+                </div>
+            </fieldset>
+        </form>
+    </aside>
+
     <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
+    </div>
     <aside id="filtri">
         <div class="filtri-header">
             <h2>Filtri</h2>
@@ -72,16 +86,10 @@
         </div>    
         <form class="form-data" action="esplora.html" method="get">
             <fieldset>
-                <!--<legend>Filtri di ricerca generici</legend>-->
-                <div>
-                    <label for="titolo">Cerca per titolo</label>
-                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca..">
-                </div>
-
                 <div>
                     <label for="categoria">Categoria</label>
                     <select id="categoria" name="categoria">
-                        <option>Categoria</option>
+                        <option>Seleziona</option>
                         <option>Eventi</option>
                         <option>Esperimenti</option>
                         <option>Affitti</option>
@@ -91,8 +99,8 @@
 
                 <div>
                     <label for="citta">Città</label>
-                    <input list="cities" name="citta" id="citta">
-                    <datalist id="cities">
+                    <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                    <datalist id="listaCitta">
                         <option value="Padova">
                         <option value="Trento">
                         <option value="Roma">
@@ -117,9 +125,10 @@
                 </div>
             </fieldset>
                 <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
-            <button type="submit">Cerca</button>
+            <button type="submit">Applica</button>
         </form>
     </aside>
+    </div>
 
     <main id="contenuto">
         <div class="esplora">

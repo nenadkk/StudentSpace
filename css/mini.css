@@ -206,9 +206,31 @@ header {
 }
 */
 
+#aside-style-layout{
+    float: none;
+    width: auto;
+    margin: 0;
+}
+
+#aside-mini-layout {
+    width: 100%;
+    padding: 0 2em;
+}
+
+#ricerca,
+#toggleFiltri {
+    width: 100%;         
+    max-width: 40em;      
+    margin: 0 auto;        
+    box-sizing: border-box;
+}
+
+#ricerca .form-data {
+    padding: 0;
+}
+
 #toggleFiltri {
     display: block;
-    margin: 1em auto;
     padding: 0.8em 1.2em;
     font-size: 1em;
     border-radius: 1em;
@@ -217,9 +239,7 @@ header {
     font-weight: bold;
     border: none;
     text-align: left;
-    max-width: 300px;
-    width: 100%;
-    box-sizing: border-box;
+    margin: 1em auto;
 }
 
 #toggleFiltri::before {

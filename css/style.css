@@ -21,6 +21,7 @@
     --ripetizioniColor: #0a7053;
     --required: #7b1726;
     --caratteristicheImp: #9bbdf3;
+    --formbg: #e8f0fd;
 }
 
 html, body{ 
@@ -589,6 +590,14 @@ footer {
     text-align: center;
 }
 
+label {
+    font-weight: bold;
+}
+
+#ricerca label {
+    font-size: 1.2em;
+}
+
 #toggleFiltri,
 #chiudiFiltri {
     display: none;
@@ -831,7 +840,7 @@ footer {
     max-width: 60em;
 }
 
-#filtri {
+#aside-style-layout{
     flex: 0 0 300px;    
     width: 20%;
     min-width: 280px;
@@ -839,9 +848,8 @@ footer {
     float: left;
 }
 
-#filtri fieldset {
+#ricerca fieldset, #filtri fieldset {
     border: none; 
-
 }
 
 #login-container h2, #register-container h2, #filtri h2, #pubblica-container h2 {
@@ -870,14 +878,14 @@ footer {
 
 input, select {
     font-size: 1em;
-    border-radius: 1em;
+    border-radius: 0.8em;
     min-height: 3em;
     text-indent: 1em;
-    background-color: var(--clearBgColor);
+    background-color: var(--formbg);
     color: var(--txtcolor);
     font-weight: 500;
-    border: 2px solid var(--btnColor);
-    align-items:center;
+    border: 1.5px solid var(--btnColor);
+    align-items: center;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
