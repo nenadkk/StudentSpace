@@ -40,7 +40,7 @@
         </nav>
 
         <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
-            <span id="hamburger-chiuso" class="active">&#9776;</span>
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
         <nav id="hamburger-menu" aria-label="Menu principale">
@@ -64,58 +64,62 @@
         </ol>
     </nav>
 
+    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
     <aside id="filtri">
-        <h2>Filtri</h2>
-            <form class="form-data" action="esplora.html" method="get">
-                <fieldset>
-                    <!--<legend>Filtri di ricerca generici</legend>-->
-                    <div>
-                        <label for="titolo">Cerca per titolo</label>
-                        <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca..">
-                    </div>
+        <div class="filtri-header">
+            <h2>Filtri</h2>
+            <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
+        </div>    
+        <form class="form-data" action="esplora.html" method="get">
+            <fieldset>
+                <!--<legend>Filtri di ricerca generici</legend>-->
+                <div>
+                    <label for="titolo">Cerca per titolo</label>
+                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca..">
+                </div>
 
-                    <div>
-                        <label for="categoria">Categoria</label>
-                        <select id="categoria" name="categoria">
-                            <option>Categoria</option>
-                            <option>Eventi</option>
-                            <option>Esperimenti</option>
-                            <option>Affitti</option>
-                            <option>Ripetizioni</option>
-                        </select>
-                    </div>
+                <div>
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria">
+                        <option>Categoria</option>
+                        <option>Eventi</option>
+                        <option>Esperimenti</option>
+                        <option>Affitti</option>
+                        <option>Ripetizioni</option>
+                    </select>
+                </div>
 
-                    <div>
-                        <label for="citta">Città</label>
-                        <input list="cities" name="citta" id="citta">
-                        <datalist id="cities">
-                            <option value="Padova">
-                            <option value="Trento">
-                            <option value="Roma">
-                            <option value="Milano">
-                            <option value="Bologna">
-                            <option value="Torino">
-                            <option value="Pavia">
-                            <option value="Napoli">
-                            <option value="Firenze">
-                            <option value="Venezia">
-                            <option value="Perugia">
-                            <option value="Catania">
-                            <option value="Genova">
-                            <option value="Salerno">
-                            <option value="Siena">
-                        </datalist>
-                    </div>
+                <div>
+                    <label for="citta">Città</label>
+                    <input list="cities" name="citta" id="citta">
+                    <datalist id="cities">
+                        <option value="Padova">
+                        <option value="Trento">
+                        <option value="Roma">
+                        <option value="Milano">
+                        <option value="Bologna">
+                        <option value="Torino">
+                        <option value="Pavia">
+                        <option value="Napoli">
+                        <option value="Firenze">
+                        <option value="Venezia">
+                        <option value="Perugia">
+                        <option value="Catania">
+                        <option value="Genova">
+                        <option value="Salerno">
+                        <option value="Siena">
+                    </datalist>
+                </div>
 
-                    <div>
-                        <label for="data">Data pubblicazione</label>
-                        <input id="data" type="date" name="data">
-                    </div>
-                </fieldset>
+                <div>
+                    <label for="data">Data pubblicazione</label>
+                    <input id="data" type="date" name="data">
+                </div>
+            </fieldset>
                 <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
-                <button type="submit">Cerca</button>
-            </form>
-        </aside>
+            <button type="submit">Cerca</button>
+        </form>
+    </aside>
 
     <main id="contenuto">
         <div class="esplora">
@@ -131,7 +135,7 @@
                         <dd>Padova</dd>
 			            <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -146,7 +150,7 @@
                         <dd>Venezia</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+   		                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -161,7 +165,7 @@
                         <dd>Ferrara</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria catEsperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
+   		                    <span class="etichettaCategoria catEsperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -191,7 +195,7 @@
                         <dd>Bologna</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+   		                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -206,7 +210,7 @@
                         <dd>Verona</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		            <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -221,7 +225,7 @@
                         <dd>Rovigo</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
                         </dd>
                     </dl>
                     <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -273,6 +277,7 @@
                 </li>
             </ul>
         </div>
+        <div class="separatore" role="presentation" aria-hidden="true"></div>
     </main>
     <footer>
         <div id="footer-top">

@@ -8,24 +8,24 @@ function hamburgerMenu() {
                 let content = document.getElementsByClassName('content-container')[0]
 
                 hamburger.addEventListener('click', function () {
-                    hamburgerChiuso.classList.toggle('active');
-                    hamburgerAperto.classList.toggle('active');
+                    hamburgerChiuso.classList.toggle('attivo');
+                    hamburgerAperto.classList.toggle('attivo');
 
                     hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
 
-                    // menu.classList.toggle('active');
+                    // menu.classList.toggle('attivo');
 
-                    if (menu.classList.contains('active')) {
-                        if (content.classList.contains('active') && window.scrollY < 30) {
-                            content.classList.remove('active')
+                    if (menu.classList.contains('attivo')) {
+                        if (content.classList.contains('attivo') && window.scrollY < 30) {
+                            content.classList.remove('attivo')
                         }
-                        menu.classList.remove('active')
-                        content.classList.remove('hamburger-active')
+                        menu.classList.remove('attivo')
+                        content.classList.remove('hamburger-attivo')
                     } else {
-                        if (!content.classList.contains('active')) {
-                            content.classList.add('active')
+                        if (!content.classList.contains('attivo')) {
+                            content.classList.add('attivo')
                         }
-                        menu.classList.add('active')
+                        menu.classList.add('attivo')
                     }
                 })
 }
@@ -43,3 +43,20 @@ if(thumbnails.length > 0 && mainImage) {
         });
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("toggleFiltri");
+  const filtri = document.getElementById("filtri");
+  const chiudi = document.getElementById("chiudiFiltri");
+
+  if(!toggle || !filtri || !chiudi) {return}
+  toggle.addEventListener("click", () => {
+    filtri.classList.add("attivo");
+    toggle.setAttribute("aria-expanded", true);
+  });
+
+  chiudi.addEventListener("click", () => {
+    filtri.classList.remove("attivo");
+    toggle.setAttribute("aria-expanded", false);
+  });
+});

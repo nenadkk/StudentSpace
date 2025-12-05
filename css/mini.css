@@ -7,6 +7,16 @@ body {
     padding-top: 5em;
 }
 
+:hover {
+    transform: none;
+}
+
+/*
+====================================================
+    SEZIONE HEADER
+==================================================== 
+*/
+
 header {
     flex-direction: row;
     align-items: center;
@@ -15,7 +25,7 @@ header {
     gap: 1em;
 }
 
-.content-container.active {
+.content-container.attivo {
     margin-top: 16em;
 }
 
@@ -30,13 +40,13 @@ header {
 }
 
 #hamburger {
-    all: unset;              /* resetta completamente lo stile nativo del button */
+    all: unset;              
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;          /* grandezza icona */
-    color: var(--txtcolor);  /* colore icona */
-    cursor: pointer;         /* mostra la manina */
+    font-size: 2em;         
+    color: var(--txtcolor);  
+    cursor: pointer;  
 }
 
 #hamburger span {
@@ -46,9 +56,11 @@ header {
 #hamburger-menu {
     display: none;
     width: 100%;
+    padding-top: 0.5em;
+    box-shadow: 0 -10px 6px -10px rgba(0,0,0,0.3); 
 }
 
-#hamburger-menu.active{
+#hamburger-menu.attivo{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -128,13 +140,41 @@ header {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#hamburger-aperto.active {
+#hamburger-aperto.attivo {
     display: flex;
 }
-#hamburger-chiuso.active {
+#hamburger-chiuso.attivo {
     display: flex;
 }
 
+/*
+====================================================
+    SEZIONE FOOTER
+==================================================== 
+*/
+
+#footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-align: center;
+}
+
+#footer-bottom p {
+    margin-top: 0.5em; 
+    font-size: 10pt;
+    font-style: italic;
+    text-align: center;
+    flex: none;
+    min-width: auto;
+}
+
+/*
+====================================================
+    SEZIONE HERO
+==================================================== 
+*/
 
 #presentazione {
     display: block;
@@ -155,28 +195,92 @@ header {
     justify-content: center;
 }
 
+/*
+====================================================
+    SEZIONE FILTRI
+==================================================== 
 #filtri {
     float: none;
     width: auto;
     margin: 0;
 }
+*/
 
-#footer-bottom {
+#toggleFiltri {
+    display: block;
+    margin: 1em auto;
+    padding: 0.8em 1.2em;
+    font-size: 1em;
+    border-radius: 1em;
+    background-color: var(--btnColor);
+    color: var(--clearTxtColor);
+    font-weight: bold;
+    border: none;
+    text-align: left;
+    max-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#toggleFiltri::before {
+    content: "›";
+    margin-right: 0.5em;
+    font-size: 1.5em;
+}
+
+#filtri {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--BgColor);
+    border-radius: 0 1em 1em 0;
+    box-shadow: 0 0.5em 1em rgba(0,0,0,0.3);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    text-align: center;
+    overflow: hidden;
 }
 
-#footer-bottom p {
-    margin: 0.5em 0 0 0; /* solo margine sopra */
-    font-size: 10pt;
-    font-style: italic;
-    text-align: center;
-    flex: none;
-    min-width: auto;
+.filtri-header {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.2em;
+    background-color: var(--BgColor);
+    box-shadow: 0 4px 5px -6px rgba(0,0,0,0.4);
+    z-index: 2;
 }
+
+#chiudiFiltri {
+    all: unset;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--txtcolor);
+}
+
+.form-data {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1em 1.2em;
+}
+
+#filtri.attivo {
+    gap: 0;
+    left: 0 ;
+    margin-left: 0;
+    padding: 1.2em; 
+}
+
+/*
+====================================================
+    SEZIONE CATEGORIE
+==================================================== 
+*/
 
 #categorie {
     padding: 4em 1em;
@@ -184,13 +288,35 @@ header {
 
 .categoria {
     display: flex;
-    flex-direction: column;
-    padding: 1.5em 1.5em 4em 1.5em;
+    flex-direction: row;       
+    align-items: center;
+    gap: 1em;                 
+    padding: 1em;             
+}
+
+.categoria img {
+    width: 30%;               
+    height: auto;
+    flex-shrink: 0;
+}
+
+.categoria .contenuto {
+    padding-bottom: 2em;
 }
 
 #categorie ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+.esplora {
+    padding-top: 0.5em;
+}
+
+/*
+====================================================
+    SEZIONE ULTIMOINSERITO + CARTA
+==================================================== 
+*/
 
 .ultimoInserito, .carta {
     padding: 1em 1em 2.5em 1em;
@@ -203,11 +329,17 @@ header {
 }
 
 .ultimoInserito::before, .carta::before {
-  top: -25px;
+    top: -25px;
 }
 
+/*
+====================================================
+    SEZIONE ANNUNCIO + CAROSELLO
+==================================================== 
+*/
+
 #annuncioTop {
-  padding: 0.5em; 
+    padding: 0.5em; 
 }
 
 #carosello {
@@ -219,8 +351,8 @@ header {
 }
 
 .carosello-principale {
-    width: clamp(250px, 90%, 450px); /* larghezza fluida ma controllata */
-    aspect-ratio: 4 / 3;             /* proporzione orizzontale fissa */
+    width: clamp(250px, 90%, 450px); 
+    aspect-ratio: 4 / 3;             
     overflow: hidden;
     border-radius: 1em;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -228,12 +360,12 @@ header {
 }
 
 .carosello-principale img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 1em;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    display: block;
 }
 
 .carosello-thumbnails {
@@ -251,5 +383,22 @@ header {
 }
 
 .descrizioneAnnuncio {
-  margin: 2em 0.3em;
+    width: auto;
+    max-width: 100%;
+    margin: 2em 0.5em;
+}
+
+#login-container,
+#register-container,
+#pubblica-container {
+    width: auto;
+    max-width: 100%;
+    margin: 2em 0.5em;
+}
+
+
+#register-container .form-data, #pubblica-container .form-data {
+    display:flex;
+    flex-direction: column;
+    gap: 1.2em; 
 }

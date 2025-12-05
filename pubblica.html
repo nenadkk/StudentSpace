@@ -40,7 +40,7 @@
         </nav>
         
         <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
-            <span id="hamburger-chiuso" class="active">&#9776;</span>
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
         <nav id="hamburger-menu" aria-label="Menu principale">
@@ -65,10 +65,9 @@
     </nav>
 
     <main id="contenuto">
-        <div id="register-container">
+        <div id="pubblica-container">
             <h2>Pubblica annuncio</h2>
             <form action="/public" method="post">
-                
                 <div class="form-data">
                     <div>
                         <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
@@ -107,9 +106,9 @@
                     
                     <div>
                         <label for="Prezzo">Prezzo<span class="required"> (richiesto)</span></label>
-                        <div class="input-wrapper">
-    			     <input type="number" id="Prezzo" name="Prezzo al mese" required placeholder="Es. 400" min="0">
-  			</div>
+                        <div class="input-wrapper-price">
+    			            <input type="number" id="Prezzo" name="Prezzo al mese" required placeholder="Es. 400" min="0">
+  			            </div>
                     </div>                             
 
                     <div>
@@ -123,12 +122,10 @@
                     </div>
 
                 </div>
-
                 <button type="submit">Invia</button>
-
             </form>
         </div>
-
+        <div class="separatore" role="presentation" aria-hidden="true"></div>
     </main>
 
     <footer>

@@ -1,10 +1,10 @@
 * {
-    padding: 0em; /*eliminare il default per garantire che sia simile su tutti i browser*/
+    padding: 0em; 
     margin: 0em;
     box-sizing: border-box;
 }
 
-:root { /* definizione variabili globali */
+:root { 
     --BgColor: #83adf0;
     --breadColor: #83adf0;
     --hoverNav: #aec6ed;
@@ -23,13 +23,12 @@
     --caratteristicheImp: #9bbdf3;
 }
 
-html, body{ /* => da applicare a tutto */
-    font-size: 100%; /* adotta le impostazioni dell'utente */
-    font-family:"Lexend", "Roboto", sans-serif; /*"Lexend" => font di google, "Roboto", => entrambi molto accessibili*/
+html, body{ 
+    font-size: 100%; 
+    font-family:"Lexend", "Roboto", sans-serif; 
     line-height: 1.5em; 
     margin: 0;
 }
-
 
 body {
     background-color: var(--clearBgColor);
@@ -46,19 +45,15 @@ footer {
     margin-top: auto;
 }
 
-.enfasi{
-    font-weight: bold;
-}
-
 h2 {
     font-size: 1.5em;
-    margin-bottom: 0.5em;
-    
+    margin-bottom: 0.5em;   
 }
 
 #contenuto {
   scroll-margin-top: 6.5em; 
 }
+
 /*
 ====================================================
     SEZIONE HEADER
@@ -89,7 +84,7 @@ header {
     font-size: 6em; 
     width: 2em;
     height: 1em;
-    text-indent: -9999em; /* nasconde il testo visivamente */
+    text-indent: -9999em;
 }
 
 #menu {
@@ -167,7 +162,6 @@ header {
     display: none;
 }
 
-
 /*
 ====================================================
     SEZIONE .BTN
@@ -236,9 +230,9 @@ header {
 }
 
 #breadcrumb li{
-    white-space: nowrap; /*impedisce che vada a capo*/
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; /* inserisce ... se viene tagliato */
+    text-overflow: ellipsis; 
     max-width: 20em;
 }
 
@@ -249,7 +243,6 @@ header {
 .currentPage {
     font-weight: bold;
 }
-
 
 /*
 ====================================================
@@ -323,10 +316,6 @@ footer {
     width: auto;
 }
 
-/*
-/*
-================= SPECIFICHE INDEX ============================================================= 
-*/
 /*
 ====================================================
     SEZIONE HERO
@@ -473,7 +462,7 @@ footer {
 .ultimoInserito, .carta {
     background-color: var(--card);
     border-radius: 1em;
-    padding: 1.5em 1.5em 5em 1.5em;
+    padding: 1.5em 1.5em 3em 1.5em;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -498,22 +487,21 @@ footer {
 }
 
 .etichettaCategoria {
-  display: inline-block;
-  font-size: 0.85em;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.3em 0.8em;
-  border-radius: 1em;
-  color: var(--clearTxtColor);
-  background-color: var(--esperimentiColor); /* oppure gestito via .catEsperimenti */
-  margin: 0.5em 0 1em;
-  text-align: center;
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.3em 0.8em;
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    background-color: var(--esperimentiColor); /* oppure gestito via .catEsperimenti */
+    margin: 0.5em 0 1em;
+    text-align: center;
 }
 
 .ultimoInserito dl, .carta dl {
     margin: 0;
     line-height: 1.5em;
-    
 }
 
 .ultimoInserito dt, .carta dt {
@@ -543,49 +531,49 @@ footer {
 .ultimoInserito:focus,
 .carta:hover,
 .carta:focus {
-  transform: scale(1.01); /* ingrandisce del 5% */
-  box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2); /* aggiunge un’ombra per dare profondità */
+    transform: scale(1.04);
+    box-shadow: 0 0.4em 0.5em rgba(0,0,0,0.2); 
 }
 
 .catEventiLink, .catEsperimentiLink, .catAffittiLink,.catRipetizioniLink,
 .ultimoInserito .dettagli,
 .carta .dettagli {
-  position: absolute;
-  inset: 0;           
-  z-index: 1;
+    position: absolute;
+    inset: 0;           
+    z-index: 1;
 }
 
 .categoria a>span, 
 .ultimoInserito a>span,
 .carta a span {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-  z-index: 2;
-  font-size: 1em;
-  color: var(--txtcolor);
-  font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 0.1em;
-  padding: 0.3em 0.6em;
-  border-radius: 1em;
-  pointer-events: none;
-text-transform: none;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    z-index: 2;
+    font-size: 1em;
+    color: var(--txtcolor);
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    padding: 0.3em 0.6em;
+    border-radius: 1em;
+    pointer-events: none;
+    text-transform: none;
 }
 
 .ultimoInserito::before, .carta::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background-image: url("../assets/puntina2.png"); /* ← percorso immagine */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 3;
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background-image: url("../assets/puntina2.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 3;
 }
 
 /*
@@ -593,14 +581,17 @@ text-transform: none;
     SEZIONE ESPLORA + FILTRI
 ==================================================== 
 */
-
-
 .esplora {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
     padding: 2em;
     text-align: center;
+}
+
+#toggleFiltri,
+#chiudiFiltri {
+    display: none;
 }
 
 /*
@@ -610,56 +601,56 @@ text-transform: none;
 */
 
 #carosello {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  align-items: center;
-  justify-content: center;  /* ← partecipa al layout flessibile */
-  margin: 0;         /* ← niente centratura forzata */
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    justify-content: center; 
+    margin: 0;    
+    flex-wrap: wrap;
 }
 
 .carosello-principale {
-  width: clamp(280px, 60vw, 500px);
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 1em;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  position: relative;
+    width: clamp(280px, 60vw, 500px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
 }
 
 .carosello-principale img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: opacity 0.3s ease;
-  border-radius: 1em;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.3s ease;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .carosello-thumbnails {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  justify-content: center;
-  flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    flex: 0 0 auto;
 }
 
 .carosello-thumbnails img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 0.5em;
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0.5em;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .carosello-thumbnails img.attiva {
-  opacity: 1;
-  transform: scale(1.05);
-  outline: 2px solid var(--btnColor);
+    opacity: 1;
+    transform: scale(1.05);
+    outline: 2px solid var(--btnColor);
 }
 
 /*
@@ -669,23 +660,23 @@ text-transform: none;
 */
 
 #annuncioTop {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;    
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 2.5em; 
+    display: flex;
+    flex-direction: row;
+    gap: 2em;    
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2.5em; 
 }
 
 .info {
-  flex: 0 1 400px; 
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;       
-  padding: 1.5em;
-  align-self: center;
+    flex: 0 1 400px; 
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;       
+    padding: 1.5em;
+    align-self: center;
 }
 
 .attrAnnuncio {
@@ -701,18 +692,18 @@ text-transform: none;
 }
 
 .descrizioneAnnuncio {
-  background-color: var(--card);
-  border-radius: 1em;
-  padding: 1.5em 1.2em;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6em;
-  margin: 2em auto 2em;
-  width: 100%;          
-  max-width: 1000px;      
-  min-height: 200px;
-  box-sizing: border-box; 
+    background-color: var(--card);
+    border-radius: 1em;
+    padding: 1.5em 1.2em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    margin: 2em auto 2em;
+    width: 100%;          
+    max-width: 1000px;      
+    min-height: 200px;
+    box-sizing: border-box; 
 }
 
 /*
@@ -720,19 +711,19 @@ text-transform: none;
 */
 /*
 ===========================================================================
-    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card UltimiInseriti, Card annuncio)
+    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card UltimiInseriti)
 ===========================================================================
 */
 
 .etichettaCategoria {
-  display: inline-block;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.4em 1em;
-  border-radius: 1em;
-  color: var(--clearTxtColor);
-  text-align: center;
-  background-color: var(--card); 
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.4em 1em;
+    border-radius: 1em;
+    color: var(--clearTxtColor);
+    text-align: center;
+    background-color: var(--card); 
 } 
 
 .catEventi {
@@ -762,9 +753,10 @@ text-transform: none;
 }
 
 .catEventiLink:hover span, .catEventiLink:focus span {
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--eventiColor);
+    /*border-radius: 1em;
+    color: var(--clearTxtColor;
+    background-color: var(--eventiColor);*/
+    color: var(--eventiColor);
 }
 
 .catEsperimentiLink:visited span {
@@ -772,9 +764,10 @@ text-transform: none;
 }
 
 .catEsperimentiLink:hover span, .catEsperimentiLink:focus span {
-    border-radius: 1em;
+    /*border-radius: 1em;
     color: var(--clearTxtColor);
-    background-color: var(--esperimentiColor);
+    background-color: var(--esperimentiColor);*/
+    color: var(--esperimentiColor);
 }
 
 .catAffittiLink:visited span {
@@ -782,9 +775,10 @@ text-transform: none;
 }
 
 .catAffittiLink:hover span, .catAffittiLink:focus span {
-    border-radius: 1em;
+    /*border-radius: 1em;
     color: var(--clearTxtColor);
-    background-color: var(--affittiColor);
+    background-color: var(--affittiColor);*/
+    color: var(--affittiColor);
 }
 
 .catRipetizioniLink:visited span {
@@ -792,9 +786,10 @@ text-transform: none;
 }
 
 .catRipetizioniLink:hover span, .catRipetizioniLink:focus span {
-    border-radius: 1em;
+    /*border-radius: 1em;
     color: var(--clearTxtColor);
-    background-color: var(--ripetizioniColor);
+    background-color: var(--ripetizioniColor);*/
+    color: var(--ripetizioniColor);
 }
 
 
@@ -803,9 +798,10 @@ text-transform: none;
 }
 
 .dettagli:hover span, .dettagli:focus span {
-    border-radius: 1em;
+    /*border-radius: 1em;
     color: var(--txtcolor);
-    background-color: var(--BgColor);
+    background-color: var(--BgColor);*/
+    color: var(--visited);
 }
 
 /*
@@ -814,7 +810,7 @@ text-transform: none;
 =========================================================== 
 */
 
-#login-container, #register-container, #filtri {
+#login-container, #register-container, #filtri, #pubblica-container {
     display: flex;
     justify-content: center;
     flex-direction: column;  
@@ -831,7 +827,7 @@ text-transform: none;
     min-width: 20em;            
 }
 
-#register-container {
+#register-container, #pubblica-container {
     max-width: 60em;
 }
 
@@ -848,7 +844,7 @@ text-transform: none;
 
 }
 
-#login-container h2, #register-container h2, #filtri h2 {
+#login-container h2, #register-container h2, #filtri h2, #pubblica-container h2 {
     text-align: center;
     margin: 0;
 }
@@ -859,7 +855,7 @@ text-transform: none;
     gap: 1.2em;                 
 }
 
-#register-container .form-data {
+#register-container .form-data, #pubblica-container .form-data {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 2em 3em; 
@@ -891,32 +887,32 @@ input:focus, select:focus {
     outline-offset: 2px;
 }
 
-.input-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%; 
+.input-wrapper-price {
+    position: relative;
+    display: inline-block;
+    width: 100%; 
 }
 
-.input-wrapper input {
-  width: 100%; 
-  padding-right: 5em; 
+.input-wrapper-price input {
+    width: 100%; 
+    padding-right: 5em; 
 }
 
-.input-wrapper::after {
-  content: "€ / mese";
-  position: absolute;
-  right: 1em;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--txtcolor);
-  pointer-events: none; 
+.input-wrapper-price::after {
+    content: "€ / mese";
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--txtcolor);
+    pointer-events: none; 
 }
 
 input[type="file"] {
-  display: inline-block;
-  vertical-align: middle;
-  height: 3em; 
-  line-height: 3em;
+    display: inline-block;
+    vertical-align: middle;
+    height: 3em; 
+    line-height: 3em;
 }
 
 .checkbox-inline {
