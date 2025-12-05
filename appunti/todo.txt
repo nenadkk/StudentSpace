@@ -39,3 +39,5 @@ login user
 login user
 psw da foglio
 --> parametri connessione db
+
+TO DO (post 05/12):
