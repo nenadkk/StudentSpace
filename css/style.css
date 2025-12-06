@@ -1088,3 +1088,8 @@ form > p, form > p{
 .required {
     color: var(--required)
 }
+
+#filtri .form-data .nascondi-filtri{
+    display: none;
+}
+
