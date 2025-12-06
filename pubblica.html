@@ -66,64 +66,156 @@
 
     <main id="contenuto">
         <div id="pubblica-container">
-            <h2>Pubblica annuncio</h2>
-            <form action="/public" method="post">
-                <div class="form-data">
-                    <div>
-                        <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
-                        <input type="text" id="titolo" name="titolo" required placeholder="Es. Partita di calcio">
-                    </div>
+        <h2>Pubblica annuncio</h2>
+        <form action="/public" method="post" enctype="multipart/form-data">
+            <div class="form-data">
+                <!-- Parte generica -->
+                <div id="pubblica-titolo-container">
+                    <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
+                    <input type="text" id="titolo" name="titolo" required placeholder="Es. Partita di calcio">
+                </div>
 
+                <div id="attr-generici-container">
                     <div>
                         <label for="categoria">Categoria<span class="required"> (richiesto)</span></label>
-                        <select id="categoria" name="categoria">
-                            <option>Affitti</option>
-                            <option>Esperimenti</option>
-                            <option>Eventi</option>
-                            <option>Ripetizioni</option>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Seleziona categoria</option>
+                            <option value="affitti">Affitti</option>
+                            <option value="esperimenti">Esperimenti</option>
+                            <option value="eventi">Eventi</option>
+                            <option value="ripetizioni">Ripetizioni</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="citta">Città<span class="required"> (richiesto)</span></label>
-                        <input type="text" id="citta" name="citta" required placeholder="Es.  Roma">
+                        <input type="text" id="citta" name="citta" required placeholder="Es. Roma">
                     </div>
-
-                    <div>
-                        <label for="ncoinq">Numero coinquilini<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="ncoinq" name="ncoinq" required placeholder="Es. 3" min="0">
-                    </div>
-                    
-                    <div>
-                        <label for="nStanze">Numero stanze<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="nStanze" name="nStanze" required placeholder="Es. 2" min="0">
-                    </div>             
-                    
-                    <div>
-                        <label for="Nbagni">Numero bagni<span class="required"> (richiesto)</span></label>
-                        <input type="number" id="Nbagni" name="Nbagni" required placeholder="Es. 1" min="0">
-                    </div>
-                    
-                    <div>
-                        <label for="Prezzo">Prezzo<span class="required"> (richiesto)</span></label>
-                        <div class="input-wrapper-price">
-    			            <input type="number" id="Prezzo" name="Prezzo al mese" required placeholder="Es. 400" min="0">
-  			            </div>
-                    </div>                             
-
-                    <div>
-                        <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        <input type="email" id="email" name="email" required placeholder="Es. mario.rossi@gmail.com">
-                    </div>
-
-                    <div>
-                        <label for="foto">Immagine<span class="required"> (richiesto)</span></label>
-                        <input type="file" id="foto" name="foto" required accept="image/*">
-                    </div>
-
                 </div>
-                <button type="submit">Invia</button>
-            </form>
+
+                <div id="pubblica-descrizione-container">
+                    <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
+                    <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..."></textarea>
+                </div>
+
+            <!-- Campi specifici per categoria -->
+            <div id="attr-specifici-container">
+                <fieldset id="campi-affitti" class="campi-specifici" hidden>
+                    <legend>Dettagli Affitti</legend>
+                    <div>
+                        <label for="prezzoMensile">Prezzo mensile</label>
+                        <input type="number" id="prezzoMensile" name="prezzoMensile" min="0">
+                    </div>
+                    <div>
+                        <label for="indirizzo">Indirizzo</label>
+                        <input type="text" id="indirizzo" name="indirizzo">
+                    </div>
+                    <div>
+                        <label for="coinquilini">Numero coinquilini</label>
+                        <input type="number" id="coinquilini" name="coinquilini" min="0">
+                    </div>
+                </fieldset>
+
+                <fieldset id="campi-esperimenti" class="campi-specifici" hidden>
+                    <legend>Dettagli Esperimenti</legend>
+                    <div>
+                        <label for="laboratorio">Laboratorio di riferimento</label>
+                        <input type="text" id="laboratorio" name="laboratorio">
+                    </div>
+                    <div>
+                        <label for="durata">Durata prevista</label>
+                        <input type="text" id="durata" name="durata" placeholder="Es. 3 mesi">
+                    </div>
+                    <div>
+                        <label for="compenso">Compenso</label>
+                        <input type="number" id="compenso" name="compenso" min="0">
+                    </div>
+                </fieldset>
+
+                <fieldset id="campi-eventi" class="campi-specifici" hidden>
+                    <legend>Dettagli Eventi</legend>
+                    <div>
+                        <label for="dataEvento">Data evento</label>
+                        <input type="date" id="dataEvento" name="dataEvento">
+                    </div>
+                    <div>
+                        <label for="luogo">Luogo</label>
+                        <input type="text" id="luogo" name="luogo">
+                    </div>
+                    <div>
+                        <label for="costoEntrata">Costo entrata</label>
+                        <input type="number" id="costoEntrata" name="costoEntrata" min="0">
+                    </div>
+                </fieldset>
+
+                <fieldset id="campi-ripetizioni" class="campi-specifici" hidden>
+                    <legend>Dettagli Ripetizioni</legend>
+                    <div>
+                        <label for="materia">Materia</label>
+                        <input type="text" id="materia" name="materia">
+                    </div>
+                    <div>
+                        <label for="livello">Livello</label>
+                        <input type="text" id="livello" name="livello" placeholder="Es. Scuola superiore, Università">
+                    </div>
+                    <div>
+                        <label for="prezzoOrario">Prezzo orario</label>
+                        <input type="number" id="prezzoOrario" name="prezzoOrario" min="0">
+                    </div>
+                </fieldset>
+            </div>
+
+            <!-- Immagini --->
+            <fieldset>
+            <legend>Immagini (max 4)</legend>
+
+            <div id="img1" class="image-block">
+                <label for="foto1">Immagine 1</label>
+                <div class="img-campi">
+                    <input type="file" id="foto1" name="foto1" accept="image/*" required>
+                    <input type="text" id="alt1" name="alt1" placeholder="Testo alternativo">
+                    <label class="dec-label">
+                        <input type="checkbox" id="decorativa1" name="decorativa1"> Decorativa
+                    </label>
+                </div>
+            </div>
+
+            <div id="img2" class="image-block">
+                <label for="foto2">Immagine 2</label>
+                <div class="img-campi">
+                    <input type="file" id="foto2" name="foto2" accept="image/*" disabled>
+                    <input type="text" id="alt2" name="alt2" placeholder="Testo alternativo" disabled>
+                    <label class="dec-label">
+                        <input type="checkbox" id="decorativa2" name="decorativa2" disabled> Decorativa
+                    </label>
+                </div>
+            </div>
+
+            <div id="img3" class="image-block">
+                <label for="foto3">Immagine 3</label>
+                <div class="img-campi">
+                    <input type="file" id="foto3" name="foto3" accept="image/*" disabled>
+                    <input type="text" id="alt3" name="alt3" placeholder="Testo alternativo" disabled>
+                    <label class="dec-label">
+                        <input type="checkbox" id="decorativa3" name="decorativa3" disabled> Decorativa
+                    </label>
+                </div>
+            </div>
+
+            <div id="img4" class="image-block">
+                <label for="foto4">Immagine 4</label>
+                <div class="img-campi">
+                    <input type="file" id="foto4" name="foto4" accept="image/*" disabled>
+                    <input type="text" id="alt4" name="alt4" placeholder="Testo alternativo" disabled>
+                    <label class="dec-label">
+                        <input type="checkbox" id="decorativa4" name="decorativa4" disabled> Decorativa
+                    </label>
+                </div>
+            </div>
+            </fieldset>
+            </div>
+            <button type="submit">Invia</button>
+        </form>
         </div>
         <div class="separatore" role="presentation" aria-hidden="true"></div>
     </main>
@@ -145,5 +237,3 @@
     </div>
 </body>
 </html>
-
-
