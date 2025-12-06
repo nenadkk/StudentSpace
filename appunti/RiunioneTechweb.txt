@@ -2,7 +2,7 @@
 
 HTML 
 (NICSIM) 1. Da mettere il placeholder sotto e tenerlo fisso sul form
-(SOFIA) 2. Dividere la ricerca dai filtri 
+(SOFIA - risolta) 2. Dividere la ricerca dai filtri 
 (SPEGGIO)3. Da mettere arial label per il salta a filtraggio (per screen reader)
 (NICSIM) 4. Sitemap in fondo al footer
 5. (opzionale) Mettere una pagina "chi siamo"

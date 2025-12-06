@@ -60,3 +60,35 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.setAttribute("aria-expanded", false);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  for (let i = 1; i <= 4; i++) {
+    const fileInput = document.getElementById("foto" + i);
+    const altInput = document.getElementById("alt" + i);
+    const check = document.getElementById("decorativa" + i);
+    
+    // Gestione decorativa
+    check.addEventListener("change", () => {
+      if (check.checked) {
+        altInput.value = "";
+        altInput.disabled = true;
+      } else {
+        altInput.disabled = false;
+      }
+    });
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        altInput.disabled = false;
+        check.disabled = false;
+
+        const nextBlock = document.getElementById("img" + (i + 1));
+        if (nextBlock) {
+          nextBlock.style.display = "block";
+          nextBlock.querySelectorAll("input").forEach(el => el.disabled = false);
+        }
+      }
+    });
+  }
+});
+

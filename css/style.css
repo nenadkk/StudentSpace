@@ -22,6 +22,7 @@
     --required: #7b1726;
     --caratteristicheImp: #9bbdf3;
     --formbg: #e8f0fd;
+    --oscurato: #83888c;
 }
 
 html, body{ 
@@ -716,6 +717,82 @@ label {
 }
 
 /*
+===========================================================================
+    SEZIONE PUBBLICA + IMMAGINI PUBBLICA FORM
+===========================================================================
+*/
+
+#attr-generici-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em 3em;
+}
+
+#attr-specifici-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em 3em;
+}
+
+.image-block {
+    display: flex;
+    flex-direction: column;    
+    padding: 0.3em; 
+    gap: 0em;
+    width: 100%;
+}
+
+.img-campi {
+    display: flex;
+    flex-direction: row;       
+    align-items: center;       
+    gap: 1em;
+}
+
+.dec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.img-campi input[type="file"],
+.img-campi input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.img-campi input[type="checkbox"]{
+    outline: none;
+}
+
+#pubblica-container fieldset {
+    border: 2px solid var(--txtcolor);   
+    border-radius: 0.8em;                
+    padding: 1.5em 1.5em 2em;            
+}
+
+#pubblica-container fieldset legend {
+    font-weight: bold;
+    color: var(--txtcolor);
+    padding: 0 0.5em;                    
+}
+
+.img-campi:has(#decorativa1:checked) #alt1,
+.img-campi:has(#decorativa2:checked) #alt2,
+.img-campi:has(#decorativa3:checked) #alt3,
+.img-campi:has(#decorativa4:checked) #alt4 {
+    background-color: var(--oscurato);  
+}
+
+
+#img2, #img3, #img4 {
+    display:none;
+}
+
+
+/*
 ================= MODULARI su più PAGINE ============================================================= 
 */
 /*
@@ -863,13 +940,23 @@ label {
     gap: 1.2em;                 
 }
 
-#register-container .form-data, #pubblica-container .form-data {
+#register-container .form-data {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 2em 3em; 
 }
 
-.form-data > div, .form-data fieldset > div {
+#pubblica-container .form-data {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2em; 
+}
+
+.form-data > div, .form-data fieldset > div,
+#pubblica-titolo-container, 
+#attr-generici-container > div, 
+#attr-specifici-container div {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
