@@ -86,6 +86,8 @@
                     </div>    
                     <form class="form-data" action="esplora.html" method="get">
                         <fieldset>
+
+                            <!-- Attributi comuni a tutte le categorie -->
                             <div>
                                 <label for="categoria">Categoria</label>
                                 <select id="categoria" name="categoria">
@@ -120,9 +122,67 @@
                             </div>
 
                             <div>
-                                <label for="data">Data pubblicazione</label>
-                                <input id="data" type="date" name="data">
+                                <label for="data-pubblicazione">Data pubblicazione</label>
+                                <input id="data-pubblicazione" type="date" name="data-pubblicazione">
                             </div>
+
+                            <!-- Attributi Eventi -->
+                            <div id="filtri-eventi" class="nascondi-filtri">
+                                <label for="data-evento">Data evento</label>
+                                <input id="data-evento" type="date" name="data-evento">
+
+                                <label for="costo-evento">Costo entrata</label>
+                                <input id="costo-evento" type="number" name="costo-evento">
+
+                                <label for="luogo-evento">Luogo</label>
+                                <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                            </div>
+
+                            <!-- Attributi Esperimenti -->
+                            <div id="filtri-esperimenti" class="nascondi-filtri">
+                                <label for="durata-esperimento">Durata esperimento</label>
+                                <input id="durata-esperimento" type="number" name="durata-esperimento"> <!-- in minuti? -->
+
+                                <label for="laboratorio">Laboratorio</label>
+                                <input id="laboratorio" placeholder="" name="laboratorio">
+
+                                <label for="compenso">Compenso</label>
+                                <input id="compenso" type="number" name="compenso">
+                            </div>
+
+                            <!-- Attributi Affitti -->
+                            <div id="filtri-affitti" class="nascondi-filtri">
+                                <label for="num-coinquilini">N° coinquilini</label>
+                                <input id="num-coinquilini" type="date" name="num-coinquilini">
+
+                                <label for="prezzo-affitto">Prezzo</label>
+                                <input id="prezzo-affitto" type="number" name="prezzo-affitto">
+
+                                <label for="indirizzo-affitto">Indirizzo</label>
+                                <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
+                            </div>
+
+                            <!-- Attributi Ripetizioni -->
+                            <div id="filtri-ripetizioni" class="nascondi-filtri">
+                                <label for="materia-categoria">Materia</label>
+                                <input list="listmaterie" name="materia-categoria" id="materia-categoria" placeholder="Es. Chimica, Analisi ...">
+                                <datalist id="listmaterie">
+                                    <option value="Analisi Matematica">
+                                    <option value="Fisica">
+                                    <option value="Programmazione">
+                                    <option value="Calcolo">
+                                    <option value="Diritto">
+                                    <option value="Chimica">
+                                    <option value="Biologia">
+                                </datalist>
+
+                                <label for="prezzo-ripetizioni">Prezzo orario</label>
+                                <input id="prezzo-ripetizioni" type="number" name="prezzo-ripetizioni">
+
+                            </div>
+
+
+
                         </fieldset>
                         <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
                         <button type="submit">Applica</button>
