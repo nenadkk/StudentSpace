@@ -23,6 +23,7 @@
     --caratteristicheImp: #9bbdf3;
     --formbg: #e8f0fd;
     --oscurato: #83888c;
+    --spiegazione: #aec6ed;
 }
 
 html, body{ 
@@ -732,6 +733,17 @@ label {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em 3em;
+}
+
+.alt-spiegazione {
+    font-size: 0.95em;
+    color: var(--txtcolor);
+    background-color: var(--spiegazione);
+    padding: 0.8em 1em;
+    border-left: 4px solid var(--btnColor);
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    line-height: 1.5;
 }
 
 .image-block {
