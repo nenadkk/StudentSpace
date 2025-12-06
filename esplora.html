@@ -1,307 +1,307 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <title>Esplora - Student Space</title>
+    <head>
+        <title>Esplora - Student Space</title>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
-    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
+        <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+        <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
 
-    <meta name="author" content="StudentSpaceTeam">
-    <meta name="viewport" content="width=device-width">
+        <meta name="author" content="StudentSpaceTeam">
+        <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/style.css" media="screen">
-    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
-    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" media="screen">
+        <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+        <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
 
-    <script src="js/script.js" defer></script>
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-<body>
-    <header>
-        <a href="index.html" aria-label="Vai alla home">
-            <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
-        </a>
-        <nav id="menu" aria-label="Menu principale">
-            <ul class="links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li id="currentLink" aria-current="page">Esplora</li>
-                <li><a href="pubblica.html">Pubblica</a></li>
-            </ul>
-            <ul class="autent">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
-            </ul>
-        </nav>
+        <script src="js/script.js" defer></script>
+    </head>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
-            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
-            <span id="hamburger-aperto">&#9932;</span>
-        </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
-            <ul class="links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li id="hamburger-currentLink" aria-current="page">Esplora</li>
-                <li><a href="pubblica.html">Pubblica</a></li>
-            </ul>
-            <ul class="autent">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="content-container">
-    <nav id="breadcrumb" aria-label="Percorso di navigazione">
-        <ol>
-            <li><a href="index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
-        </ol>
-    </nav>
-
-    <div id="aside-style-layout">
-    <div id="aside-mini-layout">
-    <aside id="ricerca">
-        <form class="form-data" action="esplora.html" method="get">
-            <fieldset>
-                <div>
-                    <label for="titolo">Cerca</label>
-                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca parole chiave...">
-                </div>
-            </fieldset>
-        </form>
-    </aside>
-
-    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
-    </div>
-    <aside id="filtri">
-        <div class="filtri-header">
-            <h2>Filtri</h2>
-            <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
-        </div>    
-        <form class="form-data" action="esplora.html" method="get">
-            <fieldset>
-                <div>
-                    <label for="categoria">Categoria</label>
-                    <select id="categoria" name="categoria">
-                        <option>Seleziona</option>
-                        <option>Eventi</option>
-                        <option>Esperimenti</option>
-                        <option>Affitti</option>
-                        <option>Ripetizioni</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="citta">Città</label>
-                    <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
-                    <datalist id="listaCitta">
-                        <option value="Padova">
-                        <option value="Trento">
-                        <option value="Roma">
-                        <option value="Milano">
-                        <option value="Bologna">
-                        <option value="Torino">
-                        <option value="Pavia">
-                        <option value="Napoli">
-                        <option value="Firenze">
-                        <option value="Venezia">
-                        <option value="Perugia">
-                        <option value="Catania">
-                        <option value="Genova">
-                        <option value="Salerno">
-                        <option value="Siena">
-                    </datalist>
-                </div>
-
-                <div>
-                    <label for="data">Data pubblicazione</label>
-                    <input id="data" type="date" name="data">
-                </div>
-            </fieldset>
-                <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
-            <button type="submit">Applica</button>
-        </form>
-    </aside>
-    </div>
-
-    <main id="contenuto">
-        <div class="esplora">
-            <h2>Esplora</h2>
-            <ul id="listaCarte">
-                <li class="carta">
-                    <img src="assets/bilocaleCentro.jpg" alt=""  width="250" height="150">
-                    <h3>Bilocale in centro</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>01/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Padova</dd>
-			            <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/concertoJazz.jpg" alt=""   width="250" height="150">
-                    <h3>Concerto Jazz al Parco</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>05/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Venezia</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
-                    <h3>Laboratorio di chimica</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>03/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Ferrara</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catEsperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
-                    <h3>Ripetizioni di matematica</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>02/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Treviso</dd>
-                        <dt>Categoria</dt>
-			            <dd>
-                            <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/fieraLibro.jpg" alt=""  width="250" height="150">
-                    <h3>Fiera del Libro</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>04/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Bologna</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
-                    <h3>Stanza singola per studenti</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>06/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Verona</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
-                    <h3>Esperimento su onde sonore</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>07/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Rovigo</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
-                    <h3>Conversazione in inglese</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>08/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Padova</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-                            <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
-                    <h3>Mostra d’arte contemporanea</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>09/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Vicenza</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-                <li class="carta">
-                    <img src="assets/monolocale.jpg" alt=""  width="250" height="150">
-                    <h3>Monolocale arredato</h3>
-                    <dl>
-                        <dt>Data pubblicazione</dt>
-                        <dd>10/11/2025</dd>
-                        <dt>Città</dt>
-                        <dd>Padova</dd>
-                        <dt>Categoria</dt>
-                        <dd>
-   		                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
-                        </dd>
-                    </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                </li>
-            </ul>
-        </div>
-        <div class="separatore" role="presentation" aria-hidden="true"></div>
-    </main>
-    <footer>
-        <div id="footer-top">
-            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
-                <img src="assets/freccia.png" alt="">
+    <body>
+        <header>
+            <a href="index.html" aria-label="Vai alla home">
+                <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
             </a>
-            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
-        </div>
+            <nav id="menu" aria-label="Menu principale">
+                <ul class="links">
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li id="currentLink" aria-current="page">Esplora</li>
+                    <li><a href="pubblica.html">Pubblica</a></li>
+                </ul>
+                <ul class="autent">
+                    <li><a class="btn" href="registrati.html">Registrati</a></li>
+                    <li><a class="btn" href="accedi.html">Accedi</a></li>
+                </ul>
+            </nav>
 
-        <div id="footer-bottom">
-            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
-            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+            <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+                <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+                <span id="hamburger-aperto">&#9932;</span>
+            </button>
+            <nav id="hamburger-menu" aria-label="Menu principale">
+                <ul class="links">
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li id="hamburger-currentLink" aria-current="page">Esplora</li>
+                    <li><a href="pubblica.html">Pubblica</a></li>
+                </ul>
+                <ul class="autent">
+                    <li><a class="btn" href="registrati.html">Registrati</a></li>
+                    <li><a class="btn" href="accedi.html">Accedi</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-container">
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
+                <ol>
+                    <li><a href="index.html"><span lang="en">Home</span></a></li>
+                    <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
+                </ol>
+            </nav>
+
+            <div id="aside-style-layout">
+                <div id="aside-mini-layout">
+                    <aside id="ricerca">
+                        <form class="form-data" action="esplora.html" method="get">
+                            <fieldset>
+                                <div>
+                                    <label for="titolo">Cerca</label>
+                                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca parole chiave...">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </aside>
+
+                    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
+                </div>
+                <aside id="filtri">
+                    <div class="filtri-header">
+                        <h2>Filtri</h2>
+                        <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
+                    </div>    
+                    <form class="form-data" action="esplora.html" method="get">
+                        <fieldset>
+                            <div>
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria" name="categoria">
+                                    <option>Seleziona</option>
+                                    <option>Eventi</option>
+                                    <option>Esperimenti</option>
+                                    <option>Affitti</option>
+                                    <option>Ripetizioni</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="citta">Città</label>
+                                <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                                <datalist id="listaCitta">
+                                    <option value="Padova">
+                                    <option value="Trento">
+                                    <option value="Roma">
+                                    <option value="Milano">
+                                    <option value="Bologna">
+                                    <option value="Torino">
+                                    <option value="Pavia">
+                                    <option value="Napoli">
+                                    <option value="Firenze">
+                                    <option value="Venezia">
+                                    <option value="Perugia">
+                                    <option value="Catania">
+                                    <option value="Genova">
+                                    <option value="Salerno">
+                                    <option value="Siena">
+                                </datalist>
+                            </div>
+
+                            <div>
+                                <label for="data">Data pubblicazione</label>
+                                <input id="data" type="date" name="data">
+                            </div>
+                        </fieldset>
+                        <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
+                        <button type="submit">Applica</button>
+                    </form>
+                </aside>
+            </div>
+
+            <main id="contenuto">
+                <div class="esplora">
+                    <h2>Esplora</h2>
+                    <ul id="listaCarte">
+                        <li class="carta">
+                            <img src="assets/bilocaleCentro.jpg" alt=""  width="250" height="150">
+                            <h3>Bilocale in centro</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>01/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Padova</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/concertoJazz.jpg" alt=""   width="250" height="150">
+                            <h3>Concerto Jazz al Parco</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>05/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Venezia</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
+                            <h3>Laboratorio di chimica</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>03/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Ferrara</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catEsperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
+                            <h3>Ripetizioni di matematica</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>02/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Treviso</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/fieraLibro.jpg" alt=""  width="250" height="150">
+                            <h3>Fiera del Libro</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>04/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Bologna</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
+                            <h3>Stanza singola per studenti</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>06/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Verona</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
+                            <h3>Esperimento su onde sonore</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>07/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Rovigo</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
+                            <h3>Conversazione in inglese</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>08/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Padova</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
+                            <h3>Mostra d’arte contemporanea</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>09/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Vicenza</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                        <li class="carta">
+                            <img src="assets/monolocale.jpg" alt=""  width="250" height="150">
+                            <h3>Monolocale arredato</h3>
+                            <dl>
+                                <dt>Data pubblicazione</dt>
+                                <dd>10/11/2025</dd>
+                                <dt>Città</dt>
+                                <dd>Padova</dd>
+                                <dt>Categoria</dt>
+                                <dd>
+                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                </dd>
+                            </dl>
+                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="separatore" role="presentation" aria-hidden="true"></div>
+            </main>
+            <footer>
+                <div id="footer-top">
+                    <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                        <img src="assets/freccia.png" alt="">
+                    </a>
+                    <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+                </div>
+
+                <div id="footer-bottom">
+                    <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+                    <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+                    <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+                </div>
+            </footer>
         </div>
-    </footer>
-    </div>
-</body>
+    </body>
 </html>
