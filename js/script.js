@@ -92,3 +92,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// SEZIONE PER NASCONDERE I FILTRI RIPETTIVI PER OGNI CATEGORIA
+const categoriaSelezionata = document.getElementById('categoria');
+const filtriEventi = document.getElementById('filtri-eventi');
+const filtriEsperimenti = document.getElementById('filtri-esperimenti');
+const filtriAffitti = document.getElementById('filtri-affitti');
+const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
+
+categoriaSelezionata.addEventListener('change', function() {
+    // Nascondi tutti 
+    filtriEventi.classList.add('nascondi-filtri');
+    filtriEsperimenti.classList.add('nascondi-filtri');
+    filtriAffitti.classList.add('nascondi-filtri');
+    filtriRipetizioni.classList.add('nascondi-filtri');
+
+    // Mostra solo quello selezionato
+    if (this.value === 'Eventi') {
+        filtriEventi.classList.remove('nascondi-filtri');
+    } else if (this.value === 'Esperimenti') {
+        filtriEsperimenti.classList.remove('nascondi-filtri');
+    } else if (this.value === 'Affitti') {
+        filtriAffitti.classList.remove('nascondi-filtri');
+    } else if (this.value === 'Ripetizioni') {
+        filtriRipetizioni.classList.remove('nascondi-filtri');
+    }
+});
