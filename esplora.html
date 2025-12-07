@@ -85,8 +85,8 @@
                         <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
                     </div>    
                     <form class="form-data" action="esplora.html" method="get">
-                        <fieldset>
-
+                        <fieldset class="fieldset-filtri">
+                            <legend>Generali</legend>
                             <!-- Attributi comuni a tutte le categorie -->
                             <div>
                                 <label for="categoria">Categoria</label>
@@ -120,50 +120,61 @@
                                     <option value="Siena">
                                 </datalist>
                             </div>
-
                             <div>
                                 <label for="data-pubblicazione">Data pubblicazione</label>
                                 <input id="data-pubblicazione" type="date" name="data-pubblicazione">
                             </div>
+                        </fieldset>
 
-                            <!-- Attributi Eventi -->
-                            <div id="filtri-eventi" class="nascondi-filtri">
+                        <div id="filtri-eventi" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Eventi</legend>
+                                <!-- Attributi Eventi -->
                                 <label for="data-evento">Data evento</label>
                                 <input id="data-evento" type="date" name="data-evento">
 
                                 <label for="costo-evento">Costo entrata</label>
-                                <input id="costo-evento" type="number" name="costo-evento">
+                                <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
 
                                 <label for="luogo-evento">Luogo</label>
                                 <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
-                            </div>
+                            </fieldset>
+                        </div>
 
-                            <!-- Attributi Esperimenti -->
-                            <div id="filtri-esperimenti" class="nascondi-filtri">
+                        <div id="filtri-esperimenti" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Esperimenti</legend>
+                                <!-- Attributi Esperimenti -->
                                 <label for="durata-esperimento">Durata esperimento</label>
-                                <input id="durata-esperimento" type="number" name="durata-esperimento"> <!-- in minuti? -->
+                                <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> <!-- in minuti? -->
 
                                 <label for="laboratorio">Laboratorio</label>
-                                <input id="laboratorio" placeholder="" name="laboratorio">
+                                <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
 
                                 <label for="compenso">Compenso</label>
-                                <input id="compenso" type="number" name="compenso">
-                            </div>
+                                <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                            </fieldset>
+                        </div>
 
-                            <!-- Attributi Affitti -->
-                            <div id="filtri-affitti" class="nascondi-filtri">
-                                <label for="num-coinquilini">N° coinquilini</label>
-                                <input id="num-coinquilini" type="number" name="num-coinquilini">
+                        <div id="filtri-affitti" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Affitti</legend>
+                                <!-- Attributi Affitti -->
+                                <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
+                                <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
 
                                 <label for="prezzo-affitto">Prezzo</label>
-                                <input id="prezzo-affitto" type="number" name="prezzo-affitto">
+                                <input id="prezzo-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="prezzo-affitto">
 
                                 <label for="indirizzo-affitto">Indirizzo</label>
                                 <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
-                            </div>
+                            </fieldset>
+                        </div>
 
-                            <!-- Attributi Ripetizioni -->
-                            <div id="filtri-ripetizioni" class="nascondi-filtri">
+                        <div id="filtri-ripetizioni" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Ripetizioni</legend>
+                                <!-- Attributi Ripetizioni -->
                                 <label for="materia-categoria">Materia</label>
                                 <input list="listmaterie" name="materia-categoria" id="materia-categoria" placeholder="Es. Chimica, Analisi ...">
                                 <datalist id="listmaterie">
@@ -177,20 +188,16 @@
                                 </datalist>
 
                                 <label for="livello">Livello</label>
-                                <input list="listlivelli" name="livello" id="livello">
+                                <input list="listlivelli" placeholder="Es. intermedio, alto" name="livello" id="livello">
                                 <datalist id="listlivelli">
                                     <option value="Alto">
                                     <option value="Intermedio">
                                 </datalist>
 
                                 <label for="prezzo-ripetizioni">Prezzo orario</label>
-                                <input id="prezzo-ripetizioni" type="number" name="prezzo-ripetizioni">
-
-                            </div>
-
-
-
-                        </fieldset>
+                                <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
+                            </fieldset>
+                        </div>
                         <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
                         <button type="submit">Applica</button>
                     </form>

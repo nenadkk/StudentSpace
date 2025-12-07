@@ -605,6 +605,25 @@ label {
     display: none;
 }
 
+#filtri .form-data .nascondi-filtri{
+    display: none;
+}
+
+#filtri .fieldset-filtri  {
+    border: 2px solid var(--txtcolor);   
+    border-radius: 0.8em;                
+    padding: 1.5em 1.5em 2em;            
+    margin-top: 0.8em;
+}
+
+#filtri .fieldset-filtri legend{
+    font-weight:bold;
+    color: var(--txtcolor);
+    padding: 0 0.5em;
+
+}
+
+
 /*
 ====================================================
     SEZIONE CAROSELLO CON MINIATURE
@@ -1089,7 +1108,5 @@ form > p, form > p{
     color: var(--required)
 }
 
-#filtri .form-data .nascondi-filtri{
-    display: none;
-}
+
 
