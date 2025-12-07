@@ -70,7 +70,7 @@ header {
     margin-bottom: 1.2em;
 }
 
-#hamburger-menu .links, #hamburger-menu .autent {
+#hamburger-menu .nav-links, #hamburger-menu .nav-auth {
     list-style: none;
     display: flex;
     margin: 0;
@@ -79,11 +79,11 @@ header {
     flex-direction: column;
 }
 
-#hamburger-menu .links{
+#hamburger-menu .nav-links{
     gap: 0.7em;
 }
 
-#hamburger-menu .autent {
+#hamburger-menu .nav-auth {
     gap: 1.6em;
 }
 
@@ -109,7 +109,7 @@ header {
     padding: 0.3em 0.6em;
 }
 
-#hamburger-menu .links a{
+#hamburger-menu .nav-links a{
     text-decoration: underline;
     text-underline-offset: 0.2em;
 }
@@ -263,6 +263,7 @@ header {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    justify-content: flex-start;
 }
 
 .filtri-header {
@@ -270,7 +271,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 1.2em;
+    padding: 1em;
     background-color: var(--BgColor);
     box-shadow: 0 4px 5px -6px rgba(0,0,0,0.4);
     z-index: 2;
@@ -286,7 +287,8 @@ header {
 #filtri .form-data {
     flex: 1 1 auto;
     overflow-y: auto;
-    padding: 1em 1.2em;
+    padding: 1em;
+    max-height: calc(100vh - 8em);
 }
 
 #filtri.attivo {
@@ -303,7 +305,7 @@ header {
 */
 
 #categorie {
-    padding: 4em 1em;
+    padding: 1em;
 }
 
 .categoria {
@@ -320,7 +322,7 @@ header {
     flex-shrink: 0;
 }
 
-.categoria .contenuto {
+li.categoria > div {
     padding-bottom: 2em;
 }
 
@@ -428,6 +430,9 @@ header {
     gap: 1.5em; 
 }
 
+#filtri .form-data{
+    padding:0;
+}
 /*
 ====================================================
     SEZIONE PUBBLICA

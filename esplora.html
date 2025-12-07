@@ -28,12 +28,12 @@
                 <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
             </a>
             <nav id="menu" aria-label="Menu principale">
-                <ul class="links">
+                <ul class="nav-links">
                     <li lang="en"><a href="index.html">Home</a></li>
                     <li id="currentLink" aria-current="page">Esplora</li>
                     <li><a href="pubblica.html">Pubblica</a></li>
                 </ul>
-                <ul class="autent">
+                <ul class="nav-auth">
                     <li><a class="btn" href="registrati.html">Registrati</a></li>
                     <li><a class="btn" href="accedi.html">Accedi</a></li>
                 </ul>
@@ -44,12 +44,12 @@
                 <span id="hamburger-aperto">&#9932;</span>
             </button>
             <nav id="hamburger-menu" aria-label="Menu principale">
-                <ul class="links">
+                <ul class="nav-links">
                     <li lang="en"><a href="index.html">Home</a></li>
                     <li id="hamburger-currentLink" aria-current="page">Esplora</li>
                     <li><a href="pubblica.html">Pubblica</a></li>
                 </ul>
-                <ul class="autent">
+                <ul class="nav-auth">
                     <li><a class="btn" href="registrati.html">Registrati</a></li>
                     <li><a class="btn" href="accedi.html">Accedi</a></li>
                 </ul>
@@ -70,8 +70,8 @@
                         <form class="form-data" action="esplora.html" method="get">
                             <fieldset>
                                 <div>
-                                    <label for="titolo">Cerca</label>
-                                    <input id="titolo" type="text" name="titolo" maxlength=20 placeholder="Cerca parole chiave...">
+                                    <label for="cerca">Cerca</label>
+                                    <input id="carca" type="text" name="carca" maxlength=20 placeholder="Cercae...">
                                 </div>
                             </fieldset>
                         </form>
@@ -98,7 +98,6 @@
                                     <option>Ripetizioni</option>
                                 </select>
                             </div>
-
                             <div>
                                 <label for="citta">Città</label>
                                 <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
@@ -130,14 +129,18 @@
                             <fieldset class="fieldset-filtri">
                                 <legend>Filtri Eventi</legend>
                                 <!-- Attributi Eventi -->
-                                <label for="data-evento">Data evento</label>
-                                <input id="data-evento" type="date" name="data-evento">
-
-                                <label for="costo-evento">Costo entrata</label>
-                                <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
-
-                                <label for="luogo-evento">Luogo</label>
-                                <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                                <div>
+                                    <label for="data-evento">Data evento</label>
+                                    <input id="data-evento" type="date" name="data-evento">
+                                </div>
+                                <div>
+                                    <label for="costo-evento">Costo entrata</label>
+                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
+                                </div>
+                                <div>
+                                    <label for="luogo-evento">Luogo</label>
+                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                                </div>
                             </fieldset>
                         </div>
 
@@ -145,14 +148,18 @@
                             <fieldset class="fieldset-filtri">
                                 <legend>Filtri Esperimenti</legend>
                                 <!-- Attributi Esperimenti -->
-                                <label for="durata-esperimento">Durata esperimento</label>
-                                <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> <!-- in minuti? -->
-
-                                <label for="laboratorio">Laboratorio</label>
-                                <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
-
-                                <label for="compenso">Compenso</label>
-                                <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                                <div>
+                                    <label for="durata-esperimento">Durata esperimento</label>
+                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> <!-- in minuti? -->
+                                </div>
+                                <div>
+                                    <label for="laboratorio">Laboratorio</label>
+                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
+                                </div>
+                                <div>
+                                    <label for="compenso">Compenso</label>
+                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                                </div>
                             </fieldset>
                         </div>
 
@@ -160,14 +167,18 @@
                             <fieldset class="fieldset-filtri">
                                 <legend>Filtri Affitti</legend>
                                 <!-- Attributi Affitti -->
-                                <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
-                                <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
-
-                                <label for="prezzo-affitto">Prezzo</label>
-                                <input id="prezzo-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="prezzo-affitto">
-
-                                <label for="indirizzo-affitto">Indirizzo</label>
-                                <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
+                                <div>
+                                    <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
+                                    <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
+                                </div>
+                                <div>
+                                    <label for="prezzo-affitto">Prezzo</label>
+                                    <input id="prezzo-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="prezzo-affitto">
+                                </div>
+                                <div>
+                                    <label for="indirizzo-affitto">Indirizzo</label>
+                                    <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
+                                </div>
                             </fieldset>
                         </div>
 
@@ -175,31 +186,37 @@
                             <fieldset class="fieldset-filtri">
                                 <legend>Filtri Ripetizioni</legend>
                                 <!-- Attributi Ripetizioni -->
-                                <label for="materia-categoria">Materia</label>
-                                <input list="listmaterie" name="materia-categoria" id="materia-categoria" placeholder="Es. Chimica, Analisi ...">
-                                <datalist id="listmaterie">
-                                    <option value="Analisi Matematica">
-                                    <option value="Fisica">
-                                    <option value="Programmazione">
-                                    <option value="Calcolo">
-                                    <option value="Diritto">
-                                    <option value="Chimica">
-                                    <option value="Biologia">
-                                </datalist>
-
-                                <label for="livello">Livello</label>
-                                <input list="listlivelli" placeholder="Es. intermedio, alto" name="livello" id="livello">
-                                <datalist id="listlivelli">
-                                    <option value="Alto">
-                                    <option value="Intermedio">
-                                </datalist>
-
-                                <label for="prezzo-ripetizioni">Prezzo orario</label>
-                                <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
+                                <div>
+                                    <label for="materia-categoria">Materia</label>
+                                    <input list="listmaterie" name="materia-categoria" id="materia-categoria" placeholder="Es. Chimica, Analisi ...">
+                                    <datalist id="listmaterie">
+                                        <option value="Analisi Matematica">
+                                        <option value="Fisica">
+                                        <option value="Programmazione">
+                                        <option value="Calcolo">
+                                        <option value="Diritto">
+                                        <option value="Chimica">
+                                        <option value="Biologia">
+                                    </datalist>
+                                </div>
+                                <div>
+                                    <label for="livello">Livello</label>
+                                    <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                    <datalist id="listlivelli">
+                                        <option value="Medie">
+                                        <option value="Superiori">
+                                        <option value="Università">
+                                    </datalist>
+                                </div>
+                                <div>
+                                    <label for="prezzo-ripetizioni">Prezzo orario</label>
+                                    <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
+                                </div>
                             </fieldset>
                         </div>
-                        <!-- Qui sotto si possono creare tutti gli altri filtri per le singole categorie e poi renderli visibile tramite js solo una volta selezionata la categoria -->
+                    <div class="filtri-footer">
                         <button type="submit">Applica</button>
+                    </div>
                     </form>
                 </aside>
             </div>
@@ -218,7 +235,7 @@
                                 <dd>Padova</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -233,7 +250,7 @@
                                 <dd>Venezia</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -248,7 +265,7 @@
                                 <dd>Ferrara</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catEsperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
+                                    <span class="etichettaCategoria" data-categoria="esperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -263,7 +280,7 @@
                                 <dd>Treviso</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                                    <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -278,7 +295,7 @@
                                 <dd>Bologna</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -293,7 +310,7 @@
                                 <dd>Verona</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -308,7 +325,7 @@
                                 <dd>Rovigo</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -323,7 +340,7 @@
                                 <dd>Padova</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catRipetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                                    <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -338,7 +355,7 @@
                                 <dd>Vicenza</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catEventi" aria-label="Categoria: Eventi">Eventi</span>
+                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
@@ -353,7 +370,7 @@
                                 <dd>Padova</dd>
                                 <dt>Categoria</dt>
                                 <dd>
-                                    <span class="etichettaCategoria catAffitti"  aria-label="Categoria: Affitti">Affitti</span>
+                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                                 </dd>
                             </dl>
                             <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
