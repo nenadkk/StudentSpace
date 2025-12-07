@@ -95,13 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // SEZIONE PER NASCONDERE I FILTRI RIPETTIVI PER OGNI CATEGORIA
-const categoriaSelezionata = document.getElementById('categoria');
-const filtriEventi = document.getElementById('filtri-eventi');
-const filtriEsperimenti = document.getElementById('filtri-esperimenti');
-const filtriAffitti = document.getElementById('filtri-affitti');
-const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
 
-categoriaSelezionata.addEventListener('change', function() {
+document.getElementById('categoria').addEventListener('change', function() {
+    const filtriEventi = document.getElementById('filtri-eventi');
+    const filtriEsperimenti = document.getElementById('filtri-esperimenti');
+    const filtriAffitti = document.getElementById('filtri-affitti');
+    const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
+
     // Nascondi tutti 
     filtriEventi.classList.add('nascondi-filtri');
     filtriEsperimenti.classList.add('nascondi-filtri');
