@@ -94,28 +94,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// SEZIONE PER NASCONDERE I FILTRI RIPETTIVI PER OGNI CATEGORIA
+// SEZIONE PER NASCONDERE I FILTRI RISPETTIVI PER OGNI CATEGORIA
+document.addEventListener('DOMContentLoaded', function(){
+    //controllo che l'elemento esista e nel caso faccio partire il listener
+    const sceltaCategoria = document.getElementById('categoria');
+    if(sceltaCategoria)
+    {
+        sceltaCategoria.addEventListener('change', function() {
+            const filtriEventi = document.getElementById('filtri-eventi');
+            const filtriEsperimenti = document.getElementById('filtri-esperimenti');
+            const filtriAffitti = document.getElementById('filtri-affitti');
+            const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
 
-document.getElementById('categoria').addEventListener('change', function() {
-    const filtriEventi = document.getElementById('filtri-eventi');
-    const filtriEsperimenti = document.getElementById('filtri-esperimenti');
-    const filtriAffitti = document.getElementById('filtri-affitti');
-    const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
+            //console.log(this.value);
+            // Nascondi tutti 
+            filtriEventi.classList.add('nascondi-filtri');
+            filtriEsperimenti.classList.add('nascondi-filtri');
+            filtriAffitti.classList.add('nascondi-filtri');
+            filtriRipetizioni.classList.add('nascondi-filtri');
 
-    // Nascondi tutti 
-    filtriEventi.classList.add('nascondi-filtri');
-    filtriEsperimenti.classList.add('nascondi-filtri');
-    filtriAffitti.classList.add('nascondi-filtri');
-    filtriRipetizioni.classList.add('nascondi-filtri');
-
-    // Mostra solo quello selezionato
-    if (this.value === 'Eventi') {
-        filtriEventi.classList.remove('nascondi-filtri');
-    } else if (this.value === 'Esperimenti') {
-        filtriEsperimenti.classList.remove('nascondi-filtri');
-    } else if (this.value === 'Affitti') {
-        filtriAffitti.classList.remove('nascondi-filtri');
-    } else if (this.value === 'Ripetizioni') {
-        filtriRipetizioni.classList.remove('nascondi-filtri');
+            // Mostra solo quello selezionato
+            if (this.value === 'Eventi') {
+                filtriEventi.classList.remove('nascondi-filtri');
+            } else if (this.value === 'Esperimenti') {
+                filtriEsperimenti.classList.remove('nascondi-filtri');
+            } else if (this.value === 'Affitti') {
+                filtriAffitti.classList.remove('nascondi-filtri');
+            } else if (this.value === 'Ripetizioni') {
+                filtriRipetizioni.classList.remove('nascondi-filtri');
+            }
+        });
     }
+
 });
+
+
+// SEZIONE PER NASCONDERE I CAMPI RISPETTIVI PER OGNI CATEGORIA IN PUBBLICA
+document.addEventListener('DOMContentLoaded', function(){
+    //controllo che l'elemento esista e nel caso faccio partire il listener
+    const sceltaCategoria = document.getElementById('categoria-campi');
+    if(sceltaCategoria)
+    {
+        sceltaCategoria.addEventListener('change', function() {
+            const campiEventi = document.getElementById('campi-eventi');
+            const campiEsperimenti = document.getElementById('campi-esperimenti');
+            const campiAffitti = document.getElementById('campi-affitti');
+            const campiRipetizioni = document.getElementById('campi-ripetizioni');
+
+            //console.log(this.value);
+
+            // Nascondi tutti 
+            campiEventi.classList.add('nascondi-campi');
+            campiEsperimenti.classList.add('nascondi-campi');
+            campiAffitti.classList.add('nascondi-campi');
+            campiRipetizioni.classList.add('nascondi-campi');
+
+            // Mostra solo quello selezionato
+            if (this.value === 'Eventi') {
+                campiEventi.classList.remove('nascondi-campi');
+            } else if (this.value === 'Esperimenti') {
+                campiEsperimenti.classList.remove('nascondi-campi');
+            } else if (this.value === 'Affitti') {
+                campiAffitti.classList.remove('nascondi-campi');
+            } else if (this.value === 'Ripetizioni') {
+                campiRipetizioni.classList.remove('nascondi-campi');
+            }
+        });
+    }
+
+});
+
+

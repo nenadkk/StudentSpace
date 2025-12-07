@@ -77,13 +77,13 @@
 
                             <div id="attr-generici-container">
                                 <div>
-                                    <label for="categoria">Categoria<span class="required"> (richiesto)</span></label>
-                                    <select id="categoria" name="categoria" required>
+                                    <label for="categoria-campi">Categoria<span class="required"> (richiesto)</span></label>
+                                    <select id="categoria-campi" name="categoria-campi" required>
                                         <option value="">Seleziona categoria</option>
-                                        <option value="affitti">Affitti</option>
-                                        <option value="esperimenti">Esperimenti</option>
-                                        <option value="eventi">Eventi</option>
-                                        <option value="ripetizioni">Ripetizioni</option>
+                                        <option value="Affitti">Affitti</option>
+                                        <option value="Esperimenti">Esperimenti</option>
+                                        <option value="Eventi">Eventi</option>
+                                        <option value="Ripetizioni">Ripetizioni</option>
                                     </select>
                                 </div>
 
@@ -100,69 +100,79 @@
 
                             <!-- Campi specifici per categoria -->
                             <div id="attr-specifici-container">
-                                <fieldset id="campi-affitti" class="campi-specifici">
-                                    <legend>Dettagli Affitti</legend>
-                                    <div>
-                                        <label for="prezzoMensile">Prezzo mensile</label>
-                                        <input type="number" id="prezzoMensile" name="prezzoMensile" min="0">
-                                    </div>
-                                    <div>
-                                        <label for="indirizzo">Indirizzo</label>
-                                        <input type="text" id="indirizzo" name="indirizzo">
-                                    </div>
-                                    <div>
-                                        <label for="coinquilini">Numero coinquilini</label>
-                                        <input type="number" id="coinquilini" name="coinquilini" min="0">
-                                    </div>
-                                </fieldset>
 
-                                <fieldset id="campi-esperimenti" class="campi-specifici">
-                                    <legend>Dettagli Esperimenti</legend>
-                                    <div>
-                                        <label for="laboratorio">Laboratorio di riferimento</label>
-                                        <input type="text" id="laboratorio" name="laboratorio">
-                                    </div>
-                                    <div>
-                                        <label for="durata">Durata prevista</label>
-                                        <input type="text" id="durata" name="durata" placeholder="Es. 3 mesi">
-                                    </div>
-                                    <div>
-                                        <label for="compenso">Compenso</label>
-                                        <input type="number" id="compenso" name="compenso" min="0">
-                                    </div>
-                                </fieldset>
+                                <div id="campi-affitti" class="nascondi-campi">
+                                    <fieldset  class="campi-specifici">
+                                        <legend>Dettagli Affitti</legend>
+                                        <div>
+                                            <label for="prezzoMensile">Prezzo mensile</label>
+                                            <input type="number" id="prezzoMensile" name="prezzoMensile" min="0">
+                                        </div>
+                                        <div>
+                                            <label for="indirizzo">Indirizzo</label>
+                                            <input type="text" id="indirizzo" name="indirizzo">
+                                        </div>
+                                        <div>
+                                            <label for="coinquilini">Numero coinquilini</label>
+                                            <input type="number" id="coinquilini" name="coinquilini" min="0">
+                                        </div>
+                                    </fieldset>
+                                </div>
 
-                                <fieldset id="campi-eventi" class="campi-specifici">
-                                    <legend>Dettagli Eventi</legend>
-                                    <div>
-                                        <label for="dataEvento">Data evento</label>
-                                        <input type="date" id="dataEvento" name="dataEvento">
-                                    </div>
-                                    <div>
-                                        <label for="luogo">Luogo</label>
-                                        <input type="text" id="luogo" name="luogo">
-                                    </div>
-                                    <div>
-                                        <label for="costoEntrata">Costo entrata</label>
-                                        <input type="number" id="costoEntrata" name="costoEntrata" min="0">
-                                    </div>
-                                </fieldset>
+                                <div id="campi-esperimenti" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Esperimenti</legend>
+                                        <div>
+                                            <label for="laboratorio">Laboratorio di riferimento</label>
+                                            <input type="text" id="laboratorio" name="laboratorio">
+                                        </div>
+                                        <div>
+                                            <label for="durata">Durata prevista</label>
+                                            <input type="text" id="durata" name="durata" placeholder="Es. 3 mesi">
+                                        </div>
+                                        <div>
+                                            <label for="compenso">Compenso</label>
+                                            <input type="number" id="compenso" name="compenso" min="0">
+                                        </div>
+                                    </fieldset>
+                                </div>
 
-                                <fieldset id="campi-ripetizioni" class="campi-specifici">
-                                    <legend>Dettagli Ripetizioni</legend>
-                                    <div>
-                                        <label for="materia">Materia</label>
-                                        <input type="text" id="materia" name="materia">
-                                    </div>
-                                    <div>
-                                        <label for="livello">Livello</label>
-                                        <input type="text" id="livello" name="livello" placeholder="Es. Scuola superiore, Università">
-                                    </div>
-                                    <div>
-                                        <label for="prezzoOrario">Prezzo orario</label>
-                                        <input type="number" id="prezzoOrario" name="prezzoOrario" min="0">
-                                    </div>
-                                </fieldset>
+                                <div id="campi-eventi" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Eventi</legend>
+                                        <div>
+                                            <label for="dataEvento">Data evento</label>
+                                            <input type="date" id="dataEvento" name="dataEvento">
+                                        </div>
+                                        <div>
+                                            <label for="luogo">Luogo</label>
+                                            <input type="text" id="luogo" name="luogo">
+                                        </div>
+                                        <div>
+                                            <label for="costoEntrata">Costo entrata</label>
+                                            <input type="number" id="costoEntrata" name="costoEntrata" min="0">
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div id="campi-ripetizioni" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Ripetizioni</legend>
+                                        <div>
+                                            <label for="materia">Materia</label>
+                                            <input type="text" id="materia" name="materia">
+                                        </div>
+                                        <div>
+                                            <label for="livello">Livello</label>
+                                            <input type="text" id="livello" name="livello" placeholder="Es. Scuola superiore, Università">
+                                        </div>
+                                        <div>
+                                            <label for="prezzoOrario">Prezzo orario</label>
+                                            <input type="number" id="prezzoOrario" name="prezzoOrario" min="0">
+                                        </div>
+                                    </fieldset>
+                                </div>
+
                             </div>
 
                             <!-- Immagini --->

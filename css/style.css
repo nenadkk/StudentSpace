@@ -822,6 +822,9 @@ label {
     display:none;
 }
 
+#attr-specifici-container .nascondi-campi{
+    display: none;
+}
 
 /*
 ================= MODULARI su più PAGINE ============================================================= 
