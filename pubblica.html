@@ -88,8 +88,25 @@
                                 </div>
 
                                 <div>
-                                    <label for="citta">Città<span class="required"> (richiesto)</span></label>
-                                    <input type="text" id="citta" name="citta" required placeholder="Es. Roma">
+                                     <label for="citta">Città</label>
+                                    <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                                    <datalist id="listaCitta">
+                                        <option value="Padova">
+                                        <option value="Trento">
+                                        <option value="Roma">
+                                        <option value="Milano">
+                                        <option value="Bologna">
+                                        <option value="Torino">
+                                        <option value="Pavia">
+                                        <option value="Napoli">
+                                        <option value="Firenze">
+                                        <option value="Venezia">
+                                        <option value="Perugia">
+                                        <option value="Catania">
+                                        <option value="Genova">
+                                        <option value="Salerno">
+                                        <option value="Siena">
+                                    </datalist>
                                 </div>
                             </div>
 
@@ -105,16 +122,16 @@
                                     <fieldset  class="campi-specifici">
                                         <legend>Dettagli Affitti</legend>
                                         <div>
-                                            <label for="prezzoMensile">Prezzo mensile</label>
-                                            <input type="number" id="prezzoMensile" name="prezzoMensile" min="0">
-                                        </div>
-                                        <div>
-                                            <label for="indirizzo">Indirizzo</label>
-                                            <input type="text" id="indirizzo" name="indirizzo">
-                                        </div>
-                                        <div>
                                             <label for="coinquilini">Numero coinquilini</label>
                                             <input type="number" id="coinquilini" name="coinquilini" min="0">
+                                        </div>
+                                        <div>
+                                            <label for="costo-mese-affitto">Costo mensile (€/mese)</label>
+                                            <input type="number" id="costo-mese-affitto" name="costo-mese-affitto" min="0">
+                                        </div>
+                                        <div>
+                                            <label for="indirizzo-affitto">Indirizzo</label>
+                                            <input type="text" id="indirizzo-affitto" name="indirizzo-affitto">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -127,12 +144,12 @@
                                             <input type="text" id="laboratorio" name="laboratorio">
                                         </div>
                                         <div>
-                                            <label for="durata">Durata prevista</label>
-                                            <input type="text" id="durata" name="durata" placeholder="Es. 3 mesi">
+                                            <label for="esperimento-durata">Durata esperimento (minuti)</label>
+                                            <input type="text" id="esperimento-durata" name="esperimento-durata" placeholder="Es. 75">
                                         </div>
                                         <div>
-                                            <label for="compenso">Compenso</label>
-                                            <input type="number" id="compenso" name="compenso" min="0">
+                                            <label for="esperimento-compenso">Compenso (€)</label>
+                                            <input type="number" id="esperimento-compenso" name="esperimento-compenso" min="0">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -141,16 +158,16 @@
                                     <fieldset class="campi-specifici">
                                         <legend>Dettagli Eventi</legend>
                                         <div>
-                                            <label for="dataEvento">Data evento</label>
-                                            <input type="date" id="dataEvento" name="dataEvento">
+                                            <label for="data-evento">Data evento</label>
+                                            <input type="date" id="data-evento" name="data-evento">
                                         </div>
                                         <div>
-                                            <label for="luogo">Luogo</label>
-                                            <input type="text" id="luogo" name="luogo">
+                                            <label for="costo-evento">Costo entrata (€)</label>
+                                            <input type="number" id="costo-evento" name="costo-evento" min="0">
                                         </div>
                                         <div>
-                                            <label for="costoEntrata">Costo entrata</label>
-                                            <input type="number" id="costoEntrata" name="costoEntrata" min="0">
+                                            <label for="luogo-evento">Luogo</label>
+                                            <input type="text" id="luogo-evento" name="luogo-evento">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -164,15 +181,19 @@
                                         </div>
                                         <div>
                                             <label for="livello">Livello</label>
-                                            <input type="text" id="livello" name="livello" placeholder="Es. Scuola superiore, Università">
+                                            <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                            <datalist id="listlivelli">
+                                                <option value="Medie">
+                                                <option value="Superiori">
+                                                <option value="Università">
+                                            </datalist>
                                         </div>
                                         <div>
-                                            <label for="prezzoOrario">Prezzo orario</label>
-                                            <input type="number" id="prezzoOrario" name="prezzoOrario" min="0">
+                                            <label for="prezzo-ripetizioni">Prezzo orario (€/ora)</label>
+                                            <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0">
                                         </div>
                                     </fieldset>
                                 </div>
-
                             </div>
 
                             <!-- Immagini --->

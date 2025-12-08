@@ -750,7 +750,7 @@ label {
     gap: 2em 3em;
 }
 
-#attr-specifici-container {
+#attr-specifici-container fieldset{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em 3em;
@@ -983,7 +983,7 @@ input:focus, select:focus {
     outline-offset: 2px;
 }
 
-.input-wrapper-price {
+/*.input-wrapper-price {
     position: relative;
     display: inline-block;
     width: 100%; 
@@ -1002,7 +1002,7 @@ input:focus, select:focus {
     transform: translateY(-50%);
     color: var(--txtcolor);
     pointer-events: none; 
-}
+}*/
 
 input[type="file"] {
     display: inline-block;

@@ -71,7 +71,7 @@
                             <fieldset>
                                 <div>
                                     <label for="cerca">Cerca</label>
-                                    <input id="carca" type="text" name="carca" maxlength=20 placeholder="Cercae...">
+                                    <input id="carca" type="text" name="carca" maxlength=20 placeholder="Cerca...">
                                 </div>
                             </fieldset>
                         </form>
@@ -91,11 +91,11 @@
                             <div>
                                 <label for="categoria">Categoria</label>
                                 <select id="categoria" name="categoria">
-                                    <option>Seleziona</option>
-                                    <option>Eventi</option>
-                                    <option>Esperimenti</option>
-                                    <option>Affitti</option>
-                                    <option>Ripetizioni</option>
+                                    <option value="">Seleziona categoria</option>
+                                        <option value="Affitti">Affitti</option>
+                                        <option value="Esperimenti">Esperimenti</option>
+                                        <option value="Eventi">Eventi</option>
+                                        <option value="Ripetizioni">Ripetizioni</option>
                                 </select>
                             </div>
                             <div>
@@ -135,88 +135,6 @@
                                     </div>
                             </fieldset>
                         </fieldset>
-
-                        <div id="filtri-eventi" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Eventi</legend>
-                                <!-- Attributi Eventi -->
-                                <!--<div>
-                                    <label for="data-evento">Data evento</label>
-                                    <input id="data-evento" type="date" name="data-evento">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Periodo evento</legend>
-                                    <div>
-                                        <label for="evento-inizio">Data inizio</label>
-                                        <input id="evento-inizio" type="date" name="evento-inizio">
-                                    </div>
-                                    <div>
-                                        <label for="evento-fine">Data fine</label>
-                                        <input id="evento-fine" type="date" name="evento-fine">
-                                    </div>
-                                </fieldset>
-                                <!--<div>
-                                    <label for="costo-evento">Costo entrata</label>
-                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Costo entrata</legend>
-                                    <div>
-                                        <label for="evento-costo-min">Costo minimo (€)</label>
-                                        <input id="evento-costo-min" type="number" name="evento-costo-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="evento-costo-max">Costo massimo (€)</label>
-                                        <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                                <div>
-                                    <label for="luogo-evento">Luogo</label>
-                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div id="filtri-esperimenti" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Esperimenti</legend>
-                                <!-- Attributi Esperimenti -->
-                                <!--<div>
-                                    <label for="durata-esperimento">Durata esperimento</label>
-                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Durata esperimento (minuti)</legend>
-                                    <div>
-                                        <label for="esperimento-durata-min">Minimo</label>
-                                        <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
-                                    </div>
-                                    <div>
-                                        <label for="esperimento-durata-max">Massimo</label>
-                                        <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
-                                    </div>
-                                </fieldset>
-                                <div>
-                                    <label for="laboratorio">Laboratorio</label>
-                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
-                                </div>
-                                <!--<div>
-                                    <label for="compenso">Compenso</label>
-                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Compenso</legend>
-                                    <div>
-                                        <label for="esperimento-compenso-min">Compenso minimo (€)</label>
-                                        <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="esperimento-compenso-max">Compenso massimo (€)</label>
-                                        <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                            </fieldset>
-                        </div>
 
                         <div id="filtri-affitti" class="nascondi-filtri">
                             <fieldset class="fieldset-filtri">
@@ -259,22 +177,95 @@
                             </fieldset>
                         </div>
 
+                        <div id="filtri-esperimenti" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Esperimenti</legend>
+                                <!-- Attributi Esperimenti -->
+                                <div>
+                                    <label for="laboratorio">Laboratorio di riferimento</label>
+                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
+                                </div>
+                                <!--<div>
+                                    <label for="durata-esperimento">Durata esperimento</label>
+                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
+                                </div>-->
+                                <fieldset class="fieldset-filtri">
+                                    <legend>Durata esperimento (minuti)</legend>
+                                    <div>
+                                        <label for="esperimento-durata-min">Minimo</label>
+                                        <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
+                                    </div>
+                                    <div>
+                                        <label for="esperimento-durata-max">Massimo</label>
+                                        <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
+                                    </div>
+                                </fieldset>
+                                <!--<div>
+                                    <label for="compenso">Compenso</label>
+                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                                </div>-->
+                                <fieldset class="fieldset-filtri">
+                                    <legend>Compenso</legend>
+                                    <div>
+                                        <label for="esperimento-compenso-min">Compenso minimo (€)</label>
+                                        <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
+                                    </div>
+                                    <div>
+                                        <label for="esperimento-compenso-max">Compenso massimo (€)</label>
+                                        <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
+                                    </div>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+
+                        <div id="filtri-eventi" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Eventi</legend>
+                                <!-- Attributi Eventi -->
+                                <!--<div>
+                                    <label for="data-evento">Data evento</label>
+                                    <input id="data-evento" type="date" name="data-evento">
+                                </div>-->
+                                <fieldset class="fieldset-filtri">
+                                    <legend>Periodo evento</legend>
+                                    <div>
+                                        <label for="evento-inizio">Data inizio</label>
+                                        <input id="evento-inizio" type="date" name="evento-inizio">
+                                    </div>
+                                    <div>
+                                        <label for="evento-fine">Data fine</label>
+                                        <input id="evento-fine" type="date" name="evento-fine">
+                                    </div>
+                                </fieldset>
+                                <!--<div>
+                                    <label for="costo-evento">Costo entrata</label>
+                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
+                                </div>-->
+                                <fieldset class="fieldset-filtri">
+                                    <legend>Costo entrata</legend>
+                                    <div>
+                                        <label for="evento-costo-min">Costo minimo (€)</label>
+                                        <input id="evento-costo-min" type="number" name="evento-costo-min" min="0" step="1" placeholder="Es. 5">
+                                    </div>
+                                    <div>
+                                        <label for="evento-costo-max">Costo massimo (€)</label>
+                                        <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
+                                    </div>
+                                </fieldset>
+                                <div>
+                                    <label for="luogo-evento">Luogo</label>
+                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                                </div>
+                            </fieldset>
+                        </div>
+
                         <div id="filtri-ripetizioni" class="nascondi-filtri">
                             <fieldset class="fieldset-filtri">
                                 <legend>Filtri Ripetizioni</legend>
                                 <!-- Attributi Ripetizioni -->
                                 <div>
-                                    <label for="materia-categoria">Materia</label>
-                                    <input list="listmaterie" name="materia-categoria" id="materia-categoria" placeholder="Es. Chimica, Analisi ...">
-                                    <datalist id="listmaterie">
-                                        <option value="Analisi Matematica">
-                                        <option value="Fisica">
-                                        <option value="Programmazione">
-                                        <option value="Calcolo">
-                                        <option value="Diritto">
-                                        <option value="Chimica">
-                                        <option value="Biologia">
-                                    </datalist>
+                                    <label for="materia">Materia</label>
+                                    <input type="text" id="materia" name="materia">
                                 </div>
                                 <div>
                                     <label for="livello">Livello</label>

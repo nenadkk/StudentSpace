@@ -439,7 +439,7 @@ li.categoria > div {
 ==================================================== 
 */
 
-#attr-generici-container, #attr-specifici-container {
+#attr-generici-container, #attr-specifici-container fieldset {
     display: flex;
     flex-direction: column;
 }
