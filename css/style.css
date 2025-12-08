@@ -100,7 +100,7 @@ header {
     font-size: 1.1em;
 }
 
-#menu .links, #menu .autent {
+#menu .nav-links, #menu .nav-auth {
     list-style: none;
     display: flex;
     margin: 0;
@@ -108,14 +108,14 @@ header {
     font-weight: 500;
 }
 
-#menu .links {
+#menu .nav-links {
     flex: 1;
     gap: 4em;
     justify-content: center;
     color: var(--link);
 }
 
-#menu .autent {
+#menu .nav-auth {
     gap: 2em;
     justify-content: flex-end;
 }
@@ -129,7 +129,7 @@ header {
     padding: 0.3em 0.6em;
 }
 
-#menu .links a{
+#menu .nav-links a{
     text-decoration: underline;
     text-underline-offset: 0.2em;
 }
@@ -344,7 +344,7 @@ footer {
     height: auto;
 }
 
-#presentazione .testo {
+#presentazione > div {
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
@@ -406,7 +406,7 @@ footer {
     flex-shrink: 0;
 }
 
-.categoria .contenuto {
+li.categoria > div {
     display: flex;
     flex-direction: column;
     gap: 0.2em;
@@ -489,19 +489,6 @@ footer {
     text-align: center;
 }
 
-.etichettaCategoria {
-    display: inline-block;
-    font-size: 0.85em;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0.3em 0.8em;
-    border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--esperimentiColor); /* oppure gestito via .catEsperimenti */
-    margin: 0.5em 0 1em;
-    text-align: center;
-}
-
 .ultimoInserito dl, .carta dl {
     margin: 0;
     line-height: 1.5em;
@@ -538,7 +525,7 @@ footer {
     box-shadow: 0 0.4em 0.5em rgba(0,0,0,0.2); 
 }
 
-.catEventiLink, .catEsperimentiLink, .catAffittiLink,.catRipetizioniLink,
+.cat-link,
 .ultimoInserito .dettagli,
 .carta .dettagli {
     position: absolute;
@@ -592,6 +579,18 @@ footer {
     text-align: center;
 }
 
+#aside-style-layout{
+    flex: 0 0 340px;    
+    width: 20%;
+    min-width: 340px;
+    margin: 1em 0 1em 1.5em;
+    float: left;
+}
+
+#ricerca fieldset {
+    border: none; 
+}
+
 label {
     font-weight: bold;
 }
@@ -602,6 +601,10 @@ label {
 
 #toggleFiltri,
 #chiudiFiltri {
+    display: none;
+}
+
+#filtri .form-data .nascondi-filtri{
     display: none;
 }
 
@@ -719,6 +722,24 @@ label {
 
 /*
 ===========================================================================
+    SEZIONE ACCEDI
+===========================================================================
+*/
+
+#login-container{
+    min-width: 20em;            
+}
+
+/*
+===========================================================================
+    SEZIONE REGISTRATI
+===========================================================================
+*/
+
+
+
+/*
+===========================================================================
     SEZIONE PUBBLICA + IMMAGINI PUBBLICA FORM
 ===========================================================================
 */
@@ -729,7 +750,7 @@ label {
     gap: 2em 3em;
 }
 
-#attr-specifici-container {
+#attr-specifici-container fieldset{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em 3em;
@@ -779,18 +800,6 @@ label {
     outline: none;
 }
 
-#pubblica-container fieldset {
-    border: 2px solid var(--txtcolor);   
-    border-radius: 0.8em;                
-    padding: 1.5em 1.5em 2em;            
-}
-
-#pubblica-container fieldset legend {
-    font-weight: bold;
-    color: var(--txtcolor);
-    padding: 0 0.5em;                    
-}
-
 .img-campi:has(#decorativa1:checked) #alt1,
 .img-campi:has(#decorativa2:checked) #alt2,
 .img-campi:has(#decorativa3:checked) #alt3,
@@ -803,6 +812,9 @@ label {
     display:none;
 }
 
+#attr-specifici-container .nascondi-campi{
+    display: none;
+}
 
 /*
 ================= MODULARI su più PAGINE ============================================================= 
@@ -822,21 +834,19 @@ label {
     color: var(--clearTxtColor);
     text-align: center;
     background-color: var(--card); 
+    margin: 0.5em 0 1em;
 } 
 
-.catEventi {
+.etichettaCategoria[data-categoria="eventi"] {
     background-color: var(--eventiColor);
 }
-
-.catAffitti {
-    background-color: var(--affittiColor);
-}
-
-.catEsperimenti {
+.etichettaCategoria[data-categoria="esperimenti"] {
     background-color: var(--esperimentiColor);
 }
-
-.catRipetizioni {
+.etichettaCategoria[data-categoria="affitti"] {
+    background-color: var(--affittiColor);
+}
+.etichettaCategoria[data-categoria="ripetizioni"] {
     background-color: var(--ripetizioniColor);
 }
 
@@ -845,49 +855,28 @@ label {
     SEZIONE LINK CATEGORIA (link in Categorie e ulteriori dettagli in card)
 ===========================================================================
 */
-
-.catEventiLink:visited span {
-    color: var(--eventiColor);
+.cat-link[data-categoria="eventi"]:visited span,
+.cat-link[data-categoria="eventi"]:hover span,
+.cat-link[data-categoria="eventi"]:focus span {
+  color: var(--eventiColor);
 }
 
-.catEventiLink:hover span, .catEventiLink:focus span {
-    /*border-radius: 1em;
-    color: var(--clearTxtColor;
-    background-color: var(--eventiColor);*/
-    color: var(--eventiColor);
+.cat-link[data-categoria="esperimenti"]:visited span,
+.cat-link[data-categoria="esperimenti"]:hover span,
+.cat-link[data-categoria="esperimenti"]:focus span {
+  color: var(--esperimentiColor);
 }
 
-.catEsperimentiLink:visited span {
-    color: var(--esperimentiColor);
+.cat-link[data-categoria="affitti"]:visited span,
+.cat-link[data-categoria="affitti"]:hover span,
+.cat-link[data-categoria="affitti"]:focus span {
+  color: var(--affittiColor);
 }
 
-.catEsperimentiLink:hover span, .catEsperimentiLink:focus span {
-    /*border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--esperimentiColor);*/
-    color: var(--esperimentiColor);
-}
-
-.catAffittiLink:visited span {
-    color: var(--affittiColor);
-}
-
-.catAffittiLink:hover span, .catAffittiLink:focus span {
-    /*border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--affittiColor);*/
-    color: var(--affittiColor);
-}
-
-.catRipetizioniLink:visited span {
-    color: var(--ripetizioniColor);
-}
-
-.catRipetizioniLink:hover span, .catRipetizioniLink:focus span {
-    /*border-radius: 1em;
-    color: var(--clearTxtColor);
-    background-color: var(--ripetizioniColor);*/
-    color: var(--ripetizioniColor);
+.cat-link[data-categoria="ripetizioni"]:visited span,
+.cat-link[data-categoria="ripetizioni"]:hover span,
+.cat-link[data-categoria="ripetizioni"]:focus span {
+  color: var(--ripetizioniColor);
 }
 
 
@@ -904,7 +893,7 @@ label {
 
 /*
 ===========================================================
-    SEZIONE FORM (usata per accesso e registrazione e filtri)
+    SEZIONE FORM (usata per accesso, registrazione, filtri, pubblica)
 =========================================================== 
 */
 
@@ -914,36 +903,36 @@ label {
     flex-direction: column;  
     width: 100%;              
     max-width: 40em;       
-    padding: 2.5em;
+    padding: 2em;
     margin: 2em auto 2em auto;
     background-color: var(--BgColor);
     border-radius: 1em;
     gap: 0.5em;
 }
 
-#login-container{
-    min-width: 20em;            
-}
 
 #register-container, #pubblica-container {
     max-width: 60em;
 }
 
-#aside-style-layout{
-    flex: 0 0 300px;    
-    width: 20%;
-    min-width: 280px;
-    margin: 1em 0 1em 1.5em;
-    float: left;
-}
-
-#ricerca fieldset, #filtri fieldset {
-    border: none; 
-}
-
 #login-container h2, #register-container h2, #filtri h2, #pubblica-container h2 {
     text-align: center;
     margin: 0;
+}
+
+
+#pubblica-container fieldset, #filtri .fieldset-filtri {
+    border: 2px solid var(--txtcolor);   
+    border-radius: 0.8em;                
+    padding: 1em; 
+    margin-top: 0.5em;
+           
+}
+
+#pubblica-container fieldset legend, #filtri .fieldset-filtri legend {
+    font-weight: bold;
+    color: var(--txtcolor);
+    padding: 0 0.5em;                    
 }
 
 #login-container .form-data, #filtri .form-data fieldset {
@@ -994,7 +983,7 @@ input:focus, select:focus {
     outline-offset: 2px;
 }
 
-.input-wrapper-price {
+/*.input-wrapper-price {
     position: relative;
     display: inline-block;
     width: 100%; 
@@ -1013,7 +1002,7 @@ input:focus, select:focus {
     transform: translateY(-50%);
     color: var(--txtcolor);
     pointer-events: none; 
-}
+}*/
 
 input[type="file"] {
     display: inline-block;
@@ -1089,7 +1078,5 @@ form > p, form > p{
     color: var(--required)
 }
 
-#filtri .form-data .nascondi-filtri{
-    display: none;
-}
+
 

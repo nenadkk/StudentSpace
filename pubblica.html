@@ -1,258 +1,287 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <title>Pubblica - Student Space</title>
+    <head>
+        <title>Pubblica - Student Space</title>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla pubblicazione di nuovi eventi o attività."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario -->
-    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
+        <meta name="description" content="Pagina dedicata alla pubblicazione di nuovi eventi o attività."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario -->
+        <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
 
-    <meta name="author" content="StudentSpaceTeam">
-    <meta name="viewport" content="width=device-width">
+        <meta name="author" content="StudentSpaceTeam">
+        <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/style.css" media="screen">
-    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
-    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" media="screen">
+        <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+        <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
 
-    <script src="js/script.js" defer></script>
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-<body>
-    <header>
-        <a href="index.html" aria-label="Vai alla home">
-            <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
-        </a>
-        <nav id="menu" aria-label="Menu principale">
-            <ul class="links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li><a href="esplora.html">Esplora</a></li>
-                <li id="currentLink" aria-current="page">Pubblica</li>
-            </ul>
-            <ul class="autent">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
-            </ul>
-        </nav>
-        
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
-            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
-            <span id="hamburger-aperto">&#9932;</span>
-        </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
-            <ul class="links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li><a href="esplora.html">Esplora</a></li>
-                <li id="hamburger-currentLink" aria-current="page">Pubblica</li>
-            </ul>
-            <ul class="autent">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
-            </ul>
-        </nav>
-    </header>
+        <script src="js/script.js" defer></script>
+    </head>
 
-    <div class="content-container">
-    <nav id="breadcrumb" aria-label="Percorso di navigazione">
-        <ol>
-            <li><a href="index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Pubblica</li>
-        </ol>
-    </nav>
-
-    <main id="contenuto">
-        <div id="pubblica-container">
-        <h2>Pubblica annuncio</h2>
-        <form action="/public" method="post" enctype="multipart/form-data">
-            <div class="form-data">
-                <!-- Parte generica -->
-                <div id="pubblica-titolo-container">
-                    <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
-                    <input type="text" id="titolo" name="titolo" required placeholder="Es. Partita di calcio">
-                        <p>Es. Partita di calcio</p>
-                </div>
-
-                <div id="attr-generici-container">
-                    <div>
-                        <label for="categoria">Categoria<span class="required"> (richiesto)</span></label>
-                        <select id="categoria" name="categoria" required>
-                            <option value="">Seleziona categoria</option>
-                            <option value="affitti">Affitti</option>
-                            <option value="esperimenti">Esperimenti</option>
-                            <option value="eventi">Eventi</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                        </select>
-                        <p>Es. Affitti</p>
-                    </div>
-
-                    <div>
-                        <label for="citta">Città<span class="required"> (richiesto)</span></label>
-                        <input type="text" id="citta" name="citta" required placeholder="Es.  Roma">
-                        <p>Es. Roma</p>
-                    </div>
-                </div>
-
-                <div id="pubblica-descrizione-container">
-                    <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
-                    <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..."></textarea>
-                    <p>Es. Appartamento al terzo piano in centro, con balcone e garage</p>
-                </div>
-
-            <!-- Campi specifici per categoria -->
-            <div id="attr-specifici-container">
-                <fieldset id="campi-affitti" class="campi-specifici" hidden>
-                    <legend>Dettagli Affitti</legend>
-                    <div>
-                        <label for="prezzoMensile">Prezzo mensile</label>
-                        <input type="number" id="prezzoMensile" name="prezzoMensile" min="0">
-                        <p>Es. 400</p>
-                    </div>
-                    <div>
-                        <label for="indirizzo">Indirizzo</label>
-                        <input type="text" id="indirizzo" name="indirizzo">
-                        <p>Es. Via Roma 10</p>
-                    </div>
-                    <div>
-                        <label for="coinquilini">Numero coinquilini</label>
-                        <input type="number" id="coinquilini" name="coinquilini" min="0">
-                        <p>Es. 3</p>
-                    </div>
-                </fieldset>
-
-                <fieldset id="campi-esperimenti" class="campi-specifici" hidden>
-                    <legend>Dettagli Esperimenti</legend>
-                    <div>
-                        <label for="laboratorio">Laboratorio di riferimento</label>
-                        <input type="text" id="laboratorio" name="laboratorio">
-                        <p>Es. Laboratorio di Psicologia Sperimentale</p>
-                    </div>
-                    <div>
-                        <label for="durata">Durata prevista</label>
-                        <input type="text" id="durata" name="durata" placeholder="Es. 3 mesi">
-                        <p>Es. 3 mesi</p>
-                    </div>
-                    <div>
-                        <label for="compenso">Compenso</label>
-                        <input type="number" id="compenso" name="compenso" min="0">
-                        <p>Es. 20</p>
-                    </div>
-                </fieldset>
-
-                <fieldset id="campi-eventi" class="campi-specifici" hidden>
-                    <legend>Dettagli Eventi</legend>
-                    <div>
-                        <label for="dataEvento">Data evento</label>
-                        <input type="date" id="dataEvento" name="dataEvento">
-                        <p>Es. 25/12/2024</p>
-                    </div>
-                    <div>
-                        <label for="luogo">Luogo</label>
-                        <input type="text" id="luogo" name="luogo">
-                        <p>Es. Auditorium centro</p>
-                    </div>
-                    <div>
-                        <label for="costoEntrata">Costo entrata</label>
-                        <input type="number" id="costoEntrata" name="costoEntrata" min="0">
-                        <p>Es. 10</p>
-                    </div>
-                </fieldset>
-
-                <fieldset id="campi-ripetizioni" class="campi-specifici" hidden>
-                    <legend>Dettagli Ripetizioni</legend>
-                    <div>
-                        <label for="materia">Materia</label>
-                        <input type="text" id="materia" name="materia">
-                        <p>Es. Matematica</p>
-                    </div>
-                    <div>
-                        <label for="livello">Livello</label>
-                        <input type="text" id="livello" name="livello" placeholder="Es. Scuola superiore, Università">
-                        <p>Es. Università</p>
-                    </div>
-                    <div>
-                        <label for="prezzoOrario">Prezzo orario</label>
-                        <input type="number" id="prezzoOrario" name="prezzoOrario" min="0">
-                        <p>Es. 15</p>
-                    </div>
-                </fieldset>
-            </div>
-
-            <!-- Immagini --->
-            <fieldset>
-            <legend>Immagini (max 4)</legend>
-                <p class="alt-spiegazione">
-                    Il <strong>testo alternativo</strong> descrive l'immagine per chi non può vederla (es. utenti con disabilità visive o in caso di errore di caricamento).  
-                    Se l'immagine è puramente decorativa e non aggiunge contenuto, puoi spuntare <strong>"Decorativa"</strong> e lasciare vuoto il campo.
-                </p>
-            <div id="img1" class="image-block">
-                <label for="foto1">Immagine 1</label>
-                <div class="img-campi">
-                    <input type="file" id="foto1" name="foto1" accept="image/*" required>
-                    <input type="text" id="alt1" name="alt1" placeholder="Testo alternativo">
-                    <label class="dec-label">
-                        <input type="checkbox" id="decorativa1" name="decorativa1"> Decorativa
-                    </label>
-                </div>
-            </div>
-
-            <div id="img2" class="image-block">
-                <label for="foto2">Immagine 2</label>
-                <div class="img-campi">
-                    <input type="file" id="foto2" name="foto2" accept="image/*" disabled>
-                    <input type="text" id="alt2" name="alt2" placeholder="Testo alternativo" disabled>
-                    <label class="dec-label">
-                        <input type="checkbox" id="decorativa2" name="decorativa2" disabled> Decorativa
-                    </label>
-                </div>
-            </div>
-
-            <div id="img3" class="image-block">
-                <label for="foto3">Immagine 3</label>
-                <div class="img-campi">
-                    <input type="file" id="foto3" name="foto3" accept="image/*" disabled>
-                    <input type="text" id="alt3" name="alt3" placeholder="Testo alternativo" disabled>
-                    <label class="dec-label">
-                        <input type="checkbox" id="decorativa3" name="decorativa3" disabled> Decorativa
-                    </label>
-                </div>
-            </div>
-
-            <div id="img4" class="image-block">
-                <label for="foto4">Immagine 4</label>
-                <div class="img-campi">
-                    <input type="file" id="foto4" name="foto4" accept="image/*" disabled>
-                    <input type="text" id="alt4" name="alt4" placeholder="Testo alternativo" disabled>
-                    <label class="dec-label">
-                        <input type="checkbox" id="decorativa4" name="decorativa4" disabled> Decorativa
-                    </label>
-                </div>
-            </div>
-            </fieldset>
-            </div>
-            <button type="submit">Invia</button>
-        </form>
-        </div>
-        <div class="separatore" role="presentation" aria-hidden="true"></div>
-    </main>
-
-    <footer>
-        <div id="footer-top">
-            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
-                <img src="assets/freccia.png" alt="">
+    <body>
+        <header>
+            <a href="index.html" aria-label="Vai alla home">
+                <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
             </a>
-            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
-        </div>
+            <nav id="menu" aria-label="Menu principale">
+                <ul class="nav-links">
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li><a href="esplora.html">Esplora</a></li>
+                    <li id="currentLink" aria-current="page">Pubblica</li>
+                </ul>
+                <ul class="nav-auth">
+                    <li><a class="btn" href="registrati.html">Registrati</a></li>
+                    <li><a class="btn" href="accedi.html">Accedi</a></li>
+                </ul>
+            </nav>
 
-        <div id="footer-bottom">
-            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
-            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+            <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+                <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+                <span id="hamburger-aperto">&#9932;</span>
+            </button>
+            <nav id="hamburger-menu" aria-label="Menu principale">
+                <ul class="nav-links">
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li><a href="esplora.html">Esplora</a></li>
+                    <li id="hamburger-currentLink" aria-current="page">Pubblica</li>
+                </ul>
+                <ul class="nav-auth">
+                    <li><a class="btn" href="registrati.html">Registrati</a></li>
+                    <li><a class="btn" href="accedi.html">Accedi</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-container">
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
+                <ol>
+                    <li><a href="index.html"><span lang="en">Home</span></a></li>
+                    <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Pubblica</li>
+                </ol>
+            </nav>
+
+            <main id="contenuto">
+                <div id="pubblica-container">
+                    <h2>Pubblica annuncio</h2>
+                    <form action="/public" method="post" enctype="multipart/form-data">
+                        <div class="form-data">
+                            <!-- Parte generica -->
+                            <div id="pubblica-titolo-container">
+                                <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
+                                <input type="text" id="titolo" name="titolo" required placeholder="Es. Partita di calcio">
+                                <p>Es. Partita di calcio</p>
+                            </div>
+
+                            <div id="attr-generici-container">
+                                <div>
+                                    <label for="categoria-campi">Categoria<span class="required"> (richiesto)</span></label>
+                                    <select id="categoria-campi" name="categoria-campi" required>
+                                        <option value="">Seleziona categoria</option>
+                                        <option value="Affitti">Affitti</option>
+                                        <option value="Esperimenti">Esperimenti</option>
+                                        <option value="Eventi">Eventi</option>
+                                        <option value="Ripetizioni">Ripetizioni</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="citta">Città</label>
+                                    <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                                    <datalist id="listaCitta">
+                                        <option value="Padova">
+                                        <option value="Trento">
+                                        <option value="Roma">
+                                        <option value="Milano">
+                                        <option value="Bologna">
+                                        <option value="Torino">
+                                        <option value="Pavia">
+                                        <option value="Napoli">
+                                        <option value="Firenze">
+                                        <option value="Venezia">
+                                        <option value="Perugia">
+                                        <option value="Catania">
+                                        <option value="Genova">
+                                        <option value="Salerno">
+                                        <option value="Siena">
+                                    </datalist>
+                                    <p>Es. Padova</p>
+                                </div>
+                            </div>
+
+                            <div id="pubblica-descrizione-container">
+                                <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
+                                <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..."></textarea>
+                                <p>Es. Appartamento con 2 camere vicino al centro</p>
+                            </div>
+
+                            <!-- Campi specifici per categoria -->
+                            <div id="attr-specifici-container">
+
+                                <div id="campi-affitti" class="nascondi-campi">
+                                    <fieldset  class="campi-specifici">
+                                        <legend>Dettagli Affitti</legend>
+                                        <div>
+                                            <label for="coinquilini">Numero coinquilini</label>
+                                            <input type="number" id="coinquilini" name="coinquilini" min="0">
+                                            <p>Es. 2</p>
+                                        </div>
+                                        <div>
+                                            <label for="costo-mese-affitto">Costo mensile (€/mese)</label>
+                                            <input type="number" id="costo-mese-affitto" name="costo-mese-affitto" min="0">
+                                            <p>Es. 300</p>
+                                        </div>
+                                        <div>
+                                            <label for="indirizzo-affitto">Indirizzo</label>
+                                            <input type="text" id="indirizzo-affitto" name="indirizzo-affitto">
+                                            <p>Es. Via Roma 10</p>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div id="campi-esperimenti" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Esperimenti</legend>
+                                        <div>
+                                            <label for="laboratorio">Laboratorio di riferimento</label>
+                                            <input type="text" id="laboratorio" name="laboratorio">
+                                            <p>Es. Laboratorio di Psicologia Sperimentale</p>
+                                        </div>
+                                        <div>
+                                            <label for="esperimento-durata">Durata esperimento (minuti)</label>
+                                            <input type="text" id="esperimento-durata" name="esperimento-durata" placeholder="Es. 75">
+                                            <p>Es. 75</p>
+                                        </div>
+                                        <div>
+                                            <label for="esperimento-compenso">Compenso (€)</label>
+                                            <input type="number" id="esperimento-compenso" name="esperimento-compenso" min="0">
+                                            <p>Es. 15</p>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div id="campi-eventi" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Eventi</legend>
+                                        <div>
+                                            <label for="data-evento">Data evento</label>
+                                            <input type="date" id="data-evento" name="data-evento">
+                                            <p>Es. 18/10/2025</p>
+                                        </div>
+                                        <div>
+                                            <label for="costo-evento">Costo entrata (€)</label>
+                                            <input type="number" id="costo-evento" name="costo-evento" min="0">
+                                            <p>Es. 10</p>
+                                        </div>
+                                        <div>
+                                            <label for="luogo-evento">Luogo</label>
+                                            <input type="text" id="luogo-evento" name="luogo-evento">
+                                            <p>Es. Teatro Comunale</p>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div id="campi-ripetizioni" class="nascondi-campi">
+                                    <fieldset class="campi-specifici">
+                                        <legend>Dettagli Ripetizioni</legend>
+                                        <div>
+                                            <label for="materia">Materia</label>
+                                            <input type="text" id="materia" name="materia">
+                                            <p>Es. Matematica</p>
+                                        </div>
+                                        <div>
+                                            <label for="livello">Livello</label>
+                                            <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                            <datalist id="listlivelli">
+                                                <option value="Medie">
+                                                <option value="Superiori">
+                                                <option value="Università">
+                                            </datalist>
+                                        </div>
+                                        <div>
+                                            <label for="prezzo-ripetizioni">Prezzo orario (€/ora)</label>
+                                            <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0">
+                                            <p>Es. 15</p>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <!-- Immagini --->
+                            <fieldset>
+                                <legend>Immagini (max 4)</legend>
+                                <p class="alt-spiegazione">
+                                Il <strong>testo alternativo</strong> descrive l'immagine per chi non può vederla (es. utenti con disabilità visive o in caso di errore di caricamento).  
+                                Se l'immagine è puramente decorativa e non aggiunge contenuto, puoi spuntare <strong>"Decorativa"</strong> e lasciare vuoto il campo.
+                                </p>
+                                <div id="img1" class="image-block">
+                                    <label for="foto1">Immagine 1</label>
+                                    <div class="img-campi">
+                                        <input type="file" id="foto1" name="foto1" accept="image/*" required>
+                                        <input type="text" id="alt1" name="alt1" placeholder="Testo alternativo">
+                                        <label class="dec-label">
+                                            <input type="checkbox" id="decorativa1" name="decorativa1"> Decorativa
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="img2" class="image-block">
+                                    <label for="foto2">Immagine 2</label>
+                                    <div class="img-campi">
+                                        <input type="file" id="foto2" name="foto2" accept="image/*" disabled>
+                                        <input type="text" id="alt2" name="alt2" placeholder="Testo alternativo" disabled>
+                                        <label class="dec-label">
+                                            <input type="checkbox" id="decorativa2" name="decorativa2" disabled> Decorativa
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="img3" class="image-block">
+                                    <label for="foto3">Immagine 3</label>
+                                    <div class="img-campi">
+                                        <input type="file" id="foto3" name="foto3" accept="image/*" disabled>
+                                        <input type="text" id="alt3" name="alt3" placeholder="Testo alternativo" disabled>
+                                        <label class="dec-label">
+                                            <input type="checkbox" id="decorativa3" name="decorativa3" disabled> Decorativa
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="img4" class="image-block">
+                                    <label for="foto4">Immagine 4</label>
+                                    <div class="img-campi">
+                                        <input type="file" id="foto4" name="foto4" accept="image/*" disabled>
+                                        <input type="text" id="alt4" name="alt4" placeholder="Testo alternativo" disabled>
+                                        <label class="dec-label">
+                                            <input type="checkbox" id="decorativa4" name="decorativa4" disabled> Decorativa
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <button type="submit">Invia</button>
+                    </form>
+                </div>
+                <div class="separatore" role="presentation" aria-hidden="true"></div>
+            </main>
+
+            <footer>
+                <div id="footer-top">
+                    <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                        <img src="assets/freccia.png" alt="">
+                    </a>
+                    <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+                </div>
+
+                <div id="footer-bottom">
+                    <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+                    <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+                    <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+                </div>
+            </footer>
         </div>
-    </footer>
-    </div>
-</body>
+    </body>
 </html>

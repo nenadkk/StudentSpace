@@ -16,10 +16,14 @@ HTML
 (SPEGGIO) 10. In filtri e in pubblica datalist con tutte le città universitarie italiane (fatto per non dover aggiornare dinamicamente la lista delle 
     città disponibili). Mettere il suggerimento di mettere la città universitaria di appartenenza
 (NENAD) 11. Mettere aria live true per errori form (per screen reader)
+(SOFIA) 12. Fieldset categoria filtri
 
 CSS 
 (SPEGGIO) 1. Togliere hover cambio colore link
 (NENAD) 2. Da aumentare altezza pulsanti/link 
+(SOFIA) 3. sistemare scroll orizzontale filtri + fielset modulari
+(SOFIA) 4. rendere visibile bottone applica da mobile
+(SOFIA) 5. sistemare ridimensionamento pubblica attributo specifico
 
 JAVASCRIPT
 (NICSIM) 1. mettere negli ultimi inseriti che slidino in automatico 
@@ -48,8 +52,7 @@ il sito e i loro riscontri
 
 FORSE - come gestire pubblica e cancella
 
-Fare i test con totalvalidator in laboratorio
-
+- Fare i test con totalvalidator in laboratorio
 
 ###### DA CHIEDERE ALLA PROF ######
 
