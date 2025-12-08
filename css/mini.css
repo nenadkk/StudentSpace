@@ -253,7 +253,7 @@ header {
     top: 0;
     left: -100%;
     width: 80%;
-    min-width: 300px;
+    min-width: 340px;
     height: 100vh;
     background-color: var(--BgColor);
     border-radius: 0 1em 1em 0;
