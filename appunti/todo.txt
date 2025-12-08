@@ -41,3 +41,9 @@ psw da foglio
 --> parametri connessione db
 
 TO DO (post 05/12):
+- Formato immagini in asset e trovare foto definitive annunci
+- scrivere testi annunci
+- provare a fare funzione che se si clicca fuori funzione filtri la tendina si chiude
+- ripulire css e HTML
+- range in filtri?
+- togliere filtriggio specifico in attributi testuali tanto gestiti con ricerca?
