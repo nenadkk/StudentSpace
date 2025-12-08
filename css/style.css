@@ -580,15 +580,11 @@ li.categoria > div {
 }
 
 #aside-style-layout{
-    flex: 0 0 300px;    
+    flex: 0 0 340px;    
     width: 20%;
-    min-width: 300px;
+    min-width: 340px;
     margin: 1em 0 1em 1.5em;
     float: left;
-}
-
-#filtri {
-    min-width: 300px;
 }
 
 #ricerca fieldset {
