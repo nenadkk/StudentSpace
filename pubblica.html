@@ -29,11 +29,14 @@
         <h1 id="logo-link" lang="en">
             <a href="index.html" aria-label="Vai alla home">Student Space</a>
         </h1>
-        <nav id="menu" aria-label="Menu principale">
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menù di navigazione desktop">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
-                <li id="current-link" aria-current="page">Pubblica</li>
+                <li class="current-link" aria-current="page">Pubblica</li>
             </ul>
             <ul class="nav-auth">
                 <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
@@ -41,11 +44,11 @@
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false">
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -61,7 +64,7 @@
     <div class="content-container">
         <nav id="breadcrumb" aria-label="Percorso di navigazione">
             <ol>
-                <li><a href="index.html"><span lang="en">Home</span></a></li>
+                <li lang="en"><a href="index.html">Home</a></li>
                 <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Pubblica</li>
             </ol>
         </nav>
@@ -271,19 +274,26 @@
         </main>
 
         <footer>
-            <div id="footer-top">
-                <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
-                    <img src="assets/freccia.png" alt="">
-                </a>
-                <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
-            </div>
-
-            <div id="footer-bottom">
-                <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
-                <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-                <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
-            </div>
-        </footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li class="currentPage" aria-current="page">Pubblica</li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
     </div>
 </body>
 </html>
