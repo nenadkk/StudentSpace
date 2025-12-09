@@ -57,6 +57,19 @@ h2 {
   scroll-margin-top: 6.5em; 
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -999px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0); /*area visibile larga zero e alta zero*/
+    white-space: nowrap;
+    border: 0;
+}
+
+
 /*
 ====================================================
     SEZIONE HEADER

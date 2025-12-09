@@ -26,7 +26,7 @@
 <body>
     <header>
         <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
-        <nav id="menu" aria-label="Menu principale">
+        <nav id="menu" aria-label="Menu principale desktop">
             <ul class="nav-links">
                 <li lang="en" id="currentLink" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -38,11 +38,11 @@
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+        <button id="hamburger" aria-label="Apri o chiudi il menu di navigazione" aria-pressed="false">
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
+        <nav id="hamburger-menu" aria-label="Menu principale mobile">
             <ul class="nav-links">
                 <li lang="en" id="hamburger-currentLink" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -69,8 +69,8 @@
                 <p>Trova ciò che ti serve, pubblica ciò che puoi offrire, partecipa, scopri, connettiti alla comunità della tua <strong>università</strong>.</p>
                 
                 <div class="azioni">
-                    <a class="btn" href="esplora.html" role="button" aria-label="Esplora le proposte disponibili">Esplorale proposte</a>
-                    <a class="btn" href="pubblica.html" role="button" aria-label="Pubblica un nuovo annuncio">Pubblica un annuncio</a>
+                    <a class="btn" href="esplora.html">Esplora le proposte</a>
+                    <a class="btn" href="pubblica.html">Pubblica un annuncio</a>
                 </div>
             </div>
         </section>
@@ -130,7 +130,10 @@
    		           <span class="etichettaCategoria" data-categoria="affitti" aria-label="Categoria: Affitti">Affitti</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    <a class="dettagli" href="annuncio.html">
+                        <span>Più dettagli</span>
+                        <span class="sr-only"> sull'annuncio "Camera doppia a Padova"</span>
+                    </a>
                 </li>
                 <li class="carta">
                     <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
