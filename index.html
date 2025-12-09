@@ -11,6 +11,7 @@
 
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
@@ -20,46 +21,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
     <script src="js/script.js" defer></script>
 </head>
 
 <body>
     <header id="intestazione">
-        <h1 class="logo" lang="en">Student Space</h1>
-        <a class="aiuti" href="#contenuto">Salta la navigazione</a>
-        <nav id="menu" aria-label="Menu principale desktop">
+        <h1 id="logo-home" lang="en">Student Space</h1>
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+        <nav id="menu" aria-label="Menu di navigazione desktop">
             <ul class="nav-links">
-                <li lang="en" id="currentLink" aria-current="page">Home</li>
+                <li lang="en" class="current-link" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
             </ul>
         </nav>
 
         <!-- da sistemare per accessibilità-->
-        <button id="hamburger" aria-label="Apri o chiudi il menu di navigazione" aria-pressed="false"> 
+        <button id="hamburger" aria-label="Apri il menu di navigazione" aria-pressed="false"> 
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
         <nav id="hamburger-menu" aria-label="Menu principale mobile">
             <ul class="nav-links">
-                <li lang="en" id="hamburger-currentLink" aria-current="page">Home</li>
+                <li lang="en" class="current-link" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="btn" href="registrati.html">Registrati</a></li>
-                <li><a class="btn" href="accedi.html">Accedi</a></li>
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="content-container">
-    <nav id="breadcrumb" aria-label="Percorso di navigazione">
-        <ol><li><span lang="en" class="currentPage" aria-current="page">Home</span></li></ol>
+    <nav id="breadcrumb" aria-label="Ti trovi in:">
+        <ol><li lang="en" class="currentPage">Home</li></ol>
     </nav>
 
     <main id="contenuto">
@@ -71,12 +74,12 @@
                 <p>Trova ciò che ti serve, pubblica ciò che puoi offrire, partecipa, scopri, connettiti alla comunità della tua <strong>università</strong>.</p>
                 
                 <div class="azioni">
-                    <a class="btn" href="esplora.html">Esplora le proposte</a>
-                    <a class="btn" href="pubblica.html">Pubblica un annuncio</a>
+                    <a class="call-to-action" href="esplora.html">Esplora le proposte</a>
+                    <a class="call-to-action" href="pubblica.html">Pubblica un annuncio</a>
                 </div>
             </div>
         </section>
-	    <div class="separatore" role="presentation" aria-hidden="true"></div> <!-- controllare su altri siti se usano role="presentation"-->
+
         <section id="categorie">
             <h2>Esplora le categorie</h2>
             <p>Trova ciò che cerchi o condividi le tue opportunità con la community</p>
@@ -86,9 +89,8 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="eventi">Eventi</h3>
                         <p>Partecipa a <strong>eventi universitari</strong>, <strong>incontri</strong> e <strong>attività</strong> per studenti.</p>
-                        <a class="cat-link" data-categoria="eventi" href="esplora.html?categoria=Eventi">
+                        <a class="cat-link" data-categoria="eventi" href="esplora.html?categoria=Eventi" aria-label="Scopri di più sulla categoria eventi">
                             <span>Scopri di più</span>
-                            <span class="aiuti">sulla categoria eventi</span>
                         </a>
                     </div>
                 </li>
@@ -97,9 +99,8 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</h3>
                         <p>Contribuisci a <strong>ricerche universitarie</strong> e <strong>esperimenti accademici</strong>.</p>
-                        <a class="cat-link" data-categoria="esperimenti" href="esplora.html?categoria=Esperimenti">
+                        <a class="cat-link" data-categoria="esperimenti" href="esplora.html?categoria=Esperimenti" aria-label="Scopri di più sulla categoria esperimenti">
                             <span>Scopri di più</span>
-                            <span class="aiuti">sulla categoria esperimenti</span>
                         </a>
                     </div>
                 </li>
@@ -108,9 +109,8 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="affitti">Affitti</h3>
                         <p>Cerca o pubblica <strong>annunci di affitto</strong> per <strong>studenti fuorisede</strong>.</p>
-                        <a class="cat-link" data-categoria="affitti" href="esplora.html?categoria=Affitti">
+                        <a class="cat-link" data-categoria="affitti" href="esplora.html?categoria=Affitti" aria-label="Scopri di più sulla categoria affitti">
                             <span>Scopri di più</span>
-                            <span class="aiuti">sulla categoria affitti</span>
                         </a>
                     </div>
                 </li>
@@ -119,15 +119,14 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</h3>
                         <p>Offri o ricevi <strong>ripetizioni universitarie</strong>, <strong>lezioni private</strong> e <strong>supporto allo studio</strong>.</p>
-                        <a class="cat-link" data-categoria="ripetizioni" href="esplora.html?categoria=Ripetizioni">
+                        <a class="cat-link" data-categoria="ripetizioni" href="esplora.html?categoria=Ripetizioni" aria-label="Scopri di più sulla categoria ripetizioni">
                             <span>Scopri di più</span>
-                            <span class="aiuti">sulla categoria ripetizioni</span>
                         </a>
                     </div>
                 </li>
             </ul>
         </section>
-	    <div class="separatore" role="presentation" aria-hidden="true"></div>
+
         <section id="ultimiInseriti">
             <h2>Ultimi inseriti</h2>
             <ul>
@@ -144,9 +143,8 @@
    		                    <span class="etichettaCategoria" data-categoria="affitti">Affitti</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html">
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Camera doppia a Padova">
                         <span>Più dettagli</span>
-                        <span class="aiuti"> sull'annuncio "Camera doppia a Padova"</span>
                     </a>
                 </li>
                 <li class="carta">
@@ -162,9 +160,8 @@
    		                    <span class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html">
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Modello per scultura pagato">
                         <span>Più dettagli</span>
-                        <span class="aiuti"> sull'annuncio "Modello per scultura pagato"</span>
                     </a>
                 </li>
                 <li class="carta">
@@ -180,28 +177,26 @@
    		                    <span class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html">
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Lezioni private di Analisi 2">
                         <span>Più dettagli</span>
-                        <span class="aiuti"> sull'annuncio "Lezioni private di Analisi 2"</span>
                     </a>
                 </li>
             </ul>
         </section>
-	<div class="separatore" role="presentation" aria-hidden="true"></div>
     </main>
     <footer>
         <div id="footer-top">
             <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
                 <img src="assets/freccia.png" alt="">
             </a>
-            <ul>
-                <li>Home</li>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en" class="currentPage" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
                 <li><a href="pubblica.html">Pubblica</a></li>
                 <li><a href="registrati.html">Registrati</a></li>
                 <li><a href="accedi.html">Accedi</a></li>
             </ul>
-            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
         </div>
         <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
         <div id="footer-bottom">
@@ -209,7 +204,7 @@
             <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
             <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
         </div>
-    </footer>
+</footer>
     </div>
 </body>
 </html>

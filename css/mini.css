@@ -29,10 +29,13 @@ header {
     margin-top: 16em;
 }
 
-.logo {
-    /* margin: 0 auto; */
-    background-position: center;
+#logo-home{
     font-size: 4em;
+}
+
+#logo-link a {
+    background-position: center;
+    font-size: 2em;
 }
 
 #menu {
@@ -87,19 +90,6 @@ header {
     gap: 1.6em;
 }
 
-#hamburger-currentLink {
-    /* order: -1; /* chiedere se è va bene o rompe lo schema mnemonico*/
-    text-decoration: none;
-    font-weight: bold;
-    background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
-    background-position: left center, right center;
-    background-repeat: no-repeat;
-    background-size: 1em, 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    text-transform: uppercase;
-}
-
 #hamburger-menu li{
     color: var(--txtcolor);
 }
@@ -120,20 +110,20 @@ header {
     color: var(--visited);
 }
 
-#hamburger-menu .btn {
+#hamburger-menu .call-to-action {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     color: var(--clearTxtColor); 
-    background-color: var(--btnColor);
-    border: 2px solid var(--btnColor);
+    background-color: var(--call-to-actionColor);
+    border: 2px solid var(--call-to-actionColor);
     padding: 0.5em 1em;
     border-radius: 1em;
     font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#hamburger-menu .btn:visited{    
-    color: var(--btnColor);
+#hamburger-menu .call-to-action:visited{    
+    color: var(--call-to-actionColor);
     background-color: var(--BgColor);
     padding: 0.5em 1em;
     border-radius: 1em;
@@ -239,7 +229,7 @@ header {
     padding: 0.8em 1.2em;
     font-size: 1em;
     border-radius: 1em;
-    background-color: var(--btnColor);
+    background-color: var(--call-to-actionColor);
     color: var(--clearTxtColor);
     font-weight: bold;
     border: none;
@@ -332,7 +322,7 @@ li.categoria > div {
 }
 
 #categorie ul {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .esplora {

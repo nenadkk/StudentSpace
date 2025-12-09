@@ -25,13 +25,9 @@ h4 {
     margin-bottom: 0.3cm;
 }
 
-
-.separatore {
-    border-top: 1px solid #9c9c9c;
-    height: 0;
-    margin: 1cm 0;
+.aiuti {
+    display: none;
 }
-
 
 /*
 ====================================================
@@ -84,6 +80,16 @@ header h1 {
 
 #breadcrumb a {
     text-decoration: none;
+}
+
+/*
+====================================================
+    SEZIONE SEPARATORI
+====================================================
+*/
+
+#presentazione, #categorie {
+    border-bottom: 1px solid #9c9c9c;
 }
 
 /*
@@ -223,7 +229,7 @@ header h1 {
 ==================================================== 
 */
 
-#filtri {
+#ricerca, #filtri {
     display: none;
 }
 
@@ -412,11 +418,11 @@ button {
 ====================================================
 */
 footer {
+    border-top: 1px solid #9c9c9c;
     margin-top: 0.5cm;
     text-align: center;
     font-size: 10pt;
     color: #000;
-    background: none !important;
 }
 
 #footer-top, .freccia-su, .logo-footer {
