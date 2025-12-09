@@ -7,10 +7,11 @@
 :root { 
     --BgColor: #83adf0;
     --breadColor: #83adf0;
-    --hoverNav: #aec6ed;
+    --hoverNav: #aec6ed; 
+    --hoverCat: #fcf3ad;
+    --hoverDettagli: #c1cee4;
     --txtcolor: #293845;
     --clearBgColor: #fffacd;
-    --hoverEventi: #fcf3ad;
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
     --call-to-actionAction: #efc062;
@@ -600,6 +601,19 @@ li.categoria > div {
     z-index: 1;
 }
 
+.cat-link:hover span, .cat-link:focus span,
+.carta .dettagli:hover span, .carta .dettagli:focus span {
+    padding: 0.3em 0.6em; 
+}
+
+.cat-link:hover  span, .cat-link:focus span{
+    background-color: var(--hoverCat);
+}
+
+.carta .dettagli:hover span, .carta .dettagli:focus span{
+    background-color: var(--hoverDettagli);
+}
+
 .categoria a > span, 
 .carta a > span{
     position: absolute;
@@ -922,49 +936,28 @@ label {
 ===========================================================================
 */
 
-.cat-link[data-categoria="eventi"]:visited span,
-.cat-link[data-categoria="eventi"]:hover span,
-.cat-link[data-categoria="eventi"]:focus span {
-    border-radius: 1em;
-    background-color: var(--hoverEventi);
-    padding: 0.3em 0.6em;  
+.cat-link[data-categoria="eventi"]:visited span{
+    color: var(--eventiColor); 
 }
 
-.cat-link[data-categoria="esperimenti"]:visited span,
-.cat-link[data-categoria="esperimenti"]:hover span,
-.cat-link[data-categoria="esperimenti"]:focus span {
-    border-radius: 1em;
-    background-color: var(--hoverEventi);
-    padding: 0.3em 0.6em;  
+.cat-link[data-categoria="esperimenti"]:visited span{
+    color: var(--esperimentiColor);
 }
 
-.cat-link[data-categoria="affitti"]:visited span,
-.cat-link[data-categoria="affitti"]:hover span,
-.cat-link[data-categoria="affitti"]:focus span {
-    border-radius: 1em;
-    background-color: var(--hoverEventi);
-    padding: 0.3em 0.6em;  
+.cat-link[data-categoria="affitti"]:visited span{
+    color: var(--affittiColor);  
 }
 
-.cat-link[data-categoria="ripetizioni"]:visited span,
-.cat-link[data-categoria="ripetizioni"]:hover span,
-.cat-link[data-categoria="ripetizioni"]:focus span {
-    border-radius: 1em;
-    background-color: var(--hoverEventi);
-    padding: 0.3em 0.6em;  
-}
+.cat-link[data-categoria="ripetizioni"]:visited span {
+    color: var(--ripetizioniColor);
+}  
+
 
 
 .dettagli:visited span {
     color: var(--visited)
 }
 
-.dettagli:hover span, .dettagli:focus span {
-    /*border-radius: 1em;
-    color: var(--txtcolor);
-    background-color: var(--BgColor);*/
-    color: var(--visited);
-}
 
 /*
 ===========================================================
