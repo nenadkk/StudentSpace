@@ -153,6 +153,11 @@ header {
 ==================================================== 
 */
 
+#footer-top > ul {
+    flex-direction: column;
+    text-align: center;
+}
+
 #footer-bottom {
     flex-direction: column;
     align-items: center;
