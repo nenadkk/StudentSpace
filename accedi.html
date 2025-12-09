@@ -32,7 +32,7 @@
 
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
 
-        <nav id="menu" aria-label="Menu di navigazione desktop">
+        <nav id="menu" aria-label="Menù di navigazione desktop">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -40,15 +40,15 @@
             </ul>
             <ul class="nav-auth">
                 <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
-                <li id="current-link" aria-current="page">Accedi</li>
+                <li class="current-link" aria-current="page">Accedi</li>
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false">
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -62,10 +62,10 @@
     </header>
 
     <div class="content-container">
-    <nav id="breadcrumb" aria-label="Ti trovi in:">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
-            <li><a href="index.html"><span lang="en">Home</span></a></li>
-            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Accedi</li>
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li aria-current="page" class="currentPage"><span aria-hidden="true">»</span> Accedi</li>
         </ol>
     </nav>
 
@@ -98,8 +98,15 @@
                 <img src="assets/freccia.png" alt="">
             </a>
             <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li class="currentPage" aria-current="page">Accedi</li>
+            </ul>
         </div>
-
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
         <div id="footer-bottom">
             <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
             <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>

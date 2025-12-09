@@ -171,7 +171,7 @@ header {
     color: var(--visited);
 }
 
-.currentLink {
+.current-link {
     text-decoration: none;
     font-weight: bold;
     background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
@@ -300,7 +300,12 @@ footer {
     gap: 2.5em;
 }
 
-/*#siteMap {
+/*#footer-top > img {
+    height: 50px;
+    width: auto;
+}
+
+#siteMap {
     list-style: none;
     display: flex;
     gap: 2em;
@@ -320,12 +325,19 @@ footer {
     list-style: none;
     display: flex;
     gap: 2em;
-    color: var(--txtcolor);
     margin-bottom: 1em;
     padding: 0.5em 1em;
     /*border: 2px solid var(--call-to-actionColor);
     border-radius: 1em;
     border-bottom: 1px solid var(--call-to-actionColor);*/
+}
+
+#site-map a {
+    color: var(--txtcolor);
+}
+
+#site-map a:visited {
+    color: var(--visited);
 }
 
 .freccia-su {

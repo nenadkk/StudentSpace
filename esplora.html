@@ -29,10 +29,13 @@
         <h1 id="logo-link" lang="en">
             <a href="index.html" aria-label="Vai alla home">Student Space</a>
         </h1>
-        <nav id="menu" aria-label="Menu principale">
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+        
+        <nav id="menu" aria-label="Menù di navigazione desktop">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
-                <li id="current-link" aria-current="page">Esplora</li>
+                <li class="current-link" aria-current="page">Esplora</li>
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
@@ -41,11 +44,11 @@
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false">
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li class="current-link" aria-current="page">Esplora</li>
@@ -61,7 +64,7 @@
     <div class="content-container">
         <nav id="breadcrumb" aria-label="Percorso di navigazione">
             <ol>
-                <li><a href="index.html"><span lang="en">Home</span></a></li>
+                <li lang="en"><a href="index.html">Home</a></li>
                 <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
             </ol>
         </nav>
@@ -352,7 +355,9 @@
                                 <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>                    
                     </li>
                     <li class="carta">
                         <img src="assets/concertoJazz.jpg" alt=""   width="250" height="150">
@@ -367,7 +372,9 @@
                                 <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
@@ -382,7 +389,9 @@
                                 <span class="etichettaCategoria" data-categoria="esperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
@@ -397,7 +406,9 @@
                                 <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/fieraLibro.jpg" alt=""  width="250" height="150">
@@ -412,7 +423,9 @@
                                 <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
@@ -427,7 +440,9 @@
                                 <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
@@ -442,7 +457,9 @@
                                 <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
@@ -457,7 +474,9 @@
                                 <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
@@ -472,7 +491,9 @@
                                 <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                     <li class="carta">
                         <img src="assets/monolocale.jpg" alt=""  width="250" height="150">
@@ -487,26 +508,35 @@
                                 <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
                             </dd>
                         </dl>
-                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                        <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: [titolo annuncio]">
+                            <span>Più dettagli</span>
+                        </a>
                     </li>
                 </ul>
             </div>
             
         </main>
         <footer>
-            <div id="footer-top">
-                <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
-                    <img src="assets/freccia.png" alt="">
-                </a>
-                <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
-            </div>
-
-            <div id="footer-bottom">
-                <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
-                <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-                <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
-            </div>
-        </footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li class="currentPage" aria-current="page">Esplora</li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
     </div>
 </body>
 </html>
