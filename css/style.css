@@ -115,7 +115,7 @@ header {
     font-size: 6em;
 }
 
-.logo a {
+#logo-link a {
     font-size: 3em;
 }
 
@@ -170,7 +170,7 @@ header {
     color: var(--visited);
 }
 
-.current-link {
+.currentLink {
     text-decoration: none;
     font-weight: bold;
     background-image: url("../assets/stellina.png"), url("../assets/stellina.png");

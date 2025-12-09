@@ -1,477 +1,479 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <title>Esplora - Student Space</title>
+<head>
+    <title>Esplora - Student Space</title>
 
-        <meta charset="utf-8">
+    <meta charset="utf-8">
 
-        <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
-        <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
+    <meta name="description" content="Pagina dedicata alla bacheca online per studenti delle università."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
 
-        <meta name="author" content="StudentSpaceTeam">
-        <meta name="viewport" content="width=device-width">
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/style.css" media="screen">
-        <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
-        <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-        <script src="js/script.js" defer></script>
-    </head>
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
 
-    <body>
-        <header>
-            <h1 id="logo-link" lang="en">
-                <a href="index.html" aria-label="Vai alla home">Student Space</a>
-            </h1>
-            <nav id="menu" aria-label="Menu principale">
-                <ul class="nav-links">
-                    <li lang="en"><a href="index.html">Home</a></li>
-                    <li id="current-link" aria-current="page">Esplora</li>
-                    <li><a href="pubblica.html">Pubblica</a></li>
-                </ul>
-                <ul class="nav-auth">
-                    <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
-                    <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
-                </ul>
-            </nav>
+    <script src="js/script.js" defer></script>
+</head>
 
-            <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
-                <span id="hamburger-chiuso" class="attivo">&#9776;</span>
-                <span id="hamburger-aperto">&#9932;</span>
-            </button>
-            <nav id="hamburger-menu" aria-label="Menu principale">
-                <ul class="nav-links">
-                    <li lang="en"><a href="index.html">Home</a></li>
-                    <li class="current-link" aria-current="page">Esplora</li>
-                    <li><a href="pubblica.html">Pubblica</a></li>
-                </ul>
-                <ul class="nav-auth">
-                    <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
-                    <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
-                </ul>
-            </nav>
-        </header>
+<body>
+    <header>
+        <h1 id="logo-link" lang="en">
+            <a href="index.html" aria-label="Vai alla home">Student Space</a>
+        </h1>
+        <nav id="menu" aria-label="Menu principale">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li id="current-link" aria-current="page">Esplora</li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
 
-        <div class="content-container">
-            <nav id="breadcrumb" aria-label="Percorso di navigazione">
-                <ol>
-                    <li><a href="index.html"><span lang="en">Home</span></a></li>
-                    <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
-                </ol>
-            </nav>
+        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menu principale">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li class="current-link" aria-current="page">Esplora</li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <div id="aside-style-layout">
-                <div id="aside-mini-layout">
-                    <aside id="ricerca">
-                        <form class="form-data" action="esplora.html" method="get">
-                            <fieldset>
+    <div class="content-container">
+        <nav id="breadcrumb" aria-label="Percorso di navigazione">
+            <ol>
+                <li><a href="index.html"><span lang="en">Home</span></a></li>
+                <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
+            </ol>
+        </nav>
+
+        <div id="aside-style-layout">
+            <div id="aside-mini-layout">
+                <aside id="ricerca">
+                    <form class="form-data" action="esplora.html" method="get">
+                        <fieldset>
+                            <div>
+                                <label for="cerca">Cerca</label>
+                                <input id="carca" type="text" name="carca" maxlength=20 placeholder="Cerca...">
+                            </div>
+                        </fieldset>
+                    </form>
+                </aside>
+
+                <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
+            </div>
+            <aside id="filtri">
+                <div class="filtri-header">
+                    <h2>Filtri</h2>
+                    <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
+                </div>    
+                <form class="form-data" action="esplora.html" method="get">
+                    <fieldset class="fieldset-filtri">
+                        <legend>Generali</legend>
+                        <!-- Attributi comuni a tutte le categorie -->
+                        <div>
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria" name="categoria">
+                                <option value="">Seleziona categoria</option>
+                                    <option value="Affitti">Affitti</option>
+                                    <option value="Esperimenti">Esperimenti</option>
+                                    <option value="Eventi">Eventi</option>
+                                    <option value="Ripetizioni">Ripetizioni</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="citta">Città</label>
+                            <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                            <datalist id="listaCitta">
+                                <option value="Padova">
+                                <option value="Trento">
+                                <option value="Roma">
+                                <option value="Milano">
+                                <option value="Bologna">
+                                <option value="Torino">
+                                <option value="Pavia">
+                                <option value="Napoli">
+                                <option value="Firenze">
+                                <option value="Venezia">
+                                <option value="Perugia">
+                                <option value="Catania">
+                                <option value="Genova">
+                                <option value="Salerno">
+                                <option value="Siena">
+                            </datalist>
+                        </div>
+                        <!--<div>
+                            <label for="data-pubblicazione">Data pubblicazione</label>
+                            <input id="data-pubblicazione" type="date" name="data-pubblicazione">
+                        </div>-->
+                        <fieldset class="fieldset-filtri">
+                                <legend>Periodo pubblicazione</legend>
                                 <div>
-                                    <label for="cerca">Cerca</label>
-                                    <input id="carca" type="text" name="carca" maxlength=20 placeholder="Cerca...">
+                                    <label for="pubblicazione-inizio">Data inizio</label>
+                                    <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
+                                </div>
+                                <div>
+                                    <label for="pubblicazione-fine">Data fine</label>
+                                    <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
+                                </div>
+                        </fieldset>
+                    </fieldset>
+
+                    <div id="filtri-affitti" class="nascondi-filtri">
+                        <fieldset class="fieldset-filtri">
+                            <legend>Filtri Affitti</legend>
+                            <!-- Attributi Affitti -->
+                            <!--<div>
+                                <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
+                                <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Numero coinquilini</legend>
+                                <div>
+                                    <label for="coinquilini-min">Minimo</label>
+                                    <input type="number" id="coinquilini-min" name="coinquilini-min" min="0" step="1" placeholder="Es. 1">
+                                </div>
+                                <div>
+                                    <label for="coinquilini-max">Massimo</label>
+                                    <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
                                 </div>
                             </fieldset>
-                        </form>
-                    </aside>
-
-                    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
-                </div>
-                <aside id="filtri">
-                    <div class="filtri-header">
-                        <h2>Filtri</h2>
-                        <button id="chiudiFiltri" aria-label="Chiudi filtri">&#9932</button>
-                    </div>    
-                    <form class="form-data" action="esplora.html" method="get">
-                        <fieldset class="fieldset-filtri">
-                            <legend>Generali</legend>
-                            <!-- Attributi comuni a tutte le categorie -->
+                            <!--<div>
+                                <label for="costo-mese-affitto">Costo mensile</label>
+                                <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Costo mensile</legend>
+                                <div>
+                                    <label for="costo-mese-affitto-min">Compenso minimo (€/mese)</label>
+                                    <input id="costo-mese-affitto-min" type="number" name="costo-mese-affitto-min" min="0" step="1" placeholder="Es. 5">
+                                </div>
+                                <div>
+                                    <label for="costo-mese-affitto-max">Compenso massimo (€/mese)</label>
+                                    <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                            </fieldset>
                             <div>
-                                <label for="categoria">Categoria</label>
-                                <select id="categoria" name="categoria">
-                                    <option value="">Seleziona categoria</option>
-                                        <option value="Affitti">Affitti</option>
-                                        <option value="Esperimenti">Esperimenti</option>
-                                        <option value="Eventi">Eventi</option>
-                                        <option value="Ripetizioni">Ripetizioni</option>
-                                </select>
+                                <label for="indirizzo-affitto">Indirizzo</label>
+                                <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="filtri-esperimenti" class="nascondi-filtri">
+                        <fieldset class="fieldset-filtri">
+                            <legend>Filtri Esperimenti</legend>
+                            <!-- Attributi Esperimenti -->
+                            <div>
+                                <label for="laboratorio">Laboratorio di riferimento</label>
+                                <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
+                            </div>
+                            <!--<div>
+                                <label for="durata-esperimento">Durata esperimento</label>
+                                <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Durata esperimento (minuti)</legend>
+                                <div>
+                                    <label for="esperimento-durata-min">Minimo</label>
+                                    <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
+                                </div>
+                                <div>
+                                    <label for="esperimento-durata-max">Massimo</label>
+                                    <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
+                                </div>
+                            </fieldset>
+                            <!--<div>
+                                <label for="compenso">Compenso</label>
+                                <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Compenso</legend>
+                                <div>
+                                    <label for="esperimento-compenso-min">Compenso minimo (€)</label>
+                                    <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
+                                </div>
+                                <div>
+                                    <label for="esperimento-compenso-max">Compenso massimo (€)</label>
+                                    <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                            </fieldset>
+                        </fieldset>
+                    </div>
+
+                    <div id="filtri-eventi" class="nascondi-filtri">
+                        <fieldset class="fieldset-filtri">
+                            <legend>Filtri Eventi</legend>
+                            <!-- Attributi Eventi -->
+                            <!--<div>
+                                <label for="data-evento">Data evento</label>
+                                <input id="data-evento" type="date" name="data-evento">
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Periodo evento</legend>
+                                <div>
+                                    <label for="evento-inizio">Data inizio</label>
+                                    <input id="evento-inizio" type="date" name="evento-inizio">
+                                </div>
+                                <div>
+                                    <label for="evento-fine">Data fine</label>
+                                    <input id="evento-fine" type="date" name="evento-fine">
+                                </div>
+                            </fieldset>
+                            <!--<div>
+                                <label for="costo-evento">Costo entrata</label>
+                                <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
+                            </div>-->
+                            <fieldset class="fieldset-filtri">
+                                <legend>Costo entrata</legend>
+                                <div>
+                                    <label for="evento-costo-min">Costo minimo (€)</label>
+                                    <input id="evento-costo-min" type="number" name="evento-costo-min" min="0" step="1" placeholder="Es. 5">
+                                </div>
+                                <div>
+                                    <label for="evento-costo-max">Costo massimo (€)</label>
+                                    <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                            </fieldset>
+                            <div>
+                                <label for="luogo-evento">Luogo</label>
+                                <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="filtri-ripetizioni" class="nascondi-filtri">
+                        <fieldset class="fieldset-filtri">
+                            <legend>Filtri Ripetizioni</legend>
+                            <!-- Attributi Ripetizioni -->
+                            <div>
+                                <label for="materia">Materia</label>
+                                <input type="text" id="materia" name="materia">
                             </div>
                             <div>
-                                <label for="citta">Città</label>
-                                <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
-                                <datalist id="listaCitta">
-                                    <option value="Padova">
-                                    <option value="Trento">
-                                    <option value="Roma">
-                                    <option value="Milano">
-                                    <option value="Bologna">
-                                    <option value="Torino">
-                                    <option value="Pavia">
-                                    <option value="Napoli">
-                                    <option value="Firenze">
-                                    <option value="Venezia">
-                                    <option value="Perugia">
-                                    <option value="Catania">
-                                    <option value="Genova">
-                                    <option value="Salerno">
-                                    <option value="Siena">
+                                <label for="livello">Livello</label>
+                                <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                <datalist id="listlivelli">
+                                    <option value="Medie">
+                                    <option value="Superiori">
+                                    <option value="Università">
                                 </datalist>
                             </div>
                             <!--<div>
-                                <label for="data-pubblicazione">Data pubblicazione</label>
-                                <input id="data-pubblicazione" type="date" name="data-pubblicazione">
+                                <label for="prezzo-ripetizioni">Prezzo orario</label>
+                                <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
                             </div>-->
                             <fieldset class="fieldset-filtri">
-                                    <legend>Periodo pubblicazione</legend>
-                                    <div>
-                                        <label for="pubblicazione-inizio">Data inizio</label>
-                                        <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
-                                    </div>
-                                    <div>
-                                        <label for="pubblicazione-fine">Data fine</label>
-                                        <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
-                                    </div>
+                                <legend>Prezzo orario (€/ora)</legend>
+                                <div>
+                                    <label for="prezzo-ripetizioni-min">Compenso minimo (€/ora)</label>
+                                    <input id="prezzo-ripetizioni-min" type="number" name="prezzo-ripetizioni-min" min="0" step="1" placeholder="Es. 5">
+                                </div>
+                                <div>
+                                    <label for="prezzo-ripetizioni-max">Compenso massimo (€/ora)</label>
+                                    <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
                             </fieldset>
                         </fieldset>
-
-                        <div id="filtri-affitti" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Affitti</legend>
-                                <!-- Attributi Affitti -->
-                                <!--<div>
-                                    <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
-                                    <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Numero coinquilini</legend>
-                                    <div>
-                                        <label for="coinquilini-min">Minimo</label>
-                                        <input type="number" id="coinquilini-min" name="coinquilini-min" min="0" step="1" placeholder="Es. 1">
-                                    </div>
-                                    <div>
-                                        <label for="coinquilini-max">Massimo</label>
-                                        <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
-                                    </div>
-                                </fieldset>
-                                <!--<div>
-                                    <label for="costo-mese-affitto">Costo mensile</label>
-                                    <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Costo mensile</legend>
-                                    <div>
-                                        <label for="costo-mese-affitto-min">Compenso minimo (€/mese)</label>
-                                        <input id="costo-mese-affitto-min" type="number" name="costo-mese-affitto-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="costo-mese-affitto-max">Compenso massimo (€/mese)</label>
-                                        <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                                <div>
-                                    <label for="indirizzo-affitto">Indirizzo</label>
-                                    <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div id="filtri-esperimenti" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Esperimenti</legend>
-                                <!-- Attributi Esperimenti -->
-                                <div>
-                                    <label for="laboratorio">Laboratorio di riferimento</label>
-                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
-                                </div>
-                                <!--<div>
-                                    <label for="durata-esperimento">Durata esperimento</label>
-                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Durata esperimento (minuti)</legend>
-                                    <div>
-                                        <label for="esperimento-durata-min">Minimo</label>
-                                        <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
-                                    </div>
-                                    <div>
-                                        <label for="esperimento-durata-max">Massimo</label>
-                                        <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
-                                    </div>
-                                </fieldset>
-                                <!--<div>
-                                    <label for="compenso">Compenso</label>
-                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Compenso</legend>
-                                    <div>
-                                        <label for="esperimento-compenso-min">Compenso minimo (€)</label>
-                                        <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="esperimento-compenso-max">Compenso massimo (€)</label>
-                                        <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                            </fieldset>
-                        </div>
-
-                        <div id="filtri-eventi" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Eventi</legend>
-                                <!-- Attributi Eventi -->
-                                <!--<div>
-                                    <label for="data-evento">Data evento</label>
-                                    <input id="data-evento" type="date" name="data-evento">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Periodo evento</legend>
-                                    <div>
-                                        <label for="evento-inizio">Data inizio</label>
-                                        <input id="evento-inizio" type="date" name="evento-inizio">
-                                    </div>
-                                    <div>
-                                        <label for="evento-fine">Data fine</label>
-                                        <input id="evento-fine" type="date" name="evento-fine">
-                                    </div>
-                                </fieldset>
-                                <!--<div>
-                                    <label for="costo-evento">Costo entrata</label>
-                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Costo entrata</legend>
-                                    <div>
-                                        <label for="evento-costo-min">Costo minimo (€)</label>
-                                        <input id="evento-costo-min" type="number" name="evento-costo-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="evento-costo-max">Costo massimo (€)</label>
-                                        <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                                <div>
-                                    <label for="luogo-evento">Luogo</label>
-                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div id="filtri-ripetizioni" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
-                                <legend>Filtri Ripetizioni</legend>
-                                <!-- Attributi Ripetizioni -->
-                                <div>
-                                    <label for="materia">Materia</label>
-                                    <input type="text" id="materia" name="materia">
-                                </div>
-                                <div>
-                                    <label for="livello">Livello</label>
-                                    <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
-                                    <datalist id="listlivelli">
-                                        <option value="Medie">
-                                        <option value="Superiori">
-                                        <option value="Università">
-                                    </datalist>
-                                </div>
-                                <!--<div>
-                                    <label for="prezzo-ripetizioni">Prezzo orario</label>
-                                    <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
-                                </div>-->
-                                <fieldset class="fieldset-filtri">
-                                    <legend>Prezzo orario (€/ora)</legend>
-                                    <div>
-                                        <label for="prezzo-ripetizioni-min">Compenso minimo (€/ora)</label>
-                                        <input id="prezzo-ripetizioni-min" type="number" name="prezzo-ripetizioni-min" min="0" step="1" placeholder="Es. 5">
-                                    </div>
-                                    <div>
-                                        <label for="prezzo-ripetizioni-max">Compenso massimo (€/ora)</label>
-                                        <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
-                                    </div>
-                                </fieldset>
-                            </fieldset>
-                        </div>
-                    <div class="filtri-footer">
-                        <button type="submit">Applica</button>
                     </div>
-                    </form>
-                </aside>
+                <div class="filtri-footer">
+                    <button type="submit">Applica</button>
+                </div>
+                </form>
+            </aside>
+        </div>
+
+        <main id="contenuto">
+            <div class="esplora">
+                <h2>Esplora</h2>
+                <ul id="listaCarte">
+                    <li class="carta">
+                        <img src="assets/bilocaleCentro.jpg" alt=""  width="250" height="150">
+                        <h3>Bilocale in centro</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>01/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Padova</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/concertoJazz.jpg" alt=""   width="250" height="150">
+                        <h3>Concerto Jazz al Parco</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>05/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Venezia</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
+                        <h3>Laboratorio di chimica</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>03/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Ferrara</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="esperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
+                        <h3>Ripetizioni di matematica</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>02/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Treviso</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/fieraLibro.jpg" alt=""  width="250" height="150">
+                        <h3>Fiera del Libro</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>04/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Bologna</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
+                        <h3>Stanza singola per studenti</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>06/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Verona</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
+                        <h3>Esperimento su onde sonore</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>07/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Rovigo</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
+                        <h3>Conversazione in inglese</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>08/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Padova</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
+                        <h3>Mostra d’arte contemporanea</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>09/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Vicenza</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                    <li class="carta">
+                        <img src="assets/monolocale.jpg" alt=""  width="250" height="150">
+                        <h3>Monolocale arredato</h3>
+                        <dl>
+                            <dt>Data pubblicazione</dt>
+                            <dd>10/11/2025</dd>
+                            <dt>Città</dt>
+                            <dd>Padova</dd>
+                            <dt>Categoria</dt>
+                            <dd>
+                                <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
+                            </dd>
+                        </dl>
+                        <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    </li>
+                </ul>
+            </div>
+            
+        </main>
+        <footer>
+            <div id="footer-top">
+                <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                    <img src="assets/freccia.png" alt="">
+                </a>
+                <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
             </div>
 
-            <main id="contenuto">
-                <div class="esplora">
-                    <h2>Esplora</h2>
-                    <ul id="listaCarte">
-                        <li class="carta">
-                            <img src="assets/bilocaleCentro.jpg" alt=""  width="250" height="150">
-                            <h3>Bilocale in centro</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>01/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Padova</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/concertoJazz.jpg" alt=""   width="250" height="150">
-                            <h3>Concerto Jazz al Parco</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>05/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Venezia</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/laboratorioChimica.jpg" alt=""  width="250" height="150">
-                            <h3>Laboratorio di chimica</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>03/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Ferrara</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="esperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
-                            <h3>Ripetizioni di matematica</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>02/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Treviso</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/fieraLibro.jpg" alt=""  width="250" height="150">
-                            <h3>Fiera del Libro</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>04/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Bologna</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
-                            <h3>Stanza singola per studenti</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>06/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Verona</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/esperimentoFisica.jpg" alt=""  width="250" height="150">
-                            <h3>Esperimento su onde sonore</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>07/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Rovigo</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/conversazioneInglese.jpg" alt=""  width="250" height="150">
-                            <h3>Conversazione in inglese</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>08/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Padova</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
-                            <h3>Mostra d’arte contemporanea</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>09/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Vicenza</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="eventi" aria-label="Categoria: Eventi">Eventi</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                        <li class="carta">
-                            <img src="assets/monolocale.jpg" alt=""  width="250" height="150">
-                            <h3>Monolocale arredato</h3>
-                            <dl>
-                                <dt>Data pubblicazione</dt>
-                                <dd>10/11/2025</dd>
-                                <dt>Città</dt>
-                                <dd>Padova</dd>
-                                <dt>Categoria</dt>
-                                <dd>
-                                    <span class="etichettaCategoria" data-categoria="affitti"  aria-label="Categoria: Affitti">Affitti</span>
-                                </dd>
-                            </dl>
-                            <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
-                        </li>
-                    </ul>
-                </div>
-                
-            </main>
-            <footer>
-                <div id="footer-top">
-                    <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
-                        <img src="assets/freccia.png" alt="">
-                    </a>
-                    <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
-                </div>
-
-                <div id="footer-bottom">
-                    <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
-                    <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
-                    <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
-                </div>
-            </footer>
-        </div>
-    </body>
+            <div id="footer-bottom">
+                <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+                <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+                <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+            </div>
+        </footer>
+    </div>
+</body>
 </html>

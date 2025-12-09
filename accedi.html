@@ -19,15 +19,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
     <script src="js/script.js" defer></script>
 </head>
 
 <body>
-    <header>
+    <header id="intestazione">
         <h1 id="logo-link" lang="en">
             <a href="index.html" aria-label="Vai alla home">Student Space</a>
         </h1>
-        <nav id="menu" aria-label="Menu principale">
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menu di navigazione desktop">
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -57,7 +62,7 @@
     </header>
 
     <div class="content-container">
-    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+    <nav id="breadcrumb" aria-label="Ti trovi in:">
         <ol>
             <li><a href="index.html"><span lang="en">Home</span></a></li>
             <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Accedi</li>
