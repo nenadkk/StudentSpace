@@ -47,3 +47,4 @@ TO DO (post 05/12):
 - ripulire css e HTML
 - range in filtri?
 - togliere filtriggio specifico in attributi testuali tanto gestiti con ricerca?
+- controllare in lezioni prof come gestisce srOnly e se è una buona pratica

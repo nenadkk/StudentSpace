@@ -24,9 +24,10 @@
 </head>
 
 <body>
-    <header>
-        <h1 class="logo" lang="en" aria-label="Student Space">Student Space</h1>
-        <nav id="menu" aria-label="Menu principale">
+    <header id="intestazione">
+        <h1 class="logo" lang="en">Student Space</h1>
+        <a class="aiuti" href="#contenuto">Salta la navigazione</a>
+        <nav id="menu" aria-label="Menu principale desktop">
             <ul class="nav-links">
                 <li lang="en" id="currentLink" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -38,11 +39,12 @@
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Interagisci menu" aria-pressed="false">
+        <!-- da sistemare per accessibilità-->
+        <button id="hamburger" aria-label="Apri o chiudi il menu di navigazione" aria-pressed="false"> 
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menu principale">
+        <nav id="hamburger-menu" aria-label="Menu principale mobile">
             <ul class="nav-links">
                 <li lang="en" id="hamburger-currentLink" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -69,12 +71,12 @@
                 <p>Trova ciò che ti serve, pubblica ciò che puoi offrire, partecipa, scopri, connettiti alla comunità della tua <strong>università</strong>.</p>
                 
                 <div class="azioni">
-                    <a class="btn" href="esplora.html" role="button" aria-label="Esplora le proposte disponibili">Esplorale proposte</a>
-                    <a class="btn" href="pubblica.html" role="button" aria-label="Pubblica un nuovo annuncio">Pubblica un annuncio</a>
+                    <a class="btn" href="esplora.html">Esplora le proposte</a>
+                    <a class="btn" href="pubblica.html">Pubblica un annuncio</a>
                 </div>
             </div>
         </section>
-	    <div class="separatore" role="presentation" aria-hidden="true"></div>
+	    <div class="separatore" role="presentation" aria-hidden="true"></div> <!-- controllare su altri siti se usano role="presentation"-->
         <section id="categorie">
             <h2>Esplora le categorie</h2>
             <p>Trova ciò che cerchi o condividi le tue opportunità con la community</p>
@@ -84,7 +86,10 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="eventi">Eventi</h3>
                         <p>Partecipa a <strong>eventi universitari</strong>, <strong>incontri</strong> e <strong>attività</strong> per studenti.</p>
-                        <a class="cat-link" data-categoria="eventi" href="esplora.html?categoria=Eventi" aria-label="Scopri di più sugli eventi"><span>Scopri di più</span></a>
+                        <a class="cat-link" data-categoria="eventi" href="esplora.html?categoria=Eventi">
+                            <span>Scopri di più</span>
+                            <span class="aiuti">sulla categoria eventi</span>
+                        </a>
                     </div>
                 </li>
                 <li class="categoria">
@@ -92,7 +97,10 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</h3>
                         <p>Contribuisci a <strong>ricerche universitarie</strong> e <strong>esperimenti accademici</strong>.</p>
-                        <a class="cat-link" data-categoria="esperimenti" href="esplora.html?categoria=Esperimenti" aria-label="Scopri di più sugli esperimenti"><span>Scopri di più</span></a>
+                        <a class="cat-link" data-categoria="esperimenti" href="esplora.html?categoria=Esperimenti">
+                            <span>Scopri di più</span>
+                            <span class="aiuti">sulla categoria esperimenti</span>
+                        </a>
                     </div>
                 </li>
                 <li class="categoria">
@@ -100,7 +108,10 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="affitti">Affitti</h3>
                         <p>Cerca o pubblica <strong>annunci di affitto</strong> per <strong>studenti fuorisede</strong>.</p>
-                        <a class="cat-link" data-categoria="affitti" href="esplora.html?categoria=Affitti" aria-label="Scopri di più sugli affitti"><span>Scopri di più</span></a>
+                        <a class="cat-link" data-categoria="affitti" href="esplora.html?categoria=Affitti">
+                            <span>Scopri di più</span>
+                            <span class="aiuti">sulla categoria affitti</span>
+                        </a>
                     </div>
                 </li>
                 <li class="categoria">
@@ -108,7 +119,10 @@
                     <div>
                         <h3 class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</h3>
                         <p>Offri o ricevi <strong>ripetizioni universitarie</strong>, <strong>lezioni private</strong> e <strong>supporto allo studio</strong>.</p>
-                        <a class="cat-link" data-categoria="ripetizioni" href="esplora.html?categoria=Ripetizioni" aria-label="Scopri di più sulle ripetizioni"><span>Scopri di più</span></a>
+                        <a class="cat-link" data-categoria="ripetizioni" href="esplora.html?categoria=Ripetizioni">
+                            <span>Scopri di più</span>
+                            <span class="aiuti">sulla categoria ripetizioni</span>
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -127,10 +141,13 @@
                         <dd>Padova</dd>
                         <dt>Categoria</dt>
                         <dd>
-   		           <span class="etichettaCategoria" data-categoria="affitti" aria-label="Categoria: Affitti">Affitti</span>
+   		                    <span class="etichettaCategoria" data-categoria="affitti">Affitti</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    <a class="dettagli" href="annuncio.html">
+                        <span>Più dettagli</span>
+                        <span class="aiuti"> sull'annuncio "Camera doppia a Padova"</span>
+                    </a>
                 </li>
                 <li class="carta">
                     <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
@@ -142,10 +159,13 @@
                         <dd>Padova</dd>
 			            <dt>Categoria</dt>
                         <dd>
-   		                    <span class="etichettaCategoria" data-categoria="esperimenti" aria-label="Categoria: Esperimenti">Esperimenti</span>
+   		                    <span class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    <a class="dettagli" href="annuncio.html">
+                        <span>Più dettagli</span>
+                        <span class="aiuti"> sull'annuncio "Modello per scultura pagato"</span>
+                    </a>
                 </li>
                 <li class="carta">
                     <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
@@ -157,10 +177,13 @@
                         <dd>Trento</dd>
                         <dt>Categoria</dt>
 			            <dd>
-   		                    <span class="etichettaCategoria" data-categoria="ripetizioni"  aria-label="Categoria: Ripetizioni">Ripetizioni</span>
+   		                    <span class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</span>
                         </dd>
                     </dl>
-                    <a class="dettagli" href="annuncio.html"><span>Più dettagli</span></a>
+                    <a class="dettagli" href="annuncio.html">
+                        <span>Più dettagli</span>
+                        <span class="aiuti"> sull'annuncio "Lezioni private di Analisi 2"</span>
+                    </a>
                 </li>
             </ul>
         </section>
@@ -180,7 +203,7 @@
             </ul>
             <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
         </div>
-
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
         <div id="footer-bottom">
             <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
             <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>

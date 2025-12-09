@@ -57,6 +57,16 @@ h2 {
   scroll-margin-top: 6.5em; 
 }
 
+.aiuti {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px); /*area visibile larga zero e alta zero*/
+    color: var(--txtcolor);
+}
+
+
 /*
 ====================================================
     SEZIONE HEADER
