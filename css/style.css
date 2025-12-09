@@ -461,7 +461,7 @@ footer {
     flex-direction: row;
     align-items: center;
     gap: 2em;
-    padding: 1.5em 1.5em 2.5em 1.5em;
+    padding: 1.5em 1.5em 3.5em 1.5em;
     border-radius: 1em;
     background-color: var(--clearBgColor);
     color: var(--txtcolor);
