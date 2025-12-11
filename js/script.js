@@ -47,6 +47,57 @@ function caroselloChangeImage() {
   }
 }
 
+//JS PER BOTTONI CAROSELLO
+function slideCarosello()
+{
+  const lefButton = document.getElementById("slideLeft");
+  const rightButton = document.getElementById("slideRight");
+  const arrimmSec = document.querySelectorAll('.carosello-thumbnails img');
+  const immPrinc = document.querySelector('.carosello-principale img');
+  let index = 0;
+  const dim = arrimmSec.length;
+
+
+  lefButton.addEventListener('click', () => {
+
+    if(index == 0)
+    {
+      index = dim-1;
+      immPrinc.src = arrimmSec[index].src;
+      arrimmSec.forEach(img => img.classList.remove('attiva'));
+      arrimmSec[index].classList.add('attiva');
+    }  
+    else
+    {
+      index = index-1;
+      immPrinc.src = arrimmSec[index].src;
+      arrimmSec.forEach(img => img.classList.remove('attiva'));
+      arrimmSec[index].classList.add('attiva');      
+    }
+
+  });
+
+  rightButton.addEventListener('click', () => {
+
+    if(index == dim-1)
+    {
+      index = 0;
+      immPrinc.src = arrimmSec[index].src;
+      arrimmSec.forEach(img => img.classList.remove('attiva'));
+      arrimmSec[index].classList.add('attiva');       
+    }  
+    else
+    {
+      index = index+1;
+      immPrinc.src = arrimmSec[index].src;
+      arrimmSec.forEach(img => img.classList.remove('attiva'));
+      arrimmSec[index].classList.add('attiva');
+    }
+  });
+
+}
+
+
 // JS PER TOGGLE FILTRI
 function toggleFiltri() {
   const toggle = document.getElementById("toggleFiltri");
@@ -168,4 +219,5 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleFiltri();
   toggleMultipleAlt();
   toggleFiltriCategoria();
+  slideCarosello();
 });

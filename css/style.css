@@ -747,6 +747,15 @@ label {
     outline: 2px solid var(--call-to-actionColor);
 }
 
+.bottoniCarosello{
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    width: 150px;
+    gap: 1em;
+    /* margin: 2em; e dimensioni a 50 px per immagini*/
+}
+
 /*
 ===========================================================
     SEZIONE ANNUNCIO
