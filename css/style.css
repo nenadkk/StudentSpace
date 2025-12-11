@@ -14,7 +14,7 @@
     --clearBgColor: #fffacd;
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
-    --call-to-actionTransp: #16286ebd;
+    --call-to-actionTransp: rgba(22, 40, 110, 0.65); /*0.65 opacità testata con https://codepen.io/yaphi1/pen/oNbEqGV/*
     --call-to-actionAction: #efc062;
     --visited: #720b25;
     --card: #d9e0ec;

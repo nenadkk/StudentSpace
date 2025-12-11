@@ -23,3 +23,7 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 **Esplora.html**
 
 * da <dt> e <dd> a <h4> in titolo nelle card --> come in index.html
+
+
+- contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
+- scelta di carosello con blocco iniziale e finale e non loop
