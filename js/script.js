@@ -29,7 +29,7 @@ function hamburgerMenu() {
   })
 }
 
-// JS PER CAROSELLO IMMAGINI
+// JS PER CAROSELLO MINIATURE CLICCABILI
 function caroselloChangeImage() {
   const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
   const mainImage = document.querySelector('.carosello-principale img');
@@ -45,18 +45,20 @@ function caroselloChangeImage() {
   }
 }
 
-//JS PER BOTTONI CAROSELLO
+/*
+
+//JS PER BOTTONI CAROSELLO (loop)
 function slideCarosello()
 {
-  const lefButton = document.getElementById("slideLeft");
-  const rightButton = document.getElementById("slideRight");
+  const prevButton = document.getElementById("carosello-prev");
+  const nextButton = document.getElementById("carosello-next");
   const arrimmSec = document.querySelectorAll('.carosello-thumbnails img');
   const immPrinc = document.querySelector('.carosello-principale img');
   let index = 0;
   const dim = arrimmSec.length;
 
 
-  lefButton.addEventListener('click', () => {
+  prevButton.addEventListener('click', () => {
 
     if(index == 0)
     {
@@ -75,7 +77,7 @@ function slideCarosello()
 
   });
 
-  rightButton.addEventListener('click', () => {
+  nextButton.addEventListener('click', () => {
 
     if(index == dim-1)
     {
@@ -93,6 +95,71 @@ function slideCarosello()
     }
   });
 
+}
+*/
+
+// JS PER BOTTONI CAROSELLO BLOCCATO
+function slideCarosello() {
+    const prevButton = document.getElementById("carosello-prev");
+    const nextButton = document.getElementById("carosello-next");
+    const arrimmSec = document.querySelectorAll('.carosello-thumbnails img');
+    const immPrinc = document.querySelector('.carosello-principale img');
+    let index = 0;
+    const dim = arrimmSec.length;
+
+    function showImage(i) {
+      index = i;
+      immPrinc.src = arrimmSec[index].src;
+      arrimmSec.forEach(img => img.classList.remove('attiva'));
+      arrimmSec[index].classList.add('attiva');
+
+      prevButton.classList.remove("nascosto", "attivo");
+      nextButton.classList.remove("nascosto", "attivo")
+
+      if (index === 0) {
+        prevButton.classList.add("nascosto");  
+        nextButton.classList.add("attivo");   
+      } else if (index === dim - 1) {
+        nextButton.classList.add("nascosto");   
+        prevButton.classList.add("attivo");   
+      } else {
+        prevButton.classList.add("attivo");
+        nextButton.classList.add("attivo");
+      }
+    }
+
+  showImage(0);
+
+  prevButton.addEventListener('click', () => {
+    if (index > 0) {
+      showImage(index - 1);
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (index < dim - 1) {
+      showImage(index + 1);
+    }
+  });
+
+  //swipe da telefono
+  let startTouch = 0;
+  immPrinc.addEventListener('touchstart', e => {
+      startTouch = e.touches[0].clientX;
+  });
+
+  immPrinc.addEventListener('touchend', e => {
+    const endTouch = e.changedTouches[0].clientX;
+    const deltaTouch = endTouch - startTouch;
+
+    if (Math.abs(deltaTouch) > 50) { 
+        if (deltaTouch < 0 && index < dim - 1) {
+          showImage(index + 1);
+        } else if (deltaTouch > 0 && index > 0) {
+          showImage(index - 1);
+        }
+    }
+  });
 }
 
 

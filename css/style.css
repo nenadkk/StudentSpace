@@ -14,6 +14,7 @@
     --clearBgColor: #fffacd;
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
+    --call-to-actionTransp: #16286ebd;
     --call-to-actionAction: #efc062;
     --visited: #720b25;
     --card: #d9e0ec;
@@ -720,7 +721,44 @@ label {
     object-position: center;
     transition: opacity 0.3s ease;
     border-radius: 1em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carosello-thumbnails img.attiva {
+    opacity: 1;
+    transform: scale(1.05);
+    outline: 2px solid var(--call-to-actionColor);
+}
+
+#carosello button.nascosto {
+  display: none;
+}
+
+#carosello button.attivo {
+  display: block; 
+}
+
+#carosello-prev,
+#carosello-next {
+    all: unset;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--call-to-actionTransp);
+    color: var(--clearTxtColor);
+    border: none;
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    border-radius: 0.5em;
+    font-size: 1.7em;
+}
+
+#carosello-prev { left: 0.5em; }
+
+#carosello-next { right: 0.5em; }
+
+#carosello-prev:hover,
+#carosello-next:hover {
+  background: var(--call-to-actionColor);
 }
 
 .carosello-thumbnails {
@@ -741,20 +779,17 @@ label {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.carosello-thumbnails img.attiva {
-    opacity: 1;
-    transform: scale(1.05);
-    outline: 2px solid var(--call-to-actionColor);
-}
 
+
+/*
 .bottoniCarosello{
     display: flex;
     flex-direction: row;
     height: 150px;
     width: 150px;
     gap: 1em;
-    /* margin: 2em; e dimensioni a 50 px per immagini*/
-}
+    /* margin: 2em; e dimensioni a 50 px per immagini
+}*/
 
 /*
 ===========================================================
