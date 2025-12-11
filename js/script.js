@@ -9,25 +9,23 @@ function hamburgerMenu() {
   let content = document.getElementsByClassName('content-container')[0]
 
   hamburger.addEventListener('click', function () {
-      hamburgerChiuso.classList.toggle('attivo');
-      hamburgerAperto.classList.toggle('attivo');
+    hamburgerChiuso.classList.toggle('attivo');
+    hamburgerAperto.classList.toggle('attivo');
 
-      hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
+    hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
 
-      // menu.classList.toggle('attivo');
-
-      if (menu.classList.contains('attivo')) {
-          if (content.classList.contains('attivo') && window.scrollY < 30) {
-              content.classList.remove('attivo')
-          }
-          menu.classList.remove('attivo')
-          content.classList.remove('hamburger-attivo')
-      } else {
-          if (!content.classList.contains('attivo')) {
-              content.classList.add('attivo')
-          }
-          menu.classList.add('attivo')
+    if (menu.classList.contains('attivo')) {
+      if (content.classList.contains('attivo') && window.scrollY < 30) {
+        content.classList.remove('attivo')
       }
+      menu.classList.remove('attivo')
+      content.classList.remove('hamburger-attivo')
+    } else {
+      if (!content.classList.contains('attivo')) {
+        content.classList.add('attivo')
+      }
+      menu.classList.add('attivo')
+    }
   })
 }
 
@@ -37,13 +35,13 @@ function caroselloChangeImage() {
   const mainImage = document.querySelector('.carosello-principale img');
 
   if(thumbnails.length > 0 && mainImage) {
-      thumbnails.forEach(thumb => {
-          thumb.addEventListener('click', () => {
-          mainImage.src = thumb.src;
-          thumbnails.forEach(t => t.classList.remove('attiva'));
-          thumb.classList.add('attiva');
-          });
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImage.src = thumb.src;
+        thumbnails.forEach(t => t.classList.remove('attiva'));
+        thumb.classList.add('attiva');
       });
+    });
   }
 }
 
@@ -152,64 +150,113 @@ function toggleMultipleAlt() {
 
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
+
   // SEZIONE PER NASCONDERE I FILTRI RISPETTIVI PER OGNI CATEGORIA
   const sceltaCategoria = document.getElementById('categoria');
+
   if(sceltaCategoria)
   {
-      sceltaCategoria.addEventListener('change', function() {
-          const filtriEventi = document.getElementById('filtri-eventi');
-          const filtriEsperimenti = document.getElementById('filtri-esperimenti');
-          const filtriAffitti = document.getElementById('filtri-affitti');
-          const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
+    const filtriEventi = document.getElementById('filtri-eventi');
+    const filtriEsperimenti = document.getElementById('filtri-esperimenti');
+    const filtriAffitti = document.getElementById('filtri-affitti');
+    const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
 
-          //console.log(this.value);
-          // Nascondi tutti 
-          filtriEventi.classList.add('nascondi-filtri');
-          filtriEsperimenti.classList.add('nascondi-filtri');
-          filtriAffitti.classList.add('nascondi-filtri');
-          filtriRipetizioni.classList.add('nascondi-filtri');
+    // Nascondi tutti 
+    filtriEventi.classList.add('nascondi-filtri');
+    filtriEsperimenti.classList.add('nascondi-filtri');
+    filtriAffitti.classList.add('nascondi-filtri');
+    filtriRipetizioni.classList.add('nascondi-filtri');
 
-          // Mostra solo quello selezionato
-          if (this.value === 'Eventi') {
-              filtriEventi.classList.remove('nascondi-filtri');
-          } else if (this.value === 'Esperimenti') {
-              filtriEsperimenti.classList.remove('nascondi-filtri');
-          } else if (this.value === 'Affitti') {
-              filtriAffitti.classList.remove('nascondi-filtri');
-          } else if (this.value === 'Ripetizioni') {
-              filtriRipetizioni.classList.remove('nascondi-filtri');
-          }
-      });
+    // Mostra solo quello selezionato
+    if (sceltaCategoria.value === 'Eventi') {
+      filtriEventi.classList.remove('nascondi-filtri');
+    } else if (sceltaCategoria.value === 'Esperimenti') {
+      filtriEsperimenti.classList.remove('nascondi-filtri');
+    } else if (sceltaCategoria.value === 'Affitti') {
+      filtriAffitti.classList.remove('nascondi-filtri');
+    } else if (sceltaCategoria.value === 'Ripetizioni') {
+      filtriRipetizioni.classList.remove('nascondi-filtri');
+    }
+    
+    sceltaCategoria.addEventListener('change', function() {
+      const filtriEventi = document.getElementById('filtri-eventi');
+      const filtriEsperimenti = document.getElementById('filtri-esperimenti');
+      const filtriAffitti = document.getElementById('filtri-affitti');
+      const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
+
+      //console.log(this.value);
+      // Nascondi tutti 
+      filtriEventi.classList.add('nascondi-filtri');
+      filtriEsperimenti.classList.add('nascondi-filtri');
+      filtriAffitti.classList.add('nascondi-filtri');
+      filtriRipetizioni.classList.add('nascondi-filtri');
+
+      // Mostra solo quello selezionato
+      if (this.value === 'Eventi') {
+        filtriEventi.classList.remove('nascondi-filtri');
+      } else if (this.value === 'Esperimenti') {
+        filtriEsperimenti.classList.remove('nascondi-filtri');
+      } else if (this.value === 'Affitti') {
+        filtriAffitti.classList.remove('nascondi-filtri');
+      } else if (this.value === 'Ripetizioni') {
+        filtriRipetizioni.classList.remove('nascondi-filtri');
+      }
+    });
   }
+}
+
+// JS PER TOGGLE PUBBLICA CATEGORIA
+function togglePubblicaCategoria() {
 
   // SEZIONE PER NASCONDERE I CAMPI RISPETTIVI PER OGNI CATEGORIA IN PUBBLICA
+  const sceltaCategoria = document.getElementById('categoria-campi');
+
   if(sceltaCategoria)
   {
-      sceltaCategoria.addEventListener('change', function() {
-          const campiEventi = document.getElementById('campi-eventi');
-          const campiEsperimenti = document.getElementById('campi-esperimenti');
-          const campiAffitti = document.getElementById('campi-affitti');
-          const campiRipetizioni = document.getElementById('campi-ripetizioni');
+    const campiEventi = document.getElementById('campi-eventi');
+    const campiEsperimenti = document.getElementById('campi-esperimenti');
+    const campiAffitti = document.getElementById('campi-affitti');
+    const campiRipetizioni = document.getElementById('campi-ripetizioni');
+    // Nascondi tutti 
+    campiEventi.classList.add('nascondi-campi');
+    campiEsperimenti.classList.add('nascondi-campi');
+    campiAffitti.classList.add('nascondi-campi');
+    campiRipetizioni.classList.add('nascondi-campi');
 
-          //console.log(this.value);
+    // Mostra solo quello selezionato
+    if (sceltaCategoria.value === 'Eventi') {
+      campiEventi.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Esperimenti') {
+      campiEsperimenti.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Affitti') {
+      campiAffitti.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Ripetizioni') {
+      campiRipetizioni.classList.remove('nascondi-campi');
+    }
+    
+    sceltaCategoria.addEventListener('change', function() {
+      const campiEventi = document.getElementById('campi-eventi');
+      const campiEsperimenti = document.getElementById('campi-esperimenti');
+      const campiAffitti = document.getElementById('campi-affitti');
+      const campiRipetizioni = document.getElementById('campi-ripetizioni');
 
-          // Nascondi tutti 
-          campiEventi.classList.add('nascondi-campi');
-          campiEsperimenti.classList.add('nascondi-campi');
-          campiAffitti.classList.add('nascondi-campi');
-          campiRipetizioni.classList.add('nascondi-campi');
+      // Nascondi tutti 
+      campiEventi.classList.add('nascondi-campi');
+      campiEsperimenti.classList.add('nascondi-campi');
+      campiAffitti.classList.add('nascondi-campi');
+      campiRipetizioni.classList.add('nascondi-campi');
 
-          // Mostra solo quello selezionato
-          if (this.value === 'Eventi') {
-              campiEventi.classList.remove('nascondi-campi');
-          } else if (this.value === 'Esperimenti') {
-              campiEsperimenti.classList.remove('nascondi-campi');
-          } else if (this.value === 'Affitti') {
-              campiAffitti.classList.remove('nascondi-campi');
-          } else if (this.value === 'Ripetizioni') {
-              campiRipetizioni.classList.remove('nascondi-campi');
-          }
-      });
+      // Mostra solo quello selezionato
+      if (this.value === 'Eventi') {
+        campiEventi.classList.remove('nascondi-campi');
+      } else if (this.value === 'Esperimenti') {
+        campiEsperimenti.classList.remove('nascondi-campi');
+      } else if (this.value === 'Affitti') {
+        campiAffitti.classList.remove('nascondi-campi');
+      } else if (this.value === 'Ripetizioni') {
+        campiRipetizioni.classList.remove('nascondi-campi');
+      }
+    });
   }
 }
 
@@ -219,5 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleFiltri();
   toggleMultipleAlt();
   toggleFiltriCategoria();
+  togglePubblicaCategoria();
   slideCarosello();
 });
