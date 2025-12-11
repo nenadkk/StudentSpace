@@ -142,6 +142,29 @@ function togglePubblicaCategoria() {
 
   if(sceltaCategoria)
   {
+    const campiEventi = document.getElementById('campi-eventi');
+    const campiEsperimenti = document.getElementById('campi-esperimenti');
+    const campiAffitti = document.getElementById('campi-affitti');
+    const campiRipetizioni = document.getElementById('campi-ripetizioni');
+    
+    // Nascondi tutti 
+    campiEventi.classList.add('nascondi-campi');
+    campiEsperimenti.classList.add('nascondi-campi');
+    campiAffitti.classList.add('nascondi-campi');
+    campiRipetizioni.classList.add('nascondi-campi');
+
+    // Mostra solo quello selezionato
+    if (sceltaCategoria.value === 'Eventi') {
+      console.log("Ciao");
+      campiEventi.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Esperimenti') {
+      campiEsperimenti.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Affitti') {
+      campiAffitti.classList.remove('nascondi-campi');
+    } else if (sceltaCategoria.value === 'Ripetizioni') {
+      campiRipetizioni.classList.remove('nascondi-campi');
+    }
+
     sceltaCategoria.addEventListener('change', function() {
       const campiEventi = document.getElementById('campi-eventi');
       const campiEsperimenti = document.getElementById('campi-esperimenti');
