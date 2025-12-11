@@ -748,7 +748,7 @@ label {
     border: none;
     padding: 0.5em 0.8em;
     cursor: pointer;
-    border-radius: 0.5em;
+    border-radius: 1em;
     font-size: 1.7em;
 }
 
@@ -812,15 +812,19 @@ label {
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 0.8em;       
+    gap: 0.7em;       
     padding: 1.5em;
     align-self: center;
+}
+
+.info h2 {
+    margin-bottom: 0.2em;
 }
 
 .attrAnnuncio {
     background-color: var(--caratteristicheImp);
     border-radius: 1em;
-    padding: 0.8em;
+    padding: 0.5em 0.8em;
     text-align: center;
     box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2);
 }
