@@ -48,3 +48,14 @@ TO DO (post 05/12):
 - range in filtri?
 - togliere filtriggio specifico in attributi testuali tanto gestiti con ricerca?
 - controllare in lezioni prof come gestisce srOnly e se è una buona pratica
+- decidere per modifica, elininazione --> nel caso rendere consistente la relazione 
+- profilo utente
+
+DB:
+Per evitare che un utente modifichi o elimini annunci altrui, assicurati che:
+- Ogni annuncio abbia IdUtente come FK.
+- Le query di modifica/eliminazione verifichino che IdUtente = session_user_id
+
+Se vogliamo mettere modifiche annuncio --> tracciamento modifiche: ALTER TABLE Annuncio ADD DataUltimaModifica DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+Se permetti la modifica dell’email, mantieni il vincolo UNIQUE e gestisci eventuali conflitti.

@@ -747,9 +747,12 @@ label {
     color: var(--clearTxtColor);
     border: none;
     padding: 0.5em 0.8em;
+    /*padding: 0.6em 0.6em; rettangolo schiacciato*/
     cursor: pointer;
-    border-radius: 0.5em;
+    border-radius: 0.5em; /* quadrato arrotondato*/
+    /*border-radius: 50%; cerchio*/
     font-size: 1.7em;
+    justify-content: center;
 }
 
 #carosello-prev { left: 0.5em; }

@@ -7,6 +7,7 @@
 \usepackage{multicol}
 \usepackage{verbatim}
 \usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{float}
 
 \setlength{\parskip}{1em}
 \graphicspath{ {./images/} }
@@ -20,7 +21,7 @@
 \begin{titlepage}
     \begin{center}
         \begin{minipage}{0.3\textwidth}
-            \includegraphics[width=\linewidth]{Logo_Universita_Padova300x300.png}
+            \includegraphics[width=\linewidth]{Logo_Universita.png}
         \end{minipage}
         
     \end{center}
@@ -49,7 +50,7 @@
     \end{center}
     \vfill
 
-    \noindent
+    \centering
     \begin{tabular}{r|l}
         \textbf{Studenti} & Sofia De Blasi - matricola - email \\
          & Nenad Radulovic - matricola - email \\
@@ -83,7 +84,7 @@ Nel mentre buttavamo giù le idee il discorso si è ampliato, e ci siamo resi co
     \subsection{L'obbiettivo di StudentSpace}
 StudentSpace propone una \textit{bacheca online} che raccolga in un unico luogo eventi, attività e servizi di interesse per gli studenti, andando oltre il contesto strettamente accademico.\par
 Attraverso la piattaforma sarà possibile trovare eventi sportivi, attività serali, concerti, e altre occasioni di socialità.
-Potranno inoltre dare la loro disponibilità ad altri studenti per ripetizioni, oppure consultare annunci di affitto relativi alla propria città.\par
+Potranno inoltre dare la loro disponibilità ad altri studenti per ripetizioni, oppure consultare annunci di Affitti relativi alla propria città.\par
 L'obbiettivo principale è garantire a studenti e studentesse un accesso rapido e completo a ciò che potrebbe interessarli.
 Allo stesso tempo, si vuole agevolare gli organizzatori, che si rivolgono a questo target, fornendo loro un canale unico e mirato per raggiungere un pubblico ampio e specifico.
 
@@ -97,11 +98,11 @@ Per quanto riguarda le comunicazioni asincrone, è stata usata ampiamente la pia
 Si è deciso inoltre di adottare \textbf{\underline{\nameref{strumenti:discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
 
     \subsection{Modalità di lavoro}
-Per adattarsi meglio alle esigenze del gruppo si è deciso che i membri del gruppo avrebbero svolto ciascuno le proprie attività in maniera prevalentamente asincrona.
+Per adattarsi meglio alle esigenze del gruppo si è deciso che i membri del gruppo avrebbero svolto ciascuno le proprie attività in maniera prevalentemente asincrona.
 Questa decisione è stata presa per riuscire a dare più libertà ai singoli membri nell'organizzare il proprio lavoro. 
 La scelta è stata inoltre supportata dalla volontà del gruppo di dare maggiore fluidità allo sviluppo del progetto. 
 Il lavoro è stato infatti suddiviso in modo che ogni membro andasse a lavorare su punti diversi rispetto agli altri, cosicché nessuno dovesse preoccuparsi che il proprio lavoro andasse in conflitto con quello di qualcun altro. 
-A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{\nameref{strumenti:git}}} e \textbf{\underline{\nameref{strumenti:github}}}.
+A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{Git}} e \textbf{\underline{Github}}.
 
     \subsection{Divisione del lavoro}
 Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
@@ -176,7 +177,7 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
             \end{itemize}
           \item \textbf{Eventi}:
             \begin{itemize}
-              \item Data evento
+              \item Data Eventi
               \item Luogo
               \item Costo entrata
             \end{itemize}
@@ -241,59 +242,156 @@ e le esigenze degli utenti.
     \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
 \subsection{Progettazione Database} 
-\subsubsection{Analisi dei requisiti del database}
+\subsubsection{Analisi dei requisiti del database e progettazione logica}
 
 La base di dati deve supportare la gestione degli utenti e degli annunci pubblicati
 sulla bacheca universitaria. In particolare, deve garantire la memorizzazione dei
 campi generici comuni a tutte le categorie di annunci e dei campi specifici per ciascuna
-categoria. Inoltre, deve rispettare i vincoli di integrità e consentire operazioni di
-inserimento, modifica e cancellazione.
+categoria. Inoltre, deve consentire operazioni di
+inserimento. %, modifica e cancellazione.
 
 \paragraph{Entità principali}
 \begin{itemize}
-  \item \textbf{Utente}: rappresenta gli utenti registrati al sistema.
+    \item \textbf{Utente}: rappresenta gli utenti registrati alla piattaforma.\\
+    \texttt{IdUtente(PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{IdCitta (FK)}.
+
+    \item \textbf{Categoria}: rappresenta le tipologie di annuncio.\\
+    \texttt{IdCategoria(PK)}, \texttt{NomeCategoria (UNIQUE)}.
+
+    \item \textbf{Città}: rappresenta la sede universitaria o città di riferimento  di un utente o di un annuncio.\\
+    \texttt{IdCitta(PK)}, \texttt{NomeCitta (UNIQUE)}.
+
+    \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.\\
+    \texttt{IdAnnuncio(PK)}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione (DEFAULT CURRENT\_TIMESTAMP)}, \texttt{IdUtente (FK)}, \texttt{IdCategoria (FK)}, \texttt{IdCitta (FK)}.
+
+    \item \textbf{Specializzazioni di Annuncio}: tabelle figlie che estendono Annuncio con 3 attributi specifici.
     \begin{itemize}
-      \item Attributi: \texttt{IdUtente}, \texttt{Nome}, \texttt{Cognome}, \texttt{Città}, \texttt{Email}, \texttt{Password}.
-    \end{itemize}
-  \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.
-        \begin{itemize}
-          \item Attributi: \texttt{IdAnnuncio}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione}, \texttt{Città}, \texttt{Categoria}.
-        \end{itemize}
-    \item \textbf{Categoria}: elenco di categorie con unico attributo \texttt{Titolo}
-  \item \textbf{Tipi di annunci}: specializzazioni dell’entità \texttt{Annuncio}.
-    \begin{itemize}
-      \item \textbf{Affitto}: \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{NumeroInquilini}.
-      \item \textbf{Esperimento}: \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
-      \item \textbf{Evento}: \texttt{DataEvento}, \texttt{Luogo}, \texttt{CostoEntrata}.
-      \item \textbf{Ripetizione}: \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
+        \item \textbf{Affitti}: \texttt{IdAnnuncio (PK, FK)}, \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{NumeroInquilini}.
+        \item \textbf{Esperimenti}: \texttt{IdAnnuncio (PK, FK)}, \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
+        \item \textbf{Event}: \texttt{IdAnnuncio (PK, FK)}, \texttt{DataEventi}, \texttt{Luogo}, \texttt{CostoEntrata}.
+        \item \textbf{Ripetizioni}: \texttt{IdAnnuncio (PK, FK)}, \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
     \end{itemize}
 \end{itemize}
 
-\paragraph{Relazioni}
+\paragraph{Relazioni tra entità}
+
 \begin{itemize}
-  \item Un \textbf{Utente} può pubblicare da zero a molti \textbf{Annunci} (relazione 1:N).
-  \item Ogni \textbf{Annuncio} appartiene ad una sola \textbf{Categoria} (relazione 1:1 con la specializzazione).
-  \item Ogni categoria eredita i campi generici da \texttt{Annuncio} e aggiunge i propri campi specifici.
+    \item \textbf{Pubblicazione:} collega \texttt{Utente} e \texttt{Annuncio}.\\
+    \texttt{Utente (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
+    Ogni annuncio è pubblicato da un solo utente, mentre un utente può pubblicare più annunci.
+
+    \item \textbf{Appartenenza:} collega \texttt{Categoria} e \texttt{Annuncio}.\\
+    \texttt{Categoria (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
+    Ogni annuncio appartiene ad una sola categoria, mentre una categoria può essere associata a più annunci.
+
+    \item \textbf{Collocazione:} collega \texttt{Città} e \texttt{Annuncio}.\\
+    \texttt{Città (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
+    Ogni annuncio è associato ad una sola città, mentre una città può avere più annunci.
+
+    \item \textbf{SedeUniversitaria:} collega \texttt{Città} e \texttt{Utente}.\\
+    \texttt{Città (1,1)} $\longrightarrow$ \texttt{Utente (0,N)}\\
+    Ogni utente è associato ad una sola città, mentre una città può avere più utenti.
 \end{itemize}
 
-\paragraph{Generalizzazioni}
-L’entità \texttt{Annuncio} funge da \textbf{generalizzazione} per le quattro categorie (\texttt{Affitto}, \texttt{Esperimento}, \texttt{Evento}, \texttt{Ripetizione}).
-Questa scelta progettuale consente di mantenere un modello chiaro e normalizzato, evitando ridondanze e facilitando la gestione dei dati.
 
 \subsubsection{Schema ER}
-\begin{figure}[h] 
+\begin{figure}[H] 
     \centering
-    \includegraphics[width=1\textwidth]{ER.png}
+    \includegraphics[width=1\textwidth]{ERtecWeb.jpg}
     \caption{Schema ER}
     \label{fig:ER}
 \end{figure}
 
+\paragraph{Generalizzazione IS-A}
+Nel modello concettuale iniziale, l’entità \texttt{Annuncio} fungeva da padre nella generalizzazione per le quattro categorie specifiche figlie (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}).  
+In fase di progettazione logica si è ristrutturato lo schema ER con una \textbf{sostituzione della generalizzazione con associazioni}.
+\\ Questa scelta consente di: evitare la ripetizione dei campi generici, mantenere la normalizzazione, facilitare l’estendibilità del modello, separare logicamente i dati specifici per categoria. \\ Tuttavia aggiunge un vincolo, ossia: ogni occorrenza del padre \texttt{Annuncio} non può partecipare contemporaneamente a due relazioni \texttt{IS-[categoria]}. 
 
-\subsubsection{Generalizzazioni e sceltre progettuali}
+\subsubsection{Schema ER ristrutturato}
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\textwidth]{ERristrutturatoTecWeb.jpg}
+    \caption{Schema ER ristrutturato}
+    \label{fig:ER}
+\end{figure}
+
+\textbf{Relaazione IS-[categoria]:} collega \texttt{Annuncio} alle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}).\\
+    \texttt{Annuncio (1,1)} $\longrightarrow$ \texttt{Specializzazione (0,1)}\\
+    Ogni annuncio può avere al massimo una specializzazione, e ogni specializzazione è riferita ad un solo annuncio.
+
+\subsubsection{Scelta delle chiavi primarie}
+Nella progettazione del database si è deciso di utilizzare come chiavi primarie codici (ID numerici auto\-incrementali). 
+
+Questa scelta è motivata da diversi fattori:
+\begin{itemize}
+    \item \textbf{Stabilità}: gli attributi naturali (es. \texttt{Email}, \texttt{NomeCategoria}, \texttt{NomeCitta}) possono cambiare nel tempo o essere modificati dall’utente, mentre un ID rimane invariabile.
+    \item \textbf{Efficienza}: gli ID numerici sono più leggeri da gestire negli indici e nelle join rispetto a stringhe lunghe come email o nomi.
+    \item \textbf{Semplicità}: l’uso di codici numerici rende più chiaro e uniforme lo schema, evitando di dover scegliere chiavi composite o troppo complesse.
+    \item \textbf{Integrità}: gli attributi naturali vengono comunque vincolati con \texttt{UNIQUE} (es. \texttt{Email}, \texttt{NomeCategoria}, \texttt{NomeCitta}) per garantire l’unicità, ma non sono usati come chiavi primarie.
+    \item \textbf{Estendibilità}: se in futuro si aggiungessero nuove categorie o sedi, l’uso di ID permetterebbe di gestire facilmente l’espansione senza modificare le relazioni esistenti.
+\end{itemize}
+
 \subsubsection{Schema logico (relazionale)}
+Di seguito è riportato lo schema logico, in cui l'asterisco dopo il nome di un attributo indica che tale attributo può assumere valori nulli.
+
+\begin{itemize}
+    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria
+    \begin{itemize}
+        \item Utente.SedeUniversitaria $\rightarrow$ Citta.IdCitta
+    \end{itemize}
+    
+    \item \textbf{Categoria}(\underline{IdCategoria}, NomeCategoria [UNIQUE])
+    
+    \item \textbf{Citta}(\underline{IdCitta}, NomeCitta [UNIQUE])
+    
+    \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Autore, Categoria, \\ Collocazione)
+    \begin{itemize}
+        \item Annuncio.Autore $\rightarrow$ Utente.IdUtente
+        \item Annuncio.Categoria $\rightarrow$ Categoria.IdCategoria
+        \item Annuncio.Collocazione$\rightarrow$ Citta.IdCitta
+    \end{itemize}
+    
+    \item \textbf{Affitti}(\underline{IdAnnuncio}, PrezzoMensileAff, IndirizzoAffitti, NumeroCoinquilini)
+    \begin{itemize}
+        \item Affitti.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
+    \end{itemize}
+    
+    \item \textbf{Esperimenti}(\underline{IdAnnuncio}, LaboratorioEsp, DurataPrevEsp, CompensoEsp)
+    \begin{itemize}
+        \item Esperimenti.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
+    \end{itemize}
+    
+    \item \textbf{Eventi}(\underline{IdAnnuncio}, DataEventi, LuogoEventi, CostoEntrataEventi)
+    \begin{itemize}
+        \item Eventi.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
+    \end{itemize}
+    
+    \item \textbf{Ripetizioni}(\underline{IdAnnuncio}, MateriaRipetizioni, LivelloRip, PrezzoOrarioRip)
+    \begin{itemize}
+        \item Ripetizioni.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
+    \end{itemize}
+\end{itemize}
+
 \subsubsection{Normalizzazione}
+Lo schema progettato rispetta la terza forma normale (3NF):
+\begin{itemize}
+    \item \textbf{1NF}: tutti gli attributi sono atomici e non esistono campi multivalore o ripetuti.
+    
+    \item \textbf{2NF}: ogni tabella ha una chiave primaria semplice (IdUtente, IdCategoria, IdCitta, IdAnnuncio). Nelle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}) la chiave primaria è \texttt{IdAnnuncio} e tutti gli attributi dipendono interamente da essa.
+    
+    \item \textbf{3NF}: non esistono dipendenze transitive tra attributi non chiave.
+\end{itemize}
+
 \subsubsection{Vincoli di integrità}
 
+Lo schema logico rispetta i principali vincoli di integrità:
+
+\begin{itemize}
+    \item \textbf{Unicità}: Email utente, NomeCategoria, NomeCitta.
+    \item \textbf{Dominio}: campi obbligatori definiti come NOT NULL.
+    \item \textbf{Referenziali}: ON DELETE CASCADE sulle specializzazioni; SET NULL in Annuncio su Utente, Categoria, Citta nel caso vengano eliminati.
+    \item \textbf{Generalizzazione IS-A}: ogni annuncio può avere al massimo una specializzazione coerente con la categoria.
+\end{itemize}
 
 \subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
 \subsection{Mockup}
@@ -337,7 +435,7 @@ Color contrast, navigazione da tastiera, screen reader.
 \subsection{Ulteriori funzionalità di accessibilità}
 
 \section{SEO e prestazioni} %meta tag, URL parlanti, sitemap, compressione immagini, lazy loading, minificazione
-\subsection{Analisi delle possibili ricerche su Google} % “affitto stanza Padova”, “eventi Padova weekend”, “ripetizioni informatica Padova”…)
+\subsection{Analisi delle possibili ricerche su Google} % “Affitti stanza Padova”, “eventi Padova weekend”, “Ripetizioni informatica Padova”…)
 
 \section{Strumenti utilizzati}
 \begin{comment}

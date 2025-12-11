@@ -162,7 +162,6 @@ function slideCarosello() {
   });
 }
 
-
 // JS PER TOGGLE FILTRI
 function toggleFiltri() {
   const toggle = document.getElementById("toggleFiltri");
