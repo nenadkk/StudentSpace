@@ -101,8 +101,10 @@ function toggleMultipleAlt() {
 
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
+
   // SEZIONE PER NASCONDERE I FILTRI RISPETTIVI PER OGNI CATEGORIA
   const sceltaCategoria = document.getElementById('categoria');
+
   if(sceltaCategoria)
   {
       sceltaCategoria.addEventListener('change', function() {
@@ -130,35 +132,41 @@ function toggleFiltriCategoria() {
           }
       });
   }
+}
+
+// JS PER TOGGLE PUBBLICA CATEGORIA
+function togglePubblicaCategoria() {
 
   // SEZIONE PER NASCONDERE I CAMPI RISPETTIVI PER OGNI CATEGORIA IN PUBBLICA
+  const sceltaCategoria = document.getElementById('categoria-campi');
+
   if(sceltaCategoria)
   {
-      sceltaCategoria.addEventListener('change', function() {
-          const campiEventi = document.getElementById('campi-eventi');
-          const campiEsperimenti = document.getElementById('campi-esperimenti');
-          const campiAffitti = document.getElementById('campi-affitti');
-          const campiRipetizioni = document.getElementById('campi-ripetizioni');
+    sceltaCategoria.addEventListener('change', function() {
+      const campiEventi = document.getElementById('campi-eventi');
+      const campiEsperimenti = document.getElementById('campi-esperimenti');
+      const campiAffitti = document.getElementById('campi-affitti');
+      const campiRipetizioni = document.getElementById('campi-ripetizioni');
 
-          //console.log(this.value);
+      //console.log(this.value);
 
-          // Nascondi tutti 
-          campiEventi.classList.add('nascondi-campi');
-          campiEsperimenti.classList.add('nascondi-campi');
-          campiAffitti.classList.add('nascondi-campi');
-          campiRipetizioni.classList.add('nascondi-campi');
+      // Nascondi tutti 
+      campiEventi.classList.add('nascondi-campi');
+      campiEsperimenti.classList.add('nascondi-campi');
+      campiAffitti.classList.add('nascondi-campi');
+      campiRipetizioni.classList.add('nascondi-campi');
 
-          // Mostra solo quello selezionato
-          if (this.value === 'Eventi') {
-              campiEventi.classList.remove('nascondi-campi');
-          } else if (this.value === 'Esperimenti') {
-              campiEsperimenti.classList.remove('nascondi-campi');
-          } else if (this.value === 'Affitti') {
-              campiAffitti.classList.remove('nascondi-campi');
-          } else if (this.value === 'Ripetizioni') {
-              campiRipetizioni.classList.remove('nascondi-campi');
-          }
-      });
+      // Mostra solo quello selezionato
+      if (this.value === 'Eventi') {
+          campiEventi.classList.remove('nascondi-campi');
+      } else if (this.value === 'Esperimenti') {
+          campiEsperimenti.classList.remove('nascondi-campi');
+      } else if (this.value === 'Affitti') {
+          campiAffitti.classList.remove('nascondi-campi');
+      } else if (this.value === 'Ripetizioni') {
+          campiRipetizioni.classList.remove('nascondi-campi');
+      }
+    });
   }
 }
 
@@ -168,4 +176,5 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleFiltri();
   toggleMultipleAlt();
   toggleFiltriCategoria();
+  togglePubblicaCategoria();
 });
