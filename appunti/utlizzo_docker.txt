@@ -1,0 +1,262 @@
+Perfetto! Ti preparo una **guida completa e semplice** con:
+
+* tutto ciò che puoi aprire **da browser**
+* tutto ciò che puoi fare **da terminale**
+* i **comandi Docker principali** legati al tuo progetto PHP + MySQL + phpMyAdmin
+
+Questa è la *mappa completa* del tuo ambiente Docker.
+Facile da consultare e usare ogni giorno.
+
+---
+
+# 🌐 **COSA PUOI APRIRE DAL BROWSER**
+
+## 🟦 1. **Il sito PHP**
+
+📍 **URL:**
+👉 [http://localhost:8080](http://localhost:8080)
+
+Il tuo progetto è servito da Apache dentro il container `php`.
+
+---
+
+## 🟦 2. **phpMyAdmin (gestione database MySQL)**
+
+📍 **URL:**
+👉 [http://localhost:8081](http://localhost:8081)
+
+### Credenziali (dal docker-compose):
+
+**Server:** `db`
+**User:** `user`
+**Password:** `password`
+
+Oppure accesso root:
+
+**User:** `root`
+**Password:** `root`
+
+---
+
+# 🖥️ **COSA PUOI FARE DAL TERMINALE**
+
+## 📦 1. **Vedere i container attivi**
+
+```
+docker ps
+```
+
+---
+
+## ▶️ 2. **Avviare i servizi**
+
+Dalla cartella dove sta `docker-compose.yml`:
+
+```
+docker compose up -d
+```
+
+* `up` = avvia i servizi
+* `-d` = modalità “detach”, non rimane attaccato a terminale
+
+---
+
+## ⏹️ 3. **Fermare i servizi**
+
+```
+docker compose down
+```
+
+---
+
+## 🔄 4. **Riavviare un servizio**
+
+Esempio: riavviare solo PHP
+
+```
+docker compose restart php
+```
+
+Oppure tutti:
+
+```
+docker compose restart
+```
+
+---
+
+## 📁 5. **Entrare dentro il container PHP**
+
+Serve per vedere i file o lanciare comandi:
+
+```
+docker exec -it nome_container_php bash
+```
+
+Per trovare il nome del container:
+
+```
+docker ps
+```
+
+Solitamente è qualcosa tipo:
+
+```
+studentspace-php-1
+```
+
+---
+
+## 🛢️ 6. **Entrare nel container MySQL**
+
+```
+docker exec -it nome_container_db bash
+```
+
+Poi dentro:
+
+```
+mysql -u user -ppassword
+```
+
+---
+
+## 📥 7. **Importare un database da terminale**
+
+Sostituisci `dump.sql` con il tuo file:
+
+```
+docker exec -i nome_container_db mysql -u user -ppassword testdb < dump.sql
+```
+
+---
+
+## 📤 8. **Esportare un database**
+
+```
+docker exec nome_container_db mysqldump -u user -ppassword testdb > backup.sql
+```
+
+---
+
+## 🗑️ 9. **Rimuovere container e volumi (database incluso!)**
+
+⚠️ Attenzione: cancella anche i dati del DB
+
+```
+docker compose down -v
+```
+
+---
+
+## 🐳 10. **Vedere i log**
+
+Tutti i container:
+
+```
+docker compose logs
+```
+
+Solo php:
+
+```
+docker compose logs php
+```
+
+Solo db:
+
+```
+docker compose logs db
+```
+
+---
+
+# 📦 **ELEMENTI A CUI ACCEDERE DALLA TUA MACCHINA**
+
+Oltre ai servizi web, puoi accedere ai container così:
+
+## 🔌 **1. Accedere a MySQL come fosse installato sul tuo PC**
+
+Con un client MySQL tipo DBeaver o MySQL Workbench:
+
+* host: `localhost`
+* user: `user` o `root`
+* password: vedi compose (`root` o `password`)
+* port: `3306`
+
+Perché nel compose hai:
+
+```yaml
+ports:
+  - "3306:3306"
+```
+
+---
+
+## 📁 **2. File del tuo progetto (shared volume)**
+
+Tutti i file PHP nella tua cartella locale sono **montati dentro il container**:
+
+```
+.:/var/www/html
+```
+
+Quindi:
+
+* modifichi **in locale**
+* vedi subito la modifica **nella pagina web**
+
+Non serve riavviare nulla.
+
+---
+
+# 🛠️ **COMANDI DOCKER UTILI (non solo per compose)**
+
+## 🔍 Vedere tutte le immagini
+
+```
+docker images
+```
+
+## 🗑️ Rimuovere un’immagine
+
+```
+docker rmi nome_immagine
+```
+
+## 🧹 Pulire tutto (container, immagini, cache)
+
+⚠️ Attenzione: cancella molto
+
+```
+docker system prune -a
+```
+
+---
+
+# 🎯 **In sintesi: le 3 cose che userai sempre**
+
+### ✔️ Avviare tutto:
+
+```
+docker compose up -d
+```
+
+### ✔️ Fermare tutto:
+
+```
+docker compose down
+```
+
+### ✔️ Aprire il sito:
+
+[http://localhost:8080](http://localhost:8080)
+
+### ✔️ Aprire phpMyAdmin:
+
+[http://localhost:8081](http://localhost:8081)
+
+---
+
+Se vuoi ti preparo anche un **foglio di comandi rapido** da salvare o stampare, oppure uno script per avviare/fermare l’ambiente con un solo comando.
+
