@@ -253,7 +253,7 @@ inserimento. %, modifica e cancellazione.
 \paragraph{Entità principali}
 \begin{itemize}
     \item \textbf{Utente}: rappresenta gli utenti registrati alla piattaforma.\\
-    \texttt{IdUtente(PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{IdCitta (FK)}.
+    \texttt{IdUtente(PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{IdCitta (FK)*}.
 
     \item \textbf{Categoria}: rappresenta le tipologie di annuncio.\\
     \texttt{IdCategoria(PK)}, \texttt{NomeCategoria (UNIQUE)}.
@@ -271,6 +271,10 @@ inserimento. %, modifica e cancellazione.
         \item \textbf{Event}: \texttt{IdAnnuncio (PK, FK)}, \texttt{DataEventi}, \texttt{Luogo}, \texttt{CostoEntrata}.
         \item \textbf{Ripetizioni}: \texttt{IdAnnuncio (PK, FK)}, \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
     \end{itemize}
+
+    \item \textbf{ImmaginiAnnuncio}: rappresenta le immagini associate ad un annuncio.\\
+    \texttt{IdImmagine(PK)}, \texttt{IdAnnuncio (FK)}, \texttt{Percorso}, \texttt{AltText*}, \texttt{Decorativa}, \texttt{Ordine}.
+    
 \end{itemize}
 
 \paragraph{Relazioni tra entità}
@@ -291,6 +295,11 @@ inserimento. %, modifica e cancellazione.
     \item \textbf{SedeUniversitaria:} collega \texttt{Città} e \texttt{Utente}.\\
     \texttt{Città (1,1)} $\longrightarrow$ \texttt{Utente (0,N)}\\
     Ogni utente è associato ad una sola città, mentre una città può avere più utenti.
+
+    \item \textbf{Associazione immagini:} collega \texttt{Annuncio} e \texttt{ImmaginiAnnuncio}.\\
+\texttt{Annuncio (1,1)} $\longrightarrow$ \texttt{ImmaginiAnnuncio (0,N)}\\
+Ogni annuncio può avere da zero a più immagini, mentre ogni immagine è riferita ad un solo annuncio.
+
 \end{itemize}
 
 
@@ -335,7 +344,7 @@ Questa scelta è motivata da diversi fattori:
 Di seguito è riportato lo schema logico, in cui l'asterisco dopo il nome di un attributo indica che tale attributo può assumere valori nulli.
 
 \begin{itemize}
-    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria
+    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria*
     \begin{itemize}
         \item Utente.SedeUniversitaria $\rightarrow$ Citta.IdCitta
     \end{itemize}
@@ -370,6 +379,12 @@ Di seguito è riportato lo schema logico, in cui l'asterisco dopo il nome di un 
     \begin{itemize}
         \item Ripetizioni.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
     \end{itemize}
+
+    \item \textbf{ImmaginiAnnuncio}(\underline{IdImmagine}, IdAnnuncio (FK), Percorso, AltText*, Decorativa, Ordine)
+    \begin{itemize}
+        \item ImmaginiAnnuncio.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+    \end{itemize}
+
 \end{itemize}
 
 \subsubsection{Normalizzazione}
