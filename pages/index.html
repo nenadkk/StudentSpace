@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Student Space - La bacheca universitaria online</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Bacheca universitaria online per studenti: pubblica o cerca annunci di affitto, ripetizioni, eventi accademici e progetti sperimentali.">
+
+    <meta name="keywords" content="StudentSpace, bacheca universitaria, studenti fuorisede, affitti studenti, ripetizioni universitarie, lezioni private, eventi universitari, esperimenti accademici, progetti sperimentali, supporto allo studio">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header id="intestazione">
+        <h1 id="logo-home" lang="en">Student Space</h1>
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menù di navigazione desktop">
+            <ul class="nav-links">
+                <li lang="en" class="current-link" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+
+        <!-- da sistemare per accessibilità-->
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false"> 
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+            <ul class="nav-links">
+                <li lang="en" class="current-link" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol><li lang="en" class="currentPage" aria-current="page">Home</li></ol>
+    </nav>
+
+    <main id="contenuto">
+        <section id="presentazione">
+            <img src="assets/hero_inclusive.png" alt="">
+            <div>
+                <h2>La bacheca universitaria online.</h2>
+                <p>Il luogo dove gli <strong>studenti</strong> condividono <strong>affitti</strong>, <strong>ripetizioni</strong>, <strong>eventi</strong>, <strong>progetti sperimentali</strong> e molte altre opportunità.</p>
+                <p>Trova ciò che ti serve, pubblica ciò che puoi offrire, partecipa, scopri, connettiti alla comunità della tua <strong>università</strong>.</p>
+                
+                <div class="azioni">
+                    <a class="call-to-action" href="esplora.html">Esplora le proposte</a>
+                    <a class="call-to-action" href="pubblica.html">Pubblica un annuncio</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="categorie">
+            <h2>Esplora le categorie</h2>
+            <p>Trova ciò che cerchi o condividi le tue opportunità con la community</p>
+            <ul>
+                <li class="categoria">
+                    <img src="assets/icona_affitto.png" alt="">
+                    <div>
+                        <h3 class="etichettaCategoria" data-categoria="affitti">Affitti</h3>
+                        <p>Cerca o pubblica <strong>annunci di affitto</strong> per <strong>studenti fuorisede</strong>.</p>
+                        <a class="cat-link" data-categoria="affitti" href="esplora.html?categoria=Affitti" aria-label="Scopri di più sulla categoria affitti">
+                            <span>Scopri di più</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="categoria">
+                    <img src="assets/icona_esperimenti.png" alt="">
+                    <div>
+                        <h3 class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</h3>
+                        <p>Contribuisci a <strong>ricerche universitarie</strong> e <strong>esperimenti accademici</strong>.</p>
+                        <a class="cat-link" data-categoria="esperimenti" href="esplora.html?categoria=Esperimenti" aria-label="Scopri di più sulla categoria esperimenti">
+                            <span>Scopri di più</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="categoria">
+                    <img src="assets/icona_eventi.png" alt="">
+                    <div>
+                        <h3 class="etichettaCategoria" data-categoria="eventi">Eventi</h3>
+                        <p>Partecipa a <strong>eventi universitari</strong>, <strong>incontri</strong> e <strong>attività</strong> per studenti.</p>
+                        <a class="cat-link" data-categoria="eventi" href="esplora.html?categoria=Eventi" aria-label="Scopri di più sulla categoria eventi">
+                            <span>Scopri di più</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="categoria">
+                    <img src="assets/icona_ripetizioni.png" alt="">
+                    <div>
+                        <h3 class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</h3>
+                        <p>Offri o ricevi <strong>ripetizioni universitarie</strong>, <strong>lezioni private</strong> e <strong>supporto allo studio</strong>.</p>
+                        <a class="cat-link" data-categoria="ripetizioni" href="esplora.html?categoria=Ripetizioni" aria-label="Scopri di più sulla categoria ripetizioni">
+                            <span>Scopri di più</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="ultimiInseriti">
+            <h2>Ultimi inseriti</h2>
+            <ul>
+                <li class="carta">
+                    <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
+                    <h3>Camera doppia a Padova</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-11-06">06/11/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Padova</dd>
+                        <dt>Categoria</dt>
+                        <dd>
+   		                    <span class="etichettaCategoria" data-categoria="affitti">Affitti</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Camera doppia a Padova">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+                <li class="carta">
+                    <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
+                    <h3>Modello per scultura pagato</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-09-27">27/09/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Padova</dd>
+			            <dt>Categoria</dt>
+                        <dd>
+   		                    <span class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Modello per scultura pagato">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+                <li class="carta">
+                    <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
+                    <h3>Lezioni private di Analisi 2</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-12-08">08/12/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Trento</dd>
+                        <dt>Categoria</dt>
+			            <dd>
+   		                    <span class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Lezioni private di Analisi 2">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en" class="currentPage" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    
+    </div>
+</body>
+</html>

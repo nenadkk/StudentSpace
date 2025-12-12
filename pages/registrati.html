@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Registrati - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata alla registrazione al sito Student Space."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="registrati, Student Space">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+    
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 id="logo-link" lang="en">
+            <a href="index.html" aria-label="Vai alla home">Student Space</a>
+        </h1>
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menù di navigazione desktop">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li class="current-link" aria-current="page">Registrati</li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false">
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li class="current-link">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Registrati</li>
+        </ol>
+    </nav>
+
+    <main id="contenuto">
+        <div id="register-container">
+            <h2>Registrati</h2>
+            <form action="/register" method="post">
+                <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
+                <div class="form-data">
+                    <div>
+                        <label for="nome">Nome<span class="required"> (richiesto)</span></label>
+                        <input type="text" id="nome" name="nome" required placeholder="Es. Mario">
+                        <p>Es. Mario</p>
+                    </div>
+
+                    <div>
+                        <label for="cognome">Cognome<span class="required"> (richiesto)</span></label>
+                        <input type="text" id="cognome" name="cognome" required placeholder="Es. Rossi">
+                        <p>Es. Rossi</p>
+                    </div>
+
+                    <div>
+                        <label for="citta">Città (sede universitaria)</span></label>
+                        <input type="text" id="citta" name="citta" placeholder="Es. Roma">
+                        <p>Es. Roma</p>
+                    </div>
+
+                    <div>
+                        <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
+                        <input type="email" id="email" name="email" required placeholder="Es. mario.rossi@gmail.com">
+                        <p>Es. mario.rossi@gmail.com</p>
+                    </div>
+
+                    <div>
+                        <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
+                        <input type="password" id="password" name="password" required >
+                        <p>Es. LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
+                        
+                        <div class="checkbox-inline">
+                            <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <label for="mostraPassword">Mostra password</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
+                        <input type="password" id="confermaPassword" name="confermaPassword" required >
+                        <p>Es. LaMiaPassword123!</p>
+                        
+                        <div class="checkbox-inline">
+                            <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div id="criteriMinimiPassword">
+                    <p class="enfasi">Attenzione!</p>
+                    <p>La password deve contenere:</p>
+                    <ul>
+                        <li>Minimo 8 caratteri.</li>
+                        <li>Almeno un numero.</li>
+                        <li>Almeno una lettera minuscola.</li>
+                        <li>Almeno una lettera maiuscola.</li>
+                        <li>Almeno un carattere speciale.</li>
+                    </ul>
+                </div>
+                <button type="submit">Conferma</button>
+                <p>Hai già un account? <a href="accedi.html">Accedi</a></p>
+
+            </form>
+        </div>
+        
+    </main>
+
+        <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li class="currentPage" aria-current="page">Registrati</li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    </div>
+</body>
+</html>
