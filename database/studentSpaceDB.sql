@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS Annuncio;
 DROP TABLE IF EXISTS Utente;
 DROP TABLE IF EXISTS Categoria;
 DROP TABLE IF EXISTS Citta;
+
 -- -----------------------------------------------------
 -- UTENTI
 -- -----------------------------------------------------
@@ -84,7 +85,6 @@ CREATE TABLE Affitti (
 ) ENGINE=InnoDB
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
-
 
 CREATE TABLE Esperimenti (
     IdAnnuncio 	INT PRIMARY KEY,
