@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Annuncio - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata al singolo prodotto del sito, come affitto, attività, ripetizioni ecc..."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede"><!--questo bisogna cambiarlo in base a quale annuncio stiamo visitando-->
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+    
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 id="logo-link" lang="en">
+            <a href="index.html" aria-label="Vai alla home">Student Space</a>
+        </h1>
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+        
+        <nav id="menu" aria-label="Menù di navigazione desktop">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false">
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li> <span aria-hidden="true">»</span></li>
+            <li><a href="esplora.html"> Esplora</a></li>
+            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Annuncio</li>
+        </ol>
+    </nav>
+
+    <main id="contenuto">
+        <div id="annuncioTop">
+            <section id="carosello" aria-label="Galleria immagini annuncio">
+                <div class="carosello-thumbnails">
+                    <img src="assets/bilocaleCentro.jpg" alt="" class="miniatura attiva">
+                    <img src="assets/monolocale.jpg" alt="" class="miniatura">
+                    <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+                    <img src="assets/stanzaSingola.jpg" alt="" class="miniatura">
+                </div>
+
+                <div class="carosello-principale">
+                    <button id="carosello-prev" aria-label="Passa a immagine precedente">‹</button>
+                    <img src="assets/bilocaleCentro.jpg" alt="" class="attiva">
+                    <button id="carosello-next" aria-label="Passa a immagine successiva">›</button>
+                </div>
+                
+                <!--
+                <div class="bottoniCarosello">    
+                     <input type="image" src="assets/frecciaSinistra.png" id="slideLeft" aria-label="scorri immagini a sinistra">
+                    <input type="image" src="assets/frecciaDestra.png" id="slideRight" aria-label="scorri immagini a destra"> 
+             
+                    <button id="slideLeft" aria-label="scorri immagini a sinistra"> ◀ </button>
+                    <button id="slideRight" aria-label="scorri immagini a destra"> ▶ </button>
+                </div>
+                -->
+
+            </section>
+
+
+
+            <section class="info">
+                <h2 class="titoloAnnuncio">Titolo</h2><!--da fare con php perchè deve cambiare-->  
+                <!--<h3 class="etichettaCategoria catAffitti" aria-label="Categoria: Affitti">Affitti</h3>-->        
+                <dl class="attrAnnuncio">
+                    <dt>Città:</dt>
+                    <dd>Venezia</dd>
+                </dl>
+                <dl class="attrAnnuncio">
+                    <dt>Costo:</dt>
+                    <dd>500 Euro/mese</dd>
+                </dl>
+                <dl class="attrAnnuncio">
+                    <dt>Indirizzo:</dt>
+                    <dd>Via Luigi Luzzati</dd>
+                </dl>
+                <dl class="attrAnnuncio">
+                    <dt><abbr title="Numero">N°</abbr> coinquilini:</dt>
+                    <dd>3</dd>
+                </dl>
+            </section>
+        </div>
+        <div class="descrizioneAnnuncio">
+            <h3>Descrizione</h3>
+            <p>Informazioni aggiuntive</p>
+        </div>
+        
+    </main>
+
+        <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    </div>
+</body>
+</html>
+
+
