@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Affitti;
 DROP TABLE IF EXISTS ImmaginiAnnuncio;
 DROP TABLE IF EXISTS Annuncio;
 DROP TABLE IF EXISTS Utente;
-DROP TABLE IF EXISTS Categoria;
+-- DROP TABLE IF EXISTS Categoria;
 DROP TABLE IF EXISTS Citta;
 
 -- -----------------------------------------------------
@@ -24,12 +24,12 @@ CREATE TABLE Citta (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE Categoria (
-    IdCategoria 	INT AUTO_INCREMENT PRIMARY KEY,
-    NomeCategoria 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL UNIQUE
-) ENGINE=InnoDB
-DEFAULT CHARSET=utf8
-COLLATE=utf8_unicode_ci;
+-- CREATE TABLE Categoria (
+--    IdCategoria 	INT AUTO_INCREMENT PRIMARY KEY,
+--    NomeCategoria 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL UNIQUE
+-- ) ENGINE=InnoDB
+-- DEFAULT CHARSET=utf8
+-- COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Utente (
     IdUtente 	INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,13 +49,14 @@ CREATE TABLE Annuncio (
     Titolo 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     Descrizione LONGTEXT COLLATE utf8_unicode_ci,
     DataPubblicazione DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Categoria ENUM('Affitti', 'Esperimenti', 'Eventi', 'Ripetizioni')
     IdUtente 	INT NOT NULL,
-    IdCategoria INT NOT NULL,
+    -- IdCategoria INT NOT NULL,
     IdCitta 	INT NOT NULL,
     	FOREIGN KEY (IdUtente) REFERENCES Utente(IdUtente)
         	ON DELETE RESTRICT ON UPDATE CASCADE,
-    	FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
-        	ON DELETE RESTRICT ON UPDATE CASCADE,
+    --	FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
+    --    	ON DELETE RESTRICT ON UPDATE CASCADE,
     	FOREIGN KEY (IdCitta) REFERENCES Citta(IdCitta)
         	ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB
