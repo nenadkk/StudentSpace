@@ -57,4 +57,8 @@ FORSE - come gestire pubblica e cancella
 ###### DA CHIEDERE ALLA PROF ######
 
 -Per la print dell'annuncio quali immagini mostrare, se mostrarle tutte e con che struttura
--
+- capire se hover categorie è ambiguo/card
+
+
+1. preparare profilo.html
+2. aggiungere controlli in db anche se solo per completezza

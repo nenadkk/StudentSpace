@@ -255,14 +255,16 @@ inserimento. %, modifica e cancellazione.
     \item \textbf{Utente}: rappresenta gli utenti registrati alla piattaforma.\\
     \texttt{IdUtente(PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{IdCitta (FK)*}.
 
+    \begin{comment} 
     \item \textbf{Categoria}: rappresenta le tipologie di annuncio.\\
     \texttt{IdCategoria(PK)}, \texttt{NomeCategoria (UNIQUE)}.
+    \end{comment}
 
     \item \textbf{Città}: rappresenta la sede universitaria o città di riferimento  di un utente o di un annuncio.\\
     \texttt{IdCitta(PK)}, \texttt{NomeCitta (UNIQUE)}.
 
     \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.\\
-    \texttt{IdAnnuncio(PK)}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione (DEFAULT CURRENT\_TIMESTAMP)}, \texttt{IdUtente (FK)}, \texttt{IdCategoria (FK)}, \texttt{IdCitta (FK)}.
+    \texttt{IdAnnuncio(PK)}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione (DEFAULT CURRENT\_TIMESTAMP)}, \texttt{IdUtente (FK)}, \texttt{NomeCategoria}, \texttt{IdCitta (FK)}.
 
     \item \textbf{Specializzazioni di Annuncio}: tabelle figlie che estendono Annuncio con 3 attributi specifici.
     \begin{itemize}
@@ -284,9 +286,11 @@ inserimento. %, modifica e cancellazione.
     \texttt{Utente (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
     Ogni annuncio è pubblicato da un solo utente, mentre un utente può pubblicare più annunci.
 
-    \item \textbf{Appartenenza:} collega \texttt{Categoria} e \texttt{Annuncio}.\\
+    \begin{comment}
+        \item \textbf{Appartenenza:} collega \texttt{Categoria} e \texttt{Annuncio}.\\
     \texttt{Categoria (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
     Ogni annuncio appartiene ad una sola categoria, mentre una categoria può essere associata a più annunci.
+    \end{comment}
 
     \item \textbf{Collocazione:} collega \texttt{Città} e \texttt{Annuncio}.\\
     \texttt{Città (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
@@ -306,7 +310,7 @@ Ogni annuncio può avere da zero a più immagini, mentre ogni immagine è riferi
 \subsubsection{Schema ER}
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=1\textwidth]{ERtecWeb.jpg}
+    \includegraphics[width=1\textwidth]{ERCatAttr.jpg}
     \caption{Schema ER}
     \label{fig:ER}
 \end{figure}
@@ -319,7 +323,7 @@ In fase di progettazione logica si è ristrutturato lo schema ER con una \textbf
 \subsubsection{Schema ER ristrutturato}
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=1\textwidth]{ERristrutturatoTecWeb.jpg}
+    \includegraphics[width=1\textwidth]{ERristruttCatAttr.jpg}
     \caption{Schema ER ristrutturato}
     \label{fig:ER}
 \end{figure}
@@ -333,10 +337,10 @@ Nella progettazione del database si è deciso di utilizzare come chiavi primarie
 
 Questa scelta è motivata da diversi fattori:
 \begin{itemize}
-    \item \textbf{Stabilità}: gli attributi naturali (es. \texttt{Email}, \texttt{NomeCategoria}, \texttt{NomeCitta}) possono cambiare nel tempo o essere modificati dall’utente, mentre un ID rimane invariabile.
+    \item \textbf{Stabilità}: gli attributi naturali (es. \texttt{Email}, \begin{comment} \texttt{NomeCategoria} \end{comment}, \texttt{NomeCitta}) possono cambiare nel tempo o essere modificati dall’utente, mentre un ID rimane invariabile.
     \item \textbf{Efficienza}: gli ID numerici sono più leggeri da gestire negli indici e nelle join rispetto a stringhe lunghe come email o nomi.
     \item \textbf{Semplicità}: l’uso di codici numerici rende più chiaro e uniforme lo schema, evitando di dover scegliere chiavi composite o troppo complesse.
-    \item \textbf{Integrità}: gli attributi naturali vengono comunque vincolati con \texttt{UNIQUE} (es. \texttt{Email}, \texttt{NomeCategoria}, \texttt{NomeCitta}) per garantire l’unicità, ma non sono usati come chiavi primarie.
+    \item \textbf{Integrità}: gli attributi naturali vengono comunque vincolati con \texttt{UNIQUE} (es. \texttt{Email}, \begin{comment} \texttt{NomeCategoria} \end{comment}, \texttt{NomeCitta}) per garantire l’unicità, ma non sono usati come chiavi primarie.
     \item \textbf{Estendibilità}: se in futuro si aggiungessero nuove categorie o sedi, l’uso di ID permetterebbe di gestire facilmente l’espansione senza modificare le relazioni esistenti.
 \end{itemize}
 
@@ -349,14 +353,14 @@ Di seguito è riportato lo schema logico, in cui l'asterisco dopo il nome di un 
         \item Utente.SedeUniversitaria $\rightarrow$ Citta.IdCitta
     \end{itemize}
     
-    \item \textbf{Categoria}(\underline{IdCategoria}, NomeCategoria [UNIQUE])
+    \begin{comment} \item \textbf{Categoria}(\underline{IdCategoria}, NomeCategoria [UNIQUE]) \end{comment}
     
     \item \textbf{Citta}(\underline{IdCitta}, NomeCitta [UNIQUE])
     
     \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Autore, Categoria, \\ Collocazione)
     \begin{itemize}
         \item Annuncio.Autore $\rightarrow$ Utente.IdUtente
-        \item Annuncio.Categoria $\rightarrow$ Categoria.IdCategoria
+        \begin{comment} \item Annuncio.Categoria $\rightarrow$ Categoria.IdCategoria \end{comment}
         \item Annuncio.Collocazione$\rightarrow$ Citta.IdCitta
     \end{itemize}
     
@@ -392,7 +396,7 @@ Lo schema progettato rispetta la terza forma normale (3NF):
 \begin{itemize}
     \item \textbf{1NF}: tutti gli attributi sono atomici e non esistono campi multivalore o ripetuti.
     
-    \item \textbf{2NF}: ogni tabella ha una chiave primaria semplice (IdUtente, IdCategoria, IdCitta, IdAnnuncio). Nelle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}) la chiave primaria è \texttt{IdAnnuncio} e tutti gli attributi dipendono interamente da essa.
+    \item \textbf{2NF}: ogni tabella ha una chiave primaria semplice (IdUtente, \begin{comment} IdCategoria \end{comment}, IdCitta, IdAnnuncio). Nelle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}) la chiave primaria è \texttt{IdAnnuncio} e tutti gli attributi dipendono interamente da essa.
     
     \item \textbf{3NF}: non esistono dipendenze transitive tra attributi non chiave.
 \end{itemize}
@@ -402,7 +406,7 @@ Lo schema progettato rispetta la terza forma normale (3NF):
 Lo schema logico rispetta i principali vincoli di integrità:
 
 \begin{itemize}
-    \item \textbf{Unicità}: Email utente, NomeCategoria, NomeCitta.
+    \item \textbf{Unicità}: Email utente, \begin{comment} NomeCategoria \end{comment}, NomeCitta.
     \item \textbf{Dominio}: campi obbligatori definiti come NOT NULL.
     \item \textbf{Referenziali}: ON DELETE CASCADE sulle specializzazioni; SET NULL in Annuncio su Utente, Categoria, Citta nel caso vengano eliminati.
     \item \textbf{Generalizzazione IS-A}: ogni annuncio può avere al massimo una specializzazione coerente con la categoria.
@@ -534,4 +538,3 @@ Validatore markup HTML/XHTML.
 
 
 \end{document}
-

@@ -162,17 +162,14 @@
                             <label for="data-pubblicazione">Data pubblicazione</label>
                             <input id="data-pubblicazione" type="date" name="data-pubblicazione">
                         </div>-->
-                        <fieldset class="fieldset-filtri">
-                                <legend>Periodo pubblicazione</legend>
-                                <div>
-                                    <label for="pubblicazione-inizio">Data inizio</label>
-                                    <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
-                                </div>
-                                <div>
-                                    <label for="pubblicazione-fine">Data fine</label>
-                                    <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
-                                </div>
-                        </fieldset>
+                        <div>
+                            <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
+                            <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
+                        </div>
+                        <div>
+                            <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
+                            <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
+                        </div>
                     </fieldset>
 
                     <div id="filtri-affitti" class="nascondi-filtri">
@@ -183,32 +180,18 @@
                                 <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
                                 <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Numero coinquilini</legend>
-                                <div>
-                                    <label for="coinquilini-min">Minimo</label>
-                                    <input type="number" id="coinquilini-min" name="coinquilini-min" min="0" step="1" placeholder="Es. 1">
-                                </div>
-                                <div>
-                                    <label for="coinquilini-max">Massimo</label>
-                                    <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="coinquilini-max">Numero massimo coinquilini</label> <!--min da 0-->
+                                <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
+                            </div>
                             <!--<div>
                                 <label for="costo-mese-affitto">Costo mensile</label>
                                 <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Costo mensile</legend>
-                                <div>
-                                    <label for="costo-mese-affitto-min">Compenso minimo (€/mese)</label>
-                                    <input id="costo-mese-affitto-min" type="number" name="costo-mese-affitto-min" min="0" step="1" placeholder="Es. 5">
-                                </div>
-                                <div>
-                                    <label for="costo-mese-affitto-max">Compenso massimo (€/mese)</label>
-                                    <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="costo-mese-affitto-max">Costo mensile massimo (€/mese)</label> <!--min da 0-->
+                                <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
+                            </div>
                             <div>
                                 <label for="indirizzo-affitto">Indirizzo</label>
                                 <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
@@ -228,32 +211,26 @@
                                 <label for="durata-esperimento">Durata esperimento</label>
                                 <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Durata esperimento (minuti)</legend>
-                                <div>
-                                    <label for="esperimento-durata-min">Minimo</label>
-                                    <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
-                                </div>
-                                <div>
-                                    <label for="esperimento-durata-max">Massimo</label>
-                                    <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="esperimento-durata-min">Duarata minima esperimento</label>
+                                <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
+                            </div>
+                            <div>
+                                <label for="esperimento-durata-max">Durata massima esperimento</label>
+                                <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
+                            </div>
                             <!--<div>
                                 <label for="compenso">Compenso</label>
                                 <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Compenso</legend>
-                                <div>
-                                    <label for="esperimento-compenso-min">Compenso minimo (€)</label>
-                                    <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
-                                </div>
-                                <div>
-                                    <label for="esperimento-compenso-max">Compenso massimo (€)</label>
-                                    <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="esperimento-compenso-min">Compenso minimo esperimento (€)</label>
+                                <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
+                            </div>
+                            <div>
+                                <label for="esperimento-compenso-max">Compenso massimo esperimento (€)</label>
+                                <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
+                            </div>
                         </fieldset>
                     </div>
 
@@ -265,32 +242,22 @@
                                 <label for="data-evento">Data evento</label>
                                 <input id="data-evento" type="date" name="data-evento">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Periodo evento</legend>
-                                <div>
-                                    <label for="evento-inizio">Data inizio</label>
-                                    <input id="evento-inizio" type="date" name="evento-inizio">
-                                </div>
-                                <div>
-                                    <label for="evento-fine">Data fine</label>
-                                    <input id="evento-fine" type="date" name="evento-fine">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="evento-inizio">Data inizio evento</label>
+                                <input id="evento-inizio" type="date" name="evento-inizio">
+                            </div>
+                            <div>
+                                <label for="evento-fine">Data fine evento</label>
+                                <input id="evento-fine" type="date" name="evento-fine">
+                            </div>
                             <!--<div>
                                 <label for="costo-evento">Costo entrata</label>
                                 <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Costo entrata</legend>
-                                <div>
-                                    <label for="evento-costo-min">Costo minimo (€)</label>
-                                    <input id="evento-costo-min" type="number" name="evento-costo-min" min="0" step="1" placeholder="Es. 5">
-                                </div>
-                                <div>
-                                    <label for="evento-costo-max">Costo massimo (€)</label>
-                                    <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="evento-costo-max">Costo massimo entrata (€)</label>  <!--min da 0-->
+                                <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
+                            </div>
                             <div>
                                 <label for="luogo-evento">Luogo</label>
                                 <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
@@ -319,17 +286,10 @@
                                 <label for="prezzo-ripetizioni">Prezzo orario</label>
                                 <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
                             </div>-->
-                            <fieldset class="fieldset-filtri">
-                                <legend>Prezzo orario (€/ora)</legend>
-                                <div>
-                                    <label for="prezzo-ripetizioni-min">Compenso minimo (€/ora)</label>
-                                    <input id="prezzo-ripetizioni-min" type="number" name="prezzo-ripetizioni-min" min="0" step="1" placeholder="Es. 5">
-                                </div>
-                                <div>
-                                    <label for="prezzo-ripetizioni-max">Compenso massimo (€/ora)</label>
-                                    <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
-                                </div>
-                            </fieldset>
+                            <div>
+                                <label for="prezzo-ripetizioni-max">Prezzo orario massimo (€/ora)</label> <!--min da 0-->
+                                <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
+                            </div>
                         </fieldset>
                     </div>
                 <div class="filtri-footer">

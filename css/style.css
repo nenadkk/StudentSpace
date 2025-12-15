@@ -1051,7 +1051,8 @@ label {
 #pubblica-container fieldset legend, #filtri .fieldset-filtri legend {
     font-weight: bold;
     color: var(--txtcolor);
-    padding: 0 0.5em;                    
+    padding: 0 0.5em;        
+    font-size: 1.2em;            
 }
 
 #login-container .form-data, #filtri .form-data fieldset {
