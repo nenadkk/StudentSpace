@@ -49,7 +49,7 @@ CREATE TABLE Annuncio (
     Titolo 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     Descrizione LONGTEXT COLLATE utf8_unicode_ci,
     DataPubblicazione DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Categoria ENUM('Affitti', 'Esperimenti', 'Eventi', 'Ripetizioni')
+    Categoria ENUM('Affitti', 'Esperimenti', 'Eventi', 'Ripetizioni'),
     IdUtente 	INT NOT NULL,
     -- IdCategoria INT NOT NULL,
     IdCitta 	INT NOT NULL,
