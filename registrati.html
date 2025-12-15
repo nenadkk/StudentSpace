@@ -55,7 +55,7 @@
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li class="current-link">Registrati</a></li>
+                <li class="current-link">Registrati</li>
                 <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
             </ul>
         </nav>
@@ -88,9 +88,58 @@
                     </div>
 
                     <div>
-                        <label for="citta">Città (sede universitaria)</span></label>
-                        <input type="text" id="citta" name="citta" placeholder="Es. Roma">
-                        <p>Es. Roma</p>
+                        <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
+                        <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona" required>
+                        <datalist id="listaCitta">
+                            <option value="Ancona"></option>
+                            <option value="Aosta"></option>
+                            <option value="Bari"></option>
+                            <option value="Benevento"></option>
+                            <option value="Bergamo"></option>
+                            <option value="Bologna"></option>
+                            <option value="Bolzano"></option>
+                            <option value="Brescia"></option>
+                            <option value="Cagliari"></option>
+                            <option value="Caserta"></option>
+                            <option value="Catania"></option>
+                            <option value="Catanzaro"></option>
+                            <option value="Chieti"></option>
+                            <option value="Cosenza"></option>
+                            <option value="Ferrara"></option>
+                            <option value="Firenze"></option>
+                            <option value="Foggia"></option>
+                            <option value="Frosinone"></option>
+                            <option value="Genova"></option>
+                            <option value="L'Aquila"></option>
+                            <option value="Lecce"></option>
+                            <option value="Lucca"></option>
+                            <option value="Milano"></option>
+                            <option value="Modena"></option>
+                            <option value="Messina"></option>
+                            <option value="Napoli"></option>
+                            <option value="Padova"></option>
+                            <option value="Palermo"></option>
+                            <option value="Parma"></option>
+                            <option value="Pavia"></option>
+                            <option value="Perugia"></option>
+                            <option value="Pisa"></option>
+                            <option value="Potenza"></option>
+                            <option value="Reggio Calabria"></option>
+                            <option value="Roma"></option>
+                            <option value="Sassari"></option>
+                            <option value="Siena"></option>
+                            <option value="Teramo"></option>
+                            <option value="Torino"></option>
+                            <option value="Trento"></option>
+                            <option value="Trieste"></option>
+                            <option value="Udine"></option>
+                            <option value="Urbino"></option>
+                            <option value="Varese"></option>
+                            <option value="Vercelli"></option>
+                            <option value="Venezia"></option>
+                            <option value="Verona"></option>
+                            <option value="Viterbo"></option>
+                        </datalist>
                     </div>
 
                     <div>
