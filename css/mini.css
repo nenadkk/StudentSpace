@@ -175,13 +175,13 @@ header {
 ==================================================== 
 */
 
-#presentazione {
+#presentazione, .errore {
     display: block;
     text-align: center;
     padding: 3em;
 }
 
-#presentazione > img {
+#presentazione > img, .errore > img {
     display: inline-block;
     margin: 0 auto;
     width: 90%;
@@ -190,7 +190,7 @@ header {
     margin-bottom: 2em;
 }
 
-#presentazione .azioni {
+#presentazione .azioni, .errore .azioni {
     justify-content: center;
 }
 

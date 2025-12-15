@@ -204,7 +204,7 @@ header {
 ==================================================== 
 */
 
-#menu .call-to-action, #presentazione .call-to-action {
+#menu .call-to-action, #presentazione .call-to-action, .errore .call-to-action {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     color: var(--clearTxtColor); 
@@ -216,7 +216,7 @@ header {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu .call-to-action:visited, #presentazione .call-to-action:visited {
+#menu .call-to-action:visited, #presentazione .call-to-action:visited, .errore .call-to-action:visited {
     color: var(--call-to-actionColor);
     padding: 0.5em 1em;
     border-radius: 1em;
@@ -227,11 +227,13 @@ header {
     background-color: var(--BgColor);
 }
 
-#presentazione .call-to-action:visited {
+#presentazione .call-to-action:visited, .errore .call-to-action:visited {
     background-color: var(--clearBgColor);
 }
 
-#menu .call-to-action:hover, #menu .call-to-action:focus, #presentazione .call-to-action:hover, #presentazione .call-to-action:focus {
+#menu .call-to-action:hover, #menu .call-to-action:focus, 
+#presentazione .call-to-action:hover, #presentazione .call-to-action:focus,
+.errore .call-to-action:hover, .errore .call-to-action:focus {
     background-color: var(--call-to-actionAction);
     color: var(--call-to-actionCor);
     outline: 2px solid var(--call-to-actionColor);
@@ -395,7 +397,7 @@ footer {
 ==================================================== 
 */
 
-#presentazione {
+#presentazione, .errore {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -406,7 +408,7 @@ footer {
     max-width: 1200px;
 }
 
-#presentazione > img {
+#presentazione > img , .errore > img{
     flex: 0 1 40%;
     width: 100%;
     max-width: 450px;
@@ -414,19 +416,19 @@ footer {
     height: auto;
 }
 
-#presentazione > div {
+#presentazione > div , .errore > div {
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-#presentazione p {
+#presentazione p, .errore p {
     font-size: 1.1em;
     line-height: 1.6;
 }
 
-#presentazione .azioni {
+#presentazione .azioni, .errore .azioni{
     display: flex;
     flex-wrap: wrap;
     gap: 1em;

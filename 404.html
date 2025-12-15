@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Student Space - La bacheca universitaria online</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Bacheca universitaria online per studenti: pubblica o cerca annunci di affitto, ripetizioni, eventi accademici e progetti sperimentali.">
+
+    <meta name="keywords" content="StudentSpace, bacheca universitaria, studenti fuorisede, affitti studenti, ripetizioni universitarie, lezioni private, eventi universitari, esperimenti accademici, progetti sperimentali, supporto allo studio">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header id="intestazione">
+        <h1 id="logo-home" lang="en">Student Space</h1>
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menù di navigazione desktop">
+            <ul class="nav-links">
+                <li lang="en" class="current-link" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+
+        <!-- da sistemare per accessibilità-->
+        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false"> 
+            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
+            <span id="hamburger-aperto">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+            <ul class="nav-links">
+                <li lang="en" class="current-link" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+            </ul>
+            <ul class="nav-auth">
+                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="accedi.html">Accedi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol><li lang="en" class="currentPage" aria-current="page">Home</li></ol>
+    </nav>
+
+    <main id="contenuto">
+        <div class="errore">
+            <img src="assets/404_0_annuncio.png" alt="">
+            <div id="testo-errore">
+                <h2>404 - Annuncio smarrito</h2>
+                <p>Ops! Sembra che questo annuncio sia stato strappato dalla bacheca universitaria.</p>
+                <p>Anche se questo annuncio non c'è più, la bacheca è piena di propostre...</p>
+                <div class="azioni">
+                    <a class="call-to-action" href="index.html">Torna alla <span lang="en">Home</span></a>
+                    <a class="call-to-action" href="esplora.html">Consulta la bacheca</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en" class="currentPage" aria-current="page">Home</li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="registrati.html">Registrati</a></li>
+                <li><a href="accedi.html">Accedi</a></li>
+            </ul>
+        </div>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    
+    </div>
+</body>
+</html>

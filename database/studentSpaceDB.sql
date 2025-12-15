@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS Utente;
 DROP TABLE IF EXISTS Citta;
 
 -- -----------------------------------------------------
--- UTENTI
+-- CREATE
 -- -----------------------------------------------------
 
 CREATE TABLE Citta (
@@ -122,3 +122,56 @@ CREATE TABLE Ripetizioni (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
+- -----------------------------------------------------
+-- INSERT
+-- -----------------------------------------------------
+
+INSERT INTO Citta (NomeCitta) VALUES
+('Ancona'),
+('Aosta'),
+('Bari'),
+('Benevento'),
+('Bergamo'),
+('Bologna'),
+('Bolzano'),
+('Brescia'),
+('Cagliari'),
+('Caserta'),
+('Catania'),
+('Catanzaro'),
+('Chieti'),
+('Cosenza'),
+('Ferrara'),
+('Firenze'),
+('Foggia'),
+('Frosinone'),
+('Genova'),
+("L'Aquila"),
+('Lecce'),
+('Lucca'),
+('Milano'),
+('Modena'),
+('Messina'),
+('Napoli'),
+('Padova'),
+('Palermo'),
+('Parma'),
+('Pavia'),
+('Perugia'),
+('Pisa'),
+('Potenza'),
+('Reggio Calabria'),
+('Roma'),
+('Sassari'),
+('Siena'),
+('Teramo'),
+('Torino'),
+('Trento'),
+('Trieste'),
+('Udine'),
+('Urbino'),
+('Varese'),
+('Vercelli'),
+('Venezia'),
+('Verona'),
+('Viterbo');
