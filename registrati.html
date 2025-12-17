@@ -72,7 +72,11 @@
     <main id="contenuto">
         <div id="register-container">
             <h2>Registrati</h2>
-            <form action="/register" method="post">
+
+            <div id="errori-form-registrati" role="alert" aria-atomic="true">
+            </div>
+
+            <form action="registrati.php" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
                     <div>
@@ -181,7 +185,7 @@
                         <li>Almeno un carattere speciale.</li>
                     </ul>
                 </div>
-                <button type="submit">Conferma</button>
+                <button type="submit" id="submit" name="submit">Conferma</button>
                 <p>Hai già un account? <a href="accedi.html">Accedi</a></p>
 
             </form>

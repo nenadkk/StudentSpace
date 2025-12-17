@@ -1208,3 +1208,17 @@ form > p, form > p{
     font-size: small;
 } */
 
+.messaggi-errore-form{
+    font-size: 0.95em;
+    color: var(--txtcolor);
+    background-color: #FFB5B5;
+    padding: 0.8em 2em;
+    border-left: 4px solid var(--affittiColor);
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    line-height: 1.5;
+    max-width: 60%;
+    margin-top: 0.5em;
+    align-self: center;
+}
+
