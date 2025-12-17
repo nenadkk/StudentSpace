@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Errore 404 - Student Space</title>
+    <title>Errore 500 - Student Space</title>
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina errore 404: annuncio inesistente">
-    <meta name="keywords" content="StudentSpace, bacheca universitaria, studenti fuorisede, affitti studenti, ripetizioni universitarie, lezioni private, eventi universitari, esperimenti accademici, progetti sperimentali, supporto allo studio">
+    <meta name="description" content="Pagina errore 500: problema interno del server">
+    <meta name="keywords" content="StudentSpace, bacheca universitaria, errore server, studenti fuorisede, affitti studenti, ripetizioni universitarie, eventi universitari, esperimenti accademici">
 
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="css/style.css" media="screen">
-    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
-    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,6 @@
             </ul>
         </nav>
 
-        <!-- da sistemare per accessibilità-->
         <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false"> 
             <span id="hamburger-chiuso" class="attivo">&#9776;</span>
             <span id="hamburger-aperto">&#9932;</span>
@@ -66,24 +65,25 @@
             <li lang="en"><a href="index.html">Home</a></li>
             <li> <span aria-hidden="true">»</span></li>
             <li><a href="esplora.html"> Esplora</a></li>
-            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Errore 404</li>
+            <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Errore 500</li>
         </ol>
     </nav>
 
     <main id="contenuto">
         <div class="errore">
-            <img src="assets/404_0_annuncio.png" alt="">
+            <img src="assets/500.png" alt="Illustrazione ironica di un server universitario in tilt">
             <div id="testo-errore">
-                <h2>Annuncio non esistente</h2>
-                <p>Ops! Sembra che questo annuncio non sia mai stato affisso.</p>
-                <p>Anche se questo annuncio non esiste, la bacheca è piena di propostre...</p>
+                <h2>La bacheca è in manutenzione.</h2>
+                <p>Qualcuno ha spostato i fogli per rimettere in ordine.</p>
+                <p>Torna tra poco!</p>
                 <div class="azioni">
                     <a class="call-to-action" href="index.html">Torna alla <span lang="en">Home</span></a>
                     <a class="call-to-action" href="esplora.html">Consulta la bacheca</a>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
+
     <footer>
         <div id="footer-top">
             <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
