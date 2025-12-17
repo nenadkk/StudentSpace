@@ -231,10 +231,10 @@ header {
 #toggleFiltri {
     display: block;
     padding: 0.8em 1.2em;
-    font-size: 1em;
+    font-size: 1.2em;
     border-radius: 1em;
-    background-color: var(--call-to-actionColor);
-    color: var(--clearTxtColor);
+    background-color: var(--BgColor);
+    color: var(--txtcolor);
     font-weight: bold;
     border: none;
     text-align: left;
