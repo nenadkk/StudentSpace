@@ -23,6 +23,43 @@ class DBAccess {
         if($this->connection)
             mysqli_close($this->connection);
     }
+
+    public function getAllCity() {
+        $query = "SELECT nomeCitta FROM Citta ORDER BY nomeCitta ASC";
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $cities = array();
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                $cities[] = $row['nomeCitta'];
+            }
+            $queryResult->free();
+            return $cities;
+        }
+    }
+
+    public function getLastAnnouncements() {
+        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.nomeCitta, i.Percorso, i.AltText
+            FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
+            WHERE i.Ordine = 1
+            ORDER BY a.DataPubblicazione DESC
+            LIMIT 5;";
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                push_back($results, $row);
+            }
+            $queryResult->free();
+        }
+
+        return $queryResult;
+    }
 }
 
 ?>
