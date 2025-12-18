@@ -42,11 +42,11 @@
             </ul>
         </nav>
 
-        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false"> 
-            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
-            <span id="hamburger-aperto">&#9932;</span>
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile" hidden>
             <ul class="nav-links">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>
@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-    <div class="content-container">
+    <div id="content-container">
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
             <li aria-current="page" class="currentPage">Errore 500</li>

@@ -25,7 +25,7 @@ header {
     gap: 1em;
 }
 
-.content-container.attivo {
+#content-container.attivo {
     margin-top: 16em;
 }
 
