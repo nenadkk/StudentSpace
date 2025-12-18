@@ -1,32 +1,41 @@
 // JS PER HAMBURGER MENU
 function hamburgerMenu() {
   const hamburger = document.getElementById('hamburger');
-  const hamburgerChiuso = document.querySelectorAll('#hamburger > span')[0];
-  const hamburgerAperto = document.querySelectorAll('#hamburger > span')[1];
+  const hamburgerChiuso = document.getElementById('hamburger-chiuso');
+  const hamburgerAperto = document.getElementById('hamburger-aperto');
 
-
-  let menu = document.getElementById('hamburger-menu')
-  let content = document.getElementsByClassName('content-container')[0]
+  const menu = document.getElementById('hamburger-menu');
+  const content = document.getElementById('content-container');
 
   hamburger.addEventListener('click', function () {
-    hamburgerChiuso.classList.toggle('attivo');
-    hamburgerAperto.classList.toggle('attivo');
+    const aperto = hamburger.getAttribute('aria-expanded') === 'true';
 
-    hamburger.ariaPressed === "true" ? hamburger.ariaPressed = "false" : hamburger.ariaPressed = "true";
+    if(aperto) {
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Apri il menù di navigazione');
 
-    if (menu.classList.contains('attivo')) {
-      if (content.classList.contains('attivo') && window.scrollY < 30) {
-        content.classList.remove('attivo')
-      }
-      menu.classList.remove('attivo')
-      content.classList.remove('hamburger-attivo')
+      hamburgerChiuso.classList.add('attivo');  
+      hamburgerAperto.classList.remove('attivo'); 
+
+      menu.hidden = true;
+      menu.classList.remove('attivo');
+
+      content.classList.remove('hamburger-attivo');
+      content.classList.remove('attivo');
     } else {
-      if (!content.classList.contains('attivo')) {
-        content.classList.add('attivo')
-      }
-      menu.classList.add('attivo')
+      hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Chiudi il menù di navigazione');
+
+      hamburgerChiuso.classList.remove('attivo'); 
+      hamburgerAperto.classList.add('attivo');   
+
+      menu.hidden = false;
+      menu.classList.add('attivo');
+
+      content.classList.add('hamburger-attivo');
+      content.classList.add('attivo');
     }
-  })
+  });
 }
 
 // JS PER CAROSELLO MINIATURE CLICCABILI
@@ -46,7 +55,6 @@ function caroselloChangeImage() {
 }
 
 /*
-
 //JS PER BOTTONI CAROSELLO (loop)
 function slideCarosello()
 {
