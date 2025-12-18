@@ -53,12 +53,12 @@ class DBAccess {
         } else {
             $results = array();
             while($row = mysqli_fetch_assoc($queryResult)) {
-                push_back($results, $row);
+                array_push($results, $row);
             }
             $queryResult->free();
         }
 
-        return $queryResult;
+        return $results;
     }
 }
 

@@ -126,6 +126,18 @@ COLLATE=utf8_unicode_ci;
 -- INSERT
 -- -----------------------------------------------------
 
+INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
+('Mario', 'Rossi', 'mario.rossi@example.com', 'password123', 1);
+
+INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
+('Appartamento in affitto a Milano', 'Bellissimo appartamento di 2 camere in centro a Milano.', 'Affitti', 1, 1),
+('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
+
+INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
+(1, 'bilocaleCentro.jpg', 'Foto dell\'appartamento in affitto a Milano', 0, 1),
+(1, 'stanzaSingola.jpg', '', 1, 2),
+(2, 'ripetizioniMate.jpg', 'Foto per ripetizioni di matematica', 0, 1);
+
 INSERT INTO Citta (NomeCitta) VALUES
 ('Ancona'),
 ('Aosta'),
