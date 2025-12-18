@@ -107,6 +107,9 @@ function slideCarosello() {
     let index = 0;
     const dim = arrimmSec.length;
 
+    if (prevButton === null || nextButton === null || arrimmSec.length === 0 || immPrinc === null) {
+      return; // Esci se gli elementi non sono trovati
+    }
     function showImage(i) {
       index = i;
       immPrinc.src = arrimmSec[index].src;
