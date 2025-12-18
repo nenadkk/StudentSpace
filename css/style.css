@@ -408,6 +408,10 @@ footer {
     max-width: 1200px;
 }
 
+.errore {
+    height: calc(100vh - 8em);
+}
+
 #presentazione > img , .errore > img{
     flex: 0 1 40%;
     width: 100%;
@@ -421,6 +425,10 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+
+#testo-errore {
+    gap: 0.5em;
 }
 
 #presentazione p, .errore p {
