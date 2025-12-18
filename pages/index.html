@@ -43,12 +43,11 @@
             </ul>
         </nav>
 
-        <!-- da sistemare per accessibilità-->
-        <button id="hamburger" aria-label="Apri il menù di navigazione" aria-pressed="false"> 
-            <span id="hamburger-chiuso" class="attivo">&#9776;</span>
-            <span id="hamburger-aperto">&#9932;</span>
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile">
+        <nav id="hamburger-menu" aria-label="Menù di navigazione mobile" hidden>
             <ul class="nav-links">
                 <li lang="en" class="current-link" aria-current="page">Home</li>
                 <li><a href="esplora.html">Esplora</a></li>
