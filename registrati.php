@@ -5,6 +5,7 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('pages/registrati.html');
 $messaggiPerForm = "";
+$db = new DBAccess();
 
 // --- Variabili iniziali ---
 $nome = '';
@@ -96,17 +97,24 @@ if(isset($_POST['submit'])) {
      * RISULTATO
      * ----------------------------------- */
     if (empty($errori)) {
-        $messaggiPerForm = "<p class='messaggi-errore-form'>Registrazione valida! Ora puoi salvarla nel DB.</p>";
+        //$messaggiPerForm = "<p class='messaggi-errore-form'>Registrazione valida! Ora puoi salvarla nel DB.</p>";
 
-        // Esempio inserimento nel DB (non obbligatorio ora)
-        // $db = new DBAccess();
-        // if ($db->openDBConnection()) {
-        //     $psw_hash = password_hash($password, PASSWORD_DEFAULT);
-        //     // query di inserimento...
-        //     $db->closeConnection();
-        // }
+        //ottengo l'IdCitta della città selezionata
+            $query = "SELECT IdCitta FROM Citta WHERE NomeCitta ='$citta';";
+            $result = $db->executeQuery($query);
+            $idcitta = $result['IdCitta'];
 
-    } else {
+            //inserisco l'utente
+            $psw_hash = password_hash($password, PASSWORD_DEFAULT);
+            $query="INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
+                    ('$nome','$cognome','$email','$psw_hash','$idcitta');";
+            $result = $db->executeQuery($query);
+
+			header("location: index.html");
+			exit();
+    }
+    else
+    {
         // Mostra errori
         $messaggiPerForm = "<ul class='messaggi-errore-form'>";
         foreach ($errori as $e) {

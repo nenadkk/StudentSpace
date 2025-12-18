@@ -23,6 +23,39 @@ class DBAccess {
         if($this->connection)
             mysqli_close($this->connection);
     }
+
+    public function executeQuery($query) {
+        //questa funzione apre/chiude una connessione per la query e restituisce 
+        //il risultato sotto forma di array associativo per facilitarne l'utilizzo
+        //(di base il risultato della query sarebbe un buffer) 
+        $this->openDBConnection();
+
+        $result = mysqli_query($this->connection, $query) or 
+                  die("Errore: " . mysqli_error($this->connection)); //caso query fallita
+        
+        if(gettype($result)!="boolean")
+        //mysqli_query restituisce un buffer con i risultati della query nel caso essa sia 
+        //un SELECT, SHOW, DESCRIBE o EXPLAIN. In tutti gli altri casi ritorna un
+        //booleano, quindi non sempre ha senso vedere se il risultato ha delle righe
+        {
+            //caso query senza risultati 
+            if(!mysqli_num_rows($result)) return array();
+
+            //caso query con risultati
+            $answer = array();
+            while($row = mysqli_fetch_assoc($result))
+            //$row è un array associativo contenente un solo elemento 
+            //se facessi solo array_push($answer, $row) otterrei un array di array, 
+            //il che complicherebbe solo le cose al momento dell'utilizzo. Quindi ne 
+            //estraggo il contenuto
+            {
+                $answer = array_merge($answer, $row);
+            }
+            $result->free();
+            $this->closeConnection();
+            return $answer;
+        }
+    }
 }
 
 ?>
