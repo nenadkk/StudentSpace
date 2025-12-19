@@ -670,6 +670,7 @@ li.categoria > div {
 
 #esplora-content {
     display: flex;
+    align-items: flex-start;
 }
 
 #aside-style-layout{
@@ -677,7 +678,6 @@ li.categoria > div {
     width: 20%;
     min-width: 340px;
     margin: 1em 0 1em 1.5em;
-    float: left;
 }
 
 #ricerca fieldset {

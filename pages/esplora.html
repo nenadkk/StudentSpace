@@ -70,245 +70,244 @@
             </ol>
         </nav>
         <div id="esplora-content">
-        <div id="aside-style-layout">
-            <div id="aside-mini-layout">
-                <aside id="ricerca">
+            <div id="aside-style-layout">
+                <div id="aside-mini-layout">
+                    <aside id="ricerca">
+                        <form class="form-data" action="esplora.html" method="get">
+                            <fieldset>
+                                <div>
+                                    <label for="cerca">Cerca</label>
+                                    <input id="cerca" type="text" name="cerca" maxlength="20" placeholder="Cerca...">
+                                </div>
+                            </fieldset>
+                            <button type="submit">Cerca</button>
+                        </form>
+                    </aside>
+
+                    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
+                </div>
+                <aside id="filtri">
+                    <div class="filtri-header">
+                        <h2>Filtri</h2>
+                        <button id="chiudiFiltri" type="button" aria-label="Chiudi filtri">&#9932;</button>
+                    </div>    
                     <form class="form-data" action="esplora.html" method="get">
-                        <fieldset>
-                            <div>
-                                <label for="cerca">Cerca</label>
-                                <input id="cerca" type="text" name="cerca" maxlength="20" placeholder="Cerca...">
-                            </div>
-                        </fieldset>
-                        <button type="submit">Cerca</button>
-                    </form>
-                </aside>
-
-                <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
-            </div>
-            <aside id="filtri">
-                <div class="filtri-header">
-                    <h2>Filtri</h2>
-                    <button id="chiudiFiltri" type="button" aria-label="Chiudi filtri">&#9932;</button>
-                </div>    
-                <form class="form-data" action="esplora.html" method="get">
-                    <fieldset class="fieldset-filtri">
-                        <legend>Generali</legend>
-                        <!-- Attributi comuni a tutte le categorie -->
-                        <div>
-                            <label for="categoria">Categoria</label>
-                            <select id="categoria" name="categoria">
-                                <option value="">Seleziona categoria</option>
-                                    <option value="Affitti">Affitti</option>
-                                    <option value="Esperimenti">Esperimenti</option>
-                                    <option value="Eventi">Eventi</option>
-                                    <option value="Ripetizioni">Ripetizioni</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="citta">Città (sede universitaria)</label>
-                            <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
-                            <datalist id="listaCitta">
-                                <option value="Ancona"></option>
-                                <option value="Aosta"></option>
-                                <option value="Bari"></option>
-                                <option value="Benevento"></option>
-                                <option value="Bergamo"></option>
-                                <option value="Bologna"></option>
-                                <option value="Bolzano"></option>
-                                <option value="Brescia"></option>
-                                <option value="Cagliari"></option>
-                                <option value="Caserta"></option>
-                                <option value="Catania"></option>
-                                <option value="Catanzaro"></option>
-                                <option value="Chieti"></option>
-                                <option value="Cosenza"></option>
-                                <option value="Ferrara"></option>
-                                <option value="Firenze"></option>
-                                <option value="Foggia"></option>
-                                <option value="Frosinone"></option>
-                                <option value="Genova"></option>
-                                <option value="L'Aquila"></option>
-                                <option value="Lecce"></option>
-                                <option value="Lucca"></option>
-                                <option value="Milano"></option>
-                                <option value="Modena"></option>
-                                <option value="Messina"></option>
-                                <option value="Napoli"></option>
-                                <option value="Padova"></option>
-                                <option value="Palermo"></option>
-                                <option value="Parma"></option>
-                                <option value="Pavia"></option>
-                                <option value="Perugia"></option>
-                                <option value="Pisa"></option>
-                                <option value="Potenza"></option>
-                                <option value="Reggio Calabria"></option>
-                                <option value="Roma"></option>
-                                <option value="Sassari"></option>
-                                <option value="Siena"></option>
-                                <option value="Teramo"></option>
-                                <option value="Torino"></option>
-                                <option value="Trento"></option>
-                                <option value="Trieste"></option>
-                                <option value="Udine"></option>
-                                <option value="Urbino"></option>
-                                <option value="Varese"></option>
-                                <option value="Vercelli"></option>
-                                <option value="Venezia"></option>
-                                <option value="Verona"></option>
-                                <option value="Viterbo"></option>
-                            </datalist>
-                        </div>
-                        <!--<div>
-                            <label for="data-pubblicazione">Data pubblicazione</label>
-                            <input id="data-pubblicazione" type="date" name="data-pubblicazione">
-                        </div>-->
-                        <div>
-                            <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
-                            <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
-                        </div>
-                        <div>
-                            <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
-                            <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
-                        </div>
-                    </fieldset>
-
-                    <div id="filtri-affitti" class="nascondi-filtri">
                         <fieldset class="fieldset-filtri">
-                            <legend>Filtri Affitti</legend>
-                            <!-- Attributi Affitti -->
-                            <!--<div>
-                                <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
-                                <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
-                            </div>-->
+                            <legend>Generali</legend>
+                            <!-- Attributi comuni a tutte le categorie -->
                             <div>
-                                <label for="coinquilini-max">Numero massimo coinquilini</label> <!--min da 0-->
-                                <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
-                            </div>
-                            <!--<div>
-                                <label for="costo-mese-affitto">Costo mensile</label>
-                                <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
-                            </div>-->
-                            <div>
-                                <label for="costo-mese-affitto-max">Costo mensile massimo (€/mese)</label> <!--min da 0-->
-                                <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria" name="categoria">
+                                    <option value="">Seleziona categoria</option>
+                                        <option value="Affitti">Affitti</option>
+                                        <option value="Esperimenti">Esperimenti</option>
+                                        <option value="Eventi">Eventi</option>
+                                        <option value="Ripetizioni">Ripetizioni</option>
+                                </select>
                             </div>
                             <div>
-                                <label for="indirizzo-affitto">Indirizzo</label>
-                                <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <div id="filtri-esperimenti" class="nascondi-filtri">
-                        <fieldset class="fieldset-filtri">
-                            <legend>Filtri Esperimenti</legend>
-                            <!-- Attributi Esperimenti -->
-                            <div>
-                                <label for="laboratorio">Laboratorio di riferimento</label>
-                                <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
-                            </div>
-                            <!--<div>
-                                <label for="durata-esperimento">Durata esperimento</label>
-                                <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
-                            </div>-->
-                            <div>
-                                <label for="esperimento-durata-min">Duarata minima esperimento (minuti)</label>
-                                <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
-                            </div>
-                            <div>
-                                <label for="esperimento-durata-max">Durata massima esperimento (minuti)</label>
-                                <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
-                            </div>
-                            <!--<div>
-                                <label for="compenso">Compenso</label>
-                                <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
-                            </div>-->
-                            <div>
-                                <label for="esperimento-compenso-min">Compenso minimo esperimento (€)</label>
-                                <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
-                            </div>
-                            <div>
-                                <label for="esperimento-compenso-max">Compenso massimo esperimento (€)</label>
-                                <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <div id="filtri-eventi" class="nascondi-filtri">
-                        <fieldset class="fieldset-filtri">
-                            <legend>Filtri Eventi</legend>
-                            <!-- Attributi Eventi -->
-                            <!--<div>
-                                <label for="data-evento">Data evento</label>
-                                <input id="data-evento" type="date" name="data-evento">
-                            </div>-->
-                            <div>
-                                <label for="evento-inizio">Data inizio evento</label>
-                                <input id="evento-inizio" type="date" name="evento-inizio">
-                            </div>
-                            <div>
-                                <label for="evento-fine">Data fine evento</label>
-                                <input id="evento-fine" type="date" name="evento-fine">
-                            </div>
-                            <!--<div>
-                                <label for="costo-evento">Costo entrata</label>
-                                <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
-                            </div>-->
-                            <div>
-                                <label for="evento-costo-max">Costo massimo entrata (€)</label>  <!--min da 0-->
-                                <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
-                            </div>
-                            <div>
-                                <label for="luogo-evento">Luogo</label>
-                                <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <div id="filtri-ripetizioni" class="nascondi-filtri">
-                        <fieldset class="fieldset-filtri">
-                            <legend>Filtri Ripetizioni</legend>
-                            <!-- Attributi Ripetizioni -->
-                            <div>
-                                <label for="materia">Materia</label>
-                                <input type="text" id="materia" name="materia">
-                            </div>
-                            <div>
-                                <label for="livello">Livello</label>
-                                <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
-                                <datalist id="listlivelli">
-                                    <option value="Medie">
-                                    <option value="Superiori">
-                                    <option value="Università">
+                                <label for="citta">Città (sede universitaria)</label>
+                                <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
+                                <datalist id="listaCitta">
+                                    <option value="Ancona"></option>
+                                    <option value="Aosta"></option>
+                                    <option value="Bari"></option>
+                                    <option value="Benevento"></option>
+                                    <option value="Bergamo"></option>
+                                    <option value="Bologna"></option>
+                                    <option value="Bolzano"></option>
+                                    <option value="Brescia"></option>
+                                    <option value="Cagliari"></option>
+                                    <option value="Caserta"></option>
+                                    <option value="Catania"></option>
+                                    <option value="Catanzaro"></option>
+                                    <option value="Chieti"></option>
+                                    <option value="Cosenza"></option>
+                                    <option value="Ferrara"></option>
+                                    <option value="Firenze"></option>
+                                    <option value="Foggia"></option>
+                                    <option value="Frosinone"></option>
+                                    <option value="Genova"></option>
+                                    <option value="L'Aquila"></option>
+                                    <option value="Lecce"></option>
+                                    <option value="Lucca"></option>
+                                    <option value="Milano"></option>
+                                    <option value="Modena"></option>
+                                    <option value="Messina"></option>
+                                    <option value="Napoli"></option>
+                                    <option value="Padova"></option>
+                                    <option value="Palermo"></option>
+                                    <option value="Parma"></option>
+                                    <option value="Pavia"></option>
+                                    <option value="Perugia"></option>
+                                    <option value="Pisa"></option>
+                                    <option value="Potenza"></option>
+                                    <option value="Reggio Calabria"></option>
+                                    <option value="Roma"></option>
+                                    <option value="Sassari"></option>
+                                    <option value="Siena"></option>
+                                    <option value="Teramo"></option>
+                                    <option value="Torino"></option>
+                                    <option value="Trento"></option>
+                                    <option value="Trieste"></option>
+                                    <option value="Udine"></option>
+                                    <option value="Urbino"></option>
+                                    <option value="Varese"></option>
+                                    <option value="Vercelli"></option>
+                                    <option value="Venezia"></option>
+                                    <option value="Verona"></option>
+                                    <option value="Viterbo"></option>
                                 </datalist>
                             </div>
                             <!--<div>
-                                <label for="prezzo-ripetizioni">Prezzo orario</label>
-                                <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
+                                <label for="data-pubblicazione">Data pubblicazione</label>
+                                <input id="data-pubblicazione" type="date" name="data-pubblicazione">
                             </div>-->
                             <div>
-                                <label for="prezzo-ripetizioni-max">Prezzo orario massimo (€/ora)</label> <!--min da 0-->
-                                <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
+                                <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
+                                <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
+                            </div>
+                            <div>
+                                <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
+                                <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
                             </div>
                         </fieldset>
-                    </div>
-                <div class="filtri-footer">
-                    <button type="submit">Applica</button>
-                </div>
-                </form>
-            </aside>
-        </div>
 
-        <main id="contenuto">
-            <div class="esplora">
-                <h2>Esplora</h2>
-                <ul id="listaCarte">
-                    [cards]
-                </ul>
+                        <div id="filtri-affitti" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Affitti</legend>
+                                <!-- Attributi Affitti -->
+                                <!--<div>
+                                    <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
+                                    <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
+                                </div>-->
+                                <div>
+                                    <label for="coinquilini-max">Numero massimo coinquilini</label> <!--min da 0-->
+                                    <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
+                                </div>
+                                <!--<div>
+                                    <label for="costo-mese-affitto">Costo mensile</label>
+                                    <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
+                                </div>-->
+                                <div>
+                                    <label for="costo-mese-affitto-max">Costo mensile massimo (€/mese)</label> <!--min da 0-->
+                                    <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                                <div>
+                                    <label for="indirizzo-affitto">Indirizzo</label>
+                                    <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div id="filtri-esperimenti" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Esperimenti</legend>
+                                <!-- Attributi Esperimenti -->
+                                <div>
+                                    <label for="laboratorio">Laboratorio di riferimento</label>
+                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
+                                </div>
+                                <!--<div>
+                                    <label for="durata-esperimento">Durata esperimento</label>
+                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
+                                </div>-->
+                                <div>
+                                    <label for="esperimento-durata-min">Duarata minima esperimento (minuti)</label>
+                                    <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
+                                </div>
+                                <div>
+                                    <label for="esperimento-durata-max">Durata massima esperimento (minuti)</label>
+                                    <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
+                                </div>
+                                <!--<div>
+                                    <label for="compenso">Compenso</label>
+                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
+                                </div>-->
+                                <div>
+                                    <label for="esperimento-compenso-min">Compenso minimo esperimento (€)</label>
+                                    <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
+                                </div>
+                                <div>
+                                    <label for="esperimento-compenso-max">Compenso massimo esperimento (€)</label>
+                                    <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div id="filtri-eventi" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Eventi</legend>
+                                <!-- Attributi Eventi -->
+                                <!--<div>
+                                    <label for="data-evento">Data evento</label>
+                                    <input id="data-evento" type="date" name="data-evento">
+                                </div>-->
+                                <div>
+                                    <label for="evento-inizio">Data inizio evento</label>
+                                    <input id="evento-inizio" type="date" name="evento-inizio">
+                                </div>
+                                <div>
+                                    <label for="evento-fine">Data fine evento</label>
+                                    <input id="evento-fine" type="date" name="evento-fine">
+                                </div>
+                                <!--<div>
+                                    <label for="costo-evento">Costo entrata</label>
+                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
+                                </div>-->
+                                <div>
+                                    <label for="evento-costo-max">Costo massimo entrata (€)</label>  <!--min da 0-->
+                                    <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                                <div>
+                                    <label for="luogo-evento">Luogo</label>
+                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div id="filtri-ripetizioni" class="nascondi-filtri">
+                            <fieldset class="fieldset-filtri">
+                                <legend>Filtri Ripetizioni</legend>
+                                <!-- Attributi Ripetizioni -->
+                                <div>
+                                    <label for="materia">Materia</label>
+                                    <input type="text" id="materia" name="materia">
+                                </div>
+                                <div>
+                                    <label for="livello">Livello</label>
+                                    <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                    <datalist id="listlivelli">
+                                        <option value="Medie">
+                                        <option value="Superiori">
+                                        <option value="Università">
+                                    </datalist>
+                                </div>
+                                <!--<div>
+                                    <label for="prezzo-ripetizioni">Prezzo orario</label>
+                                    <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
+                                </div>-->
+                                <div>
+                                    <label for="prezzo-ripetizioni-max">Prezzo orario massimo (€/ora)</label> <!--min da 0-->
+                                    <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
+                                </div>
+                            </fieldset>
+                        </div>
+                    <div class="filtri-footer">
+                        <button type="submit">Applica</button>
+                    </div>
+                    </form>
+                </aside>
             </div>
-            
-        </main>
+
+            <main id="contenuto">
+                <div class="esplora">
+                    <h2>Esplora</h2>
+                    <ul id="listaCarte">
+                        [cards]
+                    </ul>
+                </div>
+            </main>
         </div>
 
         <footer>

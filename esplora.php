@@ -12,7 +12,7 @@ if (!$dbAccess->openDBConnection()) {
     echo "Connessione al database fallita.";
     exit;
 }
-$cardsData = $dbAccess->getLastAnnouncements();
+$cardsData = $dbAccess->getAnnouncements();
 $dbAccess->closeConnection();
 
 $cards = "";
