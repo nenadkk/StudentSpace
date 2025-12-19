@@ -110,7 +110,7 @@ if(isset($_POST['submit'])) {
                     ('$nome','$cognome','$email','$psw_hash','$idcitta');";
             $result = $db->executeQuery($query);
 
-			header("location: index.html");
+			header("location: index.php");
 			exit();
     }
     else

@@ -13,6 +13,26 @@ class Tool {
         return $html;
     }
 
+    public static function sessionsStarter($userId): void {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+            $_SESSION['userId'] = $userId;
+            $_SESSION['logged'] = true;
+            session_regenerate_id(true);
+        }
+    }
+
+    public static function sessionsDestroyer(): void {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION = array();
+            session_destroy();
+        }
+    }
+
+    public static function isLogged(): bool {
+        return (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['logged']) && $_SESSION['logged'] === true);
+    }
+
     /*  Per Nenad
 use DB\DBAccess;
 
