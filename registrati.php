@@ -1,6 +1,7 @@
 <?php
 
 require_once "dbConnect.php";
+require_once "tool.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('pages/registrati.html');
@@ -96,22 +97,30 @@ if(isset($_POST['submit'])) {
     /* -----------------------------------
      * RISULTATO
      * ----------------------------------- */
-    if (empty($errori)) {
-        //$messaggiPerForm = "<p class='messaggi-errore-form'>Registrazione valida! Ora puoi salvarla nel DB.</p>";
+    if (empty($errori)) 
+    {
+        $db->openDBConnection();
 
         //ottengo l'IdCitta della città selezionata
-            $query = "SELECT IdCitta FROM Citta WHERE NomeCitta ='$citta';";
-            $result = $db->executeQuery($query);
-            $idcitta = $result['IdCitta'];
+        $result = $db->getIdCitta($citta);
+        
+        //inserisco l'utente
+        $arrayRegistrazione = [];
+        $arrayRegistrazione['Nome'] = $nome;
+        $arrayRegistrazione['Cognome'] = $cognome;
+       $arrayRegistrazione['Email'] = $email;
+        $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
+        $arrayRegistrazione['IdCitta'] = $result['IdCitta'];
+        
+        $db->insertUtente($arrayRegistrazione);
 
-            //inserisco l'utente
-            $psw_hash = password_hash($password, PASSWORD_DEFAULT);
-            $query="INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
-                    ('$nome','$cognome','$email','$psw_hash','$idcitta');";
-            $result = $db->executeQuery($query);
+        $idutente = intval($db->getIdUtente($email));//perché l'id viene aggiunto automaticamente da database
+        $db->closeConnection();
 
-			header("location: index.php");
-			exit();
+        Tool::startUserSession($idutente);
+
+        header("location: index.php");
+
     }
     else
     {
