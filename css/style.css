@@ -58,6 +58,7 @@ h2 {
 
 #contenuto {
   scroll-margin-top: 6.5em; 
+  flex: 1;
 }
 
 .aiuti {
@@ -665,6 +666,10 @@ li.categoria > div {
     gap: 1.5em;
     padding: 2em;
     text-align: center;
+}
+
+#esplora-content {
+    display: flex;
 }
 
 #aside-style-layout{

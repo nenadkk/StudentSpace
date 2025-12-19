@@ -1,12 +1,12 @@
- USE sdeblasi;
+ USE testdb;
 
 -- ============================
 -- DROP TABLES (ordine corretto)
 -- ============================
-DROP TABLE IF EXISTS Ripetizioni;
-DROP TABLE IF EXISTS Eventi;
-DROP TABLE IF EXISTS Esperimenti;
-DROP TABLE IF EXISTS Affitti;
+DROP TABLE IF EXISTS AnnuncioRipetizioni;
+DROP TABLE IF EXISTS AnnuncioEventi;
+DROP TABLE IF EXISTS AnnuncioEsperimenti;
+DROP TABLE IF EXISTS AnnuncioAffitti;
 DROP TABLE IF EXISTS ImmaginiAnnuncio;
 DROP TABLE IF EXISTS Annuncio;
 DROP TABLE IF EXISTS Utente;
@@ -76,7 +76,7 @@ CREATE TABLE ImmaginiAnnuncio (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE Affitti (
+CREATE TABLE AnnuncioAffitti (
     IdAnnuncio 	INT PRIMARY KEY,
     PrezzoMensile DECIMAL(7,2) NOT NULL, -- decimale quindi importante controllo con virgola  o punto
     Indirizzo 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE Affitti (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE Esperimenti (
+CREATE TABLE AnnuncioEsperimenti (
     IdAnnuncio 	INT PRIMARY KEY,
     Laboratorio VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     DurataPrevista INT COLLATE utf8_unicode_ci NOT NULL,
@@ -99,7 +99,7 @@ DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
 
-CREATE TABLE Eventi (
+CREATE TABLE AnnuncioEventi (
     IdAnnuncio 	INT PRIMARY KEY,
     DataEvento 	DATE NOT NULL,
     Luogo VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -111,7 +111,7 @@ DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
 
-CREATE TABLE Ripetizioni (
+CREATE TABLE AnnuncioRipetizioni (
     IdAnnuncio 	INT PRIMARY KEY,
     Materia 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     Livello 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -122,21 +122,9 @@ CREATE TABLE Ripetizioni (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- INSERT
 -- -----------------------------------------------------
-
-INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
-('Mario', 'Rossi', 'mario.rossi@example.com', 'password123', 1);
-
-INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
-('Appartamento in affitto a Milano', 'Bellissimo appartamento di 2 camere in centro a Milano.', 'Affitti', 1, 1),
-('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
-
-INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
-(1, 'bilocaleCentro.jpg', 'Foto dell\'appartamento in affitto a Milano', 0, 1),
-(1, 'stanzaSingola.jpg', '', 1, 2),
-(2, 'ripetizioniMate.jpg', 'Foto per ripetizioni di matematica', 0, 1);
 
 INSERT INTO Citta (NomeCitta) VALUES
 ('Ancona'),
@@ -187,3 +175,16 @@ INSERT INTO Citta (NomeCitta) VALUES
 ('Venezia'),
 ('Verona'),
 ('Viterbo');
+
+INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
+('Mario', 'Rossi', 'mario.rossi@example.com', 'password123', 1);
+
+INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
+('Appartamento in affitto a Milano', 'Bellissimo appartamento di 2 camere in centro a Milano.', 'Affitti', 1, 1),
+('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
+
+INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
+--(1, 'bilocaleCentro.jpg', "Foto dell\'appartamento in affitto a Milano", 0, 1),
+(1, 'stanzaSingola.jpg', '', 1, 1),
+(2, 'ripetizioniMate.jpg', 'Foto per ripetizioni di matematica', 0, 1);
+
