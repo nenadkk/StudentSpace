@@ -115,6 +115,28 @@ class DBAccess {
             return $answer;
         }
     }
+
+    public function verifyUserCredential($email, $password) {
+        $stmt = $this->connection->prepare(
+            "SELECT IdUtente, Password FROM Utente WHERE Email = ?"
+        );
+
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if (!$user) {
+            return false;
+        }
+
+        if (!password_verify($password, $user['Password'])) {
+            return false;
+        }
+
+        return (int) $user['IdUtente'];
+    }
 }
 
 ?>

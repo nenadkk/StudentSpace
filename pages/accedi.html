@@ -34,12 +34,12 @@
 
         <nav id="menu" aria-label="Menù di navigazione desktop">
             <ul class="nav-links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li><a href="esplora.html">Esplora</a></li>
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li><a href="esplora.php">Esplora</a></li>
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="registrati.php">Registrati</a></li>
                 <li class="current-link" aria-current="page">Accedi</li>
             </ul>
         </nav>
@@ -50,12 +50,12 @@
         </button>
         <nav id="hamburger-menu" aria-label="Menù di navigazione mobile" hidden>
             <ul class="nav-links">
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li><a href="esplora.html">Esplora</a></li>
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li><a href="esplora.php">Esplora</a></li>
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="call-to-action" href="registrati.php">Registrati</a></li>
                 <li class="current-link" aria-current="page">Accedi</li>
             </ul>
         </nav>
@@ -72,7 +72,8 @@
     <main id="contenuto">
         <div id="login-container">
             <h2>Accedi</h2>
-            <form class="form-data" action="/login" method="post">
+            [ErrorMessage]
+            <form class="form-data" action="/accedi.php" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
                     <div>
@@ -85,7 +86,7 @@
                         <input type="password" id="password" name="password" required>
                     </div>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" id="submit" name="submit">Login</button>
                 <p>Non hai un account? <a href="registrati.html">Registrati qui</a></p>
             </form>
         </div>

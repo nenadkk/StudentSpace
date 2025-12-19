@@ -2,6 +2,9 @@
 
 class Tool {
 
+    /* -------------------------------
+    * FUNZIONE PER LISTA CITTÀ DA DATI DB
+    * ------------------------------- */
     public static function renderCityOptions(array $cities): string {
         $html = "";
 
@@ -13,6 +16,9 @@ class Tool {
         return $html;
     }
 
+    /* -------------------------------
+    * FUNZIONE PER CREARE LE CARDS DA DATI DB
+    * ------------------------------- */
     public static function createCard($cardsData): string {
         $cards = "";
         $cardhtml = "";
@@ -39,25 +45,66 @@ class Tool {
         return $cards;
     }
 
-    public static function sessionsStarter($userId): void {
+    /* -------------------------------
+    * FUNZIONI DI PULIZIA (SANIFICAZIONE)
+    * ------------------------------- */
+    public static function pulisciInput($value) {
+        $value = trim($value);
+        $value = strip_tags($value);
+        $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE);
+        return $value;
+    }
+
+    /* -------------------------------
+    * VALIDAZIONI MIRATE
+    * ------------------------------- */
+    // Nome e cognome: solo lettere, minimo 2 caratteri
+    function validaNome($str) {
+        return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,30}$/', $str);
+    }
+
+    // Città: lettere e spazi, accetta accenti
+    function validaCitta($str) {
+        return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,50}$/', $str);
+    }
+
+    // Email valida
+    function validaEmail($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    // Password forte: 8+ caratteri, maiuscola, minuscola, numero, simbolo
+    function validaPassword($pass) {
+        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $pass);
+    }
+
+    /* -------------------------------
+    * FUNZIONI DI GESTIONE DELLE SESSIONI
+    * ------------------------------- */
+    public static function startUserSession(int $userId): void {
+        if (session_status() === PHP_SESSION_NONE)  session_start();
+
+        session_regenerate_id(true);
+
+        $_SESSION['logged']  = true;
+        $_SESSION['user_id'] = $userId;
+    }
+
+    public static function endUserSession(): void {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
-            $_SESSION['userId'] = $userId;
-            $_SESSION['logged'] = true;
-            session_regenerate_id(true);
         }
+        session_unset();
+        session_destroy();
     }
 
-    public static function sessionsDestroyer(): void {
-        if (session_status() === PHP_SESSION_ACTIVE) {
-            $_SESSION = array();
-            session_destroy();
-        }
+    public static function isLoggedIn(): bool {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+        return isset($_SESSION['logged'], $_SESSION['user_id'])
+            && $_SESSION['logged'] === true;
     }
 
-    public static function isLogged(): bool {
-        return (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['logged']) && $_SESSION['logged'] === true);
-    }
 
     /*  Per Nenad
 use DB\DBAccess;
