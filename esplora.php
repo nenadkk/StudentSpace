@@ -26,5 +26,8 @@ if($cardsData !== false) {
 
 $htmlPage = str_replace("[cards]", $cards, $htmlPage);
 
+$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
+$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+
 echo $htmlPage;
 ?>
