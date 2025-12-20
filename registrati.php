@@ -36,30 +36,6 @@ function pulisciInput($value) {
 }
 
 /* -------------------------------
- * VALIDAZIONI MIRATE
- * ------------------------------- */
-
-// Nome e cognome: solo lettere, minimo 2 caratteri
-function validaNome($str) {
-    return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,30}$/', $str);
-}
-
-// Città: lettere e spazi, accetta accenti
-function validaCitta($str) {
-    return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,50}$/', $str);
-}
-
-// Email valida
-function validaEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-// Password forte: 8+ caratteri, maiuscola, minuscola, numero, simbolo
-function validaPassword($pass) {
-    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $pass);
-}
-
-/* -------------------------------
  * SE L’UTENTE HA INVIATO IL FORM
  * ------------------------------- */
 if(isset($_POST['submit'])) {
@@ -76,27 +52,27 @@ if(isset($_POST['submit'])) {
      * VALIDAZIONE DEI CAMPI
      * ----------------------------------- */
 
-    if (!validaNome($nome)) {
+    if (!Tool::validaNome($nome)) {
         $messaggiErrore['[errore-nome]'][] = "Il nome deve contenere solo lettere e deve avere almeno 2 caratteri.";
         $numMsgErrore++;
     }
 
-    if (!validaNome($cognome)) {
+    if (!Tool::validaNome($cognome)) {
         $messaggiErrore['[errore-cognome]'][] = "Il cognome deve contenere solo lettere e deve avere almeno 2 caratteri.";
         $numMsgErrore++;
     }
 
-    if (!validaCitta($citta)) {
-        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida.";
+    if (!Tool::validaCitta($citta)) {
+        $messaggiErrore['[errore-citta]'][] = "La città inserita non è Tool::valida.";
         $numMsgErrore++;
     }
 
-    if (!validaEmail($email)) {
-        $messaggiErrore['[errore-email]'][] = "L'email inserita non è valida.";
+    if (!Tool::validaEmail($email)) {
+        $messaggiErrore['[errore-email]'][] = "L'email inserita non è Tool::valida.";
         $numMsgErrore++;
     }
 
-    if (!validaPassword($password)) {
+    if (!Tool::validaPassword($password)) {
         $messaggiErrore['[errore-password]'][] = "La password deve avere almeno 8 caratteri, con almeno:
                     1 maiuscola, 1 minuscola, 1 numero e 1 simbolo.";
         $numMsgErrore++;
