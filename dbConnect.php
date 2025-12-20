@@ -137,6 +137,45 @@ class DBAccess {
 
         return (int) $user['IdUtente'];
     }
+
+    public function getUtente($idUtente) {
+        $query = "SELECT * FROM Utente as u JOIN Citta as c ON u.IdCitta = c.IdCitta WHERE IdUtente = $idUtente";
+
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        $result = "";
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $result = mysqli_fetch_assoc($queryResult);
+            $queryResult->free();
+        }
+
+        return $result;
+    }
+
+    public function getAnnunciUtente($idUtente) {
+        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.nomeCitta, i.Percorso, i.AltText
+            FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
+            WHERE i.Ordine = 1 AND a.IdUtente = $idUtente
+            ORDER BY a.DataPubblicazione DESC;";
+
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+
+        return $results;
+    }
 }
 
 ?>

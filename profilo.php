@@ -1,0 +1,47 @@
+<?php
+
+require_once "tool.php";
+require_once "dbConnect.php";
+
+if (!Tool::isLoggedIn()) {
+    header("Location: accedi.php");
+    exit;
+}
+
+$htmlPage = file_get_contents("pages/profilo.html");
+
+$idUtente = $_SESSION["user_id"];
+$infoUtente = "";
+$annunciUtente = "";
+$nomeUtente = "";
+$cognomeUtente = "";
+$cittaUtente = "";
+$emailUtente = "";
+
+$db = new DB\DBAccess();
+if($db->openDBConnection()) {
+    $infoUtente = $db->getUtente($idUtente);
+    if($infoUtente !== false) {
+        $nomeUtente = $infoUtente["Nome"];
+        $cognomeUtente = $infoUtente["Cognome"];
+        $cittaUtente = $infoUtente["NomeCitta"];
+        $emailUtente = $infoUtente["Email"];
+        $annunciUtente = $db->getAnnunciUtente($idUtente);
+        if($annunciUtente !== false) {
+            $cards = Tool::createCard($annunciUtente);
+        } else {
+            $cards = "<p>Nessun annuncio pubblicato. Se vuoi puoi farlo in <a href='pubblica.php'>questo link</a>.</p>";
+        }
+    }
+}
+
+$htmlPage = str_replace("[IdUtente]", $idUtente, $htmlPage);
+$htmlPage = str_replace("[Nome]", $nomeUtente, $htmlPage);
+$htmlPage = str_replace("[Cognome]", $cognomeUtente, $htmlPage);
+$htmlPage = str_replace("[Citta]", $cittaUtente, $htmlPage);
+$htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
+$htmlPage = str_replace("[Cards]", $cards, $htmlPage);
+
+echo $htmlPage;
+
+?>
