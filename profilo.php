@@ -41,6 +41,8 @@ $htmlPage = str_replace("[Cognome]", $cognomeUtente, $htmlPage);
 $htmlPage = str_replace("[Citta]", $cittaUtente, $htmlPage);
 $htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
+$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
+$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 
 echo $htmlPage;
 
