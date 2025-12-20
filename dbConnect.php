@@ -141,11 +141,11 @@ class DBAccess {
         $user = $result->fetch_assoc();
 
         if (!$user) {
-            return false;
+            return 'utenteFalse';
         }
 
         if (!password_verify($password, $user['Password'])) {
-            return false;
+            return 'passwordFalse';
         }
 
         return (int) $user['IdUtente'];

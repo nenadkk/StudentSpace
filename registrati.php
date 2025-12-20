@@ -14,6 +14,7 @@ $citta = '';
 $email = '';
 $password = '';
 $conferma_password = '';
+$idutente = '';
 
 // --- Variabili per gestione errori di inserimento ---
 $numMsgErrore=0;
@@ -113,7 +114,9 @@ if(isset($_POST['submit'])) {
         
         $db->insertUtente($arrayRegistrazione);
 
-        $idutente = intval($db->getIdUtente($email));//perché l'id viene aggiunto automaticamente da database
+        # $idutente = intval($db->getIdUtente($email));//perché l'id viene aggiunto automaticamente da database
+        $idutente = $db->verifyUserCredential($email, $password);
+
         $db->closeConnection();
 
         Tool::startUserSession($idutente);
