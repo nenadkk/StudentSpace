@@ -93,7 +93,15 @@ if(isset($_POST['submit'])) {
     if ($password !== $conferma_password) {
         $errori[] = "Le due password non coincidono.";
     }
-
+    //controllo se esiste già un utente con questa email
+    $db->openDBConnection();
+    $result = $db->getIdUtente($email);
+    $db->closeConnection();
+    if($result)
+    {
+        $errori[] = "Questa email è già utilizzata da un'altro utente.";
+    }
+    
     /* -----------------------------------
      * RISULTATO
      * ----------------------------------- */
@@ -108,7 +116,7 @@ if(isset($_POST['submit'])) {
         $arrayRegistrazione = [];
         $arrayRegistrazione['Nome'] = $nome;
         $arrayRegistrazione['Cognome'] = $cognome;
-       $arrayRegistrazione['Email'] = $email;
+        $arrayRegistrazione['Email'] = $email;
         $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
         $arrayRegistrazione['IdCitta'] = $result['IdCitta'];
         
