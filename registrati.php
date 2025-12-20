@@ -5,7 +5,6 @@ require_once "tool.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('pages/registrati.html');
-$messaggiPerForm = "";
 $db = new DBAccess();
 
 // --- Variabili iniziali ---
@@ -16,6 +15,16 @@ $email = '';
 $password = '';
 $conferma_password = '';
 
+// --- Variabili per gestione errori di inserimento ---
+$numMsgErrore=0;
+//ognuno di questi array contiene i messaggi di errore relativi a quel campo, nel
+//caso si vogliano aggiungere altri controlli (e quindi messaggi di errore) in futuro
+$messaggiErrore = array("[errore-nome]"=>array(), 
+                        "[errore-cognome]"=>array(),
+                        "[errore-citta]"=>array(),
+                        "[errore-email]"=>array(),
+                        "[errore-password]"=>array(),
+                        );
 /* -------------------------------
  * FUNZIONI DI PULIZIA (SANIFICAZIONE)
  * ------------------------------- */
@@ -55,8 +64,6 @@ function validaPassword($pass) {
  * ------------------------------- */
 if(isset($_POST['submit'])) {
 
-    $errori = [];
-
     // Pulizia input
     $nome = pulisciInput($_POST['nome'] ?? '');
     $cognome = pulisciInput($_POST['cognome'] ?? '');
@@ -70,48 +77,56 @@ if(isset($_POST['submit'])) {
      * ----------------------------------- */
 
     if (!validaNome($nome)) {
-        $errori[] = "Il nome deve contenere solo lettere e deve avere almeno 2 caratteri.";
+        $messaggiErrore['[errore-nome]'][] = "Il nome deve contenere solo lettere e deve avere almeno 2 caratteri.";
+        $numMsgErrore++;
     }
 
     if (!validaNome($cognome)) {
-        $errori[] = "Il cognome deve contenere solo lettere e deve avere almeno 2 caratteri.";
+        $messaggiErrore['[errore-cognome]'][] = "Il cognome deve contenere solo lettere e deve avere almeno 2 caratteri.";
+        $numMsgErrore++;
     }
 
     if (!validaCitta($citta)) {
-        $errori[] = "La città inserita non è valida.";
+        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida.";
+        $numMsgErrore++;
     }
 
     if (!validaEmail($email)) {
-        $errori[] = "L'email inserita non è valida.";
+        $messaggiErrore['[errore-email]'][] = "L'email inserita non è valida.";
+        $numMsgErrore++;
     }
 
     if (!validaPassword($password)) {
-        $errori[] = "La password deve avere almeno 8 caratteri, con almeno:
+        $messaggiErrore['[errore-password]'][] = "La password deve avere almeno 8 caratteri, con almeno:
                     1 maiuscola, 1 minuscola, 1 numero e 1 simbolo.";
+        $numMsgErrore++;
     }
 
     if ($password !== $conferma_password) {
-        $errori[] = "Le due password non coincidono.";
+        $messaggiErrore['[errore-password]'][] = "Le due password non coincidono.";
+        $numMsgErrore++;
     }
+
     //controllo se esiste già un utente con questa email
     $db->openDBConnection();
     $result = $db->getIdUtente($email);
     $db->closeConnection();
     if($result)
     {
-        $errori[] = "Questa email è già utilizzata da un'altro utente.";
+        $messaggiErrore['[errore-email]'][] = "Questa email è già utilizzata da un'altro utente.";
+        $numMsgErrore++;
     }
-    
+
     /* -----------------------------------
      * RISULTATO
      * ----------------------------------- */
-    if (empty($errori)) 
+    if ($numMsgErrore==0) 
     {
         $db->openDBConnection();
 
         //ottengo l'IdCitta della città selezionata
         $result = $db->getIdCitta($citta);
-        
+
         //inserisco l'utente
         $arrayRegistrazione = [];
         $arrayRegistrazione['Nome'] = $nome;
@@ -132,19 +147,33 @@ if(isset($_POST['submit'])) {
     }
     else
     {
-        // Mostra errori
-        $messaggiPerForm = "<ul class='messaggi-errore-form'>";
-        foreach ($errori as $e) {
-            $messaggiPerForm .= "<li>$e</li>";
+        //per ogni tipologia campo inserisco gli errori se questi sono presenti
+        foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
+        {
+            if(empty($arrayErrori))//se non ci sono errori per quel field
+            {
+                $paginaHTML = str_replace($placeHolder, "", $paginaHTML);
+            }
+            else
+            {
+                $msgErrore = "<ul class='messaggi-errore-form'>";
+                foreach ($arrayErrori as $err) {
+                    $msgErrore .= "<li>$err</li>";
+                }
+                $msgErrore .= "</ul>";
+                $paginaHTML = str_replace($placeHolder, $msgErrore, $paginaHTML);
+            }
         }
-        $messaggiPerForm .= "</ul>";
     }
+}
+else {
+    foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
+        $paginaHTML = str_replace($placeHolder, "", $paginaHTML);
 }
 
 /* -------------------------------
  * SOSTITUZIONE TEMPLATE HTML
  * ------------------------------- */
-$paginaHTML = str_replace("[errori-form-registrati]", $messaggiPerForm, $paginaHTML);
 $paginaHTML = str_replace("[nome]", $nome, $paginaHTML);
 $paginaHTML = str_replace("[cognome]", $cognome, $paginaHTML);
 $paginaHTML = str_replace("[citta]", $citta, $paginaHTML);

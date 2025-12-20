@@ -1230,7 +1230,7 @@ form > p, form > p{
     border-radius: 0.5em;
     margin-bottom: 1em;
     line-height: 1.5;
-    max-width: 60%;
+/*    max-width: 60%; */
     margin-top: 0.5em;
     align-self: center;
 }
