@@ -39,8 +39,7 @@
                 <li class="current-link" aria-current="page">Pubblica</li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.php">Registrati</a></li>
-                <li><a class="call-to-action" href="accedi.php">Accedi</a></li>
+                [TopNavLog]
             </ul>
         </nav>
 
@@ -55,8 +54,7 @@
                 <li class="current-link" aria-current="page">Pubblica</li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.php">Registrati</a></li>
-                <li><a class="call-to-action" href="accedi.php">Accedi</a></li>
+                [TopNavLog]
             </ul>
         </nav>
     </header>
@@ -72,7 +70,7 @@
         <main id="contenuto">
             <div id="pubblica-container">
                 <h2>Pubblica annuncio</h2>
-                <form action="/public" method="post" enctype="multipart/form-data">
+                <form action="/pubblica.php" method="post" enctype="multipart/form-data">
                     <div class="form-data">
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container">
@@ -164,17 +162,17 @@
                                     <legend>Dettagli Affitti</legend>
                                     <div>
                                         <label for="coinquilini">Numero coinquilini</label>
-                                        <input type="number" id="coinquilini" name="coinquilini" min="0">
+                                        <input type="number" id="coinquilini" name="coinquilini" min="0" disabled>
                                         <p>Es. 2</p>
                                     </div>
                                     <div>
                                         <label for="costo-mese-affitto">Costo mensile (€/mese)</label>
-                                        <input type="number" id="costo-mese-affitto" name="costo-mese-affitto" min="0">
+                                        <input type="number" id="costo-mese-affitto" name="costo-mese-affitto" min="0" disabled>
                                         <p>Es. 300</p>
                                     </div>
                                     <div>
                                         <label for="indirizzo-affitto">Indirizzo</label>
-                                        <input type="text" id="indirizzo-affitto" name="indirizzo-affitto">
+                                        <input type="text" id="indirizzo-affitto" name="indirizzo-affitto" disabled>
                                         <p>Es. Via Roma 10</p>
                                     </div>
                                 </fieldset>
@@ -185,17 +183,17 @@
                                     <legend>Dettagli Esperimenti</legend>
                                     <div>
                                         <label for="laboratorio">Laboratorio di riferimento</label>
-                                        <input type="text" id="laboratorio" name="laboratorio">
+                                        <input type="text" id="laboratorio" name="laboratorio" disabled>
                                         <p>Es. Laboratorio di Psicologia Sperimentale</p>
                                     </div>
                                     <div>
                                         <label for="esperimento-durata">Durata esperimento (minuti)</label>
-                                        <input type="text" id="esperimento-durata" name="esperimento-durata" placeholder="Es. 75">
+                                        <input type="text" id="esperimento-durata" name="esperimento-durata" placeholder="Es. 75" disabled>
                                         <p>Es. 75</p>
                                     </div>
                                     <div>
                                         <label for="esperimento-compenso">Compenso (€)</label>
-                                        <input type="number" id="esperimento-compenso" name="esperimento-compenso" min="0">
+                                        <input type="number" id="esperimento-compenso" name="esperimento-compenso" min="0" disabled>
                                         <p>Es. 15</p>
                                     </div>
                                 </fieldset>
@@ -206,17 +204,17 @@
                                     <legend>Dettagli Eventi</legend>
                                     <div>
                                         <label for="data-evento">Data evento</label>
-                                        <input type="date" id="data-evento" name="data-evento">
+                                        <input type="date" id="data-evento" name="data-evento" disabled>
                                         <p>Es. 18/10/2025</p>
                                     </div>
                                     <div>
                                         <label for="costo-evento">Costo entrata (€)</label>
-                                        <input type="number" id="costo-evento" name="costo-evento" min="0">
+                                        <input type="number" id="costo-evento" name="costo-evento" min="0" disabled>
                                         <p>Es. 10</p>
                                     </div>
                                     <div>
                                         <label for="luogo-evento">Luogo</label>
-                                        <input type="text" id="luogo-evento" name="luogo-evento">
+                                        <input type="text" id="luogo-evento" name="luogo-evento" disabled>
                                         <p>Es. Teatro Comunale</p>
                                     </div>
                                 </fieldset>
@@ -227,12 +225,12 @@
                                     <legend>Dettagli Ripetizioni</legend>
                                     <div>
                                         <label for="materia">Materia</label>
-                                        <input type="text" id="materia" name="materia">
+                                        <input type="text" id="materia" name="materia" disabled>
                                         <p>Es. Matematica</p>
                                     </div>
                                     <div>
                                         <label for="livello">Livello</label>
-                                        <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
+                                        <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello" disabled>
                                         <datalist id="listlivelli">
                                             <option value="Medie">
                                             <option value="Superiori">
@@ -241,7 +239,7 @@
                                     </div>
                                     <div>
                                         <label for="prezzo-ripetizioni">Prezzo orario (€/ora)</label>
-                                        <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0">
+                                        <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" disabled>
                                         <p>Es. 15</p>
                                     </div>
                                 </fieldset>
@@ -317,8 +315,7 @@
                 <li lang="en"><a href="index.php">Home</a></li>
                 <li><a href="esplora.php">Esplora</a></li>
                 <li class="currentPage" aria-current="page">Pubblica</li>
-                <li><a href="registrati.php">Registrati</a></li>
-                <li><a href="accedi.php">Accedi</a></li>
+                [BottomNavLog]
             </ul>
         </div>
         <div id="footer-bottom">

@@ -21,20 +21,17 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 if(isset($_POST['submit'])) {
     $db = new DB\DBAccess();
     if ($db->openDBConnection()) {
-        $returnValue = $db->verifyUserCredential($email, $password);
-        if ($returnValue === 'utenteFalse') {
-            $erroreEmail = "<p class='error-message'>Non esiste un account con questa email.</p>";
-        } elseif ($returnValue === 'passwordFalse') {
-            $errorePassword = "<p class='error-message'>Password errata.</p>";
-        } else {
-            $idUtente = $returnValue;
+        $idUtente = $db->verifyUserCredential($email, $password);
+        if ($idUtente !== false) {
             Tool::startUserSession($idUtente);
             header("Location: index.php");
             exit;
+        } else {
+            $errorMessage = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
         }
         $db->closeConnection();
     } else {
-        $errorMessage = "<p class='error-message'>Errore di connessione al database.</p>";
+        $errorMessage = "<p class='messaggi-errori-form'>Errore di connessione al database.</p>";
     }
 }
 
