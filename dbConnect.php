@@ -189,6 +189,29 @@ class DBAccess {
 
         return $results;
     }
+
+    // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni}
+    public function inserimentoAnnuncio($titolo, $descrizione, $dataPubblicazione, $categoria, $idUtente, $idCitta, $campo1, $campo2, $campo3) {
+        $insertAnnuncio = "INSERT INTO Annuncio (Titolo, Descrizione, DataPubblicazione, Categoria, IdUtente, IdCitta) VALUES ('$titolo', '$descrizione', '$categoria', $idUtente, $idCitta);";
+        
+        $insertSpecifico = "";
+        $idAnnuncio = ""; // in qualche modo prendere l'id dell'annuncio sopra, magari fare la select nella prima query, tutto d'un colpo
+
+        switch ($categoria) {
+            case 'Affitti':
+                $insertSpecifico = "INSERT INTO AnnunciAffitti (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
+                break;
+            case 'Esperimenti':
+                $insertSpecifico = "INSERT INTO AnnunciEsperimenti (IdAnnuncio, Laboratorio, DurataPrevista, Compenso) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
+                break;
+            case 'Eventi':
+                $insertSpecifico = "INSERT INTO AnnunciEventi (IdAnnuncio, DataEvento, Luogo, CostoEntrata) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
+                break;
+            case 'Ripetizioni':
+                $insertSpecifico = "INSERT INTO AnnunciRipetizioni (IdAnnuncio, Materia, Livello, PrezzoOrario) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
+                break;
+        }
+    }
 }
 
 ?>
