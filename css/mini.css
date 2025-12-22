@@ -7,6 +7,10 @@ body {
     padding-top: 5em;
 }
 
+section {
+    padding: 3em 2em;
+}
+
 :hover {
     transform: none;
 }
@@ -178,7 +182,6 @@ header {
 #presentazione, .errore {
     display: block;
     text-align: center;
-    padding: 3em;
 }
 
 #presentazione > img, .errore > img {
@@ -205,16 +208,20 @@ header {
 }
 */
 
-#aside-style-layout{
-    float: none;
-    width: auto;
-    margin: 0;
+#aside-style-layout {
+  flex: 1 1 auto;         
+  width: 100%;            
+  min-width: unset;       
+  margin: 0 auto;          
+  padding: 1em;              
 }
+
 
 #aside-mini-layout {
     width: 100%;
-    padding: 0 2em;
+    padding: 0;
 }
+
 
 #ricerca,
 #toggleFiltri {
@@ -303,10 +310,6 @@ header {
 ==================================================== 
 */
 
-#categorie {
-    padding: 1em;
-}
-
 .categoria {
     display: flex;
     flex-direction: row;       
@@ -327,6 +330,12 @@ li.categoria > div {
 
 #categorie ul {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+#esplora-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
 }
 
 .esplora {
@@ -417,7 +426,7 @@ li.categoria > div {
 
 #login-container,
 #register-container,
-#pubblica-container {
+#pubblica-container{
     width: auto;
     max-width: 100%;
     margin: 1.5em 0.5em;
@@ -453,4 +462,15 @@ li.categoria > div {
 .img-campi label {
     width: 100%;             
     text-align: center;       
+}
+
+#dati-pers-container {
+    min-width: 220px;
+}
+.profilo-grid {
+    grid-template-columns: 1fr;
+}
+
+.profilo-grid div {
+    min-width: unset;
 }

@@ -14,7 +14,7 @@
     --clearBgColor: #fffacd;
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
-    --call-to-actionTransp: rgba(22, 40, 110, 0.65); /*0.65 opacità testata con https://codepen.io/yaphi1/pen/oNbEqGV*/
+    --call-to-actionTransp: rgba(22, 40, 110, 0.65); /*0.65 opacità testata con https://codepen.io/yaphi1/pen/oNbEqGV */
     --call-to-actionAction: #efc062;
     --visited: #720b25;
     --card: #d9e0ec;
@@ -31,7 +31,7 @@
 
 html, body{ 
     font-size: 100%; 
-    font-family:"Lexend", "Roboto", sans-serif; 
+    font-family:"Inter", "Roboto", sans-serif; 
     line-height: 1.5em; 
     margin: 0;
 }
@@ -52,13 +52,19 @@ footer {
 }
 
 h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;   
+	font-family: "Georgia";
+    font-size: 2.2em;
+	line-height: 1em;
+    margin-bottom: 0.3em;   
+}
+
+section {
+   padding: 3em 6em; 
 }
 
 #contenuto {
-  scroll-margin-top: 6.5em; 
-  flex: 1;
+    scroll-margin-top: 6.5em;
+    flex: 1; 
 }
 
 .aiuti {
@@ -404,7 +410,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: 2em;
-    padding: 2em 6em; 
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -450,7 +455,6 @@ footer {
 */
 
 #categorie {
-    padding: 4em 3em;
     background-color: var(--BgColor);
     text-align: center;
 }
@@ -513,26 +517,26 @@ li.categoria > div {
 
 /*
 ====================================================
-    SEZIONE ULTIMI INSERITI
+    SEZIONE ULTIMI INSERITI + ANNUNCI PUBBLICATI (PROFILO UTENTE)
 ==================================================== 
 */
 
-#ultimiInseriti {
-    padding: 3em 2em;
+#carte-section {
     background-color: var(--clearBgColor);
     text-align: center;
 }
 
-#ultimiInseriti h2 {
+#carte-section h2, #carte-section h3 {
     margin-bottom: 1.5em;
 }
+
 /*
 ====================================================
     CARD ULTIMI INSERITI + LISTA CARTE
 ==================================================== 
 */
 
-#ultimiInseriti ul, #listaCarte {
+#carte-section ul, #listaCarte, #profilo-top {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
@@ -668,13 +672,19 @@ li.categoria > div {
     text-align: center;
 }
 
-#esplora-content {
-    display: flex;
-    align-items: flex-start;
+#esplora-content { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+    gap: 1em;
+    padding: 1em; 
 }
 
 #aside-style-layout{
-    flex: 0 0 340px;    
+    flex: 0 0 340px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1em;   
     width: 20%;
     min-width: 340px;
     margin: 1em 0 1em 1.5em;
@@ -715,6 +725,7 @@ label {
     justify-content: center; 
     margin: 0;    
     flex-wrap: wrap;
+    padding: 0;
 }
 
 .carosello-principale {
@@ -834,6 +845,12 @@ label {
 
 .info h2 {
     margin-bottom: 0.2em;
+}
+
+.info > dl {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
 }
 
 .attrAnnuncio {
@@ -964,7 +981,7 @@ label {
 */
 /*
 ===========================================================================
-    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card UltimiInseriti)
+    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card carte-section)
 ===========================================================================
 */
 
@@ -1028,7 +1045,7 @@ label {
 =========================================================== 
 */
 
-#login-container, #register-container, #filtri, #pubblica-container {
+#login-container, #register-container, #filtri, #pubblica-container, #dati-pers-container {
     display: flex;
     justify-content: center;
     flex-direction: column;  
@@ -1042,7 +1059,7 @@ label {
 }
 
 
-#register-container, #pubblica-container {
+#register-container, #pubblica-container, #dati-pers-container {
     max-width: 60em;
 }
 
@@ -1060,7 +1077,7 @@ label {
            
 }
 
-#pubblica-container fieldset legend, #filtri .fieldset-filtri legend {
+#pubblica-container fieldset legend, #filtri .fieldset-filtri legend, #dati-pers-container dt {
     font-weight: bold;
     color: var(--txtcolor);
     padding: 0 0.5em;        
@@ -1080,7 +1097,7 @@ label {
 }
 
 #pubblica-container .form-data {
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 100%;
     gap: 1.2em; 
@@ -1089,7 +1106,8 @@ label {
 .form-data > div, .form-data fieldset > div,
 #pubblica-titolo-container, 
 #attr-generici-container > div, 
-#attr-specifici-container div {
+#attr-specifici-container div,
+#dati-pers-container div {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -1240,3 +1258,47 @@ form > p, form > p{
     SEZIONE PROFILO - DATI
 ==================================================== 
 */
+
+#profilo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 2.5em;
+    text-align: center;
+}
+
+#dati-personali {
+    padding: 0;
+}
+
+#profilo h3 {
+    font-size: 1.3em;
+}
+
+#dati-pers-container {
+    gap: 2em;
+    margin: 0 auto;
+}
+
+.profilo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 1.5em;
+}
+
+.profilo-grid div {
+    background-color: var(--formbg);
+    padding: 1em 1.2em;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    min-width: 200px; 
+    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.1);
+}
+
+.profilo-grid dt {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
