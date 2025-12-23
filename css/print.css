@@ -4,6 +4,9 @@
     margin: 0em;
 }
 
+:root{
+    --borders: #9c9c9c;
+}
 
 /* essendo la stampa su formato fisso non servono dimensioni relative*/
 html, body{ 
@@ -89,28 +92,28 @@ header h1 {
 */
 
 #presentazione, #categorie {
-    border-bottom: 1px solid #9c9c9c;
+    border-bottom: 1px solid var(--borders);
 }
 
 /*
 ====================================================
-    SEZIONE HERO / PRESENTAZIONE
+    SEZIONE HERO + ERRORI
 ====================================================
 */
 
 #presentazione {
-    margin-bottom:0.8cm;
+    margin-bottom: 0.8cm;
 }
 
-#presentazione img {
+#presentazione img, .errore img {
     display: none; 
 }
 
-#presentazione .testo h2 {
+#presentazione .testo h2, #testo-errore h2 {
     margin-bottom: 0.5em;
 }
 
-#presentazione p {
+#presentazione p, #testo-errore p {
     margin-bottom: 0.5em;
 }
 
@@ -169,11 +172,11 @@ header h1 {
 ====================================================
 */
 
-#ultimiInseriti, #listaCarte{
+#carte-section ul, #listaCarte{
     margin-bottom: 1cm;
 }
 
-#ultimiInseriti ul, #listaCarte {
+#carte-section ul, #listaCarte {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr); 
@@ -187,8 +190,8 @@ header h1 {
     gap: 0.5cm;
 }
 
-.ultimoInserito, .carta {
-    border: 1px solid #9c9c9c;
+.carta {
+    border: 1px solid var(--borders);
     border-radius: 1em;
     padding: 0.5cm;
     background: none;
@@ -239,7 +242,7 @@ header h1 {
 =========================================================== 
 */
 
-#login-container, #register-container {
+#login-container, #register-container, #dati-pers-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -249,14 +252,6 @@ header h1 {
     margin: 2em auto;     
     border-radius: 1em;
     gap: 0.5em;
-}
-
-
-#login-container{
-    min-width: 30em;            
-}
-
-#register-container {
     max-width: 60em;
 }
 
@@ -284,13 +279,17 @@ header h1 {
     text-decoration: none; 
 }
 
+label {
+    font-weight: bold;
+}
+
 input, select {
     font-size: 1em;
     border-radius: 1em;
     min-height: 3em;
     text-indent: 1em;
     font-weight: 500;
-    border: 2px solid black;
+    border: 1px solid var(--borders);
 }
 
 .checkbox-inline {
@@ -391,7 +390,7 @@ button {
 
 .attrAnnuncio {
     border-radius: 1em;
-    border: 1px solid #000;
+    border: 1px solid var(--borders);
     padding: 0.8em;
     text-align: center;
 }
@@ -401,7 +400,7 @@ button {
 }
 
 .descrizioneAnnuncio {
-    border: 1px solid #000;
+    border: 1px solid var(--borders);
     border-radius: 1em;
     padding: 1.5em 1.2em;
     text-align: left;
@@ -418,7 +417,7 @@ button {
 ====================================================
 */
 footer {
-    border-top: 1px solid #9c9c9c;
+    border-top: 1px solid var(--borders);
     margin-top: 0.5cm;
     text-align: center;
     font-size: 10pt;
@@ -441,3 +440,37 @@ footer {
     margin-top: 0.5cm;
     font-style: italic;
 }
+
+/*
+====================================================
+    SEZIONE PROFILO
+==================================================== 
+*/
+
+#dati-pers-container {
+    gap: 2em;
+    margin: 0 auto;
+}
+
+.profilo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 1.5em;
+}
+
+.profilo-grid div {
+    background-color: none;
+    padding: 1em 1.2em;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    min-width: 200px; 
+    border: 1px solid var(--borders);
+}
+
+.profilo-grid dt {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+

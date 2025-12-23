@@ -399,7 +399,7 @@ footer {
 
 /*
 ====================================================
-    SEZIONE HERO
+    SEZIONE HERO + ERRORI
 ==================================================== 
 */
 
@@ -535,7 +535,7 @@ li.categoria > div {
 ==================================================== 
 */
 
-#carte-section ul, #listaCarte, #profilo-top {
+#carte-section ul, #listaCarte {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
