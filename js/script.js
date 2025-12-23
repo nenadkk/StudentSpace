@@ -285,57 +285,45 @@ function toggleFiltriCategoria() {
 // JS PER TOGGLE PUBBLICA CATEGORIA
 function togglePubblicaCategoria() {
 
-  // SEZIONE PER NASCONDERE I CAMPI RISPETTIVI PER OGNI CATEGORIA IN PUBBLICA
   const sceltaCategoria = document.getElementById('categoria-campi');
+  if (!sceltaCategoria) return;
 
-  if(sceltaCategoria)
-  {
-    const campiEventi = document.getElementById('campi-eventi');
-    const campiEsperimenti = document.getElementById('campi-esperimenti');
-    const campiAffitti = document.getElementById('campi-affitti');
-    const campiRipetizioni = document.getElementById('campi-ripetizioni');
-    // Nascondi tutti 
-    campiEventi.classList.add('nascondi-campi');
-    campiEsperimenti.classList.add('nascondi-campi');
-    campiAffitti.classList.add('nascondi-campi');
-    campiRipetizioni.classList.add('nascondi-campi');
+  const categorie = {
+    Eventi: document.getElementById('campi-eventi'),
+    Esperimenti: document.getElementById('campi-esperimenti'),
+    Affitti: document.getElementById('campi-affitti'),
+    Ripetizioni: document.getElementById('campi-ripetizioni')
+  };
 
-    // Mostra solo quello selezionato
-    if (sceltaCategoria.value === 'Eventi') {
-      campiEventi.classList.remove('nascondi-campi');
-    } else if (sceltaCategoria.value === 'Esperimenti') {
-      campiEsperimenti.classList.remove('nascondi-campi');
-    } else if (sceltaCategoria.value === 'Affitti') {
-      campiAffitti.classList.remove('nascondi-campi');
-    } else if (sceltaCategoria.value === 'Ripetizioni') {
-      campiRipetizioni.classList.remove('nascondi-campi');
-    }
-    
-    sceltaCategoria.addEventListener('change', function() {
-      const campiEventi = document.getElementById('campi-eventi');
-      const campiEsperimenti = document.getElementById('campi-esperimenti');
-      const campiAffitti = document.getElementById('campi-affitti');
-      const campiRipetizioni = document.getElementById('campi-ripetizioni');
-
-      // Nascondi tutti 
-      campiEventi.classList.add('nascondi-campi');
-      campiEsperimenti.classList.add('nascondi-campi');
-      campiAffitti.classList.add('nascondi-campi');
-      campiRipetizioni.classList.add('nascondi-campi');
-
-      // Mostra solo quello selezionato
-      if (this.value === 'Eventi') {
-        campiEventi.classList.remove('nascondi-campi');
-      } else if (this.value === 'Esperimenti') {
-        campiEsperimenti.classList.remove('nascondi-campi');
-      } else if (this.value === 'Affitti') {
-        campiAffitti.classList.remove('nascondi-campi');
-      } else if (this.value === 'Ripetizioni') {
-        campiRipetizioni.classList.remove('nascondi-campi');
-      }
+  function aggiornaCampi() {
+    // Nascondi e disabilita tutti
+    Object.values(categorie).forEach(div => {
+      div.classList.add('nascondi-campi');
+      setDisabled(div, true);
     });
+
+    // Mostra e abilita quello selezionato
+    const selezionato = categorie[sceltaCategoria.value];
+    if (selezionato) {
+      selezionato.classList.remove('nascondi-campi');
+      setDisabled(selezionato, false);
+    }
   }
+
+  // Stato iniziale
+  aggiornaCampi();
+
+  // Cambio categoria
+  sceltaCategoria.addEventListener('change', aggiornaCampi);
 }
+
+function setDisabled(container, disabled) {
+  const fields = container.querySelectorAll('input, select, textarea');
+  fields.forEach(field => {
+    field.disabled = disabled;
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();

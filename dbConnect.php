@@ -191,7 +191,7 @@ class DBAccess {
     }
 
     // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni}
-    public function inserimentoAnnuncio(string $titolo, string $descrizione,string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3) : int|false {
+    public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3) : int|false {
 
         mysqli_begin_transaction($this->connection);
 

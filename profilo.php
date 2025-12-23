@@ -30,9 +30,10 @@ if($db->openDBConnection()) {
         if($annunciUtente !== false) {
             $cards = Tool::createCard($annunciUtente);
         } else {
-            $cards = "<p>Nessun annuncio pubblicato. Se vuoi puoi farlo in <a href='pubblica.php'>questo link</a>.</p>";
+            $cards = "<p>Nessun annuncio pubblicato. Se vuoi puoi farlo a <a href='pubblica.php'>questo link</a>.</p>";
         }
     }
+    $db->closeConnection();
 }
 
 $htmlPage = str_replace("[IdUtente]", $idUtente, $htmlPage);

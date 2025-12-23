@@ -14,6 +14,7 @@ $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
 $citta = "";
 $descrizione = "";
+$idUtente = $_SESSION['user_id'];
 $campo1 = "";
 $campo2 = "";
 $campo3 = "";
@@ -22,7 +23,7 @@ $logger = "";
 if(isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
     $categoria = Tool::pulisciInput($_POST['categoria-campi'] ?? '');
-    $citta = Tool::pulisciInput($_POST['citta'] ?? '');
+    $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
     $logger = $categoria;
 
@@ -54,6 +55,12 @@ if(isset($_POST['submit'])) {
         default:
             break;
     }
+
+    $db = new DB\DBAccess;
+    if ($db->openDBConnection()) {
+        $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $citta, $campo1, $campo2, $campo3);
+    }
+    $db->closeConnection();
 }
 
 $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
