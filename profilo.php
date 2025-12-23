@@ -30,7 +30,12 @@ if($db->openDBConnection()) {
         if($annunciUtente !== false) {
             $cards = Tool::createCard($annunciUtente);
         } else {
-            $cards = "<p>Nessun annuncio pubblicato. Se vuoi puoi farlo a <a href='pubblica.php'>questo link</a>.</p>";
+            $cards = '<div class="centered">
+                        <p>Nessun annuncio pubblicato.</p>
+                        <div class="azioni">
+                            <a class="call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        </div>
+                    </div>';
         }
     }
     $db->closeConnection();
