@@ -87,12 +87,12 @@
                             <!-- Attributi comuni a tutte le categorie -->
                             <div>
                                 <label for="categoria">Categoria</label>
-                                <select id="categoria" name="categoria" value="[categoria]">
-                                    <option value="">Seleziona categoria</option>
-                                    <option value="Affitti">Affitti</option>
-                                    <option value="Esperimenti">Esperimenti</option>
-                                    <option value="Eventi">Eventi</option>
-                                    <option value="Ripetizioni">Ripetizioni</option>
+                                <select id="categoria" name="categoria">
+                                    <option [noneSelected] value="">Seleziona categoria</option>
+                                    <option [affittiSelected] value="Affitti">Affitti</option>
+                                    <option [esperimentiSelected] value="Esperimenti">Esperimenti</option>
+                                    <option [eventiSelected] value="Eventi">Eventi</option>
+                                    <option [ripetizioniSelected] value="Ripetizioni">Ripetizioni</option>
                                 </select>
                             </div>
                             <div>
