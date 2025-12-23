@@ -17,7 +17,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
 
@@ -68,30 +68,38 @@
         </ol>
     </nav>
     <main id="contenuto">
-        <section id="profilo">
-            <h2>Profilo</h2>
-            <dl>
-                <dt id="titoloDati">Dati Personali</dt>
-                <dd id="datiProfilo">
-                    <dl>
-                    <dt >Nome</dt>
+        <div id="profilo">
+        <h2>Profilo</h2>
+        <section id="dati-personali">
+            <div id="dati-pers-container">
+            <h3>Dati Personali</h3>
+            <dl class="profilo-grid">
+                <div>
+                    <dt>Nome</dt>
                     <dd>[Nome]</dd>
-                    <dt >Cognome</dt>
+                </div>
+                <div>
+                    <dt>Cognome</dt>
                     <dd>[Cognome]</dd>
-                    <dt >Città</dt>
-                    <dd>[Citta]</dd>
-                    <dt >Email</dt>
+                </div>
+                <div>
+                    <dt>Città</dt>
+                    <dd>[Città]</dd>
+                </div>
+                <div>
+                    <dt>Email</dt>
                     <dd>[Email]</dd>
-                    </dl>
-                </dd>
+                </div>
             </dl>
+            </div>
         </section>
-        <section id="ultimiInseriti">
-            <h2>Annunci Pubblicati</h2>
+        <section id="carte-section">
+            <h3>Annunci Pubblicati</h2>
             <ul>
-            [Cards]
+                [cards]
             </ul>
         </section>
+        </div>
     </main>
     <footer>
         <div id="footer-top">

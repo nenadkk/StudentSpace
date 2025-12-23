@@ -17,7 +17,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
 
@@ -68,17 +68,88 @@
         </ol>
     </nav>
     <main id="contenuto">
+        <div id="profilo">
         <h2>Profilo</h2>
-        <dl>Nome</dl>
-        <dd>[Nome]</dd>
-        <dl>Cognome</dl>
-        <dd>[Cognome]</dd>
-        <dl>Città</dl>
-        <dd>[Citta]</dd>
-        <dl>Email</dl>
-        <dd>[Email]</dd>
-        <h3>Annunci Pubblicati</h3>
-        [Cards]
+        <section id="dati-personali">
+            <div id="dati-pers-container">
+            <h3>Dati Personali</h3>
+            <dl class="profilo-grid">
+                <div>
+                    <dt>Nome</dt>
+                    <dd>[Nome]</dd>
+                </div>
+                <div>
+                    <dt>Cognome</dt>
+                    <dd>[Cognome]</dd>
+                </div>
+                <div>
+                    <dt>Città</dt>
+                    <dd>[Città]</dd>
+                </div>
+                <div>
+                    <dt>Email</dt>
+                    <dd>[Email]</dd>
+                </div>
+            </dl>
+            </div>
+        </section>
+        <section id="carte-section">
+            <h3>Annunci Pubblicati</h2>
+            <ul>
+                <li class="carta">
+                    <img src="assets/stanzaSingola.jpg" alt=""  width="250" height="150">
+                    <h3>Camera doppia a Padova</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-11-06">06/11/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Padova</dd>
+                        <dt>Categoria</dt>
+                        <dd>
+   		                    <span class="etichettaCategoria" data-categoria="affitti">Affitti</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Camera doppia a Padova">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+                <li class="carta">
+                    <img src="assets/mostraArte.jpg" alt=""  width="250" height="150">
+                    <h3>Modello per scultura pagato</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-09-27">27/09/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Padova</dd>
+			            <dt>Categoria</dt>
+                        <dd>
+   		                    <span class="etichettaCategoria" data-categoria="esperimenti">Esperimenti</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Modello per scultura pagato">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+                <li class="carta">
+                    <img src="assets/ripetizioniMate.jpg" alt=""  width="250" height="150">
+                    <h3>Lezioni private di Analisi 2</h3>
+                    <dl>
+                        <dt>Data inserimento</dt>
+                        <dd><time datetime="2025-12-08">08/12/2025</time></dd>
+                        <dt>Città</dt>
+                        <dd>Trento</dd>
+                        <dt>Categoria</dt>
+			            <dd>
+   		                    <span class="etichettaCategoria" data-categoria="ripetizioni">Ripetizioni</span>
+                        </dd>
+                    </dl>
+                    <a class="dettagli" href="annuncio.html" aria-label="Più dettagli sull'annuncio: Lezioni private di Analisi 2">
+                        <span>Più dettagli</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        </div>
     </main>
     <footer>
         <div id="footer-top">
