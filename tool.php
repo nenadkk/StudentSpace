@@ -25,7 +25,7 @@ class Tool {
         foreach ($cardsData as $card) {
             $cardhtml = file_get_contents("pages/cardTemplate.html");
             $cardhtml = str_replace("[ImmagineAnnuncio]", htmlspecialchars($card['Percorso']), $cardhtml);
-            $cardhtml = str_replace("[AltImmagineAnnuncio]", htmlspecialchars($card['AltText']), $cardhtml);
+            $cardhtml = str_replace("[AltImmagineAnnuncio]", htmlspecialchars($card['AltText'] ?? ''), $cardhtml);
             $cardhtml = str_replace("[TitoloAnnuncio]", htmlspecialchars($card['Titolo']), $cardhtml);
             
             $dataDB = $card['DataPubblicazione'];

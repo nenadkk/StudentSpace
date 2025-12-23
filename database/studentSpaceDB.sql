@@ -115,7 +115,7 @@ CREATE TABLE AnnuncioRipetizioni (
     IdAnnuncio 	INT PRIMARY KEY,
     Materia 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     Livello 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
-    PrezzoOrario DECIMAL(3,2) NOT NULL, -- decimale quindi importante controllo con virgola  o punto
+    PrezzoOrario DECIMAL(4,2) NOT NULL, -- decimale quindi importante controllo con virgola  o punto
     	FOREIGN KEY (IdAnnuncio) REFERENCES Annuncio(IdAnnuncio)
         	ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB

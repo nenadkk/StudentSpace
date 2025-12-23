@@ -190,8 +190,8 @@ class DBAccess {
         return $results;
     }
 
-    // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni}
-    public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3) : int|false {
+    // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni} && $immagini.len >= 1
+    public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3, $immagini) : int|false {
 
         mysqli_begin_transaction($this->connection);
 
@@ -258,6 +258,22 @@ class DBAccess {
             }
 
             $stmt->close();
+
+            foreach ($immagini as $img) {
+                $stmtImmagine = $this->connection->prepare("INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES (?, ?, ?, ?, ?)");
+
+                if(!$stmtImmagine) {
+                    throw new Exception("Prepare immagine fallita");
+                }
+
+                $stmtImmagine->bind_param('issii', $idAnnuncio, $img['file'], $img['alt'], $img['decorativa'], $img['ordine']);
+
+                if(!$stmtImmagine->execute()) {
+                    throw new Exception("Execute Immagine Fallita");
+                }
+
+                $stmtImmagine->close();
+            }
 
             mysqli_commit($this->connection);
 
