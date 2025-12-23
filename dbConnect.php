@@ -94,7 +94,7 @@ class DBAccess {
         {
             $row = mysqli_fetch_assoc($queryResult);
             $queryResult->free();
-            return $row;
+            return (int) $row['IdCitta'];
         }
     }
 
@@ -234,7 +234,7 @@ class DBAccess {
                 case 'Eventi':
                     $stmt = $this->connection->prepare(
                         "INSERT INTO AnnuncioEventi
-                        (IdAnnuncio, DataEvento, Luogo, CostoEntrata)
+                        (IdAnnuncio, DataEvento, CostoEntrata, Luogo)
                         VALUES (?, ?, ?, ?)"
                     );
                     $stmt->bind_param("issd", $idAnnuncio, $campo1, $campo2, $campo3);

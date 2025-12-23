@@ -58,9 +58,13 @@ if(isset($_POST['submit'])) {
 
     $db = new DB\DBAccess;
     if ($db->openDBConnection()) {
-        $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $citta, $campo1, $campo2, $campo3);
+        $idCitta = $db->getIdCitta($citta);
+        $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campo1, $campo2, $campo3);
+        $db->closeConnection();
+        $str = "Location: annuncio.php?id=". $idAnnuncio;
+        header($str);
+        exit;
     }
-    $db->closeConnection();
 }
 
 $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
