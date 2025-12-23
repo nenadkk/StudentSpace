@@ -28,28 +28,30 @@ if(isset($_POST['submit'])) {
 
     switch ($categoria) {
         case 'Affitti':
-            $coinquilini = Tool::pulisciInput($_POST['coinquilini'] ?? '');
-            $costoMeseAffitto = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? '');
-            $indirizzo = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? '');
+            $campo1 = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
+            $campo2 = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
+            $campo3 = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? '');
             $logger = "Aria";
             break;
         case 'Esperimenti':
-            $laboratorio = Tool::pulisciInput($_POST['laboratorio'] ?? '');
-            $esperimentoDurata = Tool::pulisciInput($_POST['esperimento-durata'] ?? '');
-            $esperimentoCompenso = Tool::pulisciInput($_POST['esperimento-compenso'] ?? '');
+            $campo1 = Tool::pulisciInput($_POST['laboratorio'] ?? '');
+            $campo2 = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
+            $campo3 = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
             $logger = "Ernia";
             break;
         case 'Eventi':
-            $dataEvento = Tool::pulisciInput($_POST['data-evento'] ?? '');
-            $costoEvento = Tool::pulisciInput($_POST['costo-evento'] ?? '');
-            $luogoEvento = Tool::pulisciInput($_POST['luogo-evneto'] ?? '');
+            $campo1 = Tool::pulisciInput($_POST['data-evento'] ?? '');
+            $campo2 = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
+            $campo3 = Tool::pulisciInput($_POST['luogo-evneto'] ?? '');
             $logger = "Elleni";
             break;
         case 'Ripetizioni':
-            $materia = Tool::pulisciInput($_POST['materia'] ?? '');
-            $livello = Tool::pulisciInput($_POST['livello'] ?? '');
-            $prezzoRipetizioni = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? '');
+            $campo1 = Tool::pulisciInput($_POST['materia'] ?? '');
+            $campo2 = Tool::pulisciInput($_POST['livello'] ?? '');
+            $campo3 = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
             $logger = "Rame";
+            break;
+        default:
             break;
     }
 }

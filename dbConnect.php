@@ -191,26 +191,83 @@ class DBAccess {
     }
 
     // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni}
-    public function inserimentoAnnuncio($titolo, $descrizione, $dataPubblicazione, $categoria, $idUtente, $idCitta, $campo1, $campo2, $campo3) {
-        $insertAnnuncio = "INSERT INTO Annuncio (Titolo, Descrizione, DataPubblicazione, Categoria, IdUtente, IdCitta) VALUES ('$titolo', '$descrizione', '$categoria', $idUtente, $idCitta);";
-        
-        $insertSpecifico = "";
-        $idAnnuncio = ""; // in qualche modo prendere l'id dell'annuncio sopra, magari fare la select nella prima query, tutto d'un colpo
+    public function inserimentoAnnuncio(string $titolo, string $descrizione,string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3) : int|false {
 
-        switch ($categoria) {
-            case 'Affitti':
-                $insertSpecifico = "INSERT INTO AnnunciAffitti (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
-                break;
-            case 'Esperimenti':
-                $insertSpecifico = "INSERT INTO AnnunciEsperimenti (IdAnnuncio, Laboratorio, DurataPrevista, Compenso) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
-                break;
-            case 'Eventi':
-                $insertSpecifico = "INSERT INTO AnnunciEventi (IdAnnuncio, DataEvento, Luogo, CostoEntrata) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
-                break;
-            case 'Ripetizioni':
-                $insertSpecifico = "INSERT INTO AnnunciRipetizioni (IdAnnuncio, Materia, Livello, PrezzoOrario) VALUES ($idAnnuncio, $campo1, $campo2, $campo3);";
-                break;
+        mysqli_begin_transaction($this->connection);
+
+        try {
+            $stmtAnnuncio = $this->connection->prepare("INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES (?, ?, ?, ?, ?)");
+
+            if(!$stmtAnnuncio) {
+                throw new Exception("Prepare annuncio fallita");
+            }
+
+            $stmtAnnuncio->bind_param('sssii', $titolo, $descrizione, $categoria, $idUtente, $idCitta);
+
+            if(!$stmtAnnuncio->execute()) {
+                throw new Exception("Execute Annuncio Fallita");
+            }
+
+            $idAnnuncio = $stmtAnnuncio->insert_id;
+            $stmtAnnuncio->close();
+            $stmt = "";
+
+            switch ($categoria) {
+                case 'Affitti':
+                    $stmt = $this->connection->prepare(
+                        "INSERT INTO AnnuncioAffitti 
+                        (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini)
+                        VALUES (?, ?, ?, ?)"
+                    );
+                    $stmt->bind_param("idsi", $idAnnuncio, $campo1, $campo2, $campo3);
+                    break;
+
+                case 'Esperimenti':
+                    $stmt = $this->connection->prepare(
+                        "INSERT INTO AnnuncioEsperimenti
+                        (IdAnnuncio, Laboratorio, DurataPrevista, Compenso)
+                        VALUES (?, ?, ?, ?)"
+                    );
+                    $stmt->bind_param("isid", $idAnnuncio, $campo1, $campo2, $campo3);
+                    break;
+
+                case 'Eventi':
+                    $stmt = $this->connection->prepare(
+                        "INSERT INTO AnnuncioEventi
+                        (IdAnnuncio, DataEvento, Luogo, CostoEntrata)
+                        VALUES (?, ?, ?, ?)"
+                    );
+                    $stmt->bind_param("issd", $idAnnuncio, $campo1, $campo2, $campo3);
+                    break;
+
+                case 'Ripetizioni':
+                    $stmt = $this->connection->prepare(
+                        "INSERT INTO AnnuncioRipetizioni
+                        (IdAnnuncio, Materia, Livello, PrezzoOrario)
+                        VALUES (?, ?, ?, ?)"
+                    );
+                    $stmt->bind_param("issd", $idAnnuncio, $campo1, $campo2, $campo3);
+                    break;
+
+                default:
+                    throw new Exception("Categoria non valida");
+            }
+
+            if(!$stmt->execute()) {
+                throw new Exception("Execute Specifico Fallita");
+            }
+
+            $stmt->close();
+
+            mysqli_commit($this->connection);
+
+            return $idAnnuncio;
+        } catch (Exception $e) {
+            mysqli_rollback($this->connection);
+            return false;
         }
+
+
     }
 }
 
