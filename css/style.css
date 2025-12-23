@@ -168,6 +168,10 @@ header {
     padding: 0.3em 0.6em;
 }
 
+#menu a.call-to-action {
+    padding: 0.5em 1em; 
+}
+
 #menu .nav-links a{
     text-decoration: underline;
     text-underline-offset: 0.2em;
@@ -210,7 +214,7 @@ header {
 ==================================================== 
 */
 
-#menu .call-to-action, #presentazione .call-to-action, .errore .call-to-action {
+.call-to-action {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     color: var(--clearTxtColor); 
@@ -218,30 +222,33 @@ header {
     border: 2px solid var(--call-to-actionColor);
     padding: 0.5em 1em;
     border-radius: 1em;
-    font-weight: 600;
+    font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu .call-to-action:visited, #presentazione .call-to-action:visited, .errore .call-to-action:visited {
+.call-to-action:visited {
     color: var(--call-to-actionColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--clearBgColor);
 }
 
 #menu .call-to-action:visited{    
     background-color: var(--BgColor);
 }
 
-#presentazione .call-to-action:visited, .errore .call-to-action:visited {
-    background-color: var(--clearBgColor);
+
+.call-to-action:visited:hover,
+.call-to-action:visited:focus,
+#menu .call-to-action:visited:hover,
+#menu .call-to-action:visited:focus {
+    background-color: var(--call-to-actionAction);
+    outline: 2px solid var(--call-to-actionColor);
+    outline-offset: 1px;
 }
 
-#menu .call-to-action:hover, #menu .call-to-action:focus, 
-#presentazione .call-to-action:hover, #presentazione .call-to-action:focus,
-.errore .call-to-action:hover, .errore .call-to-action:focus {
+.call-to-action:hover,
+.call-to-action:focus {
     background-color: var(--call-to-actionAction);
-    color: var(--call-to-actionCor);
+    color: var(--call-to-actionColor);
     outline: 2px solid var(--call-to-actionColor);
     outline-offset: 1px;
 }
@@ -1277,6 +1284,13 @@ form > p, form > p{
 #dati-pers-container {
     gap: 2em;
     margin: 0 auto;
+}
+
+#profilo .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2em;
 }
 
 .profilo-grid {
