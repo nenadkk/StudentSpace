@@ -13,26 +13,31 @@ $errorMessage = "";
 $idUtente = "";
 $erroreEmail = "";
 $errorePassword = "";
-$returnValue = "";
+$genericError = "";
 
 $email = isset($_POST['email']) ? Tool::pulisciInput($_POST['email']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if(isset($_POST['submit'])) {
-    $db = new DB\DBAccess();
-    if ($db->openDBConnection()) {
-        $idUtente = $db->verifyUserCredential($email, $password);
-        if ($idUtente !== false) {
-            Tool::startUserSession($idUtente);
-            header("Location: index.php");
-            exit;
+    if(!(Tool::validaEmail($email) || Tool::validaPassword($password))) {
+        $db = new DB\DBAccess();
+        if ($db->openDBConnection()) {
+            $idUtente = $db->verifyUserCredential($email, $password);
+            if ($idUtente !== false) {
+                Tool::startUserSession($idUtente);
+                header("Location: index.php");
+                exit;
+            } else {
+                $errorMessage = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+            }
+            $db->closeConnection();
         } else {
-            $errorMessage = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+            $errorMessage = "<ul class='messaggi-errore-form'><li>Errore di connessione al database.</li></ul>";
         }
-        $db->closeConnection();
     } else {
-        $errorMessage = "<p class='messaggi-errori-form'>Errore di connessione al database.</p>";
+        $errorMessage  = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
     }
+    
 }
 
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
