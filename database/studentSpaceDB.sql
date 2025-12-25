@@ -184,7 +184,7 @@ INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
 ('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
---(1, 'bilocaleCentro.jpg', "Foto dell\'appartamento in affitto a Milano", 0, 1),
+(1, 'bilocaleCentro.jpg', "Foto dell\'appartamento in affitto a Milano", 0, 1),
 (1, 'stanzaSingola.jpg', '', 1, 1),
 (2, 'ripetizioniMate.jpg', 'Foto per ripetizioni di matematica', 0, 1);
 

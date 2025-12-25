@@ -83,6 +83,23 @@ class DBAccess {
         return $results;
     }
 
+    public function searchEsplora($query) {
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+        return $results;
+    }
+
+
     public function getIdCitta($nomeCitta) 
     {
         $query = "SELECT IdCitta FROM Citta WHERE NomeCitta ='$nomeCitta';";

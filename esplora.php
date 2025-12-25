@@ -15,6 +15,36 @@ $filtri = array();
 
 $cards = "";
 
+
+function controlloGeneraliQuery($query, $filtri) {
+    if ($filtri['citta'] != '') 
+    {
+        if (!str_contains($query,"WHERE"))
+            $query.="WHERE ";
+
+        $query.= "NomeCitta='".$_GET['citta']."' AND ";
+    }
+
+    //Potrebbe essere necessario usare DATE_TRUNC per le prossime due
+    if ($filtri['pubblicazione-inizio'] != '') 
+    {
+        if (!str_contains($query,"WHERE"))
+            $query.="WHERE ";
+
+        $query.= "DataPubblicazione >='".$_GET['pubblicazione-inizio']."' AND ";
+    }
+
+    if ($filtri['pubblicazione-fine'] != '') 
+    {
+        if (!str_contains($query,"WHERE"))
+            $query.="WHERE ";
+
+        $query.= "DataPubblicazione<='".$_GET['pubblicazione-fine']."' ";
+    }
+
+    return $query;
+}
+
 if(isset($_GET['submit'])) 
 {
     $cerca = $_GET['cerca'] ?? "";
@@ -56,26 +86,175 @@ if(isset($_GET['submit']))
                 "livello"=>($categoria=='Ripetizioni' && isset($_GET['livello'])? $_GET['livello'] : ''),
                 "prezzo-ripetizioni-max"=>($categoria=='Ripetizioni' && isset($_GET['prezzo-ripetizioni-max'])? $_GET['prezzo-ripetizioni-max'] : ''));
 
+    $query="SELECT * ";
+
     switch ($categoria) {
         case '':
+            $query .= "FROM Annuncio a JOIN Citta c ON a.IdCitta=c.IdCitta 
+                      LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+            $query = controlloGeneraliQuery($query, $filtri); 
+
             break;
         
 
         case 'Affitti':
-            break;
+            $query .= "FROM Annuncio a JOIN AnnuncioAffitti f ON a.IdAnnuncio= f.IdAnnuncio 
+                       JOIN Citta c ON a.IdCitta=c.IdCitta 
+                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+            $query = controlloGeneraliQuery($query, $filtri); 
+
+            if ($filtri['coinquilini-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "NumeroCoinquilini<='".$_GET['coinquilini-max']."' AND ";
+            }
+
+            if ($filtri['costo-mese-affitto-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "PrezzoMensile<='".$_GET['costo-mese-affitto-max']."' AND ";
+            }
+
+            if ($filtri['indirizzo-affitto'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Indirizzo LIKE '%".$_GET['indirizzo-affitto']."%' AND ";
+            }
+         break;
 
         case 'Esperimenti':
-            break;
+            $query .= "FROM Annuncio a JOIN AnnuncioEsperimenti e ON a.IdAnnuncio= e.IdAnnuncio 
+                       JOIN Citta c ON a.IdCitta=c.IdCitta 
+                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+            $query = controlloGeneraliQuery($query, $filtri); 
+
+            if ($filtri['laboratorio'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Laboratorio LIKE '%".$_GET['laboratorio']."%' AND ";
+            }
+
+            if ($filtri['esperimento-durata-min'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "DurataPrevista>='".$_GET['esperimento-durata-min']."' AND ";
+            }
+
+            if ($filtri['esperimento-durata-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "DurataPrevista<='".$_GET['esperimento-durata-max']."' AND ";
+            }
+            if ($filtri['esperimento-compenso-min'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Compenso>='".$_GET['esperimento-compenso-min']."' AND ";
+            }
+            if ($filtri['esperimento-compenso-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Compenso<='".$_GET['esperimento-compenso-max']."' AND ";
+            }
+           break;
 
         case 'Eventi':
+            $query .= "FROM Annuncio a JOIN AnnuncioEventi e ON a.IdAnnuncio= e.IdAnnuncio 
+                       JOIN Citta c ON a.IdCitta=c.IdCitta 
+                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+            $query = controlloGeneraliQuery($query, $filtri);
+
+            if ($filtri['luogo-evento'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Luogo LIKE '%".$_GET['luogo-evento']."%' AND ";
+            }
+
+            if ($filtri['evento-inizio'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "DataEvento>='".$_GET['evento-inizio']."' AND ";
+            }
+
+            if ($filtri['evento-fine'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "DataEvento<='".$_GET['evento-fine']."' AND ";
+            }
+            if ($filtri['evento-costo-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "CostoEntrata<='".$_GET['evento-costo-max']."' AND ";
+            }
+
             break;
 
         case 'Ripetizioni':
+            $query .= "FROM Annuncio a JOIN AnnuncioRipetizioni r ON a.IdAnnuncio= r.IdAnnuncio 
+                       JOIN Citta c ON a.IdCitta=c.IdCitta 
+                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+            $query = controlloGeneraliQuery($query,$filtri); 
+
+            if ($filtri['materia'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Materia LIKE '%".$_GET['materia']."%' AND ";
+            }
+
+            if ($filtri['livello'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "Livello LIKE '%".$_GET['livello']."%' AND ";
+            }
+
+            if ($filtri['prezzo-ripetizioni-max'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+                $query.= "PrezzoOrario<='".$_GET['prezzo-ripetizioni-max']."' AND ";
+            }
             break;
-        
+
         default:
             break;
     }
+    //CERCA
+    if ($cerca != '') 
+    {
+        if (!str_contains($query,"WHERE"))
+            $query.="WHERE ";
+        $query.= "(Titolo LIKE '%".$_GET['cerca']."%' OR Descrizione LIKE '%".$_GET['cerca']."%') AND ";
+    }
+    
+    //Per le immagini
+    if (!str_contains($query,"WHERE"))
+        $query.="WHERE ";
+    $query.= "i.Ordine = 1;";
+
+
+    //echo $query;
+
+    $dbAccess->openDBConnection();
+    $cardsData = $dbAccess->searchEsplora($query);
+    $dbAccess->closeConnection();
+
+    if($cardsData !== false)
+        $cards = Tool::createCard($cardsData);
+    else 
+        $cards .= file_get_contents("pages/cardTemplate.html");
 
 }
 else
