@@ -25,7 +25,7 @@ class DBAccess {
     }
 
     public function getAllCity() {
-        $query = "SELECT nomeCitta FROM Citta ORDER BY nomeCitta ASC";
+        $query = "SELECT NomeCitta FROM Citta ORDER BY NomeCitta ASC";
         $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
 
         if(mysqli_num_rows($queryResult) == 0) {
@@ -33,7 +33,7 @@ class DBAccess {
         } else {
             $cities = array();
             while($row = mysqli_fetch_assoc($queryResult)) {
-                $cities[] = $row['nomeCitta'];
+                $cities[] = $row['NomeCitta'];
             }
             $queryResult->free();
             return $cities;
@@ -41,7 +41,7 @@ class DBAccess {
     }
 
     public function getLastAnnouncements() {
-        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.nomeCitta, i.Percorso, i.AltText
+        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.NomeCitta, i.Percorso, i.AltText
             FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
             WHERE i.Ordine = 1
             ORDER BY a.DataPubblicazione DESC
@@ -62,7 +62,7 @@ class DBAccess {
     }
 
     public function getAnnouncements() {
-        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.nomeCitta, i.Percorso, i.AltText
+        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.NomeCitta, i.Percorso, i.AltText
             FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
             WHERE i.Ordine = 1
             ORDER BY a.DataPubblicazione DESC;";
@@ -82,6 +82,230 @@ class DBAccess {
 
         return $results;
     }
+
+    public function searchEsplora($categoria, $filtri) {
+
+        $query="SELECT * ";
+    
+        function controlloGeneraliQuery($query,$filtri) {
+        
+            if ($filtri['citta'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+
+                $query.= "NomeCitta='".$filtri['citta']."' AND ";
+            }
+
+            //Potrebbe essere necessario usare DATE_TRUNC per le prossime due
+            if ($filtri['pubblicazione-inizio'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+
+                $query.= "DataPubblicazione >='".$filtri['pubblicazione-inizio']."' AND ";
+            }
+
+            if ($filtri['pubblicazione-fine'] != '') 
+            {
+                if (!str_contains($query,"WHERE"))
+                    $query.="WHERE ";
+
+                $query.= "DataPubblicazione <='".$filtri['pubblicazione-fine']."' AND ";
+            }
+            return $query;
+        }
+
+        switch ($categoria) {
+            case '':
+                $query .= "FROM Annuncio a JOIN Citta c ON a.IdCitta=c.IdCitta 
+                          LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+                $query = controlloGeneraliQuery($query, $filtri); 
+
+                break;
+        
+
+            case 'Affitti':
+                foreach ($filtri as $key => $value) {
+                    $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
+                }
+
+                $query .= "FROM Annuncio a JOIN AnnuncioAffitti f ON a.IdAnnuncio= f.IdAnnuncio 
+                           JOIN Citta c ON a.IdCitta=c.IdCitta 
+                           LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+
+                $query = controlloGeneraliQuery($query, $filtri); 
+
+                if ($filtri['coinquilini-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "NumeroInquilini<='".$filtri['coinquilini-max']."' AND ";
+                }
+
+                if ($filtri['costo-mese-affitto-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "PrezzoMensile<='".$filtri['costo-mese-affitto-max']."' AND ";
+                }
+
+                if ($filtri['indirizzo-affitto'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Indirizzo LIKE '%".$filtri['indirizzo-affitto']."%' AND ";
+                }
+                break;
+
+            case 'Esperimenti':
+                foreach ($filtri as $key => $value) {
+                    $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
+                }
+
+                $query .= "FROM Annuncio a JOIN AnnuncioEsperimenti e ON a.IdAnnuncio= e.IdAnnuncio 
+                           JOIN Citta c ON a.IdCitta=c.IdCitta 
+                           LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+                $query = controlloGeneraliQuery($query, $filtri); 
+
+                if ($filtri['laboratorio'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Laboratorio LIKE '%".$filtri['laboratorio']."%' AND ";
+                }
+
+                if ($filtri['esperimento-durata-min'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "DurataPrevista>='".$filtri['esperimento-durata-min']."' AND ";
+                }
+
+                if ($filtri['esperimento-durata-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "DurataPrevista<='".$filtri['esperimento-durata-max']."' AND ";
+                }
+                if ($filtri['esperimento-compenso-min'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Compenso>='".$filtri['esperimento-compenso-min']."' AND ";
+                }
+                if ($filtri['esperimento-compenso-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Compenso<='".$filtri['esperimento-compenso-max']."' AND ";
+                }
+                break;
+
+           
+            case 'Eventi':
+                foreach ($filtri as $key => $value) {
+                    $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
+                }
+
+                $query .= "FROM Annuncio a JOIN AnnuncioEventi e ON a.IdAnnuncio= e.IdAnnuncio 
+                            JOIN Citta c ON a.IdCitta=c.IdCitta 
+                            LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+                $query = controlloGeneraliQuery($query, $filtri);
+
+                if ($filtri['luogo-evento'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Luogo LIKE '%".$filtri['luogo-evento']."%' AND ";
+                }
+
+                if ($filtri['evento-inizio'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "DataEvento>='".$filtri['evento-inizio']."' AND ";
+                }
+
+                if ($filtri['evento-fine'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "DataEvento<='".$filtri['evento-fine']."' AND ";
+                }
+                if ($filtri['evento-costo-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "CostoEntrata<='".$filtri['evento-costo-max']."' AND ";
+                }
+
+                break;
+
+            case 'Ripetizioni':
+                foreach ($filtri as $key => $value) {
+                    $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
+                }
+
+                $query .= "FROM Annuncio a JOIN AnnuncioRipetizioni r ON a.IdAnnuncio= r.IdAnnuncio 
+                           JOIN Citta c ON a.IdCitta=c.IdCitta 
+                           LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
+                $query = controlloGeneraliQuery($query,$filtri); 
+
+                if ($filtri['materia'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Materia LIKE '%".$filtri['materia']."%' AND ";
+                }
+
+                if ($filtri['livello'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "Livello LIKE '%".$filtri['livello']."%' AND ";
+                }
+
+                if ($filtri['prezzo-ripetizioni-max'] != '') 
+                {
+                    if (!str_contains($query,"WHERE"))
+                        $query.="WHERE ";
+                    $query.= "PrezzoOrario<='".$filtri['prezzo-ripetizioni-max']."' AND ";
+                }
+                break;
+
+            default:
+                break;
+        }
+        //CERCA
+        if ($filtri['cerca'] != '') 
+        {
+            if (!str_contains($query,"WHERE"))
+                $query.="WHERE ";
+            $query.= "(Titolo LIKE '%".$filtri['cerca']."%' OR Descrizione LIKE '%".$filtri['cerca']."%') AND ";
+        }
+    
+        //Per le immagini
+        if (!str_contains($query,"WHERE"))
+            $query.="WHERE ";
+        $query.= "i.Ordine = 1;";
+
+        //echo $query;
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+        return $results;
+    }
+
 
     public function getIdCitta($nomeCitta) 
     {
@@ -169,7 +393,7 @@ class DBAccess {
     }
 
     public function getAnnunciUtente($idUtente) {
-        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.nomeCitta, i.Percorso, i.AltText
+        $query = "SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria, c.NomeCitta, i.Percorso, i.AltText
             FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
             WHERE i.Ordine = 1 AND a.IdUtente = $idUtente
             ORDER BY a.DataPubblicazione DESC;";

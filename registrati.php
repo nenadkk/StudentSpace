@@ -110,7 +110,7 @@ if(isset($_POST['submit'])) {
         $arrayRegistrazione['Cognome'] = $cognome;
         $arrayRegistrazione['Email'] = $email;
         $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
-        $arrayRegistrazione['IdCitta'] = $result['IdCitta'];
+        $arrayRegistrazione['IdCitta'] = $result;
         
         $db->insertUtente($arrayRegistrazione);
 
