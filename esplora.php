@@ -10,11 +10,12 @@ $dbAccess = new DBAccess();
 $htmlPage = file_get_contents("pages/esplora.html");
 
 $categoria = "";
-$cerca = "";
 
+$cardsData="";
 $cards = "";
  
 $filtriGenerali = array(
+                "cerca"=>"",
                 "citta"=>"",
                 "pubblicazione-inizio"=>"",
                 "pubblicazione-fine"=>"");
@@ -32,9 +33,7 @@ $filtriEsperimenti = array(
                 "esperimento-compenso-max"=>"");
 
 $filtriEventi = array(
-                "evento-inizio"=>"",
-                "evento-fine"=>"",
-                "evento-costo-max"=>"",
+                "evento-inizio"=>"", "evento-fine"=>"", "evento-costo-max"=>"",
                 "luogo-evento"=>"");
 
 $filtriRipetizioni = array(
@@ -43,130 +42,37 @@ $filtriRipetizioni = array(
                 "prezzo-ripetizioni-max"=>"");
 
 
-function controlloGeneraliQuery($query, $filtriGenerali) {
-    if ($filtriGenerali['citta'] != '') 
-    {
-        if (!str_contains($query,"WHERE"))
-            $query.="WHERE ";
-
-        $query.= "NomeCitta='".$_GET['citta']."' AND ";
-    }
-
-    //Potrebbe essere necessario usare DATE_TRUNC per le prossime due
-    if ($filtriGenerali['pubblicazione-inizio'] != '') 
-    {
-        if (!str_contains($query,"WHERE"))
-            $query.="WHERE ";
-
-        $query.= "DataPubblicazione >='".$_GET['pubblicazione-inizio']."' AND ";
-    }
-
-    if ($filtriGenerali['pubblicazione-fine'] != '') 
-    {
-        if (!str_contains($query,"WHERE"))
-            $query.="WHERE ";
-
-        $query.= "DataPubblicazione <='".$_GET['pubblicazione-fine']."' AND ";
-    }
-
-    return $query;
-}
-
 if(isset($_GET['submit'])) 
 {
-    $cerca = $_GET['cerca'] ?? "";
     $categoria =$_GET['categoria'] ?? "";
 
     foreach ($filtriGenerali as $key => $value) {
         $filtriGenerali[$key] = $_GET[$key] ?? "";
     }
 
-    $query="SELECT * ";
-
     switch ($categoria) {
         case '':
-            $query .= "FROM Annuncio a JOIN Citta c ON a.IdCitta=c.IdCitta 
-                      LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
-            $query = controlloGeneraliQuery($query, $filtriGenerali); 
-
-            break;
-        
+            $dbAccess->openDBConnection();
+            $cardsData = $dbAccess->searchEsplora($categoria, $filtriGenerali);
+            $dbAccess->closeConnection();
+        break;
 
         case 'Affitti':
             foreach ($filtriAffitti as $key => $value) {
                 $filtriAffitti[$key] = isset($_GET[$key])? $_GET[$key] : '';
             }
-
-            $query .= "FROM Annuncio a JOIN AnnuncioAffitti f ON a.IdAnnuncio= f.IdAnnuncio 
-                       JOIN Citta c ON a.IdCitta=c.IdCitta 
-                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
-
-            $query = controlloGeneraliQuery($query, $filtriGenerali); 
-
-            if ($filtriAffitti['coinquilini-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "NumeroInquilini<='".$_GET['coinquilini-max']."' AND ";
-            }
-
-            if ($filtriAffitti['costo-mese-affitto-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "PrezzoMensile<='".$_GET['costo-mese-affitto-max']."' AND ";
-            }
-
-            if ($filtriAffitti['indirizzo-affitto'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Indirizzo LIKE '%".$_GET['indirizzo-affitto']."%' AND ";
-            }
+            $dbAccess->openDBConnection();
+            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriAffitti));
+            $dbAccess->closeConnection();
             break;
 
         case 'Esperimenti':
             foreach ($filtriEsperimenti as $key => $value) {
                 $filtriEsperimenti[$key] = isset($_GET[$key])? $_GET[$key] : '';
             }
-
-            $query .= "FROM Annuncio a JOIN AnnuncioEsperimenti e ON a.IdAnnuncio= e.IdAnnuncio 
-                       JOIN Citta c ON a.IdCitta=c.IdCitta 
-                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
-            $query = controlloGeneraliQuery($query, $filtriGenerali); 
-
-            if ($filtriEsperimenti['laboratorio'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Laboratorio LIKE '%".$_GET['laboratorio']."%' AND ";
-            }
-
-            if ($filtriEsperimenti['esperimento-durata-min'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "DurataPrevista>='".$_GET['esperimento-durata-min']."' AND ";
-            }
-
-            if ($filtriEsperimenti['esperimento-durata-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "DurataPrevista<='".$_GET['esperimento-durata-max']."' AND ";
-            }
-            if ($filtriEsperimenti['esperimento-compenso-min'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Compenso>='".$_GET['esperimento-compenso-min']."' AND ";
-            }
-            if ($filtriEsperimenti['esperimento-compenso-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Compenso<='".$_GET['esperimento-compenso-max']."' AND ";
-            }
+            $dbAccess->openDBConnection();
+            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEsperimenti));
+            $dbAccess->closeConnection();
             break;
 
            
@@ -174,96 +80,23 @@ if(isset($_GET['submit']))
             foreach ($filtriEventi as $key => $value) {
                 $filtriEventi[$key] = isset($_GET[$key])? $_GET[$key] : '';
             }
-
-            $query .= "FROM Annuncio a JOIN AnnuncioEventi e ON a.IdAnnuncio= e.IdAnnuncio 
-                       JOIN Citta c ON a.IdCitta=c.IdCitta 
-                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
-            $query = controlloGeneraliQuery($query, $filtriGenerali);
-
-            if ($filtriEventi['luogo-evento'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Luogo LIKE '%".$_GET['luogo-evento']."%' AND ";
-            }
-
-            if ($filtriEventi['evento-inizio'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "DataEvento>='".$_GET['evento-inizio']."' AND ";
-            }
-
-            if ($filtriEventi['evento-fine'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "DataEvento<='".$_GET['evento-fine']."' AND ";
-            }
-            if ($filtriEventi['evento-costo-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "CostoEntrata<='".$_GET['evento-costo-max']."' AND ";
-            }
-
+            $dbAccess->openDBConnection();
+            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEventi));
+            $dbAccess->closeConnection();
             break;
 
         case 'Ripetizioni':
             foreach ($filtriRipetizioni as $key => $value) {
                 $filtriRipetizioni[$key] = isset($_GET[$key])? $_GET[$key] : '';
             }
-
-            $query .= "FROM Annuncio a JOIN AnnuncioRipetizioni r ON a.IdAnnuncio= r.IdAnnuncio 
-                       JOIN Citta c ON a.IdCitta=c.IdCitta 
-                       LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
-            $query = controlloGeneraliQuery($query,$filtriGenerali); 
-
-            if ($filtriRipetizioni['materia'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Materia LIKE '%".$_GET['materia']."%' AND ";
-            }
-
-            if ($filtriRipetizioni['livello'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "Livello LIKE '%".$_GET['livello']."%' AND ";
-            }
-
-            if ($filtriRipetizioni['prezzo-ripetizioni-max'] != '') 
-            {
-                if (!str_contains($query,"WHERE"))
-                    $query.="WHERE ";
-                $query.= "PrezzoOrario<='".$_GET['prezzo-ripetizioni-max']."' AND ";
-            }
+            $dbAccess->openDBConnection();
+            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriRipetizioni));
+            $dbAccess->closeConnection();
             break;
 
         default:
             break;
     }
-    //CERCA
-    if ($cerca != '') 
-    {
-        if (!str_contains($query,"WHERE"))
-            $query.="WHERE ";
-        $query.= "(Titolo LIKE '%".$_GET['cerca']."%' OR Descrizione LIKE '%".$_GET['cerca']."%') AND ";
-    }
-    
-    //Per le immagini
-    if (!str_contains($query,"WHERE"))
-        $query.="WHERE ";
-    $query.= "i.Ordine = 1;";
-
-
-    echo $query;
-
-    $dbAccess->openDBConnection();
-    $cardsData = $dbAccess->searchEsplora($query);
-    $dbAccess->closeConnection();
-
     if($cardsData !== false)
         $cards = Tool::createCard($cardsData);
     else 
@@ -282,8 +115,6 @@ else
     else 
         $cards .= file_get_contents("pages/cardTemplate.html");
 }
-
-$htmlPage = str_replace("[cerca]", $cerca, $htmlPage);
 
 
 //Sostituzione dei placeholder

@@ -35,7 +35,7 @@ class Tool {
             $cardhtml = str_replace("[dataInsertUs]", htmlspecialchars($dataISO), $cardhtml);
             $cardhtml = str_replace("[DataInsert]", htmlspecialchars($dataIT), $cardhtml);
 
-            $cardhtml = str_replace("[CittaAnnuncio]", htmlspecialchars($card['nomeCitta']), $cardhtml);
+            $cardhtml = str_replace("[CittaAnnuncio]", htmlspecialchars($card['NomeCitta']), $cardhtml);
             $cardhtml = str_replace("[CategoriaAnnuncioMinuscolo]", htmlspecialchars(strtolower($card['Categoria'])), $cardhtml);
             $cardhtml = str_replace("[CategoriaAnnuncio]", htmlspecialchars($card['Categoria']), $cardhtml);
             $cardhtml = str_replace("[idAnnuncio]", htmlspecialchars($card['IdAnnuncio']), $cardhtml);
