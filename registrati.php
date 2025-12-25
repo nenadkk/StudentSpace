@@ -102,7 +102,7 @@ if(isset($_POST['submit'])) {
         $db->openDBConnection();
 
         //ottengo l'IdCitta della città selezionata
-        $result = $db->getIdCitta($citta);
+        $idCitta = $db->getIdCitta($citta);
 
         //inserisco l'utente
         $arrayRegistrazione = [];
@@ -110,7 +110,7 @@ if(isset($_POST['submit'])) {
         $arrayRegistrazione['Cognome'] = $cognome;
         $arrayRegistrazione['Email'] = $email;
         $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
-        $arrayRegistrazione['IdCitta'] = $result['IdCitta'];
+        $arrayRegistrazione['IdCitta'] = $idCitta;
         
         $db->insertUtente($arrayRegistrazione);
 

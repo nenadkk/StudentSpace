@@ -119,8 +119,8 @@ class DBAccess {
                 .$arrayRegistrazione['Nome']."','"
                 .$arrayRegistrazione['Cognome']."','"
                 .$arrayRegistrazione['Email']."','"
-                .$arrayRegistrazione['Password']."','"
-                .$arrayRegistrazione['IdCitta']."');";
+                .$arrayRegistrazione['Password']."',"
+                .$arrayRegistrazione['IdCitta'].");";
 
         $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
         if(!$queryResult) //mysqli_query in questo caso restituisce un true se è andato tutto bene 
