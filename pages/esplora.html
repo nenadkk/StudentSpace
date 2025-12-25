@@ -70,7 +70,7 @@
         <div id="esplora-content">
             <div id="aside-style-layout">
                 <div id="aside-mini-layout">
-                    <aside id="ricerca">
+                    <!--<aside id="ricerca">
                         <form class="form-data" action="esplora.html" method="get">
                             <fieldset>
                                 <div>
@@ -78,22 +78,26 @@
                                     <input id="cerca" type="text" name="cerca" maxlength="20" placeholder="Cerca...">
                                 </div>
                             </fieldset>
-                            <button type="submit">Cerca</button>
+                            <button class="btn-base" type="submit">Cerca</button>
                         </form>
-                    </aside>
+                    </aside>-->
 
-                    <button id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
+                    <button class="btn-base" id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
                 </div>
-                <aside id="filtri">
+                <aside id="filtri" class="form-container">
                     <div class="filtri-header">
                         <h2>Filtri</h2>
                         <button id="chiudiFiltri" type="button" aria-label="Chiudi filtri">&#9932;</button>
                     </div>    
                     <form class="form-data" action="esplora.html" method="get">
-                        <fieldset class="fieldset-filtri">
+                        <fieldset class="fieldset-filtri fieldset-base">
                             <legend>Generali</legend>
+                            <div class="form-div">
+                                    <label for="cerca">Cerca</label>
+                                    <input id="cerca" type="text" name="cerca" maxlength="20" placeholder="Cerca...">
+                            </div>
                             <!-- Attributi comuni a tutte le categorie -->
-                            <div>
+                            <div class="form-div">
                                 <label for="categoria">Categoria</label>
                                 <select id="categoria" name="categoria">
                                     <option value="">Seleziona categoria</option>
@@ -103,7 +107,7 @@
                                         <option value="Ripetizioni">Ripetizioni</option>
                                 </select>
                             </div>
-                            <div>
+                            <div class="form-div">
                                 <label for="citta">Città (sede universitaria)</label>
                                 <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona">
                                 <datalist id="listaCitta">
@@ -157,41 +161,29 @@
                                     <option value="Viterbo"></option>
                                 </datalist>
                             </div>
-                            <!--<div>
-                                <label for="data-pubblicazione">Data pubblicazione</label>
-                                <input id="data-pubblicazione" type="date" name="data-pubblicazione">
-                            </div>-->
-                            <div>
+                            <div class="form-div">
                                 <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
                                 <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
                             </div>
-                            <div>
+                            <div class="form-div">
                                 <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
                                 <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
                             </div>
                         </fieldset>
 
                         <div id="filtri-affitti" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
+                            <fieldset class="fieldset-filtri fieldset-base">
                                 <legend>Filtri Affitti</legend>
                                 <!-- Attributi Affitti -->
-                                <!--<div>
-                                    <label for="num-coinquilini"><abbr title="Numero">N°</abbr> coinquilini</label>
-                                    <input id="num-coinquilini" type="number" min="0" name="num-coinquilini">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="coinquilini-max">Numero massimo coinquilini</label> <!--min da 0-->
                                     <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" step="1" placeholder="Es. 4">
                                 </div>
-                                <!--<div>
-                                    <label for="costo-mese-affitto">Costo mensile</label>
-                                    <input id="costo-mese-affitto" placeholder="Es. 400 €/mese" type="number" min="0" name="costo-mese-affitto">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="costo-mese-affitto-max">Costo mensile massimo (€/mese)</label> <!--min da 0-->
                                     <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" placeholder="Es. 50">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="indirizzo-affitto">Indirizzo</label>
                                     <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto">
                                 </div>
@@ -199,34 +191,26 @@
                         </div>
 
                         <div id="filtri-esperimenti" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
+                            <fieldset class="fieldset-filtri fieldset-base">
                                 <legend>Filtri Esperimenti</legend>
                                 <!-- Attributi Esperimenti -->
-                                <div>
+                                <div class="form-div">
                                     <label for="laboratorio">Laboratorio di riferimento</label>
                                     <input id="laboratorio" placeholder="Es. Lab. Paolotti" name="laboratorio">
                                 </div>
-                                <!--<div>
-                                    <label for="durata-esperimento">Durata esperimento</label>
-                                    <input id="durata-esperimento" placeholder="Es. 40 min" type="number" min="0" name="durata-esperimento"> 
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="esperimento-durata-min">Duarata minima esperimento (minuti)</label>
                                     <input type="number" id="esperimento-durata-min" name="esperimento-durata-min" min="0" step="5" placeholder="Es. 30">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="esperimento-durata-max">Durata massima esperimento (minuti)</label>
                                     <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" placeholder="Es. 120">
                                 </div>
-                                <!--<div>
-                                    <label for="compenso">Compenso</label>
-                                    <input id="compenso" placeholder="Es 15€" type="number" min="0" name="compenso">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="esperimento-compenso-min">Compenso minimo esperimento (€)</label>
                                     <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="esperimento-compenso-max">Compenso massimo esperimento (€)</label>
                                     <input id="esperimento-compenso-max" type="number" name="esperimento-compenso-max" min="0" step="1" placeholder="Es. 50">
                                 </div>
@@ -234,30 +218,22 @@
                         </div>
 
                         <div id="filtri-eventi" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
+                            <fieldset class="fieldset-filtri fieldset-base">
                                 <legend>Filtri Eventi</legend>
                                 <!-- Attributi Eventi -->
-                                <!--<div>
-                                    <label for="data-evento">Data evento</label>
-                                    <input id="data-evento" type="date" name="data-evento">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="evento-inizio">Data inizio evento</label>
                                     <input id="evento-inizio" type="date" name="evento-inizio">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="evento-fine">Data fine evento</label>
                                     <input id="evento-fine" type="date" name="evento-fine">
                                 </div>
-                                <!--<div>
-                                    <label for="costo-evento">Costo entrata</label>
-                                    <input id="costo-evento" placeholder="Es. 10€" type="number" min="0" name="costo-evento">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="evento-costo-max">Costo massimo entrata (€)</label>  <!--min da 0-->
                                     <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" step="1" placeholder="Es. 50">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="luogo-evento">Luogo</label>
                                     <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento">
                                 </div>
@@ -265,14 +241,14 @@
                         </div>
 
                         <div id="filtri-ripetizioni" class="nascondi-filtri">
-                            <fieldset class="fieldset-filtri">
+                            <fieldset class="fieldset-filtri fieldset-base">
                                 <legend>Filtri Ripetizioni</legend>
                                 <!-- Attributi Ripetizioni -->
-                                <div>
+                                <div class="form-div">
                                     <label for="materia">Materia</label>
                                     <input type="text" id="materia" name="materia">
                                 </div>
-                                <div>
+                                <div class="form-div">
                                     <label for="livello">Livello</label>
                                     <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello">
                                     <datalist id="listlivelli">
@@ -281,25 +257,21 @@
                                         <option value="Università">
                                     </datalist>
                                 </div>
-                                <!--<div>
-                                    <label for="prezzo-ripetizioni">Prezzo orario</label>
-                                    <input id="prezzo-ripetizioni" placeholder="Es. 10 €/ora" type="number" min="0" name="prezzo-ripetizioni">
-                                </div>-->
-                                <div>
+                                <div class="form-div">
                                     <label for="prezzo-ripetizioni-max">Prezzo orario massimo (€/ora)</label> <!--min da 0-->
                                     <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" placeholder="Es. 50">
                                 </div>
                             </fieldset>
                         </div>
                     <div class="filtri-footer">
-                        <button type="submit">Applica</button>
+                        <button class="btn-base" type="submit">Applica</button>
                     </div>
                     </form>
                 </aside>
             </div>
 
             <main id="contenuto">
-                <div class="esplora">
+                <div id="esplora" class="section-column">
                     <h2>Esplora</h2>
                     <ul id="listaCarte">
                         [Cards]

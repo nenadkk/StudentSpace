@@ -39,7 +39,7 @@
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="link btn-base call-to-action" href="registrati.html">Registrati</a></li>
                 <li class="current-link" aria-current="page">Accedi</li>
             </ul>
         </nav>
@@ -55,7 +55,7 @@
                 <li><a href="pubblica.html">Pubblica</a></li>
             </ul>
             <ul class="nav-auth">
-                <li><a class="call-to-action" href="registrati.html">Registrati</a></li>
+                <li><a class="link btn-base call-to-action" href="registrati.html">Registrati</a></li>
                 <li class="current-link" aria-current="page">Accedi</li>
             </ul>
         </nav>
@@ -70,23 +70,23 @@
     </nav>
 
     <main id="contenuto">
-        <div id="login-container">
+        <div id="login-container" class="form-container form-container-small">
             <h2>Accedi</h2>
             <form class="form-data" action="/login" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
-                    <div>
+                    <div class="form-div">
                         <label for="email" ><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
                         <input type="text" id="email" name="email" required >
                     </div>
 
-                    <div>
+                    <div class="form-div">
                         <label for="password"><span  lang="en">Password</span><span class="required"> (richiesto)</span></label>
                         <input type="password" id="password" name="password" required>
                     </div>
                 </div>
-                <button type="submit">Login</button>
-                <p>Non hai un account? <a href="registrati.html">Registrati qui</a></p>
+                <button class="btn-base" type="submit">Login</button>
+                <p>Non hai un account? <a class="link" href="registrati.html">Registrati qui</a></p>
             </form>
         </div>
         

@@ -27,11 +27,11 @@ if(isset($_POST['submit'])) {
             header("Location: index.php");
             exit;
         } else {
-            $errorMessage = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+            $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
         }
         $db->closeConnection();
     } else {
-        $errorMessage = "<p class='messaggi-errori-form'>Errore di connessione al database.</p>";
+        $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";
     }
 }
 

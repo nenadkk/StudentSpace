@@ -1,10 +1,35 @@
+/*
+====================================================
+    RESET INIZIALE
+==================================================== 
+*/
+
 * {
     padding: 0em; 
     margin: 0em;
     box-sizing: border-box;
 }
 
+html, body{ 
+    font-size: 100%; 
+    font-family:"Inter", "Roboto", sans-serif; 
+    line-height: 1.5em;
+}
+
+body {
+    background-color: var(--clearBgColor);
+    color: var(--txtcolor);
+    padding-top: var(--padding-top-style);
+}
+
+/*
+====================================================
+    VARIABILI
+==================================================== 
+*/
+
 :root { 
+    /*colori*/
     --BgColor: #83adf0;
     --breadColor: #83adf0;
     --hoverNav: #96baf5; 
@@ -26,21 +51,85 @@
     --caratteristicheImp: #9bbdf3;
     --formbg: #e8f0fd;
     --oscurato: #83888c;
-    --spiegazione: #aec6ed;
+    --altSpiegazione: #aec6ed;
+    --altContr: #0565a8;
+    --erroriBg: #e6a2a2;
+    --erroriContr: #c30d43;
+
+    /* scala tipografica */
+    --fs-h2-titolo-sez: 1.5em;
+    --fs-h3-titolo-card: 1.2em;
+    --fs-base: 1em;
+    --fs-breadcrumb-footer: 0.9em;
+    --fs-legend: 1.2em;
+    --fs-label-dt: 1.1em;
+    --fs-spieg-err: 0.9em;
+
+    /* spaziature */
+    --padding-top-style: 7em;
+    --padding-base: 0.5em 1em;
+    --gap-0-5: 0.5em;
+    --gap-1: 1em;
+    --gap-1-5: 1.5em;
+    --gap-2: 2em;
+
+    /* radius */
+    --radius-base: 1em;
+    --radius-0-5: 0.5em;
+    --radius-0-8: 0.8em;
+    --radius-round: 50%;
+
+
+    /* shadow */
+    --shadow-base: 0 0.3em 0.7em rgba(0,0,0,0.2);
+
+    /*borders*/
+    --btn-border: 2px solid var(--call-to-actionColor);
+
+    /*transitions*/
+    --btn-trans: background-color 0.1s ease, color 0.1s ease;
 }
 
-html, body{ 
-    font-size: 100%; 
-    font-family:"Inter", "Roboto", sans-serif; 
-    line-height: 1.5em; 
-    margin: 0;
+/*
+====================================================
+    SCALA TIPOGRAFICA
+==================================================== 
+*/
+
+h2 {
+    font-size: var(--fs-h2-titolo-sez);
+    text-align: center;
 }
 
-body {
-    background-color: var(--clearBgColor);
-    color: var(--txtcolor);
-    padding-top: 7em;
+h3 {
+    font-size: var(--fs-h3-titolo-card);
+    text-align: center;
 }
+
+label, dt {
+    font-weight: 600;
+    font-size: var(--fs-label-dt);
+}
+
+p, li, dd, span, a, button { 
+    font-size: var(--fs-base); 
+}
+
+legend {
+    font-size: var(--fs-legend);
+    padding: 0 0.5em;
+    font-weight: bold;
+}
+
+#breadcrumb, footer p, footer a { 
+    font-size: var(--fs-breadcrumb-footer); 
+}
+
+/*
+====================================================
+    GENERICI
+==================================================== 
+*/
 
 main {
     display: flex;
@@ -49,12 +138,6 @@ main {
 
 footer {
     margin-top: auto;
-}
-
-h2 {
-    font-size: 1.7em;
-	line-height: 1em;
-    margin-bottom: 0.3em;   
 }
 
 section {
@@ -86,6 +169,288 @@ section {
     padding: 0.5em;
 }
 
+/*
+====================================================
+    BASI
+==================================================== 
+*/
+
+/*
+====================================================
+    BASE: CARD-BASE
+==================================================== 
+*/
+
+.card-base {
+    border-radius: var(--radius-base);
+    padding: 1.5em 1.5em 3.5em 1.5em;
+    text-align: left;
+    display: flex;
+    position: relative;  
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-base:hover,
+.card-base:focus {
+    transform: scale(1.04);
+    box-shadow: var(--shadow-base); 
+}
+
+.card-base a {
+    position: absolute;
+    inset: 0;           
+    z-index: 1;
+}
+
+.card-base a:hover span, .card-base a:focus span {
+    padding: var(--padding-base);
+}
+
+/* ------------- estensione per .categoria  ------------- */
+.categoria {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-2);
+    background-color: var(--clearBgColor);
+    color: var(--txtcolor);
+}
+
+.categoria img {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+li.categoria > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-0-5);
+    flex: 1;
+}
+
+.categoria h3 {
+    color: var(--clearTxtColor);
+    padding: var(--padding-base);
+    border-radius: var(--radius-base);
+    transition: var(--btn-trans);
+}
+
+.categoria p {
+    margin: 0;
+}
+
+.cat-link:hover  span, .cat-link:focus span{
+    background-color: var(--hoverCat);
+}
+
+/* ------------- estensione per .carta ------------- */
+.carta {
+    background-color: var(--card);
+    flex-direction: column;
+    gap: var(--gap-1);
+}
+
+.carta img {
+    max-width: 100%;
+    border-radius: var(--radius-0-8);
+    object-fit: cover;    
+    display: block;
+    align-self: center;
+}
+
+.carta dt {
+    font-weight: 600;
+    margin-top: 0.5em;
+}
+
+.carta dt::after {
+    content: ":";
+}
+
+.carta::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background-image: url("../assets/puntina2.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 3;
+}
+
+.carta .dettagli:hover span, .carta .dettagli:focus span{
+    background-color: var(--hoverDettagli);
+}
+
+/*
+====================================================
+    BASE: BTN-BASE
+==================================================== 
+*/
+
+.btn-base {
+    color: var(--clearTxtColor); 
+    background-color: var(--call-to-actionColor);
+    border: var(--btn-border);
+    border-radius: var(--radius-base);
+    font-weight: bold;
+    transition: var(--btn-trans);
+}
+
+.btn-base:hover, .btn-base:focus{
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
+    outline: var(--btn-border);
+    outline-offset: 1px;
+}
+
+/* ------------- estensione per button ------------- */
+
+button {
+    align-self: center;
+    margin-top: 0.8em; 
+    width: 100%;
+    min-height: 3em;
+}
+
+/* ------------- estensione per .call-to-action ------------- */
+
+.link.call-to-action, #menu .link.call-to-action{
+    color: var(--clearTxtColor);
+}
+
+.link.call-to-action:visited {
+    color: var(--call-to-actionColor);
+    background-color: var(--clearBgColor);
+}
+
+#menu .link.call-to-action:visited{    
+    background-color: var(--BgColor);
+    color: var(--txtcolor);
+}
+
+.link.call-to-action:visited:hover,
+.link.call-to-action:visited:focus,
+#menu .link.call-to-action:visited:hover,
+#menu .link.call-to-action:visited:focus {
+    background-color: var(--call-to-actionAction);
+    outline: var(--btn-border);
+    outline-offset: 1px;
+}
+
+.link.call-to-action:hover,
+.link.call-to-action:focus,
+#menu .link.call-to-action:hover,
+#menu .link.call-to-action:focus {
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
+    outline: var(--btn-border);
+    outline-offset: 1px;
+}
+
+/*
+====================================================
+    BASE: RIQUADRO SPIEGAZIONE
+==================================================== 
+*/
+
+.riquadro-spieg{
+    color: var(--txtcolor);
+    padding: var(--padding-base);
+    border-radius: var(--radius-base);
+    margin-bottom: 1em;
+}
+
+/* ------------- estensione per #alt-spiegazione ------------- */
+
+.alt-spiegazione {
+    background-color: var(--altSpiegazione);
+    border-left: 4px solid var(--altContr);
+}
+
+/* ------------- estensione per .messaggi-errore-form ------------- */
+
+.messaggi-errore-form{
+    background-color: var(--erroriBg);
+    border-left: 4px solid var(--erroriContr);
+    margin-top: 0.5em;
+    align-self: center;
+}
+
+/*
+====================================================
+    BASE: LINK
+==================================================== 
+*/
+
+.link, #menu a { 
+    text-decoration: underline; 
+    text-underline-offset: 0.2em; 
+    color: var(--txtcolor); 
+}
+
+/* ------------- estensione per .card-base a > span ------------- */
+.card-base a > span {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    z-index: 2;
+    font-weight: bold;
+    padding: var(--padding-base);
+    border-radius: var(--radius-base);
+    pointer-events: none;
+    text-transform: none;
+}
+
+/* ------------- estensione per .call-to-action ------------- */
+
+.call-to-action {
+    padding: var(--padding-base);
+}
+
+/* ------------- estensione per #menu a:visitedm ------------- */
+
+#menu a:visited {
+    color: var(--visited);
+}
+
+/* ------------- estensione per .form-container p a ------------- */
+
+.form-container p a{
+    padding: var(--padding-base);
+    font-weight: 600;
+}
+
+/*
+====================================================
+    BASE: SEZIONE A COLONNA
+==================================================== 
+*/
+.section-column {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#categorie {
+    background-color: var(--BgColor);
+    gap: var(--gap-1);
+}
+
+#carte-section {
+    gap: var(--gap-2);
+    background-color: var(--clearBgColor);
+}
+
+#esplora, #profilo {
+    gap: var(--gap-1-5);
+    padding: 2em;
+}
 
 /*
 ====================================================
@@ -98,14 +463,13 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0.3em 2em; 
+    padding: var(--padding-base); 
     background-color: var(--BgColor);
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-base);
 }
 
 #logo-home, 
@@ -128,15 +492,13 @@ header {
     font-size: 3em;
 }
 
-
 #menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     flex: 1;
-    gap: 1em;
-    font-size: 1.1em;
+    gap: var(--gap-1);
 }
 
 #menu .nav-links, #menu .nav-auth {
@@ -155,7 +517,7 @@ header {
 }
 
 #menu .nav-auth {
-    gap: 2em;
+    gap: var(--gap-2);
     justify-content: flex-end;
 }
 
@@ -165,22 +527,12 @@ header {
 
 #menu a {
     color: var(--txtcolor);
-    padding: 0.3em 0.6em;
+    padding: var(--padding-base);
+    font-weight: 600;
 }
 
 #menu a.call-to-action {
-    padding: 0.5em 1em; 
-}
-
-#menu .nav-links a{
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-}
-
-#menu a:visited {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    color: var(--visited);
+    padding: var(--padding-base); 
 }
 
 .current-link {
@@ -195,10 +547,13 @@ header {
     text-transform: uppercase;
 }
 
-#menu a:not(.call-to-action):hover, #menu a:not(.call-to-action):focus {
-    border-radius: 1em;
+#menu a:not(.call-to-action):hover, 
+#menu a:not(.call-to-action):focus,
+.form-container p a:hover,
+.form-container p a:focus {
+    border-radius: var(--radius-base);
     background-color: var(--hoverNav);
-    padding: 0.3em 0.6em;   
+    padding: var(--padding-base);   
 }
 
 #hamburger,
@@ -206,51 +561,6 @@ header {
 #hamburger-aperto,
 #hamburger-chiuso {
     display: none;
-}
-
-/*
-====================================================
-    SEZIONE .call-to-action
-==================================================== 
-*/
-
-.call-to-action {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    color: var(--clearTxtColor); 
-    background-color: var(--call-to-actionColor);
-    border: 2px solid var(--call-to-actionColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    font-weight: bold;
-    transition: background-color 0.1s ease, color 0.1s ease;
-}
-
-.call-to-action:visited {
-    color: var(--call-to-actionColor);
-    background-color: var(--clearBgColor);
-}
-
-#menu .call-to-action:visited{    
-    background-color: var(--BgColor);
-}
-
-
-.call-to-action:visited:hover,
-.call-to-action:visited:focus,
-#menu .call-to-action:visited:hover,
-#menu .call-to-action:visited:focus {
-    background-color: var(--call-to-actionAction);
-    outline: 2px solid var(--call-to-actionColor);
-    outline-offset: 1px;
-}
-
-.call-to-action:hover,
-.call-to-action:focus {
-    background-color: var(--call-to-actionAction);
-    color: var(--call-to-actionColor);
-    outline: 2px solid var(--call-to-actionColor);
-    outline-offset: 1px;
 }
 
 /*
@@ -263,19 +573,18 @@ header {
     display: flex;
     justify-content: center;
     background-color: var(--breadColor);
-    border-radius: 1em;
-    padding: 0.5em 1em;
+    border-radius: var(--radius-base);
+    padding: var(--padding-base);
     margin: 1em auto;
-    font-size: small;
     width: fit-content; 
     max-width: 100%;
-    box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-base);
 }
 
 #breadcrumb ol {
     list-style: none;
     display: flex;
-    gap: 0.5em;
+    gap: var(--gap-0-5);
     padding: 0em;
     margin: 0;
 }
@@ -314,39 +623,15 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5em;
+    gap: var(--gap-0-5);
 }
-
-/*#footer-top > img {
-    height: 50px;
-    width: auto;
-}
-
-#siteMap {
-    list-style: none;
-    display: flex;
-    gap: 2em;
-    margin: 0;
-    background-color: var(--call-to-actionColor);
-    color: var(--clearBgColor);
-    border: 2px solid var(--call-to-actionColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-}
-
-#siteMap a:visited {
-    color:var(--call-to-actionAction)
-}*/
 
 #site-map {
     list-style: none;
     display: flex;
-    gap: 2em;
+    gap: var(--gap-2);
     margin-bottom: 0.5em;
-    padding: 0.5em 1em;
-    /*border: 2px solid var(--call-to-actionColor);
-    border-radius: 1em;
-    border-bottom: 1px solid var(--call-to-actionColor);*/
+    padding: var(--padding-base);
 }
 
 #site-map a {
@@ -360,7 +645,7 @@ footer {
 .freccia-su {
     background-color: var(--call-to-actionColor);
     padding: 1em;
-    border-radius: 50%;
+    border-radius: var(--radius-round);
     display: inline-block;
     transition: transform 0.3s ease;
 }
@@ -386,7 +671,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: var(--gap-1);
 }
 
 #footer-bottom p{
@@ -395,7 +680,6 @@ footer {
     min-width: 200px;
     text-align: center;
     font-style: italic;
-    font-size: small;
     color: var(--txtcolor);
 }
 
@@ -406,25 +690,25 @@ footer {
 
 /*
 ====================================================
-    SEZIONE HERO + ERRORI
+    SEZIONE IMG + TESTO (presentazione, errori)
 ==================================================== 
 */
 
-#presentazione, .errore {
+.img-text-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: var(--gap-2);
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1200px;    
 }
 
 .errore {
     height: calc(100vh - 8em);
 }
 
-#presentazione > img , .errore > img{
+.img-text-section > img{
     flex: 0 1 40%;
     width: 100%;
     max-width: 450px;
@@ -432,26 +716,25 @@ footer {
     height: auto;
 }
 
-#presentazione > div , .errore > div {
+.img-text-section h2 {
+    text-align: left;
+}
+
+.img-text-section > div {
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: var(--gap-1);
 }
 
 #testo-errore {
-    gap: 0.5em;
+    gap: var(--gap-0-5);
 }
 
-#presentazione p, .errore p {
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-#presentazione .azioni, .errore .azioni{
+.img-text-section .azioni{
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: var(--gap-1);
 }
 
 /*
@@ -460,534 +743,19 @@ footer {
 ==================================================== 
 */
 
-#categorie {
-    background-color: var(--BgColor);
-    text-align: center;
-}
-
 #categorie ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2em;
+    gap: var(--gap-2);
     list-style: none;
     padding: 0;
-    margin: 0 auto;
-    max-width: 1200px;
-    margin-top: 1em;
-}
-
-.categoria {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2em;
-    padding: 1.5em 1.5em 3.5em 1.5em;
-    border-radius: 1em;
-    background-color: var(--clearBgColor);
-    color: var(--txtcolor);
-    text-align: left;
-    position: relative;  
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.categoria img {
-    width: 120px;
-    height: auto;
-    flex-shrink: 0;
-}
-
-li.categoria > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2em;
-    flex: 1;
-}
-
-.categoria h3 {
-    font-size: 1.2em;
-    text-align: center;
-    margin: 0.5em 0;
-    color: var(--clearTxtColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.categoria p {
-    margin: 0;
-    font-size: 1em;
-    line-height: 1.4;
-}
-
-/*
-====================================================
-    SEZIONE ULTIMI INSERITI + ANNUNCI PUBBLICATI (PROFILO UTENTE)
-==================================================== 
-*/
-
-#carte-section {
-    background-color: var(--clearBgColor);
-    text-align: center;
-}
-
-#carte-section h2, #carte-section h3 {
-    margin-bottom: 1.5em;
-}
-
-/*
-====================================================
-    CARD ULTIMI INSERITI + LISTA CARTE
-==================================================== 
-*/
-
-#carte-section ul, #listaCarte {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
-    row-gap: 2em;
-    column-gap: 1em;
-    list-style: none;
-    padding: 0;
-    margin: 0 ;
-}
-
-.carta {
-    background-color: var(--card);
-    border-radius: 1em;
-    padding: 1.5em 1.5em 3em 1.5em;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-    position: relative;  
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.carta img {
+    margin: 1em auto;
     max-width: 100%;
-    border-radius: 0.8em;
-    object-fit: cover;    
-    display: block;
-    align-self: center;
-}
-
-.carta h3 {
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-}
-
-.carta dl {
-    margin: 0;
-    line-height: 1.5em;
-}
-
-.carta dt {
-    font-weight: 600;
-    font-size: 1em;
-    margin-top: 0.5em;
-}
-
-.carta dt::after {
-    content: ":";
-}
-
-.carta dd {
-    margin: 0;
-    font-size: 1em;
-}
-
-.categoria,
-.carta {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.categoria:hover,
-.categoria:focus,
-.carta:hover,
-.carta:focus {
-    transform: scale(1.04);
-    box-shadow: 0 0.4em 0.5em rgba(0,0,0,0.2); 
-}
-
-.cat-link,
-.carta .dettagli {
-    position: absolute;
-    inset: 0;           
-    z-index: 1;
-}
-
-.cat-link:hover span, .cat-link:focus span,
-.carta .dettagli:hover span, .carta .dettagli:focus span {
-    padding: 0.3em 0.6em; 
-}
-
-.cat-link:hover  span, .cat-link:focus span{
-    background-color: var(--hoverCat);
-}
-
-.carta .dettagli:hover span, .carta .dettagli:focus span{
-    background-color: var(--hoverDettagli);
-}
-
-.categoria a > span, 
-.carta a > span{
-    position: absolute;
-    bottom: 1em;
-    right: 1em;
-    z-index: 2;
-    font-size: 1em;
-    color: var(--txtcolor);
-    font-weight: bold;
-    text-decoration: underline;
-    text-underline-offset: 0.1em;
-    padding: 0.3em 0.6em;
-    border-radius: 1em;
-    pointer-events: none;
-    text-transform: none;
-}
-
-.carta::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    background-image: url("../assets/puntina2.png"); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 3;
-}
-
-/*
-====================================================
-    SEZIONE ESPLORA + FILTRI
-==================================================== 
-*/
-.esplora {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 2em;
-    text-align: center;
-}
-
-#esplora-content { 
-    display: flex; 
-    flex-direction: row; 
-    align-items: flex-start; 
-    gap: 1em;
-    padding: 1em; 
-}
-
-#aside-style-layout{
-    flex: 0 0 340px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1em;   
-    width: 20%;
-    min-width: 340px;
-    margin: 1em 0 1em 1.5em;
-}
-
-#ricerca fieldset {
-    border: none; 
-}
-
-label {
-    font-weight: bold;
-}
-
-#ricerca label {
-    font-size: 1.2em;
-}
-
-#toggleFiltri,
-#chiudiFiltri {
-    display: none;
-}
-
-#filtri .form-data .nascondi-filtri{
-    display: none;
-}
-
-/*
-====================================================
-    SEZIONE CAROSELLO CON MINIATURE
-==================================================== 
-*/
-
-#carosello {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
-    justify-content: center; 
-    margin: 0;    
-    flex-wrap: wrap;
-    padding: 0;
-}
-
-.carosello-principale {
-    width: clamp(280px, 60vw, 500px);
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    border-radius: 1em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    position: relative;
-}
-
-.carosello-principale img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: opacity 0.3s ease;
-    border-radius: 1em;
-}
-
-.carosello-thumbnails img.attiva {
-    opacity: 1;
-    transform: scale(1.05);
-    outline: 2px solid var(--call-to-actionColor);
-}
-
-#carosello button.nascosto {
-  display: none;
-}
-
-#carosello button.attivo {
-  display: block; 
-}
-
-#carosello-prev,
-#carosello-next {
-    all: unset;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--call-to-actionTransp);
-    color: var(--clearTxtColor);
-    border: none;
-    padding: 0.5em 0.8em;
-    /*padding: 0.6em 0.6em; rettangolo schiacciato*/
-    cursor: pointer;
-    border-radius: 0.5em; /* quadrato arrotondato*/
-    /*border-radius: 50%; cerchio*/
-    font-size: 1.7em;
-    justify-content: center;
-}
-
-#carosello-prev { left: 0.5em; }
-
-#carosello-next { right: 0.5em; }
-
-#carosello-prev:hover,
-#carosello-next:hover {
-  background: var(--call-to-actionColor);
-}
-
-.carosello-thumbnails {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    justify-content: center;
-    flex: 0 0 auto;
-}
-
-.carosello-thumbnails img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 0.5em;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-
-
-/*
-.bottoniCarosello{
-    display: flex;
-    flex-direction: row;
-    height: 150px;
-    width: 150px;
-    gap: 1em;
-    /* margin: 2em; e dimensioni a 50 px per immagini
-}*/
-
-/*
-===========================================================
-    SEZIONE ANNUNCIO
-=========================================================== 
-*/
-
-#annuncioTop {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;    
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 2.5em; 
-}
-
-.info {
-    flex: 0 1 400px; 
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7em;       
-    padding: 1.5em;
-    align-self: center;
-}
-
-.info h2 {
-    margin-bottom: 0.2em;
-}
-
-.info > dl {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7em;
-}
-
-.attrAnnuncio {
-    background-color: var(--caratteristicheImp);
-    border-radius: 1em;
-    padding: 0.5em 0.8em;
-    text-align: center;
-    box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.2);
-}
-
-.attrAnnuncio dt {
-    font-weight: bold;
-}
-
-.descrizioneAnnuncio {
-    background-color: var(--card);
-    border-radius: 1em;
-    padding: 1.5em 1.2em;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6em;
-    margin: 2em auto 2em;
-    width: 100%;          
-    max-width: 1000px;      
-    min-height: 200px;
-    box-sizing: border-box; 
 }
 
 /*
 ===========================================================================
-    SEZIONE ACCEDI
-===========================================================================
-*/
-
-#login-container{
-    min-width: 20em;            
-}
-
-/*
-===========================================================================
-    SEZIONE REGISTRATI
-===========================================================================
-*/
-
-
-
-/*
-===========================================================================
-    SEZIONE PUBBLICA + IMMAGINI PUBBLICA FORM
-===========================================================================
-*/
-
-#attr-generici-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2em 3em;
-}
-
-#attr-specifici-container fieldset{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2em 3em;
-}
-
-.alt-spiegazione {
-    font-size: 0.95em;
-    color: var(--txtcolor);
-    background-color: var(--spiegazione);
-    padding: 0.8em 1em;
-    border-left: 4px solid var(--call-to-actionColor);
-    border-radius: 0.5em;
-    margin-bottom: 1em;
-    line-height: 1.5;
-}
-
-.image-block {
-    display: flex;
-    flex-direction: column;    
-    padding: 0.3em; 
-    gap: 0em;
-    width: 100%;
-}
-
-.img-campi {
-    display: flex;
-    flex-direction: row;       
-    align-items: center;       
-    gap: 1em;
-}
-
-.dec-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    margin: 0;
-    font-weight: 500;
-}
-
-.img-campi input[type="file"],
-.img-campi input[type="text"] {
-    flex: 1;
-    min-width: 0;
-}
-
-.img-campi input[type="checkbox"]{
-    outline: none;
-}
-
-.img-campi:has(#decorativa1:checked) #alt1,
-.img-campi:has(#decorativa2:checked) #alt2,
-.img-campi:has(#decorativa3:checked) #alt3,
-.img-campi:has(#decorativa4:checked) #alt4 {
-    background-color: var(--oscurato);  
-}
-
-
-#img2, #img3, #img4 {
-    display:none;
-}
-
-#attr-specifici-container .nascondi-campi{
-    display: none;
-}
-
-/*
-================= MODULARI su più PAGINE ============================================================= 
-*/
-/*
-===========================================================================
-    SEZIONE ETICHETTE CATEGORIA (usate in Categorie, card carte-section)
+    ETICHETTE CATEGORIA (usate in Categorie, card carte-section)
 ===========================================================================
 */
 
@@ -995,8 +763,8 @@ label {
     display: inline-block;
     font-weight: 600;
     text-transform: uppercase;
-    padding: 0.4em 1em;
-    border-radius: 1em;
+    padding: var(--padding-base);
+    border-radius: var(--radius-base);
     color: var(--clearTxtColor);
     text-align: center;
     background-color: var(--required); 
@@ -1038,56 +806,252 @@ label {
     color: var(--ripetizioniColor);
 }  
 
-
-
 .dettagli:visited span {
     color: var(--visited)
 }
 
+/*
+====================================================
+    CARTE SECTION (utilizzata in ultimi inseriti + annunci pubblicati (PROFILO UTENTE))
+==================================================== 
+*/
+
+#carte-section ul, #listaCarte {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+    row-gap: var(--gap-2);
+    column-gap: var(--gap-1);
+    list-style: none;
+    padding: 0;
+    margin: 0 ;
+}
+
+/*
+====================================================
+    SEZIONE ESPLORA + ASIDE FILTRI
+==================================================== 
+*/
+
+#esplora-content { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+    gap: var(--gap-1);
+    padding: 1em; 
+}
+
+#aside-style-layout{
+    flex: 0 0 340px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: var(--gap-1);   
+    width: 20%;
+    min-width: 340px;
+    margin: 1em 0 1em 1.5em;
+}
+
+/*
+#ricerca fieldset {
+    border: none; 
+}*/
+
+/*
+#ricerca label {
+    font-size: 1.2em;
+}*/
+
+#toggleFiltri,
+#chiudiFiltri {
+    display: none;
+}
+
+#filtri .form-data .nascondi-filtri{
+    display: none;
+}
+
+/*
+====================================================
+    SEZIONE CAROSELLO CON MINIATURE
+==================================================== 
+*/
+
+#carosello {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-1);
+    align-items: center;
+    justify-content: center; 
+    margin: 0;    
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.carosello-principale {
+    width: clamp(280px, 60vw, 500px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-base);
+    box-shadow: var(--shadow-base);
+    position: relative;
+}
+
+.carosello-principale img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.3s ease;
+    border-radius: var(--radius-base);
+}
+
+.carosello-thumbnails img.attiva {
+    opacity: 1;
+    transform: scale(1.05);
+    outline: var(--btn-border);
+}
+
+#carosello button.nascosto {
+  display: none;
+}
+
+#carosello button.attivo {
+  display: block; 
+}
+
+#carosello-prev,
+#carosello-next {
+    all: unset;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--call-to-actionTransp);
+    color: var(--clearTxtColor);
+    border: none;
+    padding: 0.6em 0.7em;
+    cursor: pointer;
+    border-radius: var(--radius-0-5); 
+    font-size: 1.7em;
+    justify-content: center;
+}
+
+#carosello-prev { left: 0.5em; }
+
+#carosello-next { right: 0.5em; }
+
+#carosello-prev:hover,
+#carosello-next:hover {
+  background: var(--call-to-actionColor);
+}
+
+.carosello-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.carosello-thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-0-5);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
 /*
 ===========================================================
-    SEZIONE FORM (usata per accesso, registrazione, filtri, pubblica)
+    SEZIONE ANNUNCIO
 =========================================================== 
 */
 
-#login-container, #register-container, #filtri, #pubblica-container, #dati-pers-container {
+#annuncioTop {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-2);    
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2.5em; 
+}
+
+.info {
+    flex: 0 1 400px; 
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);       
+    padding: 1.5em;
+    align-self: center;
+}
+
+.info > dl {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+}
+
+.attrAnnuncio {
+    background-color: var(--caratteristicheImp);
+    border-radius: var(--radius-base);
+    padding: var(--padding-base);
+    text-align: center;
+    box-shadow: var(--shadow-base);
+}
+
+.attrAnnuncio dt {
+    font-weight: bold;
+}
+
+.descrizioneAnnuncio {
+    background-color: var(--card);
+    border-radius: var(--radius-base);
+    padding: 1.5em 1.2em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+    margin: 2em auto 2em;
+    width: 100%;          
+    max-width: 1000px;      
+    min-height: 200px;
+    box-sizing: border-box; 
+}
+
+/*
+======================================================================================
+    SEZIONE FORM (usata per accesso, registrazione, filtri, pubblica, dati personali)
+====================================================================================== 
+*/
+
+.form-container {
     display: flex;
     justify-content: center;
     flex-direction: column;  
     width: 100%;              
-    max-width: 40em;       
     padding: 2em;
-    margin: 2em auto 2em auto;
+    margin: 2em auto;
     background-color: var(--BgColor);
-    border-radius: 1em;
-    gap: 0.5em;
+    border-radius: var(--radius-base);
+    gap: var(--gap-0-5);
 }
 
+.form-container-small {
+    max-width: 40em;         
+}     
 
-#register-container, #pubblica-container, #dati-pers-container {
+.form-container-large {
     max-width: 60em;
 }
 
-#login-container h2, #register-container h2, #filtri h2, #pubblica-container h2 {
-    text-align: center;
-    margin: 0;
-}
-
-
-#pubblica-container fieldset, #filtri .fieldset-filtri {
-    border: 2px solid var(--txtcolor);   
-    border-radius: 0.8em;                
-    padding: 1em; 
+.fieldset-base {
+    border: 2px solid var(--txtcolor);
+    border-radius: var(--radius-base);
+    padding: 1em;
     margin-top: 0.5em;
-           
-}
-
-#pubblica-container fieldset legend, #filtri .fieldset-filtri legend, #dati-pers-container dt {
-    font-weight: bold;
-    color: var(--txtcolor);
-    padding: 0 0.5em;        
-    font-size: 1.2em;            
 }
 
 #login-container .form-data, #filtri .form-data fieldset {
@@ -1099,30 +1063,25 @@ label {
 #register-container .form-data {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-    gap: 2em 3em; 
+    gap: var(--gap-2); 
 }
 
 #pubblica-container .form-data {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 1.2em; 
+    gap: var(--gap-1); 
 }
 
-.form-data > div, .form-data fieldset > div,
-#pubblica-titolo-container, 
-#attr-generici-container > div, 
-#attr-specifici-container div,
-#dati-pers-container div {
+.form-div {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: var(--gap-0-5);
     text-decoration: none; 
 }
 
 input, select {
-    font-size: 1em;
-    border-radius: 0.8em;
+    border-radius: var(--radius-base);
     min-height: 3em;
     text-indent: 1em;
     background-color: var(--formbg);
@@ -1139,27 +1098,6 @@ input:focus, select:focus {
     outline-offset: 2px;
 }
 
-/*.input-wrapper-price {
-    position: relative;
-    display: inline-block;
-    width: 100%; 
-}
-
-.input-wrapper-price input {
-    width: 100%; 
-    padding-right: 5em; 
-}
-
-.input-wrapper-price::after {
-    content: "€ / mese";
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--txtcolor);
-    pointer-events: none; 
-}*/
-
 input[type="file"] {
     display: inline-block;
     vertical-align: middle;
@@ -1171,7 +1109,7 @@ input[type="file"] {
     display: flex;
     align-items: center;
     justify-content: center;   
-    gap: 0.5em;
+    gap: var(--gap-0-5);
     margin-top: 0.5em;
     font-weight: 500;
     color: var(--txtcolor);
@@ -1180,34 +1118,10 @@ input[type="file"] {
 #criteriMinimiPassword {
     text-align: left;
     margin-top: 1.5em;
-    font-size: 1em;
-    line-height: 1.4;
 }
 
 #criteriMinimiPassword ul {
     margin-left: 1.5em;
-}
-
-button {
-    align-self: center;
-    margin-top: 0.8em; 
-    width: 100%;
-    /*padding: 0.7em 3em;*/
-    border-radius: 1em;
-    min-height: 3em;
-    background-color: var(--call-to-actionColor);
-    color: var(--clearTxtColor);
-    font-weight: bold;
-    font-size: 1em;
-    border: 2px solid var(--call-to-actionColor);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-button:hover, button:focus{
-    background-color: var(--call-to-actionAction);
-    color: var(--call-to-actionCor);
-    outline: 2px solid var(--call-to-actionColor);
-    outline-offset: 1px;
 }
 
 form > p, form > p{
@@ -1215,48 +1129,74 @@ form > p, form > p{
     margin-top: 1.5em;
 }
 
-#login-container p a, #register-container p a{
-    text-decoration: underline;
-    padding: 0.1em 0.3em;
-    text-underline-offset: 0.2em;
-    font-weight: 600;
-    color: var(--txtcolor);
-}
-
-#login-container p a:hover, #login-container p a:focus,
-#register-container p a:hover, #register-container p a:focus {
-    border-radius: 0.6em;
-    background-color: var(--hoverNav);
-    padding: 0.1em 0.3em;
-}
-
 .required {
     color: var(--required)
 }
 
-/* .required {
-    display: inline-block;
-    padding: 0.4em 0.8em;
-    border-radius: 1.5em;
-    color: var(--clearTxtColor);
-    text-align: center;
-    background-color: var(--affittiColor); 
-    margin-left: 0.5em;
-    font-size: small;
-} */
+/*
+===========================================================================
+    SEZIONE PUBBLICA LAYOUT CAMPI
+===========================================================================
+*/
 
-.messaggi-errore-form{
-    font-size: 0.95em;
-    color: var(--txtcolor);
-    background-color: #FFB5B5;
-    padding: 0.8em 2em;
-    border-left: 4px solid var(--affittiColor);
-    border-radius: 0.5em;
-    margin-bottom: 1em;
-    line-height: 1.5;
-/*    max-width: 60%; */
-    margin-top: 0.5em;
-    align-self: center;
+#attr-generici-container {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: var(--gap-2);
+}
+
+#attr-specifici-container fieldset {
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    gap: var(--gap-2);
+}
+
+.image-block {
+    display: flex;
+    flex-direction: column;    
+    padding: 0.3em; 
+    gap: 0em;
+    width: 100%;
+}
+
+.img-campi {
+    display: flex;
+    flex-direction: row;       
+    align-items: center;       
+    gap: var(--gap-1);
+}
+
+.dec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-0-5);
+    margin: 0;
+}
+
+.img-campi input[type="file"],
+.img-campi input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.img-campi input[type="checkbox"]{
+    outline: none;
+}
+
+.img-campi:has(#decorativa1:checked) #alt1,
+.img-campi:has(#decorativa2:checked) #alt2,
+.img-campi:has(#decorativa3:checked) #alt3,
+.img-campi:has(#decorativa4:checked) #alt4 {
+    background-color: var(--oscurato);  
+}
+
+
+#img2, #img3, #img4 {
+    display:none;
+}
+
+#attr-specifici-container .nascondi-campi{
+    display: none;
 }
 
 /*
@@ -1265,24 +1205,12 @@ form > p, form > p{
 ==================================================== 
 */
 
-#profilo {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 2.5em;
-    text-align: center;
-}
-
 #dati-personali {
     padding: 0;
 }
 
-#profilo h3 {
-    font-size: 1.3em;
-}
-
 #dati-pers-container {
-    gap: 2em;
+    gap: var(--gap-2);
     margin: 0 auto;
 }
 
@@ -1290,27 +1218,22 @@ form > p, form > p{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.2em;
+    gap: var(--gap-1);
 }
 
 .profilo-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 1.5em;
+    gap: var(--gap-1-5);
 }
 
 .profilo-grid div {
     background-color: var(--formbg);
     padding: 1em 1.2em;
-    border-radius: 0.8em;
+    border-radius: var(--radius-base);
     display: flex;
     flex-direction: column;
-    gap: 0.3em;
+    gap: var(--gap-0-5);
     min-width: 200px; 
-    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.1);
-}
-
-.profilo-grid dt {
-    font-weight: bold;
-    font-size: 1.2em;
+    box-shadow: var(--shadow-base);
 }
