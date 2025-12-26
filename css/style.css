@@ -68,6 +68,7 @@ body {
     /* spaziature */
     --padding-top-style: 7em;
     --padding-base: 0.5em 1em;
+    --padding-riq: 1em;
     --gap-0-5: 0.5em;
     --gap-1: 1em;
     --gap-1-5: 1.5em;
@@ -211,13 +212,13 @@ section {
 .categoria {
     flex-direction: row;
     align-items: center;
-    gap: var(--gap-2);
+    gap: var(--gap-0-5);
     background-color: var(--clearBgColor);
     color: var(--txtcolor);
 }
 
 .categoria img {
-    width: 120px;
+    width: 100px;
     height: auto;
     flex-shrink: 0;
 }
@@ -361,9 +362,10 @@ button {
 
 .riquadro-spieg{
     color: var(--txtcolor);
-    padding: var(--padding-base);
+    padding: var(--padding-riq);
     border-radius: var(--radius-base);
     margin-bottom: 1em;
+    padding-left: 1.5em;
 }
 
 /* ------------- estensione per #alt-spiegazione ------------- */
@@ -745,7 +747,7 @@ footer {
 
 #categorie ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
     gap: var(--gap-2);
     list-style: none;
     padding: 0;
@@ -1237,3 +1239,9 @@ form > p, form > p{
     min-width: 200px; 
     box-shadow: var(--shadow-base);
 }
+
+/*
+====================================================
+    DA MODULARIZZARE
+==================================================== 
+*/

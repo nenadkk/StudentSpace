@@ -33,7 +33,7 @@ if($db->openDBConnection()) {
             $cards = '<div class="centered">
                         <p>Nessun annuncio pubblicato.</p>
                         <div class="azioni">
-                            <a class="call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
                         </div>
                     </div>';
         }
