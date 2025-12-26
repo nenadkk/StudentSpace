@@ -227,59 +227,32 @@ function toggleMultipleAlt() {
 
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
+  const filtroCategoria = document.getElementById('categoria');
+  if(!filtroCategoria) return;
 
-  // SEZIONE PER NASCONDERE I FILTRI RISPETTIVI PER OGNI CATEGORIA
-  const sceltaCategoria = document.getElementById('categoria');
-
-  if(sceltaCategoria)
-  {
-    const filtriEventi = document.getElementById('filtri-eventi');
-    const filtriEsperimenti = document.getElementById('filtri-esperimenti');
-    const filtriAffitti = document.getElementById('filtri-affitti');
-    const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
-
-    // Nascondi tutti 
-    filtriEventi.classList.add('nascondi-filtri');
-    filtriEsperimenti.classList.add('nascondi-filtri');
-    filtriAffitti.classList.add('nascondi-filtri');
-    filtriRipetizioni.classList.add('nascondi-filtri');
-
-    // Mostra solo quello selezionato
-    if (sceltaCategoria.value === 'Eventi') {
-      filtriEventi.classList.remove('nascondi-filtri');
-    } else if (sceltaCategoria.value === 'Esperimenti') {
-      filtriEsperimenti.classList.remove('nascondi-filtri');
-    } else if (sceltaCategoria.value === 'Affitti') {
-      filtriAffitti.classList.remove('nascondi-filtri');
-    } else if (sceltaCategoria.value === 'Ripetizioni') {
-      filtriRipetizioni.classList.remove('nascondi-filtri');
-    }
-    
-    sceltaCategoria.addEventListener('change', function() {
-      const filtriEventi = document.getElementById('filtri-eventi');
-      const filtriEsperimenti = document.getElementById('filtri-esperimenti');
-      const filtriAffitti = document.getElementById('filtri-affitti');
-      const filtriRipetizioni = document.getElementById('filtri-ripetizioni');
-
-      //console.log(this.value);
-      // Nascondi tutti 
-      filtriEventi.classList.add('nascondi-filtri');
-      filtriEsperimenti.classList.add('nascondi-filtri');
-      filtriAffitti.classList.add('nascondi-filtri');
-      filtriRipetizioni.classList.add('nascondi-filtri');
-
-      // Mostra solo quello selezionato
-      if (this.value === 'Eventi') {
-        filtriEventi.classList.remove('nascondi-filtri');
-      } else if (this.value === 'Esperimenti') {
-        filtriEsperimenti.classList.remove('nascondi-filtri');
-      } else if (this.value === 'Affitti') {
-        filtriAffitti.classList.remove('nascondi-filtri');
-      } else if (this.value === 'Ripetizioni') {
-        filtriRipetizioni.classList.remove('nascondi-filtri');
-      }
-    });
+  const categorie = {
+    Affitti: document.getElementById('filtri-affitti'),
+    Esperimenti: document.getElementById('filtri-esperimenti'),
+    Eventi: document.getElementById('filtri-eventi'),
+    Ripetizioni: document.getElementById('filtri-ripetizioni')
   }
+
+  function aggiornaFiltri() {
+    Object.values(categorie).forEach(div => {
+      div.classList.add('nascondi-filtri');
+      setDisabled(div, true);
+    });
+
+    const selezionato = categorie[filtroCategoria.value];
+    if(selezionato) {
+      selezionato.classList.remove('nascondi-campi');
+      setDisabled(selezionato, false);
+    }
+  }
+
+  aggiornaFiltri();
+  filtroCategoria.addEventListener('change', aggiornaFiltri());
+
 }
 
 // JS PER TOGGLE PUBBLICA CATEGORIA
@@ -289,9 +262,9 @@ function togglePubblicaCategoria() {
   if (!sceltaCategoria) return;
 
   const categorie = {
-    Eventi: document.getElementById('campi-eventi'),
-    Esperimenti: document.getElementById('campi-esperimenti'),
     Affitti: document.getElementById('campi-affitti'),
+    Esperimenti: document.getElementById('campi-esperimenti'),
+    Eventi: document.getElementById('campi-eventi'),
     Ripetizioni: document.getElementById('campi-ripetizioni')
   };
 
