@@ -1079,12 +1079,12 @@ footer {
     display: flex;
     flex-direction: column;
     gap: var(--gap-0-5);
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 input, select {
     border-radius: var(--radius-base);
-    min-height: 3em;
+    min-height: 4em;
     text-indent: 1em;
     background-color: var(--formbg);
     color: var(--txtcolor);
