@@ -13,7 +13,7 @@ $categoria = "";
 
 $cardsData="";
 $cards = "";
- 
+
 $filtriGenerali = array(
                 "cerca"=>"",
                 "citta"=>"",
@@ -141,8 +141,6 @@ $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'se
 $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
 
-
-//INSERIMENTO CARDS
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
