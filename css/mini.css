@@ -1,18 +1,22 @@
+:root {
+    --padding-top-mini: 5em;  
+}
+
 body, html {
     width: 100%;
     overflow-x: hidden;
 }
 
 body {
-    padding-top: 5em;
+    padding-top: var(--padding-top-mini);
 }
 
 section {
-    padding: 3em 2em;
+    padding: 2em 1em;
 }
 
-:hover {
-    transform: none;
+.card-base:hover, .btn-base:hover { 
+    transform: none; 
 }
 
 /*
@@ -56,51 +60,41 @@ header {
     cursor: pointer;  
 }
 
-#hamburger span {
-    line-height: 1;
-}
-
 #hamburger-menu {
     display: none;
     width: 100%;
     padding-top: 0.5em;
-    box-shadow: 0 -10px 6px -10px rgba(0,0,0,0.3); 
+    box-shadow: 0 -0.5em 0.5em -0.5em rgba(0,0,0,0.3); 
 }
 
 #hamburger-menu.attivo{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     gap: 1.8em;
-    font-size: 1.1em;
     margin-bottom: 1.2em;
 }
 
-#hamburger-menu .nav-links, #hamburger-menu .nav-auth {
+#hamburger-menu .nav-links, 
+#hamburger-menu .nav-auth {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
-    font-weight: 500;
     flex-direction: column;
 }
 
 #hamburger-menu .nav-links{
-    gap: 0.7em;
+    gap: var(--gap-1);
 }
 
 #hamburger-menu .nav-auth {
-    gap: 1.6em;
-}
-
-#hamburger-menu li{
-    color: var(--txtcolor);
+    gap: var(--gap-1-5);
 }
 
 #hamburger-menu a {
     color: var(--txtcolor);
-    padding: 0.3em 0.6em;
+    padding: var(--padding-base);
 }
 
 #hamburger-menu .nav-links a{
@@ -114,29 +108,16 @@ header {
     color: var(--visited);
 }
 
-#hamburger-menu .call-to-action {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    color: var(--clearTxtColor); 
-    background-color: var(--call-to-actionColor);
-    border: 2px solid var(--call-to-actionColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease;
+#hamburger-menu .link.call-to-action{
+    color: var(--clearTxtColor);
 }
 
 #hamburger-menu .call-to-action:visited{    
     color: var(--call-to-actionColor);
     background-color: var(--BgColor);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#hamburger-aperto.attivo {
-    display: flex;
-}
+#hamburger-aperto.attivo,
 #hamburger-chiuso.attivo {
     display: flex;
 }
@@ -160,40 +141,42 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5em;
+    gap: var(--gap-0-5);
     text-align: center;
 }
 
 #footer-bottom p {
     margin-top: 0.5em; 
-    font-size: 10pt;
-    font-style: italic;
-    text-align: center;
     flex: none;
-    min-width: auto;
 }
 
 /*
 ====================================================
-    SEZIONE HERO + ERRORI
+    SEZIONE IMMAGINE + TESTO
 ==================================================== 
 */
 
-#presentazione, .errore {
-    display: block;
+.img-text-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;  
+    gap: var(--gap-1);
+}
+
+.img-text-section h2 {
     text-align: center;
 }
 
-#presentazione > img, .errore > img {
+.img-text-section > img {
     display: inline-block;
-    margin: 0 auto;
-    width: 90%;
+    width: 80%;
     max-width: 400px;
     height: auto;
-    margin-bottom: 2em;
+    object-fit: contain;
+    margin: 0;
 }
 
-#presentazione .azioni, .errore .azioni {
+.img-text-section .azioni {
     justify-content: center;
 }
 
@@ -201,11 +184,6 @@ header {
 ====================================================
     SEZIONE FILTRI
 ==================================================== 
-#filtri {
-    float: none;
-    width: auto;
-    margin: 0;
-}
 */
 
 #aside-style-layout {
@@ -213,7 +191,7 @@ header {
   width: 100%;            
   min-width: unset;       
   margin: 0 auto;          
-  padding: 1em;              
+  padding: 0;              
 }
 
 
@@ -222,36 +200,23 @@ header {
     padding: 0;
 }
 
-
-#ricerca,
 #toggleFiltri {
     width: 100%;         
     max-width: 40em;      
     margin: 0 auto;        
-    box-sizing: border-box;
-}
-
-#ricerca .form-data {
-    padding: 0;
 }
 
 #toggleFiltri {
     display: block;
-    padding: 0.8em 1.2em;
-    font-size: 1.2em;
-    border-radius: 1em;
-    background-color: var(--BgColor);
-    color: var(--txtcolor);
-    font-weight: bold;
-    border: none;
-    text-align: left;
+    padding: var(--padding-base);
+    font-size: var(--fs-h3-titolo-card);
     margin: 1em auto;
 }
 
 #toggleFiltri::before {
     content: "›";
     margin-right: 0.5em;
-    font-size: 1.5em;
+    font-size: var(--fs-h3-titolo-card);
 }
 
 #filtri {
@@ -285,7 +250,7 @@ header {
 
 #chiudiFiltri {
     all: unset;
-    font-size: 1.5em;
+    font-size: var(--fs-h3-titolo-card);
     cursor: pointer;
     color: var(--txtcolor);
 }
@@ -311,9 +276,6 @@ header {
 */
 
 .categoria {
-    display: flex;
-    flex-direction: row;       
-    align-items: center;
     gap: 1em;                 
     padding: 1em;             
 }
@@ -325,7 +287,7 @@ header {
 }
 
 li.categoria > div {
-    padding-bottom: 2em;
+    padding-bottom: 3em;
 }
 
 #categorie ul {
@@ -348,17 +310,11 @@ li.categoria > div {
 ==================================================== 
 */
 
-.ultimoInserito, .carta {
-    padding: 1em 1em 2.5em 1em;
+.card-base {
+    padding: 1em 1em 3em 1em;
 }
 
-.ultimoInserito dt, .carta dt {
-    font-weight: 600;
-    font-size: 1em;
-    margin-top: 0.2em;
-}
-
-.ultimoInserito::before, .carta::before {
+.carta::before {
     top: -25px;
 }
 
@@ -424,22 +380,20 @@ li.categoria > div {
 ==================================================== 
 */
 
-#login-container,
-#register-container,
-#pubblica-container{
+.form-container {
     width: auto;
     max-width: 100%;
     margin: 1.5em 0.5em;
 }
 
-#register-container .form-data, #pubblica-container .form-data {
+.form-data {
     display:flex;
     flex-direction: column;
     gap: 1.5em; 
 }
 
 #filtri .form-data{
-    padding:0;
+    padding: 0;
 }
 /*
 ====================================================
@@ -477,6 +431,7 @@ li.categoria > div {
 #dati-pers-container {
     min-width: 220px;
 }
+
 .profilo-grid {
     grid-template-columns: 1fr;
 }
@@ -494,3 +449,9 @@ li.categoria > div {
 .errore {
     padding: 2em;
 }
+
+/*
+====================================================
+    DA MODULARIZZARE
+==================================================== 
+*/

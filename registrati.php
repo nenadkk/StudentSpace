@@ -135,7 +135,7 @@ if(isset($_POST['submit'])) {
             }
             else
             {
-                $msgErrore = "<ul class='messaggi-errore-form'>";
+                $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
                 foreach ($arrayErrori as $err) {
                     $msgErrore .= "<li>$err</li>";
                 }

@@ -1,46 +1,52 @@
-/*questo parte da foglio bianco*/
-*{
-    padding: 0em;
-    margin: 0em;
+/* ====================================================
+   RESET BASE PER LA STAMPA
+==================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-:root{
+:root {
     --borders: #9c9c9c;
+    --radius-print: 1em;
 }
 
-/* essendo la stampa su formato fisso non servono dimensioni relative*/
-html, body{ 
-    font-size: 12pt; 
-    font-family:"Times New Roman", "Times", serif; 
+/* Tipografia armonica per la stampa */
+html, body {
+    font-size: 12pt;
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
     margin: auto;
+    line-height: 1.4;
 }
 
-h2 {
-    font-size: 18pt;
+h2 { 
+    font-size: 17pt; 
+    margin-bottom: 0.4cm; 
 }
 
-h3 {
-    font-size:15pt;
+h3 { 
+    font-size: 14pt; 
+    margin-bottom: 0.3cm; 
 }
 
-h4 {
-    font-size: 14pt;
-    margin-bottom: 0.3cm;
-}
-
-.aiuti {
+.aiuti,
+#hamburger,
+#hamburger-menu,
+#menu,
+#filtri {
     display: none;
 }
 
-/*
-====================================================
-    HEADER
-====================================================
-*/
+/* ====================================================
+   HEADER
+==================================================== */
+
 header {
-    padding: 0em 1em;
     text-align: center;
-    margin: 1em;
+    padding: 0.5cm 0;
+    margin-bottom: 0.5cm;
 }
 
 header h1 {
@@ -50,31 +56,24 @@ header h1 {
     height: 2cm;
 }
 
-#menu, #hamburger, #hamburger-menu {
-    display: none;
-}
-
-/*
-====================================================
-    BREADCRUMB
-====================================================
-*/
+/* ====================================================
+   BREADCRUMB
+==================================================== */
 
 #breadcrumb {
     display: block;
     font-size: 12pt;
-    margin-bottom: 1em;
+    margin-bottom: 0.5cm;
 }
 
 #breadcrumb::before {
-    content: "Ti trovi in:";
+    content: "Ti trovi in: ";
+    font-weight: bold;
 }
 
 #breadcrumb ol {
     display: inline;
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 #breadcrumb li {
@@ -83,69 +82,54 @@ header h1 {
 
 #breadcrumb a {
     text-decoration: none;
+    color: #000;
 }
 
-/*
-====================================================
-    SEZIONE SEPARATORI
-====================================================
-*/
+/* ====================================================
+   SEPARATORI DI SEZIONE
+==================================================== */
 
-#presentazione, #categorie {
+#presentazione,
+#categorie {
     border-bottom: 1px solid var(--borders);
-}
-
-/*
-====================================================
-    SEZIONE HERO + ERRORI
-====================================================
-*/
-
-#presentazione {
     margin-bottom: 0.8cm;
+    padding-bottom: 0.5cm;
 }
 
-#presentazione img, .errore img {
-    display: none; 
-}
+/* ====================================================
+   IMG + TESTO
+==================================================== */
 
-#presentazione .testo h2, #testo-errore h2 {
-    margin-bottom: 0.5em;
-}
-
-#presentazione p, #testo-errore p {
-    margin-bottom: 0.5em;
-}
-
-#presentazione .azioni {
+.img-text-section img {
     display: none;
 }
 
-/*
-====================================================
-    CATEGORIE
-====================================================
-*/
+.img-text-section p {
+    margin-bottom: 0.4cm;
+}
+
+.img-text-section .azioni {
+    display: none;
+}
+
+/* ====================================================
+   CATEGORIE
+==================================================== */
 
 #categorie {
-    margin-bottom: 1cm;
     background: none;
 }
 
-#categorie p{
-    margin-bottom: 0.3cm;
-}
-
-
 #categorie ul {
     padding: 0;
-    list-style: disc; 
-    margin-left: 1.5em;
+    list-style: disc;
+    margin-left: 1.2cm;
 }
 
 .categoria {
     border: none;
     background: none;
+    margin-bottom: 0.6cm;
 }
 
 .categoria img {
@@ -153,130 +137,79 @@ header h1 {
 }
 
 .categoria h3 {
-    margin-bottom: 0.3em;
-    color: black;
+    color: #000;
     background: none;
+    margin-bottom: 0.2cm;
 }
 
 .categoria p {
-    margin-bottom: 0.8em;
+    margin-bottom: 0.4cm;
 }
 
 .categoria a {
     display: none;
 }
 
-/*
-====================================================
-    CARD ULTIMI INSERITI + LISTA CARTE
-====================================================
-*/
+/* ====================================================
+   CARTE (Ultimi inseriti + Lista)
+==================================================== */
 
-#carte-section ul, #listaCarte{
-    margin-bottom: 1cm;
-}
-
-#carte-section ul, #listaCarte {
+#carte-section ul,
+#listaCarte {
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 0.3cm; 
-    padding: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4cm;
     list-style: none;
     margin-top: 0.5cm;
-}
-
-#listaCarte {
-    gap: 0.5cm;
+    margin-bottom: 1cm;
+    padding: 0;
 }
 
 .carta {
     border: 1px solid var(--borders);
-    border-radius: 1em;
+    border-radius: var(--radius-print);
     padding: 0.5cm;
     background: none;
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
-    break-inside: avoid;     
+    gap: 0.4cm;
+    break-inside: avoid;
 }
 
 .carta img {
     max-width: 100%;
-    border-radius: 0.8em;
-    object-fit: cover;    
-    display: block;
-    align-self: center;
+    border-radius: var(--radius-print);
+    object-fit: cover;
 }
 
-.ultimoInserito dl , .carta dl{
-    margin: 0;
-}
-
-.ultimoInserito dt, .carta dt {
+.carta dt {
     font-weight: bold;
-}	
+}
 
-.ultimoInserito dt::after, .carta dt::after{
+.carta dt::after {
     content: ": ";
 }
 
-.ultimoInserito a, .carta a {
+.carta a {
     display: none;
 }
 
-/*
-====================================================
-    SEZIONE ESPLORA + FILTRI
-==================================================== 
-*/
+/* ====================================================
+   FORM (Login, Registrazione, Dati personali)
+==================================================== */
 
-#ricerca, #filtri {
-    display: none;
-}
-
-/*
-===========================================================
-    SEZIONE FORM (usata per accesso e registrazione e filtri)
-=========================================================== 
-*/
-
-#login-container, #register-container, #dati-pers-container {
+#login-container,
+#register-container,
+#dati-pers-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;   
-    width: auto;        
-    padding: 2.5em;             
-    margin: 2em auto;     
-    border-radius: 1em;
-    gap: 0.5em;
+    gap: 0.5cm;
+    padding: 1cm;
+    margin: 1cm auto;
+    border: 1px solid var(--borders);
+    border-radius: var(--radius-print);
     max-width: 60em;
-}
-
-#login-container h2, #register-container h2 {
-    text-align: center;
-    margin: 0;
-}
-
-#login-container .form-data {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2em;                 
-}
-
-#register-container .form-data {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2em 3em; 
-}
-
-.form-data > div, .form-data fieldset > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    text-decoration: none; 
 }
 
 label {
@@ -284,156 +217,130 @@ label {
 }
 
 input, select {
-    font-size: 1em;
-    border-radius: 1em;
-    min-height: 3em;
-    text-indent: 1em;
-    font-weight: 500;
     border: 1px solid var(--borders);
+    border-radius: var(--radius-print);
+    min-height: 1cm;
+    padding-left: 0.3cm;
 }
 
-.checkbox-inline {
-    display: flex;
-    align-items: center;
-    justify-content: center;   
-    gap: 0.5em;
-    margin-top: 0.5em;
-    font-weight: 500;
-}
-
-#criteriMinimiPassword {
-    text-align: left;
-    margin-top: 1.5em;
-    line-height: 1.4;
-}
-
-#criteriMinimiPassword ul {
-    margin-left: 1.5em;
-}
-
-form > p, form > p{
+button,
+form > p,
+#login-container p a,
+#register-container p a {
     display: none;
 }
 
-button {
-    display: none;
-}
-
-#login-container p a, #register-container p a {
-    display: none;
-}
-
-/*
-====================================================
-    SEZIONE ANNUNCIO
-==================================================== 
-*/
+/* ====================================================
+   ANNUNCIO + CAROSELLO
+==================================================== */
 
 #carosello {
     display: flex;
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
+    gap: 1cm;
     justify-content: center;
-    margin: 0;     
+    margin-bottom: 1cm;
 }
 
 .carosello-principale {
-    width: clamp(280px, 60vw, 500px);
+    width: 12cm;
     aspect-ratio: 4 / 3;
+    border-radius: var(--radius-print);
     overflow: hidden;
-    border-radius: 1em;
-    position: relative;
 }
 
 .carosello-principale img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    border-radius: 1em;
 }
 
 .carosello-thumbnails {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    justify-content: center;
-    flex: 0 0 auto;
+    gap: 0.5cm;
 }
 
 .carosello-thumbnails img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 0.5em;
+    width: 2cm;
+    height: 2cm;
+    border-radius: var(--radius-print);
 }
 
 #annuncioTop {
     display: flex;
-    flex-direction: row;
-    gap: 2em;    
-    align-items: flex-start;
+    gap: 1cm;
     justify-content: center;
-    padding: 2.5em; 
+    padding: 1cm;
 }
 
 .info {
-    flex: 0 1 400px; 
-    max-width: 400px;
+    max-width: 12cm;
     display: flex;
     flex-direction: column;
-    gap: 0.8em;       
-    padding: 1.5em;
-    align-self: center;
+    gap: 0.4cm;
 }
 
 .attrAnnuncio {
-    border-radius: 1em;
     border: 1px solid var(--borders);
-    padding: 0.8em;
+    border-radius: var(--radius-print);
+    padding: 0.5cm;
     text-align: center;
-}
-
-.attrAnnuncio dt {
-    font-weight: bold;
 }
 
 .descrizioneAnnuncio {
     border: 1px solid var(--borders);
-    border-radius: 1em;
-    padding: 1.5em 1.2em;
-    text-align: left;
+    border-radius: var(--radius-print);
+    padding: 1cm;
+    margin-top: 1cm;
     display: flex;
     flex-direction: column;
-    gap: 0.6em;
-    margin: 2em auto 2em;
+    gap: 0.4cm;
 }
 
+/* ====================================================
+   PROFILO
+==================================================== */
 
-/*
-====================================================
-    FOOTER
-====================================================
-*/
+.profilo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1cm;
+}
+
+.profilo-grid div {
+    border: 1px solid var(--borders);
+    border-radius: var(--radius-print);
+    padding: 0.6cm;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3cm;
+}
+
+.profilo-grid dt {
+    font-weight: bold;
+}
+
+/* ====================================================
+   FOOTER
+==================================================== */
+
 footer {
     border-top: 1px solid var(--borders);
-    margin-top: 0.5cm;
+    margin-top: 1cm;
+    padding-top: 0.5cm;
     text-align: center;
     font-size: 10pt;
-    color: #000;
 }
 
-#footer-top, .freccia-su, .logo-footer {
+#footer-top,
+.freccia-su,
+.logo-footer,
+#footer-bottom img {
     display: none;
 }
 
 #footer-bottom {
     display: block;
-}
-
-#footer-bottom img {
-    display: none; /* badge validazione */
 }
 
 #footer-bottom p {
@@ -443,34 +350,6 @@ footer {
 
 /*
 ====================================================
-    SEZIONE PROFILO
+    DA MODULARIZZARE
 ==================================================== 
 */
-
-#dati-pers-container {
-    gap: 2em;
-    margin: 0 auto;
-}
-
-.profilo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 1.5em;
-}
-
-.profilo-grid div {
-    background-color: none;
-    padding: 1em 1.2em;
-    border-radius: 0.8em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3em;
-    min-width: 200px; 
-    border: 1px solid var(--borders);
-}
-
-.profilo-grid dt {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-

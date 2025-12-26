@@ -40,7 +40,7 @@
             </ul>
             <ul class="nav-auth">
                 <li class="current-link" aria-current="page">Registrati</li>
-                <li><a class="call-to-action" href="accedi.php">Accedi</a></li>
+                <li><a class="link btn-base call-to-action" href="accedi.php">Accedi</a></li>
             </ul>
         </nav>
 
@@ -56,7 +56,7 @@
             </ul>
             <ul class="nav-auth">
                 <li class="current-link">Registrati</li>
-                <li><a class="call-to-action" href="accedi.php">Accedi</a></li>
+                <li><a class="link btn-base call-to-action" href="accedi.php">Accedi</a></li>
             </ul>
         </nav>
     </header>
@@ -70,27 +70,27 @@
     </nav>
 
     <main id="contenuto">
-        <div id="register-container">
+        <div id="register-container" class="form-container form-container-large">
             <h2>Registrati</h2>
 
             <form action="registrati.php" method="post" aria-live="assertive">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
-                    <div>
+                    <div class="form-div">
                         <label for="nome">Nome<span class="required"> (richiesto)</span></label>
                         <input type="text" id="nome" name="nome" value="[nome]" required placeholder="Es. Mario">
                         <p>Es. Mario</p>
                         [errore-nome]
                     </div>
 
-                    <div>
+                    <div class="form-div">
                         <label for="cognome">Cognome<span class="required"> (richiesto)</span></label>
                         <input type="text" id="cognome" name="cognome" value="[cognome]" required placeholder="Es. Rossi">
                         <p>Es. Rossi</p>
                         [errore-cognome]
                     </div>
 
-                    <div>
+                    <div class="form-div">
                         <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
                         <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" required>
                         <datalist id="listaCitta">
@@ -146,14 +146,14 @@
                         [errore-citta]
                     </div>
 
-                    <div>
+                    <div class="form-div">
                         <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
                         <input type="email" id="email" name="email" value="[email]" required placeholder="Es. mario.rossi@gmail.com">
                         <p>Es. mario.rossi@gmail.com</p>
                         [errore-email]
                     </div>
 
-                    <div>
+                    <div class="form-div">
                         <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
                         <input type="password" id="password" name="password" required >
                         <p>Es. LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     
-                    <div>
+                    <div class="form-div">
                         <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
                         <input type="password" id="confermaPassword" name="confermaPassword" required >
                         <p>Es. LaMiaPassword123!</p>
@@ -188,8 +188,8 @@
                         <li>Almeno un carattere speciale.</li>
                     </ul>
                 </div>
-                <button type="submit" id="submit" name="submit">Conferma</button>
-                <p>Hai già un account? <a href="accedi.html">Accedi</a></p>
+                <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
+                <p>Hai già un account? <a class="link" href="accedi.html">Accedi</a></p>
 
             </form>
         </div>

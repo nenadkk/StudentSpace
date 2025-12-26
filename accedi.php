@@ -32,10 +32,10 @@ if(isset($_POST['submit'])) {
             }
             $db->closeConnection();
         } else {
-            $errorMessage = "<ul class='messaggi-errore-form'><li>Errore di connessione al database.</li></ul>";
+            $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
         }
     } else {
-        $errorMessage  = "<ul class='messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+        $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";
     }
     
 }

@@ -68,19 +68,19 @@
         </nav>
 
         <main id="contenuto">
-            <div id="pubblica-container">
+            <div id="pubblica-container" class="form-container form-container-large">
                 <h2>Pubblica annuncio</h2>
                 <form action="/pubblica.php" method="post" enctype="multipart/form-data">
                     <div class="form-data">
                         <!-- Parte generica -->
-                        <div id="pubblica-titolo-container">
+                        <div id="pubblica-titolo-container" class="form-div">
                             <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
                             <input type="text" id="titolo" name="titolo" required placeholder="Scrivi il titolo">
                             <p>Es. Partita di calcio</p>
                         </div>
 
                         <div id="attr-generici-container">
-                            <div>
+                            <div class="form-div">
                                 <label for="categoria-campi">Categoria<span class="required"> (richiesto)</span></label>
                                 <select id="categoria-campi" name="categoria-campi" required>
                                     <option value="">Seleziona categoria</option>
@@ -91,7 +91,7 @@
                                 </select>
                             </div>
 
-                            <div>
+                            <div class="form-div">
                                 <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
                                 <input list="listaCitta" name="citta" id="citta" placeholder="Scrivi e seleziona" required>
                                 <datalist id="listaCitta">
@@ -148,7 +148,7 @@
                             </div>
                         </div>
 
-                        <div id="pubblica-descrizione-container">
+                        <div id="pubblica-descrizione-container" class="form-div">
                             <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
                             <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..." value="[ValueDescrizione]"></textarea>
                             <p>Es. Appartamento con 2 camere vicino al centro</p>
@@ -156,21 +156,20 @@
 
                         <!-- Campi specifici per categoria -->
                         <div id="attr-specifici-container">
-
                             <div id="campi-affitti" class="nascondi-campi">
-                                <fieldset  class="campi-specifici">
+                                <fieldset  class="campi-specifici fieldset-base">
                                     <legend>Dettagli Affitti</legend>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="coinquilini">Numero coinquilini</label>
                                         <input type="number" id="coinquilini" name="coinquilini" min="0" disabled>
                                         <p>Es. 2</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="costo-mese-affitto">Costo mensile (€/mese)</label>
                                         <input type="number" id="costo-mese-affitto" name="costo-mese-affitto" min="0" disabled>
                                         <p>Es. 300</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="indirizzo-affitto">Indirizzo</label>
                                         <input type="text" id="indirizzo-affitto" name="indirizzo-affitto" disabled>
                                         <p>Es. Via Roma 10</p>
@@ -179,19 +178,19 @@
                             </div>
 
                             <div id="campi-esperimenti" class="nascondi-campi">
-                                <fieldset class="campi-specifici">
+                                <fieldset class="campi-specifici fieldset-base">
                                     <legend>Dettagli Esperimenti</legend>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="laboratorio">Laboratorio di riferimento</label>
                                         <input type="text" id="laboratorio" name="laboratorio" disabled>
                                         <p>Es. Laboratorio di Psicologia Sperimentale</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="esperimento-durata">Durata esperimento (minuti)</label>
                                         <input type="text" id="esperimento-durata" name="esperimento-durata" placeholder="Es. 75" disabled>
                                         <p>Es. 75</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="esperimento-compenso">Compenso (€)</label>
                                         <input type="number" id="esperimento-compenso" name="esperimento-compenso" min="0" disabled>
                                         <p>Es. 15</p>
@@ -200,19 +199,19 @@
                             </div>
 
                             <div id="campi-eventi" class="nascondi-campi">
-                                <fieldset class="campi-specifici">
+                                <fieldset class="campi-specifici fieldset-base">
                                     <legend>Dettagli Eventi</legend>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="data-evento">Data evento</label>
                                         <input type="date" id="data-evento" name="data-evento" disabled>
                                         <p>Es. 18/10/2025</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="costo-evento">Costo entrata (€)</label>
                                         <input type="number" id="costo-evento" name="costo-evento" min="0" disabled>
                                         <p>Es. 10</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="luogo-evento">Luogo</label>
                                         <input type="text" id="luogo-evento" name="luogo-evento" disabled>
                                         <p>Es. Teatro Comunale</p>
@@ -221,14 +220,14 @@
                             </div>
 
                             <div id="campi-ripetizioni" class="nascondi-campi">
-                                <fieldset class="campi-specifici">
+                                <fieldset class="campi-specifici fieldset-base">
                                     <legend>Dettagli Ripetizioni</legend>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="materia">Materia</label>
                                         <input type="text" id="materia" name="materia" disabled>
                                         <p>Es. Matematica</p>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="livello">Livello</label>
                                         <input list="listlivelli" placeholder="Es. Superiori, università" name="livello" id="livello" disabled>
                                         <datalist id="listlivelli">
@@ -237,7 +236,7 @@
                                             <option value="Università">
                                         </datalist>
                                     </div>
-                                    <div>
+                                    <div class="form-div">
                                         <label for="prezzo-ripetizioni">Prezzo orario (€/ora)</label>
                                         <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" disabled>
                                         <p>Es. 15</p>
@@ -247,9 +246,9 @@
                         </div>
 
                         <!-- Immagini -->
-                        <fieldset>
+                        <fieldset class="fieldset-base">
                             <legend>Immagini (max 4)</legend>
-                            <p class="alt-spiegazione">
+                            <p class="riquadro-spieg alt-spiegazione">
                             Il <strong>testo alternativo</strong> descrive l'immagine per chi non può vederla (es. utenti con disabilità visive o in caso di errore di caricamento).  
                             Se l'immagine è puramente decorativa e non aggiunge contenuto, puoi spuntare <strong>"Decorativa"</strong> e lasciare vuoto il campo.
                             </p>
@@ -298,7 +297,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <button type="submit" id="submit" name="submit">Invia</button>
+                    <button class="btn-base" type="submit" id="submit" name="submit">Invia</button>
                 </form>
             </div>
             
