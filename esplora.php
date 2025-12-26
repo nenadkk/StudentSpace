@@ -257,9 +257,6 @@ if(isset($_GET['submit']))
         $query.="WHERE ";
     $query.= "i.Ordine = 1;";
 
-
-    echo $query;
-
     $dbAccess->openDBConnection();
     $cardsData = $dbAccess->searchEsplora($query);
     $dbAccess->closeConnection();
