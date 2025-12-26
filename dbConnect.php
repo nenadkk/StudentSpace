@@ -509,7 +509,22 @@ class DBAccess {
     }
 
     public function getPrefe($idUtente) {
-        $query = "SELECT * FROM Preferiti p JOIN Annuncio a ON p.IdAnnuncio = a.IdAnnuncio WHERE p.IdUtente = $idUtente;";
+        $query = "SELECT * FROM Preferiti p JOIN Annuncio a ON p.IdAnnuncio = a.IdAnnuncio WHERE p.IdUtente = $idUtente";
+
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+
+        return $results;
     }
 
     public function insertPrefe( int $idAnnuncio, int $idUtente) : true|false {
