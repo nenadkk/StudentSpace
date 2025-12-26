@@ -38,22 +38,6 @@ function hamburgerMenu() {
   });
 }
 
-// JS PER CAROSELLO MINIATURE CLICCABILI
-function caroselloChangeImage() {
-  const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
-  const mainImage = document.querySelector('.carosello-principale img');
-
-  if(thumbnails.length > 0 && mainImage) {
-    thumbnails.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        mainImage.src = thumb.src;
-        thumbnails.forEach(t => t.classList.remove('attiva'));
-        thumb.classList.add('attiva');
-      });
-    });
-  }
-}
-
 /*
 //JS PER BOTTONI CAROSELLO (loop)
 function slideCarosello()
@@ -105,6 +89,23 @@ function slideCarosello()
 
 }
 */
+
+
+// JS PER CAROSELLO MINIATURE CLICCABILI
+function caroselloChangeImage() {
+  const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
+  const mainImage = document.querySelector('.carosello-principale img');
+
+  if(thumbnails.length > 0 && mainImage) {
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImage.src = thumb.src;
+        thumbnails.forEach(t => t.classList.remove('attiva'));
+        thumb.classList.add('attiva');
+      });
+    });
+  }
+}
 
 // JS PER BOTTONI CAROSELLO BLOCCATO
 function slideCarosello() {
@@ -173,25 +174,6 @@ function slideCarosello() {
   });
 }
 
-// JS PER TOGGLE FILTRI
-function toggleFiltri() {
-  const toggle = document.getElementById("toggleFiltri");
-  const filtri = document.getElementById("filtri");
-  const chiudi = document.getElementById("chiudiFiltri");
-
-  if(!toggle || !filtri || !chiudi) {return}
-  toggle.addEventListener("click", () => {
-    filtri.classList.add("attivo");
-    toggle.setAttribute("aria-expanded", true);
-  });
-
-  chiudi.addEventListener("click", () => {
-    filtri.classList.remove("attivo");
-    toggle.setAttribute("aria-expanded", false);
-  });
-}
-
-
 // JS PER IMMAGINI CON ALT IN PUBBLICA
 function toggleMultipleAlt() {
   if(!document.getElementById("foto1") || !document.getElementById("alt1") || !document.getElementById("decorativa1")) {return}
@@ -225,6 +207,25 @@ function toggleMultipleAlt() {
   }
 }
 
+
+// JS PER TOGGLE FILTRI
+function toggleFiltri() {
+  const toggle = document.getElementById("toggleFiltri");
+  const filtri = document.getElementById("filtri");
+  const chiudi = document.getElementById("chiudiFiltri");
+
+  if(!toggle || !filtri || !chiudi) {return}
+  toggle.addEventListener("click", () => {
+    filtri.classList.add("attivo");
+    toggle.setAttribute("aria-expanded", true);
+  });
+
+  chiudi.addEventListener("click", () => {
+    filtri.classList.remove("attivo");
+    toggle.setAttribute("aria-expanded", false);
+  });
+}
+
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
   const filtroCategoria = document.getElementById('categoria');
@@ -245,13 +246,13 @@ function toggleFiltriCategoria() {
 
     const selezionato = categorie[filtroCategoria.value];
     if(selezionato) {
-      selezionato.classList.remove('nascondi-campi');
+      selezionato.classList.remove('nascondi-filtri');
       setDisabled(selezionato, false);
     }
   }
 
   aggiornaFiltri();
-  filtroCategoria.addEventListener('change', aggiornaFiltri());
+  filtroCategoria.addEventListener('change', aggiornaFiltri);
 
 }
 

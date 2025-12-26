@@ -86,7 +86,7 @@ class DBAccess {
     public function searchEsplora($categoria, $filtri) {
 
         $query="SELECT * ";
-    
+
         function controlloGeneraliQuery($query,$filtri) {
         
             if ($filtri['citta'] != '') 
@@ -506,7 +506,24 @@ class DBAccess {
             mysqli_rollback($this->connection);
             return false;
         }
+    }
 
+    public function getPrefe($idUtente) {
+        $query = "SELECT * FROM Preferiti p JOIN Annuncio a ON p.IdAnnuncio = a.IdAnnuncio WHERE p.IdUtente = $idUtente;";
+    }
+
+    public function insertPrefe( int $idAnnuncio, int $idUtente) : true|false {
+        $stmt = $this->connection->prepare("INSERT INTO Preferiti (IdAnnuncio, IdUtente) VALUES (?, ?)");
+        
+        $stmt->bind_param('ii', $idAnnuncio, $idUtente);
+
+        if($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
 
     }
 }
