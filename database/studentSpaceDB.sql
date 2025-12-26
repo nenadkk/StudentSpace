@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS Annuncio;
 DROP TABLE IF EXISTS Utente;
 -- DROP TABLE IF EXISTS Categoria;
 DROP TABLE IF EXISTS Citta;
+DROP TABLE IF EXISTS Preferiti;
 
 -- -----------------------------------------------------
 -- CREATE
@@ -122,6 +123,18 @@ CREATE TABLE AnnuncioRipetizioni (
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE Preferiti (
+    IdAnnuncio INT,
+    IdUtente INT,
+    FOREIGN KEY (IdAnnuncio) REFERENCES Annuncio(IdAnnuncio)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (IdUtente) REFERENCES Utente(IdUtente)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    UNIQUE(IdAnnuncio, IdUtente)
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8
+COLLATE=utf8_unicode_ci;
+
 -- -----------------------------------------------------
 -- INSERT
 -- -----------------------------------------------------
@@ -177,14 +190,23 @@ INSERT INTO Citta (NomeCitta) VALUES
 ('Viterbo');
 
 INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
-('Mario', 'Rossi', 'mario.rossi@example.com', 'password123', 1);
+('ff', 'ff', 'ff@ff.ff', '$2y$10$ICFWdfUEcDo.i9NFDjedT.unJxpq59W5UzaZFBgacSyLOn7Y119ja', 32); -- la password in chiaro è Ciao123!
 
 INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
 ('Appartamento in affitto a Milano', 'Bellissimo appartamento di 2 camere in centro a Milano.', 'Affitti', 1, 1),
 ('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
+
+INSERT INTO AnnuncioAffitti (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini) VALUES -- da modificare se si modifica l'sql per conformità all'html e query
+(1, 300.00, 'Via De Gaperi 67 AHAHAHAH', 3);
+
+INSERT INTO AnnuncioRipetizioni (IdAnnuncio, Materia, Livello, PrezzoOrario) VALUES
+(2, 'Matematica', 'Superiori', 10.00);
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
 (1, 'bilocaleCentro.jpg', "Foto dell\'appartamento in affitto a Milano", 0, 1),
 (1, 'stanzaSingola.jpg', '', 1, 1),
 (2, 'ripetizioniMate.jpg', 'Foto per ripetizioni di matematica', 0, 1);
 
+INSERT INTO Preferiti (IdAnnuncio, IdUtente) VALUES
+(1, 1),
+(2, 1);

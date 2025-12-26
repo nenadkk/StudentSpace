@@ -11,6 +11,8 @@ $htmlPage = file_get_contents("pages/esplora.html");
 
 $categoria = "";
 
+$query = "";
+
 $cardsData="";
 $cards = "";
 
@@ -97,9 +99,9 @@ if(isset($_GET['submit']))
         default:
             break;
     }
-    if($cardsData !== false)
+    if($cardsData !== false){
         $cards = Tool::createCard($cardsData);
-    else 
+    } else 
         $cards .= file_get_contents("pages/cardTemplate.html");
 
 }
@@ -140,6 +142,8 @@ $htmlPage = str_replace("[affittiSelected]", $categoria=='Affitti' ? 'selected' 
 $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
+
+$htmlPage = str_replace("[Logger]", $query, $htmlPage);
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
