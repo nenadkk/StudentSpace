@@ -78,14 +78,14 @@ $caroselloPrincipale = "";
 if (!empty($immagini)) { 
     $img = $immagini[0]; 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
-    $caroselloPrincipale = ' <img src="assets/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
+    $caroselloPrincipale = ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
 }
 
 $caroselloThumbnails = ""; 
 foreach ($immagini as $index => $img) { 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
     $active = $index === 0 ? "attiva" : ""; 
-    $caroselloThumbnails .= ' <img src="assets/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
+    $caroselloThumbnails .= ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
 }
 
 if (!Tool::isLoggedIn()) {
