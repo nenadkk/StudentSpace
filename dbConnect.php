@@ -527,7 +527,7 @@ class DBAccess {
         return $results;
     }
 
-    public function insertPrefe( int $idAnnuncio, int $idUtente) : true|false {
+    public function insertPrefe( int $idAnnuncio, int $idUtente) : bool {
         $stmt = $this->connection->prepare("INSERT INTO Preferiti (IdAnnuncio, IdUtente) VALUES (?, ?)");
         
         $stmt->bind_param('ii', $idAnnuncio, $idUtente);
@@ -539,7 +539,97 @@ class DBAccess {
             $stmt->close();
             return false;
         }
+    }
 
+    public function deletePrefe(int $idAnnuncio, int $idUtente) : bool {
+        $stmt = $this->connection->prepare("DELETE FROM Preferiti WHERE IdAnnuncio = ? AND IdUtente = ?");
+        $stmt->bind_param('ii', $idAnnuncio, $idUtente);
+        $ok = $stmt->execute();
+        $stmt->close();
+        return $ok;
+    }
+
+    public function isPreferito(int $idAnnuncio, int $idUtente) : bool { 
+        $query = "SELECT 1 FROM Preferiti WHERE IdAnnuncio = $idAnnuncio AND IdUtente = $idUtente"; 
+        
+        $res = mysqli_query($this->connection, $query); 
+        
+        return mysqli_num_rows($res) > 0; 
+    }
+
+    public function getAnnuncioBase(int $idAnnuncio) {
+       $query = "SELECT A.*, C.NomeCitta FROM Annuncio A JOIN Citta C ON A.IdCitta = C.IdCitta WHERE A.IdAnnuncio = $idAnnuncio";
+
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+
+        return $results;
+	}
+
+    public function getAttributiSpecifici(string $categoria, int $idAnnuncio) {
+        switch ($categoria) {
+            case "Affitti":       
+                $table = "AnnuncioAffitti"; 
+                break;
+            case "Esperimenti":   
+                $table = "AnnuncioEsperimenti"; 
+                break;
+            case "Eventi":        
+                $table = "AnnuncioEventi"; 
+                break;
+            case "Ripetizioni":   
+                $table = "AnnuncioRipetizioni"; 
+                break;
+        }
+
+        $query = "SELECT * FROM $table WHERE IdAnnuncio = $idAnnuncio";
+
+        $queryResult = mysqli_query($this->connection, $query)
+            or die("Query fallita: " . mysqli_error($this->connection));
+
+        if (mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+
+            while ($row = mysqli_fetch_assoc($queryResult)) {
+                $results[] = $row;
+            }
+
+            $queryResult->free();
+        }
+
+        return $results;
+    }
+
+    public function getImmagini(int $idAnnuncio) {
+        $query = "SELECT * FROM ImmaginiAnnuncio WHERE IdAnnuncio = $idAnnuncio ORDER BY Ordine ASC";
+
+        $queryResult = mysqli_query($this->connection, $query) or die("Query fallita: " . mysqli_error($this->connection));
+
+        if (mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+
+            while ($row = mysqli_fetch_assoc($queryResult)) {
+                $results[] = $row;
+            }
+
+            $queryResult->free();
+        }
+
+        return $results;
     }
 }
 

@@ -3,6 +3,7 @@
 -- ============================
 -- DROP TABLES (ordine corretto)
 -- ============================
+DROP TABLE IF EXISTS Preferiti;
 DROP TABLE IF EXISTS AnnuncioRipetizioni;
 DROP TABLE IF EXISTS AnnuncioEventi;
 DROP TABLE IF EXISTS AnnuncioEsperimenti;
@@ -12,7 +13,6 @@ DROP TABLE IF EXISTS Annuncio;
 DROP TABLE IF EXISTS Utente;
 -- DROP TABLE IF EXISTS Categoria;
 DROP TABLE IF EXISTS Citta;
-DROP TABLE IF EXISTS Preferiti;
 
 -- -----------------------------------------------------
 -- CREATE
@@ -197,7 +197,7 @@ INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
 ('Ripetizioni di Matematica', 'Offro ripetizioni di matematica per studenti delle superiori.', 'Ripetizioni', 1, 23);
 
 INSERT INTO AnnuncioAffitti (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini) VALUES -- da modificare se si modifica l'sql per conformità all'html e query
-(1, 300.00, 'Via De Gaperi 67 AHAHAHAH', 3);
+(1, 300.00, 'Via De Gaperi 67', 3);
 
 INSERT INTO AnnuncioRipetizioni (IdAnnuncio, Materia, Livello, PrezzoOrario) VALUES
 (2, 'Matematica', 'Superiori', 10.00);

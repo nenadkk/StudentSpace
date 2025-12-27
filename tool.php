@@ -113,6 +113,60 @@ class Tool {
             && $_SESSION['logged'] === true;
     }
 
+    /* -------------------------------
+    * FUNZIONE ATTRIBUTI SPECIFICI CATEGORIA
+    * ------------------------------- */
+
+    public static function mappaAttributi(string $categoria, array $attr) : array {
+        switch ($categoria) {
+
+            case "Affitti":
+                return [
+                    ["Costo", $attr['PrezzoMensile'] . " €/mese"],
+                    ["Indirizzo", $attr['Indirizzo']],
+                    ["N° coinquilini", $attr['NumeroInquilini']]
+                ];
+
+            case "Esperimenti":
+                return [
+                    ["Laboratorio", $attr['Laboratorio']],
+                    ["Durata prevista", $attr['DurataPrevista'] . " min"],
+                    ["Compenso", $attr['Compenso'] . " €"]
+                ];
+
+            case "Eventi":
+                return [
+                    ["Data", $attr['DataEvento']],
+                    ["Luogo", $attr['Luogo']],
+                    ["Costo entrata", $attr['CostoEntrata'] . " €"]
+                ];
+
+            case "Ripetizioni":
+                return [
+                    ["Materia", $attr['Materia']],
+                    ["Livello", $attr['Livello']],
+                    ["Prezzo orario", $attr['PrezzoOrario'] . " €/h"]
+                ];
+        }
+    }
+
+    /* -------------------------------
+    * FUNZIONE PARAGRAFI DESCRIZIONE
+    * ------------------------------- */
+    public static function convertiInParagrafi(string $testo) : string {
+        $testo = htmlspecialchars($testo);
+        $paragrafi = preg_split('/\r\n|\r|\n/', $testo);
+
+        $html = "";
+        foreach ($paragrafi as $p) {
+            $p = trim($p);
+            if ($p !== "") {
+                $html .= "<p>$p</p>";
+            }
+        }
+
+        return $html;
+    }
 
     /*  Per Nenad
 use DB\DBAccess;
