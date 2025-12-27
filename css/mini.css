@@ -311,7 +311,11 @@ li.categoria > div {
 */
 
 .card-base {
-    padding: 1em;
+    padding: 1em 1em 2em 1em;
+}
+
+.card-base a:hover span, .card-base a:focus span {
+    display: none;
 }
 
 .carta::before {

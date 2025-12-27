@@ -995,10 +995,12 @@ footer {
 
 #preferiti-style {
     width: 200px;
+    text-decoration: none;    
 }
 
 #preferiti-mini {
     display: none;
+    text-decoration: none;
 }
 
 .info h2 {

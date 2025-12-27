@@ -91,8 +91,8 @@ foreach ($immagini as $index => $img) {
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="accedi.php" id="preferiti-style" class="btn-base" aria-label="Accedi per salvare nei preferiti">★ Preferiti</a>
-        <a href="accedi.php" id="preferiti-mini" class="btn-base" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="accedi.php" id="preferiti-style" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★ Preferiti</a>
+        <a href="accedi.php" id="preferiti-mini" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {

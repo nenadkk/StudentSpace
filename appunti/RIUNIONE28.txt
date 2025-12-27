@@ -1,0 +1,3 @@
+da discutere:
+- compenso massimo (esperimento)
+- durata minima (esperimento)
