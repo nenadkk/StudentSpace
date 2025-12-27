@@ -1,3 +1,39 @@
 da discutere:
 - compenso massimo (esperimento)
 - durata minima (esperimento)
+- se c'è solo un'immagine no frecce scorrimento + frecce immagini perchè se si tocca su miniature non si aggiornano le frecce
+- da categoria aggiungere nel link &submit=
+- ultimi inseriti numero annunci (da 5 a 3) e decidere se fare scorrimento
+- controllare che tutti i form abbiano validazione (filtri, pubblica, accedi e registrati)
+- in pubblica rivedere parte errori
+- in pubblica riordinare campi
+- fare mostra password
+- aggiungere mostra password in accedi
+- fare controlli di sql injection
+- fare test:
+    - total validator
+    - NVDA (lista link, heading)
+    - alt immagini
+    - aria-label
+    - heading
+    - focus-order   
+    - contrasti
+    - grandezza cliccabili min. 44x44
+- inserire modifica in pagina annuncio in isLoggetd($idUtente) = autore annuncio con riuso pubblica in sovrascrizione non inserimento (idem per profilo con registrati in sovrascrizione)
+- decidere se fare che si può vedere chi ha pubblicato l'annuncio (togliere dati sensibili)
+- GESTIRE HTACCESS
+- controllare tutti i punti wcag
+- capire come organizzare relazione 
+
+in relazione:
+- no errore password ma email + password per non essere tropoo specifici
+- per il mini non si è mantenuto layout desktop semplicemente responsive ma è stato pensato separatamente
+- php divisione tra db query, tool moduli e php pages
+- spiegare errori (404 500) e validazione
+- immagini (png, jpg) --> capire come gestire 
+- colori
+- font
+- Progressive Enhancement
+
+da chiedere: 
+- user user
