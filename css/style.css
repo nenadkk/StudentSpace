@@ -354,6 +354,22 @@ button {
     outline-offset: 1px;
 }
 
+/* ------------- estensione per #preferiti-style ------------- */
+
+#preferiti-style {
+    width: 200px;
+    text-decoration: none;    
+}
+
+#preferiti-style.btn-base.call-to-action {
+    text-align: center;
+}
+
+#preferiti-mini {
+    display: none;
+    text-decoration: none;
+}
+
 /*
 ====================================================
     BASE: RIQUADRO SPIEGAZIONE
@@ -991,16 +1007,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: var(--gap-0-5);
-}
-
-#preferiti-style {
-    width: 200px;
-    text-decoration: none;    
-}
-
-#preferiti-mini {
-    display: none;
-    text-decoration: none;
 }
 
 .info h2 {
