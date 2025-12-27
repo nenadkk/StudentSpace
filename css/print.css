@@ -154,7 +154,7 @@ header h1 {
    CARTE (Ultimi inseriti + Lista)
 ==================================================== */
 
-#carte-section ul,
+.carte-section ul,
 #listaCarte {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

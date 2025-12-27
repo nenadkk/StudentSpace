@@ -414,6 +414,33 @@ class DBAccess {
         return $results;
     }
 
+    public function getAnnunciPreferiti($idUtente) {
+        $query = " SELECT a.IdAnnuncio, a.Titolo, a.DataPubblicazione, a.Categoria,  c.NomeCitta, i.Percorso, i.AltText
+        FROM Preferiti AS p
+        JOIN Annuncio AS a ON p.IdAnnuncio = a.IdAnnuncio
+        JOIN Citta AS c ON a.IdCitta = c.IdCitta
+        LEFT JOIN ImmaginiAnnuncio AS i 
+            ON a.IdAnnuncio = i.IdAnnuncio AND i.Ordine = 1
+        WHERE p.IdUtente = $idUtente
+        ORDER BY a.DataPubblicazione DESC;";
+
+        $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
+
+        if(mysqli_num_rows($queryResult) == 0) {
+            return false;
+        } else {
+            $results = array();
+            
+            while($row = mysqli_fetch_assoc($queryResult)) {
+                array_push($results, $row);
+            }
+            $queryResult->free();
+        }
+
+        return $results;
+    }
+
+
     // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni} && $immagini.len >= 1
     public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3, $immagini) : int|false {
 

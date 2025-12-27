@@ -26,6 +26,19 @@ if($db->openDBConnection()) {
         $cognomeUtente = $infoUtente["Cognome"];
         $cittaUtente = $infoUtente["NomeCitta"];
         $emailUtente = $infoUtente["Email"];
+
+        $annunciPreferiti = $db->getAnnunciPreferiti($idUtente);
+        if($annunciUtente !== false) {
+            $cards = Tool::createCard($annunciUtente);
+        } else {
+            $cards = '<div class="centered">
+                        <p>Nessun annuncio tra i preferiti.</p>
+                        <div class="azioni">
+                            <a class="link btn-base call-to-action" href="esplora.php">Esplora gli annunci</a>
+                        </div>
+                    </div>';
+        }
+
         $annunciUtente = $db->getAnnunciUtente($idUtente);
         if($annunciUtente !== false) {
             $cards = Tool::createCard($annunciUtente);

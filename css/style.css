@@ -444,7 +444,7 @@ button {
     gap: var(--gap-1);
 }
 
-#carte-section {
+.carte-section {
     gap: var(--gap-2);
     background-color: var(--clearBgColor);
 }
@@ -818,7 +818,7 @@ footer {
 ==================================================== 
 */
 
-#carte-section ul, #listaCarte {
+.carte-section ul, #listaCarte {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
