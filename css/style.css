@@ -1044,7 +1044,7 @@ footer {
 .descrizioneAnnuncio {
     background-color: var(--card);
     border-radius: var(--radius-base);
-    padding: 1.5em 1.2em;
+    padding: 2.5em;
     text-align: left;
     display: flex;
     flex-direction: column;
