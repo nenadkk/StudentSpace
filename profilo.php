@@ -28,7 +28,7 @@ if($db->openDBConnection()) {
         $emailUtente = $infoUtente["Email"];
 
         $annunciPreferiti = $db->getAnnunciPreferiti($idUtente);
-        if($annunciUtente !== false) {
+        if($annunciPreferiti !== false) {
             $cardsPreferiti = Tool::createCard($annunciPreferiti);
         } else {
             $cardsPreferiti = '<div class="centered">
