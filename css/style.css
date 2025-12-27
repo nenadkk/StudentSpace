@@ -998,6 +998,10 @@ footer {
     text-decoration: none;    
 }
 
+#preferiti-style.btn-base.call-to-action {
+    text-align: center;
+}
+
 #preferiti-mini {
     display: none;
     text-decoration: none;
