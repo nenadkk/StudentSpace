@@ -24,6 +24,7 @@ da discutere:
 - GESTIRE HTACCESS
 - controllare tutti i punti wcag
 - capire come organizzare relazione 
+- reindirrizzare errori (es. se vine messo qualcosa a caso in URL)
 
 in relazione:
 - no errore password ma email + password per non essere tropoo specifici
