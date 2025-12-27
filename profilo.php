@@ -29,9 +29,9 @@ if($db->openDBConnection()) {
 
         $annunciPreferiti = $db->getAnnunciPreferiti($idUtente);
         if($annunciUtente !== false) {
-            $cards = Tool::createCard($annunciUtente);
+            $cardsPreferiti = Tool::createCard($annunciPreferiti);
         } else {
-            $cards = '<div class="centered">
+            $cardsPreferiti = '<div class="centered">
                         <p>Nessun annuncio tra i preferiti.</p>
                         <div class="azioni">
                             <a class="link btn-base call-to-action" href="esplora.php">Esplora gli annunci</a>
@@ -59,6 +59,7 @@ $htmlPage = str_replace("[Nome]", $nomeUtente, $htmlPage);
 $htmlPage = str_replace("[Cognome]", $cognomeUtente, $htmlPage);
 $htmlPage = str_replace("[Citta]", $cittaUtente, $htmlPage);
 $htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
+$htmlPage = str_replace("[CardsPeferiti]", $cardsPreferiti, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
