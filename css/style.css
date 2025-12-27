@@ -449,10 +449,15 @@ button {
     background-color: var(--clearBgColor);
 }
 
-#esplora, #profilo {
+#esplora {
     gap: var(--gap-1-5);
     padding: 2em;
 }
+
+ #profilo {
+    gap: var(--gap-0-5);
+    padding: 2em;
+ }
 
 /*
 ====================================================
@@ -1258,6 +1263,10 @@ form > p, form > p{
     gap: var(--gap-0-5);
     min-width: 200px; 
     box-shadow: var(--shadow-base);
+}
+
+#annunciPubbl {
+    padding-top: 0;
 }
 
 /*
