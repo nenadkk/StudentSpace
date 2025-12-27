@@ -278,52 +278,52 @@ INSERT INTO AnnuncioEsperimenti VALUES
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
 -- AFFITTI
-(1,'affitti1_1.jpg','Stanza singola luminosa',0,1),
-(1,'affitti1_2.jpg','Ingresso appartamento condiviso',1,2),
+(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet a spina di pesce..',0,1),
+(1,'affitti1_2.jpg',"Ingresso luminoso con accesso a due camere: una con parete gialla e piastrelle, l’altra, presente nell'immagine precedente con parquet e finestra. Corridoio con specchio a parete e pavimento decorato.",1,2),
 
-(2,'affitti2_1.jpg','Soggiorno bilocale arredato',0,1),
-(2,'affitti2_2.jpg','Zona living con divano',1,2),
-(2,'affitti2_3.jpg','Cucina bilocale',1,3),
-(2,'affitti2_4.jpg','Bagno dell’appartamento',1,4),
+(2,'affitti2_1.jpg','Scrivania in legno con sedia, davanti a una grande finestra con vista su edifici e alberi. Ambiente luminoso e minimalista, adatto allo studio o al lavoro.',0,1),
+(2,'affitti2_2.jpg','Soggiorno moderno con divano blu, cuscini gialli, tappeto giallo e tavolino bianco. Porta finestra con tende bianche e accesso al balcone. TV con mensole e decorazioni.',1,2),
+(2,'affitti2_3.jpg','Cucina moderna con mobili in legno chiaro, forno, piano cottura e frigorifero. Tavolo con quattro sedie gialle in plastica. Pavimento piastrellato e finestra con tende leggere.',1,3),
+(2,'affitti2_4.jpg','Bagno moderno con doccia angolare a vetro, lavabo con specchio, WC e bidet. Piastrelle verdi e bianche, illuminazione sopra lo specchio.',1,4),
 
-(3,'affitti3_1.jpg','Camera doppia con due letti',0,1),
-(3,'affitti3_2.jpg','Vista alternativa camera doppia',1,2),
+(3,'affitti3_1.jpg','Camera con due letti singoli affiancati, comodino centrale con lampada, armadio con ante a specchio e finestra con tapparella. Sopra il comodino quadro marino e climatizzatore.',0,1),
+(3,'affitti3_2.jpg','Camera con due letti singoli paralleli, comodino centrale con lampada, cassettiera con TV e quadro marino. Finestra con tapparella e climatizzatore.',1,2),
 
-(4,'affitti4_1.jpg','Monolocale ristrutturato',0,1),
-(4,'affitti4_2.jpg','Zona notte monolocale',1,2),
-(4,'affitti4_3.jpg','Zona giorno monolocale',1,3),
-(4,'affitti4_4.jpg','Bagno monolocale',1,4),
+(4,'affitti4_1.jpg','Camera con letto matrimoniale, sedia maculata, tavolino e scaffale metallico con oggetti vintage. Pavimento grigio con tappeto intrecciato, cassapanca con pianta e decorazione appesa.',0,1),
+(4,'affitti4_2.jpg','Camera con letto singolo, comodino, scaffale con libri e decorazioni, cassettiera con pianta. Pavimento chiaro, tappeto e cuscino a terra. Porta a vetro sul lato destro.',1,2),
+(4,'affitti4_3.jpg','Monolocale con letto, tavolo da pranzo in legno, sedia con coperta e scaffale con libri, piante e microonde. ',1,3),
+(4,'affitti4_4.jpg','Bagno compatto con doccia a vetro, lavabo con specchio, WC e lavatrice, mobile in legno e pavimento effetto legno.',1,4),
 
-(5,'affitti5_1.jpg','Cucina appartamento studenti',0,1),
-(5,'affitti5_2.jpg','Camera singola studenti',1,2),
-(5,'affitti5_3.jpg','Camera doppia studenti',1,3),
-(5,'affitti5_4.jpg','Bagno condiviso',1,4),
+(5,'affitti5_1.jpg','Cucina moderna con mobili bianchi e azzurri, tavolo in legno con quattro sedie e lampade a sospensione. Finestra e luce naturale, tappeto decorativo vicino alla porta.',0,1),
+(5,'affitti5_2.jpg','Camera singola con letto bianco e grigio, comodino con lampada, scrivania con sedia e pianta.',1,2),
+(5,'affitti5_3.jpg','Camera con due letti singoli paralleli, comodino centrale, pavimento piastrellato chiaro e pareti bianche.',1,3),
+(5,'affitti5_4.jpg','Bagno moderno con doccia a parete, WC sospeso, lavabo con specchio illuminato e scaldabagno sopra il WC.',1,4),
 
 -- ESPERIMENTI
-(16,'esperimenti1_1.jpg','Esperimento sulla memoria',0,1),
-(17,'esperimenti2_1.jpg','Test di usabilità software',0,1),
-(18,'esperimenti3_1.jpg','Studio scientifico sul sonno',0,1),
-(19,'esperimenti4_1.jpg','Esperimento con visore VR',0,1),
-(20,'esperimenti5_1.jpg','Studio psicologico sullo stress',0,1),
+(16,'esperimenti1_1.jpg','',1,1),
+(17,'esperimenti2_1.jpg','',1,1),
+(18,'esperimenti3_1.jpg','',1,1),
+(19,'esperimenti4_1.jpg','',1,1),
+(20,'esperimenti5_1.jpg','',1,1),
 
 -- EVENTI
-(11,'eventi1_1.jpg','Concerto jazz dal vivo',0,1),
-(11,'eventi1_2.jpg','Musicisti jazz sul palco',1,2),
+(11,'eventi1_1.jpg','Primo piano di persona con sax, sullo sfondo festival con tende, luci e persone.',0,1),
+(11,'eventi1_2.jpg','',1,2),
 
-(12,'eventi2_1.jpg','Workshop di fotografia',0,1),
-(12,'eventi2_2.jpg','Partecipanti al workshop',1,2),
-(12,'eventi2_3.jpg','Attrezzatura fotografica',1,3),
+(12,'eventi2_1.jpg','Persona con macchina fotografica accanto a grande fotocamera e luci da studio. ',0,1),
+(12,'eventi2_2.jpg','Due persone in studio osservano una fotocamera DSLR; una indica lo schermo, l’altra la tiene.',0,2),
+(12,'eventi2_3.jpg','Due persone in studio esaminano fotocamere: una mostra lo schermo, l’altra tiene una fotocamera compatta.',0,3),
 
-(13,'eventi3_1.jpg','Seminario di cybersecurity',0,1),
+(13,'eventi3_1.jpg','',1,1),
 
-(14,'eventi4_1.jpg','Fiera del fumetto',0,1),
-(14,'eventi4_2.jpg','Stand e fumetti',1,2),
+(14,'eventi4_1.jpg','Persone leggono o usano dispositivi tra pile di libri colorati disposte a piramide.',0,1),
+(14,'eventi4_2.jpg','Tavolo pieno di manga con persone che sfogliano e acquistano.',0,2),
 
-(15,'eventi5_1.jpg','Corso di cucina italiana',0,1),
+(15,'eventi5_1.jpg','Mano che usa macchina per pasta su piano infarinato, con uova, farina, olio e tagliatelle.',0,1),
 
 -- RIPETIZIONI
-(6,'ripetizioni1_1.jpg','Ripetizioni di fisica',0,1),
-(7,'ripetizioni2_1.jpg','Lezioni di inglese',0,1),
-(8,'ripetizioni3_1.jpg','Programmazione al computer',0,1),
-(9,'ripetizioni4_1.jpg','Studio del latino',0,1),
-(10,'ripetizioni5_1.jpg','Studio di economia',0,1);
+(6,'ripetizioni1_1.jpg','',1,1),
+(7,'ripetizioni2_1.jpg','',1,1),
+(8,'ripetizioni3_1.jpg','',1,1),
+(9,'ripetizioni4_1.jpg','',1,1),
+(10,'ripetizioni5_1.jpg','',1,1);
