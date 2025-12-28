@@ -32,6 +32,7 @@ in relazione:
 - per il mini non si è mantenuto layout desktop semplicemente responsive ma è stato pensato separatamente
 - php divisione tra db query, tool moduli e php pages
 - spiegare errori (404 500) e validazione
+- data list da telefono su tastiera
 - immagini (png, jpg) --> capire come gestire:
     - assets logo svg, tutto il resto in webp + sotto mega
     SOFIA - img_annunci jpg con dimensione massima e trasformazione in jpg se no lo è (nella relazione figure + doppia estension)
