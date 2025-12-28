@@ -213,32 +213,128 @@ INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
 
 INSERT INTO Annuncio (Titolo, Descrizione, Categoria, IdUtente, IdCitta) VALUES
 -- AFFITTI (1–5)
-('Stanza singola per studenti', 'Stanza luminosa in appartamento condiviso.', 'Affitti', 2, 23),
-('Bilocale arredato vicino metro', 'Bilocale arredato, ideale per coppie.', 'Affitti', 2, 35),
-('Posto letto in doppia', 'Posto letto in camera doppia.', 'Affitti', 3, 26),
-('Monolocale ristrutturato', 'Monolocale ristrutturato di recente.', 'Affitti', 3, 16),
-('Appartamento studenti centro', 'Appartamento per 4 studenti.', 'Affitti', 1, 32),
+('Stanza singola per studenti', 'La stanza è situata all’interno di un appartamento condiviso, in un contesto tranquillo e ben collegato con i principali servizi. L’ambiente è luminoso grazie alle ampie finestre e arredato in modo semplice ma funzionale.
+
+L’appartamento dispone di una cucina abitabile completamente attrezzata e di spazi comuni curati, ideali per studenti che desiderano un ambiente sereno per lo studio.
+
+La zona è ben servita da mezzi pubblici, supermercati e attività commerciali. Soluzione ideale per studenti universitari o giovani lavoratori.', 'Affitti', 2, 23),
+
+('Bilocale arredato vicino metro', 'Bilocale moderno e completamente arredato, situato a pochi passi dalla metropolitana. L’appartamento è composto da soggiorno con angolo cottura, camera da letto matrimoniale e bagno finestrato.
+
+Gli spazi sono ben distribuiti e arredati con gusto, offrendo un ambiente confortevole e accogliente. La cucina è dotata di elettrodomestici recenti.
+
+Ottima soluzione per coppie o professionisti che cercano comodità e collegamenti rapidi con il centro città.', 'Affitti', 2, 35),
+
+('Posto letto in doppia', 'Posto letto disponibile in camera doppia all’interno di un appartamento condiviso. La stanza è spaziosa, ben illuminata e arredata con due letti singoli e armadi separati.
+
+L’appartamento dispone di cucina, bagno e zona comune condivisa, mantenuti in buone condizioni. Ambiente giovane e collaborativo.
+
+Ideale per studenti fuori sede che cercano una soluzione economica senza rinunciare al comfort.', 'Affitti', 3, 26),
+
+('Monolocale ristrutturato', 'Monolocale recentemente ristrutturato, situato in una zona residenziale tranquilla. L’ambiente unico è ben organizzato, con zona giorno/notte separata funzionalmente.
+
+Il bagno è moderno e dotato di box doccia. Le finiture sono recenti e di buona qualità, garantendo un ambiente piacevole.
+
+Perfetto per una persona sola o per chi cerca indipendenza e praticità.', 'Affitti', 3, 16),
+
+('Appartamento studenti centro', 'Ampio appartamento pensato per ospitare fino a quattro studenti, situato in pieno centro. Le camere sono spaziose e ben illuminate.
+
+La cucina è abitabile e adatta alla vita condivisa, mentre i servizi sono funzionali e adeguati al numero di inquilini.
+
+Soluzione ideale per gruppi di studenti che desiderano vivere vicino all’università e ai principali servizi.', 'Affitti', 1, 32),
 
 -- RIPETIZIONI (6–10)
-('Ripetizioni di Fisica', 'Fisica per licei scientifici.', 'Ripetizioni', 1, 23),
-('Lezioni di Inglese', 'Inglese livello B1–C1.', 'Ripetizioni', 3, 35),
-('Ripetizioni di Programmazione C', 'Supporto per esami universitari.', 'Ripetizioni', 4, 6),
-('Ripetizioni di Latino', 'Latino per liceo classico.', 'Ripetizioni', 3, 16),
-('Ripetizioni di Economia', 'Economia aziendale e politica.', 'Ripetizioni', 1, 32),
+('Ripetizioni di Fisica', 'Offro ripetizioni di fisica per studenti delle scuole superiori, con particolare attenzione alla comprensione dei concetti teorici e alla risoluzione degli esercizi.
+
+Le lezioni sono personalizzate in base alle esigenze dello studente, con esempi pratici e simulazioni di verifica.
+
+Disponibile sia per recupero debiti che per preparazione a verifiche ed esami.', 'Ripetizioni', 1, 23),
+
+('Lezioni di Inglese', 'Lezioni di inglese per studenti di scuole medie e superiori, mirate a migliorare grammatica, comprensione e conversazione.
+
+Il metodo didattico è flessibile e adattato al livello dello studente, con materiali aggiornati e attività interattive.
+
+Obiettivo principale: acquisire sicurezza nell’uso della lingua.', 'Ripetizioni', 3, 35),
+
+('Ripetizioni di Programmazione C', 'Ripetizioni di programmazione in linguaggio C rivolte a studenti universitari e principianti. Supporto nello studio di puntatori, strutture dati e gestione della memoria.
+
+Le lezioni includono esempi pratici, esercizi guidati e spiegazioni passo-passo del codice.
+
+Ideale per preparazione esami o recupero di lacune di base.', 'Ripetizioni', 4, 6),
+
+('Ripetizioni di Latino', 'Ripetizioni di latino per studenti del liceo classico e scientifico. Approfondimento di grammatica, sintassi e traduzione.
+
+L’approccio è metodico e mirato a rendere più chiaro e accessibile lo studio della lingua latina.
+
+Disponibile anche supporto per versioni e interrogazioni.', 'Ripetizioni', 3, 16),
+
+('Ripetizioni di Economia', 'Ripetizioni di economia aziendale e politica per studenti universitari. Spiegazione chiara dei principali modelli economici.
+
+Le lezioni sono strutturate per facilitare la comprensione teorica e l’applicazione pratica dei concetti.
+
+Adatte sia a studenti in difficoltà che a chi vuole approfondire.', 'Ripetizioni', 1, 32),
 
 -- EVENTI (11–15)
-('Concerto jazz dal vivo', 'Concerto jazz con band locale.', 'Eventi', 2, 35),
-('Workshop di fotografia', 'Fotografia urbana pratica.', 'Eventi', 3, 23),
-('Seminario di cybersecurity', 'Introduzione alla sicurezza informatica.', 'Eventi', 4, 6),
-('Fiera del fumetto', 'Evento dedicato a fumetti e cosplay.', 'Eventi', 1, 47),
-('Corso di cucina italiana', 'Cucina tradizionale italiana.', 'Eventi', 2, 26),
+('Concerto jazz dal vivo', 'Concerto jazz con band locale, in un’atmosfera intima e coinvolgente. Evento pensato per gli amanti della musica dal vivo.
+
+Il repertorio spazia dai classici del jazz a interpretazioni moderne.
+
+Perfetto per una serata culturale diversa dal solito.', 'Eventi', 2, 35),
+
+('Workshop di fotografia', 'Workshop pratico di fotografia urbana, rivolto a principianti e appassionati. Approccio diretto e operativo.
+
+Durante l’evento verranno trattati composizione, luce e uso della fotocamera.
+
+Occasione ideale per migliorare le proprie competenze fotografiche.', 'Eventi', 3, 23),
+
+('Seminario di cybersecurity', 'Seminario introduttivo sulla sicurezza informatica, con focus su minacce attuali e buone pratiche.
+
+L’evento è pensato per studenti e curiosi del settore tecnologico.
+
+Non sono richieste competenze pregresse.', 'Eventi', 4, 6),
+
+('Fiera del fumetto', 'Evento dedicato al mondo del fumetto, del cosplay e della cultura pop.
+
+Presenti stand, artisti e aree tematiche.
+
+Ideale per appassionati di tutte le età.', 'Eventi', 1, 47),
+
+('Corso di cucina italiana', 'Corso pratico di cucina italiana tradizionale, con preparazione di piatti tipici.
+
+Guidato da chef esperti, il corso unisce teoria e pratica.
+
+Esperienza ideale per chi ama cucinare e sperimentare.', 'Eventi', 2, 26),
 
 -- ESPERIMENTI (16–20)
-('Studio sulla memoria', 'Studio su memoria a breve termine.', 'Esperimenti', 1, 23),
-('Test di usabilità app', 'Test UX su app mobile.', 'Esperimenti', 2, 35),
-('Studio sul sonno', 'Ricerca su ciclo del sonno.', 'Esperimenti', 4, 6),
-('Esperimento realtà virtuale', 'Interazione in ambienti VR.', 'Esperimenti', 1, 32),
-('Ricerca sullo stress', 'Studio psicologico sullo stress.', 'Esperimenti', 3, 19);
+('Studio sulla memoria', 'Studio sperimentale sulla memoria a breve termine, condotto in ambiente controllato.
+
+I partecipanti svolgeranno semplici test cognitivi.
+
+Ricerca a scopo scientifico, con compenso previsto.', 'Esperimenti', 1, 23),
+
+('Test di usabilità app', 'Test di usabilità su applicazione mobile in fase di sviluppo.
+
+I partecipanti forniranno feedback sull’esperienza utente.
+
+Attività breve e retribuita.', 'Esperimenti', 2, 35),
+
+('Studio sul sonno', 'Ricerca sul ciclo del sonno e sulle abitudini notturne.
+
+Lo studio prevede monitoraggi e questionari.
+
+Contributo utile alla ricerca scientifica.', 'Esperimenti', 4, 6),
+
+('Esperimento realtà virtuale', 'Esperimento sull’interazione uomo-macchina in ambienti di realtà virtuale.
+
+I partecipanti utilizzeranno visori VR in sicurezza.
+
+Esperienza innovativa e coinvolgente.', 'Esperimenti', 1, 32),
+
+('Ricerca sullo stress', 'Studio psicologico sullo stress e sulle strategie di coping.
+
+La partecipazione include questionari e brevi test.
+
+Ricerca svolta in ambiente professionale.', 'Esperimenti', 3, 19);
 
 -- =====================================================
 -- TABELLE SPECIALIZZATE
@@ -278,52 +374,52 @@ INSERT INTO AnnuncioEsperimenti VALUES
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
 -- AFFITTI
-(1,'affitti1_1.jpg','Stanza singola luminosa',0,1),
-(1,'affitti1_2.jpg','Ingresso appartamento condiviso',1,2),
+(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet a spina di pesce..',0,1),
+(1,'affitti1_2.jpg',"Ingresso luminoso con accesso a due camere: una con parete gialla e piastrelle, l’altra, presente nell'immagine precedente con parquet e finestra. Corridoio con specchio a parete e pavimento decorato.",1,2),
 
-(2,'affitti2_1.jpg','Soggiorno bilocale arredato',0,1),
-(2,'affitti2_2.jpg','Zona living con divano',1,2),
-(2,'affitti2_3.jpg','Cucina bilocale',1,3),
-(2,'affitti2_4.jpg','Bagno dell’appartamento',1,4),
+(2,'affitti2_1.jpg','Scrivania in legno con sedia, davanti a una grande finestra con vista su edifici e alberi. Ambiente luminoso e minimalista, adatto allo studio o al lavoro.',0,1),
+(2,'affitti2_2.jpg','Soggiorno moderno con divano blu, cuscini gialli, tappeto giallo e tavolino bianco. Porta finestra con tende bianche e accesso al balcone. TV con mensole e decorazioni.',1,2),
+(2,'affitti2_3.jpg','Cucina moderna con mobili in legno chiaro, forno, piano cottura e frigorifero. Tavolo con quattro sedie gialle in plastica. Pavimento piastrellato e finestra con tende leggere.',1,3),
+(2,'affitti2_4.jpg','Bagno moderno con doccia angolare a vetro, lavabo con specchio, WC e bidet. Piastrelle verdi e bianche, illuminazione sopra lo specchio.',1,4),
 
-(3,'affitti3_1.jpg','Camera doppia con due letti',0,1),
-(3,'affitti3_2.jpg','Vista alternativa camera doppia',1,2),
+(3,'affitti3_1.jpg','Camera con due letti singoli affiancati, comodino centrale con lampada, armadio con ante a specchio e finestra con tapparella. Sopra il comodino quadro marino e climatizzatore.',0,1),
+(3,'affitti3_2.jpg','Camera con due letti singoli paralleli, comodino centrale con lampada, cassettiera con TV e quadro marino. Finestra con tapparella e climatizzatore.',1,2),
 
-(4,'affitti4_1.jpg','Monolocale ristrutturato',0,1),
-(4,'affitti4_2.jpg','Zona notte monolocale',1,2),
-(4,'affitti4_3.jpg','Zona giorno monolocale',1,3),
-(4,'affitti4_4.jpg','Bagno monolocale',1,4),
+(4,'affitti4_1.jpg','Camera con letto matrimoniale, sedia maculata, tavolino e scaffale metallico con oggetti vintage. Pavimento grigio con tappeto intrecciato, cassapanca con pianta e decorazione appesa.',0,1),
+(4,'affitti4_2.jpg','Camera con letto singolo, comodino, scaffale con libri e decorazioni, cassettiera con pianta. Pavimento chiaro, tappeto e cuscino a terra. Porta a vetro sul lato destro.',1,2),
+(4,'affitti4_3.jpg','Monolocale con letto, tavolo da pranzo in legno, sedia con coperta e scaffale con libri, piante e microonde. ',1,3),
+(4,'affitti4_4.jpg','Bagno compatto con doccia a vetro, lavabo con specchio, WC e lavatrice, mobile in legno e pavimento effetto legno.',1,4),
 
-(5,'affitti5_1.jpg','Cucina appartamento studenti',0,1),
-(5,'affitti5_2.jpg','Camera singola studenti',1,2),
-(5,'affitti5_3.jpg','Camera doppia studenti',1,3),
-(5,'affitti5_4.jpg','Bagno condiviso',1,4),
+(5,'affitti5_1.jpg','Cucina moderna con mobili bianchi e azzurri, tavolo in legno con quattro sedie e lampade a sospensione. Finestra e luce naturale, tappeto decorativo vicino alla porta.',0,1),
+(5,'affitti5_2.jpg','Camera singola con letto bianco e grigio, comodino con lampada, scrivania con sedia e pianta.',1,2),
+(5,'affitti5_3.jpg','Camera con due letti singoli paralleli, comodino centrale, pavimento piastrellato chiaro e pareti bianche.',1,3),
+(5,'affitti5_4.jpg','Bagno moderno con doccia a parete, WC sospeso, lavabo con specchio illuminato e scaldabagno sopra il WC.',1,4),
 
 -- ESPERIMENTI
-(16,'esperimenti1_1.jpg','Esperimento sulla memoria',0,1),
-(17,'esperimenti2_1.jpg','Test di usabilità software',0,1),
-(18,'esperimenti3_1.jpg','Studio scientifico sul sonno',0,1),
-(19,'esperimenti4_1.jpg','Esperimento con visore VR',0,1),
-(20,'esperimenti5_1.jpg','Studio psicologico sullo stress',0,1),
+(16,'esperimenti1_1.jpg','',1,1),
+(17,'esperimenti2_1.jpg','',1,1),
+(18,'esperimenti3_1.jpg','',1,1),
+(19,'esperimenti4_1.jpg','',1,1),
+(20,'esperimenti5_1.jpg','',1,1),
 
 -- EVENTI
-(11,'eventi1_1.jpg','Concerto jazz dal vivo',0,1),
-(11,'eventi1_2.jpg','Musicisti jazz sul palco',1,2),
+(11,'eventi1_1.jpg','Primo piano di persona con sax, sullo sfondo festival con tende, luci e persone.',0,1),
+(11,'eventi1_2.jpg','',1,2),
 
-(12,'eventi2_1.jpg','Workshop di fotografia',0,1),
-(12,'eventi2_2.jpg','Partecipanti al workshop',1,2),
-(12,'eventi2_3.jpg','Attrezzatura fotografica',1,3),
+(12,'eventi2_1.jpg','Persona con macchina fotografica accanto a grande fotocamera e luci da studio. ',0,1),
+(12,'eventi2_2.jpg','Due persone in studio osservano una fotocamera DSLR; una indica lo schermo, l’altra la tiene.',0,2),
+(12,'eventi2_3.jpg','Due persone in studio esaminano fotocamere: una mostra lo schermo, l’altra tiene una fotocamera compatta.',0,3),
 
-(13,'eventi3_1.jpg','Seminario di cybersecurity',0,1),
+(13,'eventi3_1.jpg','',1,1),
 
-(14,'eventi4_1.jpg','Fiera del fumetto',0,1),
-(14,'eventi4_2.jpg','Stand e fumetti',1,2),
+(14,'eventi4_1.jpg','Persone leggono o usano dispositivi tra pile di libri colorati disposte a piramide.',0,1),
+(14,'eventi4_2.jpg','Tavolo pieno di manga con persone che sfogliano e acquistano.',0,2),
 
-(15,'eventi5_1.jpg','Corso di cucina italiana',0,1),
+(15,'eventi5_1.jpg','Mano che usa macchina per pasta su piano infarinato, con uova, farina, olio e tagliatelle.',0,1),
 
 -- RIPETIZIONI
-(6,'ripetizioni1_1.jpg','Ripetizioni di fisica',0,1),
-(7,'ripetizioni2_1.jpg','Lezioni di inglese',0,1),
-(8,'ripetizioni3_1.jpg','Programmazione al computer',0,1),
-(9,'ripetizioni4_1.jpg','Studio del latino',0,1),
-(10,'ripetizioni5_1.jpg','Studio di economia',0,1);
+(6,'ripetizioni1_1.jpg','',1,1),
+(7,'ripetizioni2_1.jpg','',1,1),
+(8,'ripetizioni3_1.jpg','',1,1),
+(9,'ripetizioni4_1.jpg','',1,1),
+(10,'ripetizioni5_1.jpg','',1,1);
