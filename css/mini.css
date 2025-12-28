@@ -112,9 +112,17 @@ header {
     color: var(--clearTxtColor);
 }
 
-#hamburger-menu .call-to-action:visited{    
+#hamburger-menu .link.call-to-action:visited{    
     color: var(--call-to-actionColor);
     background-color: var(--BgColor);
+}
+
+#hamburger-menu .link.call-to-action:hover,
+#hamburger-menu .link.call-to-action:focus{
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
+    outline: var(--btn-border);
+    outline-offset: 1px;
 }
 
 #hamburger-aperto.attivo,
