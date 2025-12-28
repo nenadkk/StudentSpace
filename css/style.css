@@ -344,16 +344,6 @@ button {
     outline-offset: 1px;
 }
 
-.link.call-to-action:hover,
-.link.call-to-action:focus,
-#menu .link.call-to-action:hover,
-#menu .link.call-to-action:focus {
-    background-color: var(--call-to-actionAction);
-    color: var(--call-to-actionColor);
-    outline: var(--btn-border);
-    outline-offset: 1px;
-}
-
 /* ------------- estensione per #preferiti-style ------------- */
 
 #preferiti-style {
@@ -1097,7 +1087,7 @@ footer {
 
 #register-container .form-data {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(2, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--gap-2); 
 }
 
