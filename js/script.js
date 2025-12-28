@@ -298,6 +298,19 @@ function setDisabled(container, disabled) {
   });
 }
 
+function togglePasswordVisibility(checkboxId, inputId) {
+    const checkbox = document.getElementById(checkboxId);
+    const input = document.getElementById(inputId);
+
+    if (!checkbox || !input) return;
+
+    checkbox.addEventListener('change', () => {
+        input.type = checkbox.checked ? 'text' : 'password';
+    });
+}
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
@@ -307,4 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleFiltriCategoria();
   togglePubblicaCategoria();
   slideCarosello();
+  togglePasswordVisibility('mostraPassword', 'password');
+  togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
 });

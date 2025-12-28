@@ -2,12 +2,12 @@ da discutere:
 - compenso massimo (esperimento)
 - durata minima (esperimento)
 - se c'è solo un'immagine no frecce scorrimento + frecce immagini perchè se si tocca su miniature non si aggiornano le frecce
-- da categoria aggiungere nel link &submit=
+[- da categoria aggiungere nel link &submit=]
 - ultimi inseriti numero annunci (da 5 a 3) e decidere se fare scorrimento
 - controllare che tutti i form abbiano validazione (filtri, pubblica, accedi e registrati)
 - in pubblica rivedere parte errori
 - in pubblica riordinare campi
-- fare mostra password
+[- fare mostra password]
 - aggiungere mostra password in accedi
 - fare controlli di sql injection
 - fare test:
