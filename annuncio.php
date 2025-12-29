@@ -56,7 +56,7 @@ if ($db->openDBConnection()) {
 
     if ($annuncio === false) { 
         $db->closeConnection(); 
-        die("Annuncio non trovato."); 
+        Tool::renderError(404);
     }
 
     $annuncio = $annuncio[0];

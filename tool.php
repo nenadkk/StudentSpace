@@ -167,4 +167,13 @@ class Tool {
 
         return $html;
     }
+
+    /* -------------------------------
+    * FUNZIONE GESTIONE ERRORI
+    * ------------------------------- */
+    public static function renderError(int $code) {
+        http_response_code($code);
+        require __DIR__ . "/$code.php";
+        exit;
+    }
 }
