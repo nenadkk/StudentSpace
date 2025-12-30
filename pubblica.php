@@ -4,7 +4,7 @@ require_once "tool.php";
 require_once "dbConnect.php";
 
 if (!Tool::isLoggedIn()) {
-    header ("Location: accedi.php");
+    header("Location: accedi.php?redirect=pubblica.php");
     exit;
 }
 

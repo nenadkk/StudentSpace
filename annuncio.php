@@ -12,7 +12,7 @@ $htmlPage = file_get_contents("pages/annuncio.html");
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
     if (!Tool::isLoggedIn()) {
-        header("Location: accedi.php");
+        header("Location: accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
         exit;
     }
 
@@ -91,8 +91,8 @@ foreach ($immagini as $index => $img) {
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="accedi.php" id="preferiti-style" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★ Preferiti</a>
-        <a href="accedi.php" id="preferiti-mini" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti-style" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★ Preferiti</a>
+        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti-mini" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {

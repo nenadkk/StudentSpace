@@ -4,7 +4,11 @@ require_once "dbConnect.php";
 require_once "tool.php";
 
 if (Tool::isLoggedIn()) {
-    header("Location: index.php");
+    if (isset($_GET['redirect'])) {
+        header("Location: " . $_GET['redirect']);
+    } else {
+        header("Location: index.php");
+    }
     exit;
 }
 
@@ -25,6 +29,13 @@ if(isset($_POST['submit'])) {
             $idUtente = $db->verifyUserCredential($email, $password);
             if ($idUtente !== false) {
                 Tool::startUserSession($idUtente);
+
+                $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
+                if ($redirect !== "") {
+                    header("Location: " . $redirect);
+                    exit;
+                }
+
                 header("Location: index.php");
                 exit;
             } else {
@@ -40,6 +51,7 @@ if(isset($_POST['submit'])) {
     
 }
 
+$htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
 $htmlPage = str_replace("[ErrorMessage]", $errorMessage, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);
