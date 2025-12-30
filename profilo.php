@@ -32,7 +32,7 @@ if($db->openDBConnection()) {
         $annunciPreferiti = $db->getAnnunciPreferiti($idUtente);
         if($annunciPreferiti !== false) {
             $cardsPreferiti = Tool::createCard($annunciPreferiti);
-            $numPreferitiy = count($cardsPreferiti);
+            $numPreferiti = count($annunciPreferiti);
         } else {
             $cardsPreferiti = '<div class="centered">
                         <p>Nessun annuncio tra i preferiti.</p>
