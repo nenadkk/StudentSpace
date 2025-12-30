@@ -335,11 +335,12 @@ button {
     color: var(--txtcolor);
 }
 
-.link.call-to-action:visited:hover,
-.link.call-to-action:visited:focus,
-#menu .link.call-to-action:visited:hover,
-#menu .link.call-to-action:visited:focus {
+.link.call-to-action:hover,
+.link.call-to-action:focus,
+#menu .link.call-to-action:hover,
+#menu .link.call-to-action:focus {
     background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
     outline: var(--btn-border);
     outline-offset: 1px;
 }
@@ -460,7 +461,7 @@ button {
     padding: 2em;
 }
 
- #profilo {
+#profilo {
     gap: var(--gap-0-5);
     padding: 2em;
  }
@@ -699,6 +700,18 @@ footer {
 .imgValidCode {
     height: 30px;
     width: auto;
+}
+
+.titolo-num-risultati {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-0-5);
+    justify-content: center;
+}
+
+.num-risultati { 
+    font-weight: 600;
+    color: var(--txtcolor); 
 }
 
 /*
