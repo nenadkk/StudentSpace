@@ -175,13 +175,6 @@ class DBAccess {
                     $query.= "Laboratorio LIKE '%".$filtri['laboratorio']."%' AND ";
                 }
 
-                if ($filtri['esperimento-durata-min'] != '') 
-                {
-                    if (!str_contains($query,"WHERE"))
-                        $query.="WHERE ";
-                    $query.= "DurataPrevista>='".$filtri['esperimento-durata-min']."' AND ";
-                }
-
                 if ($filtri['esperimento-durata-max'] != '') 
                 {
                     if (!str_contains($query,"WHERE"))
@@ -193,12 +186,6 @@ class DBAccess {
                     if (!str_contains($query,"WHERE"))
                         $query.="WHERE ";
                     $query.= "Compenso>='".$filtri['esperimento-compenso-min']."' AND ";
-                }
-                if ($filtri['esperimento-compenso-max'] != '') 
-                {
-                    if (!str_contains($query,"WHERE"))
-                        $query.="WHERE ";
-                    $query.= "Compenso<='".$filtri['esperimento-compenso-max']."' AND ";
                 }
                 break;
 

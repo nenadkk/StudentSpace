@@ -29,10 +29,8 @@ $filtriAffitti = array(
 
 $filtriEsperimenti = array(
                 "laboratorio"=>"",
-                "esperimento-durata-min"=>"",
                 "esperimento-durata-max"=>"",
-                "esperimento-compenso-min"=>"",
-                "esperimento-compenso-max"=>"");
+                "esperimento-compenso-min"=>"");
 
 $filtriEventi = array(
                 "evento-inizio"=>"", "evento-fine"=>"", "evento-costo-max"=>"",
