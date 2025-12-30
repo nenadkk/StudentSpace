@@ -19,7 +19,7 @@ SOFIA - fare test:
         - focus-order   
         - contrasti
         - grandezza cliccabili min. 44x44
-SOFIA - gestire reindirizzamento  da preferiti annuncio
+SOFIA - gestire reindirizzamento  da preferiti annuncio --> gestita redict da IDannuncio/preferiti->accedi->IDannundio e pubblica->accedi->pubblica
 NICOLA - aggiungere elimina dei prorpri annunci SI
 CI PROVA NICOLA - inserire modifica in pagina annuncio in isLoggetd($idUtente) = autore annuncio con riuso pubblica in sovrascrizione non inserimento (idem per profilo con registrati in sovrascrizione)
 LASCIAMO STARE [- decidere se fare che si può vedere chi ha pubblicato l'annuncio (togliere dati sensibili)]
