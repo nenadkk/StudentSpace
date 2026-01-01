@@ -475,7 +475,7 @@ class DBAccess {
                         (IdAnnuncio, DataEvento, CostoEntrata, Luogo)
                         VALUES (?, ?, ?, ?)"
                     );
-                    $stmt->bind_param("issd", $idAnnuncio, $campi['data-evento'], $campi['costo-evento'], $campi['luogo-evento']);
+                    $stmt->bind_param("isss", $idAnnuncio, $campi['data-evento'], $campi['costo-evento'], $campi['luogo-evento']);
                     break;
 
                 case 'Ripetizioni':
