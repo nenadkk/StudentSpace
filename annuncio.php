@@ -17,6 +17,36 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
 $htmlPage = file_get_contents("pages/annuncio.html");
 $logger = "";
 
+$annuncio = ""; 
+$attr = "";
+$listaAttr = "";
+$immagini = [];  
+$isPreferito = false; 
+
+if ($db->openDBConnection()) {
+
+    $annuncio = $db->getAnnuncioBase($idAnnuncio); 
+
+    if ($annuncio === false) { 
+        $db->closeConnection(); 
+        Tool::renderError(404);
+    }
+
+    $annuncio = $annuncio[0];
+
+    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
+    $attr = $attr[0];
+    $listaAttr = Tool::mappaAttributi($annuncio["Categoria"], $attr);
+
+    $immagini = $db->getImmagini($idAnnuncio);
+
+    if (Tool::isLoggedIn()) { 
+        $isPreferito = $db->isPreferito($idAnnuncio, $_SESSION["user_id"]); 
+    }
+
+    $db->closeConnection();
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
     if (!Tool::isLoggedIn()) {
@@ -47,8 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::isLoggedIn()) {
     if($db->openDBConnection()) {
-        
-        $annuncio = $db->getAnnuncioBase($idAnnuncio)[0];
         $logger = "idAnnuncio:".$annuncio["IdUtente"]." IdUtente:".$_SESSION["user_id"];
 
         if ($annuncio === false) { 
@@ -64,36 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         header("Location: index.php");
         exit;
     }
-}
- 
-$annuncio = ""; 
-$attr = "";
-$listaAttr = "";
-$immagini = [];  
-$isPreferito = false; 
- 
-if ($db->openDBConnection()) {
-
-    $annuncio = $db->getAnnuncioBase($idAnnuncio); 
-
-    if ($annuncio === false) { 
-        $db->closeConnection(); 
-        Tool::renderError(404);
-    }
-
-    $annuncio = $annuncio[0];
-
-    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
-    $attr = $attr[0];
-    $listaAttr = Tool::mappaAttributi($annuncio["Categoria"], $attr);
-
-    $immagini = $db->getImmagini($idAnnuncio);
-
-    if (Tool::isLoggedIn()) { 
-        $isPreferito = $db->isPreferito($idAnnuncio, $_SESSION["user_id"]); 
-    }
-
-    $db->closeConnection();
 }
 
 $caroselloPrincipale = ""; 
@@ -144,7 +142,7 @@ if (!Tool::isLoggedIn()) {
 
     $bottonRimuovi = "";
 
-} else if($annuncio["IdAnnuncio"] == $_SESSION["user_id"]){
+} else if($annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
         <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
             <input type="hidden" name="elimina" value="rimuovi_preferito">
