@@ -144,7 +144,7 @@ if (!Tool::isLoggedIn()) {
 
     $bottonRimuovi = "";
 
-} else {
+} else if($annuncio["IdAnnuncio"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
         <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
             <input type="hidden" name="elimina" value="rimuovi_preferito">
@@ -152,6 +152,8 @@ if (!Tool::isLoggedIn()) {
             <button class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
         </form>
     ';
+} else {
+    $bottonRimuovi = "";
 }
 
 $htmlPage = str_replace("[TitoloAnnuncio]", htmlspecialchars($annuncio["Titolo"]), $htmlPage); 
