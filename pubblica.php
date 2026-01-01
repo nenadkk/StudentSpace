@@ -21,6 +21,7 @@ $campo2 = "";
 $campo3 = "";
 
 $immagini = [];
+$errorMessageImmagini = "";
 
 if(isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
@@ -33,40 +34,45 @@ if(isset($_POST['submit'])) {
         $altKey = 'alt'.$i;
         $decKey = 'decorativa'.$i;
 
-        if (
-            !isset($_FILES[$fileKey]) ||
-            $_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE
-        ) {
+        if (!isset($_FILES[$fileKey]) ||$_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
             continue;
         }
 
         if ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
-            throw new Exception("Errore upload immagine $i");
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Errore nel caricamento dell'immagine $i.</p>";
+            break;
         }
 
         $file = $_FILES[$fileKey];
 
-        $isDecorativa = isset($_POST[$decKey]);
+        // Dimensione massima 1MB 
+        if ($file['size'] > 1 * 1024 * 1024) { 
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>L'immagine $i supera la dimensione massima di 1MB.</p>"; 
+            break; 
+        }
 
+        // MIME consentiti
+        $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp']; 
+        if (!in_array($file['type'], $mimeConsentiti)) { 
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Formato non valido per l'immagine $i.</p>"; 
+            break; 
+        }
+
+        $isDecorativa = isset($_POST[$decKey]);
         $altText = null;
+
         if(!$isDecorativa) {
             $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
-            if($altText === '') {
-                die("Errore: il testo alternativo per l'immagine $i è obbligatorio.");
+            if ($altText === '') { 
+                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio.</p>"; 
+                break; 
             }
         }
 
-        // Validazione MIME
-        $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp'];
-        if (!in_array($file['type'], $mimeConsentiti)) {
-            die("Formato non valido per l'immagine $i.");
-        }
-
-        // Rinomina sicura
-        $estensione = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $nomeFile = uniqid('img_') . '.' . $estensione;
-
-        move_uploaded_file($file['tmp_name'], __DIR__ . '/assets/' . $nomeFile);
+        // Salvataggio file originale
+        $estensione = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)); 
+        $nomeFile = uniqid('img_') . '.' . $estensione; 
+        move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $nomeFile);
 
         // Salvataggio dati
         $immagini[] = [
@@ -75,6 +81,14 @@ if(isset($_POST['submit'])) {
             'decorativa' => (int)$isDecorativa,
             'ordine'     => $i
         ];
+    }
+
+    if ($errorMessageImmagini !== "") { 
+        $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage); 
+        $htmlPage = str_replace("[ValueTitolo]", $titolo, $htmlPage); 
+        $htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage); 
+        echo $htmlPage; 
+        exit; 
     }
 
     switch ($categoria) {
@@ -107,11 +121,13 @@ if(isset($_POST['submit'])) {
         $idCitta = $db->getIdCitta($citta);
         $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campo1, $campo2, $campo3, $immagini);
         $db->closeConnection();
-        $str = "Location: annuncio.php?id=". $idAnnuncio;
-        header($str);
+
+        header("Location: annuncio.php?id=". $idAnnuncio);
         exit;
     }
 }
+
+$htmlPage = str_replace("[ErrorMessageImmagini]", "", $htmlPage);
 
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);

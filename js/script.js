@@ -309,8 +309,54 @@ function togglePasswordVisibility(checkboxId, inputId) {
     });
 }
 
+// CONVERSIONE PNG/WEBP → JPG (solo se possibile)
+function convertiImmaginiInJPG() {
+  const inputs = document.querySelectorAll("input[type='file'][id^='foto']");
 
+  // Se il browser non supporta canvas → non convertire
+  if (!window.HTMLCanvasElement) return;
 
+  inputs.forEach(input => {
+    input.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      // Se è già JPG → non serve convertire
+      if (file.type === "image/jpeg") return;
+
+      // Converte solo PNG o WebP
+      if (file.type !== "image/png" && file.type !== "image/webp") return;
+
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        canvas.toBlob((blob) => {
+          if (!blob) return; // Se fallisce → lascia il file originale
+
+          const jpgFile = new File(
+            [blob],
+            file.name.replace(/\.\w+$/, ".jpg"),
+            { type: "image/jpeg", lastModified: Date.now() }
+          );
+
+          // Sostituisce il file nel form
+          const dt = new DataTransfer();
+          dt.items.add(jpgFile);
+          e.target.files = dt.files;
+
+        }, "image/jpeg", 0.85);
+      };
+    });
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
@@ -322,4 +368,5 @@ document.addEventListener('DOMContentLoaded', function() {
   slideCarosello();
   togglePasswordVisibility('mostraPassword', 'password');
   togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
+  convertiImmaginiInJPG();
 });
