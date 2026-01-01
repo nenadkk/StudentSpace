@@ -16,9 +16,7 @@ $citta = "";
 $descrizione = "";
 $idUtente = $_SESSION['user_id'];
 
-$campo1 = "";
-$campo2 = "";
-$campo3 = "";
+$campi = [];
 
 $immagini = [];
 $errorMessageImmagini = "";
@@ -93,24 +91,24 @@ if(isset($_POST['submit'])) {
 
     switch ($categoria) {
         case 'Affitti':
-            $campo1 = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
-            $campo2 = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
-            $campo3 = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? '');
+            $campi['coinquilini'] = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
+            $campi['costo-mese-affitto'] = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
+            $campi['indirizzo-affitto'] = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? 0);
             break;
         case 'Esperimenti':
-            $campo1 = Tool::pulisciInput($_POST['laboratorio'] ?? '');
-            $campo2 = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
-            $campo3 = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
+            $campi['laboratorio'] = Tool::pulisciInput($_POST['laboratorio'] ?? 0);
+            $campi['esperimento-durata'] = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
+            $campi['esperimento-compenso'] = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
             break;
         case 'Eventi':
-            $campo1 = Tool::pulisciInput($_POST['data-evento'] ?? '');
-            $campo2 = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
-            $campo3 = Tool::pulisciInput($_POST['luogo-evneto'] ?? '');
+            $campi['data-evento'] = Tool::pulisciInput($_POST['data-evento'] ?? 0);
+            $campi['costo-evento'] = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
+            $campi['luogo-evento'] = Tool::pulisciInput($_POST['luogo-evento'] ?? 0);
             break;
         case 'Ripetizioni':
-            $campo1 = Tool::pulisciInput($_POST['materia'] ?? '');
-            $campo2 = Tool::pulisciInput($_POST['livello'] ?? '');
-            $campo3 = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
+            $campi['materia'] = Tool::pulisciInput($_POST['materia'] ?? 0);
+            $campi['livello'] = Tool::pulisciInput($_POST['livello'] ?? 0);
+            $campi['prezzo-ripetizioni'] = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
             break;
         default:
             break;
@@ -119,7 +117,7 @@ if(isset($_POST['submit'])) {
     $db = new DB\DBAccess;
     if ($db->openDBConnection()) {
         $idCitta = $db->getIdCitta($citta);
-        $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campo1, $campo2, $campo3, $immagini);
+        $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
         $db->closeConnection();
 
         header("Location: annuncio.php?id=". $idAnnuncio);

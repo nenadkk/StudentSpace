@@ -429,7 +429,7 @@ class DBAccess {
 
 
     // PRECONDIZIONE - $categoria={Affitti, Esperimenti, Eventi, Ripetizioni} && $immagini.len >= 1
-    public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campo1, $campo2, $campo3, $immagini) : int|false {
+    public function inserimentoAnnuncio(string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campi, $immagini) : int|false {
 
         mysqli_begin_transaction($this->connection);
 
@@ -457,7 +457,7 @@ class DBAccess {
                         (IdAnnuncio, PrezzoMensile, Indirizzo, NumeroInquilini)
                         VALUES (?, ?, ?, ?)"
                     );
-                    $stmt->bind_param("idsi", $idAnnuncio, $campo1, $campo2, $campo3);
+                    $stmt->bind_param("idsi", $idAnnuncio, $campi['costo-mese-affitto'], $campi['indirizzo-affitto'], $campi['coinquilini']);
                     break;
 
                 case 'Esperimenti':
@@ -466,7 +466,7 @@ class DBAccess {
                         (IdAnnuncio, Laboratorio, DurataPrevista, Compenso)
                         VALUES (?, ?, ?, ?)"
                     );
-                    $stmt->bind_param("isid", $idAnnuncio, $campo1, $campo2, $campo3);
+                    $stmt->bind_param("isid", $idAnnuncio, $campi['laboratorio'], $campi['esperimento-durata'], $campi['esperimento-compenso']);
                     break;
 
                 case 'Eventi':
@@ -475,7 +475,7 @@ class DBAccess {
                         (IdAnnuncio, DataEvento, CostoEntrata, Luogo)
                         VALUES (?, ?, ?, ?)"
                     );
-                    $stmt->bind_param("issd", $idAnnuncio, $campo1, $campo2, $campo3);
+                    $stmt->bind_param("issd", $idAnnuncio, $campi['data-evento'], $campi['costo-evento'], $campi['luogo-evento']);
                     break;
 
                 case 'Ripetizioni':
@@ -484,7 +484,7 @@ class DBAccess {
                         (IdAnnuncio, Materia, Livello, PrezzoOrario)
                         VALUES (?, ?, ?, ?)"
                     );
-                    $stmt->bind_param("issd", $idAnnuncio, $campo1, $campo2, $campo3);
+                    $stmt->bind_param("issd", $idAnnuncio, $campi['materia'], $campi['livello'], $campi['prezzo-ripetizioni']);
                     break;
 
                 default:
