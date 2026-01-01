@@ -10,11 +10,10 @@ $dbAccess = new DBAccess();
 $htmlPage = file_get_contents("pages/esplora.html");
 
 $categoria = "";
-
 $query = "";
-
 $cardsData="";
 $cards = "";
+$numRisultati = "";
 
 $filtriGenerali = array(
                 "cerca"=>"",
@@ -29,10 +28,8 @@ $filtriAffitti = array(
 
 $filtriEsperimenti = array(
                 "laboratorio"=>"",
-                "esperimento-durata-min"=>"",
                 "esperimento-durata-max"=>"",
-                "esperimento-compenso-min"=>"",
-                "esperimento-compenso-max"=>"");
+                "esperimento-compenso-min"=>"");
 
 $filtriEventi = array(
                 "evento-inizio"=>"", "evento-fine"=>"", "evento-costo-max"=>"",
@@ -99,28 +96,31 @@ if(isset($_GET['submit']))
         default:
             break;
     }
+
     if($cardsData !== false){
         $cards = Tool::createCard($cardsData);
-    } else 
+        $numRisultati = count($cardsData);
+    } else {
         $cards .= file_get_contents("pages/cardTemplate.html");
-
-}
-else
-{
+        $numRisultati = 0;
+    }
+} else {
     //nel caso non siano stati applicati filtri o ricerche mostro tutti gli annunci presenti
     $dbAccess->openDBConnection();
     $cardsData = $dbAccess->getAnnouncements();
     $dbAccess->closeConnection();
 
-    if($cardsData !== false)
+    if($cardsData !== false){
         $cards = Tool::createCard($cardsData);
-    else 
+        $numRisultati = count($cardsData);
+    } else {
         $cards .= file_get_contents("pages/cardTemplate.html");
+        $numRisultati = 0;
+    }
 }
 
 
 //Sostituzione dei placeholder
-
 foreach ($filtriGenerali as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
@@ -137,6 +137,8 @@ foreach ($filtriRipetizioni as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
 
+
+$htmlPage = str_replace("[NumRisultati]", $numRisultati, $htmlPage);
 $htmlPage = str_replace("[noneSelected]", $categoria=='' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[affittiSelected]", $categoria=='Affitti' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'selected' : '' , $htmlPage);

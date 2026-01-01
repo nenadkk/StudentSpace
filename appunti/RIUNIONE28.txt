@@ -1,40 +1,44 @@
 da discutere:
-- compenso massimo (esperimento)
-- durata minima (esperimento)
-- se c'è solo un'immagine no frecce scorrimento + frecce immagini perchè se si tocca su miniature non si aggiornano le frecce
-[- da categoria aggiungere nel link &submit=]
-- ultimi inseriti numero annunci (da 5 a 3) e decidere se fare scorrimento
-- controllare che tutti i form abbiano validazione (filtri, pubblica, accedi e registrati)
-- in pubblica rivedere parte errori
-- in pubblica riordinare campi
-[- fare mostra password]
-- aggiungere mostra password in accedi
-- fare controlli di sql injection
-- fare test:
-    - total validator
-    - NVDA (lista link, heading)
-    - alt immagini
-    - aria-label
-    - heading
-    - focus-order   
-    - contrasti
-    - grandezza cliccabili min. 44x44
-- inserire modifica in pagina annuncio in isLoggetd($idUtente) = autore annuncio con riuso pubblica in sovrascrizione non inserimento (idem per profilo con registrati in sovrascrizione)
-- decidere se fare che si può vedere chi ha pubblicato l'annuncio (togliere dati sensibili)
-- GESTIRE HTACCESS
-- controllare tutti i punti wcag
+SOFIA - compenso massimo (esperimento) - TOGLIERE
+SOFIA - durata minima (esperimento) - TOGLIERE
+NICOLA- se c'è solo un'immagine no frecce scorrimento + frecce immagini perchè se si tocca su miniature non si aggiornano le frecce
+[- da categoria aggiungere nel link &submit=] - FATTO
+SOFIA - ultimi inseriti numero annunci (da 5 a 3) e decidere se fare scorrimento - 3 NO SCORRIMENTO
+NENAD - controllare che tutti i form abbiano validazione (filtri, pubblica, accedi e registrati) - MANCANO SU FILTI E PUBBLICA
+NENAD - in pubblica rivedere parte errori
+NENAD - in pubblica riordinare campi 
+[- fare mostra password] - FATTO
+SOFIA - aggiungere mostra password in accedi
+NENAD - fare controlli di sql injection
+SOFIA - fare test:
+        - total validator
+        - NVDA (lista link, heading)
+        - alt immagini
+        - aria-label
+        - heading
+        - focus-order   
+        - contrasti
+        - grandezza cliccabili min. 44x44
+SOFIA - gestire reindirizzamento  da preferiti annuncio --> gestita redict da IDannuncio/preferiti->accedi->IDannundio e pubblica->accedi->pubblica
+NICOLA - aggiungere elimina dei prorpri annunci SI
+CI PROVA NICOLA - inserire modifica in pagina annuncio in isLoggetd($idUtente) = autore annuncio con riuso pubblica in sovrascrizione non inserimento (idem per profilo con registrati in sovrascrizione)
+LASCIAMO STARE [- decidere se fare che si può vedere chi ha pubblicato l'annuncio (togliere dati sensibili)]
+NICOLA - GESTIRE HTACCESS
+SOFIA - controllare tutti i punti wcag
 - capire come organizzare relazione 
-- reindirrizzare errori (es. se vine messo qualcosa a caso in URL)
 
 in relazione:
 - no errore password ma email + password per non essere tropoo specifici
 - per il mini non si è mantenuto layout desktop semplicemente responsive ma è stato pensato separatamente
 - php divisione tra db query, tool moduli e php pages
 - spiegare errori (404 500) e validazione
-- immagini (png, jpg) --> capire come gestire 
+- data list da telefono su tastiera
+- immagini (png, jpg) --> capire come gestire:
+    - assets logo svg, tutto il resto in webp + sotto mega
+    SOFIA - img_annunci jpg con dimensione massima e trasformazione in jpg se no lo è (nella relazione figure + doppia estension)
+
 - colori
 - font
-- Progressive Enhancement
 
 da chiedere: 
 - user user
