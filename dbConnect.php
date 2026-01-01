@@ -45,7 +45,7 @@ class DBAccess {
             FROM Annuncio as a JOIN Citta as c ON a.IdCitta = c.IdCitta LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio
             WHERE i.Ordine = 1
             ORDER BY a.DataPubblicazione DESC
-            LIMIT 5;";
+            LIMIT 3;";
         $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
 
         if(mysqli_num_rows($queryResult) == 0) {
