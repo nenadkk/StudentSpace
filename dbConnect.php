@@ -572,7 +572,7 @@ class DBAccess {
     }
 
     public function getAnnuncioBase(int $idAnnuncio) {
-       $query = "SELECT A.*, C.NomeCitta FROM Annuncio A JOIN Citta C ON A.IdCitta = C.IdCitta WHERE A.IdAnnuncio = $idAnnuncio";
+        $query = "SELECT A.*, C.NomeCitta FROM Annuncio A JOIN Citta C ON A.IdCitta = C.IdCitta WHERE A.IdAnnuncio = $idAnnuncio";
 
         $queryResult = mysqli_query($this->connection, $query) or die ("Query fallita: " . mysqli_error($this->connection));
 
@@ -644,6 +644,14 @@ class DBAccess {
         }
 
         return $results;
+    }
+
+    public function deleteAnnuncio(int $idAnnuncio) {
+        $stmt = $this->connection->prepare("DELETE FROM Annuncio WHERE IdAnnuncio = ?");
+        $stmt->bind_param('i', $idAnnuncio);
+        $ok = $stmt->execute();
+        $stmt->close();
+        return $ok;
     }
 }
 

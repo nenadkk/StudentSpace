@@ -3,11 +3,19 @@
 require_once "dbConnect.php";
 require_once "tool.php";
 
-session_start();
+// session_start();
 
 use DB\DBAccess;
+$db = new DB\DBAccess();
+
+if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
+    $idAnnuncio = intval($_GET["id"]); 
+} else { 
+    Tool::renderError(404);
+}
 
 $htmlPage = file_get_contents("pages/annuncio.html");
+$logger = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
@@ -37,10 +45,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
     exit;
 }
 
-if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
-    $idAnnuncio = intval($_GET["id"]); 
-} else { 
-    die("Annuncio non valido."); 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::isLoggedIn()) {
+    if($db->openDBConnection()) {
+        
+        $annuncio = $db->getAnnuncioBase($idAnnuncio)[0];
+        $logger = "idAnnuncio:".$annuncio["IdUtente"]." IdUtente:".$_SESSION["user_id"];
+
+        if ($annuncio === false) { 
+            $db->closeConnection(); 
+            Tool::renderError(404);
+        }
+        
+        if ($annuncio["IdUtente"] == $_SESSION["user_id"]) {
+            $logger = "QUO";
+            $res = $db->deleteAnnuncio($idAnnuncio);
+        }
+
+        header("Location: index.php");
+        exit;
+    }
 }
  
 $annuncio = ""; 
@@ -48,8 +71,7 @@ $attr = "";
 $listaAttr = "";
 $immagini = [];  
 $isPreferito = false; 
-
-$db = new DB\DBAccess(); 
+ 
 if ($db->openDBConnection()) {
 
     $annuncio = $db->getAnnuncioBase($idAnnuncio); 
@@ -118,6 +140,20 @@ if (!Tool::isLoggedIn()) {
     }
 }
 
+if (!Tool::isLoggedIn()) {
+
+    $bottonRimuovi = "";
+
+} else {
+    $bottonRimuovi = '
+        <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
+            <input type="hidden" name="elimina" value="rimuovi_preferito">
+            <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
+            <button class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
+        </form>
+    ';
+}
+
 $htmlPage = str_replace("[TitoloAnnuncio]", htmlspecialchars($annuncio["Titolo"]), $htmlPage); 
 $htmlPage = str_replace("[CittaAnnuncio]", htmlspecialchars($annuncio["NomeCitta"]), $htmlPage); 
 $htmlPage = str_replace("[DescrizioneAnnuncio]", Tool::convertiInParagrafi($annuncio["Descrizione"]), $htmlPage);
@@ -133,7 +169,9 @@ $htmlPage = str_replace("[CaroselloPrincipale]", $caroselloPrincipale, $htmlPage
 $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage);
 
 $htmlPage = str_replace("[PreferitiButton]", $preferitiHTML, $htmlPage);
+$htmlPage = str_replace("[RimuoviButton]", $bottonRimuovi, $htmlPage);
 
+$htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 
