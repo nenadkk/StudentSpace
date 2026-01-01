@@ -15,37 +15,6 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
 }
 
 $htmlPage = file_get_contents("pages/annuncio.html");
-$logger = "";
-
-$annuncio = ""; 
-$attr = "";
-$listaAttr = "";
-$immagini = [];  
-$isPreferito = false; 
-
-if ($db->openDBConnection()) {
-
-    $annuncio = $db->getAnnuncioBase($idAnnuncio); 
-
-    if ($annuncio === false) { 
-        $db->closeConnection(); 
-        Tool::renderError(404);
-    }
-
-    $annuncio = $annuncio[0];
-
-    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
-    $attr = $attr[0];
-    $listaAttr = Tool::mappaAttributi($annuncio["Categoria"], $attr);
-
-    $immagini = $db->getImmagini($idAnnuncio);
-
-    if (Tool::isLoggedIn()) { 
-        $isPreferito = $db->isPreferito($idAnnuncio, $_SESSION["user_id"]); 
-    }
-
-    $db->closeConnection();
-}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
@@ -77,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::isLoggedIn()) {
     if($db->openDBConnection()) {
-        $logger = "idAnnuncio:".$annuncio["IdUtente"]." IdUtente:".$_SESSION["user_id"];
+
+        $annuncio = $db->getAnnuncioBase($idAnnuncio);
 
         if ($annuncio === false) { 
             $db->closeConnection(); 
@@ -85,13 +55,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         }
         
         if ($annuncio["IdUtente"] == $_SESSION["user_id"]) {
-            $logger = "QUO";
             $res = $db->deleteAnnuncio($idAnnuncio);
         }
 
+        $db->closeConnection();
         header("Location: index.php");
         exit;
     }
+}
+
+$annuncio = ""; 
+$attr = "";
+$listaAttr = "";
+$immagini = [];  
+$isPreferito = false; 
+
+if ($db->openDBConnection()) {
+
+    $annuncio = $db->getAnnuncioBase($idAnnuncio); 
+
+    if ($annuncio === false) { 
+        $db->closeConnection(); 
+        Tool::renderError(404);
+    }
+
+    $annuncio = $annuncio[0];
+
+    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
+    $attr = $attr[0];
+    $listaAttr = Tool::mappaAttributi($annuncio["Categoria"], $attr);
+
+    $immagini = $db->getImmagini($idAnnuncio);
+
+    if (Tool::isLoggedIn()) { 
+        $isPreferito = $db->isPreferito($idAnnuncio, $_SESSION["user_id"]); 
+    }
+
+    $db->closeConnection();
 }
 
 $caroselloPrincipale = ""; 
