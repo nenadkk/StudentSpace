@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::isLoggedIn()) {
     if($db->openDBConnection()) {
 
-        $annuncio = $db->getAnnuncioBase($idAnnuncio);
+        $annuncio = $db->getAnnuncioBase($idAnnuncio)[0];
 
         if ($annuncio === false) { 
             $db->closeConnection(); 
@@ -170,8 +170,6 @@ $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage
 
 $htmlPage = str_replace("[PreferitiButton]", $preferitiHTML, $htmlPage);
 $htmlPage = str_replace("[RimuoviButton]", $bottonRimuovi, $htmlPage);
-
-$htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 
