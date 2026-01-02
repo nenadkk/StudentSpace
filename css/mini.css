@@ -322,10 +322,6 @@ li.categoria > div {
     padding: 1em 1em 2em 1em;
 }
 
-.card-base a:hover span, .card-base a:focus span {
-    display: none;
-}
-
 .carta::before {
     top: -25px;
 }
@@ -337,7 +333,12 @@ li.categoria > div {
 */
 
 #annuncioTop {
-    padding: 0.5em; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 0.5em;
 }
 
 #preferiti-style {
@@ -354,11 +355,9 @@ li.categoria > div {
 }
 
 #carosello {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0 1em;
-    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
 }
 
 .carosello-principale {
