@@ -337,8 +337,16 @@ li.categoria > div {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5em;
+    gap: 1em;
     padding: 0.5em;
+}
+
+.info {
+  flex: unset;
+  max-width: 100%;
+  width: 100%;
+  padding: 1em;
+  gap: 1em;
 }
 
 #preferiti-style {
