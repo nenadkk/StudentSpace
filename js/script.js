@@ -38,140 +38,68 @@ function hamburgerMenu() {
   });
 }
 
-/*
-//JS PER BOTTONI CAROSELLO (loop)
-function slideCarosello()
-{
-  const prevButton = document.getElementById("carosello-prev");
-  const nextButton = document.getElementById("carosello-next");
-  const arrimmSec = document.querySelectorAll('.carosello-thumbnails img');
-  const immPrinc = document.querySelector('.carosello-principale img');
-  let index = 0;
-  const dim = arrimmSec.length;
-
-
-  prevButton.addEventListener('click', () => {
-
-    if(index == 0)
-    {
-      index = dim-1;
-      immPrinc.src = arrimmSec[index].src;
-      arrimmSec.forEach(img => img.classList.remove('attiva'));
-      arrimmSec[index].classList.add('attiva');
-    }  
-    else
-    {
-      index = index-1;
-      immPrinc.src = arrimmSec[index].src;
-      arrimmSec.forEach(img => img.classList.remove('attiva'));
-      arrimmSec[index].classList.add('attiva');      
-    }
-
-  });
-
-  nextButton.addEventListener('click', () => {
-
-    if(index == dim-1)
-    {
-      index = 0;
-      immPrinc.src = arrimmSec[index].src;
-      arrimmSec.forEach(img => img.classList.remove('attiva'));
-      arrimmSec[index].classList.add('attiva');       
-    }  
-    else
-    {
-      index = index+1;
-      immPrinc.src = arrimmSec[index].src;
-      arrimmSec.forEach(img => img.classList.remove('attiva'));
-      arrimmSec[index].classList.add('attiva');
-    }
-  });
-
-}
-*/
-
-
-// JS PER CAROSELLO MINIATURE CLICCABILI
-function caroselloChangeImage() {
+function initCarosello() {
   const thumbnails = document.querySelectorAll('.carosello-thumbnails img');
   const mainImage = document.querySelector('.carosello-principale img');
+  const prevButton = document.getElementById('carosello-prev');
+  const nextButton = document.getElementById('carosello-next');
 
-  if(thumbnails.length > 0 && mainImage) {
-    thumbnails.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        mainImage.src = thumb.src;
-        thumbnails.forEach(t => t.classList.remove('attiva'));
-        thumb.classList.add('attiva');
-      });
-    });
+  const total = thumbnails.length;
+  let currentIndex = 0;
+
+  if (!mainImage || total === 0) return;
+
+  // 👉 se una sola immagine, nascondi frecce
+  if (total === 1) {
+    prevButton?.classList.add('nascosto');
+    nextButton?.classList.add('nascosto');
   }
-}
 
-// JS PER BOTTONI CAROSELLO BLOCCATO
-function slideCarosello() {
-    const prevButton = document.getElementById("carosello-prev");
-    const nextButton = document.getElementById("carosello-next");
-    const arrimmSec = document.querySelectorAll('.carosello-thumbnails img');
-    const immPrinc = document.querySelector('.carosello-principale img');
-    let index = 0;
-    const dim = arrimmSec.length;
+  function showImage(index) {
+    currentIndex = index;
+    mainImage.src = thumbnails[currentIndex].src;
 
-    if (prevButton === null || nextButton === null || arrimmSec.length === 0 || immPrinc === null) {
-      return; // Esci se gli elementi non sono trovati
+    thumbnails.forEach(t => t.classList.remove('attiva'));
+    thumbnails[currentIndex].classList.add('attiva');
+
+    // Gestione frecce
+    if (prevButton && nextButton) {
+      prevButton.classList.toggle('nascosto', currentIndex === 0);
+      nextButton.classList.toggle('nascosto', currentIndex === total - 1);
     }
-    function showImage(i) {
-      index = i;
-      immPrinc.src = arrimmSec[index].src;
-      arrimmSec.forEach(img => img.classList.remove('attiva'));
-      arrimmSec[index].classList.add('attiva');
+  }
 
-      prevButton.classList.remove("nascosto", "attivo");
-      nextButton.classList.remove("nascosto", "attivo")
+  // 👉 click miniature
+  thumbnails.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => showImage(i));
+  });
 
-      if (index === 0) {
-        prevButton.classList.add("nascosto");  
-        nextButton.classList.add("attivo");   
-      } else if (index === dim - 1) {
-        nextButton.classList.add("nascosto");   
-        prevButton.classList.add("attivo");   
-      } else {
-        prevButton.classList.add("attivo");
-        nextButton.classList.add("attivo");
-      }
+  // 👉 frecce
+  prevButton?.addEventListener('click', () => {
+    if (currentIndex > 0) showImage(currentIndex - 1);
+  });
+
+  nextButton?.addEventListener('click', () => {
+    if (currentIndex < total - 1) showImage(currentIndex + 1);
+  });
+
+  // 👉 swipe mobile
+  let startX = 0;
+
+  mainImage.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  mainImage.addEventListener('touchend', e => {
+    const delta = e.changedTouches[0].clientX - startX;
+    if (Math.abs(delta) > 50) {
+      if (delta < 0 && currentIndex < total - 1) showImage(currentIndex + 1);
+      if (delta > 0 && currentIndex > 0) showImage(currentIndex - 1);
     }
+  });
 
+  // inizializza
   showImage(0);
-
-  prevButton.addEventListener('click', () => {
-    if (index > 0) {
-      showImage(index - 1);
-    }
-  });
-
-  nextButton.addEventListener('click', () => {
-    if (index < dim - 1) {
-      showImage(index + 1);
-    }
-  });
-
-  //swipe da telefono
-  let startTouch = 0;
-  immPrinc.addEventListener('touchstart', e => {
-      startTouch = e.touches[0].clientX;
-  });
-
-  immPrinc.addEventListener('touchend', e => {
-    const endTouch = e.changedTouches[0].clientX;
-    const deltaTouch = endTouch - startTouch;
-
-    if (Math.abs(deltaTouch) > 50) { 
-        if (deltaTouch < 0 && index < dim - 1) {
-          showImage(index + 1);
-        } else if (deltaTouch > 0 && index > 0) {
-          showImage(index - 1);
-        }
-    }
-  });
 }
 
 // JS PER IMMAGINI CON ALT IN PUBBLICA
@@ -360,12 +288,11 @@ function convertiImmaginiInJPG() {
 
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
-  caroselloChangeImage();
+  initCarosello();
   toggleFiltri();
   toggleMultipleAlt();
   toggleFiltriCategoria();
   togglePubblicaCategoria();
-  slideCarosello();
   togglePasswordVisibility('mostraPassword', 'password');
   togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
   convertiImmaginiInJPG();
