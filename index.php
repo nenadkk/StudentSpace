@@ -9,8 +9,7 @@ $htmlPage = file_get_contents("pages/index.html");
 
 $dbAccess = new DBAccess();
 if (!$dbAccess->openDBConnection()) {
-    echo "Connessione al database fallita.";
-    exit;
+    Tool::renderError(500);
 }
 $cardsData = $dbAccess->getLastAnnouncements();
 $dbAccess->closeConnection();

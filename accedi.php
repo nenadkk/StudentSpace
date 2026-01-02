@@ -43,7 +43,7 @@ if(isset($_POST['submit'])) {
             }
             $db->closeConnection();
         } else {
-            $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+            Tool::renderError(500);
         }
     } else {
         $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";

@@ -92,6 +92,8 @@ if ($db->openDBConnection()) {
     }
 
     $db->closeConnection();
+} else {
+    Tool::renderError(500);
 }
 
 $caroselloPrincipale = ""; 
