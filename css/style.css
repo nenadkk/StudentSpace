@@ -68,7 +68,7 @@ body {
     /* spaziature */
     --padding-top-style: 7em;
     --padding-base: 0.5em 1em;
-    --padding-riq: 1em;
+    --padding-riq: 0.5em;
     --gap-0-5: 0.5em;
     --gap-1: 1em;
     --gap-1-5: 1.5em;
@@ -398,6 +398,9 @@ button {
     align-self: center;
 }
 
+.esempi {
+    font-size: small;
+}
 /*
 ====================================================
     BASE: LINK
@@ -1137,6 +1140,15 @@ input, select {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+textarea {
+    padding: 0.75rem;
+    background-color: var(--formbg);
+    color: var(--txtcolor);
+    font-weight: 500;
+    border-radius: 0.5em;
+    border: 1.5px solid var(--call-to-actionColor);
+}
+
 input:focus, select:focus {
     outline: none;
     outline: 2px solid var(--card);
@@ -1200,7 +1212,7 @@ form > p, form > p{
     display: flex;
     flex-direction: column;    
     padding: 0.3em; 
-    gap: 0em;
+    gap: var(--gap-0-5);
     width: 100%;
 }
 

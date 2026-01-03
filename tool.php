@@ -122,7 +122,7 @@ class Tool {
 
             case "Affitti":
                 return [
-                    ["Costo", $attr['PrezzoMensile'] . " €/mese"],
+                    ["Costo", $attr['PrezzoMensile'] . " € al mese"],
                     ["Indirizzo", $attr['Indirizzo']],
                     ["N° coinquilini", $attr['NumeroInquilini']]
                 ];
@@ -145,7 +145,7 @@ class Tool {
                 return [
                     ["Materia", $attr['Materia']],
                     ["Livello", $attr['Livello']],
-                    ["Prezzo orario", $attr['PrezzoOrario'] . " €/h"]
+                    ["Prezzo orario", $attr['PrezzoOrario'] . " € all'ora"]
                 ];
         }
     }

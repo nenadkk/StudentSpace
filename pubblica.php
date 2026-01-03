@@ -62,7 +62,7 @@ if(isset($_POST['submit'])) {
         if(!$isDecorativa) {
             $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
             if ($altText === '') { 
-                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio.</p>"; 
+                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio, a meno che non si selezioni l'opzione “Decorativa”.</p>";
                 break; 
             }
         }

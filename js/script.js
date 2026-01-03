@@ -49,7 +49,7 @@ function initCarosello() {
 
   if (!mainImage || total === 0) return;
 
-  // 👉 se una sola immagine, nascondi frecce
+  // se una sola immagine, nascondi frecce
   if (total === 1) {
     prevButton?.classList.add('nascosto');
     nextButton?.classList.add('nascosto');
@@ -69,12 +69,12 @@ function initCarosello() {
     }
   }
 
-  // 👉 click miniature
+  // click miniature
   thumbnails.forEach((thumb, i) => {
     thumb.addEventListener('click', () => showImage(i));
   });
 
-  // 👉 frecce
+  // frecce
   prevButton?.addEventListener('click', () => {
     if (currentIndex > 0) showImage(currentIndex - 1);
   });
@@ -83,7 +83,7 @@ function initCarosello() {
     if (currentIndex < total - 1) showImage(currentIndex + 1);
   });
 
-  // 👉 swipe mobile
+  // swipe mobile
   let startX = 0;
 
   mainImage.addEventListener('touchstart', e => {
@@ -127,7 +127,7 @@ function toggleMultipleAlt() {
 
         const nextBlock = document.getElementById("img" + (i + 1));
         if (nextBlock) {
-          nextBlock.style.display = "block";
+          nextBlock.style.display = "flex";
           nextBlock.querySelectorAll("input").forEach(el => el.disabled = false);
         }
       }
