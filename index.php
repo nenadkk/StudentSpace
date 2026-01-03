@@ -20,8 +20,12 @@ $cardhtml = "";
 if($cardsData !== false) {
     $cards = Tool::createCard($cardsData);
 } else {
-    $cardhtml = file_get_contents("pages/cardTemplate.html");
-    $cards .= $cardhtml;
+    $cards = '<div class="centered">
+                        <p>Nessun annuncio.</p>
+                        <div class="azioni">
+                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        </div>
+            </div>';
 }
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);

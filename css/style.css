@@ -170,6 +170,13 @@ section {
     padding: 0.5em;
 }
 
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-1);
+}
+
 /*
 ====================================================
     BASI
@@ -1250,13 +1257,6 @@ form > p, form > p{
 #dati-pers-container {
     gap: var(--gap-2);
     margin: 0 auto;
-}
-
-#profilo .centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--gap-1);
 }
 
 .profilo-grid {

@@ -102,7 +102,11 @@ if(isset($_GET['submit']))
         $cards = Tool::createCard($cardsData);
         $numRisultati = count($cardsData);
     } else {
-        $cards .= file_get_contents("pages/cardTemplate.html");
+        $cards = '<div class="centered">
+                        <p>Nessun annuncio corrisponde alla tua ricerca.</p>
+                            <a class="link btn-base call-to-action" href="esplora.html">Esplora le proposte</a>
+                            <a class="link btn-base call-to-action" href="pubblica.html">Pubblica un annuncio</a>
+                    </div>';
         $numRisultati = 0;
     }
 } else {
@@ -115,7 +119,12 @@ if(isset($_GET['submit']))
         $cards = Tool::createCard($cardsData);
         $numRisultati = count($cardsData);
     } else {
-        $cards .= file_get_contents("pages/cardTemplate.html");
+        $cards = '<div class="centered">
+                        <p>Nessun annuncio.</p>
+                        <div class="azioni">
+                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        </div>
+                    </div>';
         $numRisultati = 0;
     }
 }
