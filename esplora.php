@@ -104,8 +104,8 @@ if(isset($_GET['submit']))
     } else {
         $cards = '<div class="centered">
                         <p>Nessun annuncio corrisponde alla tua ricerca.</p>
-                            <a class="link btn-base call-to-action" href="esplora.html">Esplora le proposte</a>
-                            <a class="link btn-base call-to-action" href="pubblica.html">Pubblica un annuncio</a>
+                        <a class="link btn-base call-to-action" href="esplora.php">Esplora le proposte</a>
+                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
                     </div>';
         $numRisultati = 0;
     }
@@ -121,9 +121,7 @@ if(isset($_GET['submit']))
     } else {
         $cards = '<div class="centered">
                         <p>Nessun annuncio.</p>
-                        <div class="azioni">
-                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
-                        </div>
+                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
                     </div>';
         $numRisultati = 0;
     }

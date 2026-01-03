@@ -210,15 +210,11 @@ header {
 
 #toggleFiltri {
     width: 100%;         
-    max-width: 40em;      
-    margin: 0 auto;        
-}
-
-#toggleFiltri {
+    max-width: 40em;
     display: block;
     padding: var(--padding-base);
     font-size: var(--fs-h3-titolo-card);
-    margin: 1em auto;
+    margin: 0 auto;
 }
 
 #toggleFiltri::before {
