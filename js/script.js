@@ -237,6 +237,7 @@ function togglePasswordVisibility(checkboxId, inputId) {
     });
 }
 
+/*
 // CONVERSIONE PNG/WEBP → JPG (solo se possibile)
 function convertiImmaginiInJPG() {
   const inputs = document.querySelectorAll("input[type='file'][id^='foto']");
@@ -285,6 +286,7 @@ function convertiImmaginiInJPG() {
     });
   });
 }
+*/
 
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
@@ -295,5 +297,5 @@ document.addEventListener('DOMContentLoaded', function() {
   togglePubblicaCategoria();
   togglePasswordVisibility('mostraPassword', 'password');
   togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
-  convertiImmaginiInJPG();
+  // convertiImmaginiInJPG();
 });
