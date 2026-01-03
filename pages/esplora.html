@@ -94,7 +94,7 @@
                             <legend>Generali</legend>
                             <div class="form-div">
                                     <label for="cerca">Cerca</label>
-                                    <input id="cerca" type="text" name="cerca" maxlength="20" placeholder="Cerca...">
+                                    <input id="cerca" type="text" name="cerca" maxlength="30" placeholder="Cerca...">
                             </div>
                             <!-- Attributi comuni a tutte le categorie -->
                             <div class="form-div">
@@ -163,11 +163,11 @@
                             </div>
                             <div class="form-div">
                                 <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
-                                <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio">
+                                <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio" max="[oggi]">
                             </div>
                             <div class="form-div">
                                 <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
-                                <input id="pubblicazione-fine" type="date" name="pubblicazione-fine">
+                                <input id="pubblicazione-fine" type="date" name="pubblicazione-fine" max="[oggi]">
                             </div>
                         </fieldset>
 

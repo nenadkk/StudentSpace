@@ -14,6 +14,7 @@ $query = "";
 $cardsData="";
 $cards = "";
 $numRisultati = "";
+$oggi = date('Y-m-d');
 
 $filtriGenerali = array(
                 "cerca"=>"",
@@ -144,6 +145,7 @@ $htmlPage = str_replace("[affittiSelected]", $categoria=='Affitti' ? 'selected' 
 $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[oggi]", $oggi, $htmlPage);
 
 $htmlPage = str_replace("[Logger]", $query, $htmlPage);
 
