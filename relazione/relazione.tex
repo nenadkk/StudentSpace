@@ -432,9 +432,26 @@ Lo schema logico rispetta i principali vincoli di integrità:
 % o struttura più sintetica
 
 \subsection{Front-end (HTML, CSS, JS)}
+    \subsubsection{HTML}
+    Nel documento è stato inserito il tag:
+    \begin{verbatim}
+    <meta name="viewport" content="width=device-width"/>
+    \end{verbatim}
+    Tale configurazione permette ai fogli di stile di riferirsi alla dimensione effettiva del dispositivo e non alla sua risoluzione fisica. In questo modo si evita che, su smartphone ad alta densità di pixel, venga caricata la visualizzazione desktop, garantendo un comportamento responsivo coerente con il paradigma \textit{mobile first}.
+
+    Nella pagina \textit{esplora} è stato scelto di utilizzare l’elemento semantico \texttt{<aside>} per contenere i filtri di ricerca, invece di un elemento \texttt{<section>}. Tale scelta deriva dal fatto che i filtri rappresentano contenuti accessori rispetto al flusso principale della pagina, costituito dall’elenco degli annunci. L’uso di \texttt{<aside>} migliora la chiarezza semantica e supporta una migliore interpretazione da parte delle tecnologie assistive.
+    
+    Per quanto riguarda le singole card, gestite tramite \texttt{cardTemplate.html}, è stato deciso di utilizzare elementi \texttt{<h3>} per i titoli degli annunci, anziché una struttura basata su \texttt{<dt>} e \texttt{<dd>}, come nel seguente esempio:
+    \begin{verbatim}
+    <dt>Titolo:</dt>
+    <dd>[TitoloAnnuncio]</dd>
+    \end{verbatim}
+    L’uso degli heading consente di riflettere correttamente la gerarchia logica dei contenuti: \texttt{<h2>} identifica la sezione principale (ad esempio l’elenco degli annunci), mentre \texttt{<h3>} rappresenta ciascun singolo annuncio. Questa scelta migliora la struttura semantica complessiva, favorisce un migliore posizionamento nei motori di ricerca e permette agli screen reader di interpretare più efficacemente l’organizzazione informativa della pagina.
+    
+    \subsubsection{CSS e decisioni di design (immagini, palette colori)} 
 \subsection{Back-end (PHP, Database)}
 \subsection{Validazione e Sicurezza}
-\subsection{Design (immagini, palette colori)} 
+
 
 \section{Test}
 \subsection{Test funzionali}
