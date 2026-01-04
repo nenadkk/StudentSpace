@@ -33,7 +33,9 @@ $filtriEsperimenti = array(
                 "esperimento-compenso-min"=>"");
 
 $filtriEventi = array(
-                "evento-inizio"=>"", "evento-fine"=>"", "evento-costo-max"=>"",
+                "evento-inizio"=>"", 
+                "evento-fine"=>"", 
+                "evento-costo-max"=>"",
                 "luogo-evento"=>"");
 
 $filtriRipetizioni = array(

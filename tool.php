@@ -1,4 +1,6 @@
 <?php
+require_once "dbConnect.php";
+use DB\DBAccess;
 
 class Tool {
 
@@ -73,7 +75,18 @@ class Tool {
 
     // Città: lettere e spazi, accetta accenti
     public static function validaCitta($str) {
-        return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,50}$/', $str);
+        $db = new DBAccess();
+        $db->openDBConnection();
+        if ($db->isACitta($str) && preg_match('/^[a-zA-ZÀ-ÿ\s]{2,50}$/', $str))
+        {
+            $db->closeConnection();
+            return true ;
+        }
+        else
+        {
+            $db->closeConnection();
+            return false;
+        }
     }
 
     // Email valida
