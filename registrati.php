@@ -26,15 +26,6 @@ $messaggiErrore = array("[errore-nome]"=>array(),
                         "[errore-email]"=>array(),
                         "[errore-password]"=>array(),
                         );
-/* -------------------------------
- * FUNZIONI DI PULIZIA (SANIFICAZIONE)
- * ------------------------------- */
-function pulisciInput($value) {
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE);
-    return $value;
-}
 
 /* -------------------------------
  * SE L’UTENTE HA INVIATO IL FORM
@@ -42,10 +33,10 @@ function pulisciInput($value) {
 if(isset($_POST['submit'])) {
 
     // Pulizia input
-    $nome = pulisciInput($_POST['nome'] ?? '');
-    $cognome = pulisciInput($_POST['cognome'] ?? '');
-    $citta = pulisciInput($_POST['citta'] ?? '');
-    $email = pulisciInput($_POST['email'] ?? '');
+    $nome = Tool::pulisciInput($_POST['nome'] ?? '');
+    $cognome = Tool::pulisciInput($_POST['cognome'] ?? '');
+    $citta = Tool::pulisciInput($_POST['citta'] ?? '');
+    $email = Tool::pulisciInput($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $conferma_password = $_POST['confermaPassword'] ?? '';
 
