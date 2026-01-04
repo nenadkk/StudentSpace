@@ -17,6 +17,25 @@ $descrizione = "";
 $idUtente = $_SESSION['user_id'];
 
 $campi = [];
+$campiAffitti = array(
+                "coinquilini"=>"",
+                "costo-mese-affitto"=>"",
+                "indirizzo-affitto"=>"");
+
+$campiEsperimenti = array(
+                "laboratorio"=>"",
+                "esperimento-durata"=>"",
+                "esperimento-compenso"=>"");
+
+$campiEventi = array(
+                "data-evento"=>"", 
+                "costo-evento"=>"",
+                "luogo-evento"=>"");
+
+$campiRipetizioni = array(
+                "materia"=>"",
+                "livello"=>"",
+                "prezzo-ripetizioni"=>"");
 
 $immagini = [];
 $errorMessageImmagini = "";
@@ -94,24 +113,28 @@ if(isset($_POST['submit'])) {
 
     switch ($categoria) {
         case 'Affitti':
-            $campi['coinquilini'] = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
-            $campi['costo-mese-affitto'] = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
-            $campi['indirizzo-affitto'] = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? 0);
+            $campiAffitti['coinquilini'] = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
+            $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
+            $campiAffitti['indirizzo-affitto'] = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? 0);
+            $campi = $campiAffitti;
             break;
         case 'Esperimenti':
-            $campi['laboratorio'] = Tool::pulisciInput($_POST['laboratorio'] ?? 0);
-            $campi['esperimento-durata'] = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
-            $campi['esperimento-compenso'] = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
+            $campiEsperimenti['laboratorio'] = Tool::pulisciInput($_POST['laboratorio'] ?? 0);
+            $campiEsperimenti['esperimento-durata'] = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
+            $campiEsperimenti['esperimento-compenso'] = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
+            $campi = $campiEsperimenti;
             break;
         case 'Eventi':
-            $campi['data-evento'] = Tool::pulisciInput($_POST['data-evento'] ?? 0);
-            $campi['costo-evento'] = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
-            $campi['luogo-evento'] = Tool::pulisciInput($_POST['luogo-evento'] ?? 0);
+            $campiEventi['data-evento'] = Tool::pulisciInput($_POST['data-evento'] ?? 0);
+            $campiEventi['costo-evento'] = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
+            $campiEventi['luogo-evento'] = Tool::pulisciInput($_POST['luogo-evento'] ?? 0);
+            $campi = $campiEventi;
             break;
         case 'Ripetizioni':
-            $campi['materia'] = Tool::pulisciInput($_POST['materia'] ?? 0);
-            $campi['livello'] = Tool::pulisciInput($_POST['livello'] ?? 0);
-            $campi['prezzo-ripetizioni'] = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
+            $campiRipetizioni['materia'] = Tool::pulisciInput($_POST['materia'] ?? 0);
+            $campiRipetizioni['livello'] = Tool::pulisciInput($_POST['livello'] ?? 0);
+            $campiRipetizioni['prezzo-ripetizioni'] = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
+            $campi = $campiRipetizioni;
             break;
         default:
             break;
@@ -131,8 +154,31 @@ if(isset($_POST['submit'])) {
     }
 }
 
-$htmlPage = str_replace("[ValueTitolo]", $titolo, $htmlPage); 
-$htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage); 
+//rimetto la categoria selezionata
+$htmlPage = str_replace("[noneSelected]", $categoria=='' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[affittiSelected]", $categoria=='Affitti' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
+
+//riempio i campi compilati al momento del submit
+//GENERALI
+$htmlPage = str_replace("[titolo]", $titolo, $htmlPage); 
+$htmlPage = str_replace("[descrizione]", $descrizione, $htmlPage); 
+$htmlPage = str_replace("[citta]", $citta, $htmlPage); 
+//SPECIFICI
+foreach ($campiAffitti as $key => $value) {
+    $htmlPage = str_replace("[$key]", $value, $htmlPage);
+}
+foreach ($campiEsperimenti as $key => $value) {
+    $htmlPage = str_replace("[$key]", $value, $htmlPage);
+}
+foreach ($campiEventi as $key => $value) {
+    $htmlPage = str_replace("[$key]", $value, $htmlPage);
+}
+foreach ($campiRipetizioni as $key => $value) {
+    $htmlPage = str_replace("[$key]", $value, $htmlPage);
+}
 
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
