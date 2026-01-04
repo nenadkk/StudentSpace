@@ -1,6 +1,7 @@
 <?php
 
 namespace DB;
+use Exception;
 
 class DBAccess {
 
@@ -463,8 +464,7 @@ class DBAccess {
                 case 'Esperimenti':
                     $stmt = $this->connection->prepare(
                         "INSERT INTO AnnuncioEsperimenti
-                        (IdAnnuncio, Laboratorio, DurataPrevista, Compenso)
-                        VALUES (?, ?, ?, ?)"
+                        (IdAnnuncio, Laboratorio, DurataPrevista, Compenso) VALUES (?, ?, ?, ?)"
                     );
                     $stmt->bind_param("isid", $idAnnuncio, $campi['laboratorio'], $campi['esperimento-durata'], $campi['esperimento-compenso']);
                     break;
@@ -652,6 +652,22 @@ class DBAccess {
         $ok = $stmt->execute();
         $stmt->close();
         return $ok;
+    }
+
+    public function isACitta($str) {
+        $stmt = $this->connection->prepare("SELECT * FROM Citta WHERE NomeCitta = ?");
+        $stmt->bind_param('s', $str);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (mysqli_num_rows($result) == 0)
+        {
+            $result->free();
+            $stmt->close();
+            return false;
+        }
+        $result->free();
+        $stmt->close();
+        return true;
     }
 }
 

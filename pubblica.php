@@ -20,6 +20,8 @@ $campi = [];
 
 $immagini = [];
 $errorMessageImmagini = "";
+$erroreCitta = "";
+$numMessaggiErrore=0;
 
 if(isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
@@ -27,6 +29,11 @@ if(isset($_POST['submit'])) {
     $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
     
+    if (!Tool::validaCitta($citta)) {
+        $erroreCitta = "<p class='riquadro-spieg messaggi-errore-form'>La città inserita non è valida. </p>";
+        $numMessaggiErrore++;
+    }
+
     for ($i = 1; $i<=4; $i++) {
         $fileKey = 'foto'.$i;
         $altKey = 'alt'.$i;
@@ -38,6 +45,7 @@ if(isset($_POST['submit'])) {
 
         if ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
             $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Errore nel caricamento dell'immagine $i.</p>";
+            $numMessaggiErrore++;
             break;
         }
 
@@ -46,6 +54,7 @@ if(isset($_POST['submit'])) {
         // Dimensione massima 1MB 
         if ($file['size'] > 1 * 1024 * 1024) { 
             $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>L'immagine $i supera la dimensione massima di 1MB.</p>"; 
+            $numMessaggiErrore++;
             break; 
         }
 
@@ -53,6 +62,7 @@ if(isset($_POST['submit'])) {
         $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp']; 
         if (!in_array($file['type'], $mimeConsentiti)) { 
             $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Formato non valido per l'immagine $i.</p>"; 
+            $numMessaggiErrore++;
             break; 
         }
 
@@ -63,6 +73,7 @@ if(isset($_POST['submit'])) {
             $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
             if ($altText === '') { 
                 $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio, a meno che non si selezioni l'opzione “Decorativa”.</p>";
+                $numMessaggiErrore++;
                 break; 
             }
         }
@@ -79,14 +90,6 @@ if(isset($_POST['submit'])) {
             'decorativa' => (int)$isDecorativa,
             'ordine'     => $i
         ];
-    }
-
-    if ($errorMessageImmagini !== "") { 
-        $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage); 
-        $htmlPage = str_replace("[ValueTitolo]", $titolo, $htmlPage); 
-        $htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage); 
-        echo $htmlPage; 
-        exit; 
     }
 
     switch ($categoria) {
@@ -114,23 +117,29 @@ if(isset($_POST['submit'])) {
             break;
     }
 
-    $db = new DB\DBAccess;
-    if ($db->openDBConnection()) {
-        $idCitta = $db->getIdCitta($citta);
-        $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
-        $db->closeConnection();
+    if ($numMessaggiErrore==0) {
+        $db = new DB\DBAccess;
 
-        header("Location: annuncio.php?id=". $idAnnuncio);
-        exit;
+        if ($db->openDBConnection()) {
+            $idCitta = $db->getIdCitta($citta);
+            $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
+            $db->closeConnection();
+
+            header("Location: annuncio.php?id=". $idAnnuncio);
+            exit;
+        }
     }
 }
 
-$htmlPage = str_replace("[ErrorMessageImmagini]", "", $htmlPage);
+$htmlPage = str_replace("[ValueTitolo]", $titolo, $htmlPage); 
+$htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage); 
+
+$htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
+$htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 
-$htmlPage = str_replace("[ValueTitolo]", $titolo, $htmlPage);
 # $htmlPage = str_replace("[ValueCategoria]", $categoria, $htmlPage);
 # $htmlPage = str_replace("[ValueCitta]", $citta, $htmlPage);
 # $htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage);
