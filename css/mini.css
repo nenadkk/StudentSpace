@@ -399,7 +399,7 @@ li.categoria > div {
 .descrizioneAnnuncio {
     width: auto;
     max-width: 100%;
-    margin: 2em 1.5em;
+    margin: 0 1.5em 2em;
 }
 
 /*

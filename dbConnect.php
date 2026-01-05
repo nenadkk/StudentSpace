@@ -669,6 +669,18 @@ class DBAccess {
         $stmt->close();
         return true;
     }
+
+    public function getCittaUtente($idUtente) {
+        $query = "SELECT C.NomeCitta FROM Utente U LEFT JOIN Citta C ON U.IdCitta = C.IdCitta WHERE U.IdUtente = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $idUtente);
+        $stmt->execute();
+        $stmt->bind_result($citta);
+        $stmt->fetch();
+        $stmt->close();
+        return $citta;
+    }
+
 }
 
 ?>

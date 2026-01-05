@@ -16,6 +16,16 @@ $citta = "";
 $descrizione = "";
 $idUtente = $_SESSION['user_id'];
 
+if (!isset($_POST['submit'])) {
+    $db = new DB\DBAccess;
+    if ($db->openDBConnection()) {
+        $cittaUtente = $db->getCittaUtente($idUtente); // funzione da creare
+        $db->closeConnection();
+    }
+    $citta = $cittaUtente ?? "";
+}
+
+
 $campi = [];
 $campiAffitti = array(
                 "coinquilini"=>"",
