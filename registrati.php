@@ -48,9 +48,17 @@ if(isset($_POST['submit'])) {
         $messaggiErrore['[errore-nome]'][] = "Il nome deve contenere solo lettere e deve avere almeno 2 caratteri.";
         $numMsgErrore++;
     }
+    if(Tool::contieneTagHtml($nome)){
+        $messaggiErrore['[errore-nome]'][] = "Non si possono inserire tag HTML all'interno dei campi.";
+        $numMsgErrore++;
+    }
 
     if (!Tool::validaNome($cognome)) {
         $messaggiErrore['[errore-cognome]'][] = "Il cognome deve contenere solo lettere e deve avere almeno 2 caratteri.";
+        $numMsgErrore++;
+    }
+    if(Tool::contieneTagHtml($cognome)){
+        $messaggiErrore['[errore-cognome]'][] = "Non si possono inserire tag HTML all'interno dei campi.";
         $numMsgErrore++;
     }
 
@@ -58,9 +66,17 @@ if(isset($_POST['submit'])) {
         $messaggiErrore['[errore-citta]'][] = "La città inserita non è Tool::valida.";
         $numMsgErrore++;
     }
+    if(Tool::contieneTagHtml($citta)){
+        $messaggiErrore['[errore-citta]'][] = "Non si possono inserire tag HTML all'interno dei campi.";
+        $numMsgErrore++;
+    }
 
     if (!Tool::validaEmail($email)) {
         $messaggiErrore['[errore-email]'][] = "L'email inserita non è Tool::valida.";
+        $numMsgErrore++;
+    }
+    if(Tool::contieneTagHtml($email)){
+        $messaggiErrore['[errore-email]'][] = "Non si possono inserire tag HTML all'interno dei campi.";
         $numMsgErrore++;
     }
 

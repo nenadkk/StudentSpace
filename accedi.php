@@ -23,32 +23,39 @@ $email = isset($_POST['email']) ? Tool::pulisciInput($_POST['email']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if(isset($_POST['submit'])) {
-    if(Tool::validaEmail($email) && Tool::validaPassword($password)) {
-        $db = new DB\DBAccess();
-        if ($db->openDBConnection()) {
-            $idUtente = $db->verifyUserCredential($email, $password);
-            if ($idUtente !== false) {
-                Tool::startUserSession($idUtente);
+    if(!Tool::contieneTagHtml($email))
+    {
+        if(Tool::validaEmail($email) && Tool::validaPassword($password)) {
+            $db = new DB\DBAccess();
+            if ($db->openDBConnection()) {
+                $idUtente = $db->verifyUserCredential($email, $password);
+                if ($idUtente !== false) {
+                    Tool::startUserSession($idUtente);
 
-                $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
-                if ($redirect !== "") {
-                    header("Location: " . $redirect);
+                    $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
+                    if ($redirect !== "") {
+                        header("Location: " . $redirect);
+                        exit;
+                    }
+
+                    header("Location: index.php");
                     exit;
+                } else {
+                    $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
                 }
-
-                header("Location: index.php");
-                exit;
+                $db->closeConnection();
             } else {
-                $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
+                Tool::renderError(500);
             }
-            $db->closeConnection();
         } else {
-            Tool::renderError(500);
+            $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";
         }
-    } else {
-        $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";
     }
-    
+    else
+    { 
+        $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Non si possono inserire tag HTML all'interno dei campi.</li></ul>";
+    }
+        
 }
 
 $htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);

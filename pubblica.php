@@ -111,7 +111,7 @@ if(isset($_POST['submit'])) {
         ];
     }
 
-    switch ($categoria) {
+switch ($categoria) {
         case 'Affitti':
             $campiAffitti['coinquilini'] = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
             $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
