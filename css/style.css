@@ -476,7 +476,13 @@ button {
 #profilo {
     gap: var(--gap-0-5);
     padding: 2em;
- }
+}
+
+#contatti {
+    gap: var(--gap-1);
+    padding-top: 0;
+}
+
 
 /*
 ====================================================
@@ -769,7 +775,8 @@ footer {
     gap: var(--gap-0-5);
 }
 
-.img-text-section .azioni{
+.img-text-section .azioni, 
+#contatti .azioni{
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap-1);
@@ -1296,6 +1303,18 @@ form > p, form > p{
 
 /*
 ====================================================
-    DA MODULARIZZARE
+    SEZIONE CHI SIAMO
 ==================================================== 
 */
+
+.icon-btn { 
+    width: 1.2em; 
+    height: 1.2em; 
+    margin-right: 0.5em; 
+    vertical-align: middle;
+    fill: currentColor; 
+}
+
+#contatti .azioni {
+    justify-content: center;
+}
