@@ -63,7 +63,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!Tool::validaCitta($citta)) {
-        $messaggiErrore['[errore-citta]'][] = "La città inserita non è Tool::valida.";
+        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida.";
         $numMsgErrore++;
     }
     if(Tool::contieneTagHtml($citta)){
@@ -72,7 +72,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!Tool::validaEmail($email)) {
-        $messaggiErrore['[errore-email]'][] = "L'email inserita non è Tool::valida.";
+        $messaggiErrore['[errore-email]'][] = "L'email inserita non è valida.";
         $numMsgErrore++;
     }
     if(Tool::contieneTagHtml($email)){
