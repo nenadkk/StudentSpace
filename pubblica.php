@@ -1,5 +1,4 @@
 <?php
-
 require_once "tool.php";
 require_once "dbConnect.php";
 
@@ -12,19 +11,9 @@ $htmlPage = file_get_contents("pages/pubblica.html");
 
 $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
-$citta = "";
+$citta =  "";
 $descrizione = "";
 $idUtente = $_SESSION['user_id'];
-
-if (!isset($_POST['submit'])) {
-    $db = new DB\DBAccess;
-    if ($db->openDBConnection()) {
-        $cittaUtente = $db->getCittaUtente($idUtente); // funzione da creare
-        $db->closeConnection();
-    }
-    $citta = $cittaUtente ?? "";
-}
-
 
 $campi = [];
 $campiAffitti = array(
@@ -163,6 +152,13 @@ switch ($categoria) {
         }
     }
 }
+else {
+    $db = new DB\DBAccess;
+    if ($db->openDBConnection()) {
+        $citta = $db->getCittaUtente($idUtente) ?? ""; // funzione da creare
+        $db->closeConnection();
+    }
+}
 
 //rimetto la categoria selezionata
 $htmlPage = str_replace("[noneSelected]", $categoria=='' ? 'selected' : '' , $htmlPage);
@@ -201,5 +197,4 @@ $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 # $htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage);
 
 echo $htmlPage;
-
 ?>
