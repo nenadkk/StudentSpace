@@ -21,7 +21,7 @@
 \begin{titlepage}
     \begin{center}
         \begin{minipage}{0.3\textwidth}
-            \includegraphics[width=\linewidth]{Logo_Universita.png}
+            \includegraphics[width=\linewidth]{Logo_Universita_Padova300x300.png}
         \end{minipage}
         
     \end{center}
@@ -110,31 +110,27 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
 
 \section{Analisi dei requisiti}
     \subsection{Tipologie di Utenti}
+    Il sistema prevede due tipologie di utente:
         \begin{itemize}
-            \item \textbf{Utente non registrato:} utente che esplora le categorie, legge annunci e capisce  come funziona la bacheca
+            \item \textbf{Utente non registrato:} utente che esplora le categorie e legge annunci 
                 \begin{itemize}
-                    \item  \textbf{Azioni e permessi:}  vidualizzazione completa delle varie pagine, navigazione tra categorie e annunci, ricerca e filtraggio, apertura dettaglio annuncio, avvio del flusso di registrazione/login
-                    \item \textbf{Limitazioni:} accesso negato alle funzioni di pubblicazione e gestione $\rightarrow$  inviti chiari a registrarsi quando tenta azioni riservate.
+                    \item  \textbf{Azioni e permessi:}  visualizzazione completa delle varie pagine, navigazione tra categorie e annunci, ricerca e filtraggio, apertura dettaglio annuncio, avvio della procedura di registrazione/login
+                    \item \textbf{Limitazioni:} accesso negato alle funzioni di pubblicazione e gestione degli annunci $\rightarrow$ inviti chiari a registrarsi quando tenta azioni riservate.
                 \end{itemize}
-            \item \textbf{Utente registrato (semplice):} utente che oltre alle funzionalotà che erdità dall'untente non registrato può pubblicare annunci e gestirli.
+            \item \textbf{Utente registrato:} utente che oltre alle funzionalotà che erdità dall'utente non registrato può pubblicare annunci e gestirli.
                 \begin{itemize}
                     \item \textbf{Azioni e permessi:}
-                    creazione, modifica ed eliminazione dei propri annunci; gestione profilo; compilazione form con parte generica e specifica, revisione
+                    creazione, modifica ed eliminazione dei propri annunci; gestione profilo.
                     \item \textbf{Limitazioni:} non può modificare annunci altrui; vincoli su campi obbligatori e formati (validazione client/server).
                 \end{itemize}
-
-            \begin{comment}
-            \item \textbf{Amministratore: utente che modera e garantisce il giusto funzionamento} % da decidere
-                \begin{itemize}
-                    \item \textbf{Azioni e permessi:}gestione completa degli annunci (anche altrui), categorie, utenti; strumenti di moderazione (blocco, archiviazione)
-                \end{itemize}
-            \end{comment}
         \end{itemize}
 
     \subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
-    Il sito web si configura come una bacheca universitaria online, in cui gli utenti possono
+    Il sito web si propone come una bacheca universitaria online, in cui gli utenti possono
     pubblicare e consultare annunci suddivisi in quattro categorie principali: \textbf{Affitti},
-    \textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}. L’analisi dei contenuti si concentra sui tipi di annunci, sui campi comuni a tutte le categorie e sui campi specifici per ciascuna categoria.
+    \textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}. 
+    L’analisi dei contenuti si concentra sui tipi di annunci, sui campi comuni 
+    a tutte le categorie e sui campi specifici per ciascuna categoria.
     
         \subsubsection{Tipi di annunci}
         \begin{itemize}
@@ -145,17 +141,14 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
         \end{itemize}
 
         \subsubsection{Campi generici}
-        Ogni annuncio, indipendentemente dalla categoria, deve contenere i seguenti campi:
+        Ogni annuncio, indipendentemente dalla categoria, contiene i seguenti campi:
         \begin{itemize}
           \item \textbf{Categoria}: selezionata dall’utente tra le quattro disponibili.
           \item \textbf{Titolo}: breve descrizione sintetica dell’annuncio.
           \item \textbf{Data di pubblicazione}: generata automaticamente dal sistema.
           \item \textbf{Città}: riferimento all’utente registrato che ha pubblicato l’annuncio.
           \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. % decidere
-          
-          \begin{comment}
           \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. % decidere
-          \end{comment}
           
         \end{itemize}
 
