@@ -75,7 +75,7 @@ class Tool {
     * ------------------------------- */
     // Nome e cognome: solo lettere, minimo 2 caratteri
     public static function validaNome($str) {
-        return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,30}$/', $str);
+        return preg_match('/^[a-zA-ZÀ-ÿ\s]{2,30}$/u', $str);
     }
 
     // Città: lettere e spazi, accetta accenti
