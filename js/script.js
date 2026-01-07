@@ -181,9 +181,12 @@ function togglePubblicaCategoria() {
 
   function aggiornaCampi() {
     // Nascondi e disabilita tutti
+    if(categorie.length == 1) return; // Significa che sono su modificaAnnuncio
     Object.values(categorie).forEach(div => {
-      div.classList.add('nascondi-campi');
-      setDisabled(div, true);
+      if(div != null) {
+        div.classList.add('nascondi-campi');
+        setDisabled(div, true);
+      }
     });
 
     // Mostra e abilita quello selezionato
