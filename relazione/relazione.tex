@@ -197,7 +197,7 @@ del progetto e le esigenze degli utenti.
         \end{itemize}
     \item Login: processo di identificazione degli utenti registrati che sblocca tutte le funzionalità.
     \item Qualora l'utente inserisca dei dati non validi verrà bloccato l'invio della
-        form e verranno mostrati dei messaggi di errore (si veda \hyperref[sec:]).
+        form e verranno mostrati dei messaggi di errore (si veda \underline{\hyperref[sviluppo:validazione]{la parte relativa alla validazione}}).
 
 \end{itemize}
 
@@ -210,6 +210,9 @@ del progetto e le esigenze degli utenti.
             \item Campi specifici mostrati dinamicamente in base alla categoria scelta.
         \end{itemize}
     \item In seguito alla pubblicazione sarà possibile risalire all'autore dell'annuncio.
+    \item Qualora l'utente inserisca dei dati non validi verrà bloccato l'invio della
+        form e verranno mostrati dei messaggi di errore (si veda \underline{\hyperref[sviluppo:validazione]{la parte relativa alla validazione}}).
+
 \end{itemize}
 
 \subsubsection{Modifica, eliminazione e salvataggio degli annunci}  
@@ -231,13 +234,8 @@ del progetto e le esigenze degli utenti.
         \end{itemize}
     \item È inoltre possibile effettuare una ricerca testuale sul contenuto del 
         titolo e della descrizione.
-\end{itemize}
-
-\subsubsection{Validazione input}
-\begin{itemize}
-  \item \textbf{Lato client}: controlli immediati con JavaScript (campi obbligatori, formati corretti).
-  \item \textbf{Lato server}: verifica dati ricevuti prima dell’inserimento nel database.
-  \item Messaggi di errore chiari e accessibili.
+    \item Qualora vengano inseriti nei campi liberi dei valori compromettenti 
+        il sistema li ignorerà ma non verrà visualizzato alcun errore.
 \end{itemize}
 
 \subsection{Requisiti tecnici}
@@ -463,8 +461,19 @@ Lo schema logico rispetta i principali vincoli di integrità:
     L’uso degli heading consente di riflettere correttamente la gerarchia logica dei contenuti: \texttt{<h2>} identifica la sezione principale (ad esempio l’elenco degli annunci), mentre \texttt{<h3>} rappresenta ciascun singolo annuncio. Questa scelta migliora la struttura semantica complessiva, favorisce un migliore posizionamento nei motori di ricerca e permette agli screen reader di interpretare più efficacemente l’organizzazione informativa della pagina.
     
     \subsubsection{CSS e decisioni di design (immagini, palette colori)} 
+
+
 \subsection{Back-end (PHP, Database)}
-\subsection{Validazione e Sicurezza}
+
+
+\subsection{Validazione e Sicurezza} \label{sviluppo:validazione}
+\begin{itemize}
+  \item \textbf{Lato client}: controlli immediati con JavaScript (campi obbligatori, formati corretti).
+  \item \textbf{Lato server}: verifica dati ricevuti prima dell’inserimento nel database.
+  \item Messaggi di errore chiari e accessibili.
+    \item non sono concessi tag negli input
+\end{itemize}
+
 
 
 \section{Test}
