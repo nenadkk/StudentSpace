@@ -126,6 +126,12 @@ legend {
     font-size: var(--fs-breadcrumb-footer); 
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-0-5);
+}
+
 /*
 ====================================================
     GENERICI
@@ -1316,5 +1322,12 @@ form > p, form > p{
 }
 
 #contatti .azioni {
+    justify-content: center;
+}
+
+#contatti .btn-base.call-to-action {
+    min-width: 320px;     
+    width: 100%;           
+    text-align: center;
     justify-content: center;
 }
