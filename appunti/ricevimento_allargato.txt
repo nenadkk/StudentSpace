@@ -14,3 +14,8 @@ DA FARE:
 - vaffancuo
 - esplora gestito anche tramite js
 - ul della navbar non deve essere duplicato
+
+Da total validator:
+- modificare nav con ul unico e doppio div
+v - mettere aria-label contenenti l'espressione in label visibile
+v - mettere testo alternativo #n
