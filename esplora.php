@@ -49,7 +49,7 @@ if(isset($_GET['submit']))
     $categoria =$_GET['categoria'] ?? "";
 
     foreach ($filtriGenerali as $key => $value) {
-        $filtriGenerali[$key] = $_GET[$key] ?? "";
+        $filtriGenerali[$key] = Tool::pulisciInputCompleto($_GET[$key]) ?? "";
     }
 
     switch ($categoria) {
@@ -61,7 +61,7 @@ if(isset($_GET['submit']))
 
         case 'Affitti':
             foreach ($filtriAffitti as $key => $value) {
-                $filtriAffitti[$key] = isset($_GET[$key])? $_GET[$key] : '';
+                $filtriAffitti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
             }
             $dbAccess->openDBConnection();
             $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriAffitti));
@@ -70,7 +70,7 @@ if(isset($_GET['submit']))
 
         case 'Esperimenti':
             foreach ($filtriEsperimenti as $key => $value) {
-                $filtriEsperimenti[$key] = isset($_GET[$key])? $_GET[$key] : '';
+                $filtriEsperimenti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
             }
             $dbAccess->openDBConnection();
             $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEsperimenti));
@@ -80,7 +80,7 @@ if(isset($_GET['submit']))
            
        case 'Eventi':
             foreach ($filtriEventi as $key => $value) {
-                $filtriEventi[$key] = isset($_GET[$key])? $_GET[$key] : '';
+                $filtriEventi[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
             }
             $dbAccess->openDBConnection();
             $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEventi));
@@ -89,7 +89,7 @@ if(isset($_GET['submit']))
 
         case 'Ripetizioni':
             foreach ($filtriRipetizioni as $key => $value) {
-                $filtriRipetizioni[$key] = isset($_GET[$key])? $_GET[$key] : '';
+                $filtriRipetizioni[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
             }
             $dbAccess->openDBConnection();
             $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriRipetizioni));
