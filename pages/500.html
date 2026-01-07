@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Errore 500 - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina errore 500: problema interno del server">
+    <meta name="keywords" content="StudentSpace, bacheca universitaria, errore server, studenti fuorisede, affitti studenti, ripetizioni universitarie, eventi universitari, esperimenti accademici">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header id="intestazione">
+        <h1 id="logo-home" lang="en">Student Space</h1>
+
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+
+        <nav id="menu" aria-label="Menù di navigazione">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="chiSiamo.php">Chi Siamo</a></li>
+            </ul>
+            <ul class="nav-auth">
+                [TopNavLog]
+            </ul>
+        </nav>
+
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
+            <ul class="nav-links">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                <li><a href="chiSiamo.php">Chi Siamo</a></li>
+            </ul>
+            <ul class="nav-auth">
+                [TopNavLog]
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li aria-current="page" class="currentPage">Errore 500</li>
+        </ol>
+    </nav>
+
+    <main id="contenuto">
+        <div class="img-text-section errore">
+            <img src="assets/500.png" alt="Illustrazione ironica di un server universitario in tilt">
+            <div id="testo-errore">
+                <h2>La bacheca è in manutenzione.</h2>
+                <p>Qualcuno ha spostato i fogli per rimettere in ordine.</p>
+                <p>Torna tra poco!</p>
+                <div class="azioni">
+                    <a class="link btn-base call-to-action" href="index.html">Torna alla <span lang="en">Home</span></a>
+                    <a class="link btn-base call-to-action" href="esplora.html">Consulta la bacheca</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora</a></li>
+                <li><a href="pubblica.html">Pubblica</a></li>
+                [BottomNavLog]
+            </ul>
+        </div>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    
+    </div>
+</body>
+</html>
