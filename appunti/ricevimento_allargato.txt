@@ -7,3 +7,10 @@ COSE DA CHIDERE:
   sono caricate dagli utenti si pensava a una funzone (GD o js) per traformarle in jpg, ma richidere 
   permessi di modifica file e molto spesso vine bypassato + figure con png per stampa e jpg per web
 - diversi account con i quali fare query
+
+DA FARE:
+- profilo visualizzabile da esterni all'utente
+- modifica annuncio
+- vaffancuo
+- esplora gestito anche tramite js
+- ul della navbar non deve essere duplicato

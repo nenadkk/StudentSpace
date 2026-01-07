@@ -50,6 +50,8 @@ header {
     display: none;
 }
 
+/* DA ELIMINARE LA PARTE DI HAMBURGER*/
+
 #hamburger {
     all: unset;              
     display: flex;
@@ -483,3 +485,75 @@ li.categoria > div {
     DA MODULARIZZARE
 ==================================================== 
 */
+
+#menu {
+    display: none;
+    width: 100%;
+    padding-top: 0.5em;
+    box-shadow: 0 -0.5em 0.5em -0.5em rgba(0,0,0,0.3); 
+}
+
+#menu.attivo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8em;
+    margin-bottom: 1.2em;
+}
+
+
+#menu .nav-links, 
+#menu .nav-auth {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+
+#menu .nav-links{
+    gap: var(--gap-1);
+}
+
+#menu .nav-auth {
+    gap: var(--gap-1-5);
+}
+
+#menu a {
+    color: var(--txtcolor);
+    padding: var(--padding-base);
+}
+
+#menu .nav-links a{
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+#menu a:visited {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--visited);
+}
+
+#menu .link.call-to-action{
+    color: var(--clearTxtColor);
+}
+
+#menu .link.call-to-action:visited{    
+    color: var(--call-to-actionColor);
+    background-color: var(--BgColor);
+}
+
+#menu .link.call-to-action:hover,
+#menu .link.call-to-action:focus{
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
+    outline: var(--btn-border);
+    outline-offset: 1px;
+}
+
+#aperto.attivo,
+#chiuso.attivo {
+    display: flex;
+}
