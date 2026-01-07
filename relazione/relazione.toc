@@ -7,52 +7,52 @@
 \contentsline {subsection}{\numberline {2.1}Processo decisionale}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Modalità di lavoro}{4}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Divisione del lavoro}{4}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Analisi dei requisiti}{4}{section.3}%
+\contentsline {section}{\numberline {3}Progettazione}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Tipologie di Utenti}{4}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Analisi dei contenuti}{4}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Tipi di annunci}{5}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Campi generici}{5}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Campi specifici per categoria}{5}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Requisiti funzionalità}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Descrizione delle funzionalità}{5}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Registrazione e login}{6}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Pubblicazione annunci}{6}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}Modifica ed eliminazione annunci}{6}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.3}Modifica, eliminazione e salvataggio degli annunci}{6}{subsubsection.3.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.4}Filtraggio e ricerca annunci}{6}{subsubsection.3.3.4}%
-\contentsline {subsubsection}{\numberline {3.3.5}Validazione input}{6}{subsubsection.3.3.5}%
-\contentsline {subsubsection}{\numberline {3.3.6}Accessibilità e responsività}{6}{subsubsection.3.3.6}%
-\contentsline {section}{\numberline {4}Progettazione}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Archietettura del sistema}{7}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Progettazione Database}{7}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Analisi dei requisiti del database e progettazione logica}{7}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.5}Validazione input}{7}{subsubsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.4}Requisiti tecnici}{7}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Accessibilità e responsività}{7}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.5}Archietettura del sistema}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Struttura del sito}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Mockup}{7}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Responsive Web Design e Mobile First}{7}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Sviluppo}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Database}{7}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Analisi dei requisiti del database e progettazione logica}{7}{subsubsection.4.1.1}%
 \contentsline {paragraph}{Entità principali}{7}{section*.2}%
-\contentsline {paragraph}{Relazioni tra entità}{7}{section*.3}%
-\contentsline {subsubsection}{\numberline {4.2.2}Schema ER}{8}{subsubsection.4.2.2}%
-\contentsline {paragraph}{Generalizzazione IS-A}{8}{section*.4}%
-\contentsline {subsubsection}{\numberline {4.2.3}Schema ER ristrutturato}{9}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Scelta delle chiavi primarie}{9}{subsubsection.4.2.4}%
-\contentsline {subsubsection}{\numberline {4.2.5}Schema logico (relazionale)}{10}{subsubsection.4.2.5}%
-\contentsline {subsubsection}{\numberline {4.2.6}Normalizzazione}{10}{subsubsection.4.2.6}%
-\contentsline {subsubsection}{\numberline {4.2.7}Vincoli di integrità}{11}{subsubsection.4.2.7}%
-\contentsline {subsection}{\numberline {4.3}Struttura del sito}{11}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Mockup}{11}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Responsive Web Design e Mobile First}{11}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Sviluppo}{11}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Front-end (HTML, CSS, JS)}{11}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}HTML}{11}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}CSS e decisioni di design (immagini, palette colori)}{12}{subsubsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}Back-end (PHP, Database)}{12}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Validazione e Sicurezza}{12}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Test}{12}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Test funzionali}{12}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Test di compatibilità}{12}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Test di accessibilità}{12}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Accessibilità}{12}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Introduzione}{12}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}WAI-ARIA e screen-reader}{12}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Progressive Enhancement}{12}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Supporto ai dispositivi “legacy”}{12}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Ulteriori funzionalità di accessibilità}{12}{subsection.7.5}%
-\contentsline {section}{\numberline {8}SEO e prestazioni}{12}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Analisi delle possibili ricerche su Google}{12}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Strumenti utilizzati}{12}{section.9}%
-\contentsline {section}{\numberline {10}Guida all’installazione del progetto}{13}{section.10}%
+\contentsline {paragraph}{Relazioni tra entità}{8}{section*.3}%
+\contentsline {subsubsection}{\numberline {4.1.2}Schema ER}{9}{subsubsection.4.1.2}%
+\contentsline {paragraph}{Generalizzazione IS-A}{9}{section*.4}%
+\contentsline {subsubsection}{\numberline {4.1.3}Schema ER ristrutturato}{10}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Scelta delle chiavi primarie}{10}{subsubsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.5}Schema logico (relazionale)}{11}{subsubsection.4.1.5}%
+\contentsline {subsubsection}{\numberline {4.1.6}Normalizzazione}{11}{subsubsection.4.1.6}%
+\contentsline {subsubsection}{\numberline {4.1.7}Vincoli di integrità}{12}{subsubsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.2}Front-end (HTML, CSS, JS)}{12}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}HTML}{12}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}CSS e decisioni di design (immagini, palette colori)}{13}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Back-end (PHP, Database)}{13}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Validazione e Sicurezza}{13}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Test}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Test funzionali}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Test di compatibilità}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Test di accessibilità}{13}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Accessibilità}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Introduzione}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}WAI-ARIA e screen-reader}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Progressive Enhancement}{13}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Supporto ai dispositivi “legacy”}{13}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Ulteriori funzionalità di accessibilità}{13}{subsection.6.5}%
+\contentsline {section}{\numberline {7}SEO e prestazioni}{13}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Analisi delle possibili ricerche su Google}{13}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Strumenti utilizzati}{13}{section.8}%
+\contentsline {section}{\numberline {9}Guida all’installazione del progetto}{14}{section.9}%

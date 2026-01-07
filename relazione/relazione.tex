@@ -108,7 +108,7 @@ A sostegno di ciò si è deciso di implementare un sistema di versionamento del 
 Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
 Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del programma, e di mettere mano direttamente a ogni fase del suo sviluppo.
 
-\section{Analisi dei requisiti}
+\section{Progettazione}
     \subsection{Tipologie di Utenti}
     Il sistema prevede due tipologie di utente:
         \begin{itemize}
@@ -147,9 +147,8 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
           \item \textbf{Titolo}: breve descrizione sintetica dell’annuncio.
           \item \textbf{Data di pubblicazione}: generata automaticamente dal sistema.
           \item \textbf{Città}: riferimento all’utente registrato che ha pubblicato l’annuncio.
-          \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. % decidere
-          \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. % decidere
-          
+          \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. 
+          \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. 
         \end{itemize}
 
         \subsubsection{Campi specifici per categoria}
@@ -182,37 +181,56 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
             \end{itemize}
         \end{itemize}
         \end{multicols}
-\subsection{Requisiti funzionalità} % registrazione/login, pubblicazione annunci, modifica/eliminazione, filtraggio annunci, validazione input (client/server), accessibilità e responsività
-Il sistema deve garantire una serie di funzionalità fondamentali per soddisfare i requisiti del progetto
-e le esigenze degli utenti.
+\subsection{Descrizione delle funzionalità} % registrazione/login, pubblicazione annunci, modifica/eliminazione, filtraggio annunci, validazione input (client/server), accessibilità e responsività
+Il sistema offre una serie di funzionalità fondamentali per soddisfare i requisiti 
+del progetto e le esigenze degli utenti.
 
 \subsubsection{Registrazione e login}
 \begin{itemize}
-  \item Form di registrazione con campi obbligatori (nome, email, password).
-  \item Validazione lato client (formato email, lunghezza password) e lato server.
-  \item Login con credenziali; gestione sessione sicura.
-  \item Utente amministratore con credenziali \texttt{admin/admin}, utente semplice con \texttt{user/user}.
+    \item Registrazione di nuovi utenti: è permessa, per gli utenti che volessero ampliare la loro esperienza di utilizzo, la creazione di un account. La registrazione richiederà all'utente di fornire le seguenti informazioni:
+        \begin{itemize}
+            \item Nome
+            \item Cognome
+            \item Email
+            \item Citta: intesa come città universitaria di riferimento.
+            \item Password
+        \end{itemize}
+    \item Login: processo di identificazione degli utenti registrati che sblocca tutte le funzionalità.
+    \item Qualora l'utente inserisca dei dati non validi verrà bloccato l'invio della
+        form e verranno mostrati dei messaggi di errore (si veda \hyperref[sec:]).
+
 \end{itemize}
 
 \subsubsection{Pubblicazione annunci}
 \begin{itemize}
-  \item Form di inserimento con parte generica (titolo, descrizione, categoria).
-  \item Campi specifici mostrati dinamicamente in base alla categoria scelta.
-  \item Salvataggio dati nel database con associazione all’utente autore.
-  \item Possibilità di visualizzare un’anteprima prima della conferma. % da decidere
+    \item È possibile, per gli utenti registrati, pubblicare annunci compilando un'apposito form. 
+        Sono necessari per la pubblicazione:
+        \begin{itemize}
+            \item Campi generici: titolo, descrizione e categoria.
+            \item Campi specifici mostrati dinamicamente in base alla categoria scelta.
+        \end{itemize}
+    \item In seguito alla pubblicazione sarà possibile risalire all'autore dell'annuncio.
 \end{itemize}
 
-\subsubsection{Modifica ed eliminazione annunci}  % da decidere
+\subsubsection{Modifica, eliminazione e salvataggio degli annunci}  
 \begin{itemize}
-  \item Utente registrato può modificare o cancellare solo i propri annunci.
-  \item Amministratore può intervenire su qualsiasi annuncio.
+    \item Un utente registrato può decidere di salvare degli annunci aggiungendoli 
+        alla propria lista dei preferiti.
+    \item L'autore di un annuncio può decidere di modificare o cancellare i propri annunci.
+    \item Un annuncio non apparirà più all'interno della lista dei preferiti degli utenti 
+        dopo essere stato eliminato dal sistema.
 \end{itemize}
 
 \subsubsection{Filtraggio e ricerca annunci}
 \begin{itemize}
-  \item Filtri generici (categoria, data di pubblicazione).
-  \item Filtri specifici 
-  \item Ricerca testuale su titolo e descrizione.
+    \item È possibile applicare dei filtri per migliorare la ricerca degli annunci.
+        Sono previsti:
+        \begin{itemize}
+            \item Filtri generici (categoria, data di pubblicazione).
+            \item Filtri specifici per categoria
+        \end{itemize}
+    \item È inoltre possibile effettuare una ricerca testuale sul contenuto del 
+        titolo e della descrizione.
 \end{itemize}
 
 \subsubsection{Validazione input}
@@ -222,19 +240,39 @@ e le esigenze degli utenti.
   \item Messaggi di errore chiari e accessibili.
 \end{itemize}
 
+\subsection{Requisiti tecnici}
 \subsubsection{Accessibilità e responsività}
 \begin{itemize}
   \item Layout realizzato con CSS3, Flexbox e Grid.\
   \item Separazione netta tra contenuto (HTML5), presentazione (CSS) e comportamento (JS/PHP).
   \item Compatibilità cross-browser e adattamento a diverse dimensioni di schermo.
   \item Uso di etichette semantiche, contrasto cromatico adeguato e font leggibili.
+
+  \item Validazione lato client (formato email, lunghezza password) e lato server.
 \end{itemize}
 
-
-\section{Progettazione}
     \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
-\subsection{Progettazione Database} 
+\subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
+\subsection{Mockup}
+\subsection{Responsive Web Design e Mobile First} 
+
+\section{Sviluppo} % decidere struttura
+\begin{comment}
+\subsection{HTML} % sementica
+\subsection{CSS}
+\subsection{JavaScript} % validazione client + interazione
+\subsection{PHP}
+\subsection{Database}
+\subsection{Errori}
+\subsection{Validazione} 
+\subsection{Gestione delle immagini} 
+\subsection{Palette colori e font} 
+\subsection{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
+\end{comment}
+% o struttura più sintetica
+
+\subsection{Database} 
 \subsubsection{Analisi dei requisiti del database e progettazione logica}
 
 La base di dati deve supportare la gestione degli utenti e degli annunci pubblicati
@@ -405,24 +443,7 @@ Lo schema logico rispetta i principali vincoli di integrità:
     \item \textbf{Generalizzazione IS-A}: ogni annuncio può avere al massimo una specializzazione coerente con la categoria.
 \end{itemize}
 
-\subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
-\subsection{Mockup}
-\subsection{Responsive Web Design e Mobile First} 
 
-\section{Sviluppo} % decidere struttura
-\begin{comment}
-\subsection{HTML} % sementica
-\subsection{CSS}
-\subsection{JavaScript} % validazione client + interazione
-\subsection{PHP}
-\subsection{Database}
-\subsection{Errori}
-\subsection{Validazione} 
-\subsection{Gestione delle immagini} 
-\subsection{Palette colori e font} 
-\subsection{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
-\end{comment}
-% o struttura più sintetica
 
 \subsection{Front-end (HTML, CSS, JS)}
     \subsubsection{HTML}
