@@ -132,6 +132,9 @@ legend {
     gap: var(--gap-0-5);
 }
 
+.print-only {
+    display: none;
+}
 /*
 ====================================================
     GENERICI
@@ -484,9 +487,9 @@ button {
     padding: 2em;
 }
 
-#contatti {
+#about-us .section-column {
     gap: var(--gap-1);
-    padding-top: 0;
+    padding: 0.5em;
 }
 
 
@@ -1321,13 +1324,14 @@ form > p, form > p{
     fill: currentColor; 
 }
 
-#contatti .azioni {
+#about-us .azioni {
     justify-content: center;
 }
 
-#contatti .btn-base.call-to-action {
-    min-width: 320px;     
-    width: 100%;           
+#about-us h2 {
     text-align: center;
-    justify-content: center;
+}
+
+#about-us {
+    padding: 3em 6em; 
 }
