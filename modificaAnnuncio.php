@@ -57,6 +57,9 @@ if($db->openDBConnection()) {
 
     if ($annuncio["IdUtente"] != $_SESSION["user_id"]) {
         // errore di permessi mancanti
+        // DA SISTEMARE
+        $db->closeConnection(); 
+        Tool::renderError(404);
     }
 
     $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio)[0]; 
@@ -68,15 +71,40 @@ if($db->openDBConnection()) {
     Tool::renderError(500);
 }
 
+switch ($annuncio["Categoria"]) {
+    case 'Affitti':
+        $campiAffitti['coinquilini'] = Tool::pulisciInput($attr['PrezzoMensile'] ?? 0);
+        $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($attr['Indirizzo'] ?? 0);
+        $campiAffitti['indirizzo-affitto'] = Tool::pulisciInput($attr['NumeroInquilini'] ?? 0);
+        $campi = $campiAffitti;
+        break;
+    case 'Esperimenti':
+        $campiEsperimenti['laboratorio'] = Tool::pulisciInput($attr['Laboratorio'] ?? 0);
+        $campiEsperimenti['esperimento-durata'] = Tool::pulisciInput($attr['DurataPrevista'] ?? 0);
+        $campiEsperimenti['esperimento-compenso'] = Tool::pulisciInput($attr['Compenso'] ?? 0);
+        $campi = $campiEsperimenti;
+        break;
+    case 'Eventi':
+        $campiEventi['data-evento'] = Tool::pulisciInput($attr['DataEvento'] ?? 0);
+        $campiEventi['costo-evento'] = Tool::pulisciInput($attr['CostoEntrata'] ?? 0);
+        $campiEventi['luogo-evento'] = Tool::pulisciInput($attr['Luogo'] ?? 0);
+        $campi = $campiEventi;
+        break;
+    case 'Ripetizioni':
+        $campiRipetizioni['materia'] = Tool::pulisciInput($attr['Materia'] ?? 0);
+        $campiRipetizioni['livello'] = Tool::pulisciInput($attr['Livello'] ?? 0);
+        $campiRipetizioni['prezzo-ripetizioni'] = Tool::pulisciInput($attr['PrezzoOrario'] ?? 0);
+        $campi = $campiRipetizioni;
+        break;
+    default:
+        break;
+}
+
 
 $htmlPage = file_get_contents('pages/modificaAnnuncio.html');
 
 //rimetto la categoria selezionata
-$htmlPage = str_replace("[noneSelected]", $annuncio["Categoria"]=='' ? 'selected' : '' , $htmlPage);
-$htmlPage = str_replace("[affittiSelected]", $annuncio["Categoria"]=='Affitti' ? 'selected' : '' , $htmlPage);
-$htmlPage = str_replace("[esperimentiSelected]", $annuncio["Categoria"]=='Esperimenti' ? 'selected' : '' , $htmlPage);
-$htmlPage = str_replace("[eventiSelected]", $annuncio["Categoria"]=='Eventi' ? 'selected' : '' , $htmlPage);
-$htmlPage = str_replace("[ripetizioniSelected]", $annuncio["Categoria"]=='Ripetizioni' ? 'selected' : '' , $htmlPage);
+$htmlPage = str_replace("[categoriaSelected]", $annuncio["Categoria"] ?? '' , $htmlPage);
 
 //riempio i campi compilati al momento del submit
 //GENERALI
@@ -84,8 +112,17 @@ $htmlPage = str_replace("[titolo]", $annuncio["Titolo"], $htmlPage);
 $htmlPage = str_replace("[descrizione]", $annuncio["Descrizione"], $htmlPage);
 $htmlPage = str_replace("[citta]", $annuncio["NomeCitta"], $htmlPage);
 
+$htmlPage = str_replace("[campiDettagli]", Tool::getModificaAnnuncioSpecifico($annuncio["Categoria"]), $htmlPage);
+
+foreach ($campi as $key => $value) {
+    $htmlPage = str_replace("[$key]", $value, $htmlPage);
+}
+
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+
+$htmlPage = str_replace("[Logger]", $annuncio["Categoria"], $htmlPage);
+$htmlPage = str_replace("[Logger]", $annuncio["Categoria"], $htmlPage);
 
 echo $htmlPage;
 
