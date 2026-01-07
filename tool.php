@@ -203,4 +203,11 @@ class Tool {
         require __DIR__ . "/$code.php";
         exit;
     }
+
+
+    public static function getHtmlModificaAnnuncio(string $categoria) : string {
+        switch($categoria) {
+        }
+        return "placeholder";
+    }
 }

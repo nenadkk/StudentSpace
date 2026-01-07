@@ -169,9 +169,9 @@ $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'se
 
 //riempio i campi compilati al momento del submit
 //GENERALI
-$htmlPage = str_replace("[titolo]", $titolo, $htmlPage); 
-$htmlPage = str_replace("[descrizione]", $descrizione, $htmlPage); 
-$htmlPage = str_replace("[citta]", $citta, $htmlPage); 
+$htmlPage = str_replace("[titolo]", $titolo, $htmlPage);
+$htmlPage = str_replace("[descrizione]", $descrizione, $htmlPage);
+$htmlPage = str_replace("[citta]", $citta, $htmlPage);
 //SPECIFICI
 foreach ($campiAffitti as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);

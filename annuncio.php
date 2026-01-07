@@ -3,8 +3,6 @@
 require_once "dbConnect.php";
 require_once "tool.php";
 
-// session_start();
-
 use DB\DBAccess;
 $db = new DB\DBAccess();
 
@@ -61,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         $db->closeConnection();
         header("Location: index.php");
         exit;
+    } else {
+        Tool::renderError(500);
     }
 }
 
