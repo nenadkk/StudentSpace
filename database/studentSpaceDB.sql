@@ -382,15 +382,15 @@ INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine)
 (2,'affitti2_3.jpg','Cucina moderna con mobili in legno chiaro, forno, piano cottura e frigorifero. Tavolo con quattro sedie. Pavimento piastrellato e finestra.',1,3),
 (2,'affitti2_4.jpg','Bagno moderno con doccia angolare a vetro, lavabo con specchio, WC e bidet. Piastrelle verdi e bianche, illuminazione sopra lo specchio.',1,4),
 
-(3,'affitti3_1.jpg','Camera con due letti singoli con comodino centrale, armadio con ante a specchio e finestra con tapparella. Sopra il comodino quadro marino e climatizzatore.',0,1),
+(3,'affitti3_1.jpg','Camera con due letti singoli con comodino centrale, armadio con ante a specchio, finestra e climatizzatore.',0,1),
 (3,'affitti3_2.jpg','Camera con due letti singoli paralleli, comodino centrale con lampada, cassettiera con TV e quadro marino. Finestra con tapparella e climatizzatore.',1,2),
 
-(4,'affitti4_1.jpg','Camera con letto matrimoniale. Scaffale metallico e cassapanca posti lateralmente al letto. Pavimento grigio con tappeto.',0,1),
+(4,'affitti4_1.jpg','Camera con letto matrimoniale con scaffale metallico e cassapanca posti affianco al letto e pavimento grigio.',0,1),
 (4,'affitti4_2.jpg','Camera con letto singolo, comodino, scaffale con libri e decorazioni, cassettiera con pianta. Pavimento chiaro, tappeto e cuscino a terra. Porta a vetro sul lato destro.',1,2),
 (4,'affitti4_3.jpg','Monolocale con letto, tavolo da pranzo in legno, sedia con coperta e scaffale con libri, piante e microonde. ',1,3),
 (4,'affitti4_4.jpg','Bagno compatto con doccia a vetro, lavabo con specchio, WC e lavatrice, mobile in legno e pavimento effetto legno.',1,4),
 
-(5,'affitti5_1.jpg','Cucina moderna con mobili bianchi e azzurri, tavolo in legno con quattro sedie e lampade a sospensione.',0,1),
+(5,'affitti5_1.jpg','Cucina moderna con mobili bianchi e azzurri, tavolo in legno e lampade a sospensione.',0,1),
 (5,'affitti5_2.jpg','Camera singola con letto bianco e grigio, comodino con lampada, scrivania con sedia e pianta.',1,2),
 (5,'affitti5_3.jpg','Camera con due letti singoli con comodino centrale, pavimento piastrellato chiaro e pareti bianche.',1,3),
 (5,'affitti5_4.jpg','Bagno moderno con doccia a parete, WC sospeso, lavabo con specchio illuminato e scaldabagno sopra il WC.',1,4),
