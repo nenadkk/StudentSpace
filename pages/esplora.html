@@ -26,22 +26,22 @@
 
 <body>
     <header id="intestazione">
-        <h1 id="logo-link" lang="en">
-            <a href="index.php" aria-label="Vai alla home">Student Space</a>
-        </h1>
-
-        <a href="#filtri" class="aiuti">Salta al filtraggio</a> <!--PER SALTARE AI FILTRI PER SCREEN READER-->
+        <a href="#filtri" class="aiuti">Salta al filtraggio</a>
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
-        
+        <h1 id="logo-link" lang="en">
+            <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
+        </h1>
         <nav id="menu" aria-label="Menù di navigazione">
-            <ul class="nav-links">
-                <li lang="en"><a href="index.php">Home</a></li>
-                <li class="current-link" aria-current="page">Esplora</li>
-                <li><a href="pubblica.php">Pubblica</a></li>
-                <li><a href="chiSiamo.php">Chi Siamo</a></li>
-            </ul>
-            <ul class="nav-auth">
-                [TopNavLog]
+            <ul>
+                <div class="nav-links">
+                    <li lang="en"><a href="index.php">Home</a></li>
+                    <li class="current-link" aria-current="page">Esplora</li>
+                    <li><a href="pubblica.php">Pubblica</a></li>
+                    <li><a href="chiSiamo.php">Chi Siamo</a></li>
+                </div>
+                <div class="nav-auth">
+                    [TopNavLog]
+                </div>
             </ul>
         </nav>
 
@@ -50,14 +50,16 @@
             <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
         </button>
         <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
-            <ul class="nav-links">
-                <li lang="en"><a href="index.php">Home</a></li>
-                <li class="current-link" aria-current="page">Esplora</li>
-                <li><a href="pubblica.php">Pubblica</a></li>
-                <li><a href="chiSiamo.php">Chi Siamo</a></li>
-            </ul>
-            <ul class="nav-auth">
-                [TopNavLog]
+            <ul>
+                <div class="nav-links">
+                    <li lang="en"><a href="index.php">Home</a></li>
+                    <li class="current-link" aria-current="page">Esplora</li>
+                    <li><a href="pubblica.php">Pubblica</a></li>
+                    <li><a href="chiSiamo.php">Chi Siamo</a></li>
+                </div>
+                <div class="nav-auth">
+                    [TopNavLog]
+                </div>
             </ul>
         </nav>
     </header>

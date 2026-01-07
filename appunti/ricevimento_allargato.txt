@@ -7,3 +7,9 @@ COSE DA CHIDERE:
   sono caricate dagli utenti si pensava a una funzone (GD o js) per traformarle in jpg, ma richidere 
   permessi di modifica file e molto spesso vine bypassato + figure con png per stampa e jpg per web
 - diversi account con i quali fare query
+
+
+Da total validator:
+- modificare nav con ul unico e doppio div
+v - mettere aria-label contenenti l'espressione in label visibile
+v - mettere testo alternativo #n
