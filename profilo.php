@@ -34,12 +34,12 @@ if($db->openDBConnection()) {
             $cardsPreferiti = Tool::createCard($annunciPreferiti);
             $numPreferiti = count($annunciPreferiti);
         } else {
-            $cardsPreferiti = '<div class="centered">
+            $cardsPreferiti = '<li class="centered">
                         <p>Nessun annuncio tra i preferiti.</p>
                         <div class="azioni">
                             <a class="link btn-base call-to-action" href="esplora.php">Esplora gli annunci</a>
                         </div>
-                    </div>';
+                    </li>';
             $numPreferiti = 0;
         }
 
@@ -48,12 +48,12 @@ if($db->openDBConnection()) {
             $cards = Tool::createCard($annunciUtente);
             $numPubblicati = count($annunciUtente);
         } else {
-            $cards = '<div class="centered">
+            $cards = '<li class="centered">
                         <p>Nessun annuncio pubblicato.</p>
                         <div class="azioni">
                             <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
                         </div>
-                    </div>';
+                    </li>';
             $numPubblicati = 0;
         }
     }

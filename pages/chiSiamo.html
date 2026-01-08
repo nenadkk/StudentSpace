@@ -30,23 +30,13 @@
         <h1 id="logo-link" lang="en">
             <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
         </h1>
-        <nav id="menu" aria-label="Menù di navigazione">
-            <ul class="nav-links">
-                <li lang="en"><a href="index.php">Home</a></li>
-                <li><a href="esplora.php">Esplora</a></li>
-                <li><a href="pubblica.php">Pubblica</a></li>
-                <li class="current-link" aria-current="page">Chi siamo</li>
-            </ul>
-            <ul class="nav-auth">
-                [TopNavLog]
-            </ul>
-        </nav>
 
-        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
             <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
             <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
+
+        <nav id="menu" aria-label="Menù di navigazione">
             <ul class="nav-links">
                 <li lang="en"><a href="index.php">Home</a></li>
                 <li><a href="esplora.php">Esplora</a></li>
@@ -71,18 +61,18 @@
         <div id="about-us" class="img-text-section">
             <img src="assets/about-us-no-sfondo.png" alt="">
             <div>
-            <section class="section-column">
-                    <h2>Chi siamo</h2>
-                    <p><strong>Student Space</strong> è un progetto nato da studenti universitari per semplificare la vita accademica, attraverso una piattaforma dove trovare affitti, ripetizioni, eventi, esperimenti e opportunità pensate per la <span lang="en">community</span> studentesca.</p>
-                    <p>Per questo abbiamo creato uno spazio digitale semplice, accessibile e aperto a tutti.</p>
-                    
-                    <div class="azioni">
-                        <a class="link btn-base call-to-action" href="esplora.php">Esplora le proposte</a>
-                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
-                    </div>
-            </section>
-            <section id="contatti" class="section-column">
-                <h2>Contatti</h2>
+                <section class="section-column">
+                        <h2>Chi siamo</h2>
+                        <p><strong>Student Space</strong> è un progetto nato da studenti universitari per semplificare la vita accademica, attraverso una piattaforma dove trovare affitti, ripetizioni, eventi, esperimenti e opportunità pensate per la <span lang="en">community</span> studentesca.</p>
+                        <p>Per questo abbiamo creato uno spazio digitale semplice, accessibile e aperto a tutti.</p>
+                        
+                        <div class="azioni">
+                            <a class="link btn-base call-to-action" href="esplora.php">Esplora le proposte</a>
+                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        </div>
+                </section>
+                <section id="contatti" class="section-column">
+                    <h2>Contatti</h2>
                     <p>Puoi seguirci su Instagram:</p>
                     <div class="azioni">
                         <a class="link btn-base call-to-action"
@@ -114,9 +104,8 @@
                             <span>studentspace2026@gmail.com</span>
                         </a>
                     </div>
-                        <p class="print-only">studentspace2026@gmail.com</p>
-                    </div>
-            </section>
+                    <p class="print-only">studentspace2026@gmail.com</p>
+                </section>
             </div>
         </div>
     </main>

@@ -27,24 +27,16 @@
 <body>
     <header id="intestazione">
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
-        <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
-        <nav id="menu" aria-label="Menù di navigazione">
-            <ul class="nav-links">
-                <li lang="en"><a href="index.php">Home</a></li>
-                <li><a href="esplora.php">Esplora</a></li>
-                <li><a href="pubblica.php">Pubblica</a></li>
-                <li><a href="chiSiamo.php">Chi Siamo</a></li>
-            </ul>
-            <ul class="nav-auth">
-                [TopNavLog]
-            </ul>
-        </nav>
+        <h1 id="logo-link" lang="en">
+            <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
+        </h1>
 
-        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
             <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
             <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
         </button>
-        <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
+
+        <nav id="menu" aria-label="Menù di navigazione">
             <ul class="nav-links">
                 <li lang="en"><a href="index.php">Home</a></li>
                 <li><a href="esplora.php">Esplora</a></li>

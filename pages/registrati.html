@@ -30,6 +30,12 @@
         <h1 id="logo-link" lang="en">
             <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
         </h1>
+
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
+        </button>
+
         <nav id="menu" aria-label="Menù di navigazione">
             <ul class="nav-links">
                 <li lang="en"><a href="index.php">Home</a></li>
@@ -39,23 +45,6 @@
             </ul>
             <ul class="nav-auth">
                 <li class="current-link" aria-current="page">Registrati</li>
-                <li><a class="link btn-base call-to-action" href="accedi.php">Accedi</a></li>
-            </ul>
-        </nav>
-
-        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
-            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
-            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
-        </button>
-        <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
-            <ul class="nav-links">
-                <li lang="en"><a href="index.php">Home</a></li>
-                <li><a href="esplora.php">Esplora</a></li>
-                <li><a href="pubblica.php">Pubblica</a></li>
-                <li><a href="chiSiamo.php">Chi Siamo</a></li>
-            </ul>
-            <ul class="nav-auth">
-                <li class="current-link">Registrati</li>
                 <li><a class="link btn-base call-to-action" href="accedi.php">Accedi</a></li>
             </ul>
         </nav>
@@ -160,7 +149,7 @@
                         
                         <div class="checkbox-inline">
                             <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                            <label for="mostraPassword">Mostra password</label>
+                            <label for="mostraPassword">Mostra <span lang="en">password</span></label>
                         </div>
                     </div>
                     
@@ -171,7 +160,7 @@
                         
                         <div class="checkbox-inline">
                             <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                            <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
+                            <label for="mostraConfermaPassword">Mostra conferma <span lang="en">password</span></label>
                         </div>
                     </div>
                     [errore-password]
@@ -189,7 +178,7 @@
                     </ul>
                 </div>
                 <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
-                <p>Hai già un account? <a class="link" href="accedi.html">Accedi</a></p>
+                <p>Hai già un account? <a class="link" href="accedi.php">Accedi</a></p>
 
             </form>
         </div>
