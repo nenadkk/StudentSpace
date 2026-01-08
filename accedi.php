@@ -60,12 +60,33 @@ if(isset($_POST['submit'])) {
 }
 
 if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
-    $redirectMessage = '
-        <p class="riquadro-spieg alt-spiegazione">
-            Per accedere alla pagina selezionata è necessario effettuare il <span lang="en">login</span>.
+    $pagina = $_GET['redirect'];
+
+    $messaggi = [
+        "pubblica.php" => "Per pubblicare un annuncio è necessario effettuare il <span lang='en'>login</span>.",
+        "annuncio.php" => "Per salvare nei preferiti un annuncio  è necessario effettuare il <span lang='en'>login</span>.",
+        "profilo.php"  => "Per accedere al tuo profilo è necessario effettuare il <span lang='en'>login</span>.",
+        "modificaAnnuncio.php" => "Per modificare un tuo annuncio è necessario effettuare il <span lang='en'>login</span>."
+    ];
+
+    // Messaggio di default
+    $testo = "Per accedere alla pagina selezionata è necessario effettuare il <span lang='en'>login</span>.";
+
+    // Se la pagina è riconosciuta, usa il messaggio specifico
+    foreach ($messaggi as $chiave => $msg) {
+        if (str_contains($pagina, $chiave)) {
+            $testo = $msg;
+            break;
+        }
+    }
+
+    $redirectMessage = "
+        <p class='riquadro-spieg alt-spiegazione'>
+            $testo
         </p>
-    ';
+    ";
 }
+
 
 $htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);
 $htmlPage = str_replace("[RedirectMessage]", $redirectMessage, $htmlPage);
