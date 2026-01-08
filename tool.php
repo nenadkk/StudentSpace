@@ -206,4 +206,107 @@ class Tool {
         require __DIR__ . "/$code.php";
         exit;
     }
+
+
+    public static function getModificaAnnuncioSpecifico(string $categoria) : string {
+        $modAnn = '<div id="attr-specifici-container">';
+        switch($categoria) {
+            case 'Affitti':
+                $modAnn = $modAnn . '<div id="campi-affitti" class="">
+                            <fieldset  class="campi-specifici fieldset-base">
+                                <legend>Dettagli Affitti</legend>
+                                <div class="form-div">
+                                    <label for="coinquilini">Numero coinquilini</label>
+                                    <input type="number" id="coinquilini" name="coinquilini" value="[coinquilini]" min="0">
+                                    <p>Es. 2</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="costo-mese-affitto">Costo mensile (€ al mese)</label>
+                                    <input type="number" id="costo-mese-affitto" value="[costo-mese-affitto]" name="costo-mese-affitto" min="0">
+                                    <p>Es. 300</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="indirizzo-affitto">Indirizzo</label>
+                                    <input type="text" id="indirizzo-affitto" value="[indirizzo-affitto]" name="indirizzo-affitto">
+                                    <p>Es. Via Roma 10</p>
+                                </div>
+                            </fieldset>
+                        </div>';
+                break;
+            case 'Esperimenti':
+                $modAnn = $modAnn . '<div id="campi-esperimenti" class="">
+                            <fieldset class="campi-specifici fieldset-base">
+                                <legend>Dettagli Esperimenti</legend>
+                                <div class="form-div">
+                                    <label for="laboratorio">Laboratorio di riferimento</label>
+                                    <input type="text" id="laboratorio" value="[laboratorio]" name="laboratorio">
+                                    <p>Es. Laboratorio di Psicologia Sperimentale</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="esperimento-durata">Durata esperimento (minuti)</label>
+                                    <input type="text" id="esperimento-durata" value="[esperimento-durata]" name="esperimento-durata" placeholder="Es. 75">
+                                    <p>Es. 75</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="esperimento-compenso">Compenso (€)</label>
+                                    <input type="number" id="esperimento-compenso" value="[esperimento-compenso]" name="esperimento-compenso" min="0">
+                                    <p>Es. 15</p>
+                                </div>
+                            </fieldset>
+                        </div>';
+                break;
+            case 'Eventi':
+                $modAnn = $modAnn . '<div id="campi-eventi" class="">
+                            <fieldset class="campi-specifici fieldset-base">
+                                <legend>Dettagli Eventi</legend>
+                                <div class="form-div">
+                                    <label for="data-evento">Data evento</label>
+                                    <input type="date" id="data-evento" name="data-evento" value="[data-evento]">
+                                    <p>Es. 18/10/2025</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="costo-evento">Costo entrata (€)</label>
+                                    <input type="number" id="costo-evento" name="costo-evento" value="[costo-evento]" min="0">
+                                    <p>Es. 10</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="luogo-evento">Luogo</label>
+                                    <input type="text" id="luogo-evento" name="luogo-evento" value="[luogo-evento]">
+                                    <p>Es. Teatro Comunale</p>
+                                </div>
+                            </fieldset>
+                        </div>';
+                break;
+            case 'Ripetizioni':
+                $modAnn = $modAnn . '<div id="campi-ripetizioni" class="">
+                            <fieldset class="campi-specifici fieldset-base">
+                                <legend>Dettagli Ripetizioni</legend>
+                                <div class="form-div">
+                                    <label for="materia">Materia</label>
+                                    <input type="text" id="materia" name="materia" value="[materia]">
+                                    <p>Es. Matematica</p>
+                                </div>
+                                <div class="form-div">
+                                    <label for="livello">Livello</label>
+                                    <input list="listlivelli" placeholder="Es. Superiori, università" value="[livello]" name="livello" id="livello">
+                                    <datalist id="listlivelli">
+                                        <option value="Medie">
+                                        <option value="Superiori">
+                                        <option value="Università">
+                                    </datalist>
+                                </div>
+                                <div class="form-div">
+                                    <label for="prezzo-ripetizioni">Prezzo orario (€ all\'ora)</label>
+                                    <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" value="[prezzo-ripetizioni]">
+                                    <p>Es. 15</p>
+                                </div>
+                            </fieldset>
+                        </div>';
+                break;
+            default:
+                break;
+        }
+
+        return $modAnn . '</div>';
+    }
 }

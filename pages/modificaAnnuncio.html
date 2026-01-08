@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Modifica Annuncio - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina dedicata alla pubblicazione di nuovi eventi o attività."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario -->
+    <meta name="keywords" content="università, ripetizioni, appartamenti, stanze, eventi, bacheca, progetti, esperimenti, studenti, fuorisede, Student Space">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.png" type="image/x-icon">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header id="intestazione">
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+        <h1 id="logo-link" lang="en">
+            <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
+        </h1>
+        <nav id="menu" aria-label="Menù di navigazione">
+            <ul class="nav-links">
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li><a href="esplora.php">Esplora</a></li>
+                <li class="current-link" aria-current="page">Pubblica</li>
+                <li><a href="chiSiamo.php">Chi Siamo</a></li>
+            </ul>
+            <ul class="nav-auth">
+                [TopNavLog]
+            </ul>
+        </nav>
+
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="hamburger-menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
+        </button>
+        <nav id="hamburger-menu" aria-label="Menù di navigazione" hidden>
+            <ul class="nav-links">
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li><a href="esplora.php">Esplora</a></li>
+                <li class="current-link" aria-current="page">Pubblica</li>
+                <li><a href="chiSiamo.php">Chi Siamo</a></li>
+            </ul>
+            <ul class="nav-auth">
+                [TopNavLog]
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content-container">
+        <nav id="breadcrumb" aria-label="Percorso di navigazione">
+            <ol>
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Pubblica</li>
+            </ol>
+        </nav>
+
+        <main id="contenuto">
+            <div id="pubblica-container" class="form-container form-container-large">
+                <h2>Modifica annuncio[Logger]</h2>
+                <form action="pubblica.php" method="post" enctype="multipart/form-data">
+                    <div class="form-data">
+                        <!-- Parte generica -->
+                        <div id="pubblica-titolo-container" class="form-div">
+                            <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Partita di calcio</p>
+                            <input type="text" id="titolo" name="titolo" value="[titolo]" required placeholder="Scrivi il titolo" >
+                        </div>
+
+                        <div id="attr-generici-container">
+                            <div class="form-div">
+                                <label for="categoria-campi">Categoria<span class="required"> (richiesto)</span></label>
+                                <input id="categoria-campi" name="categoria-campi" value="[categoriaSelected]" required readonly>
+                                <!-- <select id="categoria-campi" name="categoria-campi" required>
+                                    <option [noneSelected] value="">Seleziona categoria</option>
+                                    <option [affittiSelected] value="Affitti">Affitti</option>
+                                    <option [esperimentiSelected] value="Esperimenti">Esperimenti</option>
+                                    <option [eventiSelected] value="Eventi">Eventi</option>
+                                    <option [ripetizioniSelected] value="Ripetizioni">Ripetizioni</option>
+                                </select> -->
+                            </div>
+
+                            <div class="form-div">
+                                <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
+                                <p class="esempi">Città precompilata dal tuo profilo, modificabile.</p>
+                                <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" required>
+                                <datalist id="listaCitta">
+                                    <option value="Ancona"></option>
+                                    <option value="Aosta"></option>
+                                    <option value="Bari"></option>
+                                    <option value="Benevento"></option>
+                                    <option value="Bergamo"></option>
+                                    <option value="Bologna"></option>
+                                    <option value="Bolzano"></option>
+                                    <option value="Brescia"></option>
+                                    <option value="Cagliari"></option>
+                                    <option value="Caserta"></option>
+                                    <option value="Catania"></option>
+                                    <option value="Catanzaro"></option>
+                                    <option value="Chieti"></option>
+                                    <option value="Cosenza"></option>
+                                    <option value="Ferrara"></option>
+                                    <option value="Firenze"></option>
+                                    <option value="Foggia"></option>
+                                    <option value="Frosinone"></option>
+                                    <option value="Genova"></option>
+                                    <option value="L'Aquila"></option>
+                                    <option value="Lecce"></option>
+                                    <option value="Lucca"></option>
+                                    <option value="Milano"></option>
+                                    <option value="Modena"></option>
+                                    <option value="Messina"></option>
+                                    <option value="Napoli"></option>
+                                    <option value="Padova"></option>
+                                    <option value="Palermo"></option>
+                                    <option value="Parma"></option>
+                                    <option value="Pavia"></option>
+                                    <option value="Perugia"></option>
+                                    <option value="Pisa"></option>
+                                    <option value="Potenza"></option>
+                                    <option value="Reggio Calabria"></option>
+                                    <option value="Roma"></option>
+                                    <option value="Sassari"></option>
+                                    <option value="Siena"></option>
+                                    <option value="Teramo"></option>
+                                    <option value="Torino"></option>
+                                    <option value="Trento"></option>
+                                    <option value="Trieste"></option>
+                                    <option value="Udine"></option>
+                                    <option value="Urbino"></option>
+                                    <option value="Varese"></option>
+                                    <option value="Vercelli"></option>
+                                    <option value="Venezia"></option>
+                                    <option value="Verona"></option>
+                                    <option value="Viterbo"></option>
+                                </datalist>
+                                <!-- <p>Es. Padova</p> -->
+                                [Errore-citta]
+                            </div>
+                        </div>
+
+                        <div id="pubblica-descrizione-container" class="form-div">
+                            <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Appartamento con 2 camere vicino al centro</p>
+                            <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..." >[descrizione]</textarea>
+                        </div>
+
+                        [campiDettagli]
+
+                        <!-- Immagini -->
+                        <fieldset class="fieldset-base">
+                            <legend>Immagini (max 4)</legend>
+                            <p class="riquadro-spieg alt-spiegazione">
+                                Il <strong>testo alternativo</strong> descrive l'immagine per chi non può vederla (es. utenti con disabilità visive o in caso di errore di caricamento).  
+                                Se l'immagine è puramente decorativa e non aggiunge contenuto, puoi spuntare <strong>"Decorativa"</strong> e lasciare vuoto il campo.
+                            </p>
+                            <p class="riquadro-spieg alt-spiegazione">
+                                Le immagini devono essere di dimensione massima 1<abbr title="Megabyte">MB</abbr> e preferibilmente in formato JPG.
+                            </p>
+                            [ErrorMessageImmagini]
+                            <div id="img1" class="image-block">
+                                <label for="foto1">Immagine 1<span class="required"> (richiesto)</span></label>
+                                <div class="img-campi">
+                                    <input type="file" id="foto1" name="foto1" accept="image/*" required>
+                                    <label for="alt1">Testo alternativo 1</label>
+                                    <input type="text" id="alt1" name="alt1" placeholder="Testo alternativo">
+                                    <div class="dec-label">
+                                        <input type="checkbox" id="decorativa1" name="decorativa1">
+                                        <label for="decorativa1">Decorativa</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="img2" class="image-block">
+                                <label for="foto2">Immagine 2</label>
+                                <div class="img-campi">
+                                    <input type="file" id="foto2" name="foto2" accept="image/*" disabled>
+                                    <label for="alt2">Testo alternativo 2</label>
+                                    <input type="text" id="alt2" name="alt2" placeholder="Testo alternativo" disabled>
+                                    <div class="dec-label">
+                                        <input type="checkbox" id="decorativa2" name="decorativa2">
+                                        <label for="decorativa2">Decorativa</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="img3" class="image-block">
+                                <label for="foto3">Immagine 3</label>
+                                <div class="img-campi">
+                                    <input type="file" id="foto3" name="foto3" accept="image/*" disabled>
+                                    <label for="alt3">Testo alternativo 3</label>
+                                    <input type="text" id="alt3" name="alt3" placeholder="Testo alternativo" disabled>
+                                    <div class="dec-label">
+                                        <input type="checkbox" id="decorativa3" name="decorativa3">
+                                        <label for="decorativa3">Decorativa</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="img4" class="image-block">
+                                <label for="foto4">Immagine 4</label>
+                                <div class="img-campi">
+                                    <input type="file" id="foto4" name="foto4" accept="image/*" disabled>
+                                    <label for="alt4">Testo alternativo 4</label>
+                                    <input type="text" id="alt4" name="alt4" placeholder="Testo alternativo" disabled>
+                                    <div class="dec-label">
+                                        <input type="checkbox" id="decorativa4" name="decorativa4">
+                                        <label for="decorativa4">Decorativa</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button class="btn-base" type="submit" name="submit">Invia</button>
+                </form>
+            </div>
+            
+        </main>
+
+        <footer>
+        <div id="footer-top">
+            <a href="#contenuto" class="freccia-su" aria-label="Torna all'inizio del contenuto">
+                <img src="assets/freccia.png" alt="">
+            </a>
+            <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+            <img src="assets/logo_no_scritta.png" alt="" class="logo-footer">
+            <ul id="site-map" aria-label="Mappa del sito">
+                <li lang="en"><a href="index.php">Home</a></li>
+                <li><a href="esplora.php">Esplora</a></li>
+                <li class="currentPage" aria-current="page">Pubblica</li>
+                <li><a href="chiSiamo.php">Chi Siamo</a></li>
+                [BottomNavLog]
+            </ul>
+        </div>
+        <div id="footer-bottom">
+            <img class="imgValidCode" src="assets/valid-xhtml10.png" alt="Badge di validazione HTML W3C">
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <img class="imgValidCode" src="assets/vcss-blue.gif" alt="Badge di validazione CSS W3C">
+        </div>
+    </footer>
+    </div>
+</body>
+</html>

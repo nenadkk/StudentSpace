@@ -49,7 +49,7 @@ if(isset($_GET['submit']))
     $categoria =$_GET['categoria'] ?? "";
 
     foreach ($filtriGenerali as $key => $value) {
-        $filtriGenerali[$key] = Tool::pulisciInputCompleto($_GET[$key]) ?? "";
+        $filtriGenerali[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : "";
     }
 
     switch ($categoria) {

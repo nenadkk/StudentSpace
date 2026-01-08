@@ -3,8 +3,6 @@
 require_once "dbConnect.php";
 require_once "tool.php";
 
-// session_start();
-
 use DB\DBAccess;
 $db = new DB\DBAccess();
 
@@ -61,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         $db->closeConnection();
         header("Location: index.php");
         exit;
+    } else {
+        Tool::renderError(500);
     }
 }
 
@@ -137,6 +137,8 @@ if (!Tool::isLoggedIn()) {
     }
 }
 
+$bottonRimuovi = "";
+$modButton = "";
 if (!Tool::isLoggedIn()) {
 
     $bottonRimuovi = "";
@@ -144,10 +146,15 @@ if (!Tool::isLoggedIn()) {
 } else if($annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
         <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
-            <input type="hidden" name="elimina" value="rimuovi_preferito">
+            <input type="hidden" name="elimina" value="rimuovi_annuncio">
             <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
             <button class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
         </form>
+    ';
+    $modButton = '
+        <a href="modificaAnnuncio.php?id='.$idAnnuncio.'">
+            <button class="btn-base" title:"Modifica l\'annuncio">Modifica Annuncio</button>
+        </a>
     ';
 } else {
     $bottonRimuovi = "";
@@ -169,6 +176,7 @@ $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage
 
 $htmlPage = str_replace("[PreferitiButton]", $preferitiHTML, $htmlPage);
 $htmlPage = str_replace("[RimuoviButton]", $bottonRimuovi, $htmlPage);
+$htmlPage = str_replace("[ModificaButton]", $modButton, $htmlPage);
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 

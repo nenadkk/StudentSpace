@@ -18,6 +18,13 @@ COSE DA CHIDERE:
 - diversi account con i quali fare query
 
   NON SI PUO' FARE
+  
+DA FARE:
+- profilo visualizzabile da esterni all'utente
+- modifica annuncio
+- vaffancuo
+- esplora gestito anche tramite js
+- ul della navbar non deve essere duplicato
 
 Da total validator:
 - modificare nav con ul unico e doppio div

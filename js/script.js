@@ -1,40 +1,22 @@
 // JS PER HAMBURGER MENU
 function hamburgerMenu() {
   const hamburger = document.getElementById('hamburger');
-  const hamburgerChiuso = document.getElementById('hamburger-chiuso');
-  const hamburgerAperto = document.getElementById('hamburger-aperto');
+  const menu = document.getElementById('menu');
+  const chiuso = document.getElementById('hamburger-chiuso');
+  const aperto = document.getElementById('hamburger-aperto');
 
-  const menu = document.getElementById('hamburger-menu');
-  const content = document.getElementById('content-container');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
 
-  hamburger.addEventListener('click', function () {
-    const aperto = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    hamburger.setAttribute(
+      'aria-label',
+      isOpen ? 'Apri il menù di navigazione' : 'Chiudi il menù di navigazione'
+    );
 
-    if(aperto) {
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Apri il menù di navigazione');
-
-      hamburgerChiuso.classList.add('attivo');  
-      hamburgerAperto.classList.remove('attivo'); 
-
-      menu.hidden = true;
-      menu.classList.remove('attivo');
-
-      content.classList.remove('hamburger-attivo');
-      content.classList.remove('attivo');
-    } else {
-      hamburger.setAttribute('aria-expanded', 'true');
-      hamburger.setAttribute('aria-label', 'Chiudi il menù di navigazione');
-
-      hamburgerChiuso.classList.remove('attivo'); 
-      hamburgerAperto.classList.add('attivo');   
-
-      menu.hidden = false;
-      menu.classList.add('attivo');
-
-      content.classList.add('hamburger-attivo');
-      content.classList.add('attivo');
-    }
+    menu.classList.toggle('attivo');
+    chiuso.classList.toggle('attivo');
+    aperto.classList.toggle('attivo');
   });
 }
 
@@ -199,9 +181,12 @@ function togglePubblicaCategoria() {
 
   function aggiornaCampi() {
     // Nascondi e disabilita tutti
+    if(categorie.length == 1) return; // Significa che sono su modificaAnnuncio
     Object.values(categorie).forEach(div => {
-      div.classList.add('nascondi-campi');
-      setDisabled(div, true);
+      if(div != null) {
+        div.classList.add('nascondi-campi');
+        setDisabled(div, true);
+      }
     });
 
     // Mostra e abilita quello selezionato
