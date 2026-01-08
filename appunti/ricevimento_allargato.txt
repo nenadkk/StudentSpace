@@ -1,15 +1,31 @@
 COSE DA CHIDERE:
-- dato che abbiamo l'accesso con email e password creiamo un bypass per user user?
+- dato che abbiamo l'accesso con email e password creiamo un bypass per user user
+
+  SI BYPASS
+
 - per le persone non vedenti o comunque per chiarezza quando un utente cerca di esntrare in una 
   pagina dove è necessario essre loggati come gestire il reindirizzamento? direttamente pagina o 
   pagina intermedia di "avviso"?
+
+  Se c'è il redirect avviso di reindirizzamento che compare 
+
 - per la questioni di estensione immagini jpg per web e png per stampa dato che le immagini di contenuto 
   sono caricate dagli utenti si pensava a una funzone (GD o js) per traformarle in jpg, ma richidere 
   permessi di modifica file e molto spesso vine bypassato + figure con png per stampa e jpg per web
+
+  o consentito solo jpg o conversione o così
+
 - diversi account con i quali fare query
 
+  NON SI PUO' FARE
 
 Da total validator:
 - modificare nav con ul unico e doppio div
 v - mettere aria-label contenenti l'espressione in label visibile
 v - mettere testo alternativo #n
+
+contatti sotto
+asterisco per richiesto
+no attenzione
+torna su sticky 
+conferma per elimina

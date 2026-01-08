@@ -20,12 +20,12 @@ $cardhtml = "";
 if($cardsData !== false) {
     $cards = Tool::createCard($cardsData);
 } else {
-    $cards = '<div class="centered">
+    $cards = '<li class="centered">
                     <p>Nessun annuncio.</p>
                     <div class="azioni">
                         <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
                     </div>
-            </div>';
+            </li>';
 }
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);

@@ -361,20 +361,23 @@ button {
     outline-offset: 1px;
 }
 
-/* ------------- estensione per #preferiti-style ------------- */
+/* ------------- estensione per #preferiti #salvato------------- */
 
-#preferiti-style {
+#preferiti, #salvato {
     width: 200px;
     text-decoration: none;    
 }
 
-#preferiti-style.btn-base.call-to-action {
+#preferiti.btn-base.call-to-action, #salvato.btn-base.call-to-action {
     text-align: center;
 }
 
-#preferiti-mini {
-    display: none;
-    text-decoration: none;
+#preferiti::after {
+    content: " Preferiti";
+}
+
+#salvato::after {
+    content: " Salvato";
 }
 
 /*

@@ -113,8 +113,7 @@ foreach ($immagini as $index => $img) {
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti-style" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★ Preferiti</a>
-        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti-mini" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {
@@ -124,8 +123,7 @@ if (!Tool::isLoggedIn()) {
             <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="rimuovi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
-                <button id="preferiti-style" class="btn-base" title:"Rimuovi dai preferiti">✓ Salvato</button>
-                <button id="preferiti-mini" class="btn-base" aria-label="Annuncio salvato, rimuovi dai preferiti">✓</button>
+                <button id="salvato" class="btn-base" aria-label="Annuncio salvato, rimuovi dai preferiti">✓</button>
             </form>
         ';
     } else {
@@ -133,8 +131,7 @@ if (!Tool::isLoggedIn()) {
             <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="aggiungi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
-                <button id="preferiti-style" class="btn-base" aria-label="Salva nei">★ Preferiti</button>
-                <button id="preferiti-mini" class="btn-base" aria-label="Salva nei preferiti">★</button>
+                <button id="preferiti" class="btn-base" aria-label="Salva nei preferiti">★</button>
             </form>
         ';
     }

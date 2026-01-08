@@ -345,17 +345,9 @@ li.categoria > div {
   gap: 1em;
 }
 
-#preferiti-style {
-    display: none;
-}
-
-#preferiti-mini {
+#preferiti, #salvato {
     display: block;
     width: 90px;
-}
-
-#preferiti-mini.btn-base.call-to-action {
-    text-align: center;
 }
 
 #carosello {

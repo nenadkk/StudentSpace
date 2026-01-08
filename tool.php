@@ -182,15 +182,18 @@ class Tool {
     * ------------------------------- */
     public static function convertiInParagrafi(string $testo) : string {
         $testo = htmlspecialchars($testo);
+
+        $testo = preg_replace('/[\x{00A0}\x{FEFF}\x{200B}\x{200C}\x{200D}]/u', '', $testo);
+
         $paragrafi = preg_split('/\r\n|\r|\n/', $testo);
 
         $html = "";
         foreach ($paragrafi as $p) {
             $p = trim($p);
-            if ($p !== "") {
-                $html .= "<p>$p</p>";
-            }
+            $html .= "<p>$p</p>";
         }
+
+        $html = preg_replace('/<p>\s*<\/p>/', '', $html);
 
         return $html;
     }

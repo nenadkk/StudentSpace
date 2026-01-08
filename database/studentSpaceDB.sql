@@ -374,7 +374,7 @@ INSERT INTO AnnuncioEsperimenti VALUES
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
 -- AFFITTI
-(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet',0,1),
+(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet.',0,1),
 (1,'affitti1_2.jpg',"Ingresso luminoso con accesso a due camere: una con parete gialla e piastrelle, l’altra, presente nell'immagine precedente con parquet e finestra. Corridoio con specchio a parete e pavimento decorato.",1,2),
 
 (2,'affitti2_1.jpg','Scrivania in legno con sedia, davanti a una grande finestra con vista sulla città.',0,1),
