@@ -13,6 +13,7 @@ if (Tool::isLoggedIn()) {
 }
 
 $htmlPage = file_get_contents("pages/accedi.html");
+$redirectMessage = "";
 $errorMessage = "";
 $idUtente = "";
 $erroreEmail = "";
@@ -58,7 +59,16 @@ if(isset($_POST['submit'])) {
         
 }
 
+if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
+    $redirectMessage = '
+        <p class="riquadro-spieg alt-spiegazione">
+            Per accedere alla pagina selezionata è necessario effettuare il <span lang="en">login</span>.
+        </p>
+    ';
+}
+
 $htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);
+$htmlPage = str_replace("[RedirectMessage]", $redirectMessage, $htmlPage);
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
 $htmlPage = str_replace("[ErrorMessage]", $errorMessage, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);
