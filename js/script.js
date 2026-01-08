@@ -273,6 +273,25 @@ function convertiImmaginiInJPG() {
 }
 */
 
+function gestisciFrecciaSu() {
+    const freccia = document.querySelector(".freccia-su");
+    const footer = document.querySelector("footer");
+
+    if (!freccia || !footer) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                freccia.classList.add("in-footer");
+            } else {
+                freccia.classList.remove("in-footer");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(footer);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
   initCarosello();
