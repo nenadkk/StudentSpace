@@ -36,3 +36,73 @@ asterisco per richiesto
 no attenzione
 torna su sticky 
 conferma per elimina
+
+#hamburger-menu {
+    display: none;
+    width: 100%;
+    padding-top: 0.5em;
+    box-shadow: 0 -0.5em 0.5em -0.5em rgba(0,0,0,0.3); 
+}
+
+#hamburger-menu.attivo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8em;
+    margin-bottom: 1.2em;
+}
+
+#hamburger-menu .nav-links, 
+#hamburger-menu .nav-auth {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+#hamburger-menu .nav-links{
+    gap: var(--gap-1);
+}
+
+#hamburger-menu .nav-auth {
+    gap: var(--gap-1-5);
+}
+
+#hamburger-menu a {
+    color: var(--txtcolor);
+    padding: var(--padding-base);
+}
+
+#hamburger-menu .nav-links a{
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+#hamburger-menu a:visited {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--visited);
+}
+
+#hamburger-menu .link.call-to-action{
+    color: var(--clearTxtColor);
+}
+
+#hamburger-menu .link.call-to-action:visited{    
+    color: var(--call-to-actionColor);
+    background-color: var(--BgColor);
+}
+
+#hamburger-menu .link.call-to-action:hover,
+#hamburger-menu .link.call-to-action:focus{
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
+    outline: var(--btn-border);
+    outline-offset: 1px;
+}
+
+#hamburger-aperto.attivo,
+#hamburger-chiuso.attivo {
+    display: flex;
+}
