@@ -8,6 +8,7 @@
 \usepackage{verbatim}
 \usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{float}
+\usepackage{setspace}
 
 \setlength{\parskip}{1em}
 \graphicspath{ {./images/} }
@@ -88,26 +89,36 @@ Potranno inoltre dare la loro disponibilità ad altri studenti per ripetizioni, 
 L'obbiettivo principale è garantire a studenti e studentesse un accesso rapido e completo a ciò che potrebbe interessarli.
 Allo stesso tempo, si vuole agevolare gli organizzatori, che si rivolgono a questo target, fornendo loro un canale unico e mirato per raggiungere un pubblico ampio e specifico.
 
+\newpage
 \section{Analisi del lavoro svolto}
     \subsection{Processo decisionale}
 Durante tutto lo sviluppo del progetto ci si è trovati a dover prendere diverse decisioni in merito a design, funzionalità, contenuto ecc. 
 Nella maggior parte dei casi questi punti suono stati discussi in presenza, tra tutti i membri del gruppo. 
 Ovviamente, questo metodo comporta delle chiare limitazioni, si è quindi deciso di adottare
 anche dei metodi di comunicazione (sia sincroni che asincroni) alternativi.\\\\
-Per quanto riguarda le comunicazioni asincrone, è stata usata ampiamente la piattaforma di messaggistica \textbf{\underline{\nameref{strumenti:whatsapp}}}. 
-Si è deciso inoltre di adottare \textbf{\underline{\nameref{strumenti:discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
+Per quanto riguarda le comunicazioni asincrone, è stata usata ampiamente la 
+piattaforma di messaggistica \textbf{\underline{\hyperref[sec:strumenti]{Whatsapp}}}. 
+Si è deciso inoltre di adottare \textbf{\underline{\hyperref[sec:strumenti]{Discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
 
     \subsection{Modalità di lavoro}
 Per adattarsi meglio alle esigenze del gruppo si è deciso che i membri del gruppo avrebbero svolto ciascuno le proprie attività in maniera prevalentemente asincrona.
 Questa decisione è stata presa per riuscire a dare più libertà ai singoli membri nell'organizzare il proprio lavoro. 
 La scelta è stata inoltre supportata dalla volontà del gruppo di dare maggiore fluidità allo sviluppo del progetto. 
 Il lavoro è stato infatti suddiviso in modo che ogni membro andasse a lavorare su punti diversi rispetto agli altri, cosicché nessuno dovesse preoccuparsi che il proprio lavoro andasse in conflitto con quello di qualcun altro. 
-A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{Git}} e \textbf{\underline{Github}}.
+A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{\hyperref[sec:strumenti]{Git}}} e \textbf{\underline{\hyperref[sec:strumenti]{Github}}}.
 
     \subsection{Divisione del lavoro}
-Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
-Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del programma, e di mettere mano direttamente a ogni fase del suo sviluppo.
+Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che
+ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
+Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del 
+programma, e di mettere mano direttamente a ogni fase del suo sviluppo.\\
+Periodicamente sono state svolte delle riunioni di assestamento, nelle quali veniva
+aggiornata la lista delle cose da fare per il periodo sucessivo.
+Per facilitare questo processo si è fatto largo uso delle Github Issue.
+Alla fine di ogni riunione le attività da svolgere venivano distribuiti in modo equilibrato tra i 
+vari membri. 
 
+\newpage
 \section{Progettazione}
     \subsection{Tipologie di Utenti}
     Il sistema prevede due tipologie di utente:
@@ -124,7 +135,6 @@ Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del
                     \item \textbf{Limitazioni:} non può modificare annunci altrui; vincoli su campi obbligatori e formati (validazione client/server).
                 \end{itemize}
         \end{itemize}
-
     \subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
     Il sito web si propone come una bacheca universitaria online, in cui gli utenti possono
     pubblicare e consultare annunci suddivisi in quattro categorie principali: \textbf{Affitti},
@@ -238,23 +248,13 @@ del progetto e le esigenze degli utenti.
         il sistema li ignorerà ma non verrà visualizzato alcun errore.
 \end{itemize}
 
-\subsection{Requisiti tecnici}
-\subsubsection{Accessibilità e responsività}
-\begin{itemize}
-  \item Layout realizzato con CSS3, Flexbox e Grid.\
-  \item Separazione netta tra contenuto (HTML5), presentazione (CSS) e comportamento (JS/PHP).
-  \item Compatibilità cross-browser e adattamento a diverse dimensioni di schermo.
-  \item Uso di etichette semantiche, contrasto cromatico adeguato e font leggibili.
-
-  \item Validazione lato client (formato email, lunghezza password) e lato server.
-\end{itemize}
-
-    \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
+\subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
 \subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
 \subsection{Mockup}
 \subsection{Responsive Web Design e Mobile First} 
 
+\newpage
 \section{Sviluppo} % decidere struttura
 \begin{comment}
 \subsection{HTML} % sementica
@@ -475,7 +475,7 @@ Lo schema logico rispetta i principali vincoli di integrità:
 \end{itemize}
 
 
-
+\newpage
 \section{Test}
 \subsection{Test funzionali}
 Descrizione dei test su login, registrazione, pubblicazione e filtraggio annunci.
@@ -485,6 +485,18 @@ Test su diversi browser (Chrome, Firefox, Edge, Safari) e dispositivi (desktop, 
 
 \subsection{Test di accessibilità}
 Color contrast, navigazione da tastiera, screen reader.
+
+\subsection{Requisiti tecnici}
+\subsubsection{Accessibilità e responsività}
+\begin{itemize}
+  \item Layout realizzato con CSS3, Flexbox e Grid.\
+  \item Separazione netta tra contenuto (HTML5), presentazione (CSS) e comportamento (JS/PHP).
+  \item Compatibilità cross-browser e adattamento a diverse dimensioni di schermo.
+  \item Uso di etichette semantiche, contrasto cromatico adeguato e font leggibili.
+
+  \item Validazione lato client (formato email, lunghezza password) e lato server.
+\end{itemize}
+
 
 \section{Accessibilità}
 \subsection{Introduzione} 
@@ -496,75 +508,76 @@ Color contrast, navigazione da tastiera, screen reader.
 \section{SEO e prestazioni} %meta tag, URL parlanti, sitemap, compressione immagini, lazy loading, minificazione
 \subsection{Analisi delle possibili ricerche su Google} % “Affitti stanza Padova”, “eventi Padova weekend”, “Ripetizioni informatica Padova”…)
 
-\section{Strumenti utilizzati}
+\newpage
+\section{Strumenti utilizzati} \label{sec:strumenti}
 \begin{comment}
-   \subsection{Canva} \label{strumenti:canva}
-\underline{\url{https://www.canva.com/it_it/}} \\\\
-Piattaforma di progettazione grafica per creare contenuti visuali per presentazioni, siti web e prodotti simili. 
+    \setstretch{0.7}
+    \subsection{Canva} \label{strumenti:canva}
+    \underline{\url{https://www.canva.com/it_it/}} \\\\
+    Piattaforma di progettazione grafica per creare contenuti visuali per presentazioni, siti web e prodotti simili. 
 
-\subsection{Discord} \label{strumenti:discord}
-\underline{\url{https://discord.com/}} \\\\
-Piattaforma di messaggistica istantanea, di distribuzione digitale e di voice over IP, utilizzata per la comunicazione all'interno server Discord.
-Gli utenti comunicano con chiamate vocali, videochiamate, messaggi di testo, media e file in chat private o come membri di un server Discord. Quest'ultimi sono una raccolta di canali di tipo vocale e/o testuale. 
+    \subsection{Discord} \label{strumenti:discord}
+    \underline{\url{https://discord.com/}} \\\\
+    Piattaforma di messaggistica istantanea, di distribuzione digitale e di voice over IP, utilizzata per la comunicazione all'interno server Discord.
+    Gli utenti comunicano con chiamate vocali, videochiamate, messaggi di testo, media e file in chat private o come membri di un server Discord. Quest'ultimi sono una raccolta di canali di tipo vocale e/o testuale. 
 
-\subsection{Git} \label{strumenti:git}
-\underline{\url{https://git-scm.com/}} \\\\
-Applicazione software per il controllo di versione distribuito utilizzabile da interfaccia a riga di comando. Viene utilizzato il versionamento delle repository dedicate al codice e alla documentazione del progetto.
+    \subsection{Git} \label{strumenti:git}
+    \underline{\url{https://git-scm.com/}} \\\\
+    Applicazione software per il controllo di versione distribuito utilizzabile da interfaccia a riga di comando. Viene utilizzato il versionamento delle repository dedicate al codice e alla documentazione del progetto.
 
-\subsection{Github} \label{strumenti:github}
-\underline{\url{https://git-scm.com/}} \\\\
-È un servizio di hosting per progetti software che implementa lo strumento di controllo versione distribuito Git.  
+    \subsection{Github} \label{strumenti:github}
+    \underline{\url{https://git-scm.com/}} \\\\
+    È un servizio di hosting per progetti software che implementa lo strumento di controllo versione distribuito Git.  
 
-\subsection{LaTeX} \label{strumenti:latex}
-\underline{\url{https://www.latex-project.org/get/}} \\\\
-Linguaggio di marcatura del testo, usato ampiamente in ambito accademico per la preparazione di testi.
+    \subsection{LaTeX} \label{strumenti:latex}
+    \underline{\url{https://www.latex-project.org/get/}} \\\\
+    Linguaggio di marcatura del testo, usato ampiamente in ambito accademico per la preparazione di testi.
 
-\subsection{Silktide} \label{strumenti:silktide}
-\underline{\url{https://silktide.com/}} \\\\
-È un'estensione che facilita i test sull'accessibilità.
+    \subsection{Silktide} \label{strumenti:silktide}
+    \underline{\url{https://silktide.com/}} \\\\
+    È un'estensione che facilita i test sull'accessibilità.
 
-\subsection{W3C Validator} \label{strumenti:w3cvalidator}
-\underline{\url{http://validator.w3.org/}} \\\\
-Validatore markup HTML/XHTML.
+    \subsection{W3C Validator} \label{strumenti:w3cvalidator}
+    \underline{\url{http://validator.w3.org/}} \\\\
+    Validatore markup HTML/XHTML.
 
-\subsection{WhatsApp} \label{strumenti:whatsapp}
-\underline{\url{https://www.whatsapp.com/}} \\\\
+    \subsection{WhatsApp} \label{strumenti:whatsapp}
+    \underline{\url{https://www.whatsapp.com/}} \\\\
 
-\subsection{WebAIM} \label{strumenti:webaim}
-\underline{\url{https://webaim.org/resources/contrastchecker/}} \\\\
+    \subsection{WebAIM} \label{strumenti:webaim}
+    \underline{\url{https://webaim.org/resources/contrastchecker/}} \\\\
 \end{comment}
-
 \begin{itemize}
-  \item \textbf{Canva}  
+  \item \textbf{Canva} 
   \underline{\url{https://www.canva.com/it_it/}} \\
   Piattaforma di progettazione grafica per creare contenuti visuali per presentazioni, siti web e prodotti simili.
 
-  \item \textbf{Discord}  
+  \item \textbf{Discord} 
   \underline{\url{https://discord.com/}} \\
   Piattaforma di messaggistica istantanea e distribuzione digitale, utilizzata per la comunicazione del gruppo. 
   Supporta chiamate vocali, videochiamate, messaggi di testo e condivisione file.
 
-  \item \textbf{Git}  
+  \item \textbf{Git}
   \underline{\url{https://git-scm.com/}} \\
   Applicazione software per il controllo di versione distribuito, usata per il versionamento del codice e della documentazione.
 
-  \item \textbf{Github}  
+  \item \textbf{Github}
   \underline{\url{https://github.com/}} \\
   Servizio di hosting per progetti software che implementa Git, utilizzato per la collaborazione e la condivisione del codice.
 
-  \item \textbf{LaTeX}  
+  \item \textbf{LaTeX}
   \underline{\url{https://www.latex-project.org/get/}} \\
   Linguaggio di marcatura del testo, usato per la preparazione della relazione accademica.
 
-  \item \textbf{Silktide}  
+  \item \textbf{Silktide}
   \underline{\url{https://silktide.com/}} \\
   Estensione che facilita i test sull’accessibilità.
 
-  \item \textbf{W3C Validator}  
+  \item \textbf{W3C Validator} 
   \underline{\url{http://validator.w3.org/}} \\
   Strumento per validare il markup HTML/XHTML.
 
-  \item \textbf{WhatsApp}  
+  \item \textbf{WhatsApp} 
   \underline{\url{https://www.whatsapp.com/}} \\
   Piattaforma di messaggistica istantanea usata per la comunicazione rapida tra i membri del gruppo.
 
