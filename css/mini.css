@@ -97,7 +97,11 @@ header {
 ==================================================== 
 */
 
-#footer-top > ul {
+footer {
+    padding: 2em 5.5em;
+}
+
+footer > ul {
     flex-direction: column;
     text-align: center;
 }
@@ -106,15 +110,16 @@ header {
     gap: 0.8em;
 }
 
+/*
 #footer-bottom {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--gap-0-5);
     text-align: center;
-}
+}*/
 
-#footer-bottom p {
+footer p {
     margin-top: 0.5em; 
     flex: none;
 }
