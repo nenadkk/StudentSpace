@@ -70,7 +70,7 @@
         <main id="contenuto">
             <div id="pubblica-container" class="form-container form-container-large">
                 <h2>Modifica annuncio[Logger]</h2>
-                <form action="pubblica.php" method="post" enctype="multipart/form-data">
+                <form action="modificaAnnuncio.php?id=[IdAnnuncio]" method="post" enctype="multipart/form-data">
                     <div class="form-data">
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container" class="form-div">
@@ -94,7 +94,6 @@
 
                             <div class="form-div">
                                 <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
-                                <p class="esempi">Città precompilata dal tuo profilo, modificabile.</p>
                                 <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" required>
                                 <datalist id="listaCitta">
                                     <option value="Ancona"></option>
@@ -173,7 +172,7 @@
                             <div id="img1" class="image-block">
                                 <label for="foto1">Immagine 1<span class="required"> (richiesto)</span></label>
                                 <div class="img-campi">
-                                    <input type="file" id="foto1" name="foto1" accept="image/*" required>
+                                    <input type="file" id="foto1" name="foto1" accept="image/*">
                                     <label for="alt1">Testo alternativo 1</label>
                                     <input type="text" id="alt1" name="alt1" placeholder="Testo alternativo">
                                     <div class="dec-label">

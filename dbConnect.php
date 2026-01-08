@@ -681,6 +681,86 @@ class DBAccess {
         return $citta;
     }
 
+    public function modificaAnnuncio(int $idAnnuncio, string $titolo, string $descrizione, string $categoria, int $idUtente, int $idCitta, $campi, $immagini) : bool {
+        
+        mysqli_begin_transaction($this->connection);
+        
+        try {
+
+            $stmtAnnuncio = $this->connection->prepare("UPDATE Annuncio SET Titolo = ?, Descrizione = ?, IdCitta = ? WHERE IdAnnuncio = ?");
+
+            if(!$stmtAnnuncio) {
+                throw new Exception("Prepare annuncio fallita");
+            }
+
+            $stmtAnnuncio->bind_param('ssii', $titolo, $descrizione, $idCitta, $idAnnuncio);
+
+            if(!$stmtAnnuncio->execute()) {
+                throw new Exception("Execute Annuncio Fallita");
+            }
+
+            $stmtAnnuncio->close();
+            $stmtDettagli = "";
+
+            switch ($categoria) {
+                case 'Affitti':
+                    $stmtDettagli = $this->connection->prepare(
+                        "UPDATE AnnuncioAffitti
+                        SET PrezzoMensile = ?, Indirizzo = ?, NumeroInquilini = ?
+                        WHERE IdAnnuncio = ?"
+                    );
+                    $stmtDettagli->bind_param("dsii", $campi['costo-mese-affitto'], $campi['indirizzo-affitto'], $campi['coinquilini'], $idAnnuncio);
+                    break;
+
+                case 'Esperimenti':
+                    $stmtDettagli = $this->connection->prepare(
+                        "UPDATE AnnuncioEsperimenti
+                        SET Laboratorio = ?, DurataPrevista = ?, Compenso = ?
+                        WHERE IdAnnuncio = ?"
+                    );
+                    $stmtDettagli->bind_param("sidi", $campi['laboratorio'], $campi['esperimento-durata'], $campi['esperimento-compenso'], $idAnnuncio);
+                    break;
+
+                case 'Eventi':
+                    $stmtDettagli = $this->connection->prepare(
+                        "UPDATE AnnuncioEventi
+                        SET DataEvento = ?, CostoEntrata = ?, Luogo = ?
+                        WHERE IdAnnuncio = ?"
+                    );
+                    $stmtDettagli->bind_param("sssi", $campi['data-evento'], $campi['costo-evento'], $campi['luogo-evento'], $idAnnuncio);
+                    break;
+
+                case 'Ripetizioni':
+                    $stmtDettagli = $this->connection->prepare(
+                        "UPDATE AnnuncioRipetizioni
+                        SET Materia = ?, Livello = ?, PrezzoOrario = ?
+                        WHERE IdAnnuncio = ?"
+                    );
+                    $stmtDettagli->bind_param("ssdi", $campi['materia'], $campi['livello'], $campi['prezzo-ripetizioni'], $idAnnuncio);
+                    break;
+
+                default:
+                    throw new Exception("Categoria non valida");
+            }
+
+            if(!$stmtDettagli->execute()) {
+                throw new Exception("Execute Specifico Fallita");
+            }
+
+            $stmtDettagli->close();
+
+            // Gestione Immagini
+
+            mysqli_commit($this->connection);
+
+            return true;
+        } catch (Exception $e) {
+            mysqli_rollback($this->connection);
+            return false;
+        }
+
+    }
+
 }
 
 ?>
