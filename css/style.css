@@ -75,9 +75,9 @@ body {
     --gap-2: 2em;
 
     /* radius */
-    --radius-base: 1em;
+    --radius-base: 0.8em;
     --radius-0-5: 0.5em;
-    --radius-0-8: 0.8em;
+    --radius-1-5: 1.5em;
     --radius-round: 50%;
 
 
@@ -157,7 +157,7 @@ footer {
 }
 
 section {
-   padding: 3em 6em; 
+   padding: 2em 6em; 
 }
 
 #contenuto {
@@ -234,9 +234,10 @@ section {
 .categoria {
     flex-direction: row;
     align-items: center;
-    gap: var(--gap-0-5);
+    gap: var(--gap-1-5);
     background-color: var(--clearBgColor);
     color: var(--txtcolor);
+    padding: 2.5em 2.5em 3.5em 2.5em;
 }
 
 .categoria img {
@@ -276,7 +277,7 @@ li.categoria > div {
 
 .carta img {
     max-width: 100%;
-    border-radius: var(--radius-0-8);
+    border-radius: var(--radius-base);
     object-fit: cover;    
     display: block;
     align-self: center;
@@ -829,7 +830,7 @@ footer p{
     font-weight: 600;
     text-transform: uppercase;
     padding: var(--padding-base);
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-1-5);
     color: var(--clearTxtColor);
     text-align: center;
     background-color: var(--required); 

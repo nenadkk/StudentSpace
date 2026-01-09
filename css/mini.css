@@ -246,12 +246,12 @@ footer p {
 */
 
 .categoria {
-    gap: 1em;                 
-    padding: 1em;             
+    gap: var(--gap-1-5);                 
+    padding: 1em 1.5em 2em 1.5em;            
 }
 
 .categoria img {
-    width: 30%;               
+    width: 20%;               
     height: auto;
     flex-shrink: 0;
 }
