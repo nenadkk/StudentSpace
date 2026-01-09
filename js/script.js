@@ -243,6 +243,23 @@ function gestisciFrecciaSu() {
     observer.observe(footer);
 }
 
+function initDeleteConfirmation() {
+  const form = document.getElementById('delete-form');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    const conferma = confirm(
+      'Sei sicuro di voler cancellare questo annuncio?\n\nQuesta azione è irreversibile.'
+    );
+
+    if (!conferma) {
+      e.preventDefault();
+    }
+  });
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
   initCarosello();
@@ -252,5 +269,5 @@ document.addEventListener('DOMContentLoaded', function() {
   togglePubblicaCategoria();
   togglePasswordVisibility('mostraPassword', 'password');
   togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
-  // convertiImmaginiInJPG();
+  initDeleteConfirmation();
 });

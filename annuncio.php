@@ -145,10 +145,10 @@ if (!Tool::isLoggedIn()) {
 
 } else if($annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
-        <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
+        <form action="annuncio.php?id='.$idAnnuncio.'" method="POST" id="delete-form">
             <input type="hidden" name="elimina" value="rimuovi_annuncio">
             <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
-            <button class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
+            <button type="submit" class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
         </form>
     ';
     $modButton = '
