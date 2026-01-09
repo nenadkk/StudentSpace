@@ -207,7 +207,9 @@ class Tool {
         exit;
     }
 
-
+    /* -------------------------------
+    * FUNZIONE CAMPI MODIFICA ANNUNCIO
+    * ------------------------------- */
     public static function getModificaAnnuncioSpecifico(string $categoria) : string {
         $modAnn = '<div id="attr-specifici-container">';
         switch($categoria) {

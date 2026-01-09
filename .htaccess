@@ -3,3 +3,13 @@
 # =========================
 ErrorDocument 404 /404.php
 ErrorDocument 500 /500.php
+
+# =========================
+# REDIRECT PROVA
+# =========================
+# 1️⃣ Redirect visibile: annuncio.php?id=20 → /annuncio/20
+RewriteCond %{THE_REQUEST} \s/annuncio\.php\?id=([0-9]+)\s [NC]
+RewriteRule ^annuncio\.php$ /annuncio/%1? [R=301,L]
+
+# 2️⃣ Rewrite interno: /annuncio/20 → annuncio.php?id=20
+RewriteRule ^annuncio/([0-9]+)/?$ annuncio.php?id=$1 [L]
