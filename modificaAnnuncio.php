@@ -229,6 +229,9 @@ foreach ($campi as $key => $value) {
 $htmlPage = str_replace("[IdAnnuncio]", $idAnnuncio, $htmlPage);
 $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 
+$htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
+$htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
+
 $htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
 $htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
 

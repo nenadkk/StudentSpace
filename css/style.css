@@ -752,17 +752,6 @@ footer p{
     transform: scale(1.1);
     outline: 2px solid var(--clearBgColor);
 }
-
-#freccia-su img {
-    height: 30px;
-    width: auto;
-}
-
-#freccia-su:hover, #freccia-su:focus {
-    transform: scale(1.1);
-    outline: 2px solid var(--clearBgColor);
-}
-
 /*
 ====================================================
     SEZIONE IMG + TESTO (presentazione, errori)
@@ -1062,11 +1051,11 @@ footer p{
     gap: var(--gap-0-5);
 }
 
-.info h2 {
+#info h2 {
     text-align: left;
 }
 
-.info {
+#info {
     flex: 0 1 500px; 
     max-width: 500px;
     display: flex;
@@ -1076,7 +1065,7 @@ footer p{
     align-self: center;
 }
 
-.info > dl {
+#info > dl {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);
@@ -1094,7 +1083,7 @@ footer p{
     font-weight: bold;
 }
 
-.descrizioneAnnuncio {
+#descrizioneAnnuncio {
     background-color: var(--card);
     border-radius: var(--radius-base);
     padding: 2.5em;
@@ -1107,6 +1096,20 @@ footer p{
     max-width: 1000px;      
     min-height: 200px;
     box-sizing: border-box; 
+}
+
+#azioni-annuncio {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap-1);
+    justify-content: center;
+    padding-bottom: 2em;
+}
+
+#azioni-annuncio button {
+    min-width: 200px;
+    width: auto;
 }
 
 /*

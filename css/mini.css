@@ -303,7 +303,7 @@ li.categoria > div {
     padding: 0.5em;
 }
 
-.info {
+#info {
   flex: unset;
   max-width: 100%;
   width: 100%;
@@ -354,7 +354,7 @@ li.categoria > div {
     height: 40px;
 }
 
-.descrizioneAnnuncio {
+#descrizioneAnnuncio {
     width: auto;
     max-width: 100%;
     margin: 0 1.5em 2em;

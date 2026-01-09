@@ -277,7 +277,7 @@ form > p,
     padding: 1cm;
 }
 
-.info {
+#info {
     max-width: 12cm;
     display: flex;
     flex-direction: column;
@@ -291,7 +291,7 @@ form > p,
     text-align: center;
 }
 
-.descrizioneAnnuncio {
+#descrizioneAnnuncio {
     border: 1px solid var(--borders);
     border-radius: var(--radius-print);
     padding: 1cm;
