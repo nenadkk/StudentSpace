@@ -1,91 +1,50 @@
-test contrasti: https://webaim.org/resources/contrastchecker/
-
-NAVBAR:#7ca7eb (azzurro)
-TESTO: #0e141c (blu scuro)
-LINK VISITATI: #631C48 (borgogna)
-
-#7ca7eb (azzurro)
-#0e141c (blu scuro)
---> 7.55 
-
-#7ca7eb (azzurro)
-#631C48 (borgogna)
---> 4.79
-
-BK PRINCIPALE: #fffacd (crema)
-TESTO: #0e141c (blu scuro)
-BOTTONI: #16286e (blu notte)
-LINK VISITATI BOTTONI: #efc062 (ocra)
-
-#fffacd (crema)
-#0e141c (blu scuro)
---> 17.44
-
-#fffacd (crema)
-#16286e (blu notte)
---> 12.67
-
-#efc062 (ocra)
-#16286e (blu notte)
---> 7.92
+/* in nav, in breadcrumb, in footer, in sezione categorie, in info annuncio, in filtri e sfondo form*/
+navlinks - txtColor: 14.08
 
 
-BK SEZIONE CATEGORIE: #7ca7eb (azzurro)
-TESTO: #0e141c (blu scuro)
-BK CARDS: #fffacd (crema)
-VISITED: #631C48 (borgogna)
+txtColorNav(links) - visited: 2.72
+--> non c'è contrasto quindi sottolineatura
 
-#7ca7eb (azzurro)
-#0e141c (blu scuro)
---> 7.55
+bgclearBlue - visited: 5.18
 
-EVENTI: #0067b0 (petrolio)
+txt - bgColor: 5.27
+btnColor - btnAction 
 
-#0067b0 (petrolio)
-#fffacd (crema)
---> 4.39
+logo - navbar: 7.44
+colore: #08174c
 
-#fffacd (crema)
-#631C48 (borgogna)
---> 11.06
+txt - btnAction: 7.09
 
-ESPERIMENTI: #8a2be2 (viola)
+btnColor - clearTxt: 12.67
 
-#8a2be2 (viola)
-#fffacd (crema)
---> 5.62
+btnColor - btnAction: 7.93
 
-AFFITTI: #d90645 (rosso)
+clearBgColor - txtColor: 11.35
 
-#d90645 (rosso)
-#fffacd (crema)
---> 5.62
+txtColor - hoverCat: 10.63
 
-RIPETIZIONI: #0c795a (verde)
+clearTxt - affittiColor: 5.73
 
-#0c795a (verde)
-#fffacd (5.08)
---> 5.62
+clearTxt - esperimentiColor: 5.69
 
-BK CARDS LATESTS: #cedcf2 (carta da zucchero)
-TESTO: #0e141c (blu scuro)
+clearTxt - eventiColor: 5.77
 
-#0e141c (blu scuro)
-#cedcf2 (carta da zucchero)
---> 13.33
+clearTxt - ripetizioniColor: 5.73
 
-FOOTER: #7ca7eb (azzurro)
-TESTO: #0e141c (blu scuro)
+hoverCat - affittiColor: 5.37
 
-#7ca7eb (azzurro)
-#0e141c (blu scuro)
---> 7.55 
+hoverCat - esperimentiColor: 5.34
 
+hoverCat - eventiColor: 5.41
 
+hoverCat - ripetizioniColor: 5.37
 
+card - txtColor: 9.06
 
+card - visited: 5.53
 
+alt-spiegazione - txt: 6.93
 
+erroriBg - txt: 5.76
 
-
-
+required - bgColor: 5.14

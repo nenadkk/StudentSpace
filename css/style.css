@@ -30,18 +30,19 @@ body {
 
 :root { 
     /*colori*/
-    --BgColor: #83adf0;
+    --BgColor: #83adf0; 
     --breadColor: #83adf0;
-    --hoverNav: #96baf5; 
+    --bgclearBlue: #c7daf9;
+    --hoverNav: #d8e5fa; 
     --hoverCat: #fcf3ad;
-    --hoverDettagli: #bbcdeb;
-    --txtcolor: #293845;
+    --txtcolor: #293845; 
+    --txtNavColor: #080810; 
     --clearBgColor: #fffacd;
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
     --call-to-actionTransp: rgba(22, 40, 110, 0.65); /*0.65 opacità testata con https://codepen.io/yaphi1/pen/oNbEqGV */
     --call-to-actionAction: #efc062;
-    --visited: #720b25;
+    --visited: #931c98;
     --card: #d9e0ec;
     --eventiColor: #0565a8; 
     --esperimentiColor: #8736d1;
@@ -307,10 +308,6 @@ li.categoria > div {
     z-index: 3;
 }
 
-.carta .dettagli:hover span, .carta .dettagli:focus span{
-    background-color: var(--hoverDettagli);
-}
-
 /*
 ====================================================
     BASE: BTN-BASE
@@ -355,7 +352,7 @@ button {
 
 #menu .link.call-to-action:visited{    
     background-color: var(--BgColor);
-    color: var(--txtcolor);
+    color: var(--txtNavColor);
 }
 
 .link.call-to-action:hover,
@@ -431,8 +428,28 @@ button {
 .link, #menu a { 
     text-decoration: underline; 
     text-underline-offset: 0.2em; 
-    color: var(--txtcolor); 
+    color: var(--txtNavColor); 
 }
+
+/* ============================================
+   VISITED UNIVERSALE
+   ============================================ */
+
+a:visited {
+    color: var(--visited);
+}
+
+#menu .nav-links li a:visited, 
+#breadcrumb a:visited,
+#site-map a:visited {
+    color: var(--visited);
+}
+
+#menu .nav-links, #site-map {
+    border-radius: var(--radius-1-5);
+    background-color: var(--bgclearBlue);
+}
+
 
 /* ------------- estensione per .card-base a > span ------------- */
 .card-base a > span {
@@ -453,17 +470,13 @@ button {
     padding: var(--padding-base);
 }
 
-/* ------------- estensione per #menu a:visitedm ------------- */
-
-#menu a:visited {
-    color: var(--visited);
-}
-
 /* ------------- estensione per .form-container p a ------------- */
 
 .form-container p a{
     padding: var(--padding-base);
     font-weight: 600;
+    background-color: var(--bgclearBlue);
+    border-radius: var(--radius-base);
 }
 
 /*
@@ -554,10 +567,13 @@ header {
 
 #logo-home{
     font-size: 6em;
+    margin-right: 0.5em;
 }
 
 #logo-link a {
     font-size: 3em;
+        margin-right: 0.5em;
+
 }
 
 #menu {
@@ -579,22 +595,27 @@ header {
 
 #menu .nav-links {
     flex: 1;
-    gap: 4em;
+    gap: var(--gap-2);
     justify-content: center;
-    color: var(--link);
+    padding: 0.6em 0;
+}
+
+#menu .nav-links li {
+    padding: var(--padding-base); 
+    color: var(--txtNavColor);
+    
 }
 
 #menu .nav-auth {
-    gap: var(--gap-2);
     justify-content: flex-end;
 }
 
 #menu li{
-    color: var(--txtcolor);
+    padding: var(--padding-base);  
 }
 
 #menu a {
-    color: var(--txtcolor);
+    color: var(--txtNavColor);
     padding: var(--padding-base);
     font-weight: 600;
 }
@@ -605,14 +626,20 @@ header {
 
 .current-link {
     text-decoration: none;
-    font-weight: bold;
-    background-image: url("../assets/stellina.png"), url("../assets/stellina.png");
-    background-position: left center, right center;
-    background-repeat: no-repeat;
-    background-size: 1em, 1em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    font-weight: bold; 
     text-transform: uppercase;
+}
+
+.current-link::before { 
+    content: "✦"; 
+    margin-right: 0.35em; 
+    color: var(--txtNavColor);
+}
+
+.current-link::after { 
+    content: "✦"; 
+    margin-left: 0.35em; 
+    color: var(--txtNavColor);
 }
 
 #menu a:not(.call-to-action):hover, 
@@ -640,13 +667,14 @@ header {
 #breadcrumb {
     display: flex;
     justify-content: center;
-    background-color: var(--breadColor);
-    border-radius: var(--radius-base);
+    background-color: var(--bgclearBlue);
+    border-radius: var(--radius-1-5);
     padding: var(--padding-base);
     margin: 1em auto;
     width: fit-content; 
     max-width: 100%;
     box-shadow: var(--shadow-base);
+    border: 2px solid var(--BgColor);
 }
 
 #breadcrumb ol {
@@ -662,10 +690,8 @@ header {
     overflow: hidden;
     text-overflow: ellipsis; 
     max-width: 20em;
-}
-
-#breadcrumb a{
-    color: var(--visited);
+    color: var(--txtNavColor);
+    font-weight: bold;
 }
 
 .currentPage {
@@ -701,14 +727,12 @@ header {
     gap: var(--gap-2);
     margin-bottom: 0.5em;
     padding: var(--padding-base);
+    color: var(--txtNavColor);
+
 }
 
 #site-map a {
-    color: var(--txtcolor);
-}
-
-#site-map a:visited {
-    color: var(--visited);
+    color: var(--txtNavColor);
 }
 
 .logo-footer {
@@ -719,7 +743,7 @@ footer p{
     margin: 0;
     text-align: center;
     font-style: italic;
-    color: var(--txtcolor);
+    color: var(--txtNavColor);
 }
 
 /*
@@ -774,10 +798,10 @@ footer p{
 }
 
 .img-text-section > img{
-    flex: 0 1 40%;
+    flex: 0 1 35%;
     width: 100%;
     max-width: 450px;
-    min-width: 220px;
+    min-width: 200px;
     height: auto;
 }
 
@@ -797,10 +821,11 @@ footer p{
 }
 
 .img-text-section .azioni, 
-#contatti .azioni{
+#contatti .azioni {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap-1);
+    min-width: 400px;
 }
 
 /*
