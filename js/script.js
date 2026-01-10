@@ -259,7 +259,6 @@ function initDeleteConfirmation() {
   });
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
   hamburgerMenu();
   initCarosello();

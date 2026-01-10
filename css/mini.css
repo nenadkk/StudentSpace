@@ -76,6 +76,8 @@ header {
     align-items: center;
     gap: var(--gap-1-5);
     margin-bottom: 1.2em;
+    background-color: var(--bgclearBlue);
+    border-radius: var(--radius-base);
 }
 
 #menu .nav-links, 
@@ -89,6 +91,7 @@ header {
 
 #menu .nav-auth {
     gap: var(--gap-1-5);
+    margin-bottom: 1em;
 }
 
 /*
@@ -314,6 +317,10 @@ li.categoria > div {
 #preferiti, #salvato {
     display: block;
     width: 90px;
+}
+
+#preferiti::after, #salvato::after {
+    content: "";
 }
 
 #carosello {
