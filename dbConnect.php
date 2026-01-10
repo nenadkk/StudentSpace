@@ -4,11 +4,6 @@ namespace DB;
 use Exception;
 
 class DBAccess {
-
-    private const HOST_DB = "db";           // docker = db,         server_tecweb = localhost
-    private const DATABASE_NAME = "studentspace"; // docker = studentspace,     server_tecweb = nome_utente
-    private const USERNAME = "user";        // docker = user,       server_tecweb = nome_utente
-    private const PASSWORD = "user";    // docker = user,   server_tecweb = password_server
     private $connection;
 
     public function openDBConnection() {
