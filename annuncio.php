@@ -12,12 +12,12 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
     Tool::renderError(404);
 }
 
-$htmlPage = file_get_contents("pages/annuncio.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/annuncio.html");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
     if (!Tool::isLoggedIn()) {
-        header("Location: accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
+        header("Location: /accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
         exit;
     }
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
         $db->closeConnection();
     }
 
-    header("Location: annuncio.php?id=" . $idAnnuncio);
+    header("Location: /annuncio.php?id=" . $idAnnuncio);
     exit;
 }
 
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         }
 
         $db->closeConnection();
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     } else {
         Tool::renderError(500);
@@ -100,27 +100,27 @@ $caroselloPrincipale = "";
 if (!empty($immagini)) { 
     $img = $immagini[0]; 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
-    $caroselloPrincipale = ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
+    $caroselloPrincipale = ' <img src="/img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
 }
 
 $caroselloThumbnails = ""; 
 foreach ($immagini as $index => $img) { 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
     $active = $index === 0 ? "attiva" : ""; 
-    $caroselloThumbnails .= ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
+    $caroselloThumbnails .= ' <img src="/img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
 }
 
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="/accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {
 
     if ($isPreferito) {
         $preferitiHTML = '
-            <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
+            <form action="/annuncio/'.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="rimuovi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
                 <button id="salvato" class="btn-base" aria-label="Annuncio salvato, rimuovi dai preferiti">✓</button>
@@ -128,7 +128,7 @@ if (!Tool::isLoggedIn()) {
         ';
     } else {
         $preferitiHTML = '
-            <form action="annuncio.php?id='.$idAnnuncio.'" method="POST">
+            <form action="/annuncio/'.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="aggiungi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
                 <button id="preferiti" class="btn-base" aria-label="Salva nei preferiti">★</button>
@@ -145,14 +145,14 @@ if (!Tool::isLoggedIn()) {
 
 } else if($annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
-        <form action="annuncio.php?id='.$idAnnuncio.'" method="POST" id="delete-form">
+        <form action="/annuncio/'.$idAnnuncio.'" method="POST" id="delete-form">
             <input type="hidden" name="elimina" value="rimuovi_annuncio">
             <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
             <button type="submit" class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
         </form>
     ';
     $modButton = '
-        <a href="modificaAnnuncio.php?id='.$idAnnuncio.'">
+        <a href="/modificaAnnuncio/'.$idAnnuncio.'">
             <button class="btn-base" title:"Modifica l\'annuncio">Modifica Annuncio</button>
         </a>
     ';
@@ -177,7 +177,7 @@ $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage
 $htmlPage = str_replace("[PreferitiButton]", $preferitiHTML, $htmlPage);
 $htmlPage = str_replace("[RimuoviButton]", $bottonRimuovi, $htmlPage);
 $htmlPage = str_replace("[ModificaButton]", $modButton, $htmlPage);
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("annuncio"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("annuncio"), $htmlPage);
 
 echo $htmlPage;
