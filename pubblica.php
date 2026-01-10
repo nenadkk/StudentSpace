@@ -186,6 +186,13 @@ foreach ($campiRipetizioni as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
 
+$cities = [];
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
+$htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
+
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 

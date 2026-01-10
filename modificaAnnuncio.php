@@ -204,6 +204,8 @@ if(isset($_POST['submit'])) {
                         $logger = $logger." Categoria Inesistente";
                 }
             }
+        } else {
+            Tool::renderError(500);
         }
     }
 }
@@ -231,6 +233,13 @@ $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
+
+$cities = [];
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
+$htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("modifica"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("modifica"), $htmlPage);
