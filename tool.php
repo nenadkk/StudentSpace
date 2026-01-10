@@ -47,12 +47,12 @@ class Tool {
     }
 
     public static function getTopNavLog() {
-        if(Tool::isLoggedIn()) return file_get_contents("pages/topNavLogTrue.html");
-        return file_get_contents("pages/topNavLogFalse.html");
+        if(Tool::isLoggedIn()) return file_get_contents(__DIR__ . "/pages/topNavLogTrue.html");
+        return file_get_contents(__DIR__ . "/pages/topNavLogFalse.html");
     }
     public static function getBottomNavLog() {
-        if(Tool::isLoggedIn()) return file_get_contents("pages/bottomNavLogTrue.html");
-        return file_get_contents("pages/bottomNavLogFalse.html");
+        if(Tool::isLoggedIn()) return file_get_contents(__DIR__ . "/pages/bottomNavLogTrue.html");
+        return file_get_contents(__DIR__ . "pages/bottomNavLogFalse.html");
     }
 
     /* -------------------------------
