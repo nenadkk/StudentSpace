@@ -160,8 +160,8 @@ $htmlPage = str_replace("[Logger]", $query, $htmlPage);
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("esplora"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("esplora"), $htmlPage);
 
 echo $htmlPage;
 ?>

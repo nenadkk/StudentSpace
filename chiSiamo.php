@@ -14,7 +14,7 @@ if (!$dbAccess->openDBConnection()) {
 $cardsData = $dbAccess->getLastAnnouncements();
 $dbAccess->closeConnection();
 
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("chiSiamo"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("chiSiamo"), $htmlPage);
 
 echo $htmlPage;

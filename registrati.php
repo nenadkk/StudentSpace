@@ -165,6 +165,9 @@ $paginaHTML = str_replace("[cognome]", $cognome, $paginaHTML);
 $paginaHTML = str_replace("[citta]", $citta, $paginaHTML);
 $paginaHTML = str_replace("[email]", $email, $paginaHTML);
 
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("registrati"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("registrati"), $htmlPage);
+
 echo $paginaHTML;
 
 ?>
