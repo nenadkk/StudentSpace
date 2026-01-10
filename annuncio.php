@@ -177,7 +177,7 @@ $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage
 $htmlPage = str_replace("[PreferitiButton]", $preferitiHTML, $htmlPage);
 $htmlPage = str_replace("[RimuoviButton]", $bottonRimuovi, $htmlPage);
 $htmlPage = str_replace("[ModificaButton]", $modButton, $htmlPage);
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavLog]", Tool::buildTopNavBar("annuncio"), $htmlPage);
+$htmlPage = str_replace("[BottomNavLog]", Tool::buildBottomNavBar("annuncio"), $htmlPage);
 
 echo $htmlPage;

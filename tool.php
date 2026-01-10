@@ -46,13 +46,47 @@ class Tool {
         return $cards;
     }
 
-    public static function getTopNavLog() {
+    /* -------------------------------
+    * FUNZIONE CREAZIONE NAVBAR
+    * ------------------------------- */
+
+    public static function buildTopNavBar(string $page) {
+        $navBar = '<nav id="menu" aria-label="Menù di navigazione"><ul class="nav-links">';
+        if($page === "index") $navBar .= '<li lang="en" class="current-link" aria-current="page">Home</li>';
+        else $navBar .= '<li lang="en"><a href="/index">Home</a></li>';
+        if($page === "esplora") $navBar .= '<li class="current-link" aria-current="page">Esplora</li>';
+        else $navBar .= '<li><a href="/esplora">Esplora</a></li>';
+        if($page === "pubblica") $navBar .= '<li class="current-link" aria-current="page">Pubblica</li>';
+        else $navBar .= '<li><a href="/pubblica">Pubblica</a></li>';
+        if($page === "chiSiamo") $navBar .= '<li class="current-link" aria-current="page">Chi Siamo</li>';
+        else $navBar .= '<li><a href="/chiSiamo">Chi Siamo</a></li>';
+        $navBar .= '</ul><ul class="nav-auth">';
+        $navBar .= Tool::getTopNavLog();
+        $navBar .= '</ul></nav>';
+        return $navBar;
+    }
+    private static function getTopNavLog() {
         if(Tool::isLoggedIn()) return file_get_contents(__DIR__ . "/pages/topNavLogTrue.html");
         return file_get_contents(__DIR__ . "/pages/topNavLogFalse.html");
     }
-    public static function getBottomNavLog() {
+
+    public static function buildBottomNavBar($page) {
+        $navBar = '<ul id="site-map" aria-label="Mappa del sito">';
+        if($page === "index") $navBar .= '<li lang="en" class="current-link" aria-current="page">Home</li>';
+        else $navBar .= '<li lang="en"><a href="index">Home</a></li>';
+        if($page === "esplora") $navBar .= '<li class="current-link" aria-current="page">Esplora</li>';
+        else $navBar .= '<li><a href="/esplora">Esplora</a></li>';
+        if($page === "pubblica") $navBar .= '<li class="current-link" aria-current="page">Pubblica</li>';
+        else $navBar .= '<li><a href="/pubblica">Pubblica</a></li>';
+        if($page === "chiSiamo") $navBar .= '<li class="current-link" aria-current="page">Chi Siamo</li>';
+        else $navBar .= '<li><a href="/chiSiamo">Chi Siamo</a></li>';
+        $navBar .= Tool::getBottomNavLog();
+        $navBar .= '</ul>';
+        return $navBar;
+    }
+    private static function getBottomNavLog() {
         if(Tool::isLoggedIn()) return file_get_contents(__DIR__ . "/pages/bottomNavLogTrue.html");
-        return file_get_contents(__DIR__ . "pages/bottomNavLogFalse.html");
+        return file_get_contents(__DIR__ . "/pages/bottomNavLogFalse.html");
     }
 
     /* -------------------------------
