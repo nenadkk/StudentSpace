@@ -139,11 +139,7 @@ if (!Tool::isLoggedIn()) {
 
 $bottonRimuovi = "";
 $modButton = "";
-if (!Tool::isLoggedIn()) {
-
-    $bottonRimuovi = "";
-
-} else if($annuncio["IdUtente"] == $_SESSION["user_id"]){
+if(Tool::isLoggedIn() && $annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
         <form action="/annuncio/'.$idAnnuncio.'" method="POST" id="delete-form">
             <input type="hidden" name="elimina" value="rimuovi_annuncio">
@@ -156,8 +152,6 @@ if (!Tool::isLoggedIn()) {
             <button class="btn-base" title:"Modifica l\'annuncio">Modifica Annuncio</button>
         </a>
     ';
-} else {
-    $bottonRimuovi = "";
 }
 
 $htmlPage = str_replace("[TitoloAnnuncio]", htmlspecialchars($annuncio["Titolo"]), $htmlPage); 

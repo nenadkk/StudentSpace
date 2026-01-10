@@ -5,7 +5,7 @@ ErrorDocument 404 /404.php
 ErrorDocument 500 /500.php
 
 # =========================
-# REDIRECT ANNUNCIO
+# REDIRECT ANNUNCIO e MODIFICA
 # =========================
 # Redirect visibile: annuncio.php?id=20 → /annuncio/20
 RewriteCond %{THE_REQUEST} \s/annuncio\.php\?id=([0-9]+)\s [NC]
@@ -13,6 +13,9 @@ RewriteRule ^annuncio\.php$ /annuncio/%1? [R=301,L]
 
 # Rewrite interno: /annuncio/20 → annuncio.php?id=20
 RewriteRule ^annuncio/([0-9]+)/?$ annuncio.php?id=$1 [L]
+
+# Rewrite interno: /annuncio/20 → annuncio.php?id=20
+RewriteRule ^modificaAnnuncio/([0-9]+)/?$ modificaAnnuncio.php?id=$1 [L]
 
 # =========================
 # REDIRECT PAGINE GENERALI
