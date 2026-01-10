@@ -30,7 +30,7 @@ if($cardsData !== false) {
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("index"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("index"), $htmlPage);
 
 echo $htmlPage;
