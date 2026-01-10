@@ -725,7 +725,7 @@ header {
     list-style: none;
     display: flex;
     gap: var(--gap-2);
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
     padding: var(--padding-base);
     color: var(--txtNavColor);
 
