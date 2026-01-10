@@ -102,13 +102,13 @@ class Tool {
     }
     private static function getBottomNavBar(string $page) : string {
         $bottomNavBar = "";
-        if($page === "index") $bottomNavBar .= '<li lang="en" class="current-link" aria-current="page">Home</li>';
+        if($page === "index") $bottomNavBar .= '<li lang="en" class="currentPage" aria-current="page">Home</li>';
         else $bottomNavBar .= '<li lang="en"><a href="/index">Home</a></li>';
-        if($page === "esplora") $bottomNavBar .= '<li class="current-link" aria-current="page">Esplora</li>';
+        if($page === "esplora") $bottomNavBar .= '<li class="currentPage" aria-current="page">Esplora</li>';
         else $bottomNavBar .= '<li><a href="/esplora">Esplora</a></li>';
-        if($page === "pubblica") $bottomNavBar .= '<li class="current-link" aria-current="page">Pubblica</li>';
+        if($page === "pubblica") $bottomNavBar .= '<li class="currentPage" aria-current="page">Pubblica</li>';
         else $bottomNavBar .= '<li><a href="/pubblica">Pubblica</a></li>';
-        if($page === "chiSiamo") $bottomNavBar .= '<li class="current-link" aria-current="page">Chi Siamo</li>';
+        if($page === "chiSiamo") $bottomNavBar .= '<li class="currentPage" aria-current="page">Chi Siamo</li>';
         else $bottomNavBar .= '<li><a href="/chiSiamo">Chi Siamo</a></li>';
         return $bottomNavBar;
     }

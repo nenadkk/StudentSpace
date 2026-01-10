@@ -7,7 +7,7 @@ if (!Tool::isLoggedIn()) {
     exit;
 }
 
-$htmlPage = file_get_contents("pages/pubblica.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
 
 $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
