@@ -1,0 +1,12 @@
+
+/* if (is_array($listaAttr)) {
+    foreach ($listaAttr as $index => $pair) {
+        $n = $index + 1;
+        $dtPlaceholder = '[DtAttr' . $n . ']';
+        $ddPlaceholder = '[DdAttr' . $n . ']';
+        $dtValue = isset($pair[0]) ? $pair[0] : '';
+        $ddValue = isset($pair[1]) ? $pair[1] : '';
+        $htmlPage = str_replace($dtPlaceholder, $dtValue, $htmlPage);
+        $htmlPage = str_replace($ddPlaceholder, $ddValue, $htmlPage);
+    }
+} */

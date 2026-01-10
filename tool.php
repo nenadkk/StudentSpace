@@ -46,13 +46,94 @@ class Tool {
         return $cards;
     }
 
-    public static function getTopNavLog() {
-        if(Tool::isLoggedIn()) return file_get_contents("pages/topNavLogTrue.html");
-        return file_get_contents("pages/topNavLogFalse.html");
+    /* -------------------------------
+    * FUNZIONE CREAZIONE NAVBAR
+    * ------------------------------- */
+
+    public static function buildTopNavBar(string $page) : string {
+        $navBar = '<nav id="menu" aria-label="Menù di navigazione"><ul class="nav-links">';
+        $navBar .= Tool::getTopNavBar($page);
+        $navBar .= '</ul><ul class="nav-auth">';
+        $navBar .= Tool::getTopNavLog($page);
+        $navBar .= '</ul></nav>';
+        return $navBar;
     }
-    public static function getBottomNavLog() {
-        if(Tool::isLoggedIn()) return file_get_contents("pages/bottomNavLogTrue.html");
-        return file_get_contents("pages/bottomNavLogFalse.html");
+    private static function getTopNavBar(string $page) : string {
+        $topNavBar = "";
+        if($page === "index") $topNavBar .= '<li lang="en" class="current-link" aria-current="page">Home</li>';
+        else $topNavBar .= '<li lang="en"><a href="/index">Home</a></li>';
+        if($page === "esplora") $topNavBar .= '<li class="current-link" aria-current="page">Esplora</li>';
+        else $topNavBar .= '<li><a href="/esplora">Esplora</a></li>';
+        if($page === "pubblica") $topNavBar .= '<li class="current-link" aria-current="page">Pubblica</li>';
+        else $topNavBar .= '<li><a href="/pubblica">Pubblica</a></li>';
+        if($page === "chiSiamo") $topNavBar .= '<li class="current-link" aria-current="page">Chi Siamo</li>';
+        else $topNavBar .= '<li><a href="/chiSiamo">Chi Siamo</a></li>';
+        return $topNavBar;
+    }
+    private static function getTopNavLog(string $page) : string {
+        if(Tool::isLoggedIn()) {
+            if($page === "profilo") return '<li class="current-link" aria-current="page">Profilo</li>
+                <li><a class="link btn-base call-to-action" href="/logout">Logout</a></li>';
+            return file_get_contents(__DIR__ . "/pages/topNavLogTrue.html");
+        }
+        else {
+            switch($page) {
+                case 'accedi':
+                    return '<li><a class="link btn-base call-to-action" href="/registrati">Registrati</a></li>
+                <li class="current-link" aria-current="page">Accedi</li>';
+                    break;
+                case 'registrati':
+                    return '<li class="current-link" aria-current="page">Registrati</li>
+                <li><a class="link btn-base call-to-action" href="/accedi">Accedi</a></li>';
+                    break;
+                default:
+                    return file_get_contents(__DIR__ . "/pages/topNavLogFalse.html");
+                    break;
+            }
+        }
+    }
+
+    public static function buildBottomNavBar(string $page) : string {
+        $navBar = '<ul id="site-map" aria-label="Mappa del sito">';
+        $navBar .= Tool::getBottomNavBar($page);
+        $navBar .= Tool::getBottomNavLog($page);
+        $navBar .= '</ul>';
+        return $navBar;
+    }
+    private static function getBottomNavBar(string $page) : string {
+        $bottomNavBar = "";
+        if($page === "index") $bottomNavBar .= '<li lang="en" class="currentPage" aria-current="page">Home</li>';
+        else $bottomNavBar .= '<li lang="en"><a href="/index">Home</a></li>';
+        if($page === "esplora") $bottomNavBar .= '<li class="currentPage" aria-current="page">Esplora</li>';
+        else $bottomNavBar .= '<li><a href="/esplora">Esplora</a></li>';
+        if($page === "pubblica") $bottomNavBar .= '<li class="currentPage" aria-current="page">Pubblica</li>';
+        else $bottomNavBar .= '<li><a href="/pubblica">Pubblica</a></li>';
+        if($page === "chiSiamo") $bottomNavBar .= '<li class="currentPage" aria-current="page">Chi Siamo</li>';
+        else $bottomNavBar .= '<li><a href="/chiSiamo">Chi Siamo</a></li>';
+        return $bottomNavBar;
+    }
+    private static function getBottomNavLog(string $page) : string {
+        if(Tool::isLoggedIn()) {
+            if($page === "profilo") return '<li class="currentPage" aria-current="page">Profilo</li>
+                <li><a href="/logout">Logout</a></li>';
+            return file_get_contents(__DIR__ . "/pages/bottomNavLogTrue.html");
+        }
+        else {
+            switch($page) {
+                case 'accedi':
+                    return '<li><a href="/registrati">Registrati</a></li>
+            <li class="currentPage" aria-current="page">Accedi</li>';
+                    break;
+                case 'registrati':
+                    return '<li class="currentPage" aria-current="page">Registrati</li>
+                <li><a href="/accedi">Accedi</a></li>';
+                    break;
+                default:
+                    return file_get_contents(__DIR__ . "/pages/bottomNavLogFalse.html");
+                    break;
+            }
+        }
+        
     }
 
     /* -------------------------------
@@ -207,7 +288,9 @@ class Tool {
         exit;
     }
 
-
+    /* -------------------------------
+    * FUNZIONE CAMPI MODIFICA ANNUNCIO
+    * ------------------------------- */
     public static function getModificaAnnuncioSpecifico(string $categoria) : string {
         $modAnn = '<div id="attr-specifici-container">';
         switch($categoria) {

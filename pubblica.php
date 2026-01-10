@@ -7,7 +7,7 @@ if (!Tool::isLoggedIn()) {
     exit;
 }
 
-$htmlPage = file_get_contents("pages/pubblica.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
 
 $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
@@ -189,8 +189,8 @@ foreach ($campiRipetizioni as $key => $value) {
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("pubblica"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("pubblica"), $htmlPage);
 
 # $htmlPage = str_replace("[ValueCategoria]", $categoria, $htmlPage);
 # $htmlPage = str_replace("[ValueCitta]", $citta, $htmlPage);

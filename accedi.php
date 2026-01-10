@@ -95,6 +95,9 @@ $htmlPage = str_replace("[ErrorMessage]", $errorMessage, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);
 $htmlPage = str_replace("[ErrorePassword]", $errorePassword, $htmlPage);
 
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("accedi"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("accedi"), $htmlPage);
+
 echo $htmlPage;
 
 ?>

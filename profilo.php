@@ -71,8 +71,8 @@ $htmlPage = str_replace("[NumPreferiti]", $numPreferiti, $htmlPage);
 $htmlPage = str_replace("[CardsPreferiti]", $cardsPreferiti, $htmlPage);
 $htmlPage = str_replace("[NumPubblicati]", $numPubblicati, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
-$htmlPage = str_replace("[TopNavLog]", Tool::getTopNavLog(), $htmlPage);
-$htmlPage = str_replace("[BottomNavLog]", Tool::getBottomNavLog(), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("profilo"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("profilo"), $htmlPage);
 
 echo $htmlPage;
 
