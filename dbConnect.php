@@ -12,11 +12,21 @@ class DBAccess {
     private $connection;
 
     public function openDBConnection() {
-        $this->connection = mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
+        $host = $_ENV['DB_HOST'] ?? null;
+        $db   = $_ENV['DB_NAME'] ?? null;
+        $user = $_ENV['DB_USER'] ?? null;
+        $pass = $_ENV['DB_PASS'] ?? null;
 
-        if(!$this->connection) {
+        if (!$host || !$db || !$user) {
+            throw new Exception("Database environment variables missing");
+        }
+
+        $this->connection = mysqli_connect($host, $user, $pass, $db);
+
+        if (!$this->connection) {
             throw new Exception("Connessione al database fallita: " . mysqli_connect_error());
         }
+
         return true;
     }
 

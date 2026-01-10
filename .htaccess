@@ -1,4 +1,11 @@
 # =========================
+# PERMESSI .env
+# =========================
+<Files ".env">
+    Require all denied
+</Files>
+
+# =========================
 # ERRORI
 # =========================
 ErrorDocument 404 /404.php
