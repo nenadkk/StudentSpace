@@ -74,10 +74,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap-1-5);
+    gap: var(--gap-1);
     margin-bottom: 1.2em;
     background-color: var(--bgclearBlue);
     border-radius: var(--radius-base);
+    box-shadow: var(--shadow-base);
 }
 
 #menu .nav-links, 
@@ -86,7 +87,8 @@ header {
 }
 
 #menu .nav-links{
-    gap: var(--gap-1);
+    gap: var(--gap-0-5);
+    box-shadow: none;
 }
 
 #menu .nav-auth {

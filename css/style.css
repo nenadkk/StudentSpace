@@ -448,6 +448,7 @@ a:visited {
 #menu .nav-links, #site-map {
     border-radius: var(--radius-1-5);
     background-color: var(--bgclearBlue);
+    box-shadow: var(--shadow-base);
 }
 
 
@@ -603,7 +604,6 @@ header {
 #menu .nav-links li {
     padding: var(--padding-base); 
     color: var(--txtNavColor);
-    
 }
 
 #menu .nav-auth {

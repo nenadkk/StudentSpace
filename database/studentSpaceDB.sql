@@ -1,4 +1,4 @@
- USE testdb;
+USE testdb;
 
 -- ============================
 -- DROP TABLES (ordine corretto)
