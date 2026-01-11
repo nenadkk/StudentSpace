@@ -1185,7 +1185,7 @@ footer p{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: var(--gap-2); 
-    row-gap: var(--gap-0-5);
+    row-gap: var(--gap-1);
 }
 
 #pubblica-container .form-data {

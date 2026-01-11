@@ -51,42 +51,44 @@
         <div id="register-container" class="form-container form-container-large">
             <h2>Registrati</h2>
 
-            <form action="registrati.php" method="post" aria-live="assertive">
+            <form action="registrati.php" method="post" data-validate="registrazione">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
                     <div class="form-div">
                         <label for="nome">Nome<span class="required"> (richiesto)</span></label>
                         <p class="esempi"><abbr title='esempio'>Es.</abbr> Mario</p>
+                        
                         <input type="text" id="nome" name="nome" value="[nome]" required placeholder="Es. Mario" autocomplete="given-name" spellcheck="false">
-                        [errore-nome]
-                    </div>
+                    [errore-nome]
+                </div>
 
                     <div class="form-div">
                         <label for="cognome">Cognome<span class="required"> (richiesto)</span></label>
                         <p class="esempi"><abbr title='esempio'>Es.</abbr> Rossi</p>
-                        <input type="text" id="cognome" name="cognome" value="[cognome]" required placeholder="Es. Rossi" autocomplete="family-name" spellcheck="false">
                         [errore-cognome]
+                        <input type="text" id="cognome" name="cognome" value="[cognome]" required placeholder="Es. Rossi" autocomplete="family-name" spellcheck="false">
                     </div>
 
                     <div class="form-div">
                         <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
+                        [errore-citta]
                         <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" autocomplete="address-level2" required>
                         <datalist id="listaCitta">
                             [CityOptionsList]
                         </datalist>
-                        [errore-citta]
                     </div>
 
                     <div class="form-div">
                         <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
                         <p class="esempi"><abbr title='esempio'>Es.</abbr> mario.rossi@gmail.com</p>
-                        <input type="email" id="email" name="email" value="[email]" required placeholder="Es. mario.rossi@gmail.com" autocomplete="email">
                         [errore-email]
+                        <input type="email" id="email" name="email" value="[email]" required placeholder="Es. mario.rossi@gmail.com" autocomplete="email">
                     </div>
 
                     <div class="form-div">
                         <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
                         <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
+                        [errore-password]
                         <input type="password" id="password" name="password" required autocomplete="new-password">
                         
                         <div class="checkbox-inline">
@@ -98,6 +100,7 @@
                     <div class="form-div">
                         <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
                         <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
+                        [errore-conferma-password]
                         <input type="password" id="confermaPassword" name="confermaPassword" required autocomplete="new-password">
                         
                         <div class="checkbox-inline">
@@ -105,7 +108,6 @@
                             <label for="mostraConfermaPassword">Mostra conferma <span lang="en">password</span></label>
                         </div>
                     </div>
-                    [errore-password]
 
                 </div>
                 <div id="criteriMinimiPassword" class="riquadro-spieg alt-spiegazione">

@@ -20,12 +20,14 @@ $idutente = '';
 $numMsgErrore=0;
 //ognuno di questi array contiene i messaggi di errore relativi a quel campo, nel
 //caso si vogliano aggiungere altri controlli (e quindi messaggi di errore) in futuro
-$messaggiErrore = array("[errore-nome]"=>array(), 
-                        "[errore-cognome]"=>array(),
-                        "[errore-citta]"=>array(),
-                        "[errore-email]"=>array(),
-                        "[errore-password]"=>array(),
-                        );
+$messaggiErrore = array(
+    "[errore-nome]" => array(),
+    "[errore-cognome]" => array(),
+    "[errore-citta]" => array(),
+    "[errore-email]" => array(),
+    "[errore-password]" => array(),
+    "[errore-conferma-password]" => array(),
+);
 
 /* -------------------------------
  * SE L’UTENTE HA INVIATO IL FORM
@@ -87,7 +89,7 @@ if(isset($_POST['submit'])) {
     }
 
     if ($password !== $conferma_password) {
-        $messaggiErrore['[errore-password]'][] = "Le due password non coincidono.";
+        $messaggiErrore['[errore-conferma-password]'][] = "Le due password non coincidono.";
         $numMsgErrore++;
     }
 
@@ -144,7 +146,7 @@ if(isset($_POST['submit'])) {
             {
                 $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
                 foreach ($arrayErrori as $err) {
-                    $msgErrore .= "<li>$err</li>";
+                    $msgErrore .= "<li class='msgErrore' tabindex='0'>$err</li>";
                 }
                 $msgErrore .= "</ul>";
                 $paginaHTML = str_replace($placeHolder, $msgErrore, $paginaHTML);
@@ -156,6 +158,16 @@ else {
     foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
         $paginaHTML = str_replace($placeHolder, "", $paginaHTML);
 }
+
+// --- Inserimento lista città nel datalist ---
+$cities = [];
+if ($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
+
+$paginaHTML = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $paginaHTML);
+
 
 /* -------------------------------
  * SOSTITUZIONE TEMPLATE HTML

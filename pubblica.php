@@ -47,6 +47,21 @@ if(isset($_POST['submit'])) {
     $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
     
+    if ($titolo === "") {
+        $errorMessageTitolo = "<p class='riquadro-spieg messaggi-errore-form'>Il titolo è obbligatorio.</p>";
+        $numMessaggiErrore++;
+    }
+
+    if ($categoria === "") {
+        $errorMessageCategoria = "<p class='riquadro-spieg messaggi-errore-form'>La categoria è obbligatoria.</p>";
+        $numMessaggiErrore++;
+    }
+
+    if ($descrizione === "") {
+        $errorMessageDescrizione = "<p class='riquadro-spieg messaggi-errore-form'>La descrizione è obbligatoria.</p>";
+        $numMessaggiErrore++;
+    }
+
     if (!Tool::validaCitta($citta)) {
         $erroreCitta = "<p class='riquadro-spieg messaggi-errore-form'>La città inserita non è valida. </p>";
         $numMessaggiErrore++;

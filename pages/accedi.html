@@ -51,7 +51,9 @@
         <div id="login-container" class="form-container form-container-small">
             [RedirectMessage]
             <h2>Accedi</h2>
-            [ErrorMessage]
+            <div id="errori" aria-live="assertive">
+                [ErrorMessage]
+            </div>
             <form class="form-data" action="accedi.php" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">

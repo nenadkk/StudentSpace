@@ -24,39 +24,53 @@ $email = isset($_POST['email']) ? Tool::pulisciInput($_POST['email']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if(isset($_POST['submit'])) {
-    if(!Tool::contieneTagHtml($email))
-    {
-        if(Tool::validaEmail($email) && Tool::validaPassword($password)) {
-            $db = new DB\DBAccess();
-            if ($db->openDBConnection()) {
-                $idUtente = $db->verifyUserCredential($email, $password);
-                if ($idUtente !== false) {
-                    Tool::startUserSession($idUtente);
+    if (Tool::contieneTagHtml($email)) {
+        $errorMessage = "
+            <ul class='riquadro-spieg messaggi-errore-form'>
+                <li>Non si possono inserire tag HTML nei campi.</li>
+            </ul>";
 
-                    $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
-                    if ($redirect !== "") {
-                        header("Location: " . $redirect);
-                        exit;
-                    }
+    }
+    elseif (!Tool::validaEmail($email) || !Tool::validaPassword($password)) {
+        $errorMessage = "
+            <ul class='riquadro-spieg messaggi-errore-form'>
+                <li>Email o password non valide.</li>
+                <li>Inserisci un indirizzo nel formato nome@dominio.it.</li>
+                <li>La password deve rispettare i criteri minimi.</li>
+                <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+            </ul>";
+    }
+    else {
+        // email e password hanno formato valido → tentiamo login
+        $db = new DB\DBAccess();
+        if ($db->openDBConnection()) {
 
-                    header("Location: index.php");
+            $idUtente = $db->verifyUserCredential($email, $password);
+
+            if ($idUtente !== false) {
+                Tool::startUserSession($idUtente);
+
+                $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
+                if ($redirect !== "") {
+                    header("Location: " . $redirect);
                     exit;
-                } else {
-                    $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Email o password non validi.</li></ul>";
                 }
-                $db->closeConnection();
+
+                header("Location: index.php");
+                exit;
             } else {
-                Tool::renderError(500);
+                $errorMessage = "
+                    <ul class='riquadro-spieg messaggi-errore-form'>
+                        <li>Utente inesistente o password errata.</li>
+                        <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+                    </ul>";
             }
+
+            $db->closeConnection();
         } else {
-            $errorMessage = "<p class='riquadro-spieg messaggi-errori-form'>Errore di connessione al database.</p>";
+            Tool::renderError(500);
         }
     }
-    else
-    { 
-        $errorMessage = "<ul class='riquadro-spieg messaggi-errore-form'><li>Non si possono inserire tag HTML all'interno dei campi.</li></ul>";
-    }
-        
 }
 
 if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {

@@ -13,11 +13,12 @@ class Tool {
 
         foreach ($cities as $city) {
             $safeCity = htmlspecialchars($city, ENT_QUOTES, 'UTF-8');
-            $html .= "<option value=\"$safeCity\"></option>";
+            $html .= "<option value=\"$safeCity\">$safeCity</option>";
         }
 
         return $html;
     }
+
 
     /* -------------------------------
     * FUNZIONE PER CREARE LE CARDS DA DATI DB
