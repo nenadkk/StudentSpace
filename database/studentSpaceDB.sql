@@ -1,4 +1,4 @@
-USE testdb;
+USE studentspace;
 
 -- ============================
 -- DROP TABLES (ordine corretto)
