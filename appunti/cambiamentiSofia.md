@@ -24,6 +24,117 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 
 * da <dt> e <dd> a <h4> in titolo nelle card --> come in index.html
 
+\section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
+
+Nel progetto è stato implementato un sistema di validazione client-side avanzato, progettato per migliorare l’accessibilità e l’esperienza utente nei form più complessi (registrazione, pubblicazione e modifica annuncio). 
+L’obiettivo principale è garantire un flusso di compilazione chiaro e accessibile, senza interferire con i form più semplici come \textit{accedi} o \textit{filtri}.
+
+\subsection{Attivazione selettiva tramite attributo \texttt{data-validate}}
+
+Non tutti i form richiedono la stessa complessità di controlli. 
+Per questo motivo è stato introdotto un attributo HTML personalizzato:
+
+\begin{verbatim}
+<form data-validate="registrazione">
+\end{verbatim}
+
+I form che includono l’attributo \texttt{data-validate} attivano la validazione JavaScript, mentre gli altri vengono ignorati.  
+Questo approccio evita che la validazione venga applicata in contesti dove non è necessaria.
+
+\paragraph{Form con validazione attiva}
+\begin{itemize}
+    \item Registrazione
+    \item Pubblica annuncio
+    \item Modifica annuncio
+\end{itemize}
+
+\paragraph{Form senza validazione JS}
+\begin{itemize}
+    \item Accedi
+    \item Filtri
+\end{itemize}
+
+\subsection{Inizializzazione condizionata dello script}
+
+All’avvio, lo script verifica se la pagina contiene un form con \texttt{data-validate}.  
+Se non lo trova, la validazione viene completamente disattivata:
+
+\begin{verbatim}
+const form = document.querySelector("form[data-validate]");
+if (!form) return;
+\end{verbatim}
+
+Questo garantisce che:
+\begin{itemize}
+    \item il codice non venga eseguito inutilmente,
+    \item non vengano generati errori nei form semplici,
+    \item la pagina \textit{accedi} rimanga pulita e con messaggi server-side controllati.
+\end{itemize}
+
+\subsection{Validazione immediata e gestione del TAB}
+
+Nei form complessi, la validazione è stata progettata per essere immediata e accessibile.  
+Quando l’utente preme TAB su un campo:
+
+\begin{enumerate}
+    \item il campo viene validato,
+    \item se valido, il TAB procede normalmente,
+    \item se non valido, il TAB viene bloccato e il focus viene spostato sul messaggio di errore.
+\end{enumerate}
+
+Il messaggio di errore è reso focusabile tramite \texttt{tabindex="0"}, così da essere annunciato correttamente dai lettori di schermo.
+
+Premendo nuovamente TAB sul messaggio di errore, il focus ritorna automaticamente al campo da correggere, creando un ciclo controllato:
+
+
+
+\[
+\text{campo} \rightarrow \text{errore} \rightarrow \text{campo}
+\]
+
+
+
+\subsection{Inserimento degli errori sotto al campo}
+
+Gli errori vengono inseriti immediatamente dopo il campo, migliorando la leggibilità:
+
+\begin{verbatim}
+campo.insertAdjacentElement("afterend", ul);
+\end{verbatim}
+
+La posizione visiva non influisce sulla logica di focus, che rimane invariata.
+
+\subsection{Motivazioni progettuali}
+
+La validazione JavaScript è stata limitata ai soli campi critici:
+\begin{itemize}
+    \item nome, cognome, email, password (registrazione),
+    \item titolo, città, descrizione (pubblica/modifica).
+\end{itemize}
+
+I campi specifici delle categorie (Affitti, Esperimenti, Eventi, Ripetizioni) non richiedono validazione JS perché:
+\begin{itemize}
+    \item sono opzionali,
+    \item vengono abilitati solo dopo la scelta della categoria,
+    \item sono già validati lato server,
+    \item non richiedono focus management avanzato.
+\end{itemize}
+
+\subsection{Benefici della soluzione}
+
+\begin{itemize}
+    \item \textbf{Accessibilità migliorata}: navigazione da tastiera fluida e annunci corretti dei messaggi di errore.
+    \item \textbf{Esperienza utente chiara}: l’utente non può ignorare un errore senza correggerlo.
+    \item \textbf{Modularità}: la validazione si attiva solo dove serve, senza duplicare codice.
+    \item \textbf{Manutenibilità}: aggiungere un nuovo form validabile richiede solo l’attributo \texttt{data-validate}.
+\end{itemize}
+
+\subsection{Conclusione}
+
+La validazione JavaScript implementata è selettiva, accessibile e modulare.  
+Si integra perfettamente con la validazione lato server e garantisce un’esperienza utente coerente e inclusiva nei form più complessi, senza introdurre complessità superflue nei form semplici.
+
+
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
