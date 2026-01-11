@@ -301,7 +301,7 @@ li.categoria > div {
     transform: translateX(-50%);
     width: 40px;
     height: 40px;
-    background-image: url("../assets/puntina2.png"); 
+    background-image: url("../assets/puntina.webp"); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -557,7 +557,7 @@ header {
 #logo-home, 
 #logo-link a {
     display: block;
-    background-image: url("../assets/logo.png");
+    background-image: url("../assets/logo.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; 
@@ -608,6 +608,11 @@ header {
 
 #menu .nav-auth {
     justify-content: flex-end;
+}
+
+#menu .nav-auth a {
+    box-shadow: var(--shadow-base);
+
 }
 
 #menu li{
