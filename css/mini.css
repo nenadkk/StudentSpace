@@ -179,6 +179,15 @@ footer p {
     padding: 0;
 }
 
+#reset-btn {
+    width: 100%;
+    max-width: 40em; 
+    margin-bottom: 1em;
+    text-align: center;
+    padding: var(--padding-base);
+    font-weight: bold;
+}
+
 #toggleFiltri {
     width: 100%;         
     max-width: 40em;

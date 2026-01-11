@@ -341,7 +341,7 @@ button {
 
 /* ------------- estensione per .call-to-action ------------- */
 
-.link.call-to-action, #menu .link.call-to-action{
+.link.call-to-action, #menu .link.call-to-action {
     color: var(--clearTxtColor);
 }
 
@@ -358,11 +358,28 @@ button {
 .link.call-to-action:hover,
 .link.call-to-action:focus,
 #menu .link.call-to-action:hover,
-#menu .link.call-to-action:focus {
+#menu .link.call-to-action:focus,
+#reset-btn.call-to-action:hover,
+#reset-btn.call-to-action:focus {
     background-color: var(--call-to-actionAction);
     color: var(--call-to-actionColor);
     outline: var(--btn-border);
     outline-offset: 1px;
+}
+
+#reset-btn {
+    display: block;
+    width: 100%;
+    max-width: 340px; 
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+#reset-btn::before {
+    content: "↺";
+    margin-right: 0.5em;
+    font-size: var(--fs-h3-titolo-card);
 }
 
 /* ------------- estensione per #preferiti #salvato------------- */
@@ -431,6 +448,7 @@ button {
     color: var(--txtNavColor); 
 }
 
+
 /* ============================================
    VISITED UNIVERSALE
    ============================================ */
@@ -439,10 +457,14 @@ a:visited {
     color: var(--visited);
 }
 
+#reset-btn:visited {
+    color: var(--clearTxtColor); 
+}
+
 #menu .nav-links li a:visited, 
 #breadcrumb li a:visited,
 #site-map a:visited {
-    color: var(--visited) !important;
+    color: var(--visited);
 }
 
 #menu .nav-links, #site-map {
@@ -573,7 +595,7 @@ header {
 
 #logo-link a {
     font-size: 3em;
-        margin-right: 0.5em;
+    margin-right: 0.5em;
 
 }
 
@@ -945,6 +967,10 @@ footer p{
     width: 20%;
     min-width: 340px;
     margin: 1em 0 1em 1.5em;
+}
+
+#filtri {
+    margin: 0;
 }
 
 /*

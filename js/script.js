@@ -260,6 +260,15 @@ function initDeleteConfirmation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    hamburgerMenu();
+    initCarosello();
+    toggleFiltri();
+    toggleMultipleAlt();
+    toggleFiltriCategoria();
+    togglePubblicaCategoria();
+    togglePasswordVisibility('mostraPassword', 'password');
+    togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
+    initDeleteConfirmation();
 
     // Trova solo i form che devono essere validati
     const form = document.querySelector("form[data-validate]");
@@ -321,17 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (primo) primo.focus();
         }
     });
-
-    // --- 4. Inizializzazioni varie ---
-    hamburgerMenu();
-    initCarosello();
-    toggleFiltri();
-    toggleMultipleAlt();
-    toggleFiltriCategoria();
-    togglePubblicaCategoria();
-    togglePasswordVisibility('mostraPassword', 'password');
-    togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
-    initDeleteConfirmation();
 });
 
 
