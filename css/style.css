@@ -440,9 +440,9 @@ a:visited {
 }
 
 #menu .nav-links li a:visited, 
-#breadcrumb a:visited,
+#breadcrumb li a:visited,
 #site-map a:visited {
-    color: var(--visited);
+    color: var(--visited) !important;
 }
 
 #menu .nav-links, #site-map {
@@ -685,7 +685,7 @@ header {
     margin: 0;
 }
 
-#breadcrumb li{
+#breadcrumb li a {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 
