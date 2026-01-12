@@ -4,18 +4,18 @@ require_once "dbConnect.php";
 require_once "tool.php";
 
 use DB\DBAccess;
+$db = new DBAccess();
 
 $htmlPage = file_get_contents("pages/index.html");
 
-$dbAccess = new DBAccess();
-if (!$dbAccess->openDBConnection()) {
+if (!$db->openDBConnection()) {
     Tool::renderError(500);
 }
-$cardsData = $dbAccess->getLastAnnouncements();
-$dbAccess->closeConnection();
+
+$cardsData = $db->getLastAnnouncements();
+$db->closeConnection();
 
 $cards = "";
-$cardhtml = "";
 
 if($cardsData !== false) {
     $cards = Tool::createCard($cardsData);

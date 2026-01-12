@@ -6,13 +6,13 @@ require_once "tool.php";
 use DB\DBAccess;
 $db = new DB\DBAccess();
 
+$htmlPage = file_get_contents(__DIR__ . "/pages/annuncio.html");
+
 if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
     $idAnnuncio = intval($_GET["id"]); 
 } else { 
     Tool::renderError(404);
 }
-
-$htmlPage = file_get_contents(__DIR__ . "/pages/annuncio.html");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
     $idUtente = $_SESSION["user_id"];
     $idAnnuncio = intval($_POST["id_annuncio"]);
 
-    $db = new DBAccess();
     if ($db->openDBConnection()) {
 
         if ($_POST["azione"] === "aggiungi_preferito") {

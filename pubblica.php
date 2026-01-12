@@ -2,12 +2,15 @@
 require_once "tool.php";
 require_once "dbConnect.php";
 
+use DB\DBAccess;
+$db = new DB\DBAccess;
+
+$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
+
 if (!Tool::isLoggedIn()) {
     header("Location: accedi.php?redirect=pubblica.php");
     exit;
 }
-
-$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
 
 $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
@@ -40,6 +43,13 @@ $immagini = [];
 $errorMessageImmagini = "";
 $erroreCitta = "";
 $numMessaggiErrore=0;
+
+$cities = [];
+
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
 
 if(isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
@@ -115,7 +125,7 @@ if(isset($_POST['submit'])) {
         $estensione = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)); 
         $nomeFile = uniqid('img_') . '.' . $estensione; 
         move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $nomeFile);
-
+    
         // Salvataggio dati
         $immagini[] = [
             'file'       => $nomeFile,
@@ -155,8 +165,6 @@ if(isset($_POST['submit'])) {
     }
 
     if ($numMessaggiErrore==0) {
-        $db = new DB\DBAccess;
-
         if ($db->openDBConnection()) {
             $idCitta = $db->getIdCitta($citta);
             $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
@@ -168,7 +176,6 @@ if(isset($_POST['submit'])) {
     }
 }
 else {
-    $db = new DB\DBAccess;
     if ($db->openDBConnection()) {
         $citta = $db->getCittaUtente($idUtente) ?? ""; // funzione da creare
         $db->closeConnection();
@@ -201,11 +208,6 @@ foreach ($campiRipetizioni as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
 
-$cities = [];
-if($db->openDBConnection()) {
-    $cities = $db->getAllCity();
-    $db->closeConnection();
-}
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);

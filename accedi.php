@@ -3,6 +3,11 @@
 require_once "dbConnect.php";
 require_once "tool.php";
 
+use DB\DBAccess;
+$db = new DBAccess();
+
+$htmlPage = file_get_contents("pages/accedi.html");
+
 if (Tool::isLoggedIn()) {
     if (isset($_GET['redirect'])) {
         header("Location: " . $_GET['redirect']);
@@ -12,7 +17,6 @@ if (Tool::isLoggedIn()) {
     exit;
 }
 
-$htmlPage = file_get_contents("pages/accedi.html");
 $redirectMessage = "";
 $errorMessage = "";
 $idUtente = "";
@@ -42,7 +46,6 @@ if(isset($_POST['submit'])) {
     }
     else {
         // email e password hanno formato valido → tentiamo login
-        $db = new DB\DBAccess();
         if ($db->openDBConnection()) {
 
             $idUtente = $db->verifyUserCredential($email, $password);

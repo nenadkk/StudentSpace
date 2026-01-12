@@ -3,6 +3,11 @@
 require_once "tool.php";
 require_once "dbConnect.php";
 
+use DB\DBAccess;
+$db = new DB\DBAccess();
+
+$htmlPage = file_get_contents('pages/modificaAnnuncio.html');
+
 $idAnnuncio = 0;
 if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
     $idAnnuncio = intval($_GET["id"]); 
@@ -17,15 +22,10 @@ if (!Tool::isLoggedIn()) {
     $idUtente = $_SESSION["user_id"];
 }
 
-use DB\DBAccess;
-$db = new DB\DBAccess();
-
 $logger = "";
 $annuncio = ""; 
 $attr = "";
 $listaAttr = "";
-$immagini = [];  
-
 
 $campi = [];
 $campiAffitti = array(
@@ -47,6 +47,13 @@ $campiRipetizioni = array(
                 "materia"=>"",
                 "livello"=>"",
                 "prezzo-ripetizioni"=>"");
+
+$cities = [];
+
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
 
 if($db->openDBConnection()) {
 
@@ -76,9 +83,9 @@ if($db->openDBConnection()) {
 
 switch ($annuncio["Categoria"]) {
     case 'Affitti':
-        $campiAffitti['coinquilini'] = Tool::pulisciInput($attr['PrezzoMensile'] ?? 0);
-        $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($attr['Indirizzo'] ?? 0);
-        $campiAffitti['indirizzo-affitto'] = Tool::pulisciInput($attr['NumeroInquilini'] ?? 0);
+        $campiAffitti['coinquilini'] = Tool::pulisciInput($attr['NumeroInquilini'] ?? 0);
+        $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($attr['PrezzoMensile'] ?? 0);
+        $campiAffitti['indirizzo-affitto'] = Tool::pulisciInput($attr['Indirizzo'] ?? 0);
         $campi = $campiAffitti;
         break;
     case 'Esperimenti':
@@ -106,7 +113,7 @@ switch ($annuncio["Categoria"]) {
 $immagini = [];
 $errorMessageImmagini = "";
 $erroreCitta = "";
-$numMessaggiErrore=0;
+$numMessaggiErrore= 0;
 
 if(isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
@@ -163,11 +170,85 @@ if(isset($_POST['submit'])) {
             break;
     }
 
-    // Gestione Immagini
+    // --- Gestione immagini ---
+    // Recupero le immagini già presenti
+    if ($db->openDBConnection()) {
+        $immaginiVecchie = $db->getImmagini($idAnnuncio);
+        $db->closeConnection();
+    } else {
+        Tool::renderError(500);
+    }
+
+    // Array che conterrà le nuove immagini (se caricate)
+    $immaginiNuove = [];
+
+    $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp'];
+
+    for ($i = 1; $i <= 4; $i++) {
+
+        $fileKey = 'foto'.$i;
+        $altKey = 'alt'.$i;
+        $decKey = 'decorativa'.$i;
+
+        // Nessun file caricato → passo al prossimo
+        if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
+            continue;
+        }
+
+        $file = $_FILES[$fileKey];
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Errore nel caricamento dell'immagine $i.</p>";
+            $numMessaggiErrore++;
+            break;
+        }
+
+        if ($file['size'] > 1 * 1024 * 1024) {
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>L'immagine $i supera 1MB.</p>";
+            $numMessaggiErrore++;
+            break;
+        }
+
+        if (!in_array($file['type'], $mimeConsentiti)) {
+            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Formato non valido per l'immagine $i.</p>";
+            $numMessaggiErrore++;
+            break;
+        }
+
+        $isDecorativa = isset($_POST[$decKey]);
+        $altText = null;
+
+        if (!$isDecorativa) {
+            $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
+            if ($altText === '') {
+                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio.</p>";
+                $numMessaggiErrore++;
+                break;
+            }
+        }
+
+        // Salvataggio file
+        $estensione = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $nomeFile = uniqid('img_') . '.' . $estensione;
+        move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $nomeFile);
+
+        $immaginiNuove[] = [
+            'file'       => $nomeFile,
+            'alt'        => $altText,
+            'decorativa' => (int)$isDecorativa,
+            'ordine'     => $i
+        ];
+    }
+
+    // Se NON ho caricato nuove immagini → tengo le vecchie
+    if (empty($immaginiNuove)) {
+        $immagini = $immaginiVecchie;
+    } else {
+        $immagini = $immaginiNuove;
+    }
+
 
     if ($numMessaggiErrore==0) {
-        $db = new DB\DBAccess;
-
         if ($db->openDBConnection()) {
             $idCitta = $db->getIdCitta($citta);
             $stmt = $db->modificaAnnuncio($idAnnuncio, $titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
@@ -180,7 +261,7 @@ if(isset($_POST['submit'])) {
                 $logger = "UPDATE Annuncio SET Titolo = $titolo, Descrizione = $descrizione, Citta = $idCitta WHERE IdAnnuncio = $idAnnuncio";
                 switch ($categoria) {
                     case 'Affitti':
-                        $campo1 = $attr["PrezzoMensile"]; $campo2 = $attr["Indirizzo"]; $campo3 = attr["NumeroInquilini"];
+                        $campo1 = $attr["PrezzoMensile"]; $campo2 = $attr["Indirizzo"]; $campo3 = $attr["NumeroInquilini"];
                         $logger = $logger.
                             "UPDATE AnnuncioAffitti
                             SET PrezzoMensile = $campo1, Indirizzo = $campo2, NumeroInquilini = $campo3
@@ -225,9 +306,6 @@ if(isset($_POST['submit'])) {
     }
 }
 
-
-$htmlPage = file_get_contents('pages/modificaAnnuncio.html');
-
 //rimetto la categoria selezionata
 $htmlPage = str_replace("[categoriaSelected]", $annuncio["Categoria"] ?? '' , $htmlPage);
 
@@ -249,11 +327,6 @@ $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 $htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
-$cities = [];
-if($db->openDBConnection()) {
-    $cities = $db->getAllCity();
-    $db->closeConnection();
-}
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("modifica"), $htmlPage);

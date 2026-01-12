@@ -754,7 +754,36 @@ class DBAccess {
 
             $stmtDettagli->close();
 
-            // Gestione Immagini
+            // --- Gestione immagini ---
+            // Cancello tutte le immagini vecchie
+            $stmtDelete = $this->connection->prepare("DELETE FROM ImmaginiAnnuncio WHERE IdAnnuncio = ?");
+            $stmtDelete->bind_param("i", $idAnnuncio);
+            if (!$stmtDelete->execute()) {
+                throw new Exception("Errore cancellazione immagini");
+            }
+            $stmtDelete->close();
+
+            // Inserisco le nuove immagini (o le vecchie, se non ne sono state caricate)
+            foreach ($immagini as $img) {
+                $stmtImg = $this->connection->prepare(
+                    "INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine)
+                    VALUES (?, ?, ?, ?, ?)"
+                );
+                $stmtImg->bind_param(
+                    "issii",
+                    $idAnnuncio,
+                    $img['file'],
+                    $img['alt'],
+                    $img['decorativa'],
+                    $img['ordine']
+                );
+
+                if (!$stmtImg->execute()) {
+                    throw new Exception("Errore inserimento immagine");
+                }
+
+                $stmtImg->close();
+            }
 
             mysqli_commit($this->connection);
 
