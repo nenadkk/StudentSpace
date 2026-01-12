@@ -108,30 +108,32 @@ if(isset($_POST['submit'])) {
      * ----------------------------------- */
     if ($numMsgErrore==0) 
     {
-        $db->openDBConnection();
+        if($db->openDBConnection()) {
 
-        //ottengo l'IdCitta della città selezionata
-        $idCitta = $db->getIdCitta($citta);
+            //ottengo l'IdCitta della città selezionata
+            $idCitta = $db->getIdCitta($citta);
 
-        //inserisco l'utente
-        $arrayRegistrazione = [];
-        $arrayRegistrazione['Nome'] = $nome;
-        $arrayRegistrazione['Cognome'] = $cognome;
-        $arrayRegistrazione['Email'] = $email;
-        $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
-        $arrayRegistrazione['IdCitta'] = $idCitta;
-        
-        $db->insertUtente($arrayRegistrazione);
+            //inserisco l'utente
+            $arrayRegistrazione = [];
+            $arrayRegistrazione['Nome'] = $nome;
+            $arrayRegistrazione['Cognome'] = $cognome;
+            $arrayRegistrazione['Email'] = $email;
+            $arrayRegistrazione['Password'] = password_hash($password, PASSWORD_DEFAULT);
+            $arrayRegistrazione['IdCitta'] = $idCitta;
+            
+            $db->insertUtente($arrayRegistrazione);
 
-        # $idutente = intval($db->getIdUtente($email));//perché l'id viene aggiunto automaticamente da database
-        $idutente = $db->verifyUserCredential($email, $password);
+            # $idutente = intval($db->getIdUtente($email));//perché l'id viene aggiunto automaticamente da database
+            $idutente = $db->verifyUserCredential($email, $password);
 
-        $db->closeConnection();
+            $db->closeConnection();
 
-        Tool::startUserSession($idutente);
+            Tool::startUserSession($idutente);
 
-        header("location: index.php");
-
+            header("location: index.php");
+        } else {
+            Tool::renderError(500);
+        }
     }
     else
     {

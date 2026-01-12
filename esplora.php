@@ -52,53 +52,50 @@ if(isset($_GET['submit']))
         $filtriGenerali[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : "";
     }
 
-    switch ($categoria) {
-        case '':
-            $dbAccess->openDBConnection();
-            $cardsData = $dbAccess->searchEsplora($categoria, $filtriGenerali);
-            $dbAccess->closeConnection();
-        break;
-
-        case 'Affitti':
-            foreach ($filtriAffitti as $key => $value) {
-                $filtriAffitti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
-            }
-            $dbAccess->openDBConnection();
-            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriAffitti));
-            $dbAccess->closeConnection();
+    if($dbAccess->openDBConnection())
+    {
+        switch ($categoria) {
+            case '':
+                $cardsData = $dbAccess->searchEsplora($categoria, $filtriGenerali);
             break;
 
-        case 'Esperimenti':
-            foreach ($filtriEsperimenti as $key => $value) {
-                $filtriEsperimenti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
-            }
-            $dbAccess->openDBConnection();
-            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEsperimenti));
-            $dbAccess->closeConnection();
-            break;
+            case 'Affitti':
+                foreach ($filtriAffitti as $key => $value) {
+                    $filtriAffitti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
+                }
+                $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriAffitti));
+                break;
 
-           
-       case 'Eventi':
-            foreach ($filtriEventi as $key => $value) {
-                $filtriEventi[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
-            }
-            $dbAccess->openDBConnection();
-            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEventi));
-            $dbAccess->closeConnection();
-            break;
+            case 'Esperimenti':
+                foreach ($filtriEsperimenti as $key => $value) {
+                    $filtriEsperimenti[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
+                }
+                $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEsperimenti));
+                break;
 
-        case 'Ripetizioni':
-            foreach ($filtriRipetizioni as $key => $value) {
-                $filtriRipetizioni[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
-            }
-            $dbAccess->openDBConnection();
-            $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriRipetizioni));
-            $dbAccess->closeConnection();
-            break;
+            
+        case 'Eventi':
+                foreach ($filtriEventi as $key => $value) {
+                    $filtriEventi[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
+                }
+                $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriEventi));
+                break;
 
-        default:
-            break;
+            case 'Ripetizioni':
+                foreach ($filtriRipetizioni as $key => $value) {
+                    $filtriRipetizioni[$key] = isset($_GET[$key])? Tool::pulisciInputCompleto($_GET[$key]) : '';
+                }
+                $cardsData = $dbAccess->searchEsplora($categoria, array_merge($filtriGenerali, $filtriRipetizioni));
+                break;
+
+            default:
+                break;
+        }
+        $dbAccess->closeConnection();
+    } else {
+        Tool::renderError(500);
     }
+    
 
     if($cardsData !== false){
         $cards = Tool::createCard($cardsData);
@@ -113,9 +110,12 @@ if(isset($_GET['submit']))
     }
 } else {
     //nel caso non siano stati applicati filtri o ricerche mostro tutti gli annunci presenti
-    $dbAccess->openDBConnection();
-    $cardsData = $dbAccess->getAnnouncements();
-    $dbAccess->closeConnection();
+    if($dbAccess->openDBConnection()) {
+        $cardsData = $dbAccess->getAnnouncements();
+        $dbAccess->closeConnection();
+    } else {
+        Tool::renderError(500);
+    }
 
     if($cardsData !== false){
         $cards = Tool::createCard($cardsData);

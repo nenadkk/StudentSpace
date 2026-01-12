@@ -164,6 +164,8 @@ if(isset($_POST['submit'])) {
 
             header("Location: annuncio.php?id=". $idAnnuncio);
             exit;
+        } else {
+            Tool::renderError(500);
         }
     }
 }
@@ -172,6 +174,8 @@ else {
     if ($db->openDBConnection()) {
         $citta = $db->getCittaUtente($idUtente) ?? ""; // funzione da creare
         $db->closeConnection();
+    } else {
+        Tool::renderError(500);
     }
 }
 

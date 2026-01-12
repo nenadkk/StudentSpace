@@ -36,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
         }
 
         $db->closeConnection();
+    } else {
+        Tool::renderError(500);
     }
 
     header("Location: /annuncio.php?id=" . $idAnnuncio);
