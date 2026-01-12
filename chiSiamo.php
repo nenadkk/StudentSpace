@@ -1,9 +1,6 @@
 <?php
 
-require_once "dbConnect.php";
 require_once "tool.php";
-
-use DB\DBAccess;
 
 $htmlPage = file_get_contents(__DIR__ . "/pages/chiSiamo.html");
 

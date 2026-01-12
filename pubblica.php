@@ -2,12 +2,15 @@
 require_once "tool.php";
 require_once "dbConnect.php";
 
+use DB\DBAccess;
+$db = new DB\DBAccess;
+
+$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
+
 if (!Tool::isLoggedIn()) {
     header("Location: accedi.php?redirect=pubblica.php");
     exit;
 }
-
-$htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
 
 $titolo = "";
 $categoria = ""; # da capire se queste due cose con la datalist sono impostabili
@@ -37,81 +40,109 @@ $campiRipetizioni = array(
                 "prezzo-ripetizioni"=>"");
 
 $immagini = [];
-$errorMessageImmagini = "";
+$erroriImmagini = [];
 $erroreCitta = "";
 $numMessaggiErrore=0;
 
-if(isset($_POST['submit'])) {
+$cities = [];
+
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
     $categoria = Tool::pulisciInput($_POST['categoria-campi'] ?? '');
     $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
     
     if ($titolo === "") {
-        $errorMessageTitolo = "<p class='riquadro-spieg messaggi-errore-form'>Il titolo è obbligatorio.</p>";
+        $errorMessageTitolo = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-titolo' role='alert'>Il titolo è obbligatorio.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageTitolo = "";
     }
 
     if ($categoria === "") {
-        $errorMessageCategoria = "<p class='riquadro-spieg messaggi-errore-form'>La categoria è obbligatoria.</p>";
+        $errorMessageCategoria = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-categoria' role='alert'>La categoria è obbligatoria.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageCategoria = "";
     }
 
     if ($descrizione === "") {
-        $errorMessageDescrizione = "<p class='riquadro-spieg messaggi-errore-form'>La descrizione è obbligatoria.</p>";
+        $errorMessageDescrizione = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-descrizione' role='alert'>La descrizione è obbligatoria.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageDescrizione = "";
     }
 
     if (!Tool::validaCitta($citta)) {
-        $erroreCitta = "<p class='riquadro-spieg messaggi-errore-form'>La città inserita non è valida. </p>";
+        $erroreCitta = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-citta' role='alert'>La città inserita non è valida, seleziona una città dall’elenco.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $erroreCitta = "";
     }
 
-    for ($i = 1; $i<=4; $i++) {
+    for ($i = 1; $i <= 4; $i++) {
         $fileKey = 'foto'.$i;
-        $altKey = 'alt'.$i;
-        $decKey = 'decorativa'.$i;
+        $altKey  = 'alt'.$i;
+        $decKey  = 'decorativa'.$i;
 
-        if (!isset($_FILES[$fileKey]) ||$_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
+        if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
             continue;
-        }
-
-        if ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Errore nel caricamento dell'immagine $i.</p>";
-            $numMessaggiErrore++;
-            break;
         }
 
         $file = $_FILES[$fileKey];
 
+        // Errore generico upload
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            $erroriImmagini[] = "Errore nel caricamento dell'immagine $i.";
+            $numMessaggiErrore++;
+            continue;
+        }
+
         // Dimensione massima 1MB 
         if ($file['size'] > 1 * 1024 * 1024) { 
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>L'immagine $i supera la dimensione massima di 1MB.</p>"; 
+            $erroriImmagini[] = "L'immagine $i supera la dimensione massima di 1MB.";
             $numMessaggiErrore++;
-            break; 
+            continue; 
         }
 
         // MIME consentiti
         $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp']; 
         if (!in_array($file['type'], $mimeConsentiti)) { 
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Formato non valido per l'immagine $i.</p>"; 
+            $erroriImmagini[] = "Formato non valido per l'immagine $i (consentiti JPG, PNG, WEBP).";
             $numMessaggiErrore++;
-            break; 
+            continue;
         }
 
         $isDecorativa = isset($_POST[$decKey]);
         $altText = null;
 
-        if(!$isDecorativa) {
+        if (!$isDecorativa) {
             $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
             if ($altText === '') { 
-                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio, a meno che non si selezioni l'opzione “Decorativa”.</p>";
+                $erroriImmagini[] = "L'immagine $i richiede un testo alternativo oppure la selezione di “Decorativa”.";
                 $numMessaggiErrore++;
-                break; 
+                continue;
             }
         }
 
-        // Salvataggio file originale
+        // Salvataggio file 
         $estensione = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)); 
         $nomeFile = uniqid('img_') . '.' . $estensione; 
         move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $nomeFile);
@@ -155,8 +186,6 @@ if(isset($_POST['submit'])) {
     }
 
     if ($numMessaggiErrore==0) {
-        $db = new DB\DBAccess;
-
         if ($db->openDBConnection()) {
             $idCitta = $db->getIdCitta($citta);
             $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
@@ -170,7 +199,6 @@ if(isset($_POST['submit'])) {
     }
 }
 else {
-    $db = new DB\DBAccess;
     if ($db->openDBConnection()) {
         $citta = $db->getCittaUtente($idUtente) ?? ""; // funzione da creare
         $db->closeConnection();
@@ -205,14 +233,25 @@ foreach ($campiRipetizioni as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
 
-$cities = [];
-if($db->openDBConnection()) {
-    $cities = $db->getAllCity();
-    $db->closeConnection();
-}
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
-$htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
+if (!empty($erroriImmagini)) {
+    $testoErrori = "Si sono verificati errori nelle immagini. Reinseriscile e correggi quanto segue: ";
+
+    foreach ($erroriImmagini as $msg) {
+        $testoErrori .= $msg . " ";
+    }
+
+    $erroreGlobaleImmagini = "
+    <div class='riquadro-spieg messaggi-errore-form'>
+        <p class='msgErrore' role='alert'>$testoErrori</p>
+    </div>";
+} else {
+    $erroreGlobaleImmagini = "";
+}
+
+$htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlPage);
+
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("pubblica"), $htmlPage);

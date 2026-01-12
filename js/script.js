@@ -119,7 +119,6 @@ function toggleMultipleAlt() {
   }
 }
 
-
 // JS PER TOGGLE FILTRI
 function toggleFiltri() {
   const toggle = document.getElementById("toggleFiltri");
@@ -270,88 +269,68 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
     initDeleteConfirmation();
 
-    // Trova solo i form che devono essere validati
+    // --- VALIDAZIONE SOLO PER I FORM CON data-validate ---
     const form = document.querySelector("form[data-validate]");
-    if (!form) return; // se non c'è → siamo in accedi o filtri → esci
+    if (form) {
 
-    // --- 1. Focus sul primo errore server-side ---
-    const primoErrore = form.querySelector(".msgErrore");
-    if (primoErrore) primoErrore.focus();
+        // Focus sul primo errore server-side
+        const primoErrore = form.querySelector(".msgErrore");
+        if (primoErrore) primoErrore.focus();
 
-    // --- 2. Validazione immediata onblur ---
-    const campi = form.querySelectorAll("input, select, textarea");
-
-    // --- Gestione TAB → errore → TAB → campo ---
-    campi.forEach(campo => {
-        campo.addEventListener("keydown", function (e) {
-
-            if (e.key === "Tab" && !e.shiftKey) {
-
-                // Validazione immediata
-                const valido = validaCampo(campo);
-
-                if (!valido) {
-                    const errore = campo.parentNode.querySelector(".msgErrore");
-
-                    if (errore) {
-                        e.preventDefault();   // blocca il TAB naturale
-                        errore.focus();
-
-                        // Quando l’utente preme TAB sull’errore → torna al campo
-                        const handler = function(ev) {
-                            if (ev.key === "Tab" && !ev.shiftKey) {
-                                ev.preventDefault();
-                                campo.focus();
-                                errore.removeEventListener("keydown", handler);
-                            }
-                        };
-
-                        errore.addEventListener("keydown", handler);
-                    }
-                }
-            }
-        });
-    });
-
-    // --- 3. Validazione completa al submit ---
-    const htmlForm = document.querySelector("form");
-    htmlForm.addEventListener("submit", function(e) {
-
-        let errori = false;
+        const campi = form.querySelectorAll("input, select, textarea");
 
         campi.forEach(campo => {
-            const valido = validaCampo(campo);
-            if (!valido) errori = true;
+            campo.addEventListener("blur", function () {
+                validazioneCampo(campo);
+            });
         });
 
-        if (errori) {
-            e.preventDefault();
-            const primo = document.querySelector(".msgErrore");
-            if (primo) primo.focus();
-        }
-    });
+        form.addEventListener("submit", function(e) {
+            let tuttoOk = true;
+
+            campi.forEach(campo => {
+                const valido = validazioneCampo(campo);
+                if (!valido) tuttoOk = false;
+            });
+
+            if (!tuttoOk) {
+                e.preventDefault();
+                const primo = form.querySelector(".msgErrore");
+                if (primo) primo.previousElementSibling.focus();
+            }
+        });
+    }
+
+    // --- FOCUS SPECIFICO PER LOGIN (senza validazione JS) ---
+    const erroreLogin = document.querySelector("#errore-login");
+    if (erroreLogin) {
+        const campoEmail = document.querySelector("#email");
+        if (campoEmail) campoEmail.focus();
+    }
 });
 
+// ------------------------------------------------------
+// FUNZIONE DI VALIDAZIONE (VERSIONE PROF)
+// ------------------------------------------------------
+function validazioneCampo(campo) {
 
-// ------------------------------------------------------
-// FUNZIONE DI VALIDAZIONE
-// ------------------------------------------------------
-function validaCampo(campo) {
+  if (campo.type === "file") return true;
+  if (campo.id.startsWith("alt")) return true;
+  if (campo.id.startsWith("decorativa")) return true; 
 
     // Rimuovi eventuale errore precedente
-    const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg.messaggi-errore-form");
+    const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg");
     if (erroreEsistente) erroreEsistente.remove();
 
     let messaggio = "";
     const valore = campo.value.trim();
 
-    // Controllo required generico
+    // Required generico
     if (campo.hasAttribute("required") && valore === "") {
         messaggio = "Questo campo è obbligatorio.";
     }
 
     switch (campo.id) {
-
         case "nome":
         case "cognome":
             if (!/^[a-zA-ZÀ-ÿ\s]{2,30}$/.test(valore)) {
@@ -359,24 +338,21 @@ function validaCampo(campo) {
             }
             break;
 
-        case "citta": 
-          const lista = campo.list; // <input list="listaCitta">
-          let trovata = false;
+        case "citta":
+            const lista = campo.list;
+            let trovata = false;
 
-          if (lista && lista.options) {
-              for (let i = 0; i < lista.options.length; i++) {
-                  const optVal = lista.options[i].value.trim().toLowerCase();
-                  if (optVal === valore.toLowerCase()) {
-                      trovata = true;
-                      break;
-                  }
-              }
-          }
+            if (lista && lista.options) {
+                for (let i = 0; i < lista.options.length; i++) {
+                    if (lista.options[i].value.trim().toLowerCase() === valore.toLowerCase()) {
+                        trovata = true;
+                        break;
+                    }
+                }
+            }
 
-          if (!trovata) {
-              messaggio = "Seleziona una città dall’elenco.";
-          }
-          break;
+            if (!trovata) messaggio = "La città inserita non è valida, seleziona una città dall’elenco.";
+            break;
 
         case "email":
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valore)) {
@@ -385,30 +361,22 @@ function validaCampo(campo) {
             break;
 
         case "password":
-          if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
-
-              messaggio = `
-                  La password deve contenere:
-                  <ul>
-                      <li>Minimo 8 caratteri.</li>
-                      <li>Almeno un numero.</li>
-                      <li>Almeno una lettera minuscola.</li>
-                      <li>Almeno una lettera maiuscola.</li>
-                      <li>Almeno un carattere speciale.</li>
-                  </ul>
-              `;
-          }
-          break;
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
+              messaggio = 
+                  "La password non rispetta i requisiti minimi. " +
+                  "Deve contenere: minimo 8 caratteri, almeno un numero, " +
+                  "almeno una lettera minuscola, almeno una lettera maiuscola " +
+                  "e almeno un carattere speciale.";
+            }
+            break;
 
         case "confermaPassword":
             const pass = document.getElementById("password").value.trim();
-            if (valore !== pass) {
-                messaggio = "Le password non coincidono.";
-            }
+            if (valore !== pass) messaggio = "Le password non coincidono.";
             break;
     }
 
-    // Se c'è un errore → crea il blocco
+    // Se c'è un errore
     if (messaggio !== "") {
 
         const ul = document.createElement("ul");
@@ -416,15 +384,23 @@ function validaCampo(campo) {
 
         const li = document.createElement("li");
         li.className = "msgErrore";
-        li.setAttribute("tabindex", "0");
-        li.innerHTML = messaggio;
+        li.id = campo.id + "-errore";
+        li.textContent = messaggio;
 
         ul.appendChild(li);
+        campo.parentNode.appendChild(ul);
 
-        campo.parentNode.insertBefore(ul, campo.nextSibling);
+        // Collega l'errore al campo
+        campo.setAttribute("aria-describedby", li.id);
+
+        campo.focus();
+        campo.select();
 
         return false;
     }
+
+    // Se valido, rimuovi aria-describedby
+    campo.removeAttribute("aria-describedby");
 
     return true;
 }

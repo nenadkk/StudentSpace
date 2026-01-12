@@ -75,11 +75,11 @@
                                 <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
                                 <p class="esempi">Città precompilata dal tuo profilo, modificabile.</p>
                                 <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" required>
+                                [Errore-citta]
                                 <datalist id="listaCitta">
                                     [CityOptionsList]
                                 </datalist>
                                 <!-- <p>Es. Padova</p> -->
-                                [Errore-citta]
                             </div>
                         </div>
 
@@ -190,7 +190,7 @@
                             <p class="riquadro-spieg alt-spiegazione">
                                 Le immagini devono essere di dimensione massima 1<abbr title="Megabyte">MB</abbr> e preferibilmente in formato JPG.
                             </p>
-                            [ErrorMessageImmagini]
+                            [ErroreImmaginiGlobal]
                             <div id="img1" class="image-block">
                                 <label for="foto1">Immagine 1<span class="required"> (richiesto)</span></label>
                                 <div class="img-campi">
@@ -206,9 +206,9 @@
                             <div id="img2" class="image-block">
                                 <label for="foto2">Immagine 2</label>
                                 <div class="img-campi">
-                                    <input type="file" id="foto2" name="foto2" accept="image/*" disabled>
+                                    <input type="file" id="foto2" name="foto2" accept="image/*" >
                                     <label for="alt2">Testo alternativo 2</label>
-                                    <input type="text" id="alt2" name="alt2" maxlength="150" disabled>
+                                    <input type="text" id="alt2" name="alt2" maxlength="150" >
                                     <div class="dec-label">
                                         <input type="checkbox" id="decorativa2" name="decorativa2">
                                         <label for="decorativa2">Decorativa</label>
@@ -219,9 +219,9 @@
                             <div id="img3" class="image-block">
                                 <label for="foto3">Immagine 3</label>
                                 <div class="img-campi">
-                                    <input type="file" id="foto3" name="foto3" accept="image/*" disabled>
+                                    <input type="file" id="foto3" name="foto3" accept="image/*" >
                                     <label for="alt3">Testo alternativo 3</label>
-                                    <input type="text" id="alt3" name="alt3" maxlength="150" disabled>
+                                    <input type="text" id="alt3" name="alt3" maxlength="150" >
                                     <div class="dec-label">
                                         <input type="checkbox" id="decorativa3" name="decorativa3">
                                         <label for="decorativa3">Decorativa</label>
@@ -232,9 +232,9 @@
                             <div id="img4" class="image-block">
                                 <label for="foto4">Immagine 4</label>
                                 <div class="img-campi">
-                                    <input type="file" id="foto4" name="foto4" accept="image/*" disabled>
+                                    <input type="file" id="foto4" name="foto4" accept="image/*" >
                                     <label for="alt4">Testo alternativo 4</label>
-                                    <input type="text" id="alt4" name="alt4" maxlength="150" disabled>
+                                    <input type="text" id="alt4" name="alt4" maxlength="150" >
                                     <div class="dec-label">
                                         <input type="checkbox" id="decorativa4" name="decorativa4">
                                         <label for="decorativa4">Decorativa</label>
@@ -243,7 +243,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <button class="btn-base" type="submit" name="submit">Invia</button>
+                    <button class="btn-base" type="submit" name="submit">Pubblica</button>
                 </form>
             </div>
             

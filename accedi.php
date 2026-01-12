@@ -3,6 +3,11 @@
 require_once "dbConnect.php";
 require_once "tool.php";
 
+use DB\DBAccess;
+$db = new DBAccess();
+
+$htmlPage = file_get_contents(__DIR__ . "/pages/accedi.html");
+
 if (Tool::isLoggedIn()) {
     if (isset($_GET['redirect'])) {
         header("Location: " . $_GET['redirect']);
@@ -12,12 +17,9 @@ if (Tool::isLoggedIn()) {
     exit;
 }
 
-$htmlPage = file_get_contents(__DIR__ . "/pages/accedi.html");
 $redirectMessage = "";
-$errorMessage = "";
 $idUtente = "";
 $erroreEmail = "";
-$errorePassword = "";
 $genericError = "";
 
 $email = isset($_POST['email']) ? Tool::pulisciInput($_POST['email']) : '';
@@ -25,24 +27,26 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if(isset($_POST['submit'])) {
     if (Tool::contieneTagHtml($email)) {
-        $errorMessage = "
+        $erroreEmail = "
             <ul class='riquadro-spieg messaggi-errore-form'>
-                <li>Non si possono inserire tag HTML nei campi.</li>
+                <li class='msgErrore' id='errore-login' role='alert'>
+                    Non si possono inserire tag HTML nei campi.
+                </li>
             </ul>";
-
     }
     elseif (!Tool::validaEmail($email) || !Tool::validaPassword($password)) {
-        $errorMessage = "
+        $testoErrori = 
+            "Email o password non valide. " .
+            "Inserisci un indirizzo nel formato nome@dominio.it. " .
+            "La password deve rispettare i criteri minimi. ";
+
+        $erroreEmail = "
             <ul class='riquadro-spieg messaggi-errore-form'>
-                <li>Email o password non valide.</li>
-                <li>Inserisci un indirizzo nel formato nome@dominio.it.</li>
-                <li>La password deve rispettare i criteri minimi.</li>
-                <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+                <li class='msgErrore' id='errore-login' role='alert'>$testoErrori</li>
             </ul>";
     }
     else {
         // email e password hanno formato valido → tentiamo login
-        $db = new DB\DBAccess();
         if ($db->openDBConnection()) {
 
             $idUtente = $db->verifyUserCredential($email, $password);
@@ -59,10 +63,12 @@ if(isset($_POST['submit'])) {
                 header("Location: index.php");
                 exit;
             } else {
-                $errorMessage = "
+                $testoErrori =
+                    "Utente inesistente o password errata.";
+
+                $erroreEmail = "
                     <ul class='riquadro-spieg messaggi-errore-form'>
-                        <li>Utente inesistente o password errata.</li>
-                        <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+                        <li class='msgErrore' id='errore-login' role='alert'>$testoErrori</li>
                     </ul>";
             }
 
@@ -105,9 +111,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
 $htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);
 $htmlPage = str_replace("[RedirectMessage]", $redirectMessage, $htmlPage);
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
-$htmlPage = str_replace("[ErrorMessage]", $errorMessage, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);
-$htmlPage = str_replace("[ErrorePassword]", $errorePassword, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("accedi"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("accedi"), $htmlPage);

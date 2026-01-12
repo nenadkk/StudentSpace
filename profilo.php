@@ -3,6 +3,11 @@
 require_once "tool.php";
 require_once "dbConnect.php";
 
+use DB\DBAccess;
+$db = new DB\DBAccess();
+
+$htmlPage = file_get_contents("pages/profilo.html");
+
 if (!Tool::isLoggedIn()) {
     header("Location: accedi.php?redirect=profilo.php");
     exit;
@@ -20,7 +25,6 @@ $emailUtente = "";
 $numPreferiti = "";
 $numPubblicati = "";
 
-$db = new DB\DBAccess();
 if($db->openDBConnection()) {
     $infoUtente = $db->getUtente($idUtente);
     if($infoUtente !== false) {

@@ -2,10 +2,11 @@
 
 require_once "dbConnect.php";
 require_once "tool.php";
+
 use DB\DBAccess;
+$db = new DBAccess();
 
 $paginaHTML = file_get_contents(__DIR__ . '/pages/registrati.html');
-$db = new DBAccess();
 
 // --- Variabili iniziali ---
 $nome = '';
@@ -28,6 +29,13 @@ $messaggiErrore = array(
     "[errore-password]" => array(),
     "[errore-conferma-password]" => array(),
 );
+
+// --- Inserimento lista città nel datalist ---
+$cities = [];
+if ($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
 
 /* -------------------------------
  * SE L’UTENTE HA INVIATO IL FORM
@@ -65,7 +73,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!Tool::validaCitta($citta)) {
-        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida.";
+        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida, seleziona una città dall’elenco.";
         $numMsgErrore++;
     }
     if(Tool::contieneTagHtml($citta)){
@@ -142,46 +150,35 @@ if(isset($_POST['submit'])) {
         {
             if(empty($arrayErrori))//se non ci sono errori per quel field
             {
-                $paginaHTML = str_replace($placeHolder, "", $paginaHTML);
+                $htmlPage = str_replace($placeHolder, "", $htmlPage);
             }
             else
             {
                 $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
                 foreach ($arrayErrori as $err) {
-                    $msgErrore .= "<li class='msgErrore' tabindex='0'>$err</li>";
+                    $msgErrore .= "<li class='msgErrore' role='alert'>$err</li>";
                 }
                 $msgErrore .= "</ul>";
-                $paginaHTML = str_replace($placeHolder, $msgErrore, $paginaHTML);
+                $htmlPage = str_replace($placeHolder, $msgErrore, $htmlPage);
             }
         }
     }
 }
 else {
     foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
-        $paginaHTML = str_replace($placeHolder, "", $paginaHTML);
+        $htmlPage = str_replace($placeHolder, "", $htmlPage);
 }
 
-// --- Inserimento lista città nel datalist ---
-$cities = [];
-if ($db->openDBConnection()) {
-    $cities = $db->getAllCity();
-    $db->closeConnection();
-}
+$htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
-$paginaHTML = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $paginaHTML);
+$htmlPage = str_replace("[nome]", $nome, $htmlPage);
+$htmlPage = str_replace("[cognome]", $cognome, $htmlPage);
+$htmlPage = str_replace("[citta]", $citta, $htmlPage);
+$htmlPage = str_replace("[email]", $email, $htmlPage);
 
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("registrati"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("registrati"), $htmlPage);
 
-/* -------------------------------
- * SOSTITUZIONE TEMPLATE HTML
- * ------------------------------- */
-$paginaHTML = str_replace("[nome]", $nome, $paginaHTML);
-$paginaHTML = str_replace("[cognome]", $cognome, $paginaHTML);
-$paginaHTML = str_replace("[citta]", $citta, $paginaHTML);
-$paginaHTML = str_replace("[email]", $email, $paginaHTML);
-
-$paginaHTML = str_replace("[TopNavBar]", Tool::buildTopNavBar("registrati"), $paginaHTML);
-$paginaHTML = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("registrati"), $paginaHTML);
-
-echo $paginaHTML;
+echo $htmlPage;
 
 ?>
