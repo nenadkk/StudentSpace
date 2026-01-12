@@ -119,7 +119,6 @@ function toggleMultipleAlt() {
   }
 }
 
-
 // JS PER TOGGLE FILTRI
 function toggleFiltri() {
   const toggle = document.getElementById("toggleFiltri");
@@ -291,7 +290,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const valido = validaCampo(campo);
 
                 if (!valido) {
-                    const errore = campo.parentNode.querySelector(".msgErrore");
+                    const errore = campo.closest(".image-block")?.querySelector(".msgErrore") || campo.parentNode.querySelector(".msgErrore");
+
 
                     if (errore) {
                         e.preventDefault();   // blocca il TAB naturale
@@ -345,9 +345,16 @@ function validaCampo(campo) {
     let messaggio = "";
     const valore = campo.value.trim();
 
+    const isFileImmagine = /^foto[1-4]$/.test(campo.id);
+
     // Controllo required generico
-    if (campo.hasAttribute("required") && valore === "") {
+    if (!isFileImmagine && campo.hasAttribute("required") && valore === "") {
         messaggio = "Questo campo è obbligatorio.";
+    }
+
+    // Skip totale della validazione immagini pre-submit
+    if (isFileImmagine) {
+        return true;
     }
 
     switch (campo.id) {
@@ -405,7 +412,7 @@ function validaCampo(campo) {
             if (valore !== pass) {
                 messaggio = "Le password non coincidono.";
             }
-            break;
+            break;zz
     }
 
     // Se c'è un errore → crea il blocco

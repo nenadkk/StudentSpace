@@ -111,11 +111,11 @@ switch ($annuncio["Categoria"]) {
 }
 
 $immagini = [];
-$errorMessageImmagini = "";
+$erroriImmagini = [];
 $erroreCitta = "";
 $numMessaggiErrore= 0;
 
-if(isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
     $categoria = Tool::pulisciInput($_POST['categoria-campi'] ?? '');
     $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
@@ -182,10 +182,7 @@ if(isset($_POST['submit'])) {
     // Array che conterrà le nuove immagini (se caricate)
     $immaginiNuove = [];
 
-    $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp'];
-
     for ($i = 1; $i <= 4; $i++) {
-
         $fileKey = 'foto'.$i;
         $altKey = 'alt'.$i;
         $decKey = 'decorativa'.$i;
@@ -197,22 +194,26 @@ if(isset($_POST['submit'])) {
 
         $file = $_FILES[$fileKey];
 
+        // Errore generico upload
         if ($file['error'] !== UPLOAD_ERR_OK) {
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Errore nel caricamento dell'immagine $i.</p>";
+            $erroriImmagini[] = "Errore nel caricamento dell'immagine $i.";
             $numMessaggiErrore++;
-            break;
+            continue;
         }
 
-        if ($file['size'] > 1 * 1024 * 1024) {
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>L'immagine $i supera 1MB.</p>";
+        // Dimensione massima 1MB 
+        if ($file['size'] > 1 * 1024 * 1024) { 
+            $erroriImmagini[] = "L'immagine $i supera la dimensione massima di 1MB.";
             $numMessaggiErrore++;
-            break;
+            continue; 
         }
 
-        if (!in_array($file['type'], $mimeConsentiti)) {
-            $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Formato non valido per l'immagine $i.</p>";
+        // MIME consentiti
+        $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp']; 
+        if (!in_array($file['type'], $mimeConsentiti)) { 
+            $erroriImmagini[] = "Formato non valido per l'immagine $i (consentiti JPG, PNG, WEBP).";
             $numMessaggiErrore++;
-            break;
+            continue;
         }
 
         $isDecorativa = isset($_POST[$decKey]);
@@ -220,10 +221,10 @@ if(isset($_POST['submit'])) {
 
         if (!$isDecorativa) {
             $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
-            if ($altText === '') {
-                $errorMessageImmagini = "<p class='riquadro-spieg messaggi-errore-form'>Il testo alternativo per l'immagine $i è obbligatorio.</p>";
+            if ($altText === '') { 
+                $erroriImmagini[] = "L'immagine $i richiede un testo alternativo oppure la selezione di “Decorativa”.";
                 $numMessaggiErrore++;
-                break;
+                continue;
             }
         }
 
@@ -324,7 +325,22 @@ foreach ($campi as $key => $value) {
 $htmlPage = str_replace("[IdAnnuncio]", $idAnnuncio, $htmlPage);
 $htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 
-$htmlPage = str_replace("[ErrorMessageImmagini]", $errorMessageImmagini, $htmlPage);
+if (!empty($erroriImmagini)) {
+    $erroreGlobaleImmagini = "<div class='riquadro-spieg messaggi-errore-form'>
+        <p class='msgErrore' tabindex='0'>
+            Si sono verificati errori nelle immagini. Reinseriscile e correggi quanto segue:
+        </p>
+        <ul>";
+    foreach ($erroriImmagini as $msg) {
+        $erroreGlobaleImmagini .= "<li class='msgErrore' tabindex='0'>$msg</li>";
+    }
+    $erroreGlobaleImmagini .= "</ul></div>";
+} else {
+    $erroreGlobaleImmagini = "";
+}
+
+$htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlPage);
+
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
