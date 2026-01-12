@@ -258,7 +258,6 @@ function initDeleteConfirmation() {
   });
 }
 
-/*
 document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
@@ -405,4 +404,3 @@ function validazioneCampo(campo) {
 
     return true;
 }
-*/
