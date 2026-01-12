@@ -68,6 +68,7 @@ body {
 
     /* spaziature */
     --padding-top-style: 7em;
+    --padding-top-mini: 5em; 
     --padding-base: 0.5em 1em;
     --padding-riq: 0.8em;
     --gap-0-5: 0.5em;
@@ -159,6 +160,11 @@ footer {
 
 section {
    padding: 2em 6em; 
+}
+
+.errore {
+   padding: 6em; 
+   padding-bottom: 8em;
 }
 
 #contenuto {
@@ -813,47 +819,43 @@ footer p{
 .img-text-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     gap: var(--gap-2);
     margin: 0 auto;
-    max-width: 1200px;    
-}
-
-.errore {
-    height: calc(100vh - 8em);
-}
-
-.img-text-section > img{
-    flex: 0 1 35%;
     width: 100%;
-    max-width: 450px;
-    min-width: 200px;
+    max-width: 1200px;
+}
+
+.img-text-section > img {
+    flex: 1 1 300px;  
+    width: 100%;
+    max-width: 100%;
     height: auto;
+    object-fit: contain;
+    min-width: 0;      
+}
+
+.img-text-section > div {
+    flex: 1 1 300px;   
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+    min-width: 0;    
 }
 
 .img-text-section h2 {
     text-align: left;
 }
 
-.img-text-section > div {
-    flex: 1 1 50%;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-1);
-}
-
-#testo-errore {
-    gap: var(--gap-0-5);
-}
-
-.img-text-section .azioni, 
+.img-text-section .azioni,
 #contatti .azioni {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap-1);
-    min-width: 400px;
+    justify-content: flex-start;
 }
+
 
 /*
 ====================================================
