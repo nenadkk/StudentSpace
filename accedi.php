@@ -12,7 +12,7 @@ if (Tool::isLoggedIn()) {
     exit;
 }
 
-$htmlPage = file_get_contents("pages/accedi.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/accedi.html");
 $redirectMessage = "";
 $errorMessage = "";
 $idUtente = "";

@@ -5,7 +5,7 @@ require_once "tool.php";
 
 use DB\DBAccess;
 
-$htmlPage = file_get_contents("pages/index.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/index.html");
 
 $dbAccess = new DBAccess();
 if (!$dbAccess->openDBConnection()) {
@@ -23,7 +23,7 @@ if($cardsData !== false) {
     $cards = '<li class="centered">
                     <p>Nessun annuncio.</p>
                     <div class="azioni">
-                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        <a class="link btn-base call-to-action" href="pubblica">Pubblica un annuncio</a>
                     </div>
             </li>';
 }

@@ -5,7 +5,7 @@ require_once "tool.php";
 
 use DB\DBAccess;
 
-$htmlPage = file_get_contents("pages/chiSiamo.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/chiSiamo.html");
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("chiSiamo"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("chiSiamo"), $htmlPage);

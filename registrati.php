@@ -4,7 +4,7 @@ require_once "dbConnect.php";
 require_once "tool.php";
 use DB\DBAccess;
 
-$paginaHTML = file_get_contents('pages/registrati.html');
+$paginaHTML = file_get_contents(__DIR__ . '/pages/registrati.html');
 $db = new DBAccess();
 
 // --- Variabili iniziali ---

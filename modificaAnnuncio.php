@@ -226,7 +226,7 @@ if(isset($_POST['submit'])) {
 }
 
 
-$htmlPage = file_get_contents('pages/modificaAnnuncio.html');
+$htmlPage = file_get_contents(__DIR__ . '/pages/modificaAnnuncio.html');
 
 //rimetto la categoria selezionata
 $htmlPage = str_replace("[categoriaSelected]", $annuncio["Categoria"] ?? '' , $htmlPage);
