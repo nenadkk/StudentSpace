@@ -24,6 +24,10 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 
 * da <dt> e <dd> a <h4> in titolo nelle card --> come in index.html
 
+* in css in has() --> su can i use: Newly available across major browsers
+
+* con js disabilitato comunque i messaggi di errore hanno role allert quindi vengono elencati appena si carica la pagina post submit
+
 \section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
 
 Nel progetto è stato implementato un sistema di validazione client-side avanzato, progettato per migliorare l’accessibilità e l’esperienza utente nei form più complessi (registrazione, pubblicazione e modifica annuncio). 
