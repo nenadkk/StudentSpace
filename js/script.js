@@ -269,96 +269,62 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
     initDeleteConfirmation();
 
-    // Trova solo i form che devono essere validati
     const form = document.querySelector("form[data-validate]");
-    if (!form) return; // se non c'è → siamo in accedi o filtri → esci
+    if (!form) return;
 
-    // --- 1. Focus sul primo errore server-side ---
+    // Focus sul primo errore server-side
     const primoErrore = form.querySelector(".msgErrore");
     if (primoErrore) primoErrore.focus();
 
-    // --- 2. Validazione immediata onblur ---
     const campi = form.querySelectorAll("input, select, textarea");
 
-    // --- Gestione TAB → errore → TAB → campo ---
+    // Validazione immediata
     campi.forEach(campo => {
-        campo.addEventListener("keydown", function (e) {
-
-            if (e.key === "Tab" && !e.shiftKey) {
-
-                // Validazione immediata
-                const valido = validaCampo(campo);
-
-                if (!valido) {
-                    const errore = campo.closest(".image-block")?.querySelector(".msgErrore") || campo.parentNode.querySelector(".msgErrore");
-
-
-                    if (errore) {
-                        e.preventDefault();   // blocca il TAB naturale
-                        errore.focus();
-
-                        // Quando l’utente preme TAB sull’errore → torna al campo
-                        const handler = function(ev) {
-                            if (ev.key === "Tab" && !ev.shiftKey) {
-                                ev.preventDefault();
-                                campo.focus();
-                                errore.removeEventListener("keydown", handler);
-                            }
-                        };
-
-                        errore.addEventListener("keydown", handler);
-                    }
-                }
-            }
+        campo.addEventListener("blur", function () {
+            validazioneCampo(campo);
         });
     });
 
-    // --- 3. Validazione completa al submit ---
-    const htmlForm = document.querySelector("form");
-    htmlForm.addEventListener("submit", function(e) {
-
-        let errori = false;
+    // Validazione completa al submit
+    form.addEventListener("submit", function(e) {
+        let tuttoOk = true;
 
         campi.forEach(campo => {
-            const valido = validaCampo(campo);
-            if (!valido) errori = true;
+            const valido = validazioneCampo(campo);
+            if (!valido) tuttoOk = false;
         });
 
-        if (errori) {
+        if (!tuttoOk) {
             e.preventDefault();
-            const primo = document.querySelector(".msgErrore");
-            if (primo) primo.focus();
+            const primo = form.querySelector(".msgErrore");
+            if (primo) primo.previousElementSibling.focus(); // focus sul campo
         }
     });
 });
 
 
 // ------------------------------------------------------
-// FUNZIONE DI VALIDAZIONE
+// FUNZIONE DI VALIDAZIONE (VERSIONE PROF)
 // ------------------------------------------------------
-function validaCampo(campo) {
+function validazioneCampo(campo) {
+
+  if (campo.type === "file") return true;
+  if (campo.id.startsWith("alt")) return true;
+  if (campo.id.startsWith("decorativa")) return true; 
 
     // Rimuovi eventuale errore precedente
-    const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg.messaggi-errore-form");
+    const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg");
     if (erroreEsistente) erroreEsistente.remove();
 
     let messaggio = "";
     const valore = campo.value.trim();
 
-    const isFileImmagine = /^foto[1-4]$/.test(campo.id);
-
-    // Controllo required generico
-    if (!isFileImmagine && campo.hasAttribute("required") && valore === "") {
+    // Required generico
+    if (campo.hasAttribute("required") && valore === "") {
         messaggio = "Questo campo è obbligatorio.";
     }
 
-    // Skip totale della validazione immagini pre-submit
-    if (isFileImmagine) {
-        return true;
-    }
-
     switch (campo.id) {
-
         case "nome":
         case "cognome":
             if (!/^[a-zA-ZÀ-ÿ\s]{2,30}$/.test(valore)) {
@@ -366,24 +332,21 @@ function validaCampo(campo) {
             }
             break;
 
-        case "citta": 
-          const lista = campo.list; // <input list="listaCitta">
-          let trovata = false;
+        case "citta":
+            const lista = campo.list;
+            let trovata = false;
 
-          if (lista && lista.options) {
-              for (let i = 0; i < lista.options.length; i++) {
-                  const optVal = lista.options[i].value.trim().toLowerCase();
-                  if (optVal === valore.toLowerCase()) {
-                      trovata = true;
-                      break;
-                  }
-              }
-          }
+            if (lista && lista.options) {
+                for (let i = 0; i < lista.options.length; i++) {
+                    if (lista.options[i].value.trim().toLowerCase() === valore.toLowerCase()) {
+                        trovata = true;
+                        break;
+                    }
+                }
+            }
 
-          if (!trovata) {
-              messaggio = "Seleziona una città dall’elenco.";
-          }
-          break;
+            if (!trovata) messaggio = "Seleziona una città dall’elenco.";
+            break;
 
         case "email":
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valore)) {
@@ -392,30 +355,22 @@ function validaCampo(campo) {
             break;
 
         case "password":
-          if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
-
-              messaggio = `
-                  La password deve contenere:
-                  <ul>
-                      <li>Minimo 8 caratteri.</li>
-                      <li>Almeno un numero.</li>
-                      <li>Almeno una lettera minuscola.</li>
-                      <li>Almeno una lettera maiuscola.</li>
-                      <li>Almeno un carattere speciale.</li>
-                  </ul>
-              `;
-          }
-          break;
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
+              messaggio = 
+                  "La password non rispetta i requisiti minimi. " +
+                  "Deve contenere: minimo 8 caratteri, almeno un numero, " +
+                  "almeno una lettera minuscola, almeno una lettera maiuscola " +
+                  "e almeno un carattere speciale.";
+            }
+            break;
 
         case "confermaPassword":
             const pass = document.getElementById("password").value.trim();
-            if (valore !== pass) {
-                messaggio = "Le password non coincidono.";
-            }
-            break;zz
+            if (valore !== pass) messaggio = "Le password non coincidono.";
+            break;
     }
 
-    // Se c'è un errore → crea il blocco
+    // Se c'è un errore
     if (messaggio !== "") {
 
         const ul = document.createElement("ul");
@@ -423,15 +378,23 @@ function validaCampo(campo) {
 
         const li = document.createElement("li");
         li.className = "msgErrore";
-        li.setAttribute("tabindex", "0");
-        li.innerHTML = messaggio;
+        li.id = campo.id + "-errore";
+        li.textContent = messaggio;
 
         ul.appendChild(li);
+        campo.parentNode.appendChild(ul);
 
-        campo.parentNode.insertBefore(ul, campo.nextSibling);
+        // Collega l'errore al campo
+        campo.setAttribute("aria-describedby", li.id);
+
+        campo.focus();
+        campo.select();
 
         return false;
     }
+
+    // Se valido, rimuovi aria-describedby
+    campo.removeAttribute("aria-describedby");
 
     return true;
 }
