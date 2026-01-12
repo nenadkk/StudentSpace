@@ -31,17 +31,16 @@ if(isset($_POST['submit'])) {
     if (Tool::contieneTagHtml($email)) {
         $errorMessage = "
             <ul class='riquadro-spieg messaggi-errore-form'>
-                <li>Non si possono inserire tag HTML nei campi.</li>
+                <li class='msgErrore' tabindex='0'>Non si possono inserire tag HTML nei campi.</li>
             </ul>";
-
     }
     elseif (!Tool::validaEmail($email) || !Tool::validaPassword($password)) {
         $errorMessage = "
             <ul class='riquadro-spieg messaggi-errore-form'>
-                <li>Email o password non valide.</li>
-                <li>Inserisci un indirizzo nel formato nome@dominio.it.</li>
-                <li>La password deve rispettare i criteri minimi.</li>
-                <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+                <li class='msgErrore' tabindex='0'>Email o password non valide.</li>
+                <li class='msgErrore' tabindex='0'>Inserisci un indirizzo nel formato nome@dominio.it.</li>
+                <li class='msgErrore' tabindex='0'>La password deve rispettare i criteri minimi.</li>
+                <li class='msgErrore' tabindex='0'>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
             </ul>";
     }
     else {
@@ -64,8 +63,8 @@ if(isset($_POST['submit'])) {
             } else {
                 $errorMessage = "
                     <ul class='riquadro-spieg messaggi-errore-form'>
-                        <li>Utente inesistente o password errata.</li>
-                        <li>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
+                        <li class='msgErrore' tabindex='0'>Utente inesistente o password errata.</li>
+                        <li class='msgErrore' tabindex='0'>Se non hai un account, <a class='link' href='registrati.php'>registrati</a>.</li>
                     </ul>";
             }
 
