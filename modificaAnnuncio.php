@@ -355,9 +355,10 @@ if (!empty($erroriImmagini)) {
     }
 
     $erroreGlobaleImmagini = "
-    <div class='riquadro-spieg messaggi-errore-form'>
-        <p class='msgErrore' role='alert'>$testoErrori</p>
-    </div>";
+        <div id='errore-immagini-globali' class='riquadro-spieg messaggi-errore-form'>
+            <p class='msgErrore' role='alert'>$testoErrori</p>
+        </div>";
+
 } else {
     $erroreGlobaleImmagini = "";
 }

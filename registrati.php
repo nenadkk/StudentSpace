@@ -6,7 +6,7 @@ require_once "tool.php";
 use DB\DBAccess;
 $db = new DBAccess();
 
-$paginaHTML = file_get_contents(__DIR__ . '/pages/registrati.html');
+$htmlPage = file_get_contents(__DIR__ . '/pages/registrati.html');
 
 // --- Variabili iniziali ---
 $nome = '';
