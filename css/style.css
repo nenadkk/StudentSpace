@@ -199,6 +199,15 @@ section {
     gap: var(--gap-1);
 }
 
+.paragraph-link-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap-0-5);
+    align-items: center;
+}
+
 /*
 ====================================================
     BASI
@@ -501,7 +510,7 @@ a:visited {
 
 /* ------------- estensione per .form-container p a ------------- */
 
-.form-container p a{
+.paragraph-link-container a{
     padding: var(--padding-base);
     font-weight: 600;
     background-color: var(--bgclearBlue);
@@ -1203,13 +1212,13 @@ footer p{
     margin-top: 0.5em;
 }
 
-#login-container .form-data, #filtri .form-data fieldset {
+#login-container .form-data, #filtri .form-data fieldset, #register-container .form-data {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);               
 }
 
-#register-container .form-data {
+#register-container .form-data-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: var(--gap-2); 

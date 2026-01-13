@@ -54,75 +54,78 @@
             <form action="registrati.php" method="post" data-validate="registrazione">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
-                    <div class="form-div">
-                        <label for="nome">Nome<span class="required"> (richiesto)</span></label>
-                        <p class="esempi"><abbr title='esempio'>Es.</abbr> Mario</p>
-                        <input type="text" id="nome" name="nome" value="[nome]" required placeholder="Es. Mario" autocomplete="given-name" spellcheck="false">
-                        [errore-nome]                        
-                    </div>
+                    <div class="form-data-grid">
+                        <div class="form-div">
+                            <label for="nome">Nome<span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Mario</p>
+                            <input type="text" id="nome" name="nome" value="[nome]" required placeholder="Es. Mario" autocomplete="given-name" spellcheck="false">
+                            [errore-nome]                        
+                        </div>
 
-                    <div class="form-div">
-                        <label for="cognome">Cognome<span class="required"> (richiesto)</span></label>
-                        <p class="esempi"><abbr title='esempio'>Es.</abbr> Rossi</p>
-                        <input type="text" id="cognome" name="cognome" value="[cognome]" required placeholder="Es. Rossi" autocomplete="family-name" spellcheck="false">
-                        [errore-cognome]
-                    </div>
+                        <div class="form-div">
+                            <label for="cognome">Cognome<span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Rossi</p>
+                            <input type="text" id="cognome" name="cognome" value="[cognome]" required placeholder="Es. Rossi" autocomplete="family-name" spellcheck="false">
+                            [errore-cognome]
+                        </div>
 
-                    <div class="form-div">
-                        <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
-                        <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" autocomplete="address-level2" required>
-                        [errore-citta]
-                        <datalist id="listaCitta">
-                            [CityOptionsList]
-                        </datalist>
-                    </div>
+                        <div class="form-div">
+                            <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
+                            <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" autocomplete="address-level2" required>
+                            [errore-citta]
+                            <datalist id="listaCitta">
+                                [CityOptionsList]
+                            </datalist>
+                        </div>
 
-                    <div class="form-div">
-                        <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        <p class="esempi"><abbr title='esempio'>Es.</abbr> mario.rossi@gmail.com</p>
-                        <input type="email" id="email" name="email" value="[email]" required placeholder="Es. mario.rossi@gmail.com" autocomplete="email">
-                        [errore-email]
-                    </div>
+                        <div class="form-div">
+                            <label for="email"><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> mario.rossi@gmail.com</p>
+                            <input type="email" id="email" name="email" value="[email]" required placeholder="Es. mario.rossi@gmail.com" autocomplete="email">
+                            [errore-email]
+                        </div>
 
-                    <div class="form-div">
-                        <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
-                        <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
-                        <input type="password" id="password" name="password" required autocomplete="new-password">
-                        [errore-password]
+                        <div class="form-div">
+                            <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
+                            <input type="password" id="password" name="password" required autocomplete="new-password">
+                            [errore-password]
+                            
+                            <div class="checkbox-inline">
+                                <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                                <label for="mostraPassword">Mostra <span lang="en">password</span></label>
+                            </div>
+                        </div>
                         
-                        <div class="checkbox-inline">
-                            <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                            <label for="mostraPassword">Mostra <span lang="en">password</span></label>
+                        <div class="form-div">
+                            <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
+                            <input type="password" id="confermaPassword" name="confermaPassword" required autocomplete="new-password">
+                            [errore-conferma-password]
+                            
+                            <div class="checkbox-inline">
+                                <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                                <label for="mostraConfermaPassword">Mostra conferma <span lang="en">password</span></label>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="form-div">
-                        <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
-                        <p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
-                        <input type="password" id="confermaPassword" name="confermaPassword" required autocomplete="new-password">
-                        [errore-conferma-password]
-                        
-                        <div class="checkbox-inline">
-                            <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
-                            <label for="mostraConfermaPassword">Mostra conferma <span lang="en">password</span></label>
-                        </div>
+                    <div id="criteriMinimiPassword" class="riquadro-spieg alt-spiegazione">
+                        <strong>Importante!</strong>
+                        <p>La password deve contenere:</p>
+                        <ul>
+                            <li>Minimo 8 caratteri.</li>
+                            <li>Almeno un numero.</li>
+                            <li>Almeno una lettera minuscola.</li>
+                            <li>Almeno una lettera maiuscola.</li>
+                            <li>Almeno un carattere speciale.</li>
+                        </ul>
                     </div>
-
+                    <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
+                    <div class="paragraph-link-container">
+                        <p>Hai già un account?</p>
+                        <a class="link" href="accedi.php">Accedi</a>
+                    </div>
                 </div>
-                <div id="criteriMinimiPassword" class="riquadro-spieg alt-spiegazione">
-                    <strong>Importante!</strong>
-                    <p>La password deve contenere:</p>
-                    <ul>
-                        <li>Minimo 8 caratteri.</li>
-                        <li>Almeno un numero.</li>
-                        <li>Almeno una lettera minuscola.</li>
-                        <li>Almeno una lettera maiuscola.</li>
-                        <li>Almeno un carattere speciale.</li>
-                    </ul>
-                </div>
-                <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
-                <p>Hai già un account? <a class="link" href="accedi.php">Accedi</a></p>
-
             </form>
         </div>
         

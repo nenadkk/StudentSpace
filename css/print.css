@@ -32,10 +32,11 @@ h3 {
 }
 
 .aiuti,
-#hamburger,
-#hamburger-menu,
 #menu,
-#filtri {
+#site-map,
+#reset-btn,
+#filtri,
+#freccia-su {
     display: none;
 }
 
@@ -172,7 +173,7 @@ header h1 {
 .carta {
     border: 1px solid var(--borders);
     border-radius: var(--radius-print);
-    padding: 0.5cm;
+    padding: 0.3cm;
     background: none;
     text-align: left;
     display: flex;
@@ -228,9 +229,7 @@ input, select {
 }
 
 button,
-form > p,
-#login-container p a,
-#register-container p a {
+.paragraph-link-container {
     display: none;
 }
 
