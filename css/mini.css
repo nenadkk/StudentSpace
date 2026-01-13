@@ -183,7 +183,7 @@ footer p {
     top: 0;
     left: -100%;
     width: 80%;
-    min-width: 350px;
+    min-width: 21.875em;
     height: 100vh;
     background-color: var(--BgColor);
     border-radius: 0 1em 1em 0;
@@ -250,7 +250,7 @@ li.categoria > div {
 }
 
 #categorie ul {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
 }
 
 #esplora-content {
@@ -302,7 +302,7 @@ li.categoria > div {
 
 #preferiti, #salvato {
     display: block;
-    width: 90px;
+    width: 5.625em;
 }
 
 #preferiti::after, #salvato::after {
@@ -312,11 +312,11 @@ li.categoria > div {
 #carosello {
     margin: 0 auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 31.25em;
 }
 
 .carosello-principale {
-    width: clamp(250px, 90%, 450px); 
+    width: clamp(15.625em, 90%, 28.125em); 
     aspect-ratio: 4 / 3;             
     overflow: hidden;
     border-radius: 1em;
@@ -343,8 +343,8 @@ li.categoria > div {
 }
 
 .carosello-thumbnails img {
-    width: 40px;
-    height: 40px;
+    width: 2.5em;
+    height: 2.5em;
 }
 
 #descrizioneAnnuncio {
@@ -408,7 +408,7 @@ li.categoria > div {
 }
 
 #dati-pers-container {
-    min-width: 220px;
+    min-width: 13.75em;
 }
 
 .profilo-grid {

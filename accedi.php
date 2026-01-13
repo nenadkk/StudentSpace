@@ -60,7 +60,7 @@ if(isset($_POST['submit'])) {
                     exit;
                 }
 
-                header("Location: index.php");
+                header("Location: profilo.php");
                 exit;
             } else {
                 $testoErrori =
