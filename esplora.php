@@ -155,8 +155,6 @@ $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : 
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[oggi]", $oggi, $htmlPage);
 
-$htmlPage = str_replace("[Logger]", $query, $htmlPage);
-
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("esplora"), $htmlPage);

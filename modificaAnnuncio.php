@@ -22,7 +22,6 @@ if (!Tool::isLoggedIn()) {
     $idUtente = $_SESSION["user_id"];
 }
 
-$logger = "";
 $annuncio = ""; 
 $attr = "";
 $listaAttr = "";
@@ -110,222 +109,183 @@ switch ($annuncio["Categoria"]) {
         break;
 }
 
-$immagini = [];
+$numMessaggiErrore = 0;
 $erroriImmagini = [];
 $erroreCitta = "";
-$numMessaggiErrore= 0;
+$logger = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+
+    // --- PULIZIA INPUT ---
     $titolo = Tool::pulisciInput($_POST['titolo'] ?? '');
     $categoria = Tool::pulisciInput($_POST['categoria-campi'] ?? '');
-    $citta = Tool::pulisciInput($_POST['citta'] ?? ''); // da prendere l'id
+    $citta = Tool::pulisciInput($_POST['citta'] ?? '');
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
 
+    
+
+    // --- VALIDAZIONI GENERALI ---
     if ($titolo === "") {
-        $errorMessageTitolo = "
-        <ul class='riquadro-spieg messaggi-errore-form'>
-            <li class='msgErrore' id='errore-titolo' role='alert'>Il titolo è obbligatorio.</li>
-        </ul>";
+        $errorMessageTitolo = Tool::erroreCampo("Il titolo è obbligatorio.", "errore-titolo");
         $numMessaggiErrore++;
-    } else {
-        $errorMessageTitolo = "";
-    }
+    } else $errorMessageTitolo = "";
 
     if ($categoria === "") {
-        $errorMessageCategoria = "
-        <ul class='riquadro-spieg messaggi-errore-form'>
-            <li class='msgErrore' id='errore-categoria' role='alert'>La categoria è obbligatoria.</li>
-        </ul>";
+        $errorMessageCategoria = Tool::erroreCampo("La categoria è obbligatoria.", "errore-categoria");
         $numMessaggiErrore++;
-    } else {
-        $errorMessageCategoria = "";
-    }
+    } else $errorMessageCategoria = "";
 
     if ($descrizione === "") {
-        $errorMessageDescrizione = "
-        <ul class='riquadro-spieg messaggi-errore-form'>
-            <li class='msgErrore' id='errore-descrizione' role='alert'>La descrizione è obbligatoria.</li>
-        </ul>";
+        $errorMessageDescrizione = Tool::erroreCampo("La descrizione è obbligatoria.", "errore-descrizione");
         $numMessaggiErrore++;
-    } else {
-        $errorMessageDescrizione = "";
-    }
+    } else $errorMessageDescrizione = "";
 
     if (!Tool::validaCitta($citta)) {
-        $erroreCitta = "
-        <ul class='riquadro-spieg messaggi-errore-form'>
-            <li class='msgErrore' id='errore-citta' role='alert'>La città inserita non è valida.</li>
-        </ul>";
+        $erroreCitta = Tool::erroreCampo("La città inserita non è valida.", "errore-citta");
         $numMessaggiErrore++;
-    } else {
-        $erroreCitta = "";
     }
 
+    // --- AGGIORNO I CAMPI SPECIFICI (NON USO PIÙ $attr VECCHIO) ---
     switch ($categoria) {
         case 'Affitti':
-            $campiAffitti['coinquilini'] = Tool::pulisciInput($_POST['coinquilini'] ?? 0);
-            $campiAffitti['costo-mese-affitto'] = Tool::pulisciInput($_POST['costo-mese-affitto'] ?? 0);
-            $campiAffitti['indirizzo-affitto'] = Tool::pulisciInput($_POST['indirizzo-affitto'] ?? 0);
-            $campi = $campiAffitti;
+            $campi = [
+                "coinquilini" => Tool::pulisciInput($_POST['coinquilini'] ?? ''),
+                "costo-mese-affitto" => Tool::pulisciInput($_POST['costo-mese-affitto'] ?? ''),
+                "indirizzo-affitto" => Tool::pulisciInput($_POST['indirizzo-affitto'] ?? '')
+            ];
             break;
+
         case 'Esperimenti':
-            $campiEsperimenti['laboratorio'] = Tool::pulisciInput($_POST['laboratorio'] ?? 0);
-            $campiEsperimenti['esperimento-durata'] = Tool::pulisciInput($_POST['esperimento-durata'] ?? 0);
-            $campiEsperimenti['esperimento-compenso'] = Tool::pulisciInput($_POST['esperimento-compenso'] ?? 0);
-            $campi = $campiEsperimenti;
+            $campi = [
+                "laboratorio" => Tool::pulisciInput($_POST['laboratorio'] ?? ''),
+                "esperimento-durata" => Tool::pulisciInput($_POST['esperimento-durata'] ?? ''),
+                "esperimento-compenso" => Tool::pulisciInput($_POST['esperimento-compenso'] ?? '')
+            ];
             break;
+
         case 'Eventi':
-            $campiEventi['data-evento'] = Tool::pulisciInput($_POST['data-evento'] ?? 0);
-            $campiEventi['costo-evento'] = Tool::pulisciInput($_POST['costo-evento'] ?? 0);
-            $campiEventi['luogo-evento'] = Tool::pulisciInput($_POST['luogo-evento'] ?? 0);
-            $campi = $campiEventi;
+            $campi = [
+                "data-evento" => Tool::pulisciInput($_POST['data-evento'] ?? ''),
+                "costo-evento" => Tool::pulisciInput($_POST['costo-evento'] ?? ''),
+                "luogo-evento" => Tool::pulisciInput($_POST['luogo-evento'] ?? '')
+            ];
             break;
+
         case 'Ripetizioni':
-            $campiRipetizioni['materia'] = Tool::pulisciInput($_POST['materia'] ?? 0);
-            $campiRipetizioni['livello'] = Tool::pulisciInput($_POST['livello'] ?? 0);
-            $campiRipetizioni['prezzo-ripetizioni'] = Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? 0);
-            $campi = $campiRipetizioni;
-            break;
-        default:
+            $campi = [
+                "materia" => Tool::pulisciInput($_POST['materia'] ?? ''),
+                "livello" => Tool::pulisciInput($_POST['livello'] ?? ''),
+                "prezzo-ripetizioni" => Tool::pulisciInput($_POST['prezzo-ripetizioni'] ?? '')
+            ];
             break;
     }
 
     // --- Gestione immagini ---
-    // Recupero le immagini già presenti
+    // --- RECUPERO IMMAGINI VECCHIE ---
     if ($db->openDBConnection()) {
         $immaginiVecchie = $db->getImmagini($idAnnuncio);
         $db->closeConnection();
-    } else {
-        Tool::renderError(500);
-    }
+    } else Tool::renderError(500);
 
-    // Array che conterrà le nuove immagini (se caricate)
+    // Normalizzo il formato delle immagini vecchie
+    $immaginiVecchie = array_map(function($img) {
+        return [
+            'file'       => $img['Percorso'] ?? null,
+            'alt'        => $img['AltText'] ?? null,
+            'decorativa' => (int)($img['Decorativa'] ?? 0),
+            'ordine'     => (int)($img['Ordine'] ?? 0)
+        ];
+    }, $immaginiVecchie);
+
     $immaginiNuove = [];
 
     for ($i = 1; $i <= 4; $i++) {
+
         $fileKey = 'foto'.$i;
         $altKey = 'alt'.$i;
         $decKey = 'decorativa'.$i;
 
-        // Nessun file caricato → passo al prossimo
         if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
             continue;
         }
 
         $file = $_FILES[$fileKey];
 
-        // Errore generico upload
         if ($file['error'] !== UPLOAD_ERR_OK) {
             $erroriImmagini[] = "Errore nel caricamento dell'immagine $i.";
             $numMessaggiErrore++;
             continue;
         }
 
-        // Dimensione massima 1MB 
-        if ($file['size'] > 1 * 1024 * 1024) { 
-            $erroriImmagini[] = "L'immagine $i supera la dimensione massima di 1MB.";
+        if ($file['size'] > 1 * 1024 * 1024) {
+            $erroriImmagini[] = "L'immagine $i supera 1MB.";
             $numMessaggiErrore++;
-            continue; 
+            continue;
         }
 
-        // MIME consentiti
-        $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp']; 
-        if (!in_array($file['type'], $mimeConsentiti)) { 
-            $erroriImmagini[] = "Formato non valido per l'immagine $i (consentiti JPG, PNG, WEBP).";
+        $mimeConsentiti = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!in_array($file['type'], $mimeConsentiti)) {
+            $erroriImmagini[] = "Formato non valido per l'immagine $i.";
             $numMessaggiErrore++;
             continue;
         }
 
         $isDecorativa = isset($_POST[$decKey]);
-        $altText = null;
+        $altText = $isDecorativa ? null : Tool::pulisciInput($_POST[$altKey] ?? '');
 
-        if (!$isDecorativa) {
-            $altText = Tool::pulisciInput($_POST[$altKey] ?? '');
-            if ($altText === '') { 
-                $erroriImmagini[] = "L'immagine $i richiede un testo alternativo oppure la selezione di “Decorativa”.";
-                $numMessaggiErrore++;
-                continue;
-            }
+        if (!$isDecorativa && $altText === '') {
+            $erroriImmagini[] = "L'immagine $i richiede un testo alternativo.";
+            $numMessaggiErrore++;
+            continue;
         }
 
-        // Salvataggio file
         $estensione = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $nomeFile = uniqid('img_') . '.' . $estensione;
-        move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $nomeFile);
+        $percorso = uniqid('img_') . '.' . $estensione;
+        move_uploaded_file($file['tmp_name'], __DIR__ . '/img_annunci/' . $percorso);
 
         $immaginiNuove[] = [
-            'file'       => $nomeFile,
-            'alt'        => $altText,
+            'file' => $percorso,
+            'alt' => $altText,
             'decorativa' => (int)$isDecorativa,
-            'ordine'     => $i
+            'ordine' => $i
         ];
     }
 
-    // Se NON ho caricato nuove immagini → tengo le vecchie
-    if (empty($immaginiNuove)) {
-        $immagini = $immaginiVecchie;
-    } else {
-        $immagini = $immaginiNuove;
-    }
+    // Se non ho caricato nuove immagini → tengo le vecchie
+    $immagini = empty($immaginiNuove) ? $immaginiVecchie : $immaginiNuove;
 
 
-    if ($numMessaggiErrore==0) {
+        if ($numMessaggiErrore == 0) {
+
         if ($db->openDBConnection()) {
+
             $idCitta = $db->getIdCitta($citta);
-            $stmt = $db->modificaAnnuncio($idAnnuncio, $titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
+
+            $stmt = $db->modificaAnnuncio(
+                $idAnnuncio,
+                $titolo,
+                $descrizione,
+                $categoria,
+                $idUtente,
+                $idCitta,
+                $campi,
+                $immagini
+            );
+
             $db->closeConnection();
 
-            if($stmt) {
-                header("Location: annuncio.php?id=". $idAnnuncio);
+            if ($stmt) {
+                header("Location: annuncio.php?id=".$idAnnuncio);
                 exit;
             } else {
-                $logger = "UPDATE Annuncio SET Titolo = $titolo, Descrizione = $descrizione, Citta = $idCitta WHERE IdAnnuncio = $idAnnuncio";
-                switch ($categoria) {
-                    case 'Affitti':
-                        $campo1 = $attr["PrezzoMensile"]; $campo2 = $attr["Indirizzo"]; $campo3 = $attr["NumeroInquilini"];
-                        $logger = $logger.
-                            "UPDATE AnnuncioAffitti
-                            SET PrezzoMensile = $campo1, Indirizzo = $campo2, NumeroInquilini = $campo3
-                            WHERE IdAnnuncio = $idAnnuncio"
-                        ;
-                        break;
-
-                    case 'Esperimenti':
-                        $campo1 = $attr["Laboratorio"]; $campo2 = $attr["DurataPrevista"]; $campo3 = $attr["Compenso"];
-                        $logger = $logger.
-                            "UPDATE AnnuncioEsperimenti
-                            SET Laboratorio = $campo1, DurataPrevista = $campo2, Compenso = $campo3
-                            WHERE IdAnnuncio = $idAnnuncio"
-                        ;
-                        break;
-
-                    case 'Eventi':
-                        $campo1 = $attr["DataEvento"]; $campo2 = $attr["CostoEntrata"]; $campo3 = $attr["Luogo"];
-                        $logger = $logger.
-                            "UPDATE AnnuncioEventi
-                            SET DataEvento = $campo1, CostoEntrata = $campo2, Luogo = $campo3
-                            WHERE IdAnnuncio = $idAnnuncio"
-                        ;
-                        break;
-
-                    case 'Ripetizioni':
-                        $campo1 = $attr["Materia"]; $campo2 = $attr["Livello"]; $campo3 = attr["PrezzoOrario"];
-                        $logger = $logger.
-                            "UPDATE AnnuncioRipetizioni
-                            SET Materia = $campo1, Livello = $campo2, PrezzoOrario = $campo3
-                            WHERE IdAnnuncio = $idAnnuncio"
-                        ;
-                        break;
-
-                    default:
-                        $logger = $logger." Categoria Inesistente";
-                }
+                $logger = "<p>Errore durante l'aggiornamento dell'annuncio.</p>";
             }
-        } else {
-            Tool::renderError(500);
-        }
+
+        } else Tool::renderError(500);
     }
 }
+
+
 
 $htmlPage = file_get_contents(__DIR__ . '/pages/modificaAnnuncio.html');
 
@@ -345,7 +305,6 @@ foreach ($campi as $key => $value) {
 }
 
 $htmlPage = str_replace("[IdAnnuncio]", $idAnnuncio, $htmlPage);
-$htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 
 if (!empty($erroriImmagini)) {
     $testoErrori = "Si sono verificati errori nelle immagini. Reinseriscile e correggi quanto segue: ";
@@ -368,6 +327,8 @@ $htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlP
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
+
+$htmlPage = str_replace("[Logger]", $logger, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("modifica"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("modifica"), $htmlPage);
