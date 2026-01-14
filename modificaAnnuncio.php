@@ -291,7 +291,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         break;
 
                     case 'Esperimenti':
-                        $campo1 = $attr["Laboratorio"]; $campo2 = $attr["DurataPrevista"]; $campo3 = attr["Compenso"];
+                        $campo1 = $attr["Laboratorio"]; $campo2 = $attr["DurataPrevista"]; $campo3 = $attr["Compenso"];
                         $logger = $logger.
                             "UPDATE AnnuncioEsperimenti
                             SET Laboratorio = $campo1, DurataPrevista = $campo2, Compenso = $campo3
