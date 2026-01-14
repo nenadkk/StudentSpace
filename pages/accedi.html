@@ -59,7 +59,7 @@
                 <div class="form-data">
                     <div class="form-div">
                         <label for="email" ><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        <input type="text" id="email" name="email" aria-describedby="errore-login" value="[EmailValue]" autocomplete="email" required >
+                        <input type="email" id="email" name="email" aria-describedby="errore-login" value="[EmailValue]" autocomplete="email" required >
                     </div>
 
                     <div class="form-div">
@@ -74,7 +74,10 @@
                 </div>
                 <input type="hidden" name="redirect" value="[RedirectValue]">
                 <button class="btn-base" type="submit" id="submit" name="submit">Accedi</button>
-                <p>Non hai un account? <a class="link" href="registrati.php">Registrati qui</a></p>
+                <div class="paragraph-link-container">
+                    <p>Non hai un account?</p>
+                    <a class="link" href="registrati.php">Registrati qui</a>
+                </div>
             </form>
         </div>
         

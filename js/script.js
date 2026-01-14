@@ -275,7 +275,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Focus sul primo errore server-side
         const primoErrore = form.querySelector(".msgErrore");
-        if (primoErrore) primoErrore.focus();
+
+        // Se il primo errore NON è quello globale → focus
+        if (primoErrore && !primoErrore.closest("#errore-immagini-globali")) {
+            primoErrore.focus();
+        }
+
+        const erroreGlobale = document.querySelector("#errore-immagini-globali .msgErrore");
+        const erroreCampo = form.querySelector(".msgErrore[role='alert']:not(#errore-immagini-globali .msgErrore)");
+
+        if (erroreGlobale && !erroreCampo) {
+            const primoFile = document.querySelector("#foto1");
+            if (primoFile) primoFile.focus();
+        }
 
         const campi = form.querySelectorAll("input, select, textarea");
 
