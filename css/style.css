@@ -340,6 +340,7 @@ li.categoria > div {
     border-radius: var(--radius-base);
     font-weight: bold;
     transition: var(--btn-trans);
+    text-align: center;
 }
 
 .btn-base:hover, .btn-base:focus{
@@ -441,8 +442,10 @@ button {
     border-left: 4px solid var(--altContr);
 }
 
-#profilo .alt-spiegazione {
+.box-saluto {
+    background-color: var(--hoverCat);
     box-shadow: var(--shadow-base);
+    color: var(--txtNavColor);
 }
 
 /* ------------- estensione per .messaggi-errore-form ------------- */
@@ -1249,7 +1252,7 @@ footer p{
     text-decoration: none;
 }
 
-input, select {
+input:not([type="checkbox"]), select {
     border-radius: var(--radius-base);
     min-height: 4em;
     text-indent: 1em;
@@ -1395,8 +1398,12 @@ form > p, form > p{
 }
 
 #dati-pers-container {
-    gap: var(--gap-2);
+    gap: var(--gap-1-5);
     margin: 0 auto;
+}
+
+#dati-personali dt::after{
+    content:":";
 }
 
 .profilo-grid {
@@ -1416,8 +1423,15 @@ form > p, form > p{
     box-shadow: var(--shadow-base);
 }
 
-#annunciPubbl {
-    padding-top: 0;
+.profilo-pubblico div {
+    background-color: var(--formbg);
+    padding: 1em 1.2em;
+    border-radius: var(--radius-base);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-0-5);
+    width: 100%;
+    box-shadow: var(--shadow-base);
 }
 
 /*
