@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Profilo Pubblico - Student Space</title>
+
+    <meta charset="utf-8">
+
+    <meta name="description" content="Pagina del profilo di un utente di StudentSpace contenente solo le info pubbliche a tutti gli altri utenti."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="keywords" content="profilo, dati, Student Space,">
+
+    <meta name="author" content="StudentSpaceTeam">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="assets/logo_no_scritta.webp" type="image/x-icon">
+
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header id="intestazione">
+        <a href="#contenuto" class="aiuti">Salta al contenuto</a>
+        <h1 id="logo-link" lang="en">
+            <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
+        </h1>
+
+        <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
+            <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
+            <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
+        </button>
+
+        [TopNavBar]
+    </header>
+
+    <div id="content-container">
+    <nav id="breadcrumb" aria-label="Percorso di navigazione">
+        <ol>
+            <li lang="en"><a href="index.php">Home</a></li>
+            <li aria-current="page" class="currentPage"><span aria-hidden="true">»</span> Profilo</li>
+        </ol>
+    </nav>
+    <main id="contenuto">
+        <div id="profilo" class="section-column">
+        
+        <section id="dati-personali">
+            <div id="dati-pers-container" class="form-container form-container-large">
+            <h2>Profilo</h2>
+            <dl class="profilo-grid">
+                <div>
+                    <dt>Email</dt>
+                    <dd>[Email]</dd>
+                </div>
+            </dl>
+            </div>
+        </section>
+        <section id="annunciPubbl" class="carte-section section-column">
+            <div class="titolo-num-risultati">
+                <h2>Annunci pubblicati da te</h2>
+                <p class="num-risultati">Numero annunci pubblicati: [NumPubblicati] annunci</p>
+            </div>
+            <ul>
+                [Cards]
+            </ul>
+        </section>
+        </div>
+    </main>
+    <a href="#contenuto" id="freccia-su" aria-label="Torna all'inizio del contenuto">
+        <img src="assets/freccia.webp" alt="">
+    </a>
+    <footer>
+        <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
+        <img src="assets/logo_no_scritta.webp" alt="" class="logo-footer">
+        [BottomNavBar]
+        <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+    </footer>
+    </div>
+</body>
+</html>
