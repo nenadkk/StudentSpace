@@ -88,6 +88,8 @@ if ($db->openDBConnection()) {
     if (Tool::isLoggedIn()) { 
         $isPreferito = $db->isPreferito($idAnnuncio, $_SESSION["user_id"]); 
     }
+    
+    $publisher = $db->getUtente($annuncio["IdUtente"]);
 
     $db->closeConnection();
 } else {
@@ -162,6 +164,9 @@ $htmlPage = str_replace("[DtAttr2]", $listaAttr[1][0], $htmlPage);
 $htmlPage = str_replace("[DdAttr2]", $listaAttr[1][1], $htmlPage); 
 $htmlPage = str_replace("[DtAttr3]", $listaAttr[2][0], $htmlPage); 
 $htmlPage = str_replace("[DdAttr3]", $listaAttr[2][1], $htmlPage); 
+
+$htmlPage = str_replace("[profPubblico]", $publisher["Email"], $htmlPage); 
+$htmlPage = str_replace("[autore]", $publisher["IdUtente"], $htmlPage); 
 
 $htmlPage = str_replace("[CaroselloPrincipale]", $caroselloPrincipale, $htmlPage);
 $htmlPage = str_replace("[CaroselloThumbnails]", $caroselloThumbnails, $htmlPage);

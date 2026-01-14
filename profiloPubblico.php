@@ -8,8 +8,11 @@ $db = new DB\DBAccess();
 
 $htmlPage = file_get_contents("pages/profiloPubblico.html");
 
-$idUtente = $_SESSION["user_id"];
-$infoUtente = "";
+if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
+    $idUtente = intval($_GET["id"]); 
+} else { 
+    Tool::renderError(404);
+}
 $annunciUtente = "";
 $emailUtente = "";
 $numPubblicati = "";
@@ -40,6 +43,7 @@ if($db->openDBConnection()) {
 
 $htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
+$htmlPage = str_replace("[NumPubblicati]", $numPubblicati, $htmlPage);
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("profilo"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("profilo"), $htmlPage);
 
