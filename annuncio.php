@@ -80,10 +80,7 @@ if ($db->openDBConnection()) {
         Tool::renderError(404);
     }
 
-    $annuncio = $annuncio[0];
-
     $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
-    $attr = $attr[0];
     $listaAttr = Tool::mappaAttributi($annuncio["Categoria"], $attr);
 
     $immagini = $db->getImmagini($idAnnuncio);

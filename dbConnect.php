@@ -591,6 +591,11 @@ class DBAccess {
             }
             $queryResult->free();
         }
+// Source - https://stackoverflow.com/a
+// Posted by Ibrahim Azhar Armar, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-01-14, License - CC BY-SA 4.0
+
+        $results = $results[0];
 
         return $results;
 	}
@@ -627,6 +632,7 @@ class DBAccess {
 
             $queryResult->free();
         }
+        $results = $results[0];
 
         return $results;
     }

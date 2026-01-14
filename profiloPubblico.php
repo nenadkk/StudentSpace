@@ -8,11 +8,6 @@ $db = new DB\DBAccess();
 
 $htmlPage = file_get_contents("pages/profiloPubblico.html");
 
-if (!Tool::isLoggedIn()) {
-    header("Location: accedi.php?redirect=profiloPubblico.php");
-    exit;
-}
-
 $idUtente = $_SESSION["user_id"];
 $infoUtente = "";
 $annunciUtente = "";
@@ -43,9 +38,7 @@ if($db->openDBConnection()) {
     Tool::renderError(500);
 }
 
-$htmlPage = str_replace("[IdUtente]", $idUtente, $htmlPage);
 $htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
-$htmlPage = str_replace("[NumPubblicati]", $numPubblicati, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("profilo"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("profilo"), $htmlPage);
