@@ -6,7 +6,7 @@ require_once "tool.php";
 use DB\DBAccess;
 $db = new DBAccess();
 
-$htmlPage = file_get_contents("pages/esplora.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/esplora.html");
 
 $categoria = "";
 $query = "";
@@ -102,8 +102,8 @@ if(isset($_GET['submit']))
     } else {
         $cards = '<li class="centered">
                         <p>Nessun annuncio corrisponde alla tua ricerca.</p>
-                        <a class="link btn-base call-to-action" href="esplora.php">Esplora le proposte</a>
-                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        <a class="link btn-base call-to-action" href="esplora">Esplora le proposte</a>
+                        <a class="link btn-base call-to-action" href="pubblica">Pubblica un annuncio</a>
                     </li>';
         $numRisultati = 0;
     }
@@ -122,7 +122,7 @@ if(isset($_GET['submit']))
     } else {
         $cards = '<li class="centered">
                         <p>Nessun annuncio.</p>
-                        <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                        <a class="link btn-base call-to-action" href="pubblica">Pubblica un annuncio</a>
                     </li>';
         $numRisultati = 0;
     }
@@ -154,8 +154,6 @@ $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'se
 $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[oggi]", $oggi, $htmlPage);
-
-$htmlPage = str_replace("[Logger]", $query, $htmlPage);
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 

@@ -6,7 +6,7 @@ require_once "tool.php";
 use DB\DBAccess;
 $db = new DBAccess();
 
-$htmlPage = file_get_contents('pages/registrati.html');
+$htmlPage = file_get_contents(__DIR__ . '/pages/registrati.html');
 
 // --- Variabili iniziali ---
 $nome = '';
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!Tool::validaCitta($citta)) {
-        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida.";
+        $messaggiErrore['[errore-citta]'][] = "La città inserita non è valida, seleziona una città dall’elenco.";
         $numMsgErrore++;
     }
     if(Tool::contieneTagHtml($citta)){
@@ -156,7 +156,7 @@ if(isset($_POST['submit'])) {
             {
                 $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
                 foreach ($arrayErrori as $err) {
-                    $msgErrore .= "<li class='msgErrore' tabindex='0'>$err</li>";
+                    $msgErrore .= "<li class='msgErrore' role='alert'>$err</li>";
                 }
                 $msgErrore .= "</ul>";
                 $htmlPage = str_replace($placeHolder, $msgErrore, $htmlPage);

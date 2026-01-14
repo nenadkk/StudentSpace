@@ -269,39 +269,57 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
     initDeleteConfirmation();
 
+    // --- VALIDAZIONE SOLO PER I FORM CON data-validate ---
     const form = document.querySelector("form[data-validate]");
-    if (!form) return;
+    if (form) {
 
-    // Focus sul primo errore server-side
-    const primoErrore = form.querySelector(".msgErrore");
-    if (primoErrore) primoErrore.focus();
+        // Focus sul primo errore server-side
+        const primoErrore = form.querySelector(".msgErrore");
 
-    const campi = form.querySelectorAll("input, select, textarea");
+        // Se il primo errore NON è quello globale → focus
+        if (primoErrore && !primoErrore.closest("#errore-immagini-globali")) {
+            primoErrore.focus();
+        }
 
-    // Validazione immediata
-    campi.forEach(campo => {
-        campo.addEventListener("blur", function () {
-            validazioneCampo(campo);
-        });
-    });
+        const erroreGlobale = document.querySelector("#errore-immagini-globali .msgErrore");
+        const erroreCampo = form.querySelector(".msgErrore[role='alert']:not(#errore-immagini-globali .msgErrore)");
 
-    // Validazione completa al submit
-    form.addEventListener("submit", function(e) {
-        let tuttoOk = true;
+        if (erroreGlobale && !erroreCampo) {
+            const primoFile = document.querySelector("#foto1");
+            if (primoFile) primoFile.focus();
+        }
+
+        const campi = form.querySelectorAll("input, select, textarea");
 
         campi.forEach(campo => {
-            const valido = validazioneCampo(campo);
-            if (!valido) tuttoOk = false;
+            campo.addEventListener("blur", function () {
+                validazioneCampo(campo);
+            });
         });
 
-        if (!tuttoOk) {
-            e.preventDefault();
-            const primo = form.querySelector(".msgErrore");
-            if (primo) primo.previousElementSibling.focus(); // focus sul campo
-        }
-    });
-});
+        form.addEventListener("submit", function(e) {
+            let tuttoOk = true;
 
+            campi.forEach(campo => {
+                const valido = validazioneCampo(campo);
+                if (!valido) tuttoOk = false;
+            });
+
+            if (!tuttoOk) {
+                e.preventDefault();
+                const primo = form.querySelector(".msgErrore");
+                if (primo) primo.previousElementSibling.focus();
+            }
+        });
+    }
+
+    // --- FOCUS SPECIFICO PER LOGIN (senza validazione JS) ---
+    const erroreLogin = document.querySelector("#errore-login");
+    if (erroreLogin) {
+        const campoEmail = document.querySelector("#email");
+        if (campoEmail) campoEmail.focus();
+    }
+});
 
 // ------------------------------------------------------
 // FUNZIONE DI VALIDAZIONE (VERSIONE PROF)
@@ -345,7 +363,7 @@ function validazioneCampo(campo) {
                 }
             }
 
-            if (!trovata) messaggio = "Seleziona una città dall’elenco.";
+            if (!trovata) messaggio = "La città inserita non è valida, seleziona una città dall’elenco.";
             break;
 
         case "email":

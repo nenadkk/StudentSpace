@@ -5,7 +5,7 @@ require_once "tool.php";
 if (Tool::isLoggedIn()) {
     Tool::endUserSession();
 }
-header("Location: /index");
+header("Location: index");
 exit;
 
 ?>

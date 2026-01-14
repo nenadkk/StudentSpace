@@ -24,6 +24,12 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 
 * da <dt> e <dd> a <h4> in titolo nelle card --> come in index.html
 
+* in css in has() --> su can i use: Newly available across major browsers
+
+* con js disabilitato comunque i messaggi di errore hanno role allert quindi vengono elencati appena si carica la pagina post submit
+
+* sono stati selezionati i type (es.search, email, password) appropriati per gli input in html per migliorare l'usabilità e l'esperienza utente ma ovviamente tutto è validato oltre che nell'immediato via jave che lato server --> Usare i controlli HTML5 per la validazione base e aggiungere solo il minimo JS per messaggi chiari e regole di business, mantenendo sempre la validazione lato server.
+
 \section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
 
 Nel progetto è stato implementato un sistema di validazione client-side avanzato, progettato per migliorare l’accessibilità e l’esperienza utente nei form più complessi (registrazione, pubblicazione e modifica annuncio). 

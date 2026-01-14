@@ -13,6 +13,8 @@ if (!Tool::isLoggedIn()) {
     exit;
 }
 
+$htmlPage = file_get_contents(__DIR__ . "/pages/profilo.html");
+
 $idUtente = $_SESSION["user_id"];
 $infoUtente = "";
 $annunciUtente = "";
@@ -39,7 +41,7 @@ if($db->openDBConnection()) {
             $cardsPreferiti = '<li class="centered">
                         <p>Nessun annuncio tra i preferiti.</p>
                         <div class="azioni">
-                            <a class="link btn-base call-to-action" href="esplora.php">Esplora gli annunci</a>
+                            <a class="link btn-base call-to-action" href="esplora">Esplora gli annunci</a>
                         </div>
                     </li>';
             $numPreferiti = 0;
@@ -53,7 +55,7 @@ if($db->openDBConnection()) {
             $cards = '<li class="centered">
                         <p>Nessun annuncio pubblicato.</p>
                         <div class="azioni">
-                            <a class="link btn-base call-to-action" href="pubblica.php">Pubblica un annuncio</a>
+                            <a class="link btn-base call-to-action" href="pubblica">Pubblica un annuncio</a>
                         </div>
                     </li>';
             $numPubblicati = 0;

@@ -52,21 +52,19 @@
             [RedirectMessage]
             <h2>Accedi</h2>
             <div id="errori" aria-live="assertive">
-                [ErrorMessage]
+                [ErroreMail]
             </div>
             <form class="form-data" action="accedi.php" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
                     <div class="form-div">
                         <label for="email" ><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        [ErroreMail]
-                        <input type="text" id="email" name="email" value="[EmailValue]" autocomplete="email" required >
+                        <input type="email" id="email" name="email" aria-describedby="errore-login" value="[EmailValue]" autocomplete="email" required >
                     </div>
 
                     <div class="form-div">
                         <label for="password"><span  lang="en">Password</span><span class="required"> (richiesto)</span></label>
-                        [ErrorePassword]
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" aria-describedby="errore-login" required autocomplete="current-password">
 
                         <div class="checkbox-inline">
                             <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
@@ -76,7 +74,10 @@
                 </div>
                 <input type="hidden" name="redirect" value="[RedirectValue]">
                 <button class="btn-base" type="submit" id="submit" name="submit">Accedi</button>
-                <p>Non hai un account? <a class="link" href="registrati.php">Registrati qui</a></p>
+                <div class="paragraph-link-container">
+                    <p>Non hai un account?</p>
+                    <a class="link" href="registrati.php">Registrati qui</a>
+                </div>
             </form>
         </div>
         

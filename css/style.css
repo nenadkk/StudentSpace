@@ -12,7 +12,7 @@
 
 html, body{ 
     font-size: 100%; 
-    font-family:"Inter", "Roboto", sans-serif; 
+    font-family:"Inter", "Lexend", "Roboto", sans-serif; 
     line-height: 1.5em;
 }
 
@@ -162,6 +162,10 @@ section {
    padding: 2em 6em; 
 }
 
+#saluto {
+    padding: 0 6em;
+}
+
 .errore {
    padding: 6em; 
    padding-bottom: 8em;
@@ -197,6 +201,15 @@ section {
     flex-direction: column;
     align-items: center;
     gap: var(--gap-1);
+}
+
+.paragraph-link-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap-0-5);
+    align-items: center;
 }
 
 /*
@@ -248,7 +261,7 @@ section {
 }
 
 .categoria img {
-    width: 100px;
+    width: 6.25em;
     height: auto;
     flex-shrink: 0;
 }
@@ -305,8 +318,8 @@ li.categoria > div {
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
+    width: 2.5em;
+    height: 2.5em;
     background-image: url("../assets/puntina.webp"); 
     background-size: contain;
     background-repeat: no-repeat;
@@ -376,7 +389,7 @@ button {
 #reset-btn {
     display: block;
     width: 100%;
-    max-width: 340px; 
+    max-width: 21.25em; 
     margin: 0 auto;
     text-align: center;
     text-decoration: none;
@@ -391,7 +404,7 @@ button {
 /* ------------- estensione per #preferiti #salvato------------- */
 
 #preferiti, #salvato {
-    width: 200px;
+    width: 12.5em;
     text-decoration: none;    
 }
 
@@ -417,15 +430,19 @@ button {
     color: var(--txtcolor);
     padding: var(--padding-riq);
     border-radius: var(--radius-base);
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     padding-left: 1.5em;
 }
 
-/* ------------- estensione per #alt-spiegazione ------------- */
+/* ------------- estensione per .alt-spiegazione ------------- */
 
 .alt-spiegazione {
     background-color: var(--altSpiegazione);
     border-left: 4px solid var(--altContr);
+}
+
+#profilo .alt-spiegazione {
+    box-shadow: var(--shadow-base);
 }
 
 /* ------------- estensione per .messaggi-errore-form ------------- */
@@ -438,10 +455,11 @@ button {
     width: 100%;
 }
 
-.esempi {
+/*
+.esempi, .indicazioni {
     font-size: small;
-    padding-left: 0.5em;
 }
+*/
 /*
 ====================================================
     BASE: LINK
@@ -501,7 +519,7 @@ a:visited {
 
 /* ------------- estensione per .form-container p a ------------- */
 
-.form-container p a{
+.paragraph-link-container a{
     padding: var(--padding-base);
     font-weight: 600;
     background-color: var(--bgclearBlue);
@@ -626,11 +644,11 @@ header {
     flex: 1;
     gap: var(--gap-2);
     justify-content: center;
-    padding: 0.6em 0;
+    padding: 1em;
 }
 
 #menu .nav-links li {
-    padding: var(--padding-base); 
+    padding: 0;
     color: var(--txtNavColor);
 }
 
@@ -640,7 +658,6 @@ header {
 
 #menu .nav-auth a {
     box-shadow: var(--shadow-base);
-
 }
 
 #menu li{
@@ -649,7 +666,7 @@ header {
 
 #menu a {
     color: var(--txtNavColor);
-    padding: var(--padding-base);
+    padding: 1em;
     font-weight: 600;
 }
 
@@ -801,7 +818,7 @@ footer p{
 }
 
 #freccia-su img {
-    height: 28px;
+    height: 1.75em;
     width: auto;
 }
 
@@ -824,11 +841,11 @@ footer p{
     gap: var(--gap-2);
     margin: 0 auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 112.5em;
 }
 
 .img-text-section > img {
-    flex: 1 1 300px;  
+    flex: 1 1 18.75em;  
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -837,7 +854,7 @@ footer p{
 }
 
 .img-text-section > div {
-    flex: 1 1 300px;   
+    flex: 1 1 18.75em;   
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);
@@ -865,7 +882,7 @@ footer p{
 
 #categorie ul {
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(18.75em, 1fr));
     gap: var(--gap-2);
     list-style: none;
     padding: 0;
@@ -939,7 +956,7 @@ footer p{
 .carte-section ul, #listaCarte {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+    grid-template-columns: repeat(auto-fit, minmax(12.5em, 17.5em));
     row-gap: var(--gap-2);
     column-gap: var(--gap-1);
     list-style: none;
@@ -962,12 +979,12 @@ footer p{
 }
 
 #aside-style-layout{
-    flex: 0 0 340px; 
+    flex: 0 0 21.25em; 
     display: flex; 
     flex-direction: column; 
     gap: var(--gap-1);   
     width: 20%;
-    min-width: 340px;
+    min-width: 21.25em;
     margin: 1em 0 1em 1.5em;
 }
 
@@ -1012,7 +1029,7 @@ footer p{
 }
 
 .carosello-principale {
-    width: clamp(280px, 60vw, 400px);
+    width: clamp(17.5em, 60vw, 25em);
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: var(--radius-base);
@@ -1077,8 +1094,8 @@ footer p{
 }
 
 .carosello-thumbnails img {
-    width: 60px;
-    height: 60px;
+    width: 3.75em;
+    height: 3.75em;
     object-fit: cover;
     border-radius: var(--radius-0-5);
     cursor: pointer;
@@ -1115,8 +1132,8 @@ footer p{
 }
 
 #info {
-    flex: 0 1 500px; 
-    max-width: 500px;
+    flex: 0 1 31.25em; 
+    max-width:  31.25em;
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);       
@@ -1152,8 +1169,10 @@ footer p{
     gap: var(--gap-1);
     margin: 0 auto 2em;
     width: 100%;          
-    max-width: 1000px;      
-    min-height: 200px;
+    max-width: 62.5em
+
+;      
+    min-height: 12.5em;
     box-sizing: border-box; 
 }
 
@@ -1166,7 +1185,7 @@ footer p{
 }
 
 #azioni-annuncio button {
-    min-width: 200px;
+    min-width: 12.5em;
     width: 100%;
 }
 
@@ -1203,15 +1222,15 @@ footer p{
     margin-top: 0.5em;
 }
 
-#login-container .form-data, #filtri .form-data fieldset {
+#login-container .form-data, #filtri .form-data fieldset, #register-container .form-data {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);               
 }
 
-#register-container .form-data {
+#register-container .form-data-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
     column-gap: var(--gap-2); 
     row-gap: var(--gap-1);
 }
@@ -1275,7 +1294,6 @@ input[type="file"] {
 
 #criteriMinimiPassword {
     text-align: left;
-    margin-top: 1.5em;
 }
 
 #criteriMinimiPassword ul {
@@ -1363,6 +1381,15 @@ form > p, form > p{
 ==================================================== 
 */
 
+#saluto h2 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.nome-utente {
+    font-weight: 700;
+}
+
 #dati-personali {
     padding: 0;
 }
@@ -1374,7 +1401,7 @@ form > p, form > p{
 
 .profilo-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(12.5em, 1fr));
     gap: var(--gap-1-5);
 }
 
@@ -1385,7 +1412,7 @@ form > p, form > p{
     display: flex;
     flex-direction: column;
     gap: var(--gap-0-5);
-    min-width: 200px; 
+    min-width: 12.5em; 
     box-shadow: var(--shadow-base);
 }
 

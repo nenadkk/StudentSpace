@@ -58,23 +58,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $descrizione = Tool::pulisciInput($_POST['descrizione'] ?? '');
     
     if ($titolo === "") {
-        $errorMessageTitolo = "<p class='riquadro-spieg messaggi-errore-form'>Il titolo è obbligatorio.</p>";
+        $errorMessageTitolo = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-titolo' role='alert'>Il titolo è obbligatorio.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageTitolo = "";
     }
 
     if ($categoria === "") {
-        $errorMessageCategoria = "<p class='riquadro-spieg messaggi-errore-form'>La categoria è obbligatoria.</p>";
+        $errorMessageCategoria = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-categoria' role='alert'>La categoria è obbligatoria.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageCategoria = "";
     }
 
     if ($descrizione === "") {
-        $errorMessageDescrizione = "<p class='riquadro-spieg messaggi-errore-form'>La descrizione è obbligatoria.</p>";
+        $errorMessageDescrizione = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-descrizione' role='alert'>La descrizione è obbligatoria.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $errorMessageDescrizione = "";
     }
 
     if (!Tool::validaCitta($citta)) {
-        $erroreCitta = "<p class='riquadro-spieg messaggi-errore-form'>La città inserita non è valida. </p>";
+        $erroreCitta = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-citta' role='alert'>La città inserita non è valida, seleziona una città dall’elenco.</li>
+        </ul>";
         $numMessaggiErrore++;
+    } else {
+        $erroreCitta = "";
     }
 
     for ($i = 1; $i <= 4; $i++) {
@@ -216,15 +236,17 @@ foreach ($campiRipetizioni as $key => $value) {
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
 if (!empty($erroriImmagini)) {
-    $erroreGlobaleImmagini = "<div class='riquadro-spieg messaggi-errore-form'>
-        <p class='msgErrore' tabindex='0'>
-            Si sono verificati errori nelle immagini. Reinseriscile e correggi quanto segue:
-        </p>
-        <ul>";
+    $testoErrori = "Si sono verificati errori nelle immagini. Reinseriscile e correggi quanto segue: ";
+
     foreach ($erroriImmagini as $msg) {
-        $erroreGlobaleImmagini .= "<li class='msgErrore' tabindex='0'>$msg</li>";
+        $testoErrori .= $msg . " ";
     }
-    $erroreGlobaleImmagini .= "</ul></div>";
+
+    $erroreGlobaleImmagini = "
+        <div id='errore-immagini-globali' class='riquadro-spieg messaggi-errore-form'>
+            <p class='msgErrore' role='alert'>$testoErrori</p>
+        </div>";
+
 } else {
     $erroreGlobaleImmagini = "";
 }

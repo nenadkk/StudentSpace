@@ -11,17 +11,17 @@
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="/css/style.css" media="screen">
-    <link rel="stylesheet" href="/css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
-    <link rel="stylesheet" href="/css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width:800px)"> <!--foglio di stile aggiuntivo per visualizzazione sotto 800px-->
+    <link rel="stylesheet" href="css/print.css" media="print"> <!-- questo comincia da un foglio bianco -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="/assets/logo_no_scritta.webp" type="image/x-icon">
+    <link rel="icon" href="assets/logo_no_scritta.webp" type="image/x-icon">
 
-    <script src="/js/script.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -42,19 +42,20 @@
     <div id="content-container">
         <nav id="breadcrumb" aria-label="Percorso di navigazione">
             <ol>
-                <li lang="en"><a href="/index">Home</a></li>
+                <li lang="en"><a href="index">Home</a></li>
                 <li> <span aria-hidden="true">»</span></li>
-                <li><a href="/esplora"> Esplora</a></li>
+                <li><a href="esplora"> Esplora</a></li>
                 <li> <span aria-hidden="true">»</span></li>
-                <li><a href="/annuncio/[IdAnnuncio]"> Annuncio</a></li>
+                <li><a href="annuncio?id=[IdAnnuncio]"> Annuncio</a></li>
                 <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Modifica Annuncio</li>
             </ol>
         </nav>
 
         <main id="contenuto">
             <div id="pubblica-container" class="form-container form-container-large">
-                <h2>Modifica annuncio[Logger]</h2>
-                <form action="/modificaAnnuncio.php?id=[IdAnnuncio]" method="post" enctype="multipart/form-data" data-validate="modifica">
+                <h2>Modifica annuncio</h2>
+                [Logger]
+                <form action="modificaAnnuncio.php?id=[IdAnnuncio]" method="post" enctype="multipart/form-data" data-validate="modifica">
                     <div class="form-data">
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container" class="form-div">
@@ -71,8 +72,8 @@
 
                             <div class="form-div">
                                 <label for="citta">Città (sede universitaria)<span class="required"> (richiesto)</span></label>
-                                [Errore-citta]
                                 <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona" required>
+                                [Errore-citta]
                                 <datalist id="listaCitta">
                                     [CityOptionsList]
                                 </datalist>
@@ -156,11 +157,11 @@
             
         </main>
         <a href="#contenuto" id="freccia-su" aria-label="Torna all'inizio del contenuto">
-            <img src="/assets/freccia.webp" alt="">
+            <img src="assets/freccia.webp" alt="">
         </a>
         <footer>
             <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
-            <img src="/assets/logo_no_scritta.webp" alt="" class="logo-footer" loading="lazy">
+            <img src="assets/logo_no_scritta.webp" alt="" class="logo-footer" loading="lazy">
             [BottomNavBar]
             <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
     </footer>

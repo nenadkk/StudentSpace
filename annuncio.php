@@ -17,7 +17,7 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
     if (!Tool::isLoggedIn()) {
-        header("Location: /accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
+        header("Location: accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
         exit;
     }
 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
         Tool::renderError(500);
     }
 
-    header("Location: /annuncio.php?id=" . $idAnnuncio);
+    header("Location: annuncio?id=" . $idAnnuncio);
     exit;
 }
 
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::i
         }
 
         $db->closeConnection();
-        header("Location: /index.php");
+        header("Location: index");
         exit;
     } else {
         Tool::renderError(500);
@@ -101,27 +101,27 @@ $caroselloPrincipale = "";
 if (!empty($immagini)) { 
     $img = $immagini[0]; 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
-    $caroselloPrincipale = ' <img src="/img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
+    $caroselloPrincipale = ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="attiva"> '; 
 }
 
 $caroselloThumbnails = ""; 
 foreach ($immagini as $index => $img) { 
     $alt = ($img["Decorativa"] == 1) ? "" : htmlspecialchars($img["AltText"]); 
     $active = $index === 0 ? "attiva" : ""; 
-    $caroselloThumbnails .= ' <img src="/img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
+    $caroselloThumbnails .= ' <img src="img_annunci/'.$img["Percorso"].'" alt="'.$alt.'" class="miniatura '.$active.'"> '; 
 }
 
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="/accedi.php?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="accedi?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {
 
     if ($isPreferito) {
         $preferitiHTML = '
-            <form action="/annuncio/'.$idAnnuncio.'" method="POST">
+            <form action="annuncio?id='.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="rimuovi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
                 <button id="salvato" class="btn-base" aria-label="Annuncio salvato, rimuovi dai preferiti">✓</button>
@@ -129,7 +129,7 @@ if (!Tool::isLoggedIn()) {
         ';
     } else {
         $preferitiHTML = '
-            <form action="/annuncio/'.$idAnnuncio.'" method="POST">
+            <form action="annuncio?id='.$idAnnuncio.'" method="POST">
                 <input type="hidden" name="azione" value="aggiungi_preferito">
                 <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
                 <button id="preferiti" class="btn-base" aria-label="Salva nei preferiti">★</button>
@@ -142,14 +142,14 @@ $bottonRimuovi = "";
 $modButton = "";
 if(Tool::isLoggedIn() && $annuncio["IdUtente"] == $_SESSION["user_id"]){
     $bottonRimuovi = '
-        <form action="/annuncio/'.$idAnnuncio.'" method="POST" id="delete-form">
+        <form action="annuncio?id='.$idAnnuncio.'" method="POST" id="delete-form">
             <input type="hidden" name="elimina" value="rimuovi_annuncio">
             <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
             <button type="submit" class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
         </form>
     ';
     $modButton = '
-        <a href="/modificaAnnuncio/'.$idAnnuncio.'">
+        <a href="modificaAnnuncio?id='.$idAnnuncio.'">
             <button class="btn-base" title:"Modifica l\'annuncio">Modifica Annuncio</button>
         </a>
     ';
