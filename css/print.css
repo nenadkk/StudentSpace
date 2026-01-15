@@ -36,7 +36,8 @@ h3 {
 #site-map,
 #reset-btn,
 #filtri,
-#freccia-su {
+#freccia-su,
+a {
     display: none;
 }
 
@@ -353,6 +354,38 @@ footer {
 
 /*
 ====================================================
-    DA MODULARIZZARE
+    PROFILO
 ==================================================== 
 */
+
+#dati-pers-container {
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+}
+
+#dati-pers-container .profilo-grid {
+    display: block;
+}
+
+#dati-pers-container .profilo-grid > div {
+    display: block;
+    border: none;
+    padding: 0;
+    margin-bottom: 0.3cm;
+}
+
+#dati-pers-container dt {
+    display: inline;
+    font-weight: bold;
+}
+
+#dati-pers-container dt::after {
+    content: ": ";
+}
+
+#dati-pers-container dd {
+    display: inline;
+    margin: 0;
+}

@@ -124,7 +124,7 @@ class DBAccess {
 
         switch ($categoria) {
             case '':
-                $query .= "FROM Annuncio a JOIN Citta c ON a.IdCitta=c.IdCitta 
+                $query .= "FROM Annuncio a JOIN Citta c ON a.IdCitta=c.IdCitta JOIN Utente u ON a.IdUtente = u.IdUtente
                           LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
                 $query = controlloGeneraliQuery($query, $filtri); 
 
@@ -136,7 +136,7 @@ class DBAccess {
                     $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
                 }
 
-                $query .= "FROM Annuncio a JOIN AnnuncioAffitti f ON a.IdAnnuncio= f.IdAnnuncio 
+                $query .= "FROM Annuncio a JOIN AnnuncioAffitti f ON a.IdAnnuncio= f.IdAnnuncio JOIN Utente u ON a.IdUtente = u.IdUtente
                            JOIN Citta c ON a.IdCitta=c.IdCitta 
                            LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
 
@@ -169,7 +169,7 @@ class DBAccess {
                     $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
                 }
 
-                $query .= "FROM Annuncio a JOIN AnnuncioEsperimenti e ON a.IdAnnuncio= e.IdAnnuncio 
+                $query .= "FROM Annuncio a JOIN AnnuncioEsperimenti e ON a.IdAnnuncio= e.IdAnnuncio JOIN Utente u ON a.IdUtente = u.IdUtente
                            JOIN Citta c ON a.IdCitta=c.IdCitta 
                            LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
                 $query = controlloGeneraliQuery($query, $filtri); 
@@ -201,7 +201,7 @@ class DBAccess {
                     $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
                 }
 
-                $query .= "FROM Annuncio a JOIN AnnuncioEventi e ON a.IdAnnuncio= e.IdAnnuncio 
+                $query .= "FROM Annuncio a JOIN AnnuncioEventi e ON a.IdAnnuncio= e.IdAnnuncio JOIN Utente u ON a.IdUtente = u.IdUtente
                             JOIN Citta c ON a.IdCitta=c.IdCitta 
                             LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
                 $query = controlloGeneraliQuery($query, $filtri);
@@ -240,7 +240,7 @@ class DBAccess {
                     $filtri[$key] = isset($filtri[$key])? $filtri[$key] : '';
                 }
 
-                $query .= "FROM Annuncio a JOIN AnnuncioRipetizioni r ON a.IdAnnuncio= r.IdAnnuncio 
+                $query .= "FROM Annuncio a JOIN AnnuncioRipetizioni r ON a.IdAnnuncio= r.IdAnnuncio JOIN Utente u ON a.IdUtente = u.IdUtente
                            JOIN Citta c ON a.IdCitta=c.IdCitta 
                            LEFT JOIN ImmaginiAnnuncio as i ON a.IdAnnuncio = i.IdAnnuncio ";
                 $query = controlloGeneraliQuery($query,$filtri); 
@@ -275,7 +275,12 @@ class DBAccess {
         {
             if (!str_contains($query,"WHERE"))
                 $query.="WHERE ";
-            $query.= "(Titolo LIKE '%".$filtri['cerca']."%' OR Descrizione LIKE '%".$filtri['cerca']."%') AND ";
+
+            $query.= "("
+                ."Titolo LIKE '%".$filtri['cerca']."%' OR "
+                ."Descrizione LIKE '%".$filtri['cerca']."%' OR "
+                ."u.Email LIKE '%".$filtri['cerca']."%'"
+            .") AND ";
         }
     
         //Per le immagini

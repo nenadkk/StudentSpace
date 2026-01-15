@@ -11,6 +11,10 @@ section {
     padding: 2em;
 }
 
+#saluto {
+    padding: 0 0.5em;
+}
+
 .errore {
     padding: 2em 2em 4em;
 }
@@ -92,7 +96,7 @@ header {
 }
 
 #menu .nav-links{
-    gap: var(--gap-0-5);
+    gap: var(--gap-1);
     box-shadow: none;
 }
 

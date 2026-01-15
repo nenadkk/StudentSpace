@@ -104,7 +104,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!$consenso_email) {
-        $messaggiErrore['[errore-consenso-email]'][] = "Consentire la visualizzazione pubblica della mail.";
+        $messaggiErrore['[errore-consenso-email]'][] = "Devi accettare questa condizione per completare la registrazione.";
         $numMsgErrore++;
     }
 
@@ -145,7 +145,7 @@ if(isset($_POST['submit'])) {
 
             Tool::startUserSession($idutente);
 
-            header("location: index");
+            header("location: profilo");
         } else {
             Tool::renderError(500);
         }
