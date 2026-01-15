@@ -88,9 +88,9 @@
 
                 <button class="btn-base" id="toggleFiltri" aria-expanded="false" aria-controls="filtri">Filtri</button>
             </div>
-            <aside id="filtri" class="form-container">
+            <aside id="filtri" class="form-container" aria-modal="true">
                 <div class="filtri-header">
-                    <h2>Filtri</h2>
+                    <h2 tabindex="-1">Filtri</h2>
                     <button id="chiudiFiltri" type="button" aria-label="Chiudi filtri">&#9932;</button>
                 </div>    
                 <form class="form-data" action="esplora.html" method="get">
@@ -265,7 +265,7 @@
                 </form>
             </aside>
         </div>
-
+        <!-- PER NICOLA <div id="overlay-filtri" hidden></div>-->
         <main id="contenuto">
             <div id="esplora" class="section-column">
                 <div class="titolo-num-risultati">

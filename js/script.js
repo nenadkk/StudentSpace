@@ -137,6 +137,76 @@ function toggleFiltri() {
   });
 }
 
+/* PER NICOLA
+function toggleFiltriAccessibile() {
+    const toggle = document.getElementById("toggleFiltri");
+    const filtri = document.getElementById("filtri");
+    const chiudi = document.getElementById("chiudiFiltri");
+    const overlay = document.getElementById("overlay-filtri"); // <-- QUI
+
+    if (!toggle || !filtri || !chiudi || !overlay) return;
+
+    let lastFocusedElement = null;
+
+    // Apertura pannello
+    toggle.addEventListener("click", () => {
+        lastFocusedElement = document.activeElement;
+
+        filtri.classList.add("attivo");
+        overlay.classList.add("attivo"); // <-- ATTIVA OVERLAY
+        toggle.setAttribute("aria-expanded", "true");
+
+        // Focus sul titolo del pannello
+        const titolo = filtri.querySelector("h2");
+        if (titolo) titolo.focus();
+    });
+
+    // Chiusura pannello
+    function chiudiPannello() {
+        filtri.classList.remove("attivo");
+        overlay.classList.remove("attivo"); // <-- DISATTIVA OVERLAY
+        toggle.setAttribute("aria-expanded", "false");
+
+        if (lastFocusedElement) lastFocusedElement.focus();
+    }
+
+    chiudi.addEventListener("click", chiudiPannello);
+
+    // Chiusura con ESC
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && filtri.classList.contains("attivo")) {
+            chiudiPannello();
+        }
+    });
+
+    // Click sull’overlay = chiudi pannello
+    overlay.addEventListener("click", chiudiPannello); // <-- EXTRA UX PERFETTA
+
+    // Focus trap
+    filtri.addEventListener("keydown", (e) => {
+        if (e.key !== "Tab") return;
+
+        const focusable = filtri.querySelectorAll(
+            'button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+            if (document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            }
+        } else {
+            if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+}
+*/
+
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
   const filtroCategoria = document.getElementById('categoria');
@@ -262,6 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
     toggleFiltri();
+    //toggleFiltriAccessibile(); /*PER NICOLA*/
     toggleMultipleAlt();
     toggleFiltriCategoria();
     togglePubblicaCategoria();

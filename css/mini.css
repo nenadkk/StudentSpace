@@ -232,6 +232,22 @@ footer p {
     padding: 1.5em; 
 }
 
+/* PER NICOLA
+body.no-scroll {
+    overflow: hidden;
+}
+
+#overlay-filtri {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 900;
+}
+
+#overlay-filtri.attivo {
+    display: block;
+}
+*/
 /*
 ====================================================
     SEZIONE CATEGORIE

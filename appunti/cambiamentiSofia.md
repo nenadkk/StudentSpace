@@ -24,6 +24,8 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 
 * da <dt> e <dd> a <h4> in titolo nelle card --> come in index.html
 
+* in registrati gli alt hanno maxlength="100" per garantire che ci sia un'ottimizzazione delle tempistiche per la conclusione di una task da parte di una persona con disabilità visiva
+
 * in css in has() --> su can i use: Newly available across major browsers
 
 * con js disabilitato comunque i messaggi di errore hanno role allert quindi vengono elencati appena si carica la pagina post submit
