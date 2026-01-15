@@ -28,7 +28,7 @@
     <header id="intestazione">
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
         <h1 id="logo-link" lang="en">
-            <a href="index.php" aria-label="Vai alla home di Student Space">Student Space</a>
+            <a href="index" aria-label="Vai alla home di Student Space">Student Space</a>
         </h1>
 
         <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
@@ -42,7 +42,7 @@
     <div id="content-container">
     <nav id="breadcrumb" aria-label="Percorso di navigazione">
         <ol>
-            <li lang="en"><a href="index.php">Home</a></li>
+            <li lang="en"><a href="index">Home</a></li>
             <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Registrati</li>
         </ol>
     </nav>
@@ -127,17 +127,17 @@
                         </ul>
                     </div>
 
-                     <p class="riquadro-spieg alt-spiegazione"><strong>Nota:</strong> L’indirizzo email inserito verrà mostrato nel tuo profilo pubblico e potrà essere utilizzato dagli altri utenti per contattarti.</p>
+                    <p class="riquadro-spieg alt-spiegazione"><strong>Nota:</strong> L’indirizzo email inserito verrà mostrato nel tuo profilo pubblico e potrà essere utilizzato dagli altri utenti per contattarti.</p>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="consenso-email" required>
+                        <input type="checkbox" name="consenso-email">
                         Accetto che il mio indirizzo email sia visibile nel profilo pubblico e possa essere usato per contattarmi.
                     </label>
-                    [Errore-consenso-email]
+                    [errore-consenso-email]
 
                     <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
                     <div class="paragraph-link-container">
                         <p>Hai già un account?</p>
-                        <a class="link" href="accedi.php">Accedi</a>
+                        <a class="link" href="accedi">Accedi</a>
                     </div>
                 </div>
             </form>

@@ -28,6 +28,7 @@ $messaggiErrore = array(
     "[errore-email]" => array(),
     "[errore-password]" => array(),
     "[errore-conferma-password]" => array(),
+    "[errore-consenso-email]"=> array(),
 );
 
 // --- Inserimento lista città nel datalist ---
@@ -49,6 +50,7 @@ if(isset($_POST['submit'])) {
     $email = Tool::pulisciInput($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $conferma_password = $_POST['confermaPassword'] ?? '';
+    $consenso_email = isset($_POST['consenso-email']) ? true : false;
 
     /* -----------------------------------
      * VALIDAZIONE DEI CAMPI
@@ -101,6 +103,11 @@ if(isset($_POST['submit'])) {
         $numMsgErrore++;
     }
 
+    if (!$consenso_email) {
+        $messaggiErrore['[errore-consenso-email]'][] = "Consentire la visualizzazione pubblica della mail.";
+        $numMsgErrore++;
+    }
+
     //controllo se esiste già un utente con questa email
     $db->openDBConnection();
     $result = $db->getIdUtente($email);
@@ -138,7 +145,7 @@ if(isset($_POST['submit'])) {
 
             Tool::startUserSession($idutente);
 
-            header("location: index.php");
+            header("location: index");
         } else {
             Tool::renderError(500);
         }
