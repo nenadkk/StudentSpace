@@ -457,6 +457,9 @@ function validazioneCampo(campo) {
             const pass = document.getElementById("password").value.trim();
             if (valore !== pass) messaggio = "Le password non coincidono.";
             break;
+        case "consenso-email":
+            if (!campo.checked) messaggio = "Per registrarti devi acconsentire all'uso pubblico dell'email";
+            break;
     }
 
     // Se c'è un errore

@@ -104,7 +104,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!$consenso_email) {
-        $messaggiErrore['[errore-consenso-email]'][] = "Devi accettare questa condizione per completare la registrazione.";
+        $messaggiErrore['[errore-consenso-email]'][] = "Per registrarti devi acconsentire all'uso pubblico dell'email";
         $numMsgErrore++;
     }
 
