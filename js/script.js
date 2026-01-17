@@ -327,7 +327,6 @@ function initDeleteConfirmation() {
     }
   });
 }
-
 document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
@@ -347,7 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Focus sul primo errore server-side
         const primoErrore = form.querySelector(".msgErrore");
 
-        // Se il primo errore NON è quello globale → focus
         if (primoErrore && !primoErrore.closest("#errore-immagini-globali")) {
             primoErrore.focus();
         }
@@ -384,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- FOCUS SPECIFICO PER LOGIN (senza validazione JS) ---
+    // --- FOCUS SPECIFICO PER LOGIN ---
     const erroreLogin = document.querySelector("#errore-login");
     if (erroreLogin) {
         const campoEmail = document.querySelector("#email");
@@ -397,9 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // ------------------------------------------------------
 function validazioneCampo(campo) {
 
-  if (campo.type === "file") return true;
-  if (campo.id.startsWith("alt")) return true;
-  if (campo.id.startsWith("decorativa")) return true; 
+    if (campo.type === "file") return true;
+    if (campo.id.startsWith("alt")) return true;
+    if (campo.id.startsWith("decorativa")) return true;
 
     // Rimuovi eventuale errore precedente
     const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg");
@@ -445,18 +443,27 @@ function validazioneCampo(campo) {
 
         case "password":
             if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
-              messaggio = 
-                  "La password non rispetta i requisiti minimi. " +
-                  "Deve contenere: minimo 8 caratteri, almeno un numero, " +
-                  "almeno una lettera minuscola, almeno una lettera maiuscola " +
-                  "e almeno un carattere speciale.";
+                messaggio =
+                    "La password non rispetta i requisiti minimi. " +
+                    "Deve contenere: minimo 8 caratteri, almeno un numero, " +
+                    "almeno una lettera minuscola, almeno una lettera maiuscola " +
+                    "e almeno un carattere speciale.";
             }
             break;
 
         case "confermaPassword":
             const pass = document.getElementById("password").value.trim();
-            if (valore !== pass) messaggio = "Le password non coincidono.";
+
+            if (valore !== pass) {
+                messaggio = "Le password non coincidono.";
+
+                // Torna al campo password
+                const campoPassword = document.getElementById("password");
+                campoPassword.focus();
+                campoPassword.select();
+            }
             break;
+
         case "consenso-email":
             if (!campo.checked) messaggio = "Per registrarti devi acconsentire all'uso pubblico dell'email";
             break;
@@ -476,17 +483,17 @@ function validazioneCampo(campo) {
         ul.appendChild(li);
         campo.parentNode.appendChild(ul);
 
-        // Collega l'errore al campo
         campo.setAttribute("aria-describedby", li.id);
 
-        campo.focus();
-        campo.select();
+        // Focus automatico SOLO se NON è confermaPassword
+        if (campo.id !== "confermaPassword") {
+            campo.focus();
+            campo.select();
+        }
 
         return false;
     }
 
-    // Se valido, rimuovi aria-describedby
     campo.removeAttribute("aria-describedby");
-
     return true;
 }
