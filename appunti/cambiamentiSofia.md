@@ -198,6 +198,10 @@ ridondanze.
 
 * Dichiara se hai usato AI per generare testo o immagini -> annunci + illustrazioni
 
+* 2 uniche ancore img:
+ 1. logo, img da css quindi txt + title per prevedibilità ancora e no aria label per eiatre ridondanza
+ 2. torna su img con alt esplicativo + title (functional image in https://www.w3.org/WAI/tutorials/images/decision-tree/)
+
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
 - classe aiuti
