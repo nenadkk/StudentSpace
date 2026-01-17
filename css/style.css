@@ -12,7 +12,7 @@
 
 html, body{ 
     font-size: 100%; 
-    font-family:"Inter", "Lexend", "Roboto", sans-serif; 
+    font-family:"Noto Sans", "Roboto", sans-serif; 
     line-height: 1.5em;
 }
 
@@ -103,15 +103,16 @@ body {
 h2 {
     font-size: var(--fs-h2-titolo-sez);
     text-align: center;
+    font-weight: 700;
 }
 
 h3 {
     font-size: var(--fs-h3-titolo-card);
     text-align: center;
+    font-weight: 600;
 }
 
 label, dt {
-    font-weight: 600;
     font-size: var(--fs-label-dt);
 }
 
@@ -122,22 +123,21 @@ p, li, dd, span, a, button {
 legend {
     font-size: var(--fs-legend);
     padding: 0 0.5em;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #breadcrumb, footer p, footer a { 
     font-size: var(--fs-breadcrumb-footer); 
 }
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-0-5);
+body, p, li, dd, span {
+    font-weight: 400;
 }
 
-.print-only {
-    display: none;
+label, button, .btn-base, input, select, textarea {
+    font-weight: 500;
 }
+
 /*
 ====================================================
     GENERICI
@@ -214,6 +214,15 @@ section {
     align-items: center;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-0-5);
+}
+
+.print-only {
+    display: none;
+}
 /*
 ====================================================
     BASI
@@ -684,7 +693,7 @@ header {
 .current-link {
     text-decoration: none;
     font-weight: bold; 
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .current-link::before { 
@@ -905,7 +914,7 @@ footer p{
 .etichettaCategoria {
     display: inline-block;
     font-weight: 600;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     padding: var(--padding-base);
     border-radius: var(--radius-1-5);
     color: var(--clearTxtColor);

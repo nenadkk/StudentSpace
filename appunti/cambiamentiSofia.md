@@ -169,6 +169,24 @@ completare altri campi prima di correggere l’errore. Tuttavia, questa soluzion
 è stata scartata per preservare un comportamento più lineare e immediato,
 basato sulla correzione puntuale e immediata del campo non valido.
 
+* \paragraph{Scelta del font e gerarchia tipografica.}
+Per l’intero sito è stato adottato il font \textit{Noto Sans}, scelto per la sua
+elevata leggibilità, la neutralità stilistica e la coerenza visiva nelle
+interfacce web. A differenza di \textit{Inter}, che presenta una minore
+distinzione tra alcuni glifi simili (in particolare \texttt{I}, \texttt{l} e
+\texttt{1}), \textit{Noto Sans} garantisce una maggiore chiarezza tipografica,
+caratteristica particolarmente rilevante nei moduli di inserimento dati e nelle
+situazioni in cui la precisione visiva è fondamentale.
+
+La scala dei pesi è stata definita per costruire una gerarchia tipografica
+coerente e facilmente percepibile: il peso \textbf{400} è utilizzato per il
+testo corrente, il peso \textbf{500} per etichette e componenti dell’interfaccia
+utente, il peso \textbf{600} per titoli secondari e sezioni, mentre il peso
+\textbf{700} è riservato ai titoli principali. Questa struttura permette di
+guidare l’utente nella lettura, migliorare la scansione visiva dei contenuti e
+mantenere un equilibrio armonico tra elementi testuali e grafici.
+
+
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
 - classe aiuti

@@ -231,10 +231,9 @@ class Tool {
 
     public static function mappaAttributi(string $categoria, array $attr) : array {
         switch ($categoria) {
-
             case "Affitti":
                 return [
-                    ["Costo", $attr['PrezzoMensile'] . " € al mese"],
+                    ["Costo", Tool::formatPrezzo($attr['PrezzoMensile'], " € al mese")],
                     ["Indirizzo", $attr['Indirizzo']],
                     ["N° coinquilini", $attr['NumeroInquilini']]
                 ];
@@ -243,23 +242,37 @@ class Tool {
                 return [
                     ["Laboratorio", $attr['Laboratorio']],
                     ["Durata prevista", $attr['DurataPrevista'] . " min"],
-                    ["Compenso", $attr['Compenso'] . " €"]
+                    ["Compenso", Tool::formatPrezzo($attr['Compenso'])]
                 ];
 
             case "Eventi":
                 return [
                     ["Data", $attr['DataEvento']],
                     ["Luogo", $attr['Luogo']],
-                    ["Costo entrata", $attr['CostoEntrata'] . " €"]
+                    ["Costo entrata", Tool::formatPrezzo($attr['CostoEntrata'])]
                 ];
 
             case "Ripetizioni":
                 return [
                     ["Materia", $attr['Materia']],
                     ["Livello", $attr['Livello']],
-                    ["Prezzo orario", $attr['PrezzoOrario'] . " € all'ora"]
+                    ["Prezzo orario", Tool::formatPrezzo($attr['PrezzoOrario'], " € all'ora")]
                 ];
         }
+    }
+
+    public static function formatPrezzo($valore, string $suffisso = " €") : string {
+        if ($valore === null || $valore === "") {
+            return "";
+        }
+
+        // Se è intero → niente decimali
+        if (floor($valore) == $valore) {
+            return number_format($valore, 0, ',', '.') . $suffisso;
+        }
+
+        // Se ha decimali → due decimali
+        return number_format($valore, 2, ',', '.') . $suffisso;
     }
 
     /* -------------------------------
