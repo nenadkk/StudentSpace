@@ -60,9 +60,8 @@
             & \\
             \textbf{Indirizzo del sito} & indirizzo\\
             & \\
-            \textbf{Utenti} & 
+            \textbf{Utente} & 
             \textbf{Username:} user, \textbf{Password:} user \\ 
-            & \textbf{Username:} admin, \textbf{Password:} admin\\
 
 
         \end{tabular}
@@ -74,31 +73,31 @@
     \tableofcontents
     \newpage
 
-    \section{Introduzione}
+\section{Introduzione}
     \subsection{Com'è nata l'idea}
-    L'idea di questo progetto nasce da una domanda che ci siamo posti più volte nella nostra quotidianità: \textit{"Cosa potremmo fare questo weekend?"}. 
-    Nelle città universitarie vengono spesso organizzati eventi e attività dedicate agli studenti, è però seccante doverne andare ogni volta alla ricerca. 
-    Bisogna sapere innanzitutto cosa si sta cercando (il che non è una cosa scontata), e serve poi andarsi a sfogliare di volta in volta le pagine social degli organizzatori, che sono sempre diversi.\par
-    Abbiamo quindi pensato a quanto sarebbe comodo e utile se fossero gli organizzatori stessi ad andare incontro agli studenti, e a quanto si semplificherebbe la ricerca se esistesse un'unica bacheca dove tutti gli organizzatori possano appendere i loro volantini.\par
-    Nel mentre buttavamo giù le idee il discorso si è ampliato, e ci siamo resi conto che la fuori ci sono un sacco di servizi di cui gli studenti hanno bisogno ma non hanno un punto di riferimento sul dove andarli a cercare.
+    L'idea di questo progetto nasce da una domanda che ci siamo posti più volte nella nostra quotidianità: \textit{``Cosa potremmo fare questo weekend?''}.  
+    Nelle città universitarie vengono spesso organizzati eventi e attività dedicate agli studenti, ma è seccante doverli andare a cercare ogni volta. Bisogna innanzitutto sapere cosa si sta cercando (il che non è affatto scontato) e, successivamente, sfogliare di volta in volta le pagine social dei vari organizzatori, che sono sempre diversi e non centralizzati.
+    
+    Da qui è nata la riflessione su quanto sarebbe comodo se fossero gli organizzatori stessi ad andare incontro agli studenti, e su quanto si semplificherebbe la ricerca se esistesse un'unica bacheca dove tutti potessero ``appendere'' i propri volantini.
+    
+    Mentre sviluppavamo l’idea ci siamo resi conto che il problema non riguarda solo gli eventi: esistono molti altri servizi di cui gli studenti hanno bisogno, ma che non hanno un punto di riferimento chiaro su dove trovarli. Da questa consapevolezza è nato il desiderio di creare uno spazio unico, accessibile e organizzato, pensato per raccogliere tutto ciò che può essere utile nella vita quotidiana universitaria.
 
-    \subsection{L'obbiettivo di StudentSpace}
-    StudentSpace propone una \textit{bacheca online} che raccolga in un unico luogo eventi, attività e servizi di interesse per gli studenti, andando oltre il contesto strettamente accademico.\par
-    Attraverso la piattaforma sarà possibile trovare eventi sportivi, attività serali, concerti, e altre occasioni di socialità.
-    Potranno inoltre dare la loro disponibilità ad altri studenti per ripetizioni, oppure consultare annunci di Affitti relativi alla propria città.\par
-    L'obbiettivo principale è garantire a studenti e studentesse un accesso rapido e completo a ciò che potrebbe interessarli.
-    Allo stesso tempo, si vuole agevolare gli organizzatori, che si rivolgono a questo target, fornendo loro un canale unico e mirato per raggiungere un pubblico ampio e specifico.
+    \subsection{L'obiettivo di StudentSpace}
+    StudentSpace propone una \textit{bacheca online} che raccolga in un unico luogo eventi, attività e servizi di interesse per gli studenti, andando oltre il contesto strettamente accademico.  
+    Attraverso la piattaforma sarà possibile trovare eventi sportivi, attività serali, concerti e altre occasioni di socialità. Gli studenti potranno inoltre offrire la propria disponibilità per ripetizioni, oppure consultare annunci di affitti relativi alla propria città.
+    
+    L'obiettivo principale è garantire a studenti e studentesse un accesso rapido, centralizzato e completo a ciò che potrebbe interessarli nella vita quotidiana universitaria.  
+    Allo stesso tempo, la piattaforma intende agevolare gli organizzatori che si rivolgono a questo target, offrendo loro un canale unico e mirato per raggiungere un pubblico ampio, omogeneo e specifico.
 
-    \newpage
-    \section{Analisi del lavoro svolto}
+\section{Analisi del lavoro svolto}
     \subsection{Processo decisionale}
     Durante tutto lo sviluppo del progetto ci si è trovati a dover prendere diverse decisioni in merito a design, funzionalità, contenuto ecc. 
-    Nella maggior parte dei casi questi punti suono stati discussi in presenza, tra tutti i membri del gruppo. 
+    Nella maggior parte dei casi questi punti sono stati discussi in presenza, tra tutti i membri del gruppo. 
     Ovviamente, questo metodo comporta delle chiare limitazioni, si è quindi deciso di adottare
     anche dei metodi di comunicazione (sia sincroni che asincroni) alternativi.\\\\
     Per quanto riguarda le comunicazioni asincrone, è stata usata ampiamente la 
     piattaforma di messaggistica \textbf{\underline{\hyperref[sec:strumenti]{Whatsapp}}}. 
-    Si è deciso inoltre di adottare \textbf{\underline{\hyperref[sec:strumenti]{Discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
+    Inoltre, si è deciso di adottare \textbf{\underline{\hyperref[sec:strumenti]{Discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
 
     \subsection{Modalità di lavoro}
     Per adattarsi meglio alle esigenze del gruppo si è deciso che i membri del gruppo avrebbero svolto ciascuno le proprie attività in maniera prevalentemente asincrona.
@@ -113,28 +112,31 @@
     Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del 
     programma, e di mettere mano direttamente a ogni fase del suo sviluppo.\\
     Periodicamente sono state svolte delle riunioni di assestamento, nelle quali veniva
-    aggiornata la lista delle cose da fare per il periodo sucessivo.
+    aggiornata la lista delle cose da fare per il periodo sucessivo e alla fine di ogni riunione le attività da svolgere venivano assegnate ai membri in modo equilibrato.
     Per facilitare questo processo si è fatto largo uso delle Github Issue.
-    Alla fine di ogni riunione le attività da svolgere venivano distribuiti in modo equilibrato tra i 
-    vari membri. 
 
-    \newpage
     \section{Progettazione}
-    \subsection{Tipologie di Utenti}
-    Il sistema prevede due tipologie di utente:
+\subsection{Tipologie di utenti}
+
+Il sistema prevede due tipologie principali di utenti, differenziate per permessi e funzionalità disponibili.
+
+\begin{itemize}
+
+    \item \textbf{Utente non registrato:} può esplorare liberamente le categorie e leggere gli annunci.
     \begin{itemize}
-        \item \textbf{Utente non registrato:} utente che esplora le categorie e legge annunci 
-            \begin{itemize}
-                \item  \textbf{Azioni e permessi:}  visualizzazione completa delle varie pagine, navigazione tra categorie e annunci, ricerca e filtraggio, apertura dettaglio annuncio, avvio della procedura di registrazione/login
-                \item \textbf{Limitazioni:} accesso negato alle funzioni di pubblicazione e gestione degli annunci $\rightarrow$ inviti chiari a registrarsi quando tenta azioni riservate.
-            \end{itemize}
-        \item \textbf{Utente registrato:} utente che oltre alle funzionalotà che erdità dall'utente non registrato può pubblicare annunci e gestirli.
-            \begin{itemize}
-                \item \textbf{Azioni e permessi:}
-                    creazione, modifica ed eliminazione dei propri annunci; gestione profilo.
-                \item \textbf{Limitazioni:} non può modificare annunci altrui; vincoli su campi obbligatori e formati (validazione client/server).
-            \end{itemize}
+        \item \textbf{Azioni e permessi:} accesso completo alle pagine \textit{index} ed \textit{esplora}, con possibilità di effettuare ricerche e applicare filtri; apertura del dettaglio dell'\textit{annuncio} e della pagina di \textit{profilo pubblico} del proponente; possibilità di avviare la procedura di registrazione o accesso.
+        \item \textbf{Limitazioni:} non può pubblicare, gestire o salvare annunci nei preferiti. Se tenta di eseguire azioni riservate, il sistema lo reindirizza alla pagina di accesso, offrendo anche un collegamento diretto alla pagina di registrazione qualora non possedesse un account.
     \end{itemize}
+
+    \item \textbf{Utente registrato:} oltre alle funzionalità dell’utente non registrato, può pubblicare e gestire i propri annunci, salvare annunci altrui nei preferiti e accedere alla propria area personale.
+    \begin{itemize}
+        \item \textbf{Azioni e permessi:} creazione, modifica ed eliminazione dei propri annunci; gestione del profilo personale; consultazione degli annunci preferiti e degli annunci pubblicati.
+        \item \textbf{Limitazioni:} non può modificare annunci altrui; è soggetto a vincoli relativi ai campi obbligatori e ai formati previsti, con validazione sia lato client che lato server.
+    \end{itemize}
+
+\end{itemize}
+
+
     \subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
     Il sito web si propone come una bacheca universitaria online, in cui gli utenti possono
     pubblicare e consultare annunci suddivisi in quattro categorie principali: \textbf{Affitti},
@@ -234,19 +236,23 @@
             dopo essere stato eliminato dal sistema.
     \end{itemize}
 
-    \subsubsection{Filtraggio e ricerca annunci}
+    \subsubsection{Filtraggio e ricerca degli annunci}
+
+\begin{itemize}
+
+    \item Il sistema permette di applicare diversi filtri per affinare la ricerca degli annunci. 
+    Sono previsti:
     \begin{itemize}
-        \item È possibile applicare dei filtri per migliorare la ricerca degli annunci.
-            Sono previsti:
-            \begin{itemize}
-                \item Filtri generici (categoria, data di pubblicazione).
-                \item Filtri specifici per categoria
-            \end{itemize}
-        \item È inoltre possibile effettuare una ricerca testuale sul contenuto del 
-            titolo e della descrizione.
-        \item Qualora vengano inseriti nei campi liberi dei valori compromettenti 
-            il sistema li ignorerà ma non verrà visualizzato alcun errore.
+        \item \textbf{Filtri generici}: categoria e data di pubblicazione.
+        \item \textbf{Filtri specifici per categoria}: campi aggiuntivi che variano in base alla tipologia di annuncio.
     \end{itemize}
+
+    \item È inoltre disponibile una ricerca testuale che opera sul contenuto del titolo, della descrizione e sull'email dell'autore dell'annuncio.
+
+    \item Qualora vengano inseriti nei campi liberi valori non validi o potenzialmente compromettenti, il sistema li ignora senza generare errori, garantendo comunque un'esperienza di ricerca stabile e coerente.
+    
+\end{itemize}
+
 
     \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
@@ -463,7 +469,7 @@
     \subsubsection{CSS e decisioni di design (immagini, palette colori)} 
 
 
-    \subsection{Back-end (PHP, Database)}
+    \subsection{Back-end (PHP)}
 
 
     \subsection{Validazione e Sicurezza} \label{sviluppo:validazione}
