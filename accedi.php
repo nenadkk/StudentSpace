@@ -26,7 +26,37 @@ $email = isset($_POST['email']) ? Tool::pulisciInput($_POST['email']) : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if(isset($_POST['submit'])) {
-    if (Tool::contieneTagHtml($email)) {
+    if ($email === "user" && $password === "user") {
+        if ($db->openDBConnection()) {
+
+            $idUtente = $db->verifyUserCredential("user", $password);
+
+            if ($idUtente !== false) {
+                Tool::startUserSession($idUtente);
+
+                $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
+                if ($redirect !== "") {
+                    header("Location: " . $redirect);
+                    exit;
+                }
+
+                header("Location: profilo");
+                exit;
+            } else {
+                $testoErrori =
+                    "Utente inesistente o password errata.";
+
+                $erroreEmail = "
+                    <ul class='riquadro-spieg messaggi-errore-form'>
+                        <li class='msgErrore' id='errore-login' role='alert'>$testoErrori</li>
+                    </ul>";
+            }
+
+            $db->closeConnection();
+        } else {
+            Tool::renderError(500);
+        }
+    } elseif (Tool::contieneTagHtml($email)) {
         $erroreEmail = "
             <ul class='riquadro-spieg messaggi-errore-form'>
                 <li class='msgErrore' id='errore-login' role='alert'>
@@ -60,7 +90,7 @@ if(isset($_POST['submit'])) {
                     exit;
                 }
 
-                header("Location: profilo.php");
+                header("Location: profilo");
                 exit;
             } else {
                 $testoErrori =

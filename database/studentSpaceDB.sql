@@ -205,7 +205,10 @@ INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
  23),
 ('Luca', 'Verdi', 'luca.verdi@email.it',
  '$2y$10$VIXp0Y8U9A1mFQ2sK8E7b3JZrL5X6mT4C9D2H1WQeR6N0yB5Z8S',
- 6);
+ 6),
+('user', 'user', 'user',
+ '$2y$10$5THKHuPdRdFxyNRnE3V9XuXZGmcTPI9Q14z4C4P0raCkuZGJROd7m',
+ 1);
 
 -- =====================================================
 -- ANNUNCI (20)
