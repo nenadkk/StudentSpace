@@ -142,7 +142,32 @@ I campi specifici delle categorie (Affitti, Esperimenti, Eventi, Ripetizioni) no
 La validazione JavaScript implementata è selettiva, accessibile e modulare.  
 Si integra perfettamente con la validazione lato server e garantisce un’esperienza utente coerente e inclusiva nei form più complessi, senza introdurre complessità superflue nei form semplici.
 
+* \paragraph{Validazione dei campi e gestione del caso \texttt{password}/\texttt{confermaPassword}.}
+Il sistema di validazione lato client è stato progettato secondo un approccio
+puntuale: ogni campo viene controllato in modo indipendente al momento
+dell’uscita dal focus (\textit{on blur}) e, in caso di errore, il messaggio
+viene mostrato esclusivamente in prossimità del campo interessato. Il focus
+viene riportato sul campo non valido, impedendo all’utente di proseguire finché
+l’errore non è stato corretto. Questo comportamento, sebbene restrittivo,
+garantisce una chiara associazione tra errore e punto di intervento, riducendo
+ambiguità e favorendo un’interazione lineare.
 
+La coppia di campi \texttt{password} e \texttt{confermaPassword} rappresenta
+un caso particolare, poiché la validazione dipende da due valori correlati.
+Quando le password non coincidono, il messaggio di errore viene mostrato nel
+campo di conferma, ma il focus viene riportato sul campo \texttt{password},
+che costituisce il valore di riferimento da correggere. In questo modo
+l’utente può intervenire direttamente sul campo corretto senza dover
+interpretare l’errore o attivare la visualizzazione della password.
+
+Durante la progettazione è stata considerata anche un’alternativa meno
+restrittiva: mantenere il focus sul campo con errore solo la prima volta e
+permettere successivamente all’utente di spostarsi liberamente tra i campi,
+lasciando l’errore visibile ma senza bloccare la navigazione. Tale approccio
+avrebbe reso la compilazione più flessibile, consentendo all’utente di
+completare altri campi prima di correggere l’errore. Tuttavia, questa soluzione
+è stata scartata per preservare un comportamento più lineare e immediato,
+basato sulla correzione puntuale e immediata del campo non valido.
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
