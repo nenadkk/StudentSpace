@@ -23,6 +23,17 @@ section {
     gap: var(--gap-0-5);
 }
 
+  .img-text-section {
+    flex-direction: column;
+  }
+
+  .img-text-section > img,
+  .img-text-section > div {
+    max-width: 100%;
+    flex: unset;
+  }
+
+
 
 .card-base:hover, .btn-base:hover { 
     transform: none; 
@@ -83,7 +94,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap-1);
+    gap: var(--gap-0-5);
     margin-bottom: 1.2em;
     background-color: var(--bgclearBlue);
     border-radius: var(--radius-base);
@@ -101,7 +112,7 @@ header {
 }
 
 #menu .nav-auth {
-    gap: var(--gap-1-5);
+    gap: var(--gap-1);
     margin-bottom: 1em;
 }
 

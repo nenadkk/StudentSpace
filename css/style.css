@@ -130,7 +130,7 @@ legend {
     font-size: var(--fs-breadcrumb-footer); 
 }
 
-body, p, li, dd, span {
+body, p, li, dd {
     font-weight: 400;
 }
 
@@ -531,15 +531,6 @@ a:visited {
 
 .call-to-action {
     padding: var(--padding-base);
-}
-
-/* ------------- estensione per .form-container p a ------------- */
-
-.paragraph-link-container a{
-    padding: var(--padding-base);
-    font-weight: 600;
-    background-color: var(--bgclearBlue);
-    border-radius: var(--radius-base);
 }
 
 /*

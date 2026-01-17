@@ -1,4 +1,4 @@
- USE sdeblasi;
+USE sdeblasi;
 
 -- ============================
 -- DROP TABLES (ordine corretto)
@@ -205,7 +205,10 @@ INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
  23),
 ('Luca', 'Verdi', 'luca.verdi@email.it',
  '$2y$10$VIXp0Y8U9A1mFQ2sK8E7b3JZrL5X6mT4C9D2H1WQeR6N0yB5Z8S',
- 6);
+ 6),
+('user', 'user', 'user',
+ '$2y$10$5THKHuPdRdFxyNRnE3V9XuXZGmcTPI9Q14z4C4P0raCkuZGJROd7m',
+ 27);
 
 -- =====================================================
 -- ANNUNCI (20)
@@ -374,7 +377,7 @@ INSERT INTO AnnuncioEsperimenti VALUES
 
 INSERT INTO ImmaginiAnnuncio (IdAnnuncio, Percorso, AltText, Decorativa, Ordine) VALUES
 -- AFFITTI
-(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet',0,1),
+(1,'affitti1_1.jpg','Camera singola luminosa con parete gialla, letto bianco, scrivania con sedia da ufficio e parquet.',0,1),
 (1,'affitti1_2.jpg',"Ingresso luminoso con accesso a due camere: una con parete gialla e piastrelle, l’altra, presente nell'immagine precedente con parquet e finestra. Corridoio con specchio a parete e pavimento decorato.",1,2),
 
 (2,'affitti2_1.jpg','Scrivania in legno con sedia, davanti a una grande finestra con vista sulla città.',0,1),

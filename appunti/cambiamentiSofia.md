@@ -186,6 +186,17 @@ utente, il peso \textbf{600} per titoli secondari e sezioni, mentre il peso
 guidare l’utente nella lettura, migliorare la scansione visiva dei contenuti e
 mantenere un equilibrio armonico tra elementi testuali e grafici.
 
+*\paragraph{Predittività delle ancore e supporto tramite \texttt{title}.}
+Nel progetto è stato seguito il principio secondo cui ogni ancora deve essere
+predittiva rispetto alla destinazione. Nei casi in cui l’interpretazione
+visiva potrebbe non essere immediata, come il logo che riporta alla home o
+l’icona “torna su”, è stato aggiunto l’attributo \texttt{title} per fornire un
+supporto informativo agli utenti vedenti. L’accessibilità è garantita tramite
+\texttt{aria-label}, che rimane la fonte principale per i lettori di schermo,
+mentre il \texttt{title} svolge un ruolo complementare senza creare
+ridondanze.
+
+* Dichiara se hai usato AI per generare testo o immagini -> annunci + illustrazioni
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop

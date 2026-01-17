@@ -194,9 +194,9 @@ INSERT INTO Citta (NomeCitta) VALUES
 -- =====================================================
 
 INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
-('ff', 'ff', 'ff@ff.ff',
- '$2y$10$ICFWdfUEcDo.i9NFDjedT.unJxpq59W5UzaZFBgacSyLOn7Y119ja',
- 32),
+('user', 'user', 'user',
+ '$2y$10$5THKHuPdRdFxyNRnE3V9XuXZGmcTPI9Q14z4C4P0raCkuZGJROd7m',
+ 27),
 ('Marco', 'Rossi', 'marco.rossi@email.it',
  '$2y$10$EIXCh8J2r6uFj3X3bEw1ReC3h3bYxX6p6j6CqzU8N9KZr4z5Rr7bS',
  35),
@@ -205,10 +205,7 @@ INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
  23),
 ('Luca', 'Verdi', 'luca.verdi@email.it',
  '$2y$10$VIXp0Y8U9A1mFQ2sK8E7b3JZrL5X6mT4C9D2H1WQeR6N0yB5Z8S',
- 6),
-('user', 'user', 'user',
- '$2y$10$5THKHuPdRdFxyNRnE3V9XuXZGmcTPI9Q14z4C4P0raCkuZGJROd7m',
- 1);
+ 6);
 
 -- =====================================================
 -- ANNUNCI (20)
@@ -244,14 +241,14 @@ Perfetto per una persona sola o per chi cerca indipendenza e praticità.', 'Affi
 
 La cucina è abitabile e adatta alla vita condivisa, mentre i servizi sono funzionali e adeguati al numero di inquilini.
 
-Soluzione ideale per gruppi di studenti che desiderano vivere vicino all’università e ai principali servizi.', 'Affitti', 1, 32),
+Soluzione ideale per gruppi di studenti che desiderano vivere vicino all’università e ai principali servizi.', 'Affitti', 1, 27),
 
 -- RIPETIZIONI (6–10)
 ('Ripetizioni di Fisica', 'Offro ripetizioni di fisica per studenti delle scuole superiori, con particolare attenzione alla comprensione dei concetti teorici e alla risoluzione degli esercizi.
 
 Le lezioni sono personalizzate in base alle esigenze dello studente, con esempi pratici e simulazioni di verifica.
 
-Disponibile sia per recupero debiti che per preparazione a verifiche ed esami.', 'Ripetizioni', 1, 23),
+Disponibile sia per recupero debiti che per preparazione a verifiche ed esami.', 'Ripetizioni', 1, 27),
 
 ('Lezioni di Inglese', 'Lezioni di inglese per studenti di scuole medie e superiori, mirate a migliorare grammatica, comprensione e conversazione.
 
@@ -275,7 +272,7 @@ Disponibile anche supporto per versioni e interrogazioni.', 'Ripetizioni', 3, 16
 
 Le lezioni sono strutturate per facilitare la comprensione teorica e l’applicazione pratica dei concetti.
 
-Adatte sia a studenti in difficoltà che a chi vuole approfondire.', 'Ripetizioni', 1, 32),
+Adatte sia a studenti in difficoltà che a chi vuole approfondire.', 'Ripetizioni', 1, 27),
 
 -- EVENTI (11–15)
 ('Concerto jazz dal vivo', 'Concerto jazz con band locale, in un’atmosfera intima e coinvolgente. Evento pensato per gli amanti della musica dal vivo.
@@ -300,7 +297,7 @@ Non sono richieste competenze pregresse.', 'Eventi', 4, 6),
 
 Presenti stand, artisti e aree tematiche.
 
-Ideale per appassionati di tutte le età.', 'Eventi', 1, 47),
+Ideale per appassionati di tutte le età.', 'Eventi', 1, 27),
 
 ('Corso di cucina italiana', 'Corso pratico di cucina italiana tradizionale, con preparazione di piatti tipici.
 
@@ -313,7 +310,7 @@ Esperienza ideale per chi ama cucinare e sperimentare.', 'Eventi', 2, 26),
 
 I partecipanti svolgeranno semplici test cognitivi.
 
-Ricerca a scopo scientifico, con compenso previsto.', 'Esperimenti', 1, 23),
+Ricerca a scopo scientifico, con compenso previsto.', 'Esperimenti', 1, 27),
 
 ('Test di usabilità app', 'Test di usabilità su applicazione mobile in fase di sviluppo.
 
@@ -331,7 +328,7 @@ Contributo utile alla ricerca scientifica.', 'Esperimenti', 4, 6),
 
 I partecipanti utilizzeranno visori VR in sicurezza.
 
-Esperienza innovativa e coinvolgente.', 'Esperimenti', 1, 32),
+Esperienza innovativa e coinvolgente.', 'Esperimenti', 1, 27),
 
 ('Ricerca sullo stress', 'Studio psicologico sullo stress e sulle strategie di coping.
 
