@@ -16,23 +16,26 @@ section {
 }
 
 .errore {
-    padding: 2em 2em 4em;
+    padding: 0.5em 2em 4em;
 }
 
 .img-text-section {
     gap: var(--gap-0-5);
 }
 
-  .img-text-section {
-    flex-direction: column;
-  }
+.img-text-section {
+flex-direction: column;
+}
 
-  .img-text-section > img,
-  .img-text-section > div {
+.img-text-section > img,
+.img-text-section > div {
     max-width: 100%;
     flex: unset;
-  }
+}
 
+.img-text-section > img{
+    max-width: 70%;
+}
 
 
 .card-base:hover, .btn-base:hover { 
