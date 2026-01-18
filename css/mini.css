@@ -266,13 +266,6 @@ body.no-scroll {
     display: block;
 }
 
-
-#hamburger:focus, #chiudiFiltri:focus {
-    outline: none;
-    outline: 2px solid var(--card);
-    outline-offset: 2px;
-}
-
 /*
 ====================================================
     SEZIONE CATEGORIE

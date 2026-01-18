@@ -22,6 +22,17 @@ body {
     padding-top: var(--padding-top-style);
 }
 
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--txtcolor);
+    outline-offset: 2px;
+    border-radius: var(--radius-base);
+}
+
+
 /*
 ====================================================
     VARIABILI
@@ -823,6 +834,8 @@ footer p{
     justify-content: center;
     box-shadow: var(--shadow-base);
     transition: transform 0.3s ease;
+    outline: 2px solid var(--clearBgColor);
+    outline-offset: 2px;
 }
 
 #freccia-su img {
@@ -832,8 +845,7 @@ footer p{
 
 #freccia-su:hover,
 #freccia-su:focus {
-    transform: scale(1.1);
-    outline: 2px solid var(--clearBgColor);
+    outline: 2px solid var(--call-to-actionColor);
 }
 /*
 ====================================================
