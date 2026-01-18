@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata alla registrazione al sito Student Space."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
+    <meta name="description" content="Registrati a Student Space per pubblicare annunci universitari, contattare studenti e accedere ai servizi del portale."> 
     <meta name="keywords" content="registrati, Student Space">
 
     <meta name="author" content="StudentSpaceTeam">
@@ -28,9 +28,8 @@
     <header id="intestazione">
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
         <h1 id="logo-link" lang="en">
-            <a href="index" aria-label="Vai alla home di Student Space">Student Space</a>
+            <a href="index.php" title="Vai alla home">Student Space</a>
         </h1>
-
         <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
             <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
             <span id="hamburger-aperto" aria-hidden="true">&#9932;</span>
@@ -97,7 +96,7 @@
                             [errore-password]
                             
                             <div class="checkbox-inline">
-                                <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                                <input id="mostraPassword" type="checkbox" name="mostra-passwd">
                                 <label for="mostraPassword">Mostra <span lang="en">password</span></label>
                             </div>
                         </div>
@@ -105,12 +104,12 @@
                         <div class="form-div">
                             <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
                             <p class="indicazioni">Inserisci di nuovo la password.</p>
-                            <!--<p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> --><!-- Da mettere controllo js che non possa usare questa password -->
+                            <!--<p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> -->
                             <input type="password" id="confermaPassword" name="confermaPassword" required autocomplete="new-password">
                             [errore-conferma-password]
                             
                             <div class="checkbox-inline">
-                                <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                                <input id="mostraConfermaPassword" type="checkbox" name="mostra-conferma-passwd"> 
                                 <label for="mostraConfermaPassword">Mostra conferma <span lang="en">password</span></label>
                             </div>
                         </div>
@@ -136,7 +135,7 @@
 
                     <button class="btn-base" type="submit" id="submit" name="submit">Conferma</button>
                     <div class="paragraph-link-container">
-                        <p>Hai già un account?</p>
+                        <p>Hai già un <span lang="en">account</span>?</p>
                         <a class="link btn-base call-to-action" href="accedi">Accedi</a>
                     </div>
                 </div>

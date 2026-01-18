@@ -5,8 +5,8 @@
 
     <meta charset="utf-8">
 
-    <meta name="description" content="Pagina dedicata all'accesso al sito StudentSpace."> <!-- Per cercare o offrire appartamenti, ripetizioni e partecipare a eventi o esperimenti in ambito universitrario --> 
-    <meta name="keywords" content="accedi, Student Space,">
+    <meta name="description" content="Accedi al tuo account Student Space per pubblicare annunci universitari, contattare studenti e gestire il tuo profilo."> 
+    <meta name="keywords" content="accedi, Student Space">
 
     <meta name="author" content="StudentSpaceTeam">
     <meta name="viewport" content="width=device-width">
@@ -28,7 +28,7 @@
     <header id="intestazione">
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
         <h1 id="logo-link" lang="en">
-            <a href="index.php" aria-label="Vai alla home di Student Space" title="Vai alla home">Student Space</a>
+            <a href="index.php" title="Vai alla home">Student Space</a>
         </h1>
         <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
             <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
@@ -66,7 +66,7 @@
                         <input type="password" id="password" name="password" aria-describedby="errore-login" required autocomplete="current-password">
 
                         <div class="checkbox-inline">
-                            <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <input id="mostraPassword" type="checkbox" name="mostra-passwd"> 
                             <label for="mostraPassword">Mostra password</label>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
                 <input type="hidden" name="redirect" value="[RedirectValue]">
                 <button class="btn-base" type="submit" id="submit" name="submit">Accedi</button>
                 <div class="paragraph-link-container">
-                    <p>Non hai un account?</p>
-                    <a class="link btn-base call-to-action" href="registrati.php">Registrati qui</a>
+                    <p>Non hai un <span lang="en">account</span>?</p>
+                    <a class="link btn-base call-to-action" href="registrati.php">Registrati</a>
                 </div>
             </form>
         </div>

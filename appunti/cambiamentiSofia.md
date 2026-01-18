@@ -32,7 +32,15 @@ l'esperienza utente migliore in quando ciò garantisce un rendering più veloce
 
 * sono stati selezionati i type (es.search, email, password) appropriati per gli input in html per migliorare l'usabilità e l'esperienza utente ma ovviamente tutto è validato oltre che nell'immediato via jave che lato server --> Usare i controlli HTML5 per la validazione base e aggiungere solo il minimo JS per messaggi chiari e regole di business, mantenendo sempre la validazione lato server.
 
-\section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
+* Nel progetto sono stati utilizzati due approcci diversi per la gestione degli errori globali, in base alla natura del contenuto.
+
+Nella pagina di accesso, il messaggio di errore è inserito dinamicamente all’interno di un contenitore con `aria-live="assertive"`, poiché rappresenta un feedback globale che deve essere annunciato immediatamente ogni volta che il contenuto cambia.
+
+Nella pagina di pubblicazione degli annunci, gli errori relativi alle immagini vengono generati lato server come blocco già completo e statico; per questo motivo viene utilizzato `role="alert"` direttamente sul messaggio, evitando l’uso di contenitori live non necessari.
+
+Le due soluzioni non sono ridondanti ma complementari, e sono state scelte in base al comportamento desiderato e alle linee guida WAI-ARIA.
+
+* \section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
 
 Nel progetto è stato implementato un sistema di validazione client-side avanzato, progettato per migliorare l’accessibilità e l’esperienza utente nei form più complessi (registrazione, pubblicazione e modifica annuncio). 
 L’obiettivo principale è garantire un flusso di compilazione chiaro e accessibile, senza interferire con i form più semplici come \textit{accedi} o \textit{filtri}.
@@ -201,6 +209,8 @@ ridondanze.
 * 2 uniche ancore img:
  1. logo, img da css quindi txt + title per prevedibilità ancora e no aria label per eiatre ridondanza
  2. torna su img con alt esplicativo + title (functional image in https://www.w3.org/WAI/tutorials/images/decision-tree/)
+
+* in annuncio title ha categoria e citta oltre che titolo per seo
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop

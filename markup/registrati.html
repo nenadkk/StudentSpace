@@ -75,10 +75,6 @@
     <main id="contenuto">
         <div id="register-container" class="form-container form-container-large">
             <h2>Registrati</h2>
-
-            <div id="errori-form-registrati" role="alert" aria-atomic="true">
-            </div>
-
             <form action="registrati.php" method="post">
                 <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
                 <div class="form-data">
@@ -161,7 +157,7 @@
                         <p>Es. LaMiaPassword123!</p> <!-- Da mettere controllo js che non possa usare questa password -->
                         
                         <div class="checkbox-inline">
-                            <input id="mostraPassword" type="checkbox" onclick="" name="mostra-passwd" > <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <input id="mostraPassword" type="checkbox" name="mostra-passwd">
                             <label for="mostraPassword">Mostra password</label>
                         </div>
                     </div>
@@ -172,7 +168,7 @@
                         <p>Es. LaMiaPassword123!</p>
                         
                         <div class="checkbox-inline">
-                            <input id="mostraConfermaPassword" type="checkbox" onclick="" name="mostra-conferma-passwd"> <!-- Da aggiungere in onclick la funzione javascript che mostra la password-->
+                            <input id="mostraConfermaPassword" type="checkbox" name="mostra-conferma-passwd"> 
                             <label for="mostraConfermaPassword">Mostra <span lang="en">password</span></label>
                         </div>
                     </div>
