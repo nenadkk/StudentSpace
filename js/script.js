@@ -137,75 +137,89 @@ function toggleFiltri() {
   });
 }
 
-/* PER NICOLA
+/* PER NICOLA */
 function toggleFiltriAccessibile() {
     const toggle = document.getElementById("toggleFiltri");
     const filtri = document.getElementById("filtri");
     const chiudi = document.getElementById("chiudiFiltri");
-    const overlay = document.getElementById("overlay-filtri"); // <-- QUI
+    const overlay = document.getElementById("overlay-filtri");
+    const contenuto = document.getElementById("contenuto");
 
-    if (!toggle || !filtri || !chiudi || !overlay) return;
+    if (!toggle || !filtri || !chiudi || !overlay || !contenuto) return;
 
     let lastFocusedElement = null;
 
-    // Apertura pannello
-    toggle.addEventListener("click", () => {
+    const focusableSelectors = `
+        button,
+        input,
+        select,
+        textarea,
+        a[href],
+        [tabindex]:not([tabindex="-1"])
+    `;
+
+    function getFocusable() {
+        return filtri.querySelectorAll(focusableSelectors);
+    }
+
+    function apriPannello() {
         lastFocusedElement = document.activeElement;
 
         filtri.classList.add("attivo");
-        overlay.classList.add("attivo"); // <-- ATTIVA OVERLAY
+        overlay.hidden = false;
+
         toggle.setAttribute("aria-expanded", "true");
+        contenuto.setAttribute("aria-hidden", "true");
+        document.body.classList.add("no-scroll");
 
-        // Focus sul titolo del pannello
         const titolo = filtri.querySelector("h2");
-        if (titolo) titolo.focus();
-    });
-
-    // Chiusura pannello
-    function chiudiPannello() {
-        filtri.classList.remove("attivo");
-        overlay.classList.remove("attivo"); // <-- DISATTIVA OVERLAY
-        toggle.setAttribute("aria-expanded", "false");
-
-        if (lastFocusedElement) lastFocusedElement.focus();
+        titolo.focus();
     }
 
-    chiudi.addEventListener("click", chiudiPannello);
+    function chiudiPannello() {
+        filtri.classList.remove("attivo");
+        overlay.hidden = true;
 
-    // Chiusura con ESC
+        toggle.setAttribute("aria-expanded", "false");
+        contenuto.removeAttribute("aria-hidden");
+        document.body.classList.remove("no-scroll");
+
+        lastFocusedElement?.focus();
+    }
+
+    toggle.addEventListener("click", apriPannello);
+    chiudi.addEventListener("click", chiudiPannello);
+    overlay.addEventListener("click", chiudiPannello);
+
+    // ESC per chiudere
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && filtri.classList.contains("attivo")) {
             chiudiPannello();
         }
     });
 
-    // Click sull’overlay = chiudi pannello
-    overlay.addEventListener("click", chiudiPannello); // <-- EXTRA UX PERFETTA
-
     // Focus trap
     filtri.addEventListener("keydown", (e) => {
         if (e.key !== "Tab") return;
 
-        const focusable = filtri.querySelectorAll(
-            'button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'
-        );
+        const focusable = getFocusable();
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
-        if (e.shiftKey) {
-            if (document.activeElement === first) {
-                e.preventDefault();
-                last.focus();
-            }
-        } else {
-            if (document.activeElement === last) {
-                e.preventDefault();
-                first.focus();
-            }
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
         }
     });
+
+    // Chiudi quando si applicano i filtri
+    filtri.querySelector("form").addEventListener("submit", () => {
+        chiudiPannello();
+    });
 }
-*/
 
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
@@ -327,11 +341,12 @@ function initDeleteConfirmation() {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
     toggleFiltri();
-    //toggleFiltriAccessibile(); /*PER NICOLA*/
+    toggleFiltriAccessibile(); /*PER NICOLA*/
     toggleMultipleAlt();
     toggleFiltriCategoria();
     togglePubblicaCategoria();

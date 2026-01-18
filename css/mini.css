@@ -212,6 +212,8 @@ footer p {
     flex-direction: column;
     overflow: hidden;
     justify-content: flex-start;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .filtri-header {
@@ -246,9 +248,11 @@ footer p {
     padding: 1.5em; 
 }
 
-/* PER NICOLA
+/* PER NICOLA */
 body.no-scroll {
     overflow: hidden;
+    height: 100vh;
+    touch-action: none;
 }
 
 #overlay-filtri {
@@ -261,7 +265,6 @@ body.no-scroll {
 #overlay-filtri.attivo {
     display: block;
 }
-*/
 /*
 ====================================================
     SEZIONE CATEGORIE

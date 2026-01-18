@@ -56,7 +56,7 @@ if($db->openDBConnection()) {
 
 if($db->openDBConnection()) {
 
-    $annuncio = $db->getAnnuncioBase($idAnnuncio)[0];
+    $annuncio = $db->getAnnuncioBase($idAnnuncio);
 
 
     if ($annuncio === false) { 
@@ -71,7 +71,7 @@ if($db->openDBConnection()) {
         Tool::renderError(403);
     }
 
-    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio)[0]; 
+    $attr = $db->getAttributiSpecifici($annuncio["Categoria"], $idAnnuncio); 
 
     $immagini = $db->getImmagini($idAnnuncio);
 
