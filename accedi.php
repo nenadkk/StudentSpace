@@ -113,10 +113,10 @@ if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
     $pagina = $_GET['redirect'];
 
     $messaggi = [
-        "pubblica.php" => "Per pubblicare un annuncio è necessario effettuare il <span lang='en'>login</span>.",
-        "annuncio.php" => "Per salvare nei preferiti un annuncio  è necessario effettuare il <span lang='en'>login</span>.",
-        "profilo.php"  => "Per accedere al tuo profilo è necessario effettuare il <span lang='en'>login</span>.",
-        "modificaAnnuncio.php" => "Per modificare un tuo annuncio è necessario effettuare il <span lang='en'>login</span>."
+        "pubblica" => "Per pubblicare un annuncio è necessario effettuare il <span lang='en'>login</span>.",
+        "annuncio" => "Per salvare nei preferiti un annuncio  è necessario effettuare il <span lang='en'>login</span>.",
+        "profilo"  => "Per accedere al tuo profilo è necessario effettuare il <span lang='en'>login</span>.",
+        "modificaAnnuncio" => "Per modificare un tuo annuncio è necessario effettuare il <span lang='en'>login</span>."
     ];
 
     // Messaggio di default

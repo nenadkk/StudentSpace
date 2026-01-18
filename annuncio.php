@@ -17,7 +17,7 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 
     if (!Tool::isLoggedIn()) {
-        header("Location: accedi.php?redirect=annuncio.php?id=" . $idAnnuncio);
+        header("Location: accedi?redirect=annuncio?id=" . $idAnnuncio);
         exit;
     }
 
@@ -113,7 +113,7 @@ foreach ($immagini as $index => $img) {
 if (!Tool::isLoggedIn()) {
 
     $preferitiHTML = '
-        <a href="accedi?redirect=annuncio.php?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
+        <a href="accedi?redirect=annuncio?id='.$idAnnuncio.'" id="preferiti" class="link btn-base call-to-action" aria-label="Accedi per salvare nei preferiti">★</a>
     ';
 
 } else {

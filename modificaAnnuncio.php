@@ -65,8 +65,6 @@ if($db->openDBConnection()) {
     }
 
     if ($annuncio["IdUtente"] != $_SESSION["user_id"]) {
-        // errore di permessi mancanti
-        // DA SISTEMARE
         $db->closeConnection(); 
         Tool::renderError(403);
     }
