@@ -381,7 +381,8 @@ button {
     background-color: var(--clearBgColor);
 }
 
-#menu .link.call-to-action:visited{    
+#menu .link.call-to-action:visited,
+.paragraph-link-container .link.call-to-action:visited{    
     background-color: var(--BgColor);
     color: var(--txtNavColor);
 }

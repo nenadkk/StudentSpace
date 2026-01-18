@@ -210,7 +210,37 @@ ridondanze.
  1. logo, img da css quindi txt + title per prevedibilità ancora e no aria label per eiatre ridondanza
  2. torna su img con alt esplicativo + title (functional image in https://www.w3.org/WAI/tutorials/images/decision-tree/)
 
-* in annuncio title ha categoria e citta oltre che titolo per seo
+* \subsection*{Ottimizzazione dei titoli e delle meta description}
+
+La gestione dei titoli delle pagine (\texttt{<title>}) segue una strategia coerente e uniforme, basata sul formato ``Nome pagina -- Student Space''. Questa scelta garantisce riconoscibilità del sito, coerenza tra le pagine e una buona leggibilità nei risultati dei motori di ricerca. Alcune pagine richiedono tuttavia un titolo più descrittivo, per motivi di chiarezza, usabilità o ottimizzazione SEO. In questi casi il titolo è stato personalizzato includendo informazioni contestuali rilevanti.
+
+I titoli personalizzati sono i seguenti:
+\begin{itemize}
+    \item \emph{Errore 500: errore interno -- Student Space}
+    \item \emph{Errore 404: pagina non trovata -- Student Space}
+    \item \emph{Profilo pubblico di [Email] -- Student Space}
+    \item \emph{Modifica annuncio: [TitoloAnnuncio] -- Student Space}
+    \item \emph{[TitoloAnnuncio] -- [CategoriaAnnuncio] a [CittaAnnuncio] -- Student Space}
+\end{itemize}
+
+Anche le meta description sono state ottimizzate per migliorare la pertinenza delle pagine nei motori di ricerca. Per le pagine informative è stato adottato un formato descrittivo e sintetico, mentre per le pagine dinamiche (come gli annunci) la description è stata costruita utilizzando i dati dell'annuncio, includendo titolo, categoria e città. Questo approccio permette di comunicare immediatamente il contenuto della pagina e migliora la qualità degli snippet mostrati nei risultati di ricerca.
+
+\subsection*{Strategie SEO adottate}
+
+L'intero sito è stato progettato seguendo buone pratiche SEO e di accessibilità:
+\begin{itemize}
+    \item struttura semantica corretta con uso appropriato di \texttt{<header>}, \texttt{<main>}, \texttt{<nav>}, \texttt{<section>} e \texttt{<footer>};
+    \item utilizzo di titoli gerarchici coerenti (\texttt{<h1>}, \texttt{<h2>}, \texttt{<h3>});
+    \item meta description specifiche e descrittive per ogni pagina;
+    \item immagini ottimizzate in formato \texttt{.webp} con attributi \texttt{alt} significativi;
+    \item breadcrumb semantico con \texttt{aria-current} per migliorare navigazione e accessibilità;
+    \item link con anchor text descrittivi, evitando formulazioni generiche come ``clicca qui'';
+    \item URL coerenti e leggibili;
+    \item ottimizzazione delle pagine dinamiche (annunci) tramite title e description costruiti con dati contestuali.
+\end{itemize}
+
+Queste scelte garantiscono una buona indicizzazione, una migliore esperienza utente e una struttura del sito chiara e accessibile.
+
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
