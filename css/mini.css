@@ -16,23 +16,26 @@ section {
 }
 
 .errore {
-    padding: 2em 2em 4em;
+    padding: 0.5em 2em 4em;
 }
 
 .img-text-section {
     gap: var(--gap-0-5);
 }
 
-  .img-text-section {
-    flex-direction: column;
-  }
+.img-text-section {
+flex-direction: column;
+}
 
-  .img-text-section > img,
-  .img-text-section > div {
+.img-text-section > img,
+.img-text-section > div {
     max-width: 100%;
     flex: unset;
-  }
+}
 
+.img-text-section > img{
+    max-width: 70%;
+}
 
 
 .card-base:hover, .btn-base:hover { 
@@ -245,7 +248,6 @@ footer p {
     padding: 1.5em; 
 }
 
-/* PER NICOLA */
 body.no-scroll {
     overflow: hidden;
     height: 100vh;
@@ -255,13 +257,22 @@ body.no-scroll {
 #overlay-filtri {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(22, 40, 110, 0.45);
+    backdrop-filter: blur(4px);
     z-index: 900;
 }
 
 #overlay-filtri.attivo {
     display: block;
 }
+
+
+#hamburger:focus, #chiudiFiltri:focus {
+    outline: none;
+    outline: 2px solid var(--card);
+    outline-offset: 2px;
+}
+
 /*
 ====================================================
     SEZIONE CATEGORIE

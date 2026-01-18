@@ -163,14 +163,14 @@ section {
    padding: 2em 6em; 
 }
 
+
 #saluto {
     padding: 1em;
     padding-top: 0;
 }
 
 .errore {
-   padding: 6em; 
-   padding-bottom: 8em;
+   padding: 1em 8em 8em; 
 }
 
 #contenuto {
