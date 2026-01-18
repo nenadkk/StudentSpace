@@ -137,7 +137,6 @@ function toggleFiltri() {
   });
 }
 
-/* PER NICOLA */
 function toggleFiltriAccessibile() {
     const toggle = document.getElementById("toggleFiltri");
     const filtri = document.getElementById("filtri");
@@ -346,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
     toggleFiltri();
-    toggleFiltriAccessibile(); /*PER NICOLA*/
+    toggleFiltriAccessibile(); 
     toggleMultipleAlt();
     toggleFiltriCategoria();
     togglePubblicaCategoria();
