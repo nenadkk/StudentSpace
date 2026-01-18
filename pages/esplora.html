@@ -42,7 +42,7 @@
     <div id="content-container">
         <nav id="breadcrumb" aria-label="Percorso di navigazione">
             <ol>
-                <li lang="en"><a href="index.php">Home</a></li>
+                <li lang="en"><a href="index">Home</a></li>
                 <li aria-current="page" class="currentPage"> <span aria-hidden="true">»</span> Esplora</li>
             </ol>
         </nav>
@@ -54,10 +54,10 @@
                 </div>
                 <aside id="filtri" class="form-container">
                     <div class="filtri-header">
-                        <h2>Filtri</h2>
+                        <h2 id="titolo-filtri" tabindex="-1">Filtri</h2>
                         <button id="chiudiFiltri" type="button" aria-label="Chiudi filtri">&#9932;</button>
                     </div>    
-                    <form class="form-data" action="esplora.php" method="get">
+                    <form class="form-data" action="esplora" method="get">
                         <fieldset class="fieldset-filtri fieldset-base">
                             <legend>Generali</legend>
                             <div class="form-div">
@@ -194,7 +194,7 @@
             </div>
 
             <!-- PER NICOLA -->
-            <div id="overlay-filtri" hidden>
+            <div id="overlay-filtri" hidden></div>
             <main id="contenuto">
                 <div id="esplora" class="section-column">
                     <div class="titolo-num-risultati">
@@ -206,7 +206,6 @@
                     </ul>
                 </div>
             </main>
-            </div>
         </div>
         <a href="#contenuto" id="freccia-su" title="Torna all'inizio del contenuto">
         <img src="assets/freccia.webp" alt="Torna all'inizio del contenuto">
