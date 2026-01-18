@@ -137,7 +137,7 @@ function toggleFiltri() {
   });
 }
 
-/* PER NICOLA
+/* PER NICOLA */
 function toggleFiltriAccessibile() {
     const toggle = document.getElementById("toggleFiltri");
     const filtri = document.getElementById("filtri");
@@ -205,7 +205,6 @@ function toggleFiltriAccessibile() {
         }
     });
 }
-*/
 
 // JS PER TOGGLE FILTRI CATEGORIA
 function toggleFiltriCategoria() {
@@ -327,6 +326,7 @@ function initDeleteConfirmation() {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();

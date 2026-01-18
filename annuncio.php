@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["azione"])) {
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["elimina"]) && Tool::isLoggedIn()) {
     if($db->openDBConnection()) {
 
-        $annuncio = $db->getAnnuncioBase($idAnnuncio)[0];
+        $annuncio = $db->getAnnuncioBase($idAnnuncio);
 
         if ($annuncio === false) { 
             $db->closeConnection(); 

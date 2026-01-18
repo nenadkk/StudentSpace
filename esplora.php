@@ -42,6 +42,12 @@ $filtriRipetizioni = array(
                 "livello"=>"",
                 "prezzo-ripetizioni-max"=>"");
 
+$cities = [];
+
+if($db->openDBConnection()) {
+    $cities = $db->getAllCity();
+    $db->closeConnection();
+}
 
 if(isset($_GET['submit'])) 
 {
@@ -154,6 +160,7 @@ $htmlPage = str_replace("[esperimentiSelected]", $categoria=='Esperimenti' ? 'se
 $htmlPage = str_replace("[eventiSelected]", $categoria=='Eventi' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'selected' : '' , $htmlPage);
 $htmlPage = str_replace("[oggi]", $oggi, $htmlPage);
+$htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 
