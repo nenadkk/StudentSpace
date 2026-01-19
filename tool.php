@@ -118,7 +118,7 @@ class Tool {
     private static function getBottomNavLog(string $page) : string {
         if(Tool::isLoggedIn()) {
             if($page === "profilo") return '<li class="current-link" aria-current="page">Profilo</li>
-                <li><a href="/logout" aria-label="Esci dal tuo profilo">Esci</a></li>';
+                <li><a href="logout" aria-label="Esci dal tuo profilo">Esci</a></li>';
             return file_get_contents(__DIR__ . "/pages/bottomNavLogTrue.html");
         }
         else {
