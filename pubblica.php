@@ -39,6 +39,10 @@ $campiRipetizioni = array(
                 "livello"=>"",
                 "prezzo-ripetizioni"=>"");
 
+$errorMessageTitolo = "";
+$errorMessageCategoria = "";
+$errorMessageDescrizione = "";
+        
 $immagini = [];
 $erroriImmagini = [];
 $erroreCitta = "";
@@ -60,7 +64,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if ($titolo === "") {
         $errorMessageTitolo = "
         <ul class='riquadro-spieg messaggi-errore-form'>
-            <li class='msgErrore' id='errore-titolo' role='alert'>Il titolo è obbligatorio.</li>
+            <li class='msgErrore' id='errore-titolo' role='alert'>
+                Il titolo è obbligatorio.
+            </li>
+        </ul>";
+        $numMessaggiErrore++;
+    } elseif (strlen($titolo) > 50) {
+        $errorMessageTitolo = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-titolo' role='alert'>
+                Il titolo non può superare i 50 caratteri.
+            </li>
         </ul>";
         $numMessaggiErrore++;
     } else {
@@ -253,6 +267,9 @@ if (!empty($erroriImmagini)) {
 
 $htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlPage);
 
+$htmlPage = str_replace("[Errore-titolo]", $errorMessageTitolo, $htmlPage);
+$htmlPage = str_replace("[Errore-categoria]", $errorMessageCategoria, $htmlPage);
+$htmlPage = str_replace("[Errore-descrizione]", $errorMessageDescrizione, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("pubblica"), $htmlPage);

@@ -154,8 +154,8 @@ if(Tool::isLoggedIn() && $annuncio["IdUtente"] == $_SESSION["user_id"]){
     ';
 }
 
+$htmlPage = str_replace("[TitoloSEO]", Tool::titoloSEO($annuncio["Titolo"], $annuncio["NomeCitta"]), $htmlPage);
 $htmlPage = str_replace("[TitoloAnnuncio]", htmlspecialchars($annuncio["Titolo"]), $htmlPage); 
-$htmlPage = str_replace("[CategoriaAnnuncio]", htmlspecialchars($annuncio["Categoria"]), $htmlPage);
 $htmlPage = str_replace("[CittaAnnuncio]", htmlspecialchars($annuncio["NomeCitta"]), $htmlPage); 
 $htmlPage = str_replace("[DescrizioneAnnuncio]", Tool::convertiInParagrafi($annuncio["Descrizione"]), $htmlPage);
 

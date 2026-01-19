@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Modifica annuncio: [TitoloAnnuncio] – Student Space</title>
+    <title>[TitoloSEO]</title>
 
     <meta charset="utf-8">
 
@@ -59,8 +59,9 @@
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container" class="form-div">
                             <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
-                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Partita di calcio</p>
-                            <input type="text" id="titolo" name="titolo" value="[titolo]" required placeholder="Scrivi il titolo" >
+                            <p class="esempi"><abbr title='esempio'>Es.</abbr> Partita di calcio (<abbr title="Massimo">Max.</abbr> 50 caratteri)</p>
+                            <input type="text" id="titolo" name="titolo" value="[titolo]" maxlength="50" required placeholder="Scrivi il titolo" >
+                            [Errore-titolo]
                         </div>
 
                         <div id="attr-generici-container">
@@ -83,13 +84,14 @@
                             <label for="descrizione">Descrizione<span class="required"> (richiesto)</span></label>
                             <p class="esempi"><abbr title='esempio'>Es.</abbr> Appartamento con 2 camere vicino al centro</p>
                             <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..." >[descrizione]</textarea>
+                            [Errore-descrizione]
                         </div>
 
                         [campiDettagli]
 
                         <!-- Immagini -->
                         <fieldset class="fieldset-base">
-                            <legend>Immagini (max 4)</legend>
+                            <legend>Immagini (<abbr title="Massimo">Max.</abbr> 4)</legend>
                             <p class="riquadro-spieg alt-spiegazione">
                                 Il <strong>testo alternativo</strong> descrive l'immagine per chi non può vederla (es. utenti con disabilità visive o in caso di errore di caricamento).  
                                 Se l'immagine è puramente decorativa e non aggiunge contenuto, puoi spuntare <strong>"Decorativa"</strong> e lasciare vuoto il campo.

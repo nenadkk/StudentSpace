@@ -210,7 +210,7 @@ ridondanze.
  1. logo, img da css quindi txt + title per prevedibilità ancora e no aria label per eiatre ridondanza
  2. torna su img con alt esplicativo + title (functional image in https://www.w3.org/WAI/tutorials/images/decision-tree/)
 
-* \subsection*{Ottimizzazione dei titoli e delle meta description}
+* \subsection*{Ottimizzazione dei titoli e delle meta description} !!!!!!!cambiati
 
 La gestione dei titoli delle pagine (\texttt{<title>}) segue una strategia coerente e uniforme, basata sul formato ``Nome pagina -- Student Space''. Questa scelta garantisce riconoscibilità del sito, coerenza tra le pagine e una buona leggibilità nei risultati dei motori di ricerca. Alcune pagine richiedono tuttavia un titolo più descrittivo, per motivi di chiarezza, usabilità o ottimizzazione SEO. In questi casi il titolo è stato personalizzato includendo informazioni contestuali rilevanti.
 
@@ -218,7 +218,7 @@ I titoli personalizzati sono i seguenti:
 \begin{itemize}
     \item \emph{Errore 500: errore interno -- Student Space}
     \item \emph{Errore 404: pagina non trovata -- Student Space}
-    \item \emph{Profilo pubblico di [Email] -- Student Space}
+    \item \emph{Profilo: [Email] -- Student Space}
     \item \emph{Modifica annuncio: [TitoloAnnuncio] -- Student Space}
     \item \emph{[TitoloAnnuncio] -- [CategoriaAnnuncio] a [CittaAnnuncio] -- Student Space}
 \end{itemize}
@@ -241,6 +241,9 @@ L'intero sito è stato progettato seguendo buone pratiche SEO e di accessibilit�
 
 Queste scelte garantiscono una buona indicizzazione, una migliore esperienza utente e una struttura del sito chiara e accessibile.
 
+* in design diciamo che abbiamo fatto usare ad utenti esterni di varie fasce e categorie il sito per verificare che il comportamento sia prevedibile in quanto noi essendo i creatori potevamo non renderci conto di elementi non prevedibili e chiari (fare esempi)
+
+*per ogni tipo di metafora della pesca fornire soluzione data dal sito
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop

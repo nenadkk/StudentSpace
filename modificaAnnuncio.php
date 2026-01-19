@@ -6,7 +6,7 @@ require_once "dbConnect.php";
 use DB\DBAccess;
 $db = new DB\DBAccess();
 
-$htmlPage = file_get_contents('pages/modificaAnnuncio.html');
+$htmlPage = file_get_contents(__DIR__ . '/pages/modificaAnnuncio.html');
 
 $idAnnuncio = 0;
 if (isset($_GET["id"]) && ctype_digit($_GET["id"])) { 
@@ -107,6 +107,10 @@ switch ($annuncio["Categoria"]) {
         break;
 }
 
+$errorMessageTitolo = "";
+$errorMessageCategoria = "";
+$errorMessageDescrizione = "";
+
 $numMessaggiErrore = 0;
 $erroriImmagini = [];
 $erroreCitta = "";
@@ -124,22 +128,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     // --- VALIDAZIONI GENERALI ---
     if ($titolo === "") {
-        $errorMessageTitolo = Tool::erroreCampo("Il titolo è obbligatorio.", "errore-titolo");
+        $errorMessageTitolo = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-titolo' role='alert'>
+                Il titolo è obbligatorio.
+            </li>
+        </ul>";
         $numMessaggiErrore++;
-    } else $errorMessageTitolo = "";
-
-    if ($categoria === "") {
-        $errorMessageCategoria = Tool::erroreCampo("La categoria è obbligatoria.", "errore-categoria");
+    } elseif (strlen($titolo) > 50) {
+        $errorMessageTitolo = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-titolo' role='alert'>
+                Il titolo non può superare i 50 caratteri.
+            </li>
+        </ul>";
         $numMessaggiErrore++;
-    } else $errorMessageCategoria = "";
+    } else {
+        $errorMessageTitolo = "";
+    }
 
     if ($descrizione === "") {
-        $errorMessageDescrizione = Tool::erroreCampo("La descrizione è obbligatoria.", "errore-descrizione");
+        $errorMessageDescrizione = 
+        "<ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-descrizione' role='alert'>
+                La descrizione è obbligatoria.
+            </li>
+        </ul>";
         $numMessaggiErrore++;
     } else $errorMessageDescrizione = "";
 
     if (!Tool::validaCitta($citta)) {
-        $erroreCitta = Tool::erroreCampo("La città inserita non è valida.", "errore-citta");
+        $erroreCitta = 
+        "<ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-citta' role='alert'>
+                La città inserita non è valida.
+            </li>
+        </ul>";
         $numMessaggiErrore++;
     }
 
@@ -283,9 +307,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 }
 
-
-
-$htmlPage = file_get_contents(__DIR__ . '/pages/modificaAnnuncio.html');
+$htmlPage = str_replace("[TitoloSEO]",Tool::titoloSEO($annuncio["Titolo"], "", "Modifica:", false),$htmlPage);
 
 //rimetto la categoria selezionata
 $htmlPage = str_replace("[categoriaSelected]", $annuncio["Categoria"] ?? '' , $htmlPage);
@@ -322,6 +344,9 @@ if (!empty($erroriImmagini)) {
 
 $htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlPage);
 
+$htmlPage = str_replace("[Errore-titolo]", $errorMessageTitolo, $htmlPage);
+$htmlPage = str_replace("[Errore-categoria]", $errorMessageCategoria, $htmlPage);
+$htmlPage = str_replace("[Errore-descrizione]", $errorMessageDescrizione, $htmlPage);
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);

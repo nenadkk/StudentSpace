@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ------------------------------------------------------
-// FUNZIONE DI VALIDAZIONE (VERSIONE PROF)
+// FUNZIONE DI VALIDAZIONE
 // ------------------------------------------------------
 function validazioneCampo(campo) {
 

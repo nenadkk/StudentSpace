@@ -5,7 +5,6 @@ require_once "dbConnect.php";
 use DB\DBAccess;
 
 class Tool {
-
     /* -------------------------------
     * FUNZIONE PER LISTA CITTÀ DA DATI DB
     * ------------------------------- */
@@ -28,7 +27,7 @@ class Tool {
         $cards = "";
         $cardhtml = "";
         foreach ($cardsData as $card) {
-            $cardhtml = file_get_contents("pages/cardTemplate.html");
+            $cardhtml = file_get_contents('pages/cardTemplate.html');
             $cardhtml = str_replace("[ImmagineAnnuncio]", htmlspecialchars($card['Percorso']), $cardhtml);
             $cardhtml = str_replace("[AltImmagineAnnuncio]", htmlspecialchars($card['AltText'] ?? ''), $cardhtml);
             $cardhtml = str_replace("[TitoloAnnuncio]", htmlspecialchars($card['Titolo']), $cardhtml);
@@ -407,5 +406,32 @@ class Tool {
         }
 
         return $modAnn . '</div>';
+    }
+
+    public static function titoloSEO(string $titolo, string $citta = "", string $prefix = "", bool $usaCitta = true): string {
+        $maxTotale = 55;
+
+        $prefix = $prefix !== "" ? rtrim($prefix) . " " : ""; // in modifca prefisso 'Modifica:'
+
+        if ($usaCitta && $citta !== "") {
+            $suffix = " – " . $citta . " - Student Space"; // in annuncio
+        } else {
+            $suffix = " - Student Space";
+        }
+
+        $maxTitolo = $maxTotale - mb_strlen($prefix) - mb_strlen($suffix);
+
+        if (mb_strlen($titolo) <= $maxTitolo) {
+            return $prefix . $titolo . $suffix;
+        }
+
+        $cut = mb_substr($titolo, 0, $maxTitolo);
+
+        $lastSpace = mb_strrpos($cut, ' ');
+        if ($lastSpace !== false) {
+            $cut = mb_substr($cut, 0, $lastSpace);
+        }
+
+        return $prefix . $cut . "…" . $suffix;
     }
 }

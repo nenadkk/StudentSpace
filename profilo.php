@@ -6,14 +6,12 @@ require_once "dbConnect.php";
 use DB\DBAccess;
 $db = new DB\DBAccess();
 
-$htmlPage = file_get_contents("pages/profilo.html");
+$htmlPage = file_get_contents(__DIR__ . "/pages/profilo.html");
 
 if (!Tool::isLoggedIn()) {
     header("Location: accedi.php?redirect=profilo.php");
     exit;
 }
-
-$htmlPage = file_get_contents(__DIR__ . "/pages/profilo.html");
 
 $idUtente = $_SESSION["user_id"];
 $infoUtente = "";
