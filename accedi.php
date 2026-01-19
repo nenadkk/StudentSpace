@@ -143,6 +143,21 @@ $htmlPage = str_replace("[RedirectMessage]", $redirectMessage, $htmlPage);
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);
 
+// Se c'è un errore, aggiungo aria-describedby ai campi email e password
+if ($erroreEmail !== "") {
+    $htmlPage = str_replace(
+        'id="email"',
+        'id="email" aria-describedby="errore-login"',
+        $htmlPage
+    );
+
+    $htmlPage = str_replace(
+        'id="password"',
+        'id="password" aria-describedby="errore-login"',
+        $htmlPage
+    );
+}
+
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("accedi"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("accedi"), $htmlPage);
 
