@@ -12,7 +12,7 @@ section {
 }
 
 #saluto {
-    padding: 0 0.5em;
+    padding: 0  0.5em 0.5em;
 }
 
 .errore {
@@ -456,8 +456,10 @@ li.categoria > div {
     min-width: 13.75em;
 }
 
-.profilo-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 25em) {
+    .profilo-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .profilo-grid div {

@@ -145,7 +145,7 @@ body, p, li, dd {
     font-weight: 400;
 }
 
-label, button, .btn-base, input, select, textarea {
+label, button, .btn-base, input, select, textarea, dt {
     font-weight: 500;
 }
 
@@ -174,9 +174,8 @@ section {
    padding: 2em 6em; 
 }
 
-
 #saluto {
-    padding: 1em;
+    padding: 1em 2em;
     padding-top: 0;
 }
 
@@ -471,6 +470,7 @@ button {
     color: var(--txtNavColor);
     max-width: 60em;
     margin: 0 auto;
+    padding: 1em;
 }
 
 /* ------------- estensione per .messaggi-errore-form ------------- */
@@ -989,11 +989,10 @@ footer p{
 ==================================================== 
 */
 
-#esplora-content { 
+#layout-sidebar-container { 
     display: flex; 
     flex-direction: row; 
     align-items: flex-start; 
-    gap: var(--gap-1);
     padding: 1em; 
 }
 
@@ -1414,8 +1413,9 @@ form > p, form > p{
 }
 
 #dati-pers-container {
-    gap: var(--gap-1-5);
+    gap: var(--gap-1);
     margin: 0 auto;
+    padding: 1.5em 1em 1em;
 }
 
 #dati-personali dt::after{
@@ -1424,18 +1424,19 @@ form > p, form > p{
 
 .profilo-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(12.5em, 1fr));
-    gap: var(--gap-1-5);
+    grid-template-columns: repeat(2, minmax(10em, 1fr));
+    gap: var(--gap-0-5);
 }
 
 .profilo-grid div {
     background-color: var(--formbg);
-    padding: 1em 1.2em;
+    padding: 1em;
     border-radius: var(--radius-base);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     gap: var(--gap-0-5);
-    min-width: 12.5em; 
+    min-width: 10em; 
     box-shadow: var(--shadow-base);
 }
 
