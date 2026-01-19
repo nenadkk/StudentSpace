@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="assets/logo_no_scritta.webp" type="image/x-icon">
+    <link rel="icon" href="assets/logo_no_scritta.svg" type="image/x-icon">
 
     <script src="js/script.js" defer></script>
 </head>
@@ -71,8 +71,11 @@
     </nav>
 
     <main id="contenuto">
-        <div class="img-text-section errore" >
-            <img src="assets/404.webp" alt="">
+        <div class="img-text-section errore">
+            <picture>
+                <source srcset="assets/404.webp" type="image/webp">
+                <img src="assets/404.png" alt="">
+            </picture>
             <div id="testo-errore">
                 <h2>Annuncio non esistente</h2>
                 <p>Ops! Sembra che questo annuncio non sia mai stato affisso.</p>
@@ -87,10 +90,10 @@
     <footer>
         <div id="footer-top">
             <a href="#contenuto" id="freccia-su" aria-label="Torna all'inizio del contenuto">
-                <img src="assets/freccia.webp" alt="">
+                <img src="assets/freccia.svg" alt="">
             </a>
             <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
-            <img src="assets/logo_no_scritta.webp" alt="" class="logo-footer">
+            <img src="assets/logo_no_scritta.svg" alt="" class="logo-footer">
             <ul id="site-map" aria-label="Mappa del sito">
                 <li lang="en"><a href="index.html">Home</a></li>
                 <li><a href="esplora.html">Esplora</a></li>

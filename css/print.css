@@ -56,7 +56,7 @@ header {
 }
 
 header h1 {
-    content: url("../assets/logo.webp");
+    content: url("../assets/logo.svg");
     display: block;
     margin: 0 auto;
     height: 2cm;
