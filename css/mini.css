@@ -257,24 +257,6 @@ footer p {
     padding: 1.5em; 
 }
 
-body.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-    touch-action: none;
-}
-
-#overlay-filtri {
-    position: fixed;
-    inset: 0;
-    background: rgba(22, 40, 110, 0.45);
-    backdrop-filter: blur(4px);
-    z-index: 900;
-}
-
-#overlay-filtri.attivo {
-    display: block;
-}
-
 /*
 ====================================================
     SEZIONE CATEGORIE
@@ -466,4 +448,36 @@ li.categoria > div {
 
 .profilo-grid div {
     min-width: unset;
+}
+
+/*
+====================================================
+    DA VERIFICARE
+====================================================
+*/
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
+}
+
+#overlay-filtri {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(22, 40, 110, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+}
+
+#overlay-filtri.attivo {
+    display: block;
+}
+
+#intestazione {
+    z-index: 499;
 }

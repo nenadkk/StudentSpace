@@ -16,7 +16,7 @@ if (isset($_GET["id"]) && ctype_digit($_GET["id"])) {
 }
 
 if (!Tool::isLoggedIn()) {
-    header("Location: accedi.php?redirect=pubblica.php");
+    header("Location: accedi?redirect=pubblica");
     exit;
 } else {
     $idUtente = $_SESSION["user_id"];
@@ -297,7 +297,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $db->closeConnection();
 
             if ($stmt) {
-                header("Location: annuncio.php?id=".$idAnnuncio);
+                header("Location: annuncio?id=".$idAnnuncio);
                 exit;
             } else {
                 $logger = "<p>Errore durante l'aggiornamento dell'annuncio.</p>";
