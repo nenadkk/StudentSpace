@@ -1244,7 +1244,7 @@ footer p{
     margin-top: 0.5em;
 }
 
-#login-container .form-data, #filtri .form-data fieldset, #register-container .form-data {
+#login-container .form-data , #filtri .form-data fieldset, #register-container .form-data {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);               
@@ -1257,7 +1257,7 @@ footer p{
     row-gap: var(--gap-1);
 }
 
-#pubblica-container .form-data {
+#pubblica-container .form-data .aiuti-fieldset {
     display: flex;
     flex-direction: column;
     width: 100%;
