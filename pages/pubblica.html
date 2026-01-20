@@ -51,6 +51,8 @@
                 <h2>Pubblica annuncio</h2>
                 <form action="pubblica.php" method="post" enctype="multipart/form-data" data-validate="pubblica">
                     <div class="form-data">
+                        <fieldset>
+                        <legend class="aiuti">Compila i dati principali dell’annuncio</legend>
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container" class="form-div">
                             <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
@@ -90,7 +92,7 @@
                             <textarea id="descrizione" name="descrizione" required rows="8" placeholder="Inserisci una descrizione dettagliata..." >[descrizione]</textarea>
                             [Errore-descrizione]
                         </div>
-
+                        </fieldset>
                         <!-- Campi specifici per categoria -->
                         <div id="attr-specifici-container">
                             <div id="campi-affitti" class="nascondi-campi">

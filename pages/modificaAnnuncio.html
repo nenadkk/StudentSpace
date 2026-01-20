@@ -53,9 +53,12 @@
         <main id="contenuto">
             <div id="pubblica-container" class="form-container form-container-large">
                 <h2>Modifica annuncio</h2>
+                <a href="#annulla-modifiche" class="aiuti">Salta al pulsante Annulla modifiche e torna all’annuncio</a>
                 [Logger]
                 <form action="modificaAnnuncio.php?id=[IdAnnuncio]" method="post" enctype="multipart/form-data" data-validate="modifica">
                     <div class="form-data">
+                        <fieldset>
+                        <legend class="aiuti">Modifica i dati principali dell’annuncio</legend>
                         <!-- Parte generica -->
                         <div id="pubblica-titolo-container" class="form-div">
                             <label for="titolo">Titolo annuncio<span class="required"> (richiesto)</span></label>
@@ -86,6 +89,7 @@
                             <textarea id="descrizione" name="descrizione" required rows="5" placeholder="Inserisci una descrizione dettagliata..." >[descrizione]</textarea>
                             [Errore-descrizione]
                         </div>
+                        </fieldset>
 
                         [campiDettagli]
 
@@ -152,8 +156,9 @@
                             </div>
                         </fieldset>
                     </div>
-                    <button class="btn-base" type="submit" name="submit">Modifica</button>
+                    <button class="btn-base" type="submit" name="submit">Conferma modifiche</button>
                 </form>
+                <a id="annulla-modifiche" class="link btn-base call-to-action" href="annuncio.php?id=[IdAnnuncio]">Annulla modifiche</a>
             </div>
             
         </main>

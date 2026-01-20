@@ -208,6 +208,10 @@ section {
     padding: 0.5em;
 }
 
+fieldset:has(> legend.aiuti) {
+    border: none;
+}
+
 .centered {
     display: flex;
     flex-direction: column;

@@ -54,30 +54,32 @@
                 [ErroreMail]
             </div>
             <form class="form-data" action="accedi" method="post">
-                <!-- <legend class="sr-only">Inserire le credenziali per il login</legend> -->
-                <div class="form-data">
-                    <div class="form-div">
-                        <label for="email" ><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
-                        <input type="text" id="email" name="email" value="[EmailValue]" autocomplete="email" required >
-                    </div>
+                <fieldset>
+                    <legend class="aiuti">Inserire le credenziali per l'accesso</legend>
+                    <div class="form-data">
+                        <div class="form-div">
+                            <label for="email" ><span lang="en">Email</span><span class="required"> (richiesto)</span></label>
+                            <input type="text" id="email" name="email" value="[EmailValue]" autocomplete="email" required >
+                        </div>
 
-                    <div class="form-div">
-                        <label for="password"><span  lang="en">Password</span><span class="required"> (richiesto)</span></label>
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <div class="form-div">
+                            <label for="password"><span  lang="en">Password</span><span class="required"> (richiesto)</span></label>
+                            <input type="password" id="password" name="password" required autocomplete="current-password">
 
-                        <div class="checkbox-inline">
-                            <input id="mostraPassword" type="checkbox" name="mostra-passwd"> 
-                            <label for="mostraPassword">Mostra password</label>
+                            <div class="checkbox-inline">
+                                <input id="mostraPassword" type="checkbox" name="mostra-passwd"> 
+                                <label for="mostraPassword">Mostra password</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <input type="hidden" name="redirect" value="[RedirectValue]">
-                <button class="btn-base" type="submit" id="submit" name="submit">Accedi</button>
-                <div class="paragraph-link-container">
-                    <p>Non hai un <span lang="en">account</span>?</p>
-                    <a class="link btn-base call-to-action" href="registrati.php">Registrati</a>
-                </div>
+                    <input type="hidden" name="redirect" value="[RedirectValue]">
+                    <button class="btn-base" type="submit" id="submit" name="submit">Accedi</button>
+                </fieldset>
             </form>
+            <div class="paragraph-link-container">
+                <p>Non hai un <span lang="en">account</span>?</p>
+                <a class="link btn-base call-to-action" href="registrati.php">Registrati</a>
+            </div>
         </div>
         
     </main>

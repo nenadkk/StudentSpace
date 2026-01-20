@@ -243,7 +243,9 @@ Queste scelte garantiscono una buona indicizzazione, una migliore esperienza ute
 
 * in design diciamo che abbiamo fatto usare ad utenti esterni di varie fasce e categorie il sito per verificare che il comportamento sia prevedibile in quanto noi essendo i creatori potevamo non renderci conto di elementi non prevedibili e chiari (fare esempi)
 
-*per ogni tipo di metafora della pesca fornire soluzione data dal sito
+* per ogni tipo di metafora della pesca fornire soluzione data dal sito
+
+* tutti gli input nei form non sono figli diretti di form ma hanno tutti filedset e legend in alcuni casi con classe aiuti quindi solo ascoltabili da screen reader + in modifica sotto h2 salta ad annulla per prevedibilità di poter annullare e non dover leggere tutto prima
 
 - contrasto tra bottonone bg e freccia (https://codepen.io/yaphi1/pen/oNbEqGV) opacità testa e img test in relazione/images/
 - scelta di carosello con blocco iniziale e finale e non loop
