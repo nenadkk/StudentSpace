@@ -341,6 +341,31 @@ function initDeleteConfirmation() {
   });
 }
 
+function maxFileSizeAlert() {
+
+  const fileInputs = [
+    document.getElementById('foto1'),
+    document.getElementById('foto2'),
+    document.getElementById('foto3'),
+    document.getElementById('foto4')
+  ];
+
+  // Limite singola immagine
+  const MAX_SIZE = 1 * 1024 * 1024; // 1 MB in byte
+
+  // Aggiungi evento change a ciascun input
+  for (const input of fileInputs) {
+    if(input == null) return;
+    input.addEventListener('change', function () {
+      if (input.files.length > 0 && input.files[0].size > MAX_SIZE) {
+        alert("Questa immagine è troppo grande. Massimo consentito: 1 MB.");
+        // Resetta il file selezionato
+        input.value = '';
+      }
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     hamburgerMenu();
     initCarosello();
@@ -352,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePasswordVisibility('mostraPassword', 'password');
     togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
     initDeleteConfirmation();
+    maxFileSizeAlert();
 
     // --- VALIDAZIONE SOLO PER I FORM CON data-validate ---
     const form = document.querySelector("form[data-validate]");
