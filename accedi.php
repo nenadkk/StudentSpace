@@ -113,14 +113,14 @@ if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
     $pagina = $_GET['redirect'];
 
     $messaggi = [
-        "pubblica" => "Per pubblicare un annuncio è necessario effettuare il <span lang='en'>login</span>.",
-        "annuncio" => "Per salvare nei preferiti un annuncio  è necessario effettuare il <span lang='en'>login</span>.",
-        "profilo"  => "Per accedere al tuo profilo è necessario effettuare il <span lang='en'>login</span>.",
-        "modificaAnnuncio" => "Per modificare un tuo annuncio è necessario effettuare il <span lang='en'>login</span>."
+        "pubblica" => "Per pubblicare un annuncio è necessario effettuare l'accesso.",
+        "annuncio" => "Per salvare nei preferiti un annuncio  è necessario effettuare l'accesso.",
+        "profilo"  => "Per accedere al tuo profilo è necessario effettuare l'accesso.",
+        "modificaAnnuncio" => "Per modificare un tuo annuncio è necessario effettuare l'accesso."
     ];
 
     // Messaggio di default
-    $testo = "Per accedere alla pagina selezionata è necessario effettuare il <span lang='en'>login</span>.";
+    $testo = "Per accedere alla pagina selezionata è necessario effettuare l'accesso.";
 
     // Se la pagina è riconosciuta, usa il messaggio specifico
     foreach ($messaggi as $chiave => $msg) {
