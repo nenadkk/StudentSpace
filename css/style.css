@@ -52,7 +52,7 @@ body {
     --clearTxtColor: #fffacd;
     --call-to-actionColor: #16286e;
     --call-to-actionTransp: rgba(22, 40, 110, 0.65); /*0.65 opacità testata con https://codepen.io/yaphi1/pen/oNbEqGV */
-    --call-to-actionAction: #efc062;
+    --call-to-actionAction: #fce36b;
     --visited: #931c98;
     --card: #d9e0ec;
     --eventiColor: #0565a8; 
@@ -102,7 +102,7 @@ body {
     --btn-border: 2px solid var(--call-to-actionColor);
 
     /*transitions*/
-    --btn-trans: background-color 0.1s ease, color 0.1s ease;
+    --btn-trans: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /*
@@ -371,8 +371,6 @@ li.categoria > div {
 .btn-base:hover, .btn-base:focus{
     background-color: var(--call-to-actionAction);
     color: var(--call-to-actionColor);
-    outline: var(--btn-border);
-    outline-offset: 1px;
 }
 
 /* ------------- estensione per button ------------- */
@@ -409,8 +407,6 @@ button {
 #reset-btn.call-to-action:focus {
     background-color: var(--call-to-actionAction);
     color: var(--call-to-actionColor);
-    outline: var(--btn-border);
-    outline-offset: 1px;
 }
 
 #reset-btn {
@@ -419,7 +415,6 @@ button {
     max-width: 21.25em; 
     margin: 0 auto;
     text-align: center;
-    text-decoration: none;
 }
 
 #reset-btn::before {
@@ -584,6 +579,11 @@ a:visited {
     gap: var(--gap-1);
     padding: 0.5em;
 }
+
+.no-underline {
+    text-decoration: none;
+}
+
 
 /*
 ====================================================
@@ -1139,6 +1139,7 @@ footer p{
     justify-content: center;
     flex-wrap: wrap;
     padding: 1em; 
+    padding-top: 0;
 }
 
 #titolo-preferiti {
@@ -1191,24 +1192,38 @@ footer p{
     gap: var(--gap-1);
     margin: 0 auto 2em;
     width: 100%;          
-    max-width: 62.5em
-
-;      
+    max-width: 62.5em;      
     min-height: 12.5em;
     box-sizing: border-box; 
 }
 
-#azioni-annuncio {
+.azioni-annuncio {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--gap-1);
     justify-content: center;
+    gap: 1.5em;
+    width: 100%;
+    padding: 1em;
 }
 
-#azioni-annuncio button {
-    min-width: 12.5em;
-    width: 100%;
+.azioni-annuncio .btn-base,
+.azioni-annuncio a.btn-base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 0;
+    width: 14em;
+    height: 3em;
+    padding: 0.8em 1em;
+    text-align: center;
+}
+
+.azioni-annuncio .btn-base .icon-btn,
+.azioni-annuncio a.btn-base .icon-btn {
+    width: 1.4em;
+    height: 1.4em;
+    flex-shrink: 0;
 }
 
 /*
@@ -1467,6 +1482,8 @@ form > p, form > p{
     margin-right: 0.5em; 
     vertical-align: middle;
     fill: currentColor; 
+    display: inline-block;
+    flex-shrink: 0;
 }
 
 #about-us .azioni {

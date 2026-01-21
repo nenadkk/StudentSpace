@@ -257,6 +257,39 @@ footer p {
     padding: 1.5em; 
 }
 
+
+/*
+====================================================
+    SEZIONE OVERLAY TENDINA FILTRI
+====================================================
+*/
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
+}
+
+#overlay-filtri {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(22, 40, 110, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+}
+
+#overlay-filtri.attivo {
+    display: block;
+}
+
+#intestazione {
+    z-index: 499;
+}
+
 /*
 ====================================================
     SEZIONE CATEGORIE
@@ -382,6 +415,18 @@ li.categoria > div {
     margin: 0 1.5em 2em;
 }
 
+.azioni-annuncio {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+}
+
+.azioni-annuncio .btn-base,
+.azioni-annuncio a.btn-base {
+    width: 100%;
+    min-height: 3.5em;
+}
+
 /*
 ====================================================
     SEZIONE FORM (generico)
@@ -448,36 +493,4 @@ li.categoria > div {
 
 .profilo-grid div {
     min-width: unset;
-}
-
-/*
-====================================================
-    DA VERIFICARE
-====================================================
-*/
-
-body.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-    touch-action: none;
-}
-
-#overlay-filtri {
-    position: fixed;
-    inset: 0;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(22, 40, 110, 0.45);
-    backdrop-filter: blur(4px);
-    z-index: 999;
-}
-
-#overlay-filtri.attivo {
-    display: block;
-}
-
-#intestazione {
-    z-index: 499;
 }

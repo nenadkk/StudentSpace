@@ -144,12 +144,25 @@ if(Tool::isLoggedIn() && $annuncio["IdUtente"] == $_SESSION["user_id"]){
         <form action="annuncio?id='.$idAnnuncio.'" method="POST" id="delete-form">
             <input type="hidden" name="elimina" value="rimuovi_annuncio">
             <input type="hidden" name="id_annuncio" value="'.$idAnnuncio.'">
-            <button type="submit" class="btn-base" title:"Cancella l\'annuncio">Cancella Annuncio</button>
+            <button type="submit" class="btn-base">
+                <svg class="icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 6H21M5 6V20C5 21.1 5.9 22 7 22H17C18.1 22 19 21.1 19 20V6M8 6V4C8 2.9 8.9 2 10 2H14C15.1 2 16 2.9 16 4V6" 
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 11V17" 
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 11V17" 
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Cancella Annuncio</span>
+            </button>
         </form>
     ';
     $modButton = '
-        <a href="modificaAnnuncio?id='.$idAnnuncio.'">
-            <button class="btn-base" title:"Modifica l\'annuncio">Modifica Annuncio</button>
+        <a href="modificaAnnuncio?id='.$idAnnuncio.'" class="btn-base call-to-action link no-underline">
+            <svg class="icon-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M21.12 2.71c-1.17-1.17-3.07-1.17-4.24 0l-1.68 1.68-7.9 7.9c-.13.13-.22.3-.26.48l-1 4c-.1.34 0 .7.24.94.24.24.6.34.94.24l4-1c.18-.04.35-.13.48-.26l7.85-7.85 1.74-1.74c1.17-1.17 1.17-3.07 0-4.24zm-2.83 1.41c.39-.39 1.02-.39 1.41 0l.17.17c.39.39.39 1.02 0 1.41l-1.02 1.02-1.58-1.58 1.02-1.02zM15.9 6.52l1.56 1.62-6.96 6.96-2.11.53.53-2.11 6.98-7zM4 8c0-.55.45-1 1-1h5c.55 0 1-.45 1-1s-.45-1-1-1H5C3.34 5 2 6.34 2 8v11c0 1.66 1.34 3 3 3h11c1.66 0 3-1.34 3-3v-5c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1V8z"/>
+            </svg>
+            <span>Modifica annuncio</span>
         </a>
     ';
 }
