@@ -394,7 +394,8 @@ button {
 }
 
 #menu .link.call-to-action:visited,
-.paragraph-link-container .link.call-to-action:visited{    
+.paragraph-link-container .link.call-to-action:visited,
+.annulla.link.call-to-action:visited {    
     background-color: var(--BgColor);
     color: var(--txtNavColor);
 }

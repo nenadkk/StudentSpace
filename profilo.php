@@ -9,7 +9,7 @@ $db = new DB\DBAccess();
 $htmlPage = file_get_contents(__DIR__ . "/pages/profilo.html");
 
 if (!Tool::isLoggedIn()) {
-    header("Location: accedi.php?redirect=profilo.php");
+    header("Location: accedi?redirect=profilo");
     exit;
 }
 

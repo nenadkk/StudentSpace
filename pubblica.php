@@ -8,7 +8,7 @@ $db = new DB\DBAccess;
 $htmlPage = file_get_contents(__DIR__ . "/pages/pubblica.html");
 
 if (!Tool::isLoggedIn()) {
-    header("Location: accedi.php?redirect=pubblica.php");
+    header("Location: accedi?redirect=pubblica");
     exit;
 }
 
@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $idAnnuncio = $db->inserimentoAnnuncio($titolo, $descrizione, $categoria, $idUtente, $idCitta, $campi, $immagini);
             $db->closeConnection();
 
-            header("Location: annuncio.php?id=". $idAnnuncio);
+            header("Location: annuncio?id=". $idAnnuncio);
             exit;
         } else {
             Tool::renderError(500);
