@@ -370,22 +370,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form[data-validate]");
     if (!form) return;
 
-    // --- ERRORI SERVER-SIDE ---
-
+    // Errori server-side
     const globalImageError = document.querySelector("#errore-immagini-globali .msgErrore");
     const fieldError = form.querySelector(".msgErrore[role='alert']:not(#errore-immagini-globali .msgErrore)");
 
     if (globalImageError && !fieldError) {
-        // Solo errori immagini → focus sul primo file
+        // Solo per errori immagini -> focus sul primo file
         const fileInput = document.querySelector("#foto1");
         if (fileInput) fileInput.focus();
     } else if (fieldError) {
-        // Errori su campi normali → focus sul relativo input
+        // Errori su campi normali -> focus sull'input associato
         const field = fieldError.closest(".form-div")?.querySelector("input, select, textarea");
         if (field) field.focus();
     }
 
-    // Event delegation per blur/input
+    // blur/input
     form.addEventListener("blur", (e) => {
         if (isValidatable(e.target)) validateField(e.target);
     }, true);
@@ -394,7 +393,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isValidatable(e.target)) removeError(e.target);
     }, true);
 
-    // Submit
     form.addEventListener("submit", (e) => {
         let ok = true;
         const fields = form.querySelectorAll("input, select, textarea");
@@ -417,10 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/* -------------------------------------------------------
-   UTILITIES
-------------------------------------------------------- */
-
+// funzioni per validabilità e rimozione errori
 function isValidatable(field) {
     if (!field.id) return false;
     if (field.type === "file") return false;
@@ -446,17 +441,14 @@ function removeError(field) {
     }
 }
 
-/* -------------------------------------------------------
-   VALIDAZIONE CAMPO
-------------------------------------------------------- */
-
+// validazione campo
 function validateField(field) {
     removeError(field);
 
     const value = field.value.trim();
     let errors = [];
 
-    // Required
+    // campi richiesti
     if (field.hasAttribute("required") && value === "") {
         errors.push("Questo campo è obbligatorio.");
     }
@@ -521,10 +513,7 @@ function validateField(field) {
     return true;
 }
 
-/* -------------------------------------------------------
-   RENDERING ERRORI
-------------------------------------------------------- */
-
+//funzione di rendering degli errori
 function renderError(field, errors) {
     field.setAttribute("aria-invalid", "true");
 
@@ -543,7 +532,7 @@ function renderError(field, errors) {
     field.parentNode.appendChild(box);
     field.setAttribute("aria-describedby", `errore-${field.id}`);
 
-    // --- Focus e selezione SOLO la prima volta ---
+    // focus con selezione solo se è la prima volta che compare l'errore sul campo selezioanto
     if (!field.dataset.errorFocused) {
         field.focus();
         if (field.select) field.select();
