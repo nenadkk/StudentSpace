@@ -367,6 +367,19 @@ function maxFileSizeAlert() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    hamburgerMenu();
+    initCarosello();
+    toggleFiltri();
+    toggleFiltriAccessibile(); 
+    toggleMultipleAlt();
+    toggleFiltriCategoria();
+    togglePubblicaCategoria();
+    togglePasswordVisibility('mostraPassword', 'password');
+    togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
+    initDeleteConfirmation();
+    maxFileSizeAlert();
+
+    // --- VALIDAZIONE SOLO PER I FORM CON data-validate ---
     const form = document.querySelector("form[data-validate]");
     if (!form) return;
 
