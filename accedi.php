@@ -65,7 +65,7 @@ if(isset($_POST['submit'])) {
             </ul>";
     }
     elseif (!Tool::validaEmail($email)) {
-    $testoErrori = "Email non valida.";
+    $testoErrori = '<span lang="en">Email</span> non valida.';
 
     $erroreEmail = "
         <ul class='riquadro-spieg messaggi-errore-form'>

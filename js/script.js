@@ -476,20 +476,20 @@ function validateField(field) {
 
         case "email":
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                errors.push("Inserisci un'email valida nel formato nome@dominio.it");
+                errors.push("Inserisci un'<span lang='en'>email</span> valida nel formato nome@dominio.it");
             }
             break;
 
         case "password":
             if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
-                errors.push("La password non rispetta i requisiti minimi.");
+                errors.push("La <span lang='en'>password</span> non rispetta i requisiti minimi.");
             }
             break;
 
         case "confermaPassword":
             const pass = document.getElementById("password").value.trim();
             if (value !== pass) {
-                errors.push("Le password non coincidono.");
+                errors.push("Le <span lang='en'>password</span> non coincidono.");
             }
             break;
 
@@ -509,7 +509,7 @@ function validateField(field) {
             break;
 
         case "consenso-email":
-            if (!field.checked) errors.push("Devi acconsentire all'uso pubblico dell'email.");
+            if (!field.checked) errors.push("Devi acconsentire all'uso pubblico dell'<span lang='en'>email</span>.");
             break;
     }
 

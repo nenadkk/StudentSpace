@@ -28,7 +28,7 @@
     <header id="intestazione">
         <a href="#contenuto" class="aiuti">Salta al contenuto</a>
         <h1 id="logo-link" lang="en">
-            <a href="index" title="Vai alla home">Student Space</a>
+            <a href="index" aria-label="Vai alla home di Student Space" title="Vai alla home">Student Space</a>
         </h1>
         <button id="hamburger" type="button" aria-label="Apri il menù di navigazione" aria-expanded="false" aria-controls="menu">
             <span id="hamburger-chiuso" class="attivo" aria-hidden="true">&#9776;</span>
@@ -91,7 +91,7 @@
 
                         <div class="form-div">
                             <label for="password"><span lang="en">Password</span><span class="required"> (richiesto)</span></label>
-                            <p class="indicazioni">La password deve rispettare i criteri minimi indicati sotto.</p>                            
+                            <p class="indicazioni">La <span lang='en'>password</span> deve rispettare i criteri minimi indicati sotto.</p>                            
                             <!--<p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p>--><!-- Da mettere controllo js che non possa usare questa password -->
                             <input type="password" id="password" name="password" required autocomplete="new-password">
                             [errore-password]
@@ -104,7 +104,7 @@
                         
                         <div class="form-div">
                             <label for="confermaPassword">Conferma la <span lang="en">password</span><span class="required"> (richiesto)</span></label>
-                            <p class="indicazioni">Inserisci di nuovo la password.</p>
+                            <p class="indicazioni">Inserisci di nuovo la <span lang='en'>password</span>.</p>
                             <!--<p class="esempi"><abbr title='esempio'>Es.</abbr> LaMiaPassword123!</p> -->
                             <input type="password" id="confermaPassword" name="confermaPassword" required autocomplete="new-password">
                             [errore-conferma-password]
@@ -117,7 +117,7 @@
                     </div>
                     <div id="criteriMinimiPassword" class="riquadro-spieg alt-spiegazione">
                         <strong>Importante!</strong>
-                        <p>La password deve contenere:</p>
+                        <p>La <span lang='en'>password</span> deve contenere:</p>
                         <ul>
                             <li>Minimo 8 caratteri.</li>
                             <li>Almeno un numero.</li>
@@ -130,7 +130,7 @@
                     <p class="riquadro-spieg alt-spiegazione"><strong>Nota:</strong> L’indirizzo email inserito verrà mostrato nel tuo profilo pubblico e potrà essere utilizzato dagli altri utenti per contattarti.</p>
                     <label class="checkbox-inline">
                         <input type="checkbox" name="consenso-email" id="consenso-email">
-                        Accetto che il mio indirizzo email sia visibile nel profilo pubblico e possa essere usato per contattarmi.
+                        Accetto che il mio indirizzo <span lang='en'>email</span> sia visibile nel profilo pubblico e possa essere usato per contattarmi.
                     </label>
                     [errore-consenso-email]
 
@@ -151,7 +151,7 @@
             <a class="aiuti" href="#intestazione">Torna all'intestazione</a>
             <img src="assets/logo_no_scritta.svg" alt="" class="logo-footer">
             [BottomNavBar]
-            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie Web</p>
+            <p>Sito realizzato da Sofia De Blasi, Nicola Simionato, Nenad Radulovic e Giacomo Speggiorin per il progetto di Tecnologie <span lang="en">Web</span></p>
     </footer>
     </div>
 </body>

@@ -104,7 +104,7 @@ if(isset($_POST['submit'])) {
     }
 
     if (!$consenso_email) {
-        $messaggiErrore['[errore-consenso-email]'][] = "Per registrarti devi acconsentire all'uso pubblico dell'email";
+        $messaggiErrore['[errore-consenso-email]'][] = "Per registrarti devi acconsentire all'uso pubblico dell'<span lang='en'>email</span>";
         $numMsgErrore++;
     }
 
@@ -114,7 +114,7 @@ if(isset($_POST['submit'])) {
     $db->closeConnection();
     if($result)
     {
-        $messaggiErrore['[errore-email]'][] = "Questa email è già utilizzata da un'altro utente.";
+        $messaggiErrore['[errore-email]'][] = "Questa <span lang='en'>email</span> è già utilizzata da un'altro utente.";
         $numMsgErrore++;
     }
 
