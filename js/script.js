@@ -367,173 +367,186 @@ function maxFileSizeAlert() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    hamburgerMenu();
-    initCarosello();
-    toggleFiltri();
-    toggleFiltriAccessibile(); 
-    toggleMultipleAlt();
-    toggleFiltriCategoria();
-    togglePubblicaCategoria();
-    togglePasswordVisibility('mostraPassword', 'password');
-    togglePasswordVisibility('mostraConfermaPassword', 'confermaPassword');
-    initDeleteConfirmation();
-    maxFileSizeAlert();
-
-    // --- VALIDAZIONE SOLO PER I FORM CON data-validate ---
     const form = document.querySelector("form[data-validate]");
-    if (form) {
+    if (!form) return;
 
-        // Focus sul primo errore server-side
-        const primoErrore = form.querySelector(".msgErrore");
+    // --- ERRORI SERVER-SIDE ---
 
-        if (primoErrore && !primoErrore.closest("#errore-immagini-globali")) {
-            primoErrore.focus();
-        }
+    const globalImageError = document.querySelector("#errore-immagini-globali .msgErrore");
+    const fieldError = form.querySelector(".msgErrore[role='alert']:not(#errore-immagini-globali .msgErrore)");
 
-        const erroreGlobale = document.querySelector("#errore-immagini-globali .msgErrore");
-        const erroreCampo = form.querySelector(".msgErrore[role='alert']:not(#errore-immagini-globali .msgErrore)");
+    if (globalImageError && !fieldError) {
+        // Solo errori immagini → focus sul primo file
+        const fileInput = document.querySelector("#foto1");
+        if (fileInput) fileInput.focus();
+    } else if (fieldError) {
+        // Errori su campi normali → focus sul relativo input
+        const field = fieldError.closest(".form-div")?.querySelector("input, select, textarea");
+        if (field) field.focus();
+    }
 
-        if (erroreGlobale && !erroreCampo) {
-            const primoFile = document.querySelector("#foto1");
-            if (primoFile) primoFile.focus();
-        }
+    // Event delegation per blur/input
+    form.addEventListener("blur", (e) => {
+        if (isValidatable(e.target)) validateField(e.target);
+    }, true);
 
-        const campi = form.querySelectorAll("input, select, textarea");
+    form.addEventListener("input", (e) => {
+        if (isValidatable(e.target)) removeError(e.target);
+    }, true);
 
-        campi.forEach(campo => {
-            campo.addEventListener("blur", function () {
-                validazioneCampo(campo);
-            });
-        });
+    // Submit
+    form.addEventListener("submit", (e) => {
+        let ok = true;
+        const fields = form.querySelectorAll("input, select, textarea");
 
-        form.addEventListener("submit", function(e) {
-            let tuttoOk = true;
-
-            campi.forEach(campo => {
-                const valido = validazioneCampo(campo);
-                if (!valido) tuttoOk = false;
-            });
-
-            if (!tuttoOk) {
-                e.preventDefault();
-                const primo = form.querySelector(".msgErrore");
-                if (primo) primo.previousElementSibling.focus();
+        fields.forEach(f => {
+            if (isValidatable(f)) {
+                const valid = validateField(f);
+                if (!valid) ok = false;
             }
         });
-    }
 
-    // --- FOCUS SPECIFICO PER LOGIN ---
-    const erroreLogin = document.querySelector("#errore-login");
-    if (erroreLogin) {
-        const campoEmail = document.querySelector("#email");
-        if (campoEmail) campoEmail.focus();
-    }
+        if (!ok) {
+            e.preventDefault();
+            const first = form.querySelector(".msgErrore");
+            if (first) {
+                const field = first.closest(".form-div")?.querySelector("input, select, textarea");
+                if (field) field.focus();
+            }
+        }
+    });
 });
 
-// ------------------------------------------------------
-// FUNZIONE DI VALIDAZIONE
-// ------------------------------------------------------
-function validazioneCampo(campo) {
+/* -------------------------------------------------------
+   UTILITIES
+------------------------------------------------------- */
 
-    if (campo.type === "file") return true;
-    if (campo.id.startsWith("alt")) return true;
-    if (campo.id.startsWith("decorativa")) return true;
+function isValidatable(field) {
+    if (!field.id) return false;
+    if (field.type === "file") return false;
+    if (field.id.startsWith("alt") || field.id.startsWith("decorativa")) return false;
+    return true;
+}
 
-    // Rimuovi eventuale errore precedente
-    const erroreEsistente = campo.parentNode.querySelector(".riquadro-spieg");
-    if (erroreEsistente) erroreEsistente.remove();
+function removeError(field) {
+    field.removeAttribute("aria-invalid");
 
-    let messaggio = "";
-    const valore = campo.value.trim();
+    const old = field.parentNode.querySelector(".messaggi-errore-form");
+    if (old) old.remove();
 
-    // Required generico
-    if (campo.hasAttribute("required") && valore === "") {
-        messaggio = "Questo campo è obbligatorio.";
+    const described = field.getAttribute("aria-describedby");
+    if (described) {
+        const cleaned = described
+            .split(" ")
+            .filter(id => !id.includes("-errore"))
+            .join(" ");
+
+        if (cleaned) field.setAttribute("aria-describedby", cleaned);
+        else field.removeAttribute("aria-describedby");
+    }
+}
+
+/* -------------------------------------------------------
+   VALIDAZIONE CAMPO
+------------------------------------------------------- */
+
+function validateField(field) {
+    removeError(field);
+
+    const value = field.value.trim();
+    let errors = [];
+
+    // Required
+    if (field.hasAttribute("required") && value === "") {
+        errors.push("Questo campo è obbligatorio.");
     }
 
-    switch (campo.id) {
+    switch (field.id) {
         case "nome":
-        case "cognome":
-            if (!/^[a-zA-ZÀ-ÿ\s]{2,30}$/.test(valore)) {
-                messaggio = "Il campo deve contenere solo lettere e almeno 2 caratteri.";
+            if (!/^[a-zA-ZÀ-ÿ\s]{2,30}$/.test(value)) {
+                errors.push("Il nome deve contenere solo lettere e almeno 2 caratteri.");
             }
             break;
 
-        case "citta":
-            const lista = campo.list;
-            let trovata = false;
-
-            if (lista && lista.options) {
-                for (let i = 0; i < lista.options.length; i++) {
-                    if (lista.options[i].value.trim().toLowerCase() === valore.toLowerCase()) {
-                        trovata = true;
-                        break;
-                    }
-                }
+        case "cognome":
+            if (!/^[a-zA-ZÀ-ÿ\s]{2,30}$/.test(value)) {
+                errors.push("Il cognome deve contenere solo lettere e almeno 2 caratteri.");
             }
-
-            if (!trovata) messaggio = "La città inserita non è valida, seleziona una città dall’elenco.";
             break;
 
         case "email":
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valore)) {
-                messaggio = "Inserisci un'email valida nel formato nome@dominio.it";
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                errors.push("Inserisci un'email valida nel formato nome@dominio.it");
             }
             break;
 
         case "password":
-            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(valore)) {
-                messaggio =
-                    "La password non rispetta i requisiti minimi. " +
-                    "Deve contenere: minimo 8 caratteri, almeno un numero, " +
-                    "almeno una lettera minuscola, almeno una lettera maiuscola " +
-                    "e almeno un carattere speciale.";
+            if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
+                errors.push("La password non rispetta i requisiti minimi.");
             }
             break;
 
         case "confermaPassword":
             const pass = document.getElementById("password").value.trim();
-
-            if (valore !== pass) {
-                messaggio = "Le password non coincidono.";
-
-                // Torna al campo password
-                const campoPassword = document.getElementById("password");
-                campoPassword.focus();
-                campoPassword.select();
+            if (value !== pass) {
+                errors.push("Le password non coincidono.");
             }
             break;
 
+        case "citta":
+            const list = field.list;
+            let found = false;
+
+            if (list) {
+                for (const opt of list.options) {
+                    if (opt.value.trim().toLowerCase() === value.toLowerCase()) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) errors.push("La città inserita non è valida.");
+            break;
+
         case "consenso-email":
-            if (!campo.checked) messaggio = "Per registrarti devi acconsentire all'uso pubblico dell'email";
+            if (!field.checked) errors.push("Devi acconsentire all'uso pubblico dell'email.");
             break;
     }
 
-    // Se c'è un errore
-    if (messaggio !== "") {
-
-        const ul = document.createElement("ul");
-        ul.className = "riquadro-spieg messaggi-errore-form";
-
-        const li = document.createElement("li");
-        li.className = "msgErrore";
-        li.id = campo.id + "-errore";
-        li.textContent = messaggio;
-
-        ul.appendChild(li);
-        campo.parentNode.appendChild(ul);
-
-        campo.setAttribute("aria-describedby", li.id);
-
-        // Focus automatico SOLO se NON è confermaPassword
-        if (campo.id !== "confermaPassword") {
-            campo.focus();
-            campo.select();
-        }
-
+    if (errors.length > 0) {
+        renderError(field, errors);
         return false;
     }
 
-    campo.removeAttribute("aria-describedby");
     return true;
+}
+
+/* -------------------------------------------------------
+   RENDERING ERRORI
+------------------------------------------------------- */
+
+function renderError(field, errors) {
+    field.setAttribute("aria-invalid", "true");
+
+    const box = document.createElement("ul");
+    box.className = "riquadro-spieg messaggi-errore-form";
+
+    errors.forEach(err => {
+        const li = document.createElement("li");
+        li.className = "msgErrore";
+        li.id = `errore-${field.id}`;
+        li.setAttribute("role", "alert");   
+        li.textContent = err;
+        box.appendChild(li);
+    });
+
+    field.parentNode.appendChild(box);
+    field.setAttribute("aria-describedby", `errore-${field.id}`);
+
+    // --- Focus e selezione SOLO la prima volta ---
+    if (!field.dataset.errorFocused) {
+        field.focus();
+        if (field.select) field.select();
+        field.dataset.errorFocused = "true";
+    }
 }

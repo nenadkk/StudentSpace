@@ -155,23 +155,25 @@ if(isset($_POST['submit'])) {
         //per ogni tipologia campo inserisco gli errori se questi sono presenti
         foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
         {
-            if(empty($arrayErrori))//se non ci sono errori per quel field
-            {
+            if(empty($arrayErrori)) {
                 $htmlPage = str_replace($placeHolder, "", $htmlPage);
+                continue;
             }
-            else
-            {
-                $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
-                foreach ($arrayErrori as $err) {
-                    $msgErrore .= "<li class='msgErrore' role='alert'>$err</li>";
-                }
-                $msgErrore .= "</ul>";
-                $htmlPage = str_replace($placeHolder, $msgErrore, $htmlPage);
+
+            // ricavo l'id del campo: [errore-nome] → nome
+            $fieldId = str_replace(['[errore-', ']'], '', $placeHolder);
+
+            $msgErrore = "<ul class='riquadro-spieg messaggi-errore-form'>";
+            foreach ($arrayErrori as $err) {
+                $msgErrore .= "<li class='msgErrore' id='{$fieldId}-errore' role='alert'>$err</li>";
             }
+            $msgErrore .= "</ul>";
+
+            $htmlPage = str_replace($placeHolder, $msgErrore, $htmlPage);
         }
+
     }
-}
-else {
+} else {
     foreach ($messaggiErrore as $placeHolder => $arrayErrori) 
         $htmlPage = str_replace($placeHolder, "", $htmlPage);
 }

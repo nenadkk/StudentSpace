@@ -344,9 +344,24 @@ if (!empty($erroriImmagini)) {
 
 $htmlPage = str_replace("[ErroreImmaginiGlobal]", $erroreGlobaleImmagini, $htmlPage);
 
+if ($errorMessageTitolo !== "") {
+    $htmlPage = str_replace("id='titolo'", "id='titolo' aria-invalid='true' aria-describedby='errore-titolo'", $htmlPage);
+}
 $htmlPage = str_replace("[Errore-titolo]", $errorMessageTitolo, $htmlPage);
+
+if ($errorMessageCategoria !== "") {
+    $htmlPage = str_replace("id='categoria-campi'", "id='categoria-campi' aria-invalid='true' aria-describedby='errore-categoria'", $htmlPage);
+}
 $htmlPage = str_replace("[Errore-categoria]", $errorMessageCategoria, $htmlPage);
+
+if ($errorMessageDescrizione !== "") {
+    $htmlPage = str_replace("id='descrizione'", "id='descrizione' aria-invalid='true' aria-describedby='errore-descrizione'", $htmlPage);
+}
 $htmlPage = str_replace("[Errore-descrizione]", $errorMessageDescrizione, $htmlPage);
+
+if ($erroreCitta !== "") {
+    $htmlPage = str_replace("id='citta'", "id='citta' aria-invalid='true' aria-describedby='errore-citta'", $htmlPage);
+}
 $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);

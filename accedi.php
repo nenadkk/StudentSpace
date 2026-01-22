@@ -44,7 +44,7 @@ if(isset($_POST['submit'])) {
                 exit;
             } else {
                 $testoErrori =
-                    "Utente inesistente o password errata.";
+                    "Username o password non corretti";
 
                 $erroreEmail = "
                     <ul class='riquadro-spieg messaggi-errore-form'>
@@ -64,18 +64,14 @@ if(isset($_POST['submit'])) {
                 </li>
             </ul>";
     }
-    elseif (!Tool::validaEmail($email) || !Tool::validaPassword($password)) {
-        $testoErrori = 
-            "Email o password non valide. " .
-            "Inserisci un indirizzo nel formato nome@dominio.it. " .
-            "La password deve rispettare i criteri minimi. ";
+    elseif (!Tool::validaEmail($email)) {
+    $testoErrori = "Email non valida.";
 
-        $erroreEmail = "
-            <ul class='riquadro-spieg messaggi-errore-form'>
-                <li class='msgErrore' id='errore-login' role='alert'>$testoErrori</li>
-            </ul>";
-    }
-    else {
+    $erroreEmail = "
+        <ul class='riquadro-spieg messaggi-errore-form'>
+            <li class='msgErrore' id='errore-login' role='alert'>$testoErrori</li>
+        </ul>";
+    } else {
         // email e password hanno formato valido → tentiamo login
         if ($db->openDBConnection()) {
 
@@ -138,7 +134,9 @@ if (isset($_GET['redirect']) && $_GET['redirect'] !== "") {
 }
 
 
-$htmlPage = str_replace("[RedirectValue]", $_GET['redirect'] ?? "", $htmlPage);
+$redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? "";
+$htmlPage = str_replace("[RedirectValue]", $redirect, $htmlPage);
+
 $htmlPage = str_replace("[RedirectMessage]", $redirectMessage, $htmlPage);
 $htmlPage = str_replace("[EmailValue]", $email, $htmlPage);
 $htmlPage = str_replace("[ErroreMail]", $erroreEmail, $htmlPage);

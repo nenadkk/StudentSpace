@@ -40,142 +40,47 @@ Nella pagina di pubblicazione degli annunci, gli errori relativi alle immagini v
 
 Le due soluzioni non sono ridondanti ma complementari, e sono state scelte in base al comportamento desiderato e alle linee guida WAI-ARIA.
 
-* \section{Validazione JavaScript con gestione del TAB attiva solo su alcuni form}
+* \section{Gestione degli errori lato client e lato server}
 
-Nel progetto è stato implementato un sistema di validazione client-side avanzato, progettato per migliorare l’accessibilità e l’esperienza utente nei form più complessi (registrazione, pubblicazione e modifica annuncio). 
-L’obiettivo principale è garantire un flusso di compilazione chiaro e accessibile, senza interferire con i form più semplici come \textit{accedi} o \textit{filtri}.
+La validazione del form è stata implementata combinando controlli lato client (JavaScript) e lato server (PHP), mantenendo una struttura uniforme dei messaggi di errore per garantire coerenza visiva e accessibilità.
 
-\subsection{Attivazione selettiva tramite attributo \texttt{data-validate}}
-
-Non tutti i form richiedono la stessa complessità di controlli. 
-Per questo motivo è stato introdotto un attributo HTML personalizzato:
+\subsection{Errori lato client (JavaScript)}
+La validazione JavaScript intercetta gli errori durante la compilazione dei campi tramite eventi \texttt{blur} e \texttt{input}, e nuovamente al momento del submit.  
+In caso di errore, viene generato dinamicamente un blocco HTML del tipo:
 
 \begin{verbatim}
-<form data-validate="registrazione">
+<ul class="messaggi-errore-form">
+    <li class="msgErrore" id="errore-campo" role="alert">...</li>
+</ul>
 \end{verbatim}
 
-I form che includono l’attributo \texttt{data-validate} attivano la validazione JavaScript, mentre gli altri vengono ignorati.  
-Questo approccio evita che la validazione venga applicata in contesti dove non è necessaria.
-
-\paragraph{Form con validazione attiva}
+Al campo associato vengono applicati gli attributi ARIA:
 \begin{itemize}
-    \item Registrazione
-    \item Pubblica annuncio
-    \item Modifica annuncio
+    \item \texttt{aria-invalid="true"}
+    \item \texttt{aria-describedby="errore-campo"}
 \end{itemize}
 
-\paragraph{Form senza validazione JS}
-\begin{itemize}
-    \item Accedi
-    \item Filtri
-\end{itemize}
+Per migliorare l'usabilità, il focus viene portato automaticamente sul primo campo non valido, con selezione del contenuto. Questo comportamento avviene \emph{solo alla prima comparsa dell'errore}, evitando di interferire con la navigazione successiva dell'utente.
 
-\subsection{Inizializzazione condizionata dello script}
-
-All’avvio, lo script verifica se la pagina contiene un form con \texttt{data-validate}.  
-Se non lo trova, la validazione viene completamente disattivata:
+\subsection{Errori lato server (PHP)}
+Gli errori generati dal server dopo l'invio del form vengono inseriti direttamente nell'HTML con la stessa struttura utilizzata da JavaScript, in modo da mantenere uniformità:
 
 \begin{verbatim}
-const form = document.querySelector("form[data-validate]");
-if (!form) return;
+<ul class="messaggi-errore-form">
+    <li class="msgErrore" id="errore-campo" role="alert">...</li>
+</ul>
 \end{verbatim}
 
-Questo garantisce che:
+Quando la pagina viene ricaricata a seguito di un errore server-side, uno script eseguito al \texttt{DOMContentLoaded} individua il primo messaggio di errore e imposta il focus sul campo corrispondente.  
+È stato gestito anche il caso particolare degli errori relativi alle immagini: se l'errore riguarda il caricamento dei file, il focus viene portato automaticamente sul primo campo \texttt{input type="file"}.
+
+\subsection{Coerenza e accessibilità}
+L'uso di una struttura HTML identica per gli errori JS e PHP, insieme agli attributi ARIA e alla gestione del focus, garantisce:
 \begin{itemize}
-    \item il codice non venga eseguito inutilmente,
-    \item non vengano generati errori nei form semplici,
-    \item la pagina \textit{accedi} rimanga pulita e con messaggi server-side controllati.
+    \item coerenza visiva tra validazione client e server;
+    \item compatibilità con tecnologie assistive;
+    \item una migliore esperienza utente durante la compilazione del form.
 \end{itemize}
-
-\subsection{Validazione immediata e gestione del TAB}
-
-Nei form complessi, la validazione è stata progettata per essere immediata e accessibile.  
-Quando l’utente preme TAB su un campo:
-
-\begin{enumerate}
-    \item il campo viene validato,
-    \item se valido, il TAB procede normalmente,
-    \item se non valido, il TAB viene bloccato e il focus viene spostato sul messaggio di errore.
-\end{enumerate}
-
-Il messaggio di errore è reso focusabile tramite \texttt{tabindex="0"}, così da essere annunciato correttamente dai lettori di schermo.
-
-Premendo nuovamente TAB sul messaggio di errore, il focus ritorna automaticamente al campo da correggere, creando un ciclo controllato:
-
-
-
-\[
-\text{campo} \rightarrow \text{errore} \rightarrow \text{campo}
-\]
-
-
-
-\subsection{Inserimento degli errori sotto al campo}
-
-Gli errori vengono inseriti immediatamente dopo il campo, migliorando la leggibilità:
-
-\begin{verbatim}
-campo.insertAdjacentElement("afterend", ul);
-\end{verbatim}
-
-La posizione visiva non influisce sulla logica di focus, che rimane invariata.
-
-\subsection{Motivazioni progettuali}
-
-La validazione JavaScript è stata limitata ai soli campi critici:
-\begin{itemize}
-    \item nome, cognome, email, password (registrazione),
-    \item titolo, città, descrizione (pubblica/modifica).
-\end{itemize}
-
-I campi specifici delle categorie (Affitti, Esperimenti, Eventi, Ripetizioni) non richiedono validazione JS perché:
-\begin{itemize}
-    \item sono opzionali,
-    \item vengono abilitati solo dopo la scelta della categoria,
-    \item sono già validati lato server,
-    \item non richiedono focus management avanzato.
-\end{itemize}
-
-\subsection{Benefici della soluzione}
-
-\begin{itemize}
-    \item \textbf{Accessibilità migliorata}: navigazione da tastiera fluida e annunci corretti dei messaggi di errore.
-    \item \textbf{Esperienza utente chiara}: l’utente non può ignorare un errore senza correggerlo.
-    \item \textbf{Modularità}: la validazione si attiva solo dove serve, senza duplicare codice.
-    \item \textbf{Manutenibilità}: aggiungere un nuovo form validabile richiede solo l’attributo \texttt{data-validate}.
-\end{itemize}
-
-\subsection{Conclusione}
-
-La validazione JavaScript implementata è selettiva, accessibile e modulare.  
-Si integra perfettamente con la validazione lato server e garantisce un’esperienza utente coerente e inclusiva nei form più complessi, senza introdurre complessità superflue nei form semplici.
-
-* \paragraph{Validazione dei campi e gestione del caso \texttt{password}/\texttt{confermaPassword}.}
-Il sistema di validazione lato client è stato progettato secondo un approccio
-puntuale: ogni campo viene controllato in modo indipendente al momento
-dell’uscita dal focus (\textit{on blur}) e, in caso di errore, il messaggio
-viene mostrato esclusivamente in prossimità del campo interessato. Il focus
-viene riportato sul campo non valido, impedendo all’utente di proseguire finché
-l’errore non è stato corretto. Questo comportamento, sebbene restrittivo,
-garantisce una chiara associazione tra errore e punto di intervento, riducendo
-ambiguità e favorendo un’interazione lineare.
-
-La coppia di campi \texttt{password} e \texttt{confermaPassword} rappresenta
-un caso particolare, poiché la validazione dipende da due valori correlati.
-Quando le password non coincidono, il messaggio di errore viene mostrato nel
-campo di conferma, ma il focus viene riportato sul campo \texttt{password},
-che costituisce il valore di riferimento da correggere. In questo modo
-l’utente può intervenire direttamente sul campo corretto senza dover
-interpretare l’errore o attivare la visualizzazione della password.
-
-Durante la progettazione è stata considerata anche un’alternativa meno
-restrittiva: mantenere il focus sul campo con errore solo la prima volta e
-permettere successivamente all’utente di spostarsi liberamente tra i campi,
-lasciando l’errore visibile ma senza bloccare la navigazione. Tale approccio
-avrebbe reso la compilazione più flessibile, consentendo all’utente di
-completare altri campi prima di correggere l’errore. Tuttavia, questa soluzione
-è stata scartata per preservare un comportamento più lineare e immediato,
-basato sulla correzione puntuale e immediata del campo non valido.
 
 * \paragraph{Scelta del font e gerarchia tipografica.}
 Per l’intero sito è stato adottato il font \textit{Noto Sans}, scelto per la sua

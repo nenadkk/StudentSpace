@@ -1307,7 +1307,7 @@ textarea {
     border: 1.5px solid var(--call-to-actionColor);
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
     outline: none;
     outline: 2px solid var(--card);
     outline-offset: 2px;
@@ -1390,10 +1390,6 @@ form > p, form > p{
 .img-campi input[type="text"] {
     flex: 1;
     min-width: 0;
-}
-
-.img-campi input[type="checkbox"]{
-    outline: none;
 }
 
 .img-campi:has(#decorativa1:checked) #alt1,
