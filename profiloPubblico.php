@@ -44,8 +44,8 @@ if($db->openDBConnection()) {
 $htmlPage = str_replace("[Email]", $emailUtente, $htmlPage);
 $htmlPage = str_replace("[Cards]", $cards, $htmlPage);
 $htmlPage = str_replace("[NumPubblicati]", $numPubblicati, $htmlPage);
-$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("profilo"), $htmlPage);
-$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("profilo"), $htmlPage);
+$htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("profiloPubblico"), $htmlPage);
+$htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("profiloPubblico"), $htmlPage);
 
 echo $htmlPage;
 

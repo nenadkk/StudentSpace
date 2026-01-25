@@ -1102,7 +1102,7 @@ footer p{
     gap: var(--gap-1);   
     width: 20%;
     min-width: 21.25em;
-    margin: 1em 0 1em 1.5em;
+    margin: 0.5em;
 }
 
 #filtri {
