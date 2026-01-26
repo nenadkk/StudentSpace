@@ -167,7 +167,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    gap: var(--gap-0-5);
 }
 
 section {
@@ -394,20 +394,14 @@ button {
 }
 
 #menu .link.call-to-action:visited,
-.paragraph-link-container .link.call-to-action:visited,
-.annulla.link.call-to-action:visited {    
+.paragraph-link-container .link.call-to-action:visited {
     background-color: var(--BgColor);
     color: var(--txtNavColor);
 }
 
-.link.call-to-action:hover,
-.link.call-to-action:focus,
-#menu .link.call-to-action:hover,
-#menu .link.call-to-action:focus,
-#reset-btn.call-to-action:hover,
-#reset-btn.call-to-action:focus {
-    background-color: var(--call-to-actionAction);
-    color: var(--call-to-actionColor);
+.link.call-to-action.annulla:visited {
+    color: var(--clearTxtColor); 
+    background-color: var(--call-to-actionColor);
 }
 
 #reset-btn {
@@ -422,6 +416,21 @@ button {
     content: "↺";
     margin-right: 0.5em;
     font-size: var(--fs-h3-titolo-card);
+}
+
+
+.link.call-to-action:hover,
+.link.call-to-action:focus,
+#menu .link.call-to-action:hover,
+#menu .link.call-to-action:focus,
+#reset-btn.call-to-action:hover,
+#reset-btn.call-to-action:focus,
+.link.call-to-action.annulla:hover,
+.link.call-to-action.annulla:focus,
+.paragraph-link-container .link.call-to-action:hover,
+.paragraph-link-container .link.call-to-action:focus {
+    background-color: var(--call-to-actionAction);
+    color: var(--call-to-actionColor);
 }
 
 /* ------------- estensione per #preferiti #salvato------------- */
