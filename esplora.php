@@ -134,7 +134,6 @@ if(isset($_GET['submit']))
     }
 }
 
-
 //Sostituzione dei placeholder
 foreach ($filtriGenerali as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
@@ -151,7 +150,6 @@ foreach ($filtriEventi as $key => $value) {
 foreach ($filtriRipetizioni as $key => $value) {
     $htmlPage = str_replace("[$key]", $value, $htmlPage);
 }
-
 
 $htmlPage = str_replace("[NumRisultati]", $numRisultati, $htmlPage);
 $htmlPage = str_replace("[noneSelected]", $categoria=='' ? 'selected' : '' , $htmlPage);
