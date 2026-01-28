@@ -147,6 +147,10 @@ function toggleFiltriAccessibile() {
     if (!toggle || !filtri || !chiudi || !overlay || !contenuto) return;
 
     let lastFocusedElement = null;
+    filtri.inert = true;
+    overlay.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    contenuto.removeAttribute("aria-hidden");
 
     const focusableSelectors = `
         button,
@@ -162,9 +166,10 @@ function toggleFiltriAccessibile() {
     }
 
     function apriPannello() {
-        lastFocusedElement = document.activeElement;
+        lastFocusedElement = toggle;
 
         filtri.classList.add("attivo");
+        filtri.inert = false;
         overlay.hidden = false;
 
         toggle.setAttribute("aria-expanded", "true");
@@ -177,6 +182,7 @@ function toggleFiltriAccessibile() {
 
     function chiudiPannello() {
         filtri.classList.remove("attivo");
+        filtri.inert = true;
         overlay.hidden = true;
 
         toggle.setAttribute("aria-expanded", "false");
@@ -199,9 +205,13 @@ function toggleFiltriAccessibile() {
 
     // Focus trap
     filtri.addEventListener("keydown", (e) => {
+        if (!filtri.classList.contains("attivo")) return;
+
         if (e.key !== "Tab") return;
 
         const focusable = getFocusable();
+        if (!focusable.length) return;
+
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
