@@ -62,7 +62,7 @@
                             <legend>Generici</legend>
                             <div class="form-div">
                                 <label for="cerca">Cerca</label>
-                                <input id="cerca" type="search" name="cerca" maxlength="30" value="[cerca]" placeholder="Cerca per parole chiave o email">
+                                <input id="cerca" type="search" name="cerca" maxlength="30" [cerca] placeholder="Cerca per parole chiave o email">
                             </div>
                             <!-- Attributi comuni a tutte le categorie -->
                             <div class="form-div">
@@ -77,18 +77,18 @@
                             </div>
                             <div class="form-div">
                                 <label for="citta">Città (sede universitaria)</label>
-                                <input list="listaCitta" name="citta" id="citta" value="[citta]" placeholder="Scrivi e seleziona"  autocomplete="address-level2">
+                                <input list="listaCitta" name="citta" id="citta" [citta] placeholder="Scrivi e seleziona"  autocomplete="address-level2">
                                 <datalist id="listaCitta">
                                     [CityOptionsList]
                                 </datalist>
                             </div>
                             <div class="form-div">
                                 <label for="pubblicazione-inizio">Inizio periodo pubblicazione</label>
-                                <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio" value="[pubblicazione-inizio]" max="[oggi]">
+                                <input id="pubblicazione-inizio" type="date" name="pubblicazione-inizio" [pubblicazione-inizio] max="[oggi]">
                             </div>
                             <div class="form-div">
                                 <label for="pubblicazione-fine">Fine periodo pubblicazione</label>
-                                <input id="pubblicazione-fine" type="date" name="pubblicazione-fine" value="[pubblicazione-fine]" max="[oggi]">
+                                <input id="pubblicazione-fine" type="date" name="pubblicazione-fine" [pubblicazione-fine] max="[oggi]">
                             </div>
                         </fieldset>
 
@@ -99,17 +99,17 @@
                                 <div class="form-div">
                                     <label for="coinquilini-max">Numero massimo coinquilini</label> <!--min da 0-->
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 4</p>
-                                    <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" value="[coinquilini-max]" step="1" placeholder="Es. 4">
+                                    <input type="number" id="coinquilini-max" name="coinquilini-max" min="0" [coinquilini-max] placeholder="Es. 4">
                                 </div>
                                 <div class="form-div">
                                     <label for="costo-mese-affitto-max">Costo mensile massimo (€ al mese)</label> <!--min da 0-->
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 50</p>
-                                    <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="1" value="[costo-mese-affitto-max]" placeholder="Es. 50">
+                                    <input id="costo-mese-affitto-max" type="number" name="costo-mese-affitto-max" min="0" step="0.01" [costo-mese-affitto-max] placeholder="Es. 50">
                                 </div>
                                 <div class="form-div">
                                     <label for="indirizzo-affitto">Indirizzo</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> Via Luzzati</p>
-                                    <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto" value="[indirizzo-affitto]">
+                                    <input id="indirizzo-affitto" placeholder="Es. Via Luzzati" name="indirizzo-affitto" [indirizzo-affitto]>
                                 </div>
                             </fieldset>
                         </div>
@@ -121,17 +121,17 @@
                                 <div class="form-div">
                                     <label for="laboratorio">Laboratorio di riferimento</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> Lab. Paolotti</p>
-                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" value="[laboratorio]" name="laboratorio">
+                                    <input id="laboratorio" placeholder="Es. Lab. Paolotti" [laboratorio] name="laboratorio">
                                 </div>
                                 <div class="form-div">
                                     <label for="esperimento-durata-max">Durata massima (minuti)</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 120</p>
-                                    <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" step="5" value="[esperimento-durata-max]" placeholder="Es. 120">
+                                    <input type="number" id="esperimento-durata-max" name="esperimento-durata-max" min="0" [esperimento-durata-max] placeholder="Es. 120">
                                 </div>
                                 <div class="form-div">
                                     <label for="esperimento-compenso-min">Compenso minimo (€)</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 5</p>
-                                    <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="1" placeholder="Es. 5" value="[esperimento-compenso-min]">
+                                    <input id="esperimento-compenso-min" type="number" name="esperimento-compenso-min" min="0" step="0.01" placeholder="Es. 5" [esperimento-compenso-min]>
                                 </div>
                             </fieldset>
                         </div>
@@ -142,21 +142,21 @@
                                 <!-- Attributi Eventi -->
                                 <div class="form-div">
                                     <label for="evento-inizio">Data inizio</label>
-                                    <input id="evento-inizio" type="date" name="evento-inizio" value="[evento-inizio]" >
+                                    <input id="evento-inizio" type="date" name="evento-inizio" [evento-inizio] >
                                 </div>
                                 <div class="form-div">
                                     <label for="evento-fine">Data fine</label>
-                                    <input id="evento-fine" type="date" name="evento-fine" value="[evento-fine]">
+                                    <input id="evento-fine" type="date" name="evento-fine" [evento-fine]>
                                 </div>
                                 <div class="form-div">
                                     <label for="evento-costo-max">Costo massimo entrata (€)</label>  <!--min da 0-->
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 50</p>
-                                    <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" value="[evento-costo-max]" step="1" placeholder="Es. 50">
+                                    <input id="evento-costo-max" type="number" name="evento-costo-max" min="0" [evento-costo-max] step="0.01" placeholder="Es. 50">
                                 </div>
                                 <div class="form-div">
                                     <label for="luogo-evento">Luogo</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> Via Luzzati</p>
-                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento" value="[luogo-evento]">
+                                    <input id="luogo-evento" placeholder="Es. Via Luzzati" name="luogo-evento" [luogo-evento]>
                                 </div>
                             </fieldset>
                         </div>
@@ -167,12 +167,12 @@
                                 <!-- Attributi Ripetizioni -->
                                 <div class="form-div">
                                     <label for="materia">Materia</label>
-                                    <input type="text" id="materia" name="materia" value="[materia]">
+                                    <input type="text" id="materia" name="materia" [materia]>
                                 </div>
                                 <div class="form-div">
                                     <label for="livello">Livello</label>
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> Superiori</p>
-                                    <input list="listlivelli" placeholder="Es. Superiori" name="livello" value="[livello]" id="livello">
+                                    <input list="listlivelli" placeholder="Scrivi e seleziona" name="livello" [livello] id="livello">
                                     <datalist id="listlivelli">
                                         <option value="Medie">
                                         <option value="Superiori">
@@ -182,7 +182,7 @@
                                 <div class="form-div">
                                     <label for="prezzo-ripetizioni-max">Prezzo orario massimo (€ all'ora)</label> <!--min da 0-->
                                     <p class="esempi"><abbr title='esempio'>Es.</abbr> 50</p>
-                                    <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="1" value="[prezzo-ripetizioni-max]" placeholder="Es. 50">
+                                    <input id="prezzo-ripetizioni-max" type="number" name="prezzo-ripetizioni-max" min="0" step="0.01" [prezzo-ripetizioni-max] placeholder="Es. 50">
                                 </div>
                             </fieldset>
                         </div>

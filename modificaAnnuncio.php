@@ -319,10 +319,7 @@ $htmlPage = str_replace("[descrizione]", $annuncio["Descrizione"], $htmlPage);
 $htmlPage = str_replace("[citta]", $annuncio["NomeCitta"], $htmlPage);
 
 $htmlPage = str_replace("[campiDettagli]", Tool::getModificaAnnuncioSpecifico($annuncio["Categoria"]), $htmlPage);
-
-foreach ($campi as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $campi);
 
 $htmlPage = str_replace("[IdAnnuncio]", $idAnnuncio, $htmlPage);
 

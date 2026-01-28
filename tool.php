@@ -315,17 +315,17 @@ class Tool {
                                 <legend>Dettagli Affitti</legend>
                                 <div class="form-div">
                                     <label for="coinquilini">Numero coinquilini</label>
-                                    <input type="number" id="coinquilini" name="coinquilini" value="[coinquilini]" min="0">
+                                    <input type="number" id="coinquilini" name="coinquilini" [coinquilini] min="0">
                                     <p>Es. 2</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="costo-mese-affitto">Costo mensile (€ al mese)</label>
-                                    <input type="number" id="costo-mese-affitto" value="[costo-mese-affitto]" name="costo-mese-affitto" min="0">
+                                    <input type="number" id="costo-mese-affitto" [costo-mese-affitto] name="costo-mese-affitto" min="0" step="0.01">
                                     <p>Es. 300</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="indirizzo-affitto">Indirizzo</label>
-                                    <input type="text" id="indirizzo-affitto" value="[indirizzo-affitto]" name="indirizzo-affitto">
+                                    <input type="text" id="indirizzo-affitto" [indirizzo-affitto] name="indirizzo-affitto">
                                     <p>Es. Via Roma 10</p>
                                 </div>
                             </fieldset>
@@ -337,17 +337,17 @@ class Tool {
                                 <legend>Dettagli Esperimenti</legend>
                                 <div class="form-div">
                                     <label for="laboratorio">Laboratorio di riferimento</label>
-                                    <input type="text" id="laboratorio" value="[laboratorio]" name="laboratorio">
+                                    <input type="text" id="laboratorio" [laboratorio] name="laboratorio">
                                     <p>Es. Laboratorio di Psicologia Sperimentale</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="esperimento-durata">Durata esperimento (minuti)</label>
-                                    <input type="text" id="esperimento-durata" value="[esperimento-durata]" name="esperimento-durata" placeholder="Es. 75">
+                                    <input type="number" id="esperimento-durata" [esperimento-durata] name="esperimento-durata" placeholder="Es. 75">
                                     <p>Es. 75</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="esperimento-compenso">Compenso (€)</label>
-                                    <input type="number" id="esperimento-compenso" value="[esperimento-compenso]" name="esperimento-compenso" min="0">
+                                    <input type="number" id="esperimento-compenso" [esperimento-compenso] name="esperimento-compenso" min="0" step="0.01">
                                     <p>Es. 15</p>
                                 </div>
                             </fieldset>
@@ -359,17 +359,17 @@ class Tool {
                                 <legend>Dettagli Eventi</legend>
                                 <div class="form-div">
                                     <label for="data-evento">Data evento</label>
-                                    <input type="date" id="data-evento" name="data-evento" value="[data-evento]">
+                                    <input type="date" id="data-evento" name="data-evento" [data-evento]>
                                     <p>Es. 18/10/2025</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="costo-evento">Costo entrata (€)</label>
-                                    <input type="number" id="costo-evento" name="costo-evento" value="[costo-evento]" min="0">
+                                    <input type="number" id="costo-evento" name="costo-evento" [costo-evento] min="0" step="0.01">
                                     <p>Es. 10</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="luogo-evento">Luogo</label>
-                                    <input type="text" id="luogo-evento" name="luogo-evento" value="[luogo-evento]">
+                                    <input type="text" id="luogo-evento" name="luogo-evento" [luogo-evento]>
                                     <p>Es. Teatro Comunale</p>
                                 </div>
                             </fieldset>
@@ -381,12 +381,13 @@ class Tool {
                                 <legend>Dettagli Ripetizioni</legend>
                                 <div class="form-div">
                                     <label for="materia">Materia</label>
-                                    <input type="text" id="materia" name="materia" value="[materia]">
+                                    <input type="text" id="materia" name="materia" [materia]>
                                     <p>Es. Matematica</p>
                                 </div>
                                 <div class="form-div">
                                     <label for="livello">Livello</label>
-                                    <input list="listlivelli" placeholder="Es. Superiori, università" value="[livello]" name="livello" id="livello">
+                                    <p class="esempi"><abbr title="esempio">Es.</abbr> Superiori</p>                                    
+                                    <input list="listlivelli" placeholder="Scrivi e seleziona" [livello] name="livello" id="livello">
                                     <datalist id="listlivelli">
                                         <option value="Medie">
                                         <option value="Superiori">
@@ -395,7 +396,7 @@ class Tool {
                                 </div>
                                 <div class="form-div">
                                     <label for="prezzo-ripetizioni">Prezzo orario (€ all\'ora)</label>
-                                    <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" value="[prezzo-ripetizioni]">
+                                    <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" [prezzo-ripetizioni] step="0.01">
                                     <p>Es. 15</p>
                                 </div>
                             </fieldset>
@@ -433,5 +434,21 @@ class Tool {
         }
 
         return $prefix . $cut . "…" . $suffix;
+    }
+
+    public static function sostituisciPlaceholderValori($htmlPage, $arrayFiltri) {
+        foreach ($arrayFiltri as $key => $value) {
+            // placeholder da cercare
+            $placeholder = "[$key]";
+
+            if ($value === "" || $value === null) {
+                // se vuoto → rimuovi completamente il placeholder
+                $htmlPage = str_replace($placeholder, "", $htmlPage);
+            } else {
+                // se pieno → sostituisci con value="..."
+                $htmlPage = str_replace($placeholder, 'value="'.$value.'"', $htmlPage);
+            }
+        }
+        return $htmlPage;
     }
 }

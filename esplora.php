@@ -135,21 +135,11 @@ if(isset($_GET['submit']))
 }
 
 //Sostituzione dei placeholder
-foreach ($filtriGenerali as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($filtriAffitti as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($filtriEsperimenti as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($filtriEventi as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($filtriRipetizioni as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $filtriGenerali);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $filtriAffitti);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $filtriEsperimenti);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $filtriEventi);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $filtriRipetizioni);
 
 $htmlPage = str_replace("[NumRisultati]", $numRisultati, $htmlPage);
 $htmlPage = str_replace("[noneSelected]", $categoria=='' ? 'selected' : '' , $htmlPage);

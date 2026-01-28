@@ -102,17 +102,17 @@
                                     <div class="form-div">
                                         <label for="coinquilini">Numero coinquilini</label>
                                         <p><abbr title='esempio'>Es.</abbr>  2</p>
-                                        <input type="number" id="coinquilini" name="coinquilini" value="[coinquilini]" min="0" disabled>
+                                        <input type="number" id="coinquilini" name="coinquilini" [coinquilini] min="0" disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="costo-mese-affitto">Costo mensile (€ al mese)</label>
                                         <p><abbr title='esempio'>Es.</abbr>  300</p>
-                                        <input type="number" id="costo-mese-affitto" value="[costo-mese-affitto]" name="costo-mese-affitto" min="0" disabled>
+                                        <input type="number" id="costo-mese-affitto" [costo-mese-affitto] name="costo-mese-affitto" min="0" step="0.01" disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="indirizzo-affitto">Indirizzo</label>
                                         <p><abbr title='esempio'>Es.</abbr>  Via Roma 10</p>
-                                        <input type="text" id="indirizzo-affitto" value="[indirizzo-affitto]" name="indirizzo-affitto" disabled>
+                                        <input type="text" id="indirizzo-affitto" [indirizzo-affitto] name="indirizzo-affitto" disabled>
                                     </div>
                                 </fieldset>
                             </div>
@@ -123,17 +123,17 @@
                                     <div class="form-div">
                                         <label for="laboratorio">Laboratorio di riferimento</label>
                                         <p><abbr title='esempio'>Es.</abbr>  Laboratorio di Psicologia Sperimentale</p>
-                                        <input type="text" id="laboratorio" value="[laboratorio]" name="laboratorio" disabled>
+                                        <input type="text" id="laboratorio" [laboratorio] name="laboratorio" disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="esperimento-durata">Durata (minuti)</label>
                                         <p><abbr title='esempio'>Es.</abbr>  75</p>
-                                        <input type="text" id="esperimento-durata" value="[esperimento-durata]" name="esperimento-durata" placeholder="Es. 75" disabled>
+                                        <input type="number" id="esperimento-durata" [esperimento-durata] name="esperimento-durata" placeholder="Es. 75" disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="esperimento-compenso">Compenso (€)</label>
                                         <p><abbr title='esempio'>Es.</abbr>  15</p>
-                                        <input type="number" id="esperimento-compenso" value="[esperimento-compenso]" name="esperimento-compenso" min="0" disabled>
+                                        <input type="number" id="esperimento-compenso" [esperimento-compenso] name="esperimento-compenso" min="0" step="0.01" disabled>
                                     </div>
                                 </fieldset>
                             </div>
@@ -144,17 +144,17 @@
                                     <div class="form-div">
                                         <label for="data-evento">Data evento</label>
                                         <p><abbr title='esempio'>Es.</abbr>  18/10/2025</p>
-                                        <input type="date" id="data-evento" name="data-evento" value="[data-evento]" disabled>
+                                        <input type="date" id="data-evento" name="data-evento" [data-evento] disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="costo-evento">Costo entrata (€)</label>
                                         <p><abbr title='esempio'>Es.</abbr>  10</p>
-                                        <input type="number" id="costo-evento" name="costo-evento" value="[costo-evento]" min="0" disabled>
+                                        <input type="number" id="costo-evento" name="costo-evento" [costo-evento] min="0" step="0.01" disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="luogo-evento">Luogo</label>
                                         <p><abbr title='esempio'>Es.</abbr>  Teatro Comunale</p>
-                                        <input type="text" id="luogo-evento" name="luogo-evento" value="[luogo-evento]" disabled>
+                                        <input type="text" id="luogo-evento" name="luogo-evento" [luogo-evento] disabled>
                                     </div>
                                 </fieldset>
                             </div>
@@ -165,11 +165,12 @@
                                     <div class="form-div">
                                         <label for="materia">Materia</label>
                                         <p><abbr title='esempio'>Es.</abbr>  Matematica</p>
-                                        <input type="text" id="materia" name="materia" value="[materia]" disabled>
+                                        <input type="text" id="materia" name="materia" [materia] disabled>
                                     </div>
                                     <div class="form-div">
                                         <label for="livello">Livello</label>
-                                        <input list="listlivelli" placeholder="Es. Superiori, università" value="[livello]" name="livello" id="livello" disabled>
+                                        <p class="esempi"><abbr title='esempio'>Es.</abbr> Superiori</p>
+                                        <input list="listlivelli" placeholder="Scrivi e seleziona" [livello] name="livello" id="livello" disabled>
                                         <datalist id="listlivelli">
                                             <option value="Medie">
                                             <option value="Superiori">
@@ -179,7 +180,7 @@
                                     <div class="form-div">
                                         <label for="prezzo-ripetizioni">Prezzo orario (€ all'ora)</label>
                                         <p><abbr title='esempio'>Es.</abbr>  15</p>
-                                        <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" value="[prezzo-ripetizioni]" disabled>
+                                        <input type="number" id="prezzo-ripetizioni" name="prezzo-ripetizioni" min="0" step="0.01" [prezzo-ripetizioni] disabled>
                                     </div>
                                 </fieldset>
                             </div>

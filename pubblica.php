@@ -233,19 +233,12 @@ $htmlPage = str_replace("[ripetizioniSelected]", $categoria=='Ripetizioni' ? 'se
 $htmlPage = str_replace("[titolo]", $titolo, $htmlPage);
 $htmlPage = str_replace("[descrizione]", $descrizione, $htmlPage);
 $htmlPage = str_replace("[citta]", $citta, $htmlPage);
+
 //SPECIFICI
-foreach ($campiAffitti as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($campiEsperimenti as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($campiEventi as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
-foreach ($campiRipetizioni as $key => $value) {
-    $htmlPage = str_replace("[$key]", $value, $htmlPage);
-}
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $campiAffitti);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $campiEsperimenti);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $campiEventi);
+$htmlPage = Tool::sostituisciPlaceholderValori($htmlPage, $campiRipetizioni);
 
 $htmlPage = str_replace("[CityOptionsList]", Tool::renderCityOptions($cities), $htmlPage);
 
@@ -289,10 +282,6 @@ $htmlPage = str_replace("[Errore-citta]", $erroreCitta, $htmlPage);
 
 $htmlPage = str_replace("[TopNavBar]", Tool::buildTopNavBar("pubblica"), $htmlPage);
 $htmlPage = str_replace("[BottomNavBar]", Tool::buildBottomNavBar("pubblica"), $htmlPage);
-
-# $htmlPage = str_replace("[ValueCategoria]", $categoria, $htmlPage);
-# $htmlPage = str_replace("[ValueCitta]", $citta, $htmlPage);
-# $htmlPage = str_replace("[ValueDescrizione]", $descrizione, $htmlPage);
 
 echo $htmlPage;
 ?>
