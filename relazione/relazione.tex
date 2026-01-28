@@ -46,7 +46,7 @@
         \begin{center}
             {\Large \textbf{Relazione}\par}
             \vspace{0.6cm}
-            {\Large Progetto di Tecnologie <span lang="en">Web</span>\par}
+            {\Large Progetto di Tecnologie Web\par}
             \vspace{0.3cm}
         \end{center}
         \vfill
@@ -257,8 +257,6 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
     \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
 
     \subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
-    \subsection{Mockup}
-    \subsection{Responsive <span lang="en">Web</span> Design e Mobile First} 
 
     \newpage
     \section{Sviluppo} % decidere struttura
@@ -278,13 +276,6 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
 
     \subsection{Database} 
     \subsubsection{Analisi dei requisiti del database e progettazione logica}
-
-    La base di dati deve supportare la gestione degli utenti e degli annunci pubblicati
-    sulla bacheca universitaria. In particolare, deve garantire la memorizzazione dei
-    campi generici comuni a tutte le categorie di annunci e dei campi specifici per ciascuna
-    categoria. Inoltre, deve consentire operazioni di
-    inserimento. %, modifica e cancellazione.
-
     \paragraph{Entità principali}
     \begin{itemize}
         \item \textbf{Utente}: rappresenta gli utenti registrati alla piattaforma.\\
@@ -448,40 +439,275 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
     \end{itemize}
 
 
+    \subsection{HTML}
+    La struttura delle pagine del sito segue le linee guida per la separazione tra contenuto, presentazione e comportamento. Ogni documento HTML è organizzato in due sezioni principali: \texttt{<head>} e \texttt{<body>}, con un uso coerente di elementi semantici e senza ricorrere a tag puramente presentazionali.
 
-    \subsection{Front-end (HTML, CSS, JS)}
-    \subsubsection{HTML}
-    Nel documento è stato inserito il tag:
-    \begin{verbatim}
-    <meta name="viewport" content="width=device-width"/>
-    \end{verbatim}
-    Tale configurazione permette ai fogli di stile di riferirsi alla dimensione effettiva del dispositivo e non alla sua risoluzione fisica. In questo modo si evita che, su smartphone ad alta densità di pixel, venga caricata la visualizzazione desktop, garantendo un comportamento responsivo coerente con il paradigma \textit{mobile first}.
+\subsubsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
+I meta tag \texttt{title}, \texttt{description} e \texttt{keywords} sono stati definiti in modo coerente con il contenuto effettivo delle pagine, con l’obiettivo di migliorare l’indicizzazione e mantenere una corrispondenza semantica tra metadati e testo visibile.
 
-    Nella pagina \textit{esplora} è stato scelto di utilizzare l’elemento semantico \texttt{<aside>} per contenere i filtri di ricerca, invece di un elemento \texttt{<section>}. Tale scelta deriva dal fatto che i filtri rappresentano contenuti accessori rispetto al flusso principale della pagina, costituito dall’elenco degli annunci. L’uso di \texttt{<aside>} migliora la chiarezza semantica e supporta una migliore interpretazione da parte delle tecnologie assistive.
+Le \texttt{keywords} utilizzate nei meta tag sono sempre presenti anche nel contenuto della pagina, in particolare negli headings e negli elementi \texttt{strong}. Questa scelta evita discrepanze tra contenuto indicizzato e contenuto mostrato all’utente e previene che il ranking si abbassi per Google bombing.
 
-    Per quanto riguarda le singole card, gestite tramite \texttt{cardTemplate.html}, è stato deciso di utilizzare elementi \texttt{<h3>} per i titoli degli annunci, anziché una struttura basata su \texttt{<dt>} e \texttt{<dd>}, come nel seguente esempio:
-    \begin{verbatim}
-    <dt>Titolo:</dt>
-    <dd>[TitoloAnnuncio]</dd>
-    \end{verbatim}
-    L’uso degli heading consente di riflettere correttamente la gerarchia logica dei contenuti: \texttt{<h2>} identifica la sezione principale (ad esempio l’elenco degli annunci), mentre \texttt{<h3>} rappresenta ciascun singolo annuncio. Questa scelta migliora la struttura semantica complessiva, favorisce un migliore posizionamento nei motori di ricerca e permette agli screen reader di interpretare più efficacemente l’organizzazione informativa della pagina.
+Nelle pagine dinamiche, come la visualizzazione (\texttt{annuncio.html}) e la modifica di un annuncio (\texttt{modificaAnnuncio.html}), i meta tag vengono generati dinamicamente sulla base delle informazioni specifiche della pagina. Nel dettaglio, il titolo e la descrizione includono elementi contestuali quali il titolo dell’annuncio, la categoria e la città; nella pagina di modifica il titolo originale dell’annuncio viene comunque mantenuto nel \texttt{title}.
 
-    \subsubsection{CSS e decisioni di design (immagini, palette colori)} 
+Il contenuto del tag \texttt{title} è prodotto tramite una funzione dedicata  \texttt{Tool::titoloSEO(string, string, string, bool)} che impone una lunghezza massima complessiva di 55 caratteri, così da evitare troncamenti. La funzione gestisce automaticamente prefissi e suffissi informativi e, quando previsto, l’inserimento della città. In caso di titoli troppo lunghi, il testo viene accorciato in corrispondenza dell’ultima parola completa disponibile, evitando spezzature arbitrarie.
+
+Anche il meta tag \texttt{description} viene generato dinamicamente in alcuni contesti, in modo da descrivere in maniera sintetica e coerente la funzione della pagina e il contenuto visualizzato.
+
+\subsubsection{Meta tag \texttt{viewport}}
+Nel documento è stato inserito il meta tag
+\texttt{<meta name="viewport" content="width=device-width"/>}.
+Questa impostazione consente ai fogli di stile di riferirsi alla larghezza effettiva del dispositivo anziché alla sua risoluzione. In tal modo si evita che, su dispositivi mobili con alta densità di px, venga applicato il layout desktop.
+
+\subsubsection{\texttt{Aside} in \texttt{esplora.html}} Nella pagina \textit{esplora.html} è stato utilizzato l’elemento semantico \texttt{<aside>} per contenere i filtri di ricerca, invece di un generico \texttt{<section>}. I filtri rappresentano, infatti, contenuti accessori rispetto al flusso principale della pagina, costituito dall’elenco degli annunci. In tale modo viene migliorata la chiarezza semantica del documento e si favorisce una corretta interpretazione da parte delle tecnologie assistive.
+
+\subsubsection{Struttura di \texttt{cardTemplate}} Per la struttura delle singole card delle anteprime degli annunci, definite nel file \texttt{cardTemplate.html}, sono stati utilizzati elementi \texttt{<h3>} per i titoli, evitando una rappresentazione basata su coppie \texttt{<dt>} e \texttt{<dd>}.  
+L’impiego degli heading consente di rappresentare correttamente la gerarchia logica dei contenuti: \texttt{<h2>} identifica la sezione principale (es. \texttt{Ultimi inseriti}), mentre \texttt{<h3>} rappresenta ciascun annuncio. Questa scelta migliora la struttura semantica complessiva, supporta una navigazione più efficace tramite screen reader e favorisce l’indicizzazione da parte dei motori di ricerca.
+
+\subsubsection{Gestione delle immagini}
+La gestione delle immagini è stata progettata con particolare attenzione alle prestazioni, all’accessibilità e al controllo da parte dell’utente.
+
+Le immagini immediatamente visibili all’apertura della pagina (\textit{above the fold}) vengono caricate in modo prioritario con \texttt{loading="eager"} di default, mentre tutte le altre utilizzano il caricamento \texttt{loading="lazy"}, riducendo il tempo di caricamento iniziale.
+
+Per quanto riguarda i formati, sono state adottate scelte differenziate in base alla funzione dell’immagine:
+\begin{itemize}
+    \item formato WebP per immagini decorative;
+    \item il logo è fornito in formato SVG;
+    \item le immagini degli annunci utilizzano il formato JPG.
+\end{itemize}
+Inoltre, tutte le immagini utilizzate nel progetto hanno dimensione inferiore a 1 MB.
+
+Le immagini decorative (icone e illustrazioni) sono inserite direttamente nel markup HTML, ma la loro dimensione è gestita tramite CSS, il logo invece è inserito tramite Image Replacement per preservare l'accessibilità del testoletto da screen reader ma nascosto visivamente.
+
+Le immagini degli annunci sono visualizzate all’interno di card con dimensioni fisse, scelta motivata dall’elevato numero di immagini presenti nelle liste. L’impostazione esplicita di \texttt{width} e \texttt{height} consente di riservare lo spazio necessario prima del caricamento dell’immagine, riducendo i fenomeni di \textit{layout shift}.
+
+Per il caricamento delle immagini da parte dell’utente, il form di pubblicazione e di modifica fornisce indicazioni esplicite sui vincoli: dimensione massima di 1 MB e formato preferibilmente JPG. È presente un controllo sulla dimensione dei file caricati. Come possibile alternativa progettuale, si sarebbe potuta implementare una conversione automatica delle immagini in JPG o la generazione di più formati selezionabili tramite \texttt{picture}; nel progetto si è scelto di limitare i formati accettati tramite un insieme controllato di MIME type, privilegiando semplicità e controllo.
+
+La gestione dell’attributo \texttt{alt} è lasciata all’utente in fase di pubblicazione, infatti: per ogni immagine è possibile inserire un testo alternativo oppure marcarla come puramente decorativa, ma non è consentito lasciare entrambi i campi vuoti. Il testo alternativo è inoltre limitato a 100 caratteri, così da garantire una descrizione sintetica e ridurre le tempistiche che ritardano il completamento delle task per utenti che utilizzano le tecnologie assistive.
+
+\subsubsection{Form e validazione}
+La struttura dei form è organizzata tramite l’uso sistematico di \texttt{fieldset} e \texttt{legend}, anche nei casi in cui la legenda sia destinata principalmente alle tecnologie assistive. Nessun campo di input è figlio diretto dell’elemento \texttt{form}, al fine di mantenere una struttura semantica chiara e facilmente interpretabile. Nei form di filtraggio i \texttt{fieldset} sono invece visibili, così da migliorare la comprensione delle opzioni disponibili.
+
+Ogni campo di input utilizza il tipo HTML più appropriato (ad esempio \texttt{text}, \texttt{email}, \texttt{password}, \texttt{file}) ed è sempre associato a una \texttt{label}, garantendo una corretta accessibilità e una migliore usabilità. Dove opportuno, sono stati abilitati gli attributi \texttt{autocomplete} e \texttt{spellcheck}, con valori semanticamente coerenti, per agevolare l’inserimento dei dati e ridurre gli errori.
+
+Sono stati sfruttati i principali meccanismi di validazione HTML5, tra cui \texttt{required}, vincoli di tipo e limiti su lunghezza e valori (\texttt{min}, \texttt{max}, \texttt{step}), così da fornire un primo livello di validazione immediata lato client. Tali controlli sono affiancati da una validazione tramite JavaScript, utilizzata per fornire feedback più dettagliati all’utente, e da ulteriori verifiche lato server, necessarie per garantire la correttezza e la sicurezza dei dati ricevuti.
+
+Nei form di registrazione e autenticazione sono inoltre presenti accorgimenti per migliorare l’esperienza utente, come l’uso controllato dell’autocompletamento per le credenziali, la possibilità di visualizzare temporaneamente la password e l’impiego di campi nascosti per la gestione dei reindirizzamenti post-login.
 
 
-    \subsection{Back-end (PHP)}
+
+\subsection{CSS e decisioni di design} 
+Il foglio di stile è stato progettato privilegiando l’uso di dimensioni relative (\texttt{em}, \texttt{rem}, percentuali e unità flessibili), così da garantire una resa adattabile a dispositivi e contesti differenti, migliorando accessibilità e scalabilità dell’interfaccia.
+
+Il codice CSS è stato organizzato in modo fortemente modulare, attraverso classi di base riutilizzabili ed estensioni contestuali, con l’obiettivo di favorire il riuso del codice. Componenti come card, pulsanti, sezioni e form condividono strutture comuni che vengono specializzate solo dove necessario, rendendo il foglio di stile più mantenibile e leggibile.
+
+Per assicurare uniformità grafica, è stata definita una \texttt{:root} contenente variabili CSS per colori, spaziature, raggi di arrotondamento, ombre e transizioni, oltre a una scala tipografica coerente per dimensioni e pesi dei caratteri.
+
+Il layout è realizzato principalmente tramite Flexbox, utilizzato per costruire strutture fluide e adattive, mentre CSS Grid è impiegato in modo mirato solo nei casi dove risultava necessario (ad esempio per elenchi di card o sezioni a griglia).
+
+La gestione della responsività è basata su una separazione tra \texttt{style.css} e \texttt{mini.css}, con un breakpoint a 800px per l’adattamento generale ai dispositivi mobili. Sono inoltre presenti 2 media query aggiuntive, tra cui una dedicata alla navigazione con menu hamburger, attivata già sotto i 1000px, per migliorare l’usabilità su tablet e schermi intermedi.
+
+È stato previsto un foglio di stile dedicato alla stampa, che mostra esclusivamente le informazioni essenziali, rimuovendo elementi decorativi e interattivi in modo da ridurre il consumo di inchiostro mantenendo però la struttura del contenuto, così da evitare il disorientamento dell’utente.
+
+Particolare attenzione è stata riservata all’accessibilità visiva e all’interazione da tastiera, con la gestione esplicita degli stati di focus visibile, l’uso coerente dei contrasti e l’eliminazione di animazioni o trasformazioni superflue nei contesti in cui potrebbero risultare problematiche, come nelle versioni mobile o di stampa.
+
+\subsection{PHP}
+
+\section{Accessibilità}
+\subsection{Strumenti di verifica}
+Per garantire il rispetto dei requisiti di accessibilità, il progetto è stato sviluppato basandosi sui punti richiesti dalle linee guida WCAG 2.2. E' stata, infatti, compilata la checklist fornita nel Moodle che ha permesso di verificare in maniera sistematica tutti i punti critici relativi a leggibilità, navigazione, colori, interazione e feedback per gli utenti con disabilità.
+
+Durante lo sviluppo sono stati utilizzati diversi strumenti di verifica:
+    \begin{itemize}
+        \item \textbf{NVDA:} per testare la corretta lettura della gerarchia dei titoli, la navigazione tramite landmark e l'annuncio dei messaggi di errore nei form, sia con JavaScript attivo sia con JavaScript disabilitato.
+        \item \textbf{Contrast Checker (\underline{\url{https://contrastchecker.com/}}):} per verificare che tutti i contrasti di colore rispettassero il rapporto minimo di leggibilità (superiore a 4.5:1).
+        \item \textbf{Lighthouse, Silktide ed Ispezione(F12):} per valutazioni automatiche e test manuali su navigazione da tastiera, accessibilità dei link, dimensioni degli elementi cliccabili e altri criteri WCAG.
+    \end{itemize}
+    
+\subsection{Tipografia e leggibilità}
+
+Per garantire una corretta leggibilità dei contenuti, sono stati scelti due font distinti in base al contesto:
+\begin{itemize}
+\item \textbf{Per il web}: \emph{Noto Sans}, importato tramite Google Fonts
+\item \textbf{Per la stampa}: \emph{Times New Roman}. \end{itemize}
+
+La scelta del font web è stata motivata da verifiche di leggibilità sui caratteri critici, quali \texttt{qp, db, 0O, iI1l, rn, m}; da controlli sull'altezza delle \emph{x}, maggiore per favorire la distinzione dei caratteri minuscoli e sull'apertura dei glifi, come nelle lettere \emph{c} e \emph{a}, per aumentare la chiarezza visiva. 
+
+Sono, quindi, stati testati vari stili e pesi disponibili su Google Fonts, inizialamente era stato scelto \texttt{Inter}, ma poi si è optato per \texttt{Noto Sans} soprattutto per la leggibilità di \texttt{ca, iI1l}. 
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{inter.png}
+        \caption{Font: Inter}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{noto.png}
+        \caption{Font: Noto Sans}
+    \end{minipage}
+\end{figure}
+
+    
+\texttt{Leggibilità semplificata prezzi} Per la visualizzazione dei prezzi, è stata adottata una soluzione di leggibilità semplificata: l'uso di decimali solo quando necessario. La funzione PHP \texttt{Tool::formatPrezzo(\$valore, string)} permette di formattare i valori numerici in maniera chiara, aggiungendo il suffisso \texttt{€} e mantenendo la leggibilità dei valori interi (es. 20€ al posto di 20.00€).
+
+Infine, la gerarchia dei titoli, la lista dei link, dei campi, dei pulsanti e dei punti di riferimento è stata verificata utilizzando NVDA. 
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{headings_index.png}
+        \caption{Gerarchia titoli (index.html)}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{link_index.png}
+        \caption{Lista links (index.html)}
+    \end{minipage}
+\end{figure}
+
+\subsection{Colori, contrasti e accessibilità mobile}
+
+Per garantire una corretta percezione dei contenuti e la riconoscibilità degli elementi interattivi, sono stati applicati i seguenti accorgimenti:
+\begin{itemize}
+    \item \textbf{Link e CTA}:
+    \begin{itemize}
+    \item I link testuali sono sottolineati per favorire la riconoscibilità, mantenendo la convenzione esterna.
+    \item I link testuali visitati e non visitati (nella navbar) differiscono per colore con contrasto $\approx 3.0$ (\#931c98 (--visited), \#080810 (--txtNavColor) = 2.72)
+
+    \item I pulsanti di azione (CTA) variano di colore sfondo e testo tra stato visitato e non visitato.
+    \end{itemize}
+\item \textbf{Contrasto complessivo}: Tutti i contrasti tra testo e sfondo rispettano il rapporto minimo di 4.51:1, verificato con (\underline{\url{https://contrastchecker.com/}}).
+
+\item \textbf{Accessibilità touch su mobile}:  
+\begin{itemize}
+    \item Tutti gli elementi cliccabili rispettano dimensioni minime di ca. 44px x 44px.  
+    \item Per il pannello laterale dei filtri, la tendina a scomparsa prevede un overlay che oscura il contenuto sottostante senza comprometterne la leggibilità e vengono disattivati hamburger e torna su. Inoltre il tab è gestito in modo da seguire l'ordine ToggleFiltri $\rightarrow$ Titolo (solo momentaneamente focusabile, ma non tabbabile), e per chiusura ChiudiFiltri $\rightarrow$ ToggleFiltri e poi ordine normale della pagina (in \texttt{script.js}: funzione \texttt{toggleFiltriAccessibile()}). 
+    \item I pulsanti di navigazione nei caroselli (next/prev) hanno opacità testata e leggibile \texttt{--call-to-actionTransp: rgba(22, 40, 110, \textbf{0.65});}, come verificato con strumenti online (\url{https://codepen.io/yaphi1/pen/oNbEqGV}).  
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{opacita1.png}
+        \caption{Opacità su immagine prova 1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{opacita2.png}
+        \caption{Opacità su immagine prova 2}
+    \end{minipage}
+\end{figure}
+
+
+\subsection{Errori lato client (JavaScript)}
+
+La validazione lato client è stata implementata su tutti i form contrassegnati con l’attributo \texttt{data-validate}, combinando controlli in tempo reale e al submit per garantire un feedback immediato all’utente.
+
+\begin{itemize}
+\item \textbf{Trigger e gestione eventi:}
+\begin{itemize}
+\item Gli eventi \texttt{blur} e \texttt{input} vengono intercettati per validare ogni campo appena l’utente lo modifica o lo abbandona.
+\item Al momento del \texttt{submit}, tutti i campi validabili vengono controllati nuovamente; se si rilevano errori, il submit viene bloccato e il focus viene portato sul primo campo non valido.
+\end{itemize}
+
+\item \textbf{Creazione e annuncio degli errori:}
+\begin{itemize}
+    \item I messaggi di errore vengono generati dinamicamente come lista non ordinata (\texttt{<ul>}) con elementi \texttt{<li>} contenenti l’errore.
+    \item Ogni messaggio ha \texttt{role="alert"} per essere annunciato dai lettori screen immediatamente.
+    \item Gli input associati ricevono gli attributi ARIA \texttt{aria-invalid="true"} e \texttt{aria-describedby} puntato all’ID del messaggio di errore.
+\end{itemize}
+
+\item \textbf{Focus e usabilità:}
+\begin{itemize}
+    \item Il focus viene portato sul primo campo non valido solo la prima volta che compare l’errore, evitando interferenze con la navigazione successiva.
+    \item Per i campi di testo, il contenuto viene selezionato automaticamente per facilitare la correzione.
+\end{itemize}
+
+\item \textbf{Campi gestiti:}
+\begin{itemize}
+    \item Testo (nome, cognome), email, password, conferma password, checkbox (consenso), e città con \texttt{datalist}.
+    \item Alcuni campi come \texttt{input type="file"} o campi alt/decorativi sono esclusi dalla validazione client.
+\end{itemize}
+
+\item \textbf{Rimozione dinamica errori:}
+\begin{itemize}
+    \item Al cambiamento dell’input, eventuali errori precedenti vengono rimossi.
+    \item Gli attributi ARIA (\texttt{aria-invalid}, \texttt{aria-describedby}) vengono aggiornati di conseguenza.
+    \item Tutti i messaggi sono uniformati graficamente e semanticamente, garantendo coerenza visiva e accessibilità.
+\end{itemize}
+
+\item \textbf{Funzioni principali:}
+\begin{itemize}
+    \item \texttt{validateField(field)}: controlla la validità del campo e genera eventuali errori.
+    \item \texttt{renderError(field, errors)}: crea il blocco HTML per il messaggio e aggiorna gli attributi ARIA.
+    \item \texttt{removeError(field)}: rimuove eventuali messaggi di errore e ripristina gli attributi del campo.
+\end{itemize}
+\end{itemize}
+
+\subsection{Errori lato server (PHP)}
+
+La validazione lato server è stata implementata per tutti i form principali, come la pagina di pubblicazione annunci e la pagina di accesso, garantendo feedback immediato anche quando JavaScript non è attivo.
+
+\begin{itemize}
+\item \textbf{Tipi di errori gestiti:}
+\begin{itemize}
+\item \emph{Form generici} (titolo, categoria, descrizione, città)
+\item \emph{Immagini} (upload, dimensione, formato, testo alternativo)
+\item \emph{Login} (email/password non valide, utente inesistente)
+\end{itemize}
+
+\item \textbf{Creazione dei messaggi:}  
+I messaggi di errore sono generati direttamente in HTML come liste non ordinate (\texttt{<ul>}) con elementi \texttt{<li>} dotati di \texttt{role="alert"}:
+\begin{itemize}
+    \item Consente ai lettori screen di annunciare subito l’errore.
+    \item Mantiene uniformità con i messaggi generati lato client.
+\end{itemize}
+
+\item \textbf{Attributi ARIA:}  
+Quando un campo contiene errori, vengono aggiunti gli attributi:
+\begin{itemize}
+    \item \texttt{aria-invalid="true"} sul campo
+    \item \texttt{aria-describedby} puntato all’ID del messaggio corrispondente
+\end{itemize}
+
+\item \textbf{Gestione del focus:}  
+In caso di errore, lo script porta il focus sul primo campo interessato, permettendo all’utente di correggere immediatamente.  
+Per le immagini, se si rilevano errori di upload, il focus viene portato sul primo input \texttt{file}.
+
+\item \textbf{Errori immagini:}  
+\begin{itemize}
+    \item Verifica dimensione massima (1MB) e formati consentiti (JPG, PNG, WEBP)
+    \item Controllo obbligatorietà testo alternativo per immagini non decorative
+    \item Errori aggregati in un contenitore globale \texttt{#errore-immagini-globali} con \texttt{role="alert"}
+\end{itemize}
+
+\item \textbf{Login:}  
+\begin{itemize}
+    \item Messaggi per email non valida, HTML non consentito o credenziali errate
+    \item Inserimento dinamico dei messaggi nella pagina e associazione di \texttt{aria-describedby} ai campi email e password
+    \item Utilizzo di redirectMessage per guidare l’utente alla pagina di login con spiegazioni contestuali
+\end{itemize}
+
+\item \textbf{Uniformità e coerenza:}  
+Tutti i messaggi server-side replicano la struttura dei messaggi client-side, garantendo:
+\begin{itemize}
+    \item Stessi stili CSS (\texttt{riquadro-spieg messaggi-errore-form})
+    \item Stesso markup semantico (\texttt{<ul><li role="alert">})
+    \item Compatibilità con screen reader
+\end{itemize}
+
+
+\end{itemize}
 
 
     \subsection{Validazione e Sicurezza} \label{sviluppo:validazione}
-    \begin{itemize}
-        \item \textbf{Lato client}: controlli immediati con JavaScript (campi obbligatori, formati corretti).
-        \item \textbf{Lato server}: verifica dati ricevuti prima dell’inserimento nel database.
-        \item Messaggi di errore chiari e accessibili.
-        \item non sono concessi tag negli input
-    \end{itemize}
 
-
-    \newpage
     \section{Test}
     \subsection{Test funzionali}
     Descrizione dei test su login, registrazione, pubblicazione e filtraggio annunci.
@@ -493,18 +719,7 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
     Color contrast, navigazione da tastiera, screen reader.
 
     \subsection{Requisiti tecnici}
-    \subsubsection{Accessibilità e responsività}
-    \begin{itemize}
-        \item Layout realizzato con CSS3, Flexbox e Grid.\
-        \item Separazione netta tra contenuto (HTML5), presentazione (CSS) e comportamento (JS/PHP).
-        \item Compatibilità cross-browser e adattamento a diverse dimensioni di schermo.
-        \item Uso di etichette semantiche, contrasto cromatico adeguato e font leggibili.
-
-        \item Validazione lato client (formato email, lunghezza password) e lato server.
-    \end{itemize}
-
-
-    \section{Accessibilità}
+   
     \subsection{Introduzione} 
     \subsection{WAI-ARIA e screen-reader} 
     \subsection{Progressive Enhancement} 
@@ -550,7 +765,7 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
         \subsection{WhatsApp} \label{strumenti:whatsapp}
         \underline{\url{https://www.whatsapp.com/}} \\\\
 
-        \subsection{<span lang="en">Web</span>AIM} \label{strumenti:webaim}
+        \subsection{WebAIM} \label{strumenti:webaim}
         \underline{\url{https://webaim.org/resources/contrastchecker/}} \\\\
     \end{comment}
     \begin{itemize}
@@ -587,11 +802,21 @@ Il sistema prevede due tipologie principali di utenti, differenziate per permess
             \underline{\url{https://www.whatsapp.com/}} \\
             Piattaforma di messaggistica istantanea usata per la comunicazione rapida tra i membri del gruppo.
 
-        \item \textbf{<span lang="en">Web</span>AIM}  
+        \item \textbf{WebAIM}  
             \underline{\url{https://webaim.org/resources/contrastchecker/}} \\
             Strumento online per verificare il contrasto dei colori e migliorare l’accessibilità.
     \end{itemize}
 
+    \subsection{Docker}
+    Per evitare di incorrere in problematiche dovute alle differenze tra i vari sistemi utilizzati dai membri del team (dipendenze, versioni differenti del SW, OS ecc.), si è deciso di fare largo uso di Docker, in modo da poter lavorare tutti su una base comune.
+    Per tale scopo è stata creata (e poi raffinata nel tempo) un'immagine Docker che mettesse a disposizione:
+    \begin{itemize}
+        \item un database in MariaDB, versione 10.6.7
+        \item un server PHP Apache, versione 8.2
+        \item un'istanza di phpMyAdmin, per l'accesso e amministrazione del database
+    \end{itemize}
+    Tale configurazione è stata molto utile per consetire, durante lo sviluppo, di visualizzare le modifiche senza il timore che potessero avere effetti diversi, su altri sistemi, da quelli desiderati. 
+    Ha permesso inoltre di velocizzare le attività, in quanto tutti i servizi necessari venivano richiamati automaticamente da un apposito docker compose.
 
     \section{Guida all’installazione del progetto}
 
