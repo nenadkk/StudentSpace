@@ -9,6 +9,8 @@
 \usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{float}
 \usepackage{setspace}
+\usepackage{svg}
+\usepackage{amsmath}
 
 \setlength{\parskip}{1em}
 \graphicspath{ {./images/} }
@@ -22,7 +24,7 @@
     \begin{titlepage}
         \begin{center}
             \begin{minipage}{0.3\textwidth}
-                \includegraphics[width=\linewidth]{Logo_Universita_Padova300x300.webp}
+                \includegraphics[width=\linewidth]{Logo_Universita.png}
             \end{minipage}
 
         \end{center}
@@ -36,11 +38,11 @@
 
         \vspace{1,5cm}    
 
-        \begin{center}
-            \begin{minipage}{0.5\textwidth}
-                \includegraphics[width=\linewidth]{logo.svg}
-            \end{minipage}
-        \end{center}
+    \begin{center}
+        \begin{minipage}{0.5\textwidth}
+            \includesvg[width=\linewidth]{logo}
+        \end{minipage}
+    \end{center}
 
         \vspace{1,5cm}    
         \begin{center}
@@ -53,12 +55,12 @@
 
         \centering
         \begin{tabular}{r|l}
-            \textbf{Studenti} & Sofia De Blasi - matricola - email \\
-            & Nenad Radulovic - matricola - email \\
-            & Giacomo Speggiorin - matricola - email \\
-            & Nicola Simionato - matricola - email \\
+            \textbf{Studenti} & Sofia De Blasi - 2111014 - \underline{\href{mailto:sofia.deblasi@studenti.unipd.it}{sofia.deblasi@studenti.unipd.it}}\\
+             & Nicola Simionato - 2113190 - \underline{\href{mailto:nicola.simionato.5@studenti.unipd.it}{nicola.simionato.5@studenti.unipd.it}} \\
+            & Nenad Radulovic - 2101059 - \underline{\href{mailto:nenad.radulovic@studenti.unipd.it}{nenad.radulovic@studenti.unipd.it}} \\
+            & Giacomo Speggiorin - 2116438 - \underline{\href{mailto:giacomo.speggiorin@studenti.unipd.it}{giacomo.speggiorin@studenti.unipd.it}} \\
             & \\
-            \textbf{Indirizzo del sito} & indirizzo\\
+            \textbf{Indirizzo del sito} & \underline{\url{https://tecweb.studenti.math.unipd.it/sdeblasi/}}\\
             & \\
             \textbf{Utente} & 
             \textbf{Username:} user, \textbf{Password:} user \\ 
@@ -74,465 +76,493 @@
     \newpage
 
 \section{Introduzione}
-    \subsection{Com'è nata l'idea}
-    L'idea di questo progetto nasce da una domanda che ci siamo posti più volte nella nostra quotidianità: \textit{``Cosa potremmo fare questo weekend?''}.  
-    Nelle città universitarie vengono spesso organizzati eventi e attività dedicate agli studenti, ma è seccante doverli andare a cercare ogni volta. Bisogna innanzitutto sapere cosa si sta cercando (il che non è affatto scontato) e, successivamente, sfogliare di volta in volta le pagine social dei vari organizzatori, che sono sempre diversi e non centralizzati.
-    
-    Da qui è nata la riflessione su quanto sarebbe comodo se fossero gli organizzatori stessi ad andare incontro agli studenti, e su quanto si semplificherebbe la ricerca se esistesse un'unica bacheca dove tutti potessero ``appendere'' i propri volantini.
-    
-    Mentre sviluppavamo l’idea ci siamo resi conto che il problema non riguarda solo gli eventi: esistono molti altri servizi di cui gli studenti hanno bisogno, ma che non hanno un punto di riferimento chiaro su dove trovarli. Da questa consapevolezza è nato il desiderio di creare uno spazio unico, accessibile e organizzato, pensato per raccogliere tutto ciò che può essere utile nella vita quotidiana universitaria.
 
-    \subsection{L'obiettivo di StudentSpace}
-    StudentSpace propone una \textit{bacheca online} che raccolga in un unico luogo eventi, attività e servizi di interesse per gli studenti, andando oltre il contesto strettamente accademico.  
-    Attraverso la piattaforma sarà possibile trovare eventi sportivi, attività serali, concerti e altre occasioni di socialità. Gli studenti potranno inoltre offrire la propria disponibilità per ripetizioni, oppure consultare annunci di affitti relativi alla propria città.
-    
-    L'obiettivo principale è garantire a studenti e studentesse un accesso rapido, centralizzato e completo a ciò che potrebbe interessarli nella vita quotidiana universitaria.  
-    Allo stesso tempo, la piattaforma intende agevolare gli organizzatori che si rivolgono a questo target, offrendo loro un canale unico e mirato per raggiungere un pubblico ampio, omogeneo e specifico.
+\subsection{Com'è nata l’idea}
+L’idea del progetto nasce dall’esigenza, comune tra gli studenti universitari, di individuare rapidamente eventi, attività e servizi utili nella propria città universitaria. Attualmente tali informazioni risultano frammentate tra diversi canali (pagine social, bacheche fisiche sparse, etc.), rendendo la ricerca poco immediata.
+
+Da questa osservazione è emersa la necessità di una piattaforma unica che:
+\begin{itemize}
+    \item centralizzi la pubblicazione di eventi e iniziative;
+    \item permetta agli studenti di consultarli senza monitorare più fonti;
+    \item offra agli organizzatori un punto di raccolta comune.
+\end{itemize}
+
+La riflessione si è estesa anche ad altri servizi rilevanti per la vita universitaria come ripetizioni, affitti e progetti sperimentali. Da qui l’idea di creare uno spazio organizzato, accessibile e pensato per raccogliere tutto ciò che può risultare utile nella quotidianità studentesca.
+
+\subsection{Obiettivo di StudentSpace}
+StudentSpace propone una \textit{bacheca online} dedicata agli studenti universitari.
+
+Gli obiettivi principali della piattaforma sono:
+\begin{itemize}
+    \item fornire a studenti e studentesse un accesso rapido, organizzato e completo a contenuti di interesse quotidiano;
+    \item semplificare la comunicazione per gli organizzatori, offrendo loro un canale unico e mirato per raggiungere un pubblico omogeneo e specifico.
+\end{itemize}
 
 \section{Analisi del lavoro svolto}
-    \subsection{Processo decisionale}
-    Durante tutto lo sviluppo del progetto ci si è trovati a dover prendere diverse decisioni in merito a design, funzionalità, contenuto ecc. 
-    Nella maggior parte dei casi questi punti sono stati discussi in presenza, tra tutti i membri del gruppo. 
-    Ovviamente, questo metodo comporta delle chiare limitazioni, si è quindi deciso di adottare
-    anche dei metodi di comunicazione (sia sincroni che asincroni) alternativi.\\\\
-    Per quanto riguarda le comunicazioni asincrone, è stata usata ampiamente la 
-    piattaforma di messaggistica \textbf{\underline{\hyperref[sec:strumenti]{Whatsapp}}}. 
-    Inoltre, si è deciso di adottare \textbf{\underline{\hyperref[sec:strumenti]{Discord}}} come strumento di comunicazione asincrona, in supporto alle riunioni in presenza.
 
-    \subsection{Modalità di lavoro}
-    Per adattarsi meglio alle esigenze del gruppo si è deciso che i membri del gruppo avrebbero svolto ciascuno le proprie attività in maniera prevalentemente asincrona.
-    Questa decisione è stata presa per riuscire a dare più libertà ai singoli membri nell'organizzare il proprio lavoro. 
-    La scelta è stata inoltre supportata dalla volontà del gruppo di dare maggiore fluidità allo sviluppo del progetto. 
-    Il lavoro è stato infatti suddiviso in modo che ogni membro andasse a lavorare su punti diversi rispetto agli altri, cosicché nessuno dovesse preoccuparsi che il proprio lavoro andasse in conflitto con quello di qualcun altro. 
-    A sostegno di ciò si è deciso di implementare un sistema di versionamento del codice (con annesso hosting online) tramite \textbf{\underline{\hyperref[sec:strumenti]{Git}}} e \textbf{\underline{\hyperref[sec:strumenti]{Github}}}.
+\subsection{Processo decisionale}
+Durante lo sviluppo del progetto sono state necessarie numerose decisioni riguardanti design, funzionalità e contenuti. La maggior parte delle scelte è stata discussa in presenza tra tutti i membri del gruppo, ma sono stati adottati anche canali sincroni e asincroni.
 
-    \subsection{Divisione del lavoro}
-    Visto lo scopo di natura accademica del progetto si è ritenuto opportuno che
-    ciascun membro del gruppo fosse coinvolto (quantomeno in parte) in ogni ambito del progetto.
-    Questo ha permesso a ogni membro di avere un idea generale sul funzionamento del 
-    programma, e di mettere mano direttamente a ogni fase del suo sviluppo.\\
-    Periodicamente sono state svolte delle riunioni di assestamento, nelle quali veniva
-    aggiornata la lista delle cose da fare per il periodo sucessivo e alla fine di ogni riunione le attività da svolgere venivano assegnate ai membri in modo equilibrato.
-    Per facilitare questo processo si è fatto largo uso delle Github Issue.
+Per le comunicazioni asincrone è stata utilizzata la piattaforma di messaggistica 
+\textbf{\underline{\hyperref[sec:strumenti]{WhatsApp}}}, mentre 
+\textbf{\underline{\hyperref[sec:strumenti]{Discord}}} è stato impiegato come supporto alle riunioni e per la gestione delle comunicazioni sincrone a distanza.
 
-    \section{Progettazione}
+\subsection{Modalità di lavoro}
+Per garantire flessibilità organizzativa, il gruppo ha scelto una modalità di lavoro prevalentemente asincrona. 
+
+Le attività sono state distribuite in modo che ciascun componente lavorasse su aspetti differenti, evitando sovrapposizioni. A supporto di questa organizzazione è stato adottato un sistema di versionamento tramite 
+\textbf{\underline{\hyperref[sec:strumenti]{Git}}} con hosting su 
+\textbf{\underline{\hyperref[sec:strumenti]{GitHub}}}, utile per tracciare modifiche, gestire branch e mantenere un flusso di lavoro ordinato.
+
+\subsection{Divisione del lavoro}
+Considerata la natura accademica del progetto, si è ritenuto opportuno coinvolgere ogni membro in tutte le principali aree di sviluppo, così da garantire una visione complessiva del funzionamento della piattaforma e una partecipazione equilibrata.
+
+Sono state organizzate riunioni periodiche di allineamento, durante le quali veniva aggiornata la lista delle attività da svolgere e venivano assegnati i compiti in modo bilanciato. Per facilitare la pianificazione e il monitoraggio del lavoro sono state utilizzate le \textit{GitHub Issues}, che hanno permesso di tracciare in modo chiaro le attività, le priorità e lo stato di avanzamento.
+
+\section{Progettazione}
+
 \subsection{Tipologie di utenti}
-
-Il sistema prevede due tipologie principali di utenti, differenziate per permessi e funzionalità disponibili.
+Il sistema prevede due tipologie principali di utenti, differenziate per permessi e funzionalità.
 
 \begin{itemize}
 
-    \item \textbf{Utente non registrato:} può esplorare liberamente le categorie e leggere gli annunci.
+    \item \textbf{Utente non registrato:}  
+    Può consultare liberamente le categorie e leggere gli annunci.
     \begin{itemize}
-        \item \textbf{Azioni e permessi:} accesso completo alle pagine \textit{index} ed \textit{esplora}, con possibilità di effettuare ricerche e applicare filtri; apertura del dettaglio dell'\textit{annuncio} e della pagina di \textit{profilo pubblico} del proponente; possibilità di avviare la procedura di registrazione o accesso.
-        \item \textbf{Limitazioni:} non può pubblicare, gestire o salvare annunci nei preferiti. Se tenta di eseguire azioni riservate, il sistema lo reindirizza alla pagina di accesso, offrendo anche un collegamento diretto alla pagina di registrazione qualora non possedesse un account.
+        \item \textbf{Azioni e permessi}: accesso alle pagine \textit{index} ed \textit{esplora}; utilizzo di ricerca e filtri; visualizzazione del dettaglio dell’annuncio e del profilo pubblico del proponente; possibilità di avviare registrazione o accesso.
+        \item \textbf{Limitazioni}: impossibilità di pubblicare, modificare o salvare annunci. In caso di tentativi di azioni riservate, il sistema reindirizza alla pagina di accesso con spiegazione di redirect e con collegamento alla registrazione.
     \end{itemize}
 
-    \item \textbf{Utente registrato:} oltre alle funzionalità dell’utente non registrato, può pubblicare e gestire i propri annunci, salvare annunci altrui nei preferiti e accedere alla propria area personale.
+    \item \textbf{Utente registrato:}  
+    Dispone di tutte le funzionalità dell’utente non registrato, con accesso aggiuntivo alla gestione dei propri contenuti.
     \begin{itemize}
-        \item \textbf{Azioni e permessi:} creazione, modifica ed eliminazione dei propri annunci; gestione del profilo personale; consultazione degli annunci preferiti e degli annunci pubblicati.
-        \item \textbf{Limitazioni:} non può modificare annunci altrui; è soggetto a vincoli relativi ai campi obbligatori e ai formati previsti, con validazione sia lato client che lato server.
+        \item \textbf{Azioni e permessi}: creazione, modifica ed eliminazione dei propri annunci; consultazione del profilo; gestione degli annunci preferiti e pubblicati.
+        \item \textbf{Limitazioni}: impossibilità di modificare annunci altrui; obbligo di rispettare i vincoli di validazione lato client e server.
     \end{itemize}
 
 \end{itemize}
 
+\subsection{Analisi dei contenuti}
+La piattaforma funge da bacheca universitaria online, organizzata in quattro categorie principali: \textbf{Affitti}, \textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}.  
+L’analisi dei contenuti considera in base ai tipi di annunci: i campi comuni e gli attributi specifici per categoria.
 
-    \subsection{Analisi dei contenuti} % Tipi di annunci, Campi generici, Campi specifici per categoria
-    Il sito web si propone come una bacheca universitaria online, in cui gli utenti possono
-    pubblicare e consultare annunci suddivisi in quattro categorie principali: \textbf{Affitti},
-    \textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}. 
-    L’analisi dei contenuti si concentra sui tipi di annunci, sui campi comuni 
-    a tutte le categorie e sui campi specifici per ciascuna categoria.
+\paragraph{Campi generici}
+Ogni annuncio contiene i seguenti campi comuni:
+\begin{itemize}
+    \item \textbf{Categoria}: selezionata tra le quattro disponibili (\textbf{Affitti}, \textbf{Esperimenti}, \textbf{Eventi} e \textbf{Ripetizioni}).
+    \item \textbf{Titolo}: breve descrizione sintetica.
+    \item \textbf{Data di pubblicazione}: generata automaticamente.
+    \item \textbf{Città}: città universitaria di riferimento.
+    \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio.
+    \item \textbf{Autore}: utente registrato che ha pubblicato l’annuncio.
+\end{itemize}
 
-    \subsubsection{Tipi di annunci}
-    \begin{itemize}
-        \item \textbf{Affitti}: annunci relativi a stanze, appartamenti o posti letto disponibili per studenti.
-        \item \textbf{Esperimenti}: annunci riguardanti attività di laboratorio, progetti di ricerca o collaborazioni scientifiche.
-        \item \textbf{Eventi}: annunci di conferenze, seminari, feste universitarie, attività culturali o sportive.
-        \item \textbf{Ripetizioni}: annunci di studenti che offrono supporto didattico su materie specifiche.
-    \end{itemize}
+\paragraph{Campi specifici per categoria}
+Oltre ai campi generici, ogni categoria prevede tre attributi specifici:
 
-    \subsubsection{Campi generici}
-    Ogni annuncio, indipendentemente dalla categoria, contiene i seguenti campi:
-    \begin{itemize}
-        \item \textbf{Categoria}: selezionata dall’utente tra le quattro disponibili.
-        \item \textbf{Titolo}: breve descrizione sintetica dell’annuncio.
-        \item \textbf{Data di pubblicazione}: generata automaticamente dal sistema.
-        \item \textbf{Città}: riferimento all’utente registrato che ha pubblicato l’annuncio.
-        \item \textbf{Descrizione}: testo libero con i dettagli dell’annuncio. 
-        \item \textbf{Autore}: riferimento all’utente registrato che ha pubblicato l’annuncio. 
-    \end{itemize}
-
-    \subsubsection{Campi specifici per categoria}
-    Oltre ai campi generici, ciascuna categoria prevede attributi specifici (3 per categoria):
-    \begin{multicols}{2}
-        \begin{itemize}
-            \item \textbf{Affitti}:
-                \begin{itemize} % decidere se tenere tutti questi attrubuti
-                    \item Prezzo mensile
-                    \item Indirizzo
-                    \item Numero coinquilini
-                \end{itemize}
-            \item \textbf{Esperimenti}:
-                \begin{itemize}
-                    \item Laboratorio di riferimento
-                    \item Durata prevista
-                    \item Compenso
-                \end{itemize}
-            \item \textbf{Eventi}:
-                \begin{itemize}
-                    \item Data Eventi
-                    \item Luogo
-                    \item Costo entrata
-                \end{itemize}
-            \item \textbf{Ripetizioni}:
-                \begin{itemize}
-                    \item Materia
-                    \item Livello (scuola superiore, università, ecc.)
-                    \item Prezzo orario
-                \end{itemize}
-        \end{itemize}
-    \end{multicols}
-    \subsection{Descrizione delle funzionalità} % registrazione/login, pubblicazione annunci, modifica/eliminazione, filtraggio annunci, validazione input (client/server), accessibilità e responsività
-    Il sistema offre una serie di funzionalità fondamentali per soddisfare i requisiti 
-    del progetto e le esigenze degli utenti.
-
-    \subsubsection{Registrazione e login}
-    \begin{itemize}
-        \item Registrazione di nuovi utenti: è permessa, per gli utenti che volessero ampliare la loro esperienza di utilizzo, la creazione di un account. La registrazione richiederà all'utente di fornire le seguenti informazioni:
-            \begin{itemize}
-                \item Nome
-                \item Cognome
-                \item Email
-                \item Citta: intesa come città universitaria di riferimento.
-                \item Password
-            \end{itemize}
-        \item Login: processo di identificazione degli utenti registrati che sblocca tutte le funzionalità.
-        \item Qualora l'utente inserisca dei dati non validi verrà bloccato l'invio della
-            form e verranno mostrati dei messaggi di errore (si veda \underline{\hyperref[sviluppo:validazione]{la parte relativa alla validazione}}).
-
-    \end{itemize}
-
-    \subsubsection{Pubblicazione annunci}
-    \begin{itemize}
-        \item È possibile, per gli utenti registrati, pubblicare annunci compilando un'apposito form. 
-            Sono necessari per la pubblicazione:
-            \begin{itemize}
-                \item Campi generici: titolo, descrizione e categoria.
-                \item Campi specifici mostrati dinamicamente in base alla categoria scelta.
-            \end{itemize}
-        \item In seguito alla pubblicazione sarà possibile risalire all'autore dell'annuncio.
-        \item Qualora l'utente inserisca dei dati non validi verrà bloccato l'invio della
-            form e verranno mostrati dei messaggi di errore (si veda \underline{\hyperref[sviluppo:validazione]{la parte relativa alla validazione}}).
-
-    \end{itemize}
-
-    \subsubsection{Modifica, eliminazione e salvataggio degli annunci}  
-    \begin{itemize}
-        \item Un utente registrato può decidere di salvare degli annunci aggiungendoli 
-            alla propria lista dei preferiti.
-        \item L'autore di un annuncio può decidere di modificare o cancellare i propri annunci.
-        \item Un annuncio non apparirà più all'interno della lista dei preferiti degli utenti 
-            dopo essere stato eliminato dal sistema.
-    \end{itemize}
-
-    \subsubsection{Filtraggio e ricerca degli annunci}
-
+\begin{multicols}{2}
 \begin{itemize}
 
-    \item Il sistema permette di applicare diversi filtri per affinare la ricerca degli annunci. 
-    Sono previsti:
+    \item \textbf{Affitti}:
     \begin{itemize}
-        \item \textbf{Filtri generici}: categoria e data di pubblicazione.
-        \item \textbf{Filtri specifici per categoria}: campi aggiuntivi che variano in base alla tipologia di annuncio.
+        \item Prezzo mensile
+        \item Indirizzo
+        \item Numero coinquilini
     \end{itemize}
 
-    \item È inoltre disponibile una ricerca testuale che opera sul contenuto del titolo, della descrizione e sull'email dell'autore dell'annuncio.
+    \item \textbf{Esperimenti}:
+    \begin{itemize}
+        \item Laboratorio di riferimento
+        \item Durata prevista
+        \item Compenso
+    \end{itemize}
 
-    \item Qualora vengano inseriti nei campi liberi valori non validi o potenzialmente compromettenti, il sistema li ignora senza generare errori, garantendo comunque un'esperienza di ricerca stabile e coerente.
+    \item \textbf{Eventi}:
+    \begin{itemize}
+        \item Data evento
+        \item Luogo
+        \item Costo entrata
+    \end{itemize}
+
+    \item \textbf{Ripetizioni}:
+    \begin{itemize}
+        \item Materia
+        \item Livello (superiori, università, ecc.)
+        \item Prezzo orario
+    \end{itemize}
+
+\end{itemize}
+\end{multicols}
+
+\subsection{Descrizione delle funzionalità}
+\paragraph{Registrazione:}
+permette la creazione di un account tramite inserimento di: Nome, Cognome, Email, Città universitaria, Password
     
+\paragraph{Accesso:}
+consente l’accesso alle funzionalità riservate.
+
+\paragraph{Pubblicazione annunci:}
+gli utenti registrati possono pubblicare annunci tramite un form dedicato. 
+    Campi richiesti:
+        \begin{itemize}
+            \item \textbf{Generici}: titolo, descrizione, categoria.
+            \item \textbf{Specifici}: mostrati dinamicamente in base alla categoria selezionata.
+        \end{itemize}
+
+\paragraph{Modifica, eliminazione e salvataggio degli annunci:}
+\begin{itemize}
+    \item Gli utenti registrati possono salvare annunci nei preferiti.
+    \item L’autore può modificare o eliminare i propri annunci.
+    \item Gli annunci eliminati vengono rimossi automaticamente anche dalle liste dei preferiti.
 \end{itemize}
 
-
-    \subsection{Archietettura del sistema} % struttura delle cartelle, separazione contenuto/presentazione/comportamento, panoramica componenti
-
-    \subsection{Struttura del sito} %mappa delle pagine, funzioni, URL
-
-    \newpage
-    \section{Sviluppo} % decidere struttura
-    \begin{comment}
-        \subsection{HTML} % sementica
-        \subsection{CSS}
-        \subsection{JavaScript} % validazione client + interazione
-        \subsection{PHP}
-        \subsection{Database}
-        \subsection{Errori}
-        \subsection{Validazione} 
-        \subsection{Gestione delle immagini} 
-        \subsection{Palette colori e font} 
-        \subsection{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
-    \end{comment}
-    % o struttura più sintetica
-
-    \subsection{Database} 
-    \subsubsection{Analisi dei requisiti del database e progettazione logica}
-    \paragraph{Entità principali}
+\paragraph{Filtraggio e ricerca degli annunci}
+Il sistema permette di applicare filtri per affinare la ricerca:
     \begin{itemize}
-        \item \textbf{Utente}: rappresenta gli utenti registrati alla piattaforma.\\
-            \texttt{IdUtente(PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{IdCitta (FK)*}.
-
-            \begin{comment} 
-            \item \textbf{Categoria}: rappresenta le tipologie di annuncio.\\
-                \texttt{IdCategoria(PK)}, \texttt{NomeCategoria (UNIQUE)}.
-            \end{comment}
-
-        \item \textbf{Città}: rappresenta la sede universitaria o città di riferimento  di un utente o di un annuncio.\\
-            \texttt{IdCitta(PK)}, \texttt{NomeCitta (UNIQUE)}.
-
-        \item \textbf{Annuncio}: rappresenta un contenuto pubblicato sulla bacheca.\\
-            \texttt{IdAnnuncio(PK)}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione (DEFAULT CURRENT\_TIMESTAMP)}, \texttt{IdUtente (FK)}, \texttt{NomeCategoria}, \texttt{IdCitta (FK)}.
-
-        \item \textbf{Specializzazioni di Annuncio}: tabelle figlie che estendono Annuncio con 3 attributi specifici.
-            \begin{itemize}
-                \item \textbf{Affitti}: \texttt{IdAnnuncio (PK, FK)}, \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{NumeroInquilini}.
-                \item \textbf{Esperimenti}: \texttt{IdAnnuncio (PK, FK)}, \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
-                \item \textbf{Event}: \texttt{IdAnnuncio (PK, FK)}, \texttt{DataEventi}, \texttt{Luogo}, \texttt{CostoEntrata}.
-                \item \textbf{Ripetizioni}: \texttt{IdAnnuncio (PK, FK)}, \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
-            \end{itemize}
-
-        \item \textbf{ImmaginiAnnuncio}: rappresenta le immagini associate ad un annuncio.\\
-            \texttt{IdImmagine(PK)}, \texttt{IdAnnuncio (FK)}, \texttt{Percorso}, \texttt{AltText*}, \texttt{Decorativa}, \texttt{Ordine}.
-
+        \item \textbf{Filtri generici}: categoria, data di pubblicazione.
+        \item \textbf{Filtri specifici}: attributi variabili in base alla categoria selezionata.
+        \item \textbf{Ricerca testuale}: su titolo, descrizione ed email dell’autore.
     \end{itemize}
 
-    \paragraph{Relazioni tra entità}
+In caso di dati non validi, nei form con attributo \texttt{data-validate} l’invio della form viene bloccato. In ogni caso le form vengono validate e ove necessario vengono mostrati messaggi di errore (si veda \underline{\hyperref[sviluppo:validazione]{la sezione sulla validazione}}).
 
+\subsection{Architettura del sistema}
+
+Il sistema è progettato per garantire una chiara separazione tra contenuto, presentazione e comportamento, con l’obiettivo di migliorare manutenibilità, riusabilità e accessibilità.
+
+\paragraph{Struttura generale}
+L’architettura del progetto segue una struttura modulare:
+
+\begin{itemize}
+    \item \textbf{Root del progetto}: contiene i file PHP principali (\texttt{index.php}, \texttt{accedi.php}, \texttt{pubblica.php}, \texttt{profilo.php}, ecc.), i file di configurazione (\texttt{.env}, \texttt{env.php}, \texttt{apache.conf}) e le pagine di errore (\texttt{403.php}, \texttt{404.php}, \texttt{500.php}).
+
+    \item \textbf{/pages}: template HTML puri utilizzati per la composizione dinamica delle pagine.
+
+    \item \textbf{/css}: fogli di stile suddivisi per contesto:
     \begin{itemize}
-        \item \textbf{Pubblicazione:} collega \texttt{Utente} e \texttt{Annuncio}.\\
-            \texttt{Utente (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
-            Ogni annuncio è pubblicato da un solo utente, mentre un utente può pubblicare più annunci.
-
-            \begin{comment}
-            \item \textbf{Appartenenza:} collega \texttt{Categoria} e \texttt{Annuncio}.\\
-                \texttt{Categoria (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
-                Ogni annuncio appartiene ad una sola categoria, mentre una categoria può essere associata a più annunci.
-            \end{comment}
-
-        \item \textbf{Collocazione:} collega \texttt{Città} e \texttt{Annuncio}.\\
-            \texttt{Città (1,1)} $\longrightarrow$ \texttt{Annuncio (0,N)}\\
-            Ogni annuncio è associato ad una sola città, mentre una città può avere più annunci.
-
-        \item \textbf{SedeUniversitaria:} collega \texttt{Città} e \texttt{Utente}.\\
-            \texttt{Città (1,1)} $\longrightarrow$ \texttt{Utente (0,N)}\\
-            Ogni utente è associato ad una sola città, mentre una città può avere più utenti.
-
-        \item \textbf{Associazione immagini:} collega \texttt{Annuncio} e \texttt{ImmaginiAnnuncio}.\\
-            \texttt{Annuncio (1,1)} $\longrightarrow$ \texttt{ImmaginiAnnuncio (0,N)}\\
-            Ogni annuncio può avere da zero a più immagini, mentre ogni immagine è riferita ad un solo annuncio.
-
+        \item \texttt{style.css}: stile principale del sito;
+        \item \texttt{mini.css}: stile per dispositivi con larghezza $\leq 800\,\text{px}$;
+        \item \texttt{print.css}: stile dedicato alla stampa.
     \end{itemize}
 
+    \item \textbf{/js}: script JavaScript (es. \texttt{script.js}) per validazione lato client e miglioramento dell’usabilità.
 
-    \subsubsection{Schema ER}
-    \begin{figure}[H] 
-        \centering
-        \includegraphics[width=1\textwidth]{ERCatAttr.jpg}
-        \caption{Schema ER}
-        \label{fig:ER}
-    \end{figure}
+    \item \textbf{/assets}: risorse multimediali statiche (icone, loghi, immagini di interfaccia).
 
-    \paragraph{Generalizzazione IS-A}
-    Nel modello concettuale iniziale, l’entità \texttt{Annuncio} fungeva da padre nella generalizzazione per le quattro categorie specifiche figlie (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}).  
-    In fase di progettazione logica si è ristrutturato lo schema ER con una \textbf{sostituzione della generalizzazione con associazioni}.
-    \\ Questa scelta consente di: evitare la ripetizione dei campi generici, mantenere la normalizzazione, facilitare l’estendibilità del modello, separare logicamente i dati specifici per categoria. \\ Tuttavia aggiunge un vincolo, ossia: ogni occorrenza del padre \texttt{Annuncio} non può partecipare contemporaneamente a due relazioni \texttt{IS-[categoria]}. 
+    \item \textbf{/img\_annunci}: immagini caricate dagli utenti e associate agli annunci.
 
-    \subsubsection{Schema ER ristrutturato}
-    \begin{figure}[H] 
-        \centering
-        \includegraphics[width=1\textwidth]{ERristruttCatAttr.jpg}
-        \caption{Schema ER ristrutturato}
-        \label{fig:ER}
-    \end{figure}
+    \item \textbf{/database}: script SQL per la creazione del database (\texttt{studentSpaceDB.sql}).
 
-    \textbf{Relaazione IS-[categoria]:} collega \texttt{Annuncio} alle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}).\\
-    \texttt{Annuncio (1,1)} $\longrightarrow$ \texttt{Specializzazione (0,1)}\\
-    Ogni annuncio può avere al massimo una specializzazione, e ogni specializzazione è riferita ad un solo annuncio.
+    \item \textbf{/relazione}: documentazione finale del progetto, comprensiva del file LATEX e delle immagini utilizzate.
+\end{itemize}
 
-    \subsubsection{Scelta delle chiavi primarie}
-    Nella progettazione del database si è deciso di utilizzare come chiavi primarie codici (ID numerici auto\-incrementali). 
+\paragraph{Separazione dei livelli}
+La logica applicativa è implementata nei file PHP, responsabili di gestione delle richieste, validazione lato server, interazione con il database e composizione dinamica delle pagine tramite template.
 
-    Questa scelta è motivata da diversi fattori:
+La presentazione è affidata ai file HTML e CSS, mentre il comportamento dinamico lato client è gestito tramite JavaScript.
+
+\subsection{Struttura del sito}
+
+La struttura del sito è stata analizzata tramite un modello ad albero, utile per valutarne ampiezza e profondità ed evidenziare i percorsi di navigazione principali.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{albero_sito.png}
+    \caption{Rappresentazione ad albero della struttura del sito}
+    \label{fig:ER}
+\end{figure}
+
+Dal punto di vista dell’architettura dell’informazione, il sito presenta una \textbf{ampiezza (7) maggiore rispetto alla profondità (4)}: le funzionalità principali sono raggiungibili direttamente dalla homepage o con al massimo tre livelli di navigazione. Questa scelta riduce il carico cognitivo e facilita l’orientamento, soprattutto per utenti alla prima visita.
+
+\subsection{Schema di navigazione e metafora della pesca}
+
+Il sito adotta uno \textbf{schema di navigazione ibrido}, basato su una struttura principalmente gerarchica ma arricchita da elementi tipici degli schemi ambigui, che permettono percorsi alternativi di esplorazione.
+
+La navigazione richiama la \textbf{metafora della pesca}, grazie alla presenza di strumenti che consentono diversi approcci alla ricerca dei contenuti:
+
+\begin{itemize}
+    \item \textbf{Barra di ricerca testuale} $\rightarrow$ \emph{tiro perfetto}: permette di individuare rapidamente annunci specifici tramite titolo, descrizione o email dell’autore.
+    \item \textbf{Filtri generici e specifici} $\rightarrow$ \emph{trappola per aragoste}: consentono di restringere progressivamente il campo dei risultati.
+    \item \textbf{Accesso diretto alle categorie dalla homepage} $\rightarrow$ \emph{trappola per aragoste / pesca con la rete}: guida verso insiemi omogenei di contenuti.
+    \item \textbf{Ultimi annunci inseriti} $\rightarrow$ \emph{pesca con la rete}: favorisce la scoperta casuale dei contenuti più recenti.
+    \item \textbf{Lista dei preferiti e area personale} $\rightarrow$ \emph{boa di segnalazione}: permette di raccogliere e riorganizzare nel tempo i contenuti di interesse.
+\end{itemize}
+
+\section{Sviluppo} 
+    \subsection{Database}
+
+\subsubsection{Analisi dei requisiti e progettazione logica}
+
+\paragraph{Entità principali}
+Il modello dati si basa sulle seguenti entità:
+
+\begin{itemize}
+    \item \textbf{Utente}: rappresenta gli utenti registrati.  
+    \texttt{IdUtente (PK)}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email (UNIQUE)}, \texttt{Password}, \texttt{Idcittà (FK)*}.
+
+    \item \textbf{Città}: sede universitaria o città di riferimento.  
+    \texttt{Idcittà (PK)}, \texttt{Nomecittà (UNIQUE)}.
+
+    \item \textbf{Annuncio}: contenuto pubblicato sulla bacheca.  
+    \texttt{IdAnnuncio (PK)}, \texttt{Titolo}, \texttt{Descrizione}, \texttt{DataPubblicazione (DEFAULT CURRENT\_TIMESTAMP)}, \texttt{IdUtente (FK)}, \texttt{NomeCategoria}, \texttt{Idcittà (FK)}.
+
+    \item \textbf{Specializzazioni di Annuncio}: tabelle figlie che estendono \texttt{Annuncio} con tre attributi specifici:
     \begin{itemize}
-        \item \textbf{Stabilità}: gli attributi naturali (es. \texttt{Email}, \begin{comment} \texttt{NomeCategoria} \end{comment}, \texttt{NomeCitta}) possono cambiare nel tempo o essere modificati dall’utente, mentre un ID rimane invariabile.
-            \item \textbf{Efficienza}: gli ID numerici sono più leggeri da gestire negli indici e nelle join rispetto a stringhe lunghe come email o nomi.
-            \item \textbf{Semplicità}: l’uso di codici numerici rende più chiaro e uniforme lo schema, evitando di dover scegliere chiavi composite o troppo complesse.
-            \item \textbf{Integrità}: gli attributi naturali vengono comunque vincolati con \texttt{UNIQUE} (es. \texttt{Email}, \begin{comment} \texttt{NomeCategoria} \end{comment}, \texttt{NomeCitta}) per garantire l’unicità, ma non sono usati come chiavi primarie.
-                \item \textbf{Estendibilità}: se in futuro si aggiungessero nuove categorie o sedi, l’uso di ID permetterebbe di gestire facilmente l’espansione senza modificare le relazioni esistenti.
+        \item \textbf{Affitti}: \texttt{PrezzoMensile}, \texttt{Indirizzo}, \texttt{NumeroInquilini}.
+        \item \textbf{Esperimenti}: \texttt{Laboratorio}, \texttt{DurataPrevista}, \texttt{Compenso}.
+        \item \textbf{Eventi}: \texttt{DataEventi}, \texttt{Luogo}, \texttt{CostoEntrata}.
+        \item \textbf{Ripetizioni}: \texttt{Materia}, \texttt{Livello}, \texttt{PrezzoOrario}.
     \end{itemize}
 
-    \subsubsection{Schema logico (relazionale)}
-    Di seguito è riportato lo schema logico, in cui l'asterisco dopo il nome di un attributo indica che tale attributo può assumere valori nulli.
+    \item \textbf{ImmaginiAnnuncio}: immagini associate a un annuncio.  
+    \texttt{IdImmagine (PK)}, \texttt{IdAnnuncio (FK)}, \texttt{Percorso}, \texttt{AltText*}, \texttt{Decorativa}, \texttt{Ordine}.
+\end{itemize}
 
+\paragraph{Relazioni principali}
+\begin{itemize}
+    \item \textbf{Pubblicazione}: \texttt{Utente (1,1)} $\rightarrow$ \texttt{Annuncio (0,N)}.
+    \item \textbf{Collocazione}: \texttt{Città (1,1)} $\rightarrow$ \texttt{Annuncio (0,N)}.
+    \item \textbf{SedeUniversitaria}: \texttt{Città (1,1)} $\rightarrow$ \texttt{Utente (0,N)}.
+    \item \textbf{Associazione immagini}: \texttt{Annuncio (1,1)} $\rightarrow$ \texttt{ImmaginiAnnuncio (0,N)}.
+    \item \textbf{Preferiti}: relazione molti-a-molti tra \texttt{Utente} e \texttt{Annuncio}.
+\end{itemize}
+
+\subsubsection{Schema ER}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{ER.png}
+    \caption{Schema ER}
+    \label{fig:ER}
+\end{figure}
+
+\paragraph{Ristrutturazione della generalizzazione}
+Nel modello concettuale iniziale, \texttt{Annuncio} era padre delle quattro categorie specifiche.  
+In fase di progettazione logica la generalizzazione è stata sostituita con associazioni \texttt{IS-[categoria]}, scelta che:
+
+\begin{itemize}
+    \item evita la duplicazione dei campi generici;
+    \item mantiene la normalizzazione;
+    \item facilita l’estendibilità del modello;
+    \item separa logicamente i dati specifici per categoria.
+\end{itemize}
+
+È introdotto il vincolo secondo cui ogni annuncio può appartenere ad una sola specializzazione.
+
+\paragraph{Relazione IS-[categoria]}
+\texttt{Annuncio (1,1)} $\rightarrow$ \texttt{Specializzazione (0,1)}.  
+Ogni annuncio può avere al massimo una specializzazione.
+
+\subsubsection{Scelta delle chiavi primarie}
+Sono stati adottati ID numerici auto\-incrementali come chiavi primarie per:
+\begin{itemize}
+    \item \textbf{stabilità}: gli attributi naturali possono cambiare nel tempo;
+    \item \textbf{efficienza}: gli ID numerici sono più leggeri negli indici e nelle join;
+    \item \textbf{semplicità}: schema più uniforme e leggibile;
+    \item \textbf{integrità}: gli attributi naturali restano vincolati con \texttt{UNIQUE};
+    \item \textbf{estendibilità}: facilita l’aggiunta di nuove categorie o entità.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{ERristrutturato.png}
+    \caption{Schema ER ristrutturato}
+    \label{fig:ERristrutturato}
+\end{figure}
+
+\subsubsection{Schema relazionale}
+L’asterisco indica attributi opzionali.
+
+\begin{itemize}
+    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria*)
+        \begin{itemize}
+            \item Utente.SedeUniversitaria $\rightarrow$ Città.Idcittà
+        \end{itemize}
+
+    \item \textbf{Città}(\underline{Idcittà}, Nomecittà [UNIQUE])
+
+    \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Autore, Categoria, Collocazione)
+        \begin{itemize}
+            \item Annuncio.Autore $\rightarrow$ Utente.IdUtente
+            \item Annuncio.Collocazione $\rightarrow$ Città.Idcittà
+        \end{itemize}
+
+    \item \textbf{Affitti}(\underline{IdAnnuncio}, PrezzoMensileAff, IndirizzoAffitti, NumeroCoinquilini)
+        \begin{itemize}
+            \item Affitti.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+        \end{itemize}
+
+    \item \textbf{Esperimenti}(\underline{IdAnnuncio}, LaboratorioEsp, DurataPrevEsp, CompensoEsp)
+        \begin{itemize}
+            \item Esperimenti.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+        \end{itemize}
+
+    \item \textbf{Eventi}(\underline{IdAnnuncio}, DataEventi, LuogoEventi, CostoEntrataEventi)
+        \begin{itemize}
+            \item Eventi.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+        \end{itemize}
+
+    \item \textbf{Ripetizioni}(\underline{IdAnnuncio}, MateriaRipetizioni, LivelloRip, PrezzoOrarioRip)
+        \begin{itemize}
+            \item Ripetizioni.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+        \end{itemize}
+
+    \item \textbf{ImmaginiAnnuncio}(\underline{IdImmagine}, IdAnnuncio, Percorso, AltText*, Decorativa, Ordine)
+        \begin{itemize}
+            \item ImmaginiAnnuncio.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+        \end{itemize}
+
+    \item \textbf{Preferiti}(\underline{IdAnnuncio}, \underline{IdUtente})
+        \begin{itemize}
+            \item Preferiti.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
+            \item Preferiti.IdUtente $\rightarrow$ Utente.IdUtente
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Normalizzazione}
+
+Lo schema progettato rispetta la terza forma normale (3NF):
+
+\begin{itemize}
+    \item \textbf{1NF}: tutti gli attributi sono atomici; non sono presenti campi multivalore o ripetuti.
+    
+    \item \textbf{2NF}: ogni tabella possiede una chiave primaria semplice (\texttt{IdUtente}, \texttt{Idcittà}, \texttt{IdAnnuncio}).  
+    Nelle tabelle di specializzazione (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}) la chiave primaria è \texttt{IdAnnuncio}, da cui tutti gli attributi dipendono interamente.
+    
+    \item \textbf{3NF}: non esistono dipendenze transitive tra attributi non chiave; ogni attributo dipende direttamente e unicamente dalla chiave primaria della propria tabella.
+\end{itemize}
+
+\subsubsection{Vincoli di integrità}
+
+Lo schema logico rispetta i principali vincoli di integrità:
+
+\begin{itemize}
+    \item \textbf{Unicità}: \texttt{Email} dell’utente, \texttt{Nomecittà} (e, se previsto, \texttt{NomeCategoria}) sono vincolati come \texttt{UNIQUE}.
+    
+    \item \textbf{Dominio}: gli attributi obbligatori sono definiti come \texttt{NOT NULL}, garantendo la completezza dei dati.
+    
+    \item \textbf{Referenziali}:  
     \begin{itemize}
-        \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria*
-            \begin{itemize}
-                \item Utente.SedeUniversitaria $\rightarrow$ Citta.IdCitta
-            \end{itemize}
-
-        \begin{comment} \item \textbf{Categoria}(\underline{IdCategoria}, NomeCategoria [UNIQUE]) \end{comment}
-
-            \item \textbf{Citta}(\underline{IdCitta}, NomeCitta [UNIQUE])
-
-            \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Autore, Categoria, \\ Collocazione)
-                \begin{itemize}
-                    \item Annuncio.Autore $\rightarrow$ Utente.IdUtente
-                    \begin{comment} \item Annuncio.Categoria $\rightarrow$ Categoria.IdCategoria \end{comment}
-                        \item Annuncio.Collocazione$\rightarrow$ Citta.IdCitta
-                \end{itemize}
-
-            \item \textbf{Affitti}(\underline{IdAnnuncio}, PrezzoMensileAff, IndirizzoAffitti, NumeroCoinquilini)
-                \begin{itemize}
-                    \item Affitti.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
-                \end{itemize}
-
-            \item \textbf{Esperimenti}(\underline{IdAnnuncio}, LaboratorioEsp, DurataPrevEsp, CompensoEsp)
-                \begin{itemize}
-                    \item Esperimenti.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
-                \end{itemize}
-
-            \item \textbf{Eventi}(\underline{IdAnnuncio}, DataEventi, LuogoEventi, CostoEntrataEventi)
-                \begin{itemize}
-                    \item Eventi.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
-                \end{itemize}
-
-            \item \textbf{Ripetizioni}(\underline{IdAnnuncio}, MateriaRipetizioni, LivelloRip, PrezzoOrarioRip)
-                \begin{itemize}
-                    \item Ripetizioni.IdAnnuncio$\rightarrow$ Annuncio.IdAnnuncio
-                \end{itemize}
-
-            \item \textbf{ImmaginiAnnuncio}(\underline{IdImmagine}, IdAnnuncio (FK), Percorso, AltText*, Decorativa, Ordine)
-                \begin{itemize}
-                    \item ImmaginiAnnuncio.IdAnnuncio $\rightarrow$ Annuncio.IdAnnuncio
-                \end{itemize}
-
+        \item \textbf{ON DELETE CASCADE} nelle tabelle di specializzazione e in \texttt{Preferiti}, per eliminare automaticamente i record dipendenti.  
+        \item \textbf{SET NULL} in \texttt{Annuncio} per gli attributi che fanno riferimento a entità eliminabili (utente, città), così da preservare la consistenza dello storico.
     \end{itemize}
+    
+    \item \textbf{Generalizzazione IS-A}: ogni annuncio può appartenere ad una sola specializzazione, coerente con la categoria selezionata.
+\end{itemize}
 
-    \subsubsection{Normalizzazione}
-    Lo schema progettato rispetta la terza forma normale (3NF):
-    \begin{itemize}
-        \item \textbf{1NF}: tutti gli attributi sono atomici e non esistono campi multivalore o ripetuti.
+\subsection{HTML}
 
-        \item \textbf{2NF}: ogni tabella ha una chiave primaria semplice (IdUtente, \begin{comment} IdCategoria \end{comment}, IdCitta, IdAnnuncio). Nelle specializzazioni (\texttt{Affitti}, \texttt{Esperimenti}, \texttt{Eventi}, \texttt{Ripetizioni}) la chiave primaria è \texttt{IdAnnuncio} e tutti gli attributi dipendono interamente da essa.
-
-            \item \textbf{3NF}: non esistono dipendenze transitive tra attributi non chiave.
-    \end{itemize}
-
-    \subsubsection{Vincoli di integrità}
-
-    Lo schema logico rispetta i principali vincoli di integrità:
-
-    \begin{itemize}
-        \item \textbf{Unicità}: Email utente, \begin{comment} NomeCategoria \end{comment}, NomeCitta.
-            \item \textbf{Dominio}: campi obbligatori definiti come NOT NULL.
-            \item \textbf{Referenziali}: ON DELETE CASCADE sulle specializzazioni; SET NULL in Annuncio su Utente, Categoria, Citta nel caso vengano eliminati.
-            \item \textbf{Generalizzazione IS-A}: ogni annuncio può avere al massimo una specializzazione coerente con la categoria.
-    \end{itemize}
-
-
-    \subsection{HTML}
-    La struttura delle pagine del sito segue le linee guida per la separazione tra contenuto, presentazione e comportamento. Ogni documento HTML è organizzato in due sezioni principali: \texttt{<head>} e \texttt{<body>}, con un uso coerente di elementi semantici e senza ricorrere a tag puramente presentazionali.
+Ogni documento è organizzato nelle sezioni \texttt{<head>} e \texttt{<body>}, con uso coerente di elementi semantici ed evitando tag puramente presentazionali.
 
 \subsubsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
-I meta tag \texttt{title}, \texttt{description} e \texttt{keywords} sono stati definiti in modo coerente con il contenuto effettivo delle pagine, con l’obiettivo di migliorare l’indicizzazione e mantenere una corrispondenza semantica tra metadati e testo visibile.
+I meta tag sono definiti in modo coerente con il contenuto della pagina, così da garantire una corretta indicizzazione e una corrispondenza semantica tra metadati e contenuto visibile.  
+Le \texttt{keywords} compaiono anche nel testo (headings, \texttt{strong}), evitando discrepanze e possibili penalizzazioni.
 
-Le \texttt{keywords} utilizzate nei meta tag sono sempre presenti anche nel contenuto della pagina, in particolare negli headings e negli elementi \texttt{strong}. Questa scelta evita discrepanze tra contenuto indicizzato e contenuto mostrato all’utente e previene che il ranking si abbassi per Google bombing.
+Nelle pagine dinamiche (\texttt{annuncio.html}, \texttt{modificaAnnuncio.html}) i meta tag vengono generati automaticamente sulla base dei dati dell’annuncio (titolo, categoria, città).  
 
-Nelle pagine dinamiche, come la visualizzazione (\texttt{annuncio.html}) e la modifica di un annuncio (\texttt{modificaAnnuncio.html}), i meta tag vengono generati dinamicamente sulla base delle informazioni specifiche della pagina. Nel dettaglio, il titolo e la descrizione includono elementi contestuali quali il titolo dell’annuncio, la categoria e la città; nella pagina di modifica il titolo originale dell’annuncio viene comunque mantenuto nel \texttt{title}.
+Il titolo è prodotto tramite la funzione \texttt{Tool::titoloSEO(string, string, string, bool)}, che impone un limite di 55 caratteri, gestisce prefissi/suffissi e accorcia il testo sull’ultima parola completa.
 
-Il contenuto del tag \texttt{title} è prodotto tramite una funzione dedicata  \texttt{Tool::titoloSEO(string, string, string, bool)} che impone una lunghezza massima complessiva di 55 caratteri, così da evitare troncamenti. La funzione gestisce automaticamente prefissi e suffissi informativi e, quando previsto, l’inserimento della città. In caso di titoli troppo lunghi, il testo viene accorciato in corrispondenza dell’ultima parola completa disponibile, evitando spezzature arbitrarie.
-
-Anche il meta tag \texttt{description} viene generato dinamicamente in alcuni contesti, in modo da descrivere in maniera sintetica e coerente la funzione della pagina e il contenuto visualizzato.
+Anche la \texttt{description} è generata dinamicamente quando necessario, così da descrivere in modo sintetico e coerente il contenuto della pagina.
 
 \subsubsection{Meta tag \texttt{viewport}}
-Nel documento è stato inserito il meta tag
-\texttt{<meta name="viewport" content="width=device-width"/>}.
-Questa impostazione consente ai fogli di stile di riferirsi alla larghezza effettiva del dispositivo anziché alla sua risoluzione. In tal modo si evita che, su dispositivi mobili con alta densità di px, venga applicato il layout desktop.
+È stato inserito il meta tag:
+\texttt{<meta name="viewport" content="width=device-width"/>}
+che consente ai CSS di riferirsi alla larghezza effettiva del dispositivo, evitando l’applicazione del layout desktop su schermi ad alta densità di pixel.
 
-\subsubsection{\texttt{Aside} in \texttt{esplora.html}} Nella pagina \textit{esplora.html} è stato utilizzato l’elemento semantico \texttt{<aside>} per contenere i filtri di ricerca, invece di un generico \texttt{<section>}. I filtri rappresentano, infatti, contenuti accessori rispetto al flusso principale della pagina, costituito dall’elenco degli annunci. In tale modo viene migliorata la chiarezza semantica del documento e si favorisce una corretta interpretazione da parte delle tecnologie assistive.
+\subsubsection{\texttt{<aside>} in \texttt{esplora.html}}
+Nella pagina \texttt{esplora.html} l’elemento \texttt{<aside>} contiene i filtri di ricerca, poiché rappresentano contenuti accessori rispetto al flusso principale (lista degli annunci). 
 
-\subsubsection{Struttura di \texttt{cardTemplate}} Per la struttura delle singole card delle anteprime degli annunci, definite nel file \texttt{cardTemplate.html}, sono stati utilizzati elementi \texttt{<h3>} per i titoli, evitando una rappresentazione basata su coppie \texttt{<dt>} e \texttt{<dd>}.  
-L’impiego degli heading consente di rappresentare correttamente la gerarchia logica dei contenuti: \texttt{<h2>} identifica la sezione principale (es. \texttt{Ultimi inseriti}), mentre \texttt{<h3>} rappresenta ciascun annuncio. Questa scelta migliora la struttura semantica complessiva, supporta una navigazione più efficace tramite screen reader e favorisce l’indicizzazione da parte dei motori di ricerca.
+\subsubsection{Struttura di \texttt{cardTemplate}}
+Le card degli annunci (\texttt{cardTemplate.html}) utilizzano \texttt{<h3>} per i titoli, evitando coppie \texttt{<dt>}–\texttt{<dd>}.  
+La gerarchia semantica è così preservata: \texttt{<h2>} identifica la sezione (es. “Ultimi inseriti”), mentre \texttt{<h3>} rappresenta ciascun annuncio. 
 
 \subsubsection{Gestione delle immagini}
-La gestione delle immagini è stata progettata con particolare attenzione alle prestazioni, all’accessibilità e al controllo da parte dell’utente.
+La gestione delle immagini è progettata per ottimizzare prestazioni e accessibilità.
 
-Le immagini immediatamente visibili all’apertura della pagina (\textit{above the fold}) vengono caricate in modo prioritario con \texttt{loading="eager"} di default, mentre tutte le altre utilizzano il caricamento \texttt{loading="lazy"}, riducendo il tempo di caricamento iniziale.
-
-Per quanto riguarda i formati, sono state adottate scelte differenziate in base alla funzione dell’immagine:
 \begin{itemize}
-    \item formato WebP per immagini decorative;
-    \item il logo è fornito in formato SVG;
-    \item le immagini degli annunci utilizzano il formato JPG.
+    \item Le immagini above-the-fold usano \texttt{loading="eager"}, tutte le altre \texttt{loading="lazy"}.
+    \item Formati adottati: WebP per immagini decorative, SVG per il logo e JPG per le immagini degli annunci.
+    \item Tutte le immagini sono inferiori a 1 MB.
 \end{itemize}
-Inoltre, tutte le immagini utilizzate nel progetto hanno dimensione inferiore a 1 MB.
 
-Le immagini decorative (icone e illustrazioni) sono inserite direttamente nel markup HTML, ma la loro dimensione è gestita tramite CSS, il logo invece è inserito tramite Image Replacement per preservare l'accessibilità del testoletto da screen reader ma nascosto visivamente.
+Le immagini decorative sono inserite nel markup e dimensionate via CSS; il logo utilizza tecniche di image replacement per mantenere accessibile il testo alternativo mentre le immagini degli annunci hanno dimensioni fissate via HTML per rendere 
+l'esperienza utente migliore in quando ciò garantisce un rendering più veloce.
 
-Le immagini degli annunci sono visualizzate all’interno di card con dimensioni fisse, scelta motivata dall’elevato numero di immagini presenti nelle liste. L’impostazione esplicita di \texttt{width} e \texttt{height} consente di riservare lo spazio necessario prima del caricamento dell’immagine, riducendo i fenomeni di \textit{layout shift}.
+Nel form di pubblicazione/modifica l’utente deve rispettare vincoli espliciti (max 1 MB, formato JPG), infatti è presente un controllo sulla dimensione dei file.
 
-Per il caricamento delle immagini da parte dell’utente, il form di pubblicazione e di modifica fornisce indicazioni esplicite sui vincoli: dimensione massima di 1 MB e formato preferibilmente JPG. È presente un controllo sulla dimensione dei file caricati. Come possibile alternativa progettuale, si sarebbe potuta implementare una conversione automatica delle immagini in JPG o la generazione di più formati selezionabili tramite \texttt{picture}; nel progetto si è scelto di limitare i formati accettati tramite un insieme controllato di MIME type, privilegiando semplicità e controllo.
+Si è scelto di limitare i MIME type accettati, rinunciando a conversioni automatiche o all'utilizzo del tag \texttt{<picture>} con doppia estensione \texttt{.png} per la stampa e \texttt{.jpg} per il web, per privilegiare semplicità e controllo.
 
-La gestione dell’attributo \texttt{alt} è lasciata all’utente in fase di pubblicazione, infatti: per ogni immagine è possibile inserire un testo alternativo oppure marcarla come puramente decorativa, ma non è consentito lasciare entrambi i campi vuoti. Il testo alternativo è inoltre limitato a 100 caratteri, così da garantire una descrizione sintetica e ridurre le tempistiche che ritardano il completamento delle task per utenti che utilizzano le tecnologie assistive.
+La gestione dell’attributo \texttt{alt} è affidata all’utente: ogni immagine deve avere un testo alternativo oppure essere marcata come decorativa, e non è possibile lasciare entrambi i campi vuoti. Il testo alternativo è limitato a 100 caratteri per garantire sintesi e usabilità con screen reader.
 
 \subsubsection{Form e validazione}
-La struttura dei form è organizzata tramite l’uso sistematico di \texttt{fieldset} e \texttt{legend}, anche nei casi in cui la legenda sia destinata principalmente alle tecnologie assistive. Nessun campo di input è figlio diretto dell’elemento \texttt{form}, al fine di mantenere una struttura semantica chiara e facilmente interpretabile. Nei form di filtraggio i \texttt{fieldset} sono invece visibili, così da migliorare la comprensione delle opzioni disponibili.
+La struttura dei form utilizza \texttt{fieldset} e \texttt{legend}, anche quando destinati principalmente alle tecnologie assistive. Nessun campo è figlio diretto di \texttt{form}.  
 
-Ogni campo di input utilizza il tipo HTML più appropriato (ad esempio \texttt{text}, \texttt{email}, \texttt{password}, \texttt{file}) ed è sempre associato a una \texttt{label}, garantendo una corretta accessibilità e una migliore usabilità. Dove opportuno, sono stati abilitati gli attributi \texttt{autocomplete} e \texttt{spellcheck}, con valori semanticamente coerenti, per agevolare l’inserimento dei dati e ridurre gli errori.
+Ogni input utilizza il tipo HTML più appropriato ed è sempre associato a una \texttt{label}. Dove utile, sono abilitati \texttt{autocomplete} e \texttt{spellcheck}.
 
-Sono stati sfruttati i principali meccanismi di validazione HTML5, tra cui \texttt{required}, vincoli di tipo e limiti su lunghezza e valori (\texttt{min}, \texttt{max}, \texttt{step}), così da fornire un primo livello di validazione immediata lato client. Tali controlli sono affiancati da una validazione tramite JavaScript, utilizzata per fornire feedback più dettagliati all’utente, e da ulteriori verifiche lato server, necessarie per garantire la correttezza e la sicurezza dei dati ricevuti.
+La validazione sfrutta: controlli HTML5 (\texttt{required}, \texttt{min}, \texttt{max}, \texttt{step}, vincoli di tipo); validazione JavaScript per feedback più dettagliati ed istantanei; validazione lato server per garantire correttezza e sicurezza.
 
-Nei form di registrazione e autenticazione sono inoltre presenti accorgimenti per migliorare l’esperienza utente, come l’uso controllato dell’autocompletamento per le credenziali, la possibilità di visualizzare temporaneamente la password e l’impiego di campi nascosti per la gestione dei reindirizzamenti post-login.
+\subsubsection{Messaggio informativo nei redirect verso la pagina di accesso}
+Quando l’utente viene reindirizzato alla pagina di accesso a seguito del tentativo di accedere a una funzionalità riservata, viene mostrato automaticamente un riquadro informativo che spiega il motivo del redirect, con un messaggio contestuale alla pagina di provenienza (pubblicazione, modifica, profilo o salvataggio nei preferiti).
+
+\subsection{CSS e decisioni di design}
+
+Il foglio di stile è stato progettato privilegiando l’uso di dimensioni relative (\texttt{em}, \texttt{rem}, percentuali e unità flessibili), così da garantire un’interfaccia adattabile a dispositivi e contesti differenti, migliorando accessibilità e scalabilità.
 
 
+Per assicurare uniformità grafica è stata definita una \texttt{:root} contenente variabili CSS per colori, spaziature, raggi di arrotondamento, ombre, transizioni e una scala tipografica coerente per dimensioni e pesi dei caratteri.
 
-\subsection{CSS e decisioni di design} 
-Il foglio di stile è stato progettato privilegiando l’uso di dimensioni relative (\texttt{em}, \texttt{rem}, percentuali e unità flessibili), così da garantire una resa adattabile a dispositivi e contesti differenti, migliorando accessibilità e scalabilità dell’interfaccia.
+Il layout è realizzato principalmente tramite Flexbox, utilizzato per strutture fluide e adattive, mentre CSS Grid è impiegato solo nei casi in cui risulta più appropriato (ad esempio per elenchi di card o sezioni a griglia).
 
-Il codice CSS è stato organizzato in modo fortemente modulare, attraverso classi di base riutilizzabili ed estensioni contestuali, con l’obiettivo di favorire il riuso del codice. Componenti come card, pulsanti, sezioni e form condividono strutture comuni che vengono specializzate solo dove necessario, rendendo il foglio di stile più mantenibile e leggibile.
+La responsività è gestita tramite la separazione tra \texttt{style.css} e \texttt{mini.css}, con un breakpoint principale a 800px per l’adattamento ai dispositivi mobili. Sono presenti due ulteriori media query, tra cui una dedicata alla navigazione con menù hamburger, attivata sotto i 1000px per migliorare l’usabilità su tablet e schermi intermedi.
 
-Per assicurare uniformità grafica, è stata definita una \texttt{:root} contenente variabili CSS per colori, spaziature, raggi di arrotondamento, ombre e transizioni, oltre a una scala tipografica coerente per dimensioni e pesi dei caratteri.
+È stato inoltre previsto un foglio di stile dedicato alla stampa, che mostra esclusivamente le informazioni essenziali, rimuovendo elementi decorativi e interattivi per ridurre il consumo di inchiostro e mantenere una struttura coerente del contenuto.
 
-Il layout è realizzato principalmente tramite Flexbox, utilizzato per costruire strutture fluide e adattive, mentre CSS Grid è impiegato in modo mirato solo nei casi dove risultava necessario (ad esempio per elenchi di card o sezioni a griglia).
-
-La gestione della responsività è basata su una separazione tra \texttt{style.css} e \texttt{mini.css}, con un breakpoint a 800px per l’adattamento generale ai dispositivi mobili. Sono inoltre presenti 2 media query aggiuntive, tra cui una dedicata alla navigazione con menu hamburger, attivata già sotto i 1000px, per migliorare l’usabilità su tablet e schermi intermedi.
-
-È stato previsto un foglio di stile dedicato alla stampa, che mostra esclusivamente le informazioni essenziali, rimuovendo elementi decorativi e interattivi in modo da ridurre il consumo di inchiostro mantenendo però la struttura del contenuto, così da evitare il disorientamento dell’utente.
-
-Particolare attenzione è stata riservata all’accessibilità visiva e all’interazione da tastiera, con la gestione esplicita degli stati di focus visibile, l’uso coerente dei contrasti e l’eliminazione di animazioni o trasformazioni superflue nei contesti in cui potrebbero risultare problematiche, come nelle versioni mobile o di stampa.
+Particolare attenzione è stata riservata all’accessibilità visiva e all’interazione da tastiera, con la gestione esplicita degli stati di focus visibile, l’uso coerente dei contrasti e l’eliminazione di animazioni superflue nei contesti in cui potrebbero risultare problematiche, come nelle versioni mobile o di stampa.
 
 \subsection{PHP}
 
 \section{Accessibilità}
-\subsection{Strumenti di verifica}
-Per garantire il rispetto dei requisiti di accessibilità, il progetto è stato sviluppato basandosi sui punti richiesti dalle linee guida WCAG 2.2. E' stata, infatti, compilata la checklist fornita nel Moodle che ha permesso di verificare in maniera sistematica tutti i punti critici relativi a leggibilità, navigazione, colori, interazione e feedback per gli utenti con disabilità.
 
-Durante lo sviluppo sono stati utilizzati diversi strumenti di verifica:
-    \begin{itemize}
-        \item \textbf{NVDA:} per testare la corretta lettura della gerarchia dei titoli, la navigazione tramite landmark e l'annuncio dei messaggi di errore nei form, sia con JavaScript attivo sia con JavaScript disabilitato.
-        \item \textbf{Contrast Checker (\underline{\url{https://contrastchecker.com/}}):} per verificare che tutti i contrasti di colore rispettassero il rapporto minimo di leggibilità (superiore a 4.5:1).
-        \item \textbf{Lighthouse, Silktide ed Ispezione(F12):} per valutazioni automatiche e test manuali su navigazione da tastiera, accessibilità dei link, dimensioni degli elementi cliccabili e altri criteri WCAG.
-    \end{itemize}
-    
+\subsection{Strumenti di verifica}
+
+Per garantire il rispetto dei requisiti WCAG 2.2, è stata compilata la checklist fornita in Moodle.
+
+Sono stati utilizzati diversi strumenti di verifica:
+\begin{itemize}
+    \item \textbf{NVDA}: per testare la gerarchia dei titoli, dei link e dei punti di riferimento, la navigazione tramite landmark e l’annuncio dei messaggi di errore nei form, sia con JavaScript attivo sia disattivato.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{headings_index.png}
+        \caption{Gerarchia titoli (index.html)}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{link_index.png}
+        \caption{Lista link (index.html)}
+    \end{minipage}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Contrast Checker} (\underline{\url{https://contrastchecker.com/}}): per verificare il rispetto del rapporto di contrasto $\geq 4.5\!:\!1$.
+    \item \textbf{Lighthouse, Silktide e strumenti di ispezione (F12)}: per valutazioni automatiche e test manuali su navigazione da tastiera, accessibilità dei link, dimensioni degli elementi cliccabili e altri criteri WCAG.
+\end{itemize}
+
 \subsection{Tipografia e leggibilità}
 
-Per garantire una corretta leggibilità dei contenuti, sono stati scelti due font distinti in base al contesto:
+Per garantire una lettura chiara e accessibile sono stati scelti due font distinti:
+
 \begin{itemize}
-\item \textbf{Per il web}: \emph{Noto Sans}, importato tramite Google Fonts
-\item \textbf{Per la stampa}: \emph{Times New Roman}. \end{itemize}
+    \item \textbf{Web}: \emph{Noto Sans}, importato tramite Google Fonts.
+    \item \textbf{Stampa}: \emph{Times New Roman}.
+\end{itemize}
 
-La scelta del font web è stata motivata da verifiche di leggibilità sui caratteri critici, quali \texttt{qp, db, 0O, iI1l, rn, m}; da controlli sull'altezza delle \emph{x}, maggiore per favorire la distinzione dei caratteri minuscoli e sull'apertura dei glifi, come nelle lettere \emph{c} e \emph{a}, per aumentare la chiarezza visiva. 
+La scelta del font web è stata guidata da verifiche sulla leggibilità di caratteri critici (\texttt{qp, db, 0O, iI1l, rn, m}), sull’altezza della \emph{x} e  sull'apertura delle lettere \emph{c} e \emph{a}.  
+Inizialmente era stato considerato \texttt{Inter}, poi sostituito da \texttt{Noto Sans} per una migliore distinzione di glifi come \texttt{ca} e \texttt{iI1l}.
 
-Sono, quindi, stati testati vari stili e pesi disponibili su Google Fonts, inizialamente era stato scelto \texttt{Inter}, ma poi si è optato per \texttt{Noto Sans} soprattutto per la leggibilità di \texttt{ca, iI1l}. 
 \begin{figure}[h!]
     \centering
     \begin{minipage}{0.48\textwidth}
@@ -548,45 +578,29 @@ Sono, quindi, stati testati vari stili e pesi disponibili su Google Fonts, inizi
     \end{minipage}
 \end{figure}
 
-    
-\texttt{Leggibilità semplificata prezzi} Per la visualizzazione dei prezzi, è stata adottata una soluzione di leggibilità semplificata: l'uso di decimali solo quando necessario. La funzione PHP \texttt{Tool::formatPrezzo(\$valore, string)} permette di formattare i valori numerici in maniera chiara, aggiungendo il suffisso \texttt{€} e mantenendo la leggibilità dei valori interi (es. 20€ al posto di 20.00€).
-
-Infine, la gerarchia dei titoli, la lista dei link, dei campi, dei pulsanti e dei punti di riferimento è stata verificata utilizzando NVDA. 
-
-\begin{figure}[h!]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{headings_index.png}
-        \caption{Gerarchia titoli (index.html)}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{link_index.png}
-        \caption{Lista links (index.html)}
-    \end{minipage}
-\end{figure}
+\paragraph{Leggibilità dei prezzi}
+La funzione PHP \texttt{Tool::formatPrezzo()} formatta i valori numerici mostrando i decimali solo quando necessario (es. \texttt{20€} invece di \texttt{20.00€}), migliorando la leggibilità.
 
 \subsection{Colori, contrasti e accessibilità mobile}
 
-Per garantire una corretta percezione dei contenuti e la riconoscibilità degli elementi interattivi, sono stati applicati i seguenti accorgimenti:
+Sono stati adottati diversi accorgimenti per garantire una corretta percezione dei contenuti e la riconoscibilità degli elementi interattivi:
+
 \begin{itemize}
     \item \textbf{Link e CTA}:
     \begin{itemize}
-    \item I link testuali sono sottolineati per favorire la riconoscibilità, mantenendo la convenzione esterna.
-    \item I link testuali visitati e non visitati (nella navbar) differiscono per colore con contrasto $\approx 3.0$ (\#931c98 (--visited), \#080810 (--txtNavColor) = 2.72)
-
-    \item I pulsanti di azione (CTA) variano di colore sfondo e testo tra stato visitato e non visitato.
+        \item I link testuali sono sempre sottolineati.
+        \item I link visitati/non visitati nella navbar differiscono per colore (contrasto 2.72 $\approx 3$).
+        \item I pulsanti CTA variano colore tra stato visitato e non visitato.
     \end{itemize}
-\item \textbf{Contrasto complessivo}: Tutti i contrasti tra testo e sfondo rispettano il rapporto minimo di 4.51:1, verificato con (\underline{\url{https://contrastchecker.com/}}).
 
-\item \textbf{Accessibilità touch su mobile}:  
-\begin{itemize}
-    \item Tutti gli elementi cliccabili rispettano dimensioni minime di ca. 44px x 44px.  
-    \item Per il pannello laterale dei filtri, la tendina a scomparsa prevede un overlay che oscura il contenuto sottostante senza comprometterne la leggibilità e vengono disattivati hamburger e torna su. Inoltre il tab è gestito in modo da seguire l'ordine ToggleFiltri $\rightarrow$ Titolo (solo momentaneamente focusabile, ma non tabbabile), e per chiusura ChiudiFiltri $\rightarrow$ ToggleFiltri e poi ordine normale della pagina (in \texttt{script.js}: funzione \texttt{toggleFiltriAccessibile()}). 
-    \item I pulsanti di navigazione nei caroselli (next/prev) hanno opacità testata e leggibile \texttt{--call-to-actionTransp: rgba(22, 40, 110, \textbf{0.65});}, come verificato con strumenti online (\url{https://codepen.io/yaphi1/pen/oNbEqGV}).  
-\end{itemize}
+    \item \textbf{Contrasto complessivo}: tutti i contrasti rispettano il rapporto minimo WCAG ($\geq 4.5\!:\!1$), verificato tramite Contrast Checker.
+
+    \item \textbf{Accessibilità touch su mobile}:
+    \begin{itemize}
+        \item Gli elementi cliccabili rispettano dimensioni minime di circa 44px × 44px.
+        \item Il pannello laterale dei filtri utilizza un overlay e una gestione del focus accessibile (\texttt{toggleFiltriAccessibile()}).
+        \item I pulsanti dei caroselli hanno opacità testata e leggibile (\texttt{rgba(22, 40, 110, 0.65)}).
+    \end{itemize}
 \end{itemize}
 
 \begin{figure}[h!]
@@ -604,170 +618,44 @@ Per garantire una corretta percezione dei contenuti e la riconoscibilità degli 
     \end{minipage}
 \end{figure}
 
+\section{Validazione, sicurezza e gestione degli errori}
+\label{sviluppo:validazione}
 
-\subsection{Errori lato client (JavaScript)}
+\subsubsection{Errori lato client (JavaScript)}
 
-La validazione lato client è stata implementata su tutti i form contrassegnati con l’attributo \texttt{data-validate}, combinando controlli in tempo reale e al submit per garantire un feedback immediato all’utente.
-
-\begin{itemize}
-\item \textbf{Trigger e gestione eventi:}
-\begin{itemize}
-\item Gli eventi \texttt{blur} e \texttt{input} vengono intercettati per validare ogni campo appena l’utente lo modifica o lo abbandona.
-\item Al momento del \texttt{submit}, tutti i campi validabili vengono controllati nuovamente; se si rilevano errori, il submit viene bloccato e il focus viene portato sul primo campo non valido.
-\end{itemize}
-
-\item \textbf{Creazione e annuncio degli errori:}
-\begin{itemize}
-    \item I messaggi di errore vengono generati dinamicamente come lista non ordinata (\texttt{<ul>}) con elementi \texttt{<li>} contenenti l’errore.
-    \item Ogni messaggio ha \texttt{role="alert"} per essere annunciato dai lettori screen immediatamente.
-    \item Gli input associati ricevono gli attributi ARIA \texttt{aria-invalid="true"} e \texttt{aria-describedby} puntato all’ID del messaggio di errore.
-\end{itemize}
-
-\item \textbf{Focus e usabilità:}
-\begin{itemize}
-    \item Il focus viene portato sul primo campo non valido solo la prima volta che compare l’errore, evitando interferenze con la navigazione successiva.
-    \item Per i campi di testo, il contenuto viene selezionato automaticamente per facilitare la correzione.
-\end{itemize}
-
-\item \textbf{Campi gestiti:}
-\begin{itemize}
-    \item Testo (nome, cognome), email, password, conferma password, checkbox (consenso), e città con \texttt{datalist}.
-    \item Alcuni campi come \texttt{input type="file"} o campi alt/decorativi sono esclusi dalla validazione client.
-\end{itemize}
-
-\item \textbf{Rimozione dinamica errori:}
-\begin{itemize}
-    \item Al cambiamento dell’input, eventuali errori precedenti vengono rimossi.
-    \item Gli attributi ARIA (\texttt{aria-invalid}, \texttt{aria-describedby}) vengono aggiornati di conseguenza.
-    \item Tutti i messaggi sono uniformati graficamente e semanticamente, garantendo coerenza visiva e accessibilità.
-\end{itemize}
-
-\item \textbf{Funzioni principali:}
-\begin{itemize}
-    \item \texttt{validateField(field)}: controlla la validità del campo e genera eventuali errori.
-    \item \texttt{renderError(field, errors)}: crea il blocco HTML per il messaggio e aggiorna gli attributi ARIA.
-    \item \texttt{removeError(field)}: rimuove eventuali messaggi di errore e ripristina gli attributi del campo.
-\end{itemize}
-\end{itemize}
-
-\subsection{Errori lato server (PHP)}
-
-La validazione lato server è stata implementata per tutti i form principali, come la pagina di pubblicazione annunci e la pagina di accesso, garantendo feedback immediato anche quando JavaScript non è attivo.
+La validazione lato client è attiva su tutti i form con attributo \texttt{data-validate}, combinando controlli in tempo reale e al submit.
 
 \begin{itemize}
-\item \textbf{Tipi di errori gestiti:}
+    \item \textbf{Eventi gestiti}: \texttt{blur}, \texttt{input}, \texttt{submit}.
+    \item \textbf{Messaggi di errore}: generati come \texttt{<ul><li>} con \texttt{role="alert"}; gli input ricevono \texttt{aria-invalid} e \texttt{aria-describedby}.
+    \item \textbf{Focus}: portato sul primo campo non valido solo alla prima comparsa dell’errore.
+    \item \textbf{Campi gestiti}: testo, email, password, conferma password, checkbox, città con \texttt{datalist}.
+    \item \textbf{Funzioni principali}: \texttt{validateField()}, \texttt{renderError()}, \texttt{removeError()}.
+\end{itemize}
+
+\subsubsection{Errori lato server (PHP)}
+
+La validazione lato server garantisce feedback anche senza JavaScript.
+
 \begin{itemize}
-\item \emph{Form generici} (titolo, categoria, descrizione, città)
-\item \emph{Immagini} (upload, dimensione, formato, testo alternativo)
-\item \emph{Login} (email/password non valide, utente inesistente)
+    \item \textbf{Tipi di errori}: campi generici, immagini (dimensione, formato, alt), login.
+    \item \textbf{Messaggi}: generati come liste con \texttt{role="alert"}, uniformi a quelli client-side.
+    \item \textbf{Attributi ARIA}: \texttt{aria-invalid} e \texttt{aria-describedby} applicati dinamicamente.
+    \item \textbf{Focus}: portato sul primo campo non valido; per le immagini, sul primo input \texttt{file}.
+    \item \textbf{Errori immagini}: controllo dimensione (1MB), formati (JPG, PNG, WEBP), obbligatorietà del testo alternativo.
+    \item \textbf{Login}: gestione errori credenziali, HTML non consentito, messaggi contestuali tramite \texttt{redirectMessage}.
+    \item \textbf{Uniformità}: stesso markup, stessi stili e stessa semantica dei messaggi client-side.
 \end{itemize}
 
-\item \textbf{Creazione dei messaggi:}  
-I messaggi di errore sono generati direttamente in HTML come liste non ordinate (\texttt{<ul>}) con elementi \texttt{<li>} dotati di \texttt{role="alert"}:
-\begin{itemize}
-    \item Consente ai lettori screen di annunciare subito l’errore.
-    \item Mantiene uniformità con i messaggi generati lato client.
-\end{itemize}
+\section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
 
-\item \textbf{Attributi ARIA:}  
-Quando un campo contiene errori, vengono aggiunti gli attributi:
-\begin{itemize}
-    \item \texttt{aria-invalid="true"} sul campo
-    \item \texttt{aria-describedby} puntato all’ID del messaggio corrispondente
-\end{itemize}
-
-\item \textbf{Gestione del focus:}  
-In caso di errore, lo script porta il focus sul primo campo interessato, permettendo all’utente di correggere immediatamente.  
-Per le immagini, se si rilevano errori di upload, il focus viene portato sul primo input \texttt{file}.
-
-\item \textbf{Errori immagini:}  
-\begin{itemize}
-    \item Verifica dimensione massima (1MB) e formati consentiti (JPG, PNG, WEBP)
-    \item Controllo obbligatorietà testo alternativo per immagini non decorative
-    \item Errori aggregati in un contenitore globale \texttt{#errore-immagini-globali} con \texttt{role="alert"}
-\end{itemize}
-
-\item \textbf{Login:}  
-\begin{itemize}
-    \item Messaggi per email non valida, HTML non consentito o credenziali errate
-    \item Inserimento dinamico dei messaggi nella pagina e associazione di \texttt{aria-describedby} ai campi email e password
-    \item Utilizzo di redirectMessage per guidare l’utente alla pagina di login con spiegazioni contestuali
-\end{itemize}
-
-\item \textbf{Uniformità e coerenza:}  
-Tutti i messaggi server-side replicano la struttura dei messaggi client-side, garantendo:
-\begin{itemize}
-    \item Stessi stili CSS (\texttt{riquadro-spieg messaggi-errore-form})
-    \item Stesso markup semantico (\texttt{<ul><li role="alert">})
-    \item Compatibilità con screen reader
-\end{itemize}
+\section{Test}
+Per garantire che il comportamento del sito fosse chiaro, prevedibile e accessibile, abbiamo svolto una serie di test con utenti esterni al gruppo di sviluppo. Essendo noi i creatori del sistema, avremmo potuto non accorgerci di elementi poco intuitivi; per questo abbiamo coinvolto persone con profili diversi: studenti di varie facoltà, ex studenti, genitori e una persona con mobilità limitata che utilizza una sola mano. Questo ci ha permesso di osservare l’interazione da prospettive differenti e di verificare che l’esperienza d’uso rimanesse comprensibile e coerente per utenti con esigenze e competenze eterogenee.
 
 
-\end{itemize}
-
-
-    \subsection{Validazione e Sicurezza} \label{sviluppo:validazione}
-
-    \section{Test}
-    \subsection{Test funzionali}
-    Descrizione dei test su login, registrazione, pubblicazione e filtraggio annunci.
-
-    \subsection{Test di compatibilità}
-    Test su diversi browser (Chrome, Firefox, Edge, Safari) e dispositivi (desktop, tablet, smartphone).
-
-    \subsection{Test di accessibilità}
-    Color contrast, navigazione da tastiera, screen reader.
-
-    \subsection{Requisiti tecnici}
-   
-    \subsection{Introduzione} 
-    \subsection{WAI-ARIA e screen-reader} 
-    \subsection{Progressive Enhancement} 
-    \subsection{Supporto ai dispositivi “legacy”} 
-    \subsection{Ulteriori funzionalità di accessibilità}
-
-    \section{SEO e prestazioni} %meta tag, URL parlanti, sitemap, compressione immagini, lazy loading, minificazione
-    \subsection{Analisi delle possibili ricerche su Google} % “Affitti stanza Padova”, “eventi Padova weekend”, “Ripetizioni informatica Padova”…)
-
-    \newpage
-    \section{Strumenti utilizzati} \label{sec:strumenti}
-    \begin{comment}
-        \setstretch{0.7}
-        \subsection{Canva} \label{strumenti:canva}
-        \underline{\url{https://www.canva.com/it_it/}} \\\\
-        Piattaforma di progettazione grafica per creare contenuti visuali per presentazioni, siti web e prodotti simili. 
-
-        \subsection{Discord} \label{strumenti:discord}
-        \underline{\url{https://discord.com/}} \\\\
-        Piattaforma di messaggistica istantanea, di distribuzione digitale e di voice over IP, utilizzata per la comunicazione all'interno server Discord.
-        Gli utenti comunicano con chiamate vocali, videochiamate, messaggi di testo, media e file in chat private o come membri di un server Discord. Quest'ultimi sono una raccolta di canali di tipo vocale e/o testuale. 
-
-        \subsection{Git} \label{strumenti:git}
-        \underline{\url{https://git-scm.com/}} \\\\
-        Applicazione software per il controllo di versione distribuito utilizzabile da interfaccia a riga di comando. Viene utilizzato il versionamento delle repository dedicate al codice e alla documentazione del progetto.
-
-        \subsection{Github} \label{strumenti:github}
-        \underline{\url{https://git-scm.com/}} \\\\
-        È un servizio di hosting per progetti software che implementa lo strumento di controllo versione distribuito Git.  
-
-        \subsection{LaTeX} \label{strumenti:latex}
-        \underline{\url{https://www.latex-project.org/get/}} \\\\
-        Linguaggio di marcatura del testo, usato ampiamente in ambito accademico per la preparazione di testi.
-
-        \subsection{Silktide} \label{strumenti:silktide}
-        \underline{\url{https://silktide.com/}} \\\\
-        È un'estensione che facilita i test sull'accessibilità.
-
-        \subsection{W3C Validator} \label{strumenti:w3cvalidator}
-        \underline{\url{http://validator.w3.org/}} \\\\
-        Validatore markup HTML/XHTML.
-
-        \subsection{WhatsApp} \label{strumenti:whatsapp}
-        \underline{\url{https://www.whatsapp.com/}} \\\\
-
-        \subsection{WebAIM} \label{strumenti:webaim}
-        \underline{\url{https://webaim.org/resources/contrastchecker/}} \\\\
-    \end{comment}
+\section{SEO e prestazioni} %meta tag, URL parlanti, sitemap, compressione immagini, lazy loading, minificazione
+    
+\section{Strumenti utilizzati} \label{sec:strumenti}
     \begin{itemize}
         \item \textbf{Canva} 
             \underline{\url{https://www.canva.com/it_it/}} \\
