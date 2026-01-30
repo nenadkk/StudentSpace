@@ -143,8 +143,30 @@ function toggleFiltriAccessibile() {
     const chiudi = document.getElementById("chiudiFiltri");
     const overlay = document.getElementById("overlay-filtri");
     const contenuto = document.getElementById("contenuto");
+    const mobileQuery = window.matchMedia("(max-width: 800px)");
 
     if (!toggle || !filtri || !chiudi || !overlay || !contenuto) return;
+
+    function aggiornaStatoFiltri(e) {
+        const isMobile = e.matches;
+
+        if (isMobile) {
+            filtri.inert = true;
+            overlay.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
+            contenuto.removeAttribute("aria-hidden");
+        } else {
+            filtri.inert = false;
+            filtri.classList.remove("attivo"); // niente stato modale
+            overlay.hidden = true;
+            contenuto.removeAttribute("aria-hidden");
+            document.body.classList.remove("no-scroll");
+            toggle.setAttribute("aria-expanded", "false");
+        }
+    }
+
+    aggiornaStatoFiltri(mobileQuery);
+    mobileQuery.addEventListener("change", aggiornaStatoFiltri);
 
     let lastFocusedElement = null;
     filtri.inert = true;
@@ -166,6 +188,8 @@ function toggleFiltriAccessibile() {
     }
 
     function apriPannello() {
+        if (!mobileQuery.matches) return;
+
         lastFocusedElement = toggle;
 
         filtri.classList.add("attivo");
@@ -181,6 +205,8 @@ function toggleFiltriAccessibile() {
     }
 
     function chiudiPannello() {
+        if (!mobileQuery.matches) return;
+
         filtri.classList.remove("attivo");
         filtri.inert = true;
         overlay.hidden = true;
@@ -205,8 +231,8 @@ function toggleFiltriAccessibile() {
 
     // Focus trap
     filtri.addEventListener("keydown", (e) => {
+        if (!mobileQuery.matches) return;
         if (!filtri.classList.contains("attivo")) return;
-
         if (e.key !== "Tab") return;
 
         const focusable = getFocusable();
