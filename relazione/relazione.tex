@@ -115,9 +115,12 @@ Le attività sono state distribuite in modo che ciascun componente lavorasse su 
 \textbf{\underline{\hyperref[sec:strumenti]{GitHub}}}, utile per tracciare modifiche, gestire branch e mantenere un flusso di lavoro ordinato.
 
 \subsection{Divisione del lavoro}
-Considerata la natura accademica del progetto, si è ritenuto opportuno coinvolgere ogni membro in tutte le principali aree di sviluppo, così da garantire una visione complessiva del funzionamento della piattaforma e una partecipazione equilibrata.
 
-Sono state organizzate riunioni periodiche di allineamento, durante le quali veniva aggiornata la lista delle attività da svolgere e venivano assegnati i compiti in modo bilanciato. Per facilitare la pianificazione e il monitoraggio del lavoro sono state utilizzate le \textit{GitHub Issues}, che hanno permesso di tracciare in modo chiaro le attività, le priorità e lo stato di avanzamento.
+Considerata la natura accademica del progetto, si è scelto di coinvolgere ogni membro del gruppo in tutte le principali aree di sviluppo, così da garantire una comprensione completa del funzionamento della piattaforma e una partecipazione equilibrata. 
+
+La progettazione e la realizzazione del sito sono state quindi affrontate in modo collaborativo: tutti i componenti hanno contribuito alla struttura HTML, allo sviluppo dei fogli di stile, all’implementazione della logica PHP, alla progettazione del database, ai test di accessibilità e alla validazione lato client e lato server.
+
+Per coordinare il lavoro sono state organizzate riunioni periodiche di allineamento e sono state utilizzate le \textit{GitHub Issues}s, che hanno permesso di tracciare in modo chiaro le attività, le priorità e lo stato di avanzamento, garantendo una distribuzione bilanciata dei compiti.
 
 \section{Progettazione}
 
@@ -455,16 +458,6 @@ Lo schema logico rispetta i principali vincoli di integrità:
 
 Ogni documento è organizzato nelle sezioni \texttt{<head>} e \texttt{<body>}, con uso coerente di elementi semantici ed evitando tag puramente presentazionali.
 
-\subsubsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
-I meta tag sono definiti in modo coerente con il contenuto della pagina, così da garantire una corretta indicizzazione e una corrispondenza semantica tra metadati e contenuto visibile.  
-Le \texttt{keywords} compaiono anche nel testo (headings, \texttt{strong}), evitando discrepanze e possibili penalizzazioni.
-
-Nelle pagine dinamiche (\texttt{annuncio.html}, \texttt{modificaAnnuncio.html}) i meta tag vengono generati automaticamente sulla base dei dati dell’annuncio (titolo, categoria, città).  
-
-Il titolo è prodotto tramite la funzione \texttt{Tool::titoloSEO(string, string, string, bool)}, che impone un limite di 55 caratteri, gestisce prefissi/suffissi e accorcia il testo sull’ultima parola completa.
-
-Anche la \texttt{description} è generata dinamicamente quando necessario, così da descrivere in modo sintetico e coerente il contenuto della pagina.
-
 \subsubsection{Meta tag \texttt{viewport}}
 È stato inserito il meta tag:
 \texttt{<meta name="viewport" content="width=device-width"/>}
@@ -650,6 +643,52 @@ La validazione lato server garantisce feedback anche senza JavaScript.
 \end{itemize}
 
 \section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
+
+\section{SEO e ottimizzazione per i motori di ricerca}
+\subsubsection{Analisi delle possibili ricerche degli utenti}
+L’analisi preliminare ha individuato le principali query che uno studente universitario potrebbe digitare su un motore di ricerca. Le ricerche sono state suddivise in tre categorie:
+\begin{itemize}
+    \item\textbf{Query informative generiche:} come ``annunci studenti Padova'',  ``bacheca universitaria eventi'', ``ripetizioni universitarie Padova'', ``affitti studenti stanza singola''.
+    \item\textbf{Query specifiche per categoria:} ``affitti studenti vicino università'', ``esperimenti retribuiti dipartimento'', ``eventi universitari oggi Padova'', ``ripetizioni analisi 1 Padova''.
+    \item\textbf{Altre query:}  ``pubblica annuncio studenti'', ``cerco coinquilini Padova'', ``lezioni private matematica università''
+\end{itemize}
+
+Queste analisi hanno guidato la scelta delle \textit{keywords}, dei \textit{title}, delle \textit{description} e della struttura semantica delle pagine.
+
+\subsubsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
+I meta tag sono stati progettati per essere coerenti con il contenuto della pagina e per rispondere alle query individuate.
+
+Nelle pagine dinamiche (\texttt{annuncio.html}, \texttt{modificaAnnuncio.html}) i meta tag vengono generati automaticamente sulla base dei dati dell’annuncio (titolo, categoria, città).  
+
+Il titolo è prodotto tramite la funzione \texttt{Tool::titoloSEO(string, string, string, bool)}, che impone un limite di 55 caratteri, gestisce prefissi/suffissi e accorcia il testo sull’ultima parola completa.
+
+Anche la \texttt{description} è generata dinamicamente quando necessario, così da descrivere in modo sintetico e coerente il contenuto della pagina.
+
+Le \texttt{keywords} sono sempre presenti anche nel testo visibile (headings, \texttt{strong}), evitando discrepanze che potrebbero penalizzare il ranking (es. per Google Bombing).
+
+\subsubsection{Struttura semantica e accessibilità come fattori SEO}
+La struttura HTML è stata progettata per essere semanticamente corretta e facilmente interpretabile dai crawler:
+
+\begin{itemize}
+    \item gerarchia coerente degli heading (\texttt{h1}, \texttt{h2}, \texttt{h3});
+    \item uso di landmark semantici (\texttt{header}, \texttt{main}, \texttt{nav}, \texttt{aside}, \texttt{footer});
+    \item testi alternativi obbligatori per le immagini;
+    \item link descrittivi e non generici (es. ``Scopri di più sulla categoria affitti'').
+\end{itemize}
+
+Questi elementi migliorano sia l’accessibilità sia la comprensione del contenuto da parte dei motori di ricerca.
+
+\subsubsection{Performance}
+Sono state adottate diverse tecniche per migliorare le prestazioni, che costituiscono un fattore di ranking:
+
+\begin{itemize}
+    \item \texttt{loading="lazy"} per tutte le immagini non above-the-fold;
+    \item dimensioni fisse (\texttt{width} e \texttt{height}) per prevenire layout shift;
+    \item uso di formati ottimizzati (WebP, SVG, JPG);
+    \item dimensione massima delle immagini inferiore a 1 MB;
+    \item CSS modulari e caricati in modo efficiente;
+    \item struttura del DOM pulita e priva di elementi superflui.
+\end{itemize}
 
 \section{Test}
 
