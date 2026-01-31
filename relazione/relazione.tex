@@ -517,6 +517,27 @@ Particolare attenzione è stata riservata all’accessibilità visiva e all’in
 
 \subsection{PHP}
 
+Per consentire al sistema di fornire pagine web il cui contenuto non sia statico,
+ma che cambi in base all'occorrenza, si è deciso di generare tutte le pagine dinamicamente
+tramite PHP. All'interno della cartella \textbf{/pages} sono presenti tutti i 
+template HTML delle pagine, all'interno dei quali sono stati posti dei marcatori
+racchiusi tra parentesi quadrate (es. \textbf{[TitoloAnnuncio]}). Quest'ultimi
+permettono di inserire contenuti dinamici, in base alle necessità. 
+
+Oltre alla creazione di pagine il PHP si occupa anche di:
+\begin{itemize}
+    \item gestire tutte le richieste fatte dal client tramite le form
+    \item validare gli input dell'utente (si veda \underline{\hyperref[sviluppo:validazione]{la sezione sulla validazione}})
+    \item gestire le sessioni di accesso dell'utente
+    \item gestire le connessioni al database, evitando che queste vengano tenute aperte più del necessario, e crare in modo corretto le query
+        \begin{itemize}
+            \item le operazioni di gestione del database sono state raggruppate all'interno di \textbf{dbConnect.php}, per avere una separazione del codice più adatta 
+        \end{itemize}
+\end{itemize}
+
+Per semplificare lo sviluppo e aumentare la riutilizzabilità del codice è stata sviluppata, nel corso dei lavori, una libreria interna al progetto all'interno del fiel \textbf{tool.php}.
+
+
 \section{Accessibilità}
 
 \subsection{Strumenti di verifica}
