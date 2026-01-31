@@ -143,14 +143,6 @@ class Tool {
     * ------------------------------- */
     public static function pulisciInput($value) {
         $value = trim($value);
-        $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE);
-        return $value;
-    }
-
-    //questa è per quei campi che vanno controllati ma per cui non è previsto 
-    //un messaggio di errore, es. esplora
-    public static function pulisciInputCompleto($value) {
-        $value = trim($value);
         $value = strip_tags($value);
         $value = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE);
         return $value;
