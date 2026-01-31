@@ -524,18 +524,20 @@ template HTML delle pagine, all'interno dei quali sono stati posti dei marcatori
 racchiusi tra parentesi quadrate (es. \textbf{[TitoloAnnuncio]}). Quest'ultimi
 permettono di inserire contenuti dinamici, in base alle necessità. 
 
-Oltre alla creazione di pagine il PHP si occupa anche di:
+Oltre alla creazione di pagine, il PHP si occupa di:
 \begin{itemize}
     \item gestire tutte le richieste fatte dal client tramite le form
     \item validare gli input dell'utente (si veda \underline{\hyperref[sviluppo:validazione]{la sezione sulla validazione}})
     \item gestire le sessioni di accesso dell'utente
+    \item reindirizzare l'utente (che non ha effettuato l'accesso) alla pagina di accesso qualora provasse ad accedere a pagine che richiedono un profilo
+    \item reindirizzare la navigazione alle pagine di errore qualora qualcosa andasse storto
     \item gestire le connessioni al database, evitando che queste vengano tenute aperte più del necessario, e crare in modo corretto le query
         \begin{itemize}
             \item le operazioni di gestione del database sono state raggruppate all'interno di \textbf{dbConnect.php}, per avere una separazione del codice più adatta 
         \end{itemize}
 \end{itemize}
 
-Per semplificare lo sviluppo e aumentare la riutilizzabilità del codice è stata sviluppata, nel corso dei lavori, una libreria interna al progetto all'interno del fiel \textbf{tool.php}.
+Per semplificare lo sviluppo e aumentare la riutilizzabilità del codice è stata sviluppata, nel corso dei lavori, una libreria interna al progetto all'interno del file \textbf{tool.php}.
 
 
 \section{Accessibilità}
