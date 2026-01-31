@@ -156,7 +156,7 @@ function toggleFiltriAccessibile() {
             toggle.setAttribute("aria-expanded", "false");
             contenuto.removeAttribute("aria-hidden");
         } else {
-            filtri.inert = false;
+            filtri.inert = false
             filtri.classList.remove("attivo"); // niente stato modale
             overlay.hidden = true;
             contenuto.removeAttribute("aria-hidden");
@@ -169,10 +169,6 @@ function toggleFiltriAccessibile() {
     mobileQuery.addEventListener("change", aggiornaStatoFiltri);
 
     let lastFocusedElement = null;
-    filtri.inert = true;
-    overlay.hidden = true;
-    toggle.setAttribute("aria-expanded", "false");
-    contenuto.removeAttribute("aria-hidden");
 
     const focusableSelectors = `
         button,
