@@ -551,7 +551,7 @@ function renderError(field, errors) {
         li.className = "msgErrore";
         li.id = `errore-${field.id}`;
         li.setAttribute("role", "alert");   
-        li.textContent = err;
+        li.innerHTML = err;
         box.appendChild(li);
     });
 
