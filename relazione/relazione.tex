@@ -171,7 +171,7 @@ La validazione è gestita sia lato client sia lato server (si veda \underline{\h
 
 \subsection{Architettura del sistema}
 
-Il progetto segue una chiara separazione tra: \textbf{presentazione} (HTML e CSS), \textbf{comportamento} (JavaScript), \textbf{logica applicativa} (PHP) e \textbf{persistenza} (database).
+Il progetto segue una chiara separazione tra: \textbf{struttura} (HTML), \textbf{presentazione} (CSS), \textbf{comportamento} (JavaScript), \textbf{logica applicativa} (PHP) e \textbf{persistenza} (database).
 
 La composizione delle pagine avviene tramite template HTML presenti in \textbf{/pages}, 
 nei quali PHP inserisce dinamicamente i contenuti.  
@@ -203,7 +203,7 @@ La navigazione del sito combina struttura gerarchica e percorsi trasversali, ric
 
 \subsection{Pagine di errore}
 Ogni errore è stato progettato per non essere bloccante: sono sempre presenti elementi di interazione chiari, come il pulsante per tornare alla \emph{Home} o il collegamento diretto alla bacheca degli annunci. Questo permette all’utente di recuperare rapidamente la navigazione senza sentirsi “intrappolato” nella pagina di errore. Inoltre, abbiamo scelto di utilizzare un tono leggero e leggermente ironico.
-La gestione degli errori viene effettuata sia tramite codice PHP restituendo la pagina personalizzata relativa all'errore specifico ma anche attraverso il
+La gestione degli errori viene effettuata sia tramite codice PHP restituendo la pagina personalizzata relativa all'errore specifico che attraverso il
 file .htaccess che reindirizza gli errori a pagine personalizzate.
 
 
@@ -247,15 +247,15 @@ Questa scelta mantiene la normalizzazione e semplifica l’estendibilità del mo
 Le tabelle principali sono:
 
 \begin{itemize}
-    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, SedeUniversitaria*)
+    \item \textbf{Utente}(\underline{IdUtente}, Nome, Cognome, Email [UNIQUE], Password, IdCittà*)
     \item \textbf{Città}(\underline{Idcittà}, Nomecittà [UNIQUE])
-    \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Autore, Categoria, Collocazione)
-    \item \textbf{Affitti}(\underline{IdAnnuncio}, PrezzoMensileAff, IndirizzoAffitti, NumeroCoinquilini)
-    \item \textbf{Esperimenti}(\underline{IdAnnuncio}, LaboratorioEsp, DurataPrevEsp, CompensoEsp)
-    \item \textbf{Eventi}(\underline{IdAnnuncio}, DataEventi, LuogoEventi, CostoEntrataEventi)
-    \item \textbf{Ripetizioni}(\underline{IdAnnuncio}, MateriaRipetizioni, LivelloRip, PrezzoOrarioRip)
+    \item \textbf{Annuncio}(\underline{IdAnnuncio}, Titolo, Descrizione, DataPubblicazione, Idutente, Categoria, IdCittà)
+    \item \textbf{Affitti}(\underline{IdAnnuncio}, PrezzoMensile, Indirizzo, NumeroInquilini)
+    \item \textbf{Esperimenti}(\underline{IdAnnuncio}, Laboratorio, DurataPrevists, Compenso)
+    \item \textbf{Eventi}(\underline{IdAnnuncio}, DataEvento, Luogo, CostoEntrata)
+    \item \textbf{Ripetizioni}(\underline{IdAnnuncio}, Materia, Livello, PrezzoOrario)
     \item \textbf{ImmaginiAnnuncio}(\underline{IdImmagine}, IdAnnuncio, Percorso, AltText*, Decorativa, Ordine)
-    \item \textbf{Preferiti}(\underline{IdAnnuncio}, \underline{IdUtente})
+    \item \textbf{Preferiti}(\underline{IdAnnuncio}, \underline{IdUtente})[UNIQUE]
 \end{itemize}
 
 Le relazioni sono collegate tramite chiavi esterne con vincoli \texttt{ON DELETE CASCADE} 
@@ -276,6 +276,7 @@ e uniformità dello schema.
 La separazione tra \texttt{Annuncio} e le sue specializzazioni consente di aggiungere nuove categorie 
 senza modificare la struttura esistente.
 
+\section{Sviluppo}
 \subsection{HTML}
 
 Ogni documento è organizzato nelle sezioni \texttt{<head>} e \texttt{<body>}, con uso coerente di elementi semantici ed evitando tag puramente presentazionali.
@@ -304,7 +305,7 @@ La gestione delle immagini è progettata per ottimizzare prestazioni e accessibi
     \item Tutte le immagini sono inferiori a 1 MB.
 \end{itemize}
 
-Le immagini decorative sono inserite nel markup e dimensionate via CSS; il logo utilizza tecniche di image replacement per mantenere accessibile il testo alternativo mentre le immagini degli annunci hanno dimensioni fissate via HTML per rendere 
+Le immagini decorative sono inserite nel markup e dimensionate via CSS; il logo utilizza tecniche di image replacement per mantenere accessibile il testo alternativo, mentre le immagini degli annunci hanno dimensioni fissate via HTML per rendere 
 l'esperienza utente migliore in quanto ciò garantisce un rendering più veloce.
 
 Nel form di pubblicazione/modifica l’utente deve rispettare vincoli espliciti (max 1 MB, formato JPG), infatti è presente un controllo sulla dimensione dei file.
@@ -314,11 +315,11 @@ Si è scelto di limitare i MIME type accettati, rinunciando a conversioni automa
 La gestione dell’attributo \texttt{alt} è affidata all’utente: ogni immagine deve avere un testo alternativo oppure essere marcata come decorativa, e non è possibile lasciare entrambi i campi vuoti. Il testo alternativo è limitato a 100 caratteri per garantire sintesi e usabilità con screen reader.
 
 \subsubsection{Form e validazione}
-La struttura dei form utilizza \texttt{fieldset} e \texttt{legend}, anche quando destinati principalmente alle tecnologie assistive. Nessun campo è figlio diretto di \texttt{form}.  
+La struttura dei form utilizza \texttt{fieldset} e \texttt{legend}, anche quando destinati principalmente alle tecnologie assistive, questo fa sì che nessun campo sia figlio diretto di \texttt{form}.  
 
-Ogni input utilizza il tipo HTML più appropriato ed è sempre associato a una \texttt{label}. Dove utile, sono abilitati \texttt{autocomplete} e \texttt{spellcheck}.
+Ogni input utilizza il tipo HTML più appropriato ed è sempre associato a una \texttt{label}. Dove utile, sono abilitati \texttt{autocomplete} e \texttt{spellcheck} adeguati.
 
-La validazione sfrutta: controlli HTML5 (\texttt{required}, \texttt{min}, \texttt{max}, \texttt{step}, vincoli di tipo); validazione JavaScript per feedback più dettagliati ed istantanei; validazione lato server per garantire correttezza e sicurezza.
+La validazione sfrutta: controlli HTML5 (\texttt{required}, \texttt{min}, \texttt{max}, \texttt{step}, vincoli di tipo), validazione JavaScript per feedback più dettagliati ed istantanei e validazione lato server per garantire correttezza e sicurezza.
 
 \subsubsection{Messaggio informativo nei redirect verso la pagina di accesso}
 Quando l’utente viene reindirizzato alla pagina di accesso a seguito del tentativo di accedere a una funzionalità riservata, viene mostrato automaticamente un riquadro informativo
@@ -326,8 +327,7 @@ che spiega il motivo del redirect, con un messaggio contestuale alla pagina di p
 
 \subsection{CSS e decisioni di design}
 
-Il foglio di stile è stato progettato privilegiando l’uso di dimensioni relative (\texttt{em}, \texttt{rem}, percentuali e unità flessibili), così da garantire un’interfaccia adattabile a dispositivi e contesti differenti, migliorando accessibilità e scalabilità.
-
+I fogli di stile sono stati progettati privilegiando l’uso di dimensioni relative, così da garantire un’interfaccia adattabile a dispositivi e contesti differenti.
 
 Per assicurare uniformità grafica è stata definita una \texttt{:root} contenente variabili CSS per colori, spaziature, raggi di arrotondamento, ombre, transizioni e una scala tipografica coerente per dimensioni e pesi dei caratteri.
 
@@ -335,12 +335,11 @@ Il layout è realizzato principalmente tramite Flexbox, utilizzato per strutture
 
 La responsività è gestita tramite la separazione tra \texttt{style.css} e \texttt{mini.css}, con un breakpoint principale a 800px per l’adattamento ai dispositivi mobili. Sono presenti due ulteriori media query, tra cui una dedicata alla navigazione con menù hamburger, attivata sotto i 1000px per migliorare l’usabilità su tablet e schermi intermedi.
 
-È stato inoltre previsto un foglio di stile dedicato alla stampa, che mostra esclusivamente le informazioni essenziali, rimuovendo elementi decorativi e interattivi per ridurre il consumo di inchiostro e mantenere una struttura coerente del contenuto.
+È stato inoltre previsto un foglio di stile dedicato alla stampa \texttt{print.css}, che mostra esclusivamente le informazioni essenziali, rimuovendo elementi decorativi e interattivi per ridurre il consumo di inchiostro ma mantenendo una struttura coerente del contenuto per evitare il fenomeno del disorientamento.
 
 Particolare attenzione è stata riservata all’accessibilità visiva e all’interazione da tastiera, con la gestione esplicita degli stati di focus visibile, l’uso coerente dei contrasti e l’eliminazione di animazioni superflue nei contesti in cui potrebbero risultare problematiche, come nelle versioni mobile o di stampa.
 
 \subsection{PHP}
-
 Per consentire al sistema di generare pagine web il cui contenuto non sia statico,
 ma vari in base al contesto, tutte le pagine vengono composte dinamicamente tramite PHP.
 All'interno della cartella \textbf{/pages} sono presenti i template HTML, nei quali sono stati
@@ -364,11 +363,9 @@ una libreria interna al progetto, contenuta nel file \textbf{tool.php}.
 
 \subsection{Strumenti di verifica}
 
-Per garantire il rispetto dei requisiti WCAG 2.2, è stata compilata la checklist fornita in Moodle.
-
 Sono stati utilizzati diversi strumenti di verifica:
 \begin{itemize}
-    \item \textbf{NVDA}: per testare la gerarchia dei titoli, dei link e dei punti di riferimento, la navigazione tramite landmark e l’annuncio dei messaggi di errore nei form, sia con JavaScript attivo sia disattivato (vedi Figure~\ref{fig:NVDA1} e~\ref{fig:NVDA2}).
+    \item \textbf{NVDA}: per testare la gerarchia dei titoli, la lista dei link e dei punti di riferimento, la navigazione tramite landmark e l’annuncio dei messaggi di errore nei form, sia con JavaScript attivo che disattivato (vedi Figure~\ref{fig:NVDA1} e~\ref{fig:NVDA2}).
 \end{itemize}
 
 \begin{figure}[h!]
@@ -376,14 +373,14 @@ Sono stati utilizzati diversi strumenti di verifica:
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{headings_index.png}
-        \caption{Gerarchia titoli (index.html)}
+        \caption{Gerarchia dei titoli (index.html)}
         \label{fig:NVDA1}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{link_index.png}
-        \caption{Lista link (index.html)}
+        \caption{Lista dei link (index.html)}
         \label{fig:NVDA2}
     \end{minipage}
 \end{figure}
@@ -434,10 +431,8 @@ Sono stati adottati diversi accorgimenti per garantire una corretta percezione d
     \begin{itemize}
         \item I link testuali sono sempre sottolineati.
         \item I link visitati/non visitati nella navbar e nelle card annunci differiscono per colore (contrasto 2.72 $\approx 3$) mentre nelle card di categoria il colore del \texttt{:visited} è associato al colore della categoria con contrasto $\geq 3$.
-        \item I pulsanti CTA variano colore tra stato visitato e non visitato.
+        \item I pulsanti CTA variano colore tra stato visitato e non visitato (in \texttt{background-color} e \texttt{color}).
     \end{itemize}
-
-    \item \textbf{Contrasto complessivo}: tutti i contrasti rispettano il rapporto minimo WCAG ($\geq 4.5\!:\!1$), verificato tramite Contrast Checker.
     (\href{https://tecweb.studenti.math.unipd.it/sdeblasi/relazione/sommario-contrasti.pdf}{\underline{Apri il Sommario dei Contrasti} }(PDF, 34 KB))
 
 
@@ -477,7 +472,7 @@ All’avvio della pagina, lo script verifica la presenza di eventuali errori gen
 \begin{itemize}
     \item in caso di errori relativi alle immagini, il focus viene portato sul primo input \texttt{file};
     \item in caso di errori su campi testuali, il focus viene portato sul primo campo non valido;
-    \item quando un errore compare per la prima volta, il contenuto del campo viene selezionato per facilitare la correzione.
+    \item quando un errore compare per la prima volta, il contenuto del campo viene selezionato per facilitare la correzione. E' stato deciso di riportare il focus sull'input errato solo la prima volta per evitare di essere troppo restrittivi.
 \end{itemize}
 
 \paragraph{Eventi di validazione}
@@ -514,7 +509,6 @@ La validazione lato server garantisce la corretta gestione degli input anche in 
     \item \textbf{Gestione del focus}: il focus viene portato automaticamente sul primo campo non valido; nel caso delle immagini, sul primo input \texttt{file}. Quando appropriato, il contenuto del campo viene anche selezionato per facilitare la correzione.
     \item \textbf{Errori relativi alle immagini}: controllo della dimensione (1 MB), dei formati consentiti lato server (JPG, PNG, WEBP) e dell’obbligatorietà del testo alternativo. I form accettano solo JPG per semplicità, mentre il server gestisce anche PNG e WEBP per maggiore robustezza.
     \item \textbf{Login}: gestione degli errori di autenticazione tramite messaggi contestuali e sistema di \texttt{redirectMessage}, che informa l’utente del motivo del reindirizzamento.
-    \item \textbf{Uniformità}: stesso markup, stessi stili e stessa semantica dei messaggi generati lato client, garantendo un’esperienza coerente indipendentemente dalla presenza di JavaScript.
 \end{itemize}
 
 Per motivi di sicurezza, nel processo di sanificazione degli input è stata adottata la funzione \texttt{strip\_tags()}, che rimuove i tag HTML e PHP dalle stringhe inserite dall’utente, prevenendo l’inserimento di codice malevolo.  
@@ -532,10 +526,10 @@ In questo modo:
 
 \subsection{Sicurezza delle password}
 Per garantire la sicurezza delle password degli utenti nella loro memorizzazione nel database, si è deciso di implementare un sistema di hashing delle password.
-In particolare si è scelto di appoggiarsi alla funzione nativa di PHP \texttt{password\_hash()}, che utilizza l'algoritmo BCRYPT per l'hashing delle password.
+In particolare, si è scelto di appoggiarsi alla funzione nativa di PHP \texttt{password\_hash()}, che utilizza l'algoritmo BCRYPT per l'hashing delle password.
 
-\section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
-Il file .htaccess è un file di configurazione per il server web Apache, che nel nostro caso viene utilizzato per la sicurezza di alcune aree,
+\section{Configurazione .htaccess} 
+Il file \texttt{.htaccess} è un file di configurazione per il server web Apache, che nel nostro caso viene utilizzato per la sicurezza di alcune aree,
 la gestione degli errori e per rendere più leggibili gli URL.
 \begin{itemize}
     \item \textbf{Protezione aree riservate}: l'unico file ritenuto necessario da proteggere è stato il file \texttt{.env} che contiene le credenziali di accesso al database.
