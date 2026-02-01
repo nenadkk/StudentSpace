@@ -224,7 +224,7 @@ INSERT INTO Citta (NomeCitta) VALUES
 INSERT INTO Utente (Nome, Cognome, Email, Password, IdCitta) VALUES
 ('user', 'user', 'user',
  '$2y$10$5THKHuPdRdFxyNRnE3V9XuXZGmcTPI9Q14z4C4P0raCkuZGJROd7m',
- 27),
+ 41),
 ('Marco', 'Rossi', 'marco.rossi@email.it',
  '$2y$10$EIXCh8J2r6uFj3X3bEw1ReC3h3bYxX6p6j6CqzU8N9KZr4z5Rr7bS',
  35),
