@@ -643,7 +643,7 @@ Sono stati adottati diversi accorgimenti per garantire una corretta percezione d
 \section{Validazione, sicurezza e gestione degli errori}
 \label{sviluppo:validazione}
 
-\subsubsection{Errori lato client (JavaScript)}
+\subsection{Errori lato client (JavaScript)}
 
 La validazione lato client è attiva su tutti i form con attributo \texttt{data-validate}, combinando controlli in tempo reale e al submit.
 
@@ -655,7 +655,7 @@ La validazione lato client è attiva su tutti i form con attributo \texttt{data-
     \item \textbf{Funzioni principali}: \texttt{validateField()}, \texttt{renderError()}, \texttt{removeError()}.
 \end{itemize}
 
-\subsubsection{Errori lato server (PHP)}
+\subsection{Errori lato server (PHP)}
 
 La validazione lato server garantisce feedback anche senza JavaScript.
 
@@ -665,9 +665,23 @@ La validazione lato server garantisce feedback anche senza JavaScript.
     \item \textbf{Attributi ARIA}: \texttt{aria-invalid} e \texttt{aria-describedby} applicati dinamicamente.
     \item \textbf{Focus}: portato sul primo campo non valido; per le immagini, sul primo input \texttt{file}.
     \item \textbf{Errori immagini}: controllo dimensione (1MB), formati (JPG, PNG, WEBP), obbligatorietà del testo alternativo.
-    \item \textbf{Login}: gestione errori credenziali, HTML non consentito, messaggi contestuali tramite \texttt{redirectMessage}.
+    \item \textbf{Login}: gestione errori credenziali, messaggi contestuali tramite \texttt{redirectMessage}.
     \item \textbf{Uniformità}: stesso markup, stessi stili e stessa semantica dei messaggi client-side.
 \end{itemize}
+
+Per motivi di sicurezza si è deciso di utilizzare, nel processo di sanificazione degli input, la funzione \texttt{strip_tags()}. 
+Tale funzione consente di rimuovere tag HTML e PHP dalle stringhe passate in input, evitando l'inserimento di codice malevolo.
+La funzione rimuove i tag ma non il contenuto tra essi, per esempio se venisse inserito \texttt{<strong>Descrizione evento...</strong>}
+i tag \texttt{<strong>} e \texttt{</strong>} verranno rimossi, mentre il contenuto tra essi rimarrà. 
+I tag in linea invece vengono completamente rimossi (va da se che anche eventuali attributi dei tag verranno eliminati).
+
+Si è pensato di aggiungere un controllo che individuasse la presenza di tag HTML e riportasse l'errore all'utente,
+tuttavia sono presenti nel sito dei campi di input per cui non sono previsti messaggi di errore. 
+Siccome questo è un controllo che andrebbe effettuato su ogni campo, volendo mantenere una continuità su come vengono gestiti 
+i messaggi di errore e i controlli, si è deciso semplicemente di includere il controllo in tutti i campi, senza riportare errori.
+Nell'eventualità in cui l'utente volesse semplicemente aggiungere valore semantico al suo testo, verrà mantenuto il contenuto 
+ma rimossi i tag; nel caso in cui vi fosse un massiccio uso di tag (vista anche l'utenza a cui punta il sito, non necessariamente
+esperta in merito) si da per scontato che si tratti di un utente malevolo.
 
 \section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
 
