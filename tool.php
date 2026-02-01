@@ -2,6 +2,13 @@
 require_once "env.php";
 require_once "dbConnect.php";
 
+set_exception_handler(function ($e) {
+    error_log($e);
+
+    Tool::renderError(500);
+    exit;
+})
+
 use DB\DBAccess;
 
 class Tool {

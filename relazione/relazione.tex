@@ -294,6 +294,8 @@ La navigazione richiama la \textbf{metafora della pesca}, grazie alla presenza d
 
 \subsection{Pagine di errore}
 Ogni errore è stato progettato per non essere bloccante: sono sempre presenti elementi di interazione chiari, come il pulsante per tornare alla \emph{Home} o il collegamento diretto alla bacheca degli annunci. Questo permette all’utente di recuperare rapidamente la navigazione senza sentirsi “intrappolato” nella pagina di errore. Inoltre, abbiamo scelto di utilizzare un tono leggero e leggermente ironico.
+La gestione degli errori viene gestita sia tramite codice PHP restituendo la pagina personalizzata relativa all'errore specifico ma anche attraverso il
+file .htaccess che reindirizza gli errori a pagine personalizzate.
 
 \section{Sviluppo} 
     \subsection{Database}
@@ -467,6 +469,9 @@ che consente ai CSS di riferirsi alla larghezza effettiva del dispositivo, evita
 
 \subsubsection{\texttt{<aside>} in \texttt{esplora.html}}
 Nella pagina \texttt{esplora.html} l’elemento \texttt{<aside>} contiene i filtri di ricerca, poiché rappresentano contenuti accessori rispetto al flusso principale (lista degli annunci). 
+Essendo una funzionalità secondaria all'interno della pagina sono stati trovati dei compromessi con JavaScript per accessibilità e usabilità.
+In particolare, con la disattivazione di Javascript, da telefono non è possbile aprire i filtri, che sono diventano una tendina laterale, su desktop invece rimanendo sempre
+visibili peccano della possibilità di essere raggiunti tramite movimento utilizzando il tab, questo a causa dell'uso dell'attributo \texttt{inert}.
 
 \subsubsection{Struttura di \texttt{cardTemplate}}
 Le card degli annunci (\texttt{cardTemplate.html}) utilizzano \texttt{<h3>} per i titoli, evitando coppie \texttt{<dt>}–\texttt{<dd>}.  
@@ -498,7 +503,8 @@ Ogni input utilizza il tipo HTML più appropriato ed è sempre associato a una \
 La validazione sfrutta: controlli HTML5 (\texttt{required}, \texttt{min}, \texttt{max}, \texttt{step}, vincoli di tipo); validazione JavaScript per feedback più dettagliati ed istantanei; validazione lato server per garantire correttezza e sicurezza.
 
 \subsubsection{Messaggio informativo nei redirect verso la pagina di accesso}
-Quando l’utente viene reindirizzato alla pagina di accesso a seguito del tentativo di accedere a una funzionalità riservata, viene mostrato automaticamente un riquadro informativo che spiega il motivo del redirect, con un messaggio contestuale alla pagina di provenienza (pubblicazione, modifica, profilo o salvataggio nei preferiti).
+Quando l’utente viene reindirizzato alla pagina di accesso a seguito del tentativo di accedere a una funzionalità riservata, viene mostrato automaticamente un riquadro informativo
+che spiega il motivo del redirect, con un messaggio contestuale alla pagina di provenienza (pubblicazione, modifica, profilo o salvataggio nei preferiti).
 
 \subsection{CSS e decisioni di design}
 
@@ -683,7 +689,18 @@ Nell'eventualità in cui l'utente volesse semplicemente aggiungere valore semant
 ma rimossi i tag; nel caso in cui vi fosse un massiccio uso di tag (vista anche l'utenza a cui punta il sito, non necessariamente
 esperta in merito) si da per scontato che si tratti di un utente malevolo.
 
+\subsection{Sicurezza delle password}
+Per garantire la sicurezza delle password degli utenti nella loro memorizzazione nel database, si è deciso di implementare un sistema di hashing delle password.
+In particolare si è scelto di appoggiarsi alla funzione nativa di PHP \texttt{password\_hash()}, che utilizza l'algoritmo BCRYPT per l'hashing delle password.
+
 \section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
+Il file .htaccess è un file di configurazione per il server web Apache, che nel nostro caso viene utilizzato per la sicurezza di alcune aree,
+la gestioe degli errori e per rendere maggior leggibili gli URL.
+\begin{itemize}
+    \item \textbf{Protezione aree riservate}: l'unico file ritenuto necessario da proteggere è stato il file \texttt{.env} che contiene le credenziali di accesso al database.
+    \item \textbf{Gestione errori personalizzata}: il file .htaccess reindirizza gli errori 404 e 500 a pagine di errore personalizzate (\texttt{404.php} e \texttt{500.php}).
+    \item \textbf{URL rewriting}: il file .htaccess utilizza mod\_rewrite per creare URL più leggibili e SEO-friendly, rimuovendo estensioni come .php dalle URL.
+\end{itemize}
 
 \section{SEO e ottimizzazione per i motori di ricerca}
 \subsubsection{Analisi delle possibili ricerche degli utenti}
@@ -816,7 +833,21 @@ Per garantire che il comportamento del sito fosse chiaro, prevedibile e accessib
     Tale configurazione è stata molto utile per consetire, durante lo sviluppo, di visualizzare le modifiche senza il timore che potessero avere effetti diversi, su altri sistemi, da quelli desiderati. 
     Ha permesso inoltre di velocizzare le attività, in quanto tutti i servizi necessari venivano richiamati automaticamente da un apposito docker compose.
 
-    \section{Guida all’installazione del progetto}
+\section{Guida all’installazione del progetto}
+Passaggi da effetturae per un funzionamento a regime del progetto:
+\begin {enumerate}
+    \item Copiare la cartella del progetto in \texttt{public_html},
+    \item Creare un file \texttt{.env} nella root del progetto, con il seguente contenuto:
+    \begin{verbatim}
+        DB_HOST=localhost
+        DB_NAME=nome_database
+        DB_USER=nome_utente
+        DB_PASS=password_utente
+    \end{verbatim}
+    \item Utilizzare il servizio phpMyAdmin per caricare il file \texttt{studentSpaceDB.sql} e importare la base di dati;
+\end{enumerate}
 
+Viene infine fornito anche una coppia di file del dominio Docker utilizzati per lo sviluppo locale. Si noti che utilizzando il servizio di Docker si potrebbero riscontrare delle
+differenze per quanto riguarda il caricamento delle immagini degli annunci, in quanto tale comportamento dipende dai permessi del file system del sistema operativo ospitante.
 
 \end{document}
