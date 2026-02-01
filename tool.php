@@ -7,7 +7,7 @@ set_exception_handler(function ($e) {
 
     Tool::renderError(500);
     exit;
-})
+});
 
 use DB\DBAccess;
 
