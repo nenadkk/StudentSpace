@@ -1360,27 +1360,27 @@ footer p{
     border: 2px solid var(--txtcolor);
     border-radius: var(--radius-base);
     padding: 1em;
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
 
 #login-container .form-data , #filtri .form-data fieldset, #register-container .form-data {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-1);               
+    gap: var(--gap-1-5);               
 }
 
 #register-container .form-data-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
     column-gap: var(--gap-2); 
-    row-gap: var(--gap-1);
+    row-gap: var(--gap-1-5);
 }
 
 #pubblica-container .form-data .aiuti-fieldset {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: var(--gap-1); 
+    gap: var(--gap-1-5); 
 }
 
 .form-div {

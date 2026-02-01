@@ -517,28 +517,24 @@ Particolare attenzione è stata riservata all’accessibilità visiva e all’in
 
 \subsection{PHP}
 
-Per consentire al sistema di fornire pagine web il cui contenuto non sia statico,
-ma che cambi in base all'occorrenza, si è deciso di generare tutte le pagine dinamicamente
-tramite PHP. All'interno della cartella \textbf{/pages} sono presenti tutti i 
-template HTML delle pagine, all'interno dei quali sono stati posti dei marcatori
-racchiusi tra parentesi quadrate (es. \textbf{[TitoloAnnuncio]}). Quest'ultimi
-permettono di inserire contenuti dinamici, in base alle necessità. 
+Per consentire al sistema di generare pagine web il cui contenuto non sia statico,
+ma vari in base al contesto, tutte le pagine vengono composte dinamicamente tramite PHP.
+All'interno della cartella \textbf{/pages} sono presenti i template HTML, nei quali sono stati
+inseriti marcatori racchiusi tra parentesi quadrate (ad esempio \textbf{[TitoloAnnuncio]}) che vengono sostituiti a runtime con i contenuti dinamici appropriati.
 
-Oltre alla creazione di pagine, il PHP si occupa di:
+Oltre alla generazione delle pagine, il PHP si occupa di:
 \begin{itemize}
-    \item gestire tutte le richieste fatte dal client tramite le form
-    \item validare gli input dell'utente (si veda \underline{\hyperref[sviluppo:validazione]{la sezione sulla validazione}})
-    \item gestire le sessioni di accesso dell'utente
-    \item reindirizzare l'utente (che non ha effettuato l'accesso) alla pagina di accesso qualora provasse ad accedere a pagine che richiedono un profilo
-    \item reindirizzare la navigazione alle pagine di errore qualora qualcosa andasse storto
-    \item gestire le connessioni al database, evitando che queste vengano tenute aperte più del necessario, e crare in modo corretto le query
-        \begin{itemize}
-            \item le operazioni di gestione del database sono state raggruppate all'interno di \textbf{dbConnect.php}, per avere una separazione del codice più adatta 
-        \end{itemize}
+    \item gestire tutte le richieste provenienti dal client tramite form;
+    \item validare gli input dell'utente (si veda \underline{\hyperref[sviluppo:validazione]{la sezione sulla validazione}});
+    \item gestire le sessioni di accesso dell'utente;
+    \item reindirizzare l'utente non autenticato verso la pagina di accesso qualora tenti di raggiungere funzionalità riservate;
+    \item reindirizzare la navigazione verso le pagine di errore in caso di condizioni inattese;
+    \item gestire le connessioni al database, garantendo che non rimangano aperte più del necessario, e costruire correttamente le query.
+          A tale scopo, tutte le operazioni relative al database sono state centralizzate nel file \textbf{dbConnect.php}, così da mantenere una chiara separazione del codice.
 \end{itemize}
 
-Per semplificare lo sviluppo e aumentare la riutilizzabilità del codice è stata sviluppata, nel corso dei lavori, una libreria interna al progetto all'interno del file \textbf{tool.php}.
-
+Per semplificare lo sviluppo e aumentare la riutilizzabilità del codice, è stata inoltre realizzata
+una libreria interna al progetto, contenuta nel file \textbf{tool.php}.
 
 \section{Accessibilità}
 
@@ -629,13 +625,13 @@ Sono stati adottati diversi accorgimenti per garantire una corretta percezione d
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{opacita1.png}
+        \includegraphics[width=0.7\textwidth]{opacita1.png}
         \caption{Opacità su immagine prova 1}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{opacita2.png}
+        \includegraphics[width=0.7\textwidth]{opacita2.png}
         \caption{Opacità su immagine prova 2}
     \end{minipage}
 \end{figure}
@@ -645,49 +641,74 @@ Sono stati adottati diversi accorgimenti per garantire una corretta percezione d
 
 \subsection{Errori lato client (JavaScript)}
 
-La validazione lato client è attiva su tutti i form con attributo \texttt{data-validate}, combinando controlli in tempo reale e al submit.
+La validazione lato client fornisce un feedback immediato all’utente, migliorando l’usabilità e riducendo il numero di richieste non valide inviate al server.  
+Il comportamento è attivo esclusivamente nei form che dichiarano l’attributo \texttt{data-validate}, così da evitare interferenze con form che non richiedono controlli avanzati e immediati (pre-submit).
 
+\paragraph{Gestione del focus}
+All’avvio della pagina, lo script verifica la presenza di eventuali errori generati lato server:
 \begin{itemize}
-    \item \textbf{Eventi gestiti}: \texttt{blur}, \texttt{input}, \texttt{submit}.
-    \item \textbf{Messaggi di errore}: generati come \texttt{<ul><li>} con \texttt{role="alert"}; gli input ricevono \texttt{aria-invalid} e \texttt{aria-describedby}.
-    \item \textbf{Focus}: portato sul primo campo non valido solo alla prima comparsa dell’errore.
-    \item \textbf{Campi gestiti}: testo, email, password, conferma password, checkbox, città con \texttt{datalist}.
-    \item \textbf{Funzioni principali}: \texttt{validateField()}, \texttt{renderError()}, \texttt{removeError()}.
+    \item in caso di errori relativi alle immagini, il focus viene portato sul primo input \texttt{file};
+    \item in caso di errori su campi testuali, il focus viene portato sul primo campo non valido;
+    \item quando un errore compare per la prima volta, il contenuto del campo viene selezionato per facilitare la correzione.
 \end{itemize}
+
+\paragraph{Eventi di validazione}
+La validazione viene eseguita in tre momenti distinti:
+\begin{itemize}
+    \item \textbf{blur}: quando un campo perde il focus, viene validato se ritenuto “validabile”;
+    \item \textbf{input}: la digitazione rimuove eventuali messaggi di errore e ripristina gli attributi ARIA;
+    \item \textbf{submit}: tutti i campi vengono validati; se uno o più risultano non validi, l’invio viene bloccato e il focus viene portato sul primo errore.
+\end{itemize}
+
+\paragraph{Criteri di validazione}
+La funzione \texttt{validateField()} applica controlli specifici in base all’ID del campo: nome, cognome, email, password, confermaPassword, città (deve corrispondere a un valore presente nella lista \texttt{datalist}), consenso-email (deve essere selezionato).
+
+Alcuni campi vengono esclusi dalla validazione client-side: input \texttt{file}, campi relativi al testo alternativo delle immagini (\texttt{alt}), campi relativi alla marcatura decorativa (\texttt{decorativa}).
+
+\paragraph{Rendering degli errori}
+Gli errori vengono mostrati tramite:
+\begin{itemize}
+    \item un contenitore \texttt{<ul>} con classi \texttt{riquadro-spieg} e \texttt{messaggi-errore-form};
+    \item elementi \texttt{<li>} con classe \texttt{msgErrore} e \texttt{role="alert"};
+    \item associazione dinamica di \texttt{aria-invalid="true"} e \texttt{aria-describedby}.
+\end{itemize}
+
+La funzione \texttt{removeError()} rimuove: il contenitore degli errori. l’attributo \texttt{aria-invalid} e eventuali riferimenti a messaggi non più presenti in \texttt{aria-describedby}.
 
 \subsection{Errori lato server (PHP)}
 
-La validazione lato server garantisce feedback anche senza JavaScript.
+La validazione lato server garantisce la corretta gestione degli input anche in assenza di JavaScript, assicurando coerenza, sicurezza e un comportamento uniforme in tutte le condizioni di utilizzo.
 
 \begin{itemize}
-    \item \textbf{Tipi di errori}: campi generici, immagini (dimensione, formato, alt), login.
-    \item \textbf{Messaggi}: generati come liste con \texttt{role="alert"}, uniformi a quelli client-side.
-    \item \textbf{Attributi ARIA}: \texttt{aria-invalid} e \texttt{aria-describedby} applicati dinamicamente.
-    \item \textbf{Focus}: portato sul primo campo non valido; per le immagini, sul primo input \texttt{file}.
-    \item \textbf{Errori immagini}: controllo dimensione (1MB), formati (JPG, PNG, WEBP), obbligatorietà del testo alternativo.
-    \item \textbf{Login}: gestione errori credenziali, messaggi contestuali tramite \texttt{redirectMessage}.
-    \item \textbf{Uniformità}: stesso markup, stessi stili e stessa semantica dei messaggi client-side.
+    \item \textbf{Tipologie di errori}: campi generici, immagini (dimensione, formato, testo alternativo), credenziali di accesso.
+    \item \textbf{Messaggi}: generati come liste con \texttt{role="alert"}, mantenendo la stessa struttura, semantica e classi CSS dei messaggi lato client.
+    \item \textbf{Attributi ARIA}: applicazione dinamica di \texttt{aria-invalid} e \texttt{aria-describedby} ai campi non validi, con rimozione automatica quando l’errore viene risolto.
+    \item \textbf{Gestione del focus}: il focus viene portato automaticamente sul primo campo non valido; nel caso delle immagini, sul primo input \texttt{file}. Quando appropriato, il contenuto del campo viene anche selezionato per facilitare la correzione.
+    \item \textbf{Errori relativi alle immagini}: controllo della dimensione (1 MB), dei formati consentiti lato server (JPG, PNG, WEBP) e dell’obbligatorietà del testo alternativo. I form accettano solo JPG per semplicità, mentre il server gestisce anche PNG e WEBP per maggiore robustezza.
+    \item \textbf{Login}: gestione degli errori di autenticazione tramite messaggi contestuali e sistema di \texttt{redirectMessage}, che informa l’utente del motivo del reindirizzamento.
+    \item \textbf{Uniformità}: stesso markup, stessi stili e stessa semantica dei messaggi generati lato client, garantendo un’esperienza coerente indipendentemente dalla presenza di JavaScript.
 \end{itemize}
 
-Per motivi di sicurezza si è deciso di utilizzare, nel processo di sanificazione degli input, la funzione \texttt{strip_tags()}. 
-Tale funzione consente di rimuovere tag HTML e PHP dalle stringhe passate in input, evitando l'inserimento di codice malevolo.
-La funzione rimuove i tag ma non il contenuto tra essi, per esempio se venisse inserito \texttt{<strong>Descrizione evento...</strong>}
-i tag \texttt{<strong>} e \texttt{</strong>} verranno rimossi, mentre il contenuto tra essi rimarrà. 
-I tag in linea invece vengono completamente rimossi (va da se che anche eventuali attributi dei tag verranno eliminati).
+Per motivi di sicurezza, nel processo di sanificazione degli input è stata adottata la funzione \texttt{strip\_tags()}, che rimuove i tag HTML e PHP dalle stringhe inserite dall’utente, prevenendo l’inserimento di codice malevolo.  
 
-Si è pensato di aggiungere un controllo che individuasse la presenza di tag HTML e riportasse l'errore all'utente,
-tuttavia sono presenti nel sito dei campi di input per cui non sono previsti messaggi di errore. 
-Siccome questo è un controllo che andrebbe effettuato su ogni campo, volendo mantenere una continuità su come vengono gestiti 
-i messaggi di errore e i controlli, si è deciso semplicemente di includere il controllo in tutti i campi, senza riportare errori.
-Nell'eventualità in cui l'utente volesse semplicemente aggiungere valore semantico al suo testo, verrà mantenuto il contenuto 
-ma rimossi i tag; nel caso in cui vi fosse un massiccio uso di tag (vista anche l'utenza a cui punta il sito, non necessariamente
-esperta in merito) si da per scontato che si tratti di un utente malevolo.
+La funzione elimina i tag ma non il contenuto testuale: ad esempio, da \texttt{<strong>Descrizione evento...</strong>} vengono rimossi i tag \texttt{<strong>} e \texttt{</strong>}, mantenendo il testo interno. I tag in linea e i relativi attributi vengono invece completamente eliminati.
+
+È stata valutata la possibilità di introdurre un controllo esplicito che segnalasse all’utente la presenza di tag HTML non consentiti. Tuttavia, nel sito sono presenti campi di input per i quali non sono previsti messaggi di errore dedicati.  
+Per mantenere coerenza nella gestione dei feedback e dei controlli, si è scelto di applicare la sanificazione a tutti i campi senza generare errori specifici.
+
+In questo modo:
+\begin{itemize}
+    \item se l’utente inserisce tag con intento semantico, il contenuto viene preservato e i tag rimossi;
+    \item se l’input contiene un uso massiccio o sospetto di markup, viene comunque neutralizzato, assumendo che si tratti di un tentativo malevolo, considerando anche il target non tecnico della piattaforma.
+\end{itemize}
 
 \section{Configurazione .htaccess} % password hashing, SQL injection, sanitizzazione input, protezione aree riservate, gestione sessioni
 
 \section{SEO e ottimizzazione per i motori di ricerca}
-\subsubsection{Analisi delle possibili ricerche degli utenti}
+\subsection{Analisi delle possibili ricerche degli utenti}
+
 L’analisi preliminare ha individuato le principali query che uno studente universitario potrebbe digitare su un motore di ricerca. Le ricerche sono state suddivise in tre categorie:
+
 \begin{itemize}
     \item\textbf{Query informative generiche:} come ``annunci studenti Padova'',  ``bacheca universitaria eventi'', ``ripetizioni universitarie Padova'', ``affitti studenti stanza singola''.
     \item\textbf{Query specifiche per categoria:} ``affitti studenti vicino università'', ``esperimenti retribuiti dipartimento'', ``eventi universitari oggi Padova'', ``ripetizioni analisi 1 Padova''.
@@ -696,7 +717,7 @@ L’analisi preliminare ha individuato le principali query che uno studente univ
 
 Queste analisi hanno guidato la scelta delle \textit{keywords}, dei \textit{title}, delle \textit{description} e della struttura semantica delle pagine.
 
-\subsubsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
+\subsection{Meta tag \texttt{title}, \texttt{description} e \texttt{keywords}}
 I meta tag sono stati progettati per essere coerenti con il contenuto della pagina e per rispondere alle query individuate.
 
 Nelle pagine dinamiche (\texttt{annuncio.html}, \texttt{modificaAnnuncio.html}) i meta tag vengono generati automaticamente sulla base dei dati dell’annuncio (titolo, categoria, città).  
@@ -707,7 +728,7 @@ Anche la \texttt{description} è generata dinamicamente quando necessario, così
 
 Le \texttt{keywords} sono sempre presenti anche nel testo visibile (headings, \texttt{strong}), evitando discrepanze che potrebbero penalizzare il ranking (es. per Google Bombing).
 
-\subsubsection{Struttura semantica e accessibilità come fattori SEO}
+\subsection{Struttura semantica e accessibilità come fattori SEO}
 La struttura HTML è stata progettata per essere semanticamente corretta e facilmente interpretabile dai crawler:
 
 \begin{itemize}
@@ -719,7 +740,7 @@ La struttura HTML è stata progettata per essere semanticamente corretta e facil
 
 Questi elementi migliorano sia l’accessibilità sia la comprensione del contenuto da parte dei motori di ricerca.
 
-\subsubsection{Performance}
+\subsection{Performance}
 Sono state adottate diverse tecniche per migliorare le prestazioni, che costituiscono un fattore di ranking:
 
 \begin{itemize}
