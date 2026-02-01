@@ -21,7 +21,7 @@
     citecolor=blue,
     pdfborderstyle={/S/U/W 1},
     }
-
+\pagenumbering{gobble}
     \begin{document}
     \begin{titlepage}
         \begin{center}
@@ -76,7 +76,8 @@
     \newpage
     \tableofcontents
     \newpage
-
+\clearpage 
+\pagenumbering{arabic}
 \section{Introduzione}
 
 \subsection{Com'è nata l’idea}
@@ -170,7 +171,7 @@ La validazione è gestita sia lato client sia lato server (si veda \underline{\h
 
 \subsection{Architettura del sistema}
 
-Il progetto segue una chiara separazione tra: textbf{presentazione} (HTML e CSS), \textbf{comportamento} (JavaScript), \textbf{logica applicativa} (PHP) e \textbf{persistenza} (database).
+Il progetto segue una chiara separazione tra: \textbf{presentazione} (HTML e CSS), \textbf{comportamento} (JavaScript), \textbf{logica applicativa} (PHP) e \textbf{persistenza} (database).
 
 La composizione delle pagine avviene tramite template HTML presenti in \textbf{/pages}, 
 nei quali PHP inserisce dinamicamente i contenuti.  
@@ -621,9 +622,9 @@ L’uso combinato di questi strumenti ha permesso di individuare e correggere er
 Per garantire che il comportamento del sito fosse chiaro, prevedibile e accessibile, abbiamo svolto una serie di test con utenti esterni al gruppo di sviluppo. Essendo noi i creatori del sistema, avremmo potuto non accorgerci di elementi poco intuitivi; per questo abbiamo coinvolto persone con profili diversi: studenti di varie facoltà, ex studenti, genitori e una persona con mobilità limitata che utilizza una sola mano. Questo ci ha permesso di osservare l’interazione da prospettive differenti e di verificare che l’esperienza d’uso rimanesse comprensibile e coerente per utenti con esigenze e competenze eterogenee.
 
 \section{Guida all’installazione del progetto}
-Passaggi da effetturae per un funzionamento a regime del progetto:
+Passaggi da effettuare per un funzionamento a regime del progetto:
 \begin {enumerate}
-    \item Copiare la cartella del progetto in \texttt{public_html},
+    \item Copiare la cartella del progetto in \texttt{public\_html},
     \item Creare un file \texttt{.env} nella root del progetto, con il seguente contenuto:
     \begin{verbatim}
         DB_HOST=localhost
