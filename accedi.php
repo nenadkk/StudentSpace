@@ -56,14 +56,7 @@ if(isset($_POST['submit'])) {
         } else {
             Tool::renderError(500);
         }
-    } elseif (Tool::contieneTagHtml($email)) {
-        $erroreEmail = "
-            <ul class='riquadro-spieg messaggi-errore-form'>
-                <li class='msgErrore' id='errore-login' role='alert'>
-                    Non si possono inserire tag HTML nei campi.
-                </li>
-            </ul>";
-    }
+    } 
     elseif (!Tool::validaEmail($email)) {
     $testoErrori = '<span lang="en">Email</span> non valida.';
 

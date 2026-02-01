@@ -148,12 +148,6 @@ class Tool {
         return $value;
     }
 
-    public static function contieneTagHtml($str)
-    {
-        //html_entity_decode() serve nel caso in cui nella stringa che si sta controllando
-        //i caratteri speciali siano già stati convertiti in entità HTML
-        return ($str!=strip_tags(html_entity_decode($str)));    
-    }
     /* -------------------------------
     * VALIDAZIONI MIRATE
     * ------------------------------- */
