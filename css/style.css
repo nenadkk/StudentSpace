@@ -1211,6 +1211,12 @@ footer p{
   background: var(--call-to-actionColor);
 }
 
+#carosello-prev:focus-visible, 
+#carosello-next:focus-visible { 
+    outline: 2px solid var(--call-to-actionColor); 
+    outline-offset: 3px; 
+}
+
 .carosello-thumbnails {
     display: flex;
     flex-direction: column;
