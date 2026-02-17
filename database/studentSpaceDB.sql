@@ -38,9 +38,9 @@ CREATE TABLE Utente (
     Cognome	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
     Email 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
     Password 	VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL, -- minimo 8 caratteri
-    IdCitta 	INT, -- non required
+    IdCitta 	INT NOT NULL, 
    	 FOREIGN KEY (IdCitta) REFERENCES Citta(IdCitta)
-       	 	ON DELETE SET NULL ON UPDATE CASCADE
+       	 	ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB
 DEFAULT CHARSET=utf8
 COLLATE=utf8_unicode_ci;

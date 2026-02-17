@@ -51,9 +51,28 @@ flex-direction: column;
 
 /*
 ====================================================
-    SEZIONE HEADER (gestito con media query <1024pxin style)
+    SEZIONE BREADCRUMB
 ==================================================== 
 */
+
+    #breadcrumb {
+        width: auto;             
+        max-width: 90%;          
+        padding: 0.5em 1em;
+        flex-wrap: wrap;          
+        justify-content: center;
+        text-align: center;
+    }
+
+    #breadcrumb ol {
+        flex-wrap: wrap;       
+        justify-content: center;
+    }
+
+    #breadcrumb li a {
+        white-space: normal;     
+        max-width: 100%;          
+    }
 
 /*
 ====================================================
