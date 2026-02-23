@@ -15,6 +15,10 @@ section {
     padding: 0  0.5em 0.5em;
 }
 
+#about-us {
+    padding: 2em;
+}
+
 .errore {
     padding: 0.5em 2em 4em;
 }
